@@ -1,0 +1,84 @@
+\documentclass[french, 12pt]{article}
+
+%-------------------------------------------------------------------------------
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color,xcolor}
+\usepackage{tikz}
+\usepackage{remreset}
+\usepackage{url}
+% \usepackage{extsizes} % Permet \documentclass[french, 14pt]{extreport}
+% \usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=.75cm]{geometry}
+% \usepackage{minitoc}
+
+\graphicspath{{../Figures/}}
+\input{../Macros}
+
+% Section numbering
+% \usepackage{chngcntr}
+% \renewcommand{\thepart}{\Roman{part}}
+% \counterwithout{section}{part}
+% \setcounter{secnumdepth}{3}
+% \setcounter{tocdepth}{1}
+
+% Proposition numbering
+% \numberwithin{proposition}{section}
+\numberwithin{exercise}{section}
+\numberwithin{equation}{section}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\title{\Huge{Ce qu'un biologiste doit savoir en mathématiques}}
+\author{SR (inspiré d'AL)}
+\date{\today}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+% \dominitoc
+% \doparttoc
+\maketitle
+\tableofcontents
+
+%-------------------------------------------------------------------------------
+\newpage 
+\section{Algèbre linéaire}
+\input{TD-AlgLin}
+
+%-------------------------------------------------------------------------------
+\newpage 
+\section{Fonctions de plusieurs variables}
+\input{TD-MultiVar}
+
+%-------------------------------------------------------------------------------
+\newpage 
+\section{\'Equations différentielles et systèmes dynamiques}
+\input{TD-EquaDiff}
+
+%-------------------------------------------------------------------------------
+\newpage 
+\section{Probabilités}
+\input{TD-Probas}
+
+% %-------------------------------------------------------------------------------
+% \bibliography{/home/robin/Biblio/BibGene}
+% \bibliographystyle{plainnat}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+
