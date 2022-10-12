@@ -1,0 +1,141 @@
+\bigskip
+\progres{Début Cours 1. 
+\begin{itemize}
+ \item Plan du cours
+\end{itemize}
+}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Introduction} \label{sec:LinAlg-Intro}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\paragraph{Notations maticielles :} ~
+\begin{itemize}
+  \item $x, y$  réels ou vecteurs de $\Rbb^n$
+  \item $X, A$  matrices ou variables aléatoires
+  \item $\Mcal_{n, p}(\Rbb) = \Mcal_{n, p}$, 
+  \item $\Mcal_n(\Rbb) = \Mcal_n$ (matrices carrées), 
+  \item $A = [a_{ij}]$, élément générique
+  \item $\diag(\lambda_1, \dots \lambda_n)$, 
+  \item $I_n$.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Matrice de covariance} \label{sec:MatCov}
+%-------------------------------------------------------------------------------
+
+\begin{definition*}[Matrice de covariance]
+  $A$ = matrice de covariance des variables aléatoires $X_1, \dots X_n$ :
+  $$
+  a_{ij} = \Cov(X_i, X_j) = \Esp[(X_i - \Esp(X_i)) (X_j - \Esp(X_j))].
+  $$
+\end{definition*}
+
+\begin{proposition*}[Propriétés d'une matrice de covariance] ~
+  \begin{itemize}
+   \item $\Cov(X_i, X_j) = \Esp(X_i X_j) - \Esp(X_i) \Esp(X_j)$
+   \item $a_{ij} = a_{ji}$ ($A$ symétrique) et $a_{ii} \geq 0$
+  \end{itemize}
+\end{proposition*}
+
+\proof Directe. \eproof
+
+\remark section \ref{sec:LinAlg-Pos} : définie positivité.
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Matrice de Leslie}  \label{sec:MatLeslie}
+%-------------------------------------------------------------------------------
+
+$x(t) = (x_1(t), \dots, x_i(t), \dots, x_k(t))$ répartition d'une population au temps $t$ en catégories $1, \dots, i, \dots, k$ :
+$$
+x_i(t+1) = \sum_{i=1}^k a_{ij} x_j(t) 
+$$
+$A \in \Mcal_k$, $a_{ij} \geq 0 : $ fraction de la catégorie $j$ de la population passant dans la catégorie $i$ au temps suivant.
+
+C'est-à-dire
+$$
+x(t+1) = A x(t) 
+\qquad \Rightarrow \qquad 
+x(t) = A^t x(0).
+$$
+
+\remark section \ref{sec:LinAlg-Pos} : comportement contrôlé par sa valeur propre dominante.
+
+%-------------------------------------------------------------------------------
+\paragraph{Cas particulier = 'Matrice de Leslie'.}
+
+Catégories $(1, \dots k)$ = classes d'âges : $a_{ij} = 0$ sauf 
+\begin{align*}
+  a_{i, i-1} : & \text{ taux de survie de la classe d'âge $i$}, \\
+  a_{1, i} : & \text{ taux de fécondité de la classe d'âge $i$}
+\end{align*}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Matrice jacobienne}  \label{sec:MatJacob}
+%-------------------------------------------------------------------------------
+
+\begin{definition*}[Matrice jacobienne]
+  Soit la fonction
+  $$
+  \begin{array}{r|rcl}
+    f : & \Rbb^n & \mapsto & \Rbb^k \\
+    & x = (x_1, \dots x_n) & \rightarrow & f(x)
+  \end{array}
+  $$
+  où
+  $$
+  f(x) = \left[\begin{array}{c}
+                f_1(x_1, \dots, x_n) \\
+                \vdots \\
+                f_k(x_1, \dots, x_n) 
+               \end{array} \right].
+  $$
+  avec $f_i: \Rbb^n \mapsto \Rbb$ pour $i = 1 \dots n$.
+  La matrice jacobienne de $f$ au point $x$, noté $J_x(f)$ est la matrice de $\Mcal_{k, n}$ de terme générique
+  $$
+  \frac{\partial f_i}{\partial x_j}.
+  $$
+\end{definition*}
+
+\begin{exercise*}
+  Calculer la matrice jacobienne $J_x(f)$ pour
+  $$
+  \left\{\begin{array}{rl}
+          f_1(x_1, x_2) & = a x_1 - c x_1 x_2, \\
+          f_2(x_1, x_2) & = -b x_2 + d x_1 x_2.
+         \end{array} \right.
+  $$
+pour un $x$ quelconque, puis pour $x = (0, 0)$ et pour $x=(1, 1)$.
+\end{exercise*}
+
+\remark section \ref{sec:Multivar-Diff} pour l'étude de $J_x(f)$ et section \ref{sec:EquaDiff-nonLineaire2D} pour l'étude de systèmes dynamique de la forme
+$$
+\dot{x} = f(x).
+$$
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Matrice stochastique}  \label{sec:MatStoch}
+%-------------------------------------------------------------------------------
+
+\begin{definition*}[Matrice stochastique]
+  $A \in \Mcal_{n, p}$ est stochastique si $a_{ij} \geq 0$ et, pour tout $1 \leq i \leq n$:
+  $$
+  \sum_{j=1}^p a_{ij} = 1.
+  $$
+\end{definition*}
+
+\begin{proposition*}[Produit de deux matrices stochastiques]
+  Si $A \in \Mcal_{\ell, m}$ et $B \in \Mcal_{m, n}$ sont stochastiques, alors $C = A B$ est stochastique.
+\end{proposition*}
+
+\proof Directe. \eproof
+
+\paragraph{Cas particulier.} Si $A \in \Mcal_n$, $A$ est dite \emph{matrice de transition} et $A^n$ est également stochastique.
+
+\remark section \ref{sec:LinAlg-Pos} pour l'étude des valeurs propres de $A$ et section \ref{sec:Proba-Markov} pour son utilisation dans l'étude des chaînes de Markov.

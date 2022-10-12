@@ -1,0 +1,109 @@
+\documentclass[french, 12pt]{report}
+
+%-------------------------------------------------------------------------------
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color,xcolor}
+\usepackage{tikz}
+\usepackage{remreset}
+\usepackage{url}
+\usepackage{arydshln}
+% \usepackage{extsizes} % Permet \documentclass[french, 14pt]{extreport}
+% \usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=.75cm]{geometry}
+\usepackage{minitoc}
+
+\graphicspath{{../Figures/}}
+\input{../Macros}
+
+% Section numbering
+\usepackage{chngcntr}
+\renewcommand{\thepart}{\Roman{part}}
+% \counterwithout{section}{part}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{1}
+
+% Proposition numbering
+% \numberwithin{proposition}{section}
+\numberwithin{exercise}{section}
+\numberwithin{equation}{section}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\title{\Huge{Ce qu'un biologiste doit savoir en mathématiques}}
+\author{SR d'après \cite{Lam20}}
+\date{\today}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\maketitle
+\dominitoc
+\tableofcontents
+
+\bigskip
+Par défaut, les numéros de section, propositions, théorèmes etc se réfèrent à \cite{Lam20}.
+
+%-------------------------------------------------------------------------------
+\chapter{Algèbre linéaire}
+\minitoc
+%-------------------------------------------------------------------------------
+% Cours 1
+\newpage \input{1-AlgLin-Intro} 
+% Cours 2
+\newpage \input{1-AlgLin-Determinant}
+% Cours 3
+\newpage \input{1-AlgLin-ValeursPropres}
+% Cours 4
+\newpage \input{1-AlgLin-MatricesPositives}
+
+%-------------------------------------------------------------------------------
+\chapter{Fonctions de plusieurs variables}
+\minitoc
+%-------------------------------------------------------------------------------
+\newpage \input{2-MultiVar-Normes}
+% Cours 5
+\newpage \input{2-MultiVar-Differentiabilite}
+% Cours 6
+\newpage \input{2-MultiVar-IntegraleExtrema}
+
+%-------------------------------------------------------------------------------
+\chapter{\'Equations différentielles et systèmes dynamiques}
+\minitoc
+%-------------------------------------------------------------------------------
+% Cours 7
+\newpage \input{3-EquaDiff-1DsolMaximale}
+\newpage \input{3-EquaDiff-Linearisation}
+\newpage \input{3-EquaDiff-2D}
+% Cours 8
+\newpage \input{3-EquaDiff-Modeles}
+
+%-------------------------------------------------------------------------------
+\chapter{Probabilités}
+\minitoc
+%-------------------------------------------------------------------------------
+% Cours 9 et 10
+\newpage \input{4-Proba-ChainesMarkov}
+\newpage \input{4-Proba-Branchement}
+% \newpage \input{4-Proba-ProcPoisson}
+
+%-------------------------------------------------------------------------------
+\bibliography{/home/robin/Biblio/BibGene}
+\bibliographystyle{plainnat}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+

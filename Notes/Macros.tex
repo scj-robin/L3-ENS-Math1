@@ -1,0 +1,82 @@
+% Environnement
+\newtheorem*{theorem*}{Théorème}
+\newtheorem*{definition*}{Définition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollaire}
+\newtheorem*{assumption*}{Hypothèse}
+\newtheorem*{algorithm*}{Algorithme}
+\newtheorem*{lemma*}{Lemme}
+\newtheorem*{remark*}{Remarque}
+\newtheorem*{exercise*}{Exercice}
+\newtheorem{exercise}{Exercice}
+% \newcommand{\remark}{\noindent\underline{\textsl{Remarque.}}\xspace}
+% % \newcommand{\remarks}{\noindent\underline{\textsl{Remarques.}}\xspace}
+\newcommand{\remark}{\bigskip\noindent\textbf{\textsl{Remarque.}}\xspace}
+% \newcommand{\remarks}{\bigskip\noindent\textbf{\textsl{Remarques.}}\xspace}
+\renewcommand{\proof}{\noindent\underline{\textsl{Démonstration}.}\xspace}
+\newcommand{\eproof}{$\square$}
+\newcommand{\solution}{\noindent\underline{\textsl{Solution.}}\xspace}
+\newcommand{\esolution}{$\blacksquare$}
+
+% Effets, couleurs
+\newcommand{\emphase}[1]{\textcolor{red}{#1}}
+\newcommand{\demoProp}[1]{\noindent{\textbf{\textsl{Démonstration de la proposition \ref{#1} :}}}}
+\newcommand{\itemdot}{\textbullet}
+
+% Moments
+\DeclareMathOperator{\Esp}{\mathbb{E}}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Cov}{\mathbb{C}ov}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Var}{\mathbb{V}}
+\let\Pr\relax\DeclareMathOperator{\Pr}{\mathbb{P}}
+\renewcommand{\d}{\text{d}}
+
+% R, N, ...
+\newcommand{\cst}{\text{cst}}
+\newcommand{\Cbb}{\mathbb{C}}
+\newcommand{\Ibb}{\mathbb{I}}
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\Zbb}{\mathbb{Z}}
+
+% Indicateurs
+
+% Lois et ensembles
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Ucal}{\mathcal{U}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Ycal}{\mathcal{Y}}
+
+% Mots clefs
+\newcommand{\kmeans}{{\sl $k$-means}\xspace}
+\newcommand{\prob}{\pi}
+
+% Comments
+\newcommand{\todo}[1]{\textcolor{red}{!!!A FAIRE: {\sl #1}!!!}}
+\newcommand{\dessin}[1]{
+\begin{center}\framebox{\begin{minipage}{.95\textwidth}
+  \textcolor{purple}{#1}
+\end{minipage}}\end{center}
+\bigskip
+}
+\newcommand{\progres}[1]{
+\begin{center}\framebox{\begin{minipage}{.95\textwidth}
+  \textcolor{blue}{{\sl #1}}
+\end{minipage}}\end{center}
+\bigskip
+}
+\newcommand{\SRcorrect}[2]{\textcolor{gray}{#1}\textcolor{blue}{#2}}
+\newcommand{\SRcomment}[1]{\textcolor{blue}{[{\sl SR: #1}]}}
+

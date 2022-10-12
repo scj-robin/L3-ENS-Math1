@@ -1,0 +1,173 @@
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Préliminaire : normes} \label{sec:Multivar-Norme}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Quelques normes classiques} 
+%-------------------------------------------------------------------------------
+
+\begin{definition*}
+  Soit $\Ecal$ un espace vectoriel. Une application $\|\cdot\|$ de $\Ecal$ dans $\Rbb^+$ est une norme si
+  \begin{enumerate}[(i)]
+    \item $\{\|x\| = 0 \Leftrightarrow x = 0]\}$ ;
+    \item $\forall x \in \Ecal, \forall \lambda \in \Rbb: \; \|\lambda x\| = |\lambda| \|x\|$ ;
+    \item $\forall x, y \in \Ecal: \; \|x+y\| = \|x\| + \|y\|$ (inégalité triangulaire);
+  \end{enumerate}
+\end{definition*}
+
+\remark
+\begin{itemize}
+  \item Une norme induit une distance:
+  $$
+  d(x, y) = \|x - y\|.
+  $$
+  \item Une norme induit une définition de la convergence : $(u_n)_{n \geq 0}$ converge vers $\ell$ ssi
+  $$
+  \lim_{n \rightarrow \infty} \|u_n - \ell\| = 0;
+  $$
+  On dit alors que $(u_n)_{n \geq 0}$ converge vers $\ell$ {\em au sens de $\|\cdot\|$}.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\paragraph{Trois normes classiques: $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$.}
+\begin{description}
+ \item[Vecteurs :] pour $x = [x_1 \dots x_n]^\top \in \Rbb^n$
+ $$
+ \|x\|_1 = \sum_{i=1}^n |x_i|, \qquad 
+ \|x\|_2 = \sqrt{\sum_{i=1}^n x_i^2}, \qquad 
+ \|x\|_\infty = \max_{i = 1 \dots n} |x_i|. 
+ $$
+ \item[Matrices:] pour $A = [a_{ij}] \in \Mcal_{n, k}(\Rbb)$
+ $$
+ \|A\|_1 = \sum_{i=1}^n \sum_{j=1}^k |a_{ij}|, \qquad 
+ \|A\|_2 = \sqrt{\sum_{i=1}^n \sum_{j=1}^k a_{ij}^2}, \qquad 
+ \|A\|_\infty = \max_{i = 1 \dots n, j = 1 \dots k} |a_{ij}|. 
+ $$
+ \item[Fonctions:] pour $f : [a, b] \mapsto \Rbb$ continue
+ $$
+ \|f\|_1 = \int_a^b |f(x)| \d x, \qquad 
+ \|f\|_2 = \sqrt{\int_a^b f(x)^2 \d x}, \qquad 
+ \|f\|_\infty = \sup_{x \in [a, b]} |f(x)|.
+ $$
+\end{description}
+
+\dessin{Tracer de la boule unité pour $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$.}
+
+\begin{exercise*} ~ 
+  \begin{itemize}
+   \item Montrer que $\|\cdot\|_1$ et $\|\cdot\|_\infty$ sont des normes pour $\Rbb^n$.
+   \item Montrer que $\|\cdot\|_2$ satisfait les conditions ($i$) et ($ii$). (($iii$) utilise Cauchy-Schwartz)
+  \end{itemize}
+\end{exercise*}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{\'Equivalence} 
+%-------------------------------------------------------------------------------
+
+\begin{theorem*}[Théorème 2.1.5]
+  Les normes définies sur une espace $\Ecal$ de dimension finie sont toutes équivalentes. Plus précisément : soit $\|\cdot\|_a$ et $\|\cdot\|_b$ deux normes pour $\Ecal$, il existe 2 constantes positives $c_1$ et $c_2$, telles que, pour tout $x \in \Ecal$ :
+  $$
+  \|x\|_a \leq c_1 \|x\|_b, \qquad
+  \|x\|_b \leq c_2 \|x\|_a.
+  $$
+\end{theorem*}
+
+\proof Non démontré \eproof
+
+\begin{exercise*}
+  Calculer les constantes $c_1$ et $c_2$ permettant de comparer les trois normes $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ dans $\Rbb^n$.
+\end{exercise*}
+
+\remark
+\begin{itemize}
+  \item Ce théorème fournit un encadrement de chaque norme par l'autre : 
+  $$
+  \forall x \in \Ecal: \qquad
+  \frac1c_2 \|x\|_b \leq \|x\|_a \leq c_1 \|x\|_b, \qquad
+  \frac1c_1 \|x\|_a \leq \|x\|_b \leq c_2 \|x\|_a.
+  $$
+  \item Ce théorème assure aussi l'équivalence des convergences : si la suite $(u_n)_{n \geq 0}$ converge vers $\ell$ au sens de la norme $\|\cdot\|_a$ :
+  $$
+  \lim_{n \rightarrow \infty} \|u_n - \ell\|_a = 0
+  $$
+  alors elle converge aussi au sens de la norme $\|\cdot\|_b$ puisque
+  $$
+  0 = \frac1{c_1} \lim_{n \rightarrow \infty} \|u_n - \ell\|_a
+  \leq \lim_{n \rightarrow \infty} \|u_n - \ell\|_b \leq
+  c_2 \lim_{n \rightarrow \infty} \|u_n - \ell\|_a = 0.
+  $$
+  \item On dit qu'une suite $(u(n))_{n \geq 0}$ d'élément de $\Rbb^k$ converge coordonnée par coordonnée vers $\ell \in \Rbb^k$ si, pour chaque $1 \leq i \leq k$:
+  $$
+  \lim_{n \rightarrow \infty} u_i(n) = \ell_i.
+  $$
+\end{itemize}
+
+\begin{exercise*}
+  Montrer que la convergence coordonnée par coordonnée est équivalente à la convergence de la suite $(u(n))_{n \geq 0}$ vers $\ell$ au sens d'une norme $\|\cdot\|$ quelconque.
+\end{exercise*}
+
+\solution{
+  Toutes les normes étant équivalentes dans $\Rbb^k$, nous pouvons démontrer chaque implication avec la norme de notre choix.
+  \begin{description}
+    \item[$\Rightarrow$:]
+      \begin{align*}
+  %       \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} u_i(n) = \ell_i
+  %       & \qquad \Rightarrow \qquad & & 
+        \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 
+        & \Rightarrow & & \sum_{i=1}^k \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \\
+        & & \Rightarrow & & \lim_{n \rightarrow \infty} \sum_{i=1}^k |u_i(n) - \ell_i| & = 0 \\
+        & & \Rightarrow & &  \lim_{n \rightarrow \infty} \|u - \ell\|_1 & = 0. 
+      \end{align*}
+    \item[$\Leftarrow$:]
+    \begin{align*}
+      \lim_{n \rightarrow \infty} \|u - \ell\|_\infty & = 0
+      & \Rightarrow & & \lim_{n \rightarrow \infty} \max_{i=1 \dots k} |u_i(n) - \ell_i| & = 0 \\
+      & & \Rightarrow & & \max_{i=1 \dots k} \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \qquad \text{(voir classeur)}\\
+      & & \Rightarrow & & \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0.
+    \end{align*}
+  \end{description}
+}
+
+\begin{exercise}
+  Soit $A \in \Mcal_{n, k}$, $x \in \Rbb^k$ et $y = Ax \in \Rbb^n$, montrer que 
+  $$
+  \|y\|_\infty \leq \|A\|_\infty \|x\|_1, \qquad
+  \|y\|_1 \leq \|A\|_1 \|x\|_\infty.
+  $$
+\end{exercise}
+
+\solution{
+  On a pour tout $1 \leq j \leq n$ :
+  $$
+  |y_j| 
+  \; = \; \left|\sum_{i=1}^k a_{ij} x_i \right| 
+  \; \leq \; \sum_{i=1}^k |a_{ij} x_i| 
+  \; \leq \; \sum_{i=1}^k |a_{ij}| \; |x_i|
+  $$
+  On a donc
+  \begin{itemize}
+    \item d'une part
+    $$
+    \forall 1 \leq j \leq n: \qquad |y_j| 
+    \; \leq \; \max_{i=1 \dots k} |a_{ij}| \times \sum_{i=1}^k |x_i| 
+    \; \leq \; \|A\|_\infty \; \|x\|_1
+    $$
+    donc $\|y\|_\infty \leq \|A\|_\infty \|x\|_1$,
+    \item et d'autre part
+    $$
+    \forall 1 \leq j \leq n: |y_j| 
+    \leq \max_{i=1 \dots k} |x_i| \times \sum_{i=1}^k |a_{ij}| = \|x\|_\infty \sum_{i=1}^k |a_{ij}| 
+    $$
+    qui implique que
+    $$
+    \sum_{j=1}^n |y_j| 
+    \leq \|x\|_\infty \sum_{i=1}^k \sum_{j=1}^n |a_{ij}| = \|x\|_\infty \|A\|_1,
+    $$
+    c'est-à-dire $\|y\|_1 \leq \|A\|_1 \|x\|_\infty$.
+  \end{itemize}
+}
+

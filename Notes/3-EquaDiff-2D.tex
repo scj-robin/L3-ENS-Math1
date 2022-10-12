@@ -1,0 +1,111 @@
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{ODE en dimension 2} \label{sec:EquaDiff-nonLineaire2D}
+%-------------------------------------------------------------------------------
+
+On s'intéresse ici au cas d'une système d'ODE $\dot y = F(y)$ avec $F : \Rbb^2 \mapsto \Rbb^2$. 
+
+%-------------------------------------------------------------------------------
+\subsection{Classification des équilibres} 
+%-------------------------------------------------------------------------------
+
+La classification des équilibres repose sur l'étude des valeurs propres $\lambda_1$ et $\lambda_2$ de la matrice jacobienne $J_{x^*}$ en tout point d'équilibre $x^*$ solution de $F(x^*) = 0$. On peut ainsi définir la classification suivante :
+$$
+\begin{tabular}{ll}
+  $(\lambda_1, \lambda_2) \in \Rbb, (\lambda_1, \lambda_2) < 0 :$ & point stable ou 'puit' ; \\
+  $(\lambda_1, \lambda_2) \in \Rbb, (\lambda_1, \lambda_2) > 0 :$ & point instable ou 'source' ; \\
+  $(\lambda_1, \lambda_2) \in \Rbb, \lambda_1 > 0 , \lambda_2 < 0 :$ & point selle ; \\
+  $(\lambda_1, \lambda_2) \in \Cbb, \Re(\lambda_1, \lambda_2) < 0 :$ & point de concentration ou 'puit en spirale' ; \\
+  $(\lambda_1, \lambda_2) \in \Cbb, \Re(\lambda_1, \lambda_2) > 0 :$ & point de repulsion ou 'source en spirale'. \\
+  $(\lambda_1, \lambda_2) \in \Cbb \setminus \Rbb:$ & voir ci-dessous.
+\end{tabular}
+$$
+
+\begin{figure*}[ht]
+  \begin{center}
+    \includegraphics{L3-SU-MathBio-StabiliteEquilibresD2}
+  \end{center}
+  \caption{Stabilité des équilibres en dimension 2. $\tau = \tr(A)$, $\delta=|A|$, $\Delta = \tau^2 - 4 \delta$ (discriminant de $P_A(\lambda)$.}
+\end{figure*}
+
+Les théorèmes vus jusqu'à présent ne permettent pas d'étudier le dernier cas, qui correspond à des trajectoires limites cycliques.
+
+%-------------------------------------------------------------------------------
+\subsection{Existence d'orbites périodiques} 
+%-------------------------------------------------------------------------------
+
+\begin{definition*}[Orbite]
+  Pour toute solution $(f, I)$ d'une ODE, on appelle \emph{orbite} l'ensemble $\{f(t), t \in I\}$. S'il existe $t_0: [t_0, \infty) \subset I$, l'ensemble $\{f(t), t \geq t_0\}$ est appelé \emph{semi-orbite positive}.
+\end{definition*}
+
+%-------------------------------------------------------------------------------
+\begin{theorem*}[Poincarré-Bendixson]
+  Soit $D$ un fermé borné de $\Rbb^2$ ne contenant pas de point d'équilibre d'une ODE $\dot y = F(y)$. S'il existe une semi-orbite positive $O$ entièrement comprise dans $D$ alors l'ensemble $C$ des points limite de $O$ est une orbite périodique. Si $O$ n'est pas l'ensemble $C$, $C$ et appelé cycle limite.
+\end{theorem*}
+
+\remark
+Le théorème dit que si une trajectoire solution de l'ODE est piégée dans une région $D$ bornée de $\Rbb^2$, elle doit se rapprocher de plus en plus d'une courbe $C$ fermée. Il n'est souvent pas difficile d'identifier une telle région $D$, mais déterminer le cycle limite $C$ est souvent plus difficile.
+
+%-------------------------------------------------------------------------------
+\paragraph{Détermination d'une cycle limite.} 
+
+\begin{definition*}[Hamiltionien]
+  Un hamiltionien (ou une fonction hamiltonienne) d'une ODE est une fonction $H : \Rbb^n \mapsto \Rbb$ qui reste constante le long des trajectoires solution de l'ODE.
+\end{definition*}
+
+\remark
+Cette démfinition revient à dire que les solutions $y(t)$ suivent des ligne de niveau de la fonction hamiltonienne.
+
+%-------------------------------------------------------------------------------
+\paragraph{Cas $n = 2$.} 
+On considère une ODE avec $F : \Rbb^2 \mapsto \Rbb^2$ : 
+$$
+\left\{\begin{array}{rcl} \dot x & = & F_1(x, y) \\ \dot y & = & F_2(x, y) \end{array}\right.
+$$
+Soit $(x(t), y(t))$ une solution maximale sur $I$ pour la condition initiales $(x(t_0), y(t_0)) = (x_0, y_0)$. Un hamitonien est une fonction $H : \Rbb^2 \mapsto \Rbb^2$ qui vérifie
+$$
+\forall t \in I: \quad H(x(t), y(t)) = H(x_0, y_0).
+$$
+Les orbites sont alors les lignes de niveau du hamiltonien : 
+$$
+\{x, y: H(x, y, ) = c\}.
+$$
+
+Toute la difficulté réside alors dans la détermination de la fonction $H$. On a cependant déjà vu que, le long d'une ligne de niveau, la dérivée par rapport au temps de $H(x(t), y(t))$ est nulle, soit
+\begin{align*}
+  \dot x(t) \frac{\partial H}{\partial x} (x(t), y(t)) +
+  \dot y(t) \frac{\partial H}{\partial y} (x(t), y(t)) & = 0 \\
+  \Leftrightarrow \qquad 
+  F_1(x, y) \frac{\partial H}{\partial x} (x, y) +
+  F_2(x, y) \frac{\partial H}{\partial y} (x, y) & = 0
+\end{align*}
+
+%-------------------------------------------------------------------------------
+\paragraph{Cas ``séparable''.} 
+Dans le cas particulier où on peut trouver $f$ et $g$ telles que
+$$
+\frac{F_1(x, y)}{F_2(x, y)} = \frac{g(y)}{f(x)}
+\qquad \Leftrightarrow \qquad 
+f(x) F_1(x, y) = g(y) F_2(x, y),
+$$
+la condition devient
+$$
+F_1(x, y) \frac{\partial H}{\partial x} (x, y) +
+F_2(x, y) \frac{\partial H}{\partial y} (x, y) = 0
+\qquad \Leftrightarrow \qquad 
+\frac1{f(x)} \frac{\partial H}{\partial x} (x, y) +
+\frac1{g(y)} \frac{\partial H}{\partial y} (x, y) = 0
+$$
+On peut alors chercher un hamiltonien de la forme
+$$
+H(x, y) = h_1(x) + h_2(y)
+\qquad \Rightarrow \qquad 
+\frac{\partial H}{\partial x} (x, y) = h'_1(x), \qquad
+\frac{\partial H}{\partial y} (x, y) = h'_2(y).
+$$
+Les fonctions $h_1$ et $h_2$ doivent alors satisfaire
+$$
+h'_1(x) = c f(x), \qquad
+h'_2(x) = - c g(x).
+$$
+On utilisera cette méthode pour déterminer les cycles limites du modèle de Lotka-Volterra.

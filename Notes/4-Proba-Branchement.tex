@@ -1,0 +1,296 @@
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Processus de branchement} \label{sec:Proba-Branchement}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\paragraph{Processus de (Bienaymé) Galton-Watson.}
+On suit une population au cours des générations. A chaque génération, chaque individu peut avoir des descendants, qui peuvent avoir eux-même des descendants, etc. On constitue ainsi un processus de branchement qui reflète la généalogie des individus.
+
+Si on part d'un seul individu, et qu'on note $X_{0, 1}$ le nombre de ses descendants, et $X_{1, 1}$, $X_{1, 2}$, \dots le nombre de descendants de chacun de ces descendants, on voit que la population vaut
+\begin{align*}
+  Z_1 & = X_{0, 1} && \text{au bout d'une génération}, \\
+  Z_2 & = \sum_{i=1}^{X_{0, 1}} X_{1, i} && \text{au bout de deux générations}.
+\end{align*}
+
+%-------------------------------------------------------------------------------
+\subsection{Fonction génératrice des probabilités} 
+%-------------------------------------------------------------------------------
+
+Les fonctions génératrices (il en existe plusieurs) permettent de manupuler facilement des combinaisons (notamment des sommes de variables aléatoires.
+
+\begin{definition*}[Fonction génératrice]
+  Soit $X$ une variable aléatoire positive. On note $f_X$ sa {\em fonction génératrice des probabilité} (= '{\em pgf}') qui est définies comme
+  $$
+  \begin{array}{rrcl}
+    f_X : & [0, 1] & \mapsto & [0, 1] \\
+      & s & \rightarrow & f_X(s) = \Esp\left(s^X\right).
+  \end{array}
+  $$
+\end{definition*}
+
+\remark
+On voit facilement que $f_X(1) = 1$ et $f_X$ est monotone croissante.
+
+%-------------------------------------------------------------------------------
+\paragraph{Fonction génératrices de quelques lois de probabilités.}
+\begin{description}
+  \item[Bernoulli:] si $X \sim \Bcal(p)$ 
+  $$
+  f_X(s) = (1-p) s^0 + p s^1 = 1 - p + p s.
+  $$
+  \item[Binomiale:] si $X \sim \Bcal(n, p)$
+  $$
+  f_X(s) = \sum_{k=0}^n {{n}\choose{k}} (1-p)^{n-k} (ps)^k = (1 - p + ps)^n.
+  $$
+  \item[Géométrique:] si $X \sim \Gcal(a)$ ($\Pr\{X = k\} = (1-a) a^k$ pour $k \geq 0$)
+  $$
+  f_X(s) = (1-a) \sum_{k=0}^n (as)^k = \frac{1-a}{1 - as}.
+  $$
+  \item[Poisson:] si $X \sim \Pcal(\lambda)$
+  $$
+  f_X(s) = e^{-\lambda} \sum_{k\geq0} (\lambda s)^k / (k!) = e^{-\lambda} e^{\lambda s} = \exp(\lambda(s-1)).
+  $$
+\end{description}
+
+%-------------------------------------------------------------------------------
+\paragraph{Quelques propriétés des fonctions génératrices de probabilités.}
+
+\begin{proposition*}
+  La fonction génératrice $f_X$ est $C^\infty$ sur $[0, 1]$ et sa $k$ème dérivée vaut
+  \begin{align*}
+    f_X^{(k)}(s) 
+    & = \sum_{n \geq k} \Pr\{X = n\} n(n-1)  \dots (n-k+1) s^{n-k} \\
+    & = \Esp(X (X-1) \dots (X-n+1) s^{n-k})
+  \end{align*}
+\end{proposition*}
+
+\proof
+  $C^\infty$ non démontré. Formule de $f_X^{(k)}(s)$ directe comme dérivées successives de $s^n$.
+\eproof
+
+\begin{corollary*}
+  En conséquence, on a
+  \begin{align*}
+    \forall k \geq 0: \quad \Pr\{X = k\} & = f_X^{(k)}(0) / (k!), \\
+    \Esp(X) & = f'_X(1), &
+    \Esp(X(X-1)) & = f''_X(1).
+  \end{align*}
+\end{corollary*}
+
+\proof 
+Directe.
+\eproof.
+
+\remark
+Le corollaire justifie le nom de 'fonction génératrice des probabilités'. $F_X$ nous donne également les moments de $X$. Notamment
+\begin{align*}
+  \Var(X) 
+  & = \Esp(X^2) - (\Esp X)^2 \\
+  & = \Esp(X(X-1) + X) - (\Esp X)^2
+  = \Esp(X(X-1)) + \Esp X - (\Esp X)^2 \\
+  & = f''_X(1) + f'_X(1)(1 - f'_X(1)). 
+\end{align*}
+En fait, la fonction génératrice caractérise complètement la loi de la variable $X$. Elle permet également d'assurer la convergence en loi.
+
+\begin{proposition*}[Convergence de la fonction génératrice]
+  Soient $(X_n)_{n \geq 0}$ une suite de variables aléatoires positives et $X$ un variable aléatoires positives :
+  $$
+  (X_n)_{n \geq 0} \overset{\Lcal}{\longrightarrow} X
+  \qquad \Leftrightarrow \qquad
+  \forall s \in [0, 1]: \quad \lim_{n \rightarrow \infty} f_{X_n}(s) = f_X(s).
+  $$
+\end{proposition*}
+
+\begin{proposition*}[Fonction génératrice de la somme]
+  Soient $X$ et $Y$ deux variables aléatoires positives indépendantes, on a
+  $$
+  f_{X+Y}(s) = f_X(s) \; f_Y(s).
+  $$
+\end{proposition*}
+
+\proof
+Il suffit de partir de la définition et d'utiliser l'indépendance :
+$$
+f_{X+Y}(s) 
+= \Esp(s^{X+Y}) = \Esp(s^X \; s^Y) = \Esp(s^X) \;  \Esp(s^Y)
+= f_X(s) \; f_Y(s).
+$$
+\eproof
+
+\remark
+Une conséquence directe est que si $X_1$, $X_2$, \dots $X_n$ sont positives et iid, alors la fonction génératrice de leur somme vaut
+$$
+f_{X_1 + \dots + X_n}(s) = \left(f(X_1)\right)^n.
+$$
+Cette propriété donne une autre démonstration de la formule de $f_X$ pour la loi binomiale, vue comme une somme de $n$ variables de Bernoulli indépendantes.
+
+\begin{proposition*}[Fonction génératrice d'une somme en nombre aléatoire]
+  Soient $(X_n)_{n \geq 1}$ une suite de variables aléatoires positives iid et $N$ une variables positive indépendante, on s'intéresse à la somme des $N$ premiers éléments de la suite :
+  $$
+  Z = \sum_{n=1}^N X_n.
+  $$
+  On a 
+  $$
+  f_{Z}(s) = f_X \circ f_X(s).
+  $$
+\end{proposition*}
+
+\proof
+On conditionne par $N$ :
+\begin{align*}
+  f_Z(s) 
+  = \Esp_N \left(\Esp(e^Z \mid N) \right)
+  = \Esp_N \left(f_X(s)^N \right)
+  = f_N \left(f_X(s)^N \right) = f_X \circ f_X(s).
+\end{align*}
+
+\eproof
+
+%-------------------------------------------------------------------------------
+\subsection{Processus de Bienaymé-Galton-Watson (BGW)} 
+%-------------------------------------------------------------------------------
+
+On reprend une population évoluant de la façon décrite au début de la section. 
+
+On note $Z_n$ la taille de la population à la $n$ème génération ($n \geq 0$) et $X_{ni}$ le nombre de descendants du $i$ individu de la $n$ème génération. 
+On suppose que les $\{X_{ni})_{n \geq 0, 1 \geq i \geq Z_n}$ sont iid (et indépendants de $Z_0$).
+
+La taille de la population à la génération $n+1$ est donnée par 
+\begin{equation} \label{eq:recurrenceBGW}
+Z_{n+1} = \sum_{i = 1}^{Z_n} X_{ni}.
+\end{equation}
+La suite $(Z_n)_{n \geq 0}$ forme donc une \cM sur $\Nbb$, puisque $Z_{n+1}$ est donné par $Z_n$ et que les $\{X_{ni})_{1 \geq i \geq Z_n}$ sont indépendants du passé.
+
+Cette récurrence nous assure notamment que
+$$
+\Esp(Z_{n+1}) = \Esp_{Z_n}\Esp(Z_{n+1} \mid Z_n)) = m \Esp(Z_n).
+$$
+Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
+
+%-------------------------------------------------------------------------------
+\paragraph{Matrice de transition.} 
+On peut caractériser les probabilités de transition 
+$$
+p_{ij} = \Pr\{Z_{n+1} = j \mid Z_n = i\}
+$$
+par leur fonction génératrice. En effet, \eqref{eq:recurrenceBGW} donne
+$$
+\Esp(s^{Z_{n+1}} \mid Z_n) = f_X^{Z_n}(s)
+\qquad \Rightarrow \qquad 
+\sum_{j \geq 0} p_{ij} s^j = \Esp(s^{Z_{n+1}} \mid Z_n=i) = f_X(s)^i.
+$$
+On observe qu'il s'agit bien d'une \cM homogène (puisque la fonction génératrice ne dépend par de $n$).
+
+%-------------------------------------------------------------------------------
+\paragraph{Extinction de la population.} 
+On définit l'événement d'extinction par 
+$$
+Ext = \{T_0 < \infty\}.
+$$
+et à la probabilité d'extinction partant d'une population de taille 1 : 
+$$
+q := \Pr_1\{Ext\}.
+$$
+On suppose de plus que $f_X(0) \notin \{0, 1\}$, c'est-à-dire que 
+$$
+0 < \Pr\{X = 0\} < 1.
+$$
+
+\begin{proposition*}
+  La probabilité d'extinction $q$ est un point fixe de la fonction génératrice de $Z_1$ :
+  $$
+  q = f_{Z_1}(q).
+  $$
+\end{proposition*}
+
+\proof
+On commence par remarquer que la probabilité d'extinction partant de $k$ individus indépendants vaut
+$$
+\Pr_k\{Ext\} = \Pr_1\{Ext\}^k = q^k,
+$$
+puisqu'il faut pour cela que la $k$ populations s'éteignent. En sommant sur toutes les tailles possibles à la première génération on a donc
+$$
+q 
+= \Pr_1\{Ext\} 
+= \sum_{k \geq 0} \Pr_1\{Z_1 = k\} \Pr_k\{Ext\}
+= \sum_{k \geq 0} \Pr_1\{Z_1 = k\} q^k
+= f_{Z_1}(q).
+$$
+
+\begin{definition*}
+  Soit $m = \Esp(X) = f'_X(1)$ le nombre moyen de descendants. Le processus BGW est dit critique si $m=1$, sous-critique si $m < 1$ et sur-critique si $m > 1$.
+\end{definition*}
+
+\dessin{
+  $$
+  \includegraphics[width=.5\textwidth]{ExGaltonWatson-pgf}
+  $$
+  $f_X$ monotone croissante de $f_X(0) \in ]0, 1[$ à $f_X(1) = 1$ et bissectrice :
+  \begin{itemize}
+    \item si $m = f'_X(1) \leq 1$: 1 est le seul point fixe,
+    \item si $m > 1$ : plusieurs points fixes
+  \end{itemize}
+}
+
+\remark
+\begin{enumerate}
+  \item On voit facilement que la probabilité d'extinction $q$ vaut $q = 1$ si le processus est critique ou sous-critique. 
+  \item Il reste à étudier le cas sur-critique pour déterminer quel point fixe donne la probabilité d'extinction.
+\end{enumerate}
+
+\begin{proposition*}
+  La fonction génératrice $Z_n$ partant de $Z_0 = 1$ est
+  $$
+  f_{Z_n}(s) = \Esp_1(s^{Z_n}) = \underset{n \text{ fois}}{\underbrace{f_X \circ f_X \circ \dots \circ f_X}}(s).
+  $$
+\end{proposition*}
+
+\proof 
+C'est une conséquence directe de la proposition sur les sommes en nombre aléatoires : puisque
+$$
+Z_n = \sum_{i=1}^{Z_{n-1}} X_{n-1, i},
+$$
+on a la récurrence 
+$$
+f_{Z_n} = f_{Z_{n-1}} \circ f_X
+$$
+et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
+
+\begin{proposition*}
+  La probabilité d'extinction $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$.
+\end{proposition*}
+
+\proof
+On note, pour $n \geq 0$:
+$$
+q_n := \Pr_1\{Z_n = 0\} \qquad = \Pr_1\{T_0 \leq n\}\geq \Pr_1\{T_0 = n\}.
+$$
+Par la proposition précédente on a:
+$$
+q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
+$$
+La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous
+qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
+\dessin{
+$$
+\includegraphics[width=.5\textwidth]{ExGaltonWatson-fixPoint}
+$$
+}
+\eproof
+
+\todo{Inclure la note {\tt GaltonWatson.tex} pour conclure.}
+
+%-------------------------------------------------------------------------------
+\paragraph{Classification des états.} 
+\begin{itemize}
+ \item L'état $\{0\}$ ne communique avec aucun autre : il constitue donc une classe. Comme il est de plus impossible d'en sortir ($p_{00} = 1$), il est récurrent : on parle d'état absorbant.
+ \item Si $\Pr\{X \geq 2\} > 0$, tous les autres états communiquent, ils constituent donc une unique classe et possède tous la même nature.
+ \item On peut montrer que tous les états, hormis $\{0\}$ sont transient.
+\end{itemize}
+
+Le caractère transient des états non nul signifie qu'ils ne sont visité qu'un nombre fini de fois, ce qui signifie que soit la \cM est absorbée en 0, soit elle part vers l'infini : 
+$$
+\Pr_\mu\left\{ \lim_{n \rightarrow \infty} Z_n = + \infty\right\} = 1 - \Pr_\mu\{Ext\}.
+$$
+
