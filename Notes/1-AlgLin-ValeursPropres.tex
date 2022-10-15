@@ -46,64 +46,137 @@
 \eproof
 
 \remark
-Parler ``du'' vecteur propre $x$ associé à la valeur propre $\lambda$ est donc un abus de langage. Tous les vecteurs engendrés par $x$ sont également propres : on peut aussi parler plus précisément de {\em direction propre}.
+Parler ``du'' vecteur propre $x$ associé à la valeur propre $\lambda$ est donc un abus de langage. Tous les vecteurs engendrés par $x$ sont également propres : on peut aussi parler plus précisément de {\em direction propre}. \\
+Cela implique notamment que, si $\lambda$ est valeur propre de $A$, l'équation
+$$
+Ax = \lambda x
+\qquad \Leftrightarrow \qquad
+(A - \lambda I)x = 0
+$$
+admet une infinité de solutions, donc que la matrice $A - \lambda I$ n'est pas inversible.
+
+% \remark La détermination des valeurs et vecteurs propres est passée par la détermination des racines d'un polynôme.
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Polynôme caractéristique} \label{sec:polCarac}
+%-------------------------------------------------------------------------------
+
+\begin{definition*}[Polynôme caractéristique]
+  Le polynôme caractéristique de la matrice $A \in \Mcal_n$ est l'application 
+  $$
+  \begin{array}{r|rcl}
+   P_A: & \Rbb & \mapsto & \Rbb \\
+    & \lambda & \rightarrow & |A - \lambda I_n|.
+  \end{array}
+  $$
+\end{definition*}
+
+\bigskip
+\begin{theorem*}
+  $\lambda$ est une valeur propre de la matrice $A$ ssi $P_A(\lambda) = 0$.
+\end{theorem*}
+
+\proof 
+  \todo{Pb : théorème du rang non vu ici.} \\
+  On remarque tout d'abord que, par le théorème du rang ($\dim \text{im}(A) + \dim \ker(A) = n)$, 
+  on a 
+  $$
+  \left\{\exists y: B x = y \text{ n'admet aucune solution}\right\} \Leftrightarrow \left\{\exists y': B x = y' \text{ admet plusieurs solutions}\right\}.
+  $$
+  Donc, pour toute matrice $B \in \Mcal_n$:
+  $$
+  \{B \text{ non inversible}\} \Leftrightarrow \{\exists y: B x = y \text{ admet plusieurs solutions}\}
+  $$
+  On a donc
+  \begin{align*}
+    p_A(\lambda) = 0 
+    & \quad \Leftrightarrow \quad |A - \lambda I| = 0 \\
+    & \quad \Leftrightarrow \quad A - \lambda I \text{ pas inversible} \\
+    & \quad \Leftrightarrow \quad \exists y: (A - \lambda I)x = y \text{ admet plusieurs solutions $x$} \\
+    & \quad \Leftrightarrow \quad \exists y: (A - \lambda I)(x_1 - x_2) = y-y = 0 \text{ admet une solution $(x_1, x_2): x_1 \neq x_2$} \\
+    & \quad \Leftrightarrow \quad \exists z \neq 0: (A - \lambda I)z = 0 \\
+    & \quad \Leftrightarrow \quad \exists z \neq 0: A z = \lambda z \\
+    & \quad \Leftrightarrow \quad \lambda \text{ valeur propre de } A. 
+  \end{align*} 
+\eproof
 
 \begin{exercise*}
-  Déterminer les valeurs propres de 
+  Soit la matrice diagonale $A$ de diagonale $(\mu_1, \dots, \mu_n)$.
+  \begin{enumerate}
+    \item Déterminer le polynôme caractéristique de $A$.
+    \solution{
+      $$
+      P_A(\lambda) = \prod_{i=1}^n (\mu_i - \lambda).
+      $$
+    }
+    \item En déduire ses valeurs propres.
+    \solution{
+      $$
+      P_A(\lambda) = 0 \qquad \Leftrightarrow \qquad \lambda \in \{\mu_1, \dots \mu_n\}.
+      $$
+      }
+    \item En déduire ses vecteurs propres.
+      \solution{
+        Ce sont les vecteurs de la base canoniques : 
+        \begin{align*}
+          e_1 & = \left[1 \; 0 \; \dots \; 0 \right], &
+          e_i & = \left[0 \; \dots \; 0 \; 1 \; 0 \; \dots \; 0\right], & 
+          e_n & = \left[0 \; \dots \; 0 \; 1 \right].
+        \end{align*}
+      }
+  \end{enumerate}
+\end{exercise*}
+
+\begin{exercise*}
+  Soit la matrice 
   $$
   A = \left[\begin{array}{rr} 1 & 1 \\ 3 & -1 \end{array}\right].
   $$
+  \begin{enumerate}
+   \item Déterminer le polynôme caractéristique de $A$.
+   \solution{
+   $$
+   |A - \lambda I| 
+   = \left|\begin{array}{cc} 1 - \lambda & 1 \\ 3 & -1 - \lambda \end{array}\right|
+   = (1 - \lambda)(- 1 - \lambda) -3
+   = \lambda^2 - 4.
+   $$
+   }
+   \item En déduire ses valeurs propres.
+  \solution{
+    $$
+    \lambda ^2 - 4 \qquad \Leftrightarrow \qquad \lambda \in \{-2, 2\}.
+    $$
+    }
+   \item En déduire ses vecteurs propres.
+    \solution{
+      \begin{align*}
+        \lambda & = -2 &
+        \Rightarrow \; &
+        \left\{\begin{array}{rl}
+          x_1 + x_2 & = -2 x_1 \\
+          3 x_1 - x_2 & = -2 x_2 
+        \end{array} \right\} &
+        \Rightarrow \; &
+          x_2 = -3 x_1
+        & \text{soit, par exemple, } u_1 & = \left[\begin{array}{r} 1 \\ -3 \end{array}\right], \\
+        \lambda & = 2 &
+        \Rightarrow \; &
+        \left\{\begin{array}{rl}
+          x_1 + x_2 & = 2 x_1 \\
+          3 x_1 - x_2 & = 2 x_2 
+        \end{array} \right\} &
+        \Rightarrow \; &
+          x_2 = x_1
+        & \text{soit, par exemple, } u_2 & = \left[\begin{array}{r} 1 \\ 1 \end{array}\right]. 
+      \end{align*}
+    }
+  \end{enumerate}
 \end{exercise*}
 
-\solution{
-  On cherche $x = [x_1 \; x_2]$ tel que $Ax = \lambda x$, c'est-à-dire
-  $$
-  \left\{\begin{array}{rl}
-    x_1 + x_2 & = \lambda x_1 \\
-    3 x_1 - x_2 & = \lambda x_2 
-  \end{array} \right\}
-  \quad \Leftrightarrow \quad 
-  \left\{\begin{array}{rl}
-    x_2 & = (\lambda -1) x_1 \\
-    3 x_1 - (\lambda - 1) x_1 & = \lambda (\lambda - 1) x_1
-  \end{array} \right\}
-  \quad \Leftrightarrow \quad 
-  \left\{\begin{array}{rl}
-    x_2 & = (\lambda -1) x_1 \\
-    0 & = (\lambda ^2 - 4) x_1
-  \end{array} \right\} 
-  $$
-  On remarque que $\{\lambda= 1\} \Rightarrow \{x_2 = 0, x_1 = 0\}$ et que $\{x_1 = 0, \lambda \neq 1\} \Rightarrow \{x_2 = 0\}$. Donc $\lambda \neq 1$ et $x_1 \neq 0$ (sinon la solution est le vecteur nul). $\lambda$ doit donc satisfaire  
-  $$
-  \lambda ^2 - 4 \qquad \Leftrightarrow \qquad \lambda \in \{-2, 2\}.
-  $$
-  On peut alors déterminer les vecteurs propres associés
-  \begin{align*}
-    \lambda & = -2 &
-    \Rightarrow \; &
-    \left\{\begin{array}{rl}
-      x_1 + x_2 & = -2 x_1 \\
-      3 x_1 - x_2 & = -2 x_2 
-    \end{array} \right\} &
-    \Rightarrow \; &
-      x_2 = -3 x_1
-    \qquad \text{soit, par exemple, } u_1 = \left[\begin{array}{r} 1 \\ -3 \end{array}\right], \\
-    \lambda & = 2 &
-    \Rightarrow \; &
-    \left\{\begin{array}{rl}
-      x_1 + x_2 & = 2 x_1 \\
-      3 x_1 - x_2 & = 2 x_2 
-    \end{array} \right\} &
-    \Rightarrow \; &
-      x_2 = x_1
-    \qquad \text{soit, par exemple, } u_2 = \left[\begin{array}{r} 1 \\ 1 \end{array}\right]. 
-  \end{align*}
-}
-
-\remark Les vecteurs et valeurs propres décrivent comment l'opérateur associé à la matrice $A$ agit sur un vecteur $x$ quelconque. 
-
-%-------------------------------------------------------------------------------
-\paragraph{Exemple.} Dans l'exemple de l'exercice, les vecteurs propres 
+\remark Les vecteurs et valeurs propres décrivent comment l'opérateur associé à la matrice $A$ agit sur un vecteur $x$ quelconque. \\
+Dans l'exemple de l'exercice, les vecteurs propres 
 $$
 u_1 = \left[\begin{array}{r} 1 \\ -3 \end{array}\right]
 \qquad \text{et} \qquad 
@@ -126,60 +199,6 @@ x = u_1 + 2u_2 = \left[\begin{array}{r} 3 \\ -1 \end{array}\right]
 Ax = -3 u_1 + 4 u_2 =  \left[\begin{array}{r} 2 \\ 10 \end{array}\right].
 $$
 }
-
-\remark La détermination des valeurs et vecteurs propres est passée par la détermination des racines d'un polynôme.
-
-%-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
-\subsection{Polynôme caractéristique} \label{sec:polCarac}
-%-------------------------------------------------------------------------------
-
-\begin{definition*}[Polynôme caractéristique]
-  Le polynôme caractéristique de la matrice $A \in \Mcal_n$ est l'application 
-  $$
-  \begin{array}{r|rcl}
-   P_A: & \Rbb & \mapsto & \Rbb \\
-    & \lambda & \rightarrow & |A - \lambda I_n|.
-  \end{array}
-  $$
-\end{definition*}
-
-\begin{exercise*}
-  Déterminer le polynôme caractéristique de la matrice $A \in \Mcal_n$ diagonale de diagonale $(\mu_1, \dots, \mu_n)$.
-\end{exercise*}
-
-\solution{
-  $$
-  P_A(\lambda) = \prod_{i=1}^n (\mu_i - \lambda).
-  $$
-}
-
-\begin{exercise*}
-  Déterminer le polynôme caractéristique de la matrice
-  $$
-  A = \left[\begin{array}{rr} 1 & 1 \\ 3 & -1 \end{array}\right].
-  $$
-\end{exercise*}
-
-\solution{$P_A(\lambda) = \lambda^2 - 4$.}
-
-
-\begin{theorem*}
-  $\lambda$ est une valeur propre de la matrice $A$ ssi $P_A(\lambda) = 0$.
-\end{theorem*}
-
-\proof
-  \begin{align*}
-    p_A(\lambda) = 0 
-    & \quad \Leftrightarrow \quad |A - \lambda I| = 0 \\
-    & \quad \Leftrightarrow \quad A - \lambda I \text{ pas inversible} \\
-    & \quad \Leftrightarrow \quad \exists y: (A - \lambda I)x = y \text{ admet plusieurs solutions $x$} \\
-    & \quad \Leftrightarrow \quad \exists y: (A - \lambda I)(x_1 - x_2) = y-y = 0 \text{ admet une solution $(x_1, x_2): x_1 \neq x_2$} \\
-    & \quad \Leftrightarrow \quad \exists z \neq 0: (A - \lambda I)z = 0 \\
-    & \quad \Leftrightarrow \quad \exists z \neq 0: A z = \lambda z \\
-    & \quad \Leftrightarrow \quad \lambda \text{ valeur propre de } A. 
-  \end{align*} 
-\eproof
 
 \begin{definition*}[Trace]
   La trace d'une matrice $A \in \Mcal_n$ est notée $\tr(A)$ et est égale à la somme de ses termes diagonaux :
