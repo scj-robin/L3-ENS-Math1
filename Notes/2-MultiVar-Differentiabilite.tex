@@ -17,7 +17,7 @@ On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ 
   existe. Cette limite est alors la dérivée de $f$ au point $x$. Elle est notée $f'(x)$ et représente la pente de la tangente au graphe de la fonction $f$ au point $x$.
 \end{definition*}
 
-\remark
+\remarks
 \begin{enumerate}
   \item La limite est définie pour $h \rightarrow 0$, sans spécifier par valeur inférieure ($h \uparrow 0$) ou supérieure ($h \downarrow 0$), ce qui impose que les limites à gauche ($h \uparrow 0$) et à droite ($h \downarrow 0$) soient égales. En dimension supérieure à 1, il sera nécessaire de garantir l'existence d'une même limite dans toutes les directions de l'espace $\Rbb^n$.
   \dessin{Fonction non dérivable, mais dérivable à gauche et à droite}
@@ -241,7 +241,7 @@ $$
 \subsection{Matrice jacobienne} 
 %-------------------------------------------------------------------------------
 
-\paragraph{Rappel.} La matrice jabobienne au point $x$ d'une application $f : \Rbb^n \mapsto \Rbb^k$, notée $J_xf$, est la matrice dont l'élément $(i, j)$ vaut la dérivée de la fonction $f_i$ par rapport à la coordonnée $x_i$
+\paragraph*{Rappel.} La matrice jabobienne au point $x$ d'une application $f : \Rbb^n \mapsto \Rbb^k$, notée $J_xf$, est la matrice dont l'élément $(i, j)$ vaut la dérivée de la fonction $f_i$ par rapport à la coordonnée $x_i$
 $$
 [J_xf]_{ij} = \frac{\partial f_i(x_1, \dots x_n)}{\partial x_j}.
 $$
@@ -326,7 +326,7 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
 \end{enumerate}
 
 %-------------------------------------------------------------------------------
-\paragraph{Exemple : surface dans $\Rbb^3$.}
+\paragraph*{Exemple : surface dans $\Rbb^3$.}
 On considère une surface $S$ de $\Rbb^3$ d'équation
 $$
 z = f(x, y).
@@ -438,7 +438,7 @@ $$
 }
 
 %-------------------------------------------------------------------------------
-\paragraph{Exemple de composition.} 
+\paragraph*{Exemple de composition.} 
 Soient $F : \Rbb^k \mapsto \Rbb$ et $g : \Rbb \mapsto \Rbb^k$ telle que $g$ est différentiable en $x^*$ et $f$ en $g(x^*)$, on a
 $$
 J_{y^*}f = \left[\left.\frac{\partial f}{\partial y_1}\right|_{y^*} 
@@ -464,7 +464,7 @@ J_{x^*}(f \circ g)
 $$
 
 %-------------------------------------------------------------------------------
-\paragraph{Transformation en coordonnées polaires.} 
+\paragraph*{Transformation en coordonnées polaires.} 
 
 \begin{proposition*}
   La transformation en coordonnée polaire est partout différentiable sur $\Rbb^{*+} \times \Rbb^+$.
@@ -557,7 +557,7 @@ Le calcul pour $(\rho+r) \sin(\theta +t)$ est analogue.
 }
 
 %-------------------------------------------------------------------------------
-\paragraph{Cas de la spirale.}
+\paragraph*{Cas de la spirale.}
 Pour le cas de spirale 'linéaire'
 $$
 \rho(\theta) = \rho_0 \theta

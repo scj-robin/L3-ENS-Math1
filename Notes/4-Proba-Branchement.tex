@@ -4,7 +4,7 @@
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
-\paragraph{Processus de (Bienaymé) Galton-Watson.}
+\paragraph*{Processus de (Bienaymé) Galton-Watson.}
 On suit une population au cours des générations. A chaque génération, chaque individu peut avoir des descendants, qui peuvent avoir eux-même des descendants, etc. On constitue ainsi un processus de branchement qui reflète la généalogie des individus.
 
 Si on part d'un seul individu, et qu'on note $X_{0, 1}$ le nombre de ses descendants, et $X_{1, 1}$, $X_{1, 2}$, \dots le nombre de descendants de chacun de ces descendants, on voit que la population vaut
@@ -33,7 +33,7 @@ Les fonctions génératrices (il en existe plusieurs) permettent de manupuler fa
 On voit facilement que $f_X(1) = 1$ et $f_X$ est monotone croissante.
 
 %-------------------------------------------------------------------------------
-\paragraph{Fonction génératrices de quelques lois de probabilités.}
+\paragraph*{Fonction génératrices de quelques lois de probabilités.}
 \begin{description}
   \item[Bernoulli:] si $X \sim \Bcal(p)$ 
   $$
@@ -54,7 +54,7 @@ On voit facilement que $f_X(1) = 1$ et $f_X$ est monotone croissante.
 \end{description}
 
 %-------------------------------------------------------------------------------
-\paragraph{Quelques propriétés des fonctions génératrices de probabilités.}
+\paragraph*{Quelques propriétés des fonctions génératrices de probabilités.}
 
 \begin{proposition*}
   La fonction génératrice $f_X$ est $C^\infty$ sur $[0, 1]$ et sa $k$ème dérivée vaut
@@ -169,7 +169,7 @@ $$
 Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
 
 %-------------------------------------------------------------------------------
-\paragraph{Matrice de transition.} 
+\paragraph*{Matrice de transition.} 
 On peut caractériser les probabilités de transition 
 $$
 p_{ij} = \Pr\{Z_{n+1} = j \mid Z_n = i\}
@@ -183,7 +183,7 @@ $$
 On observe qu'il s'agit bien d'une \cM homogène (puisque la fonction génératrice ne dépend par de $n$).
 
 %-------------------------------------------------------------------------------
-\paragraph{Extinction de la population.} 
+\paragraph*{Extinction de la population.} 
 On définit l'événement d'extinction par 
 $$
 Ext = \{T_0 < \infty\}.
@@ -282,7 +282,7 @@ $$
 \todo{Inclure la note {\tt GaltonWatson.tex} pour conclure.}
 
 %-------------------------------------------------------------------------------
-\paragraph{Classification des états.} 
+\paragraph*{Classification des états.} 
 \begin{itemize}
  \item L'état $\{0\}$ ne communique avec aucun autre : il constitue donc une classe. Comme il est de plus impossible d'en sortir ($p_{00} = 1$), il est récurrent : on parle d'état absorbant.
  \item Si $\Pr\{X \geq 2\} > 0$, tous les autres états communiquent, ils constituent donc une unique classe et possède tous la même nature.

@@ -19,14 +19,14 @@ $$
 où les paramètres $r$, $c$, $b$, $m$ sont tous positifs ou nuls.
 
 %-------------------------------------------------------------------------------
-\paragraph{Cas particuliers.}
+\paragraph*{Cas particuliers.}
 \begin{description}
   \item[$P(t) = 0 $ (absence de prédateur) :] le système devient alors $\dot N = r N$ dont la solution est $N(t) = N_0 e^{rt}$ : la population de proies explose comme dans un modèle de Mathus.
   \item[$N(t) = 0 $ (absence de proie) :] le système devient alors $\dot P = - m P$ dont la solution est $P(t) = P_0 e^{-mt}$ : la population de prédateurs s'éteint à vitesse exponentielle.
 \end{description}
 
 %-------------------------------------------------------------------------------
-\paragraph{Changement de variable.}
+\paragraph*{Changement de variable.}
 Pour mener l'analyse mathématique de ce modèle, il est confortable de poser
 $$
 x(t) = \frac{b}m N(t)
@@ -42,7 +42,7 @@ $$
 $$
 
 %-------------------------------------------------------------------------------
-\paragraph{Points d'équilibres.}
+\paragraph*{Points d'équilibres.}
 On détermine d'abord les isoclines en annulant chacune des fonctions $F_1$ et $F_2$ :
 \begin{align*}
   F_1(x, y) & = 0 \quad \Leftrightarrow \quad x = 0 \text{ ou } y = 1 &
@@ -56,7 +56,7 @@ $$
 $$
 
 %-------------------------------------------------------------------------------
-\paragraph{Nature des équilibres.}
+\paragraph*{Nature des équilibres.}
 Pour déterminer la nature des équilibres, on étudie la matrice jacobienne
 $$
 J_{(x, y)}F = 
@@ -67,7 +67,7 @@ J_{(x, y)}F =
 $$
 
 %-------------------------------------------------------------------------------
-\paragraph{\'Etude de $(x^* = 0, y^* = 0)$.}
+\paragraph*{\'Etude de $(x^* = 0, y^* = 0)$.}
 On a 
 $$
 J_{(0, 0)}F = 
@@ -83,7 +83,7 @@ dont les deux valeurs propres de $J_{(0, 0)}F$ sont $r$ et $-m$, qui sont de sig
 \end{itemize}
   
 %-------------------------------------------------------------------------------
-\paragraph{\'Etude de $(x^* = 1, y^* = 1)$.}
+\paragraph*{\'Etude de $(x^* = 1, y^* = 1)$.}
 On a 
 $$
 J_{(1, 1)}F = 
@@ -158,7 +158,7 @@ $$
 $r$ contrôle le taux d'infection et $a$ le taux de rémission.
 
 %-------------------------------------------------------------------------------
-\paragraph{Changement de variables.}
+\paragraph*{Changement de variables.}
 On remarque que $\dot S + \dot I + \dot R = \dot (S + I + R) = 0$, soit 
 $$
 S(t) + I(t) + R(t) = \cst.
@@ -176,7 +176,7 @@ $$
 $$
 
 %-------------------------------------------------------------------------------
-\paragraph{Points d'équilibres.}
+\paragraph*{Points d'équilibres.}
 \begin{align*}
   F_1(x, y) & = 0 \quad \Leftrightarrow \quad x = 0 \text{ ou } y = 0 &
   \Rightarrow \qquad \Ical_1 & = \{x = 0\} \cup \{y = 0\}, \\
@@ -189,7 +189,7 @@ $$
 $$
 
 %-------------------------------------------------------------------------------
-\paragraph{Nature des équilibres.}
+\paragraph*{Nature des équilibres.}
 On calcule la jacobienne
 $$
 J_{(x, y)}F = 
@@ -208,7 +208,7 @@ J_{(x, 0)}F =
 $$
 
 %-------------------------------------------------------------------------------
-\paragraph{Nature des points d'équilibre $(x^*, 0)$.}
+\paragraph*{Nature des points d'équilibre $(x^*, 0)$.}
 Le polynôme caractéristique de $J_{(x^*, 0)}F$ est
 $$
 P(\lambda) = \lambda (\lambda - a (1 - x^*)).
@@ -245,7 +245,7 @@ et des vecteurs propres associés sont
 
 
 %-------------------------------------------------------------------------------
-\paragraph{\'Etude de stabilité.}
+\paragraph*{\'Etude de stabilité.}
 \begin{description}
   \item[$x^* < 1$ :] dans ce cas $\lambda_2 > 0$, donc le système est instable (dans la direction verticale = infectés) : si on part avec un $y_0$ faible et un $x_0 = rS/a > 1$ fort, le système s'éloigne du point départ avec déclenchement d'une épidémie ($x \uparrow$)
   \item[$x^* > 1$ :] dans ce cas $\lambda_2 < 0$, donc le système est stable (dans la direction verticale = infectés) : si on part avec un $y_0$ faible et un $x_0 = rS/a < 1$ faible, le système retourne vers le un point $(x^*, 0)$ proche du point départ sans déclenchement d'une épidémie ($x \downarrow$)
@@ -275,7 +275,7 @@ $$
 }
 
 %-------------------------------------------------------------------------------
-\paragraph{Devenir de la population.}
+\paragraph*{Devenir de la population.}
 On veut connaître les valeurs finales $(S_\infty, 0, R_\infty = N - S_\infty)$ partant d'un point $(S_0, I_0, 0)$. En reprenant la paramétrisation initiale, on remarque que
 $$
 -r \int_0^\infty I(t) \; \d t

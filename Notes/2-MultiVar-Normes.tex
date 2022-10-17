@@ -32,7 +32,7 @@
 \end{itemize}
 
 %-------------------------------------------------------------------------------
-\paragraph{Trois normes classiques: $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$.}
+\paragraph*{Trois normes classiques: $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$.}
 \begin{description}
  \item[Vecteurs :] pour $x = [x_1 \dots x_n]^\top \in \Rbb^n$
  $$
@@ -54,7 +54,7 @@
  $$
 \end{description}
 
-\dessin{Tracer de la boule unité pour $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$.}
+\dessin{Tracer de la boule unité pour $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ dans $\Rbb^2$.}
 
 \begin{exercise*} ~ 
   \begin{itemize}
@@ -77,10 +77,6 @@
 \end{theorem*}
 
 \proof Non démontré \eproof
-
-\begin{exercise*}
-  Calculer les constantes $c_1$ et $c_2$ permettant de comparer les trois normes $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ dans $\Rbb^n$.
-\end{exercise*}
 
 \remark
 \begin{itemize}
@@ -106,6 +102,42 @@
   $$
 \end{itemize}
 
+\paragraph*{Exemple.}
+\begin{align*}
+  \|x\|_2 & = \sqrt{\sum_i x_i^2}  \leq \sqrt{n \max_i x_i^2} = \sqrt{n} \max_i |x_i| = \sqrt{n} \|x\|_\infty, \\
+  \|x\|_\infty & = \max_i |x_i| = \sqrt{\max_i x_i^2} \leq \sqrt{\sum_i x_i^2} = \|x\|_2.
+\end{align*}
+
+\begin{lemma*}[Inversion de la limite et du maximum]
+  Soient $k$ suites réelles $v_1, \dots v_k$, on a
+  $$
+  \lim_{n \rightarrow \infty} \max_{i=1 \dots k} v_i(n) = 0
+  \qquad \Leftrightarrow \qquad
+  \max_{i=1 \dots k} \lim_{n \rightarrow \infty} v_i(n) = 0.
+  $$
+\end{lemma*}
+
+\proof
+\begin{description}
+  \item[$\Rightarrow$:] $\lim_{n \rightarrow \infty} \max_{i=1 \dots k} v_i(n) = 0$
+  \begin{align*}
+    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \max_i v_i(n) < \epsilon\} \\
+    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \forall i, v_i(n) < \epsilon\} \\
+    \Rightarrow \quad & \{\forall i, \forall \epsilon, \exists N_{\epsilon, i}(\equiv N_\epsilon): n > N_{\epsilon, i} \Rightarrow v_i(n) < \epsilon\} \\
+    \Rightarrow \quad & \forall i, \lim_{n \rightarrow \infty} v_i(n) = 0 \\
+    \Rightarrow \quad & \max_i \lim_{n \rightarrow \infty} v_i(n) = 0.
+  \end{align*}
+  \item[$\Leftarrow$:] $\max_{i=1 \dots k} \lim_{n \rightarrow \infty} v_i(n) = 0$
+  \begin{align*}
+    \Rightarrow \quad & \forall i, \lim_{n \rightarrow \infty} v_i(n) = 0 \\
+    \Rightarrow \quad & \{\forall i, \forall \epsilon, \exists N_{\epsilon, i}: n > N_{\epsilon, i} \Rightarrow v_i(n) < \epsilon\}\\
+    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon (= \max_i N_{\epsilon, i}): \forall i, n > N_\epsilon \Rightarrow v_i(n) < \epsilon\}\\
+    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \max_i v_i(n) < \epsilon\}\\
+    \Rightarrow \quad & \lim_{n \rightarrow \infty} \max_i v_i(n) = 0
+  \end{align*}
+\end{description}
+\eproof
+
 \begin{exercise*}
   Montrer que la convergence coordonnée par coordonnée est équivalente à la convergence de la suite $(u(n))_{n \geq 0}$ vers $\ell$ au sens d'une norme $\|\cdot\|$ quelconque.
 \end{exercise*}
@@ -126,7 +158,7 @@
     \begin{align*}
       \lim_{n \rightarrow \infty} \|u - \ell\|_\infty & = 0
       & \Rightarrow & & \lim_{n \rightarrow \infty} \max_{i=1 \dots k} |u_i(n) - \ell_i| & = 0 \\
-      & & \Rightarrow & & \max_{i=1 \dots k} \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \qquad \text{(voir classeur)}\\
+      & & \Rightarrow & & \max_{i=1 \dots k} \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \qquad \text{(d'après le lemme)}\\
       & & \Rightarrow & & \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0.
     \end{align*}
   \end{description}

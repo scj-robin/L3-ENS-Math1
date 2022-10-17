@@ -14,7 +14,7 @@
 
 % \todo{Voir 1-AlgLin-MatricesPositives / Chaîne de Markov}
 
-\paragraph{Objectif.}
+\paragraph*{Objectif.}
 Etudier une suite de variable aléatoires $(X_0, X_1, \dots X_n, \dots)$ non indépendantes. L'indice $n$ se réfère souvent à un temps et une telle suite est alors appelées {\em processus stochastique} ou {\em chaîne}. On note alors $X = (X_t)_{t \geq 0}$.
 
 On suppose ici que les variables $X_n$ sont toutes à valeurs dans un même ensemble $\Ecal$ fini ou dénombrable.
@@ -128,7 +128,7 @@ La loi d'une \cM homogène $X$ est donc entièrement spécifiée
   \item la distribution de sa valeur initiale $X_0$.
 \end{itemize}
 
-\paragraph{Notation.}
+\paragraph*{Notation.}
 Dans la suite on notera $\Pr_\mu$ la loi d'une \cM $X$
 \begin{itemize}
   \item de distribution initiale $\mu$: $X_0 \sim \mu$ et
@@ -321,7 +321,7 @@ $$
 % Le théorème de Perron-Frobénius donne des conditions garantissant que la distribution $\mu_n$ converge vers le vecteur propre (à gauche) associé à la valeur propre 1, quelque soit la distribution initiale $\mu_0$. Ces propriétés seront étudiées en détail à la section \ref{sec:Proba-Markov}.
 % 
 % %-------------------------------------------------------------------------------
-% \paragraph{Exemple.}
+% \paragraph*{Exemple.}
 % Succession d'espèces d'arbres (R. Arditi)
 % \dessin{\url{TreeSpeciesMC}}
 
@@ -378,7 +378,7 @@ L'hypothèse de régularité de $P$ implique que $X$ est irréductible (puisque 
 
 
 %-------------------------------------------------------------------------------
-\paragraph{Exemple pour $\Ecal = \{0, 1\}$.}
+\paragraph*{Exemple pour $\Ecal = \{0, 1\}$.}
 On considère la \cM $X$ de matrice de transition 
 $$
 P = \left[\begin{array}{ccc}
@@ -447,7 +447,7 @@ Dessinner qques graphes de transition de \cM avec ou sans période.}
 \end{proposition*}
 
 %-------------------------------------------------------------------------------
-\paragraph{Exemple : marche aléatoire sur $\Zbb$.}
+\paragraph*{Exemple : marche aléatoire sur $\Zbb$.}
 On considère la \cM $X$ à valeur dans $\Ecal = \Zbb$, de probabilités de transition
 $$
 p_{i, j} = \left\{\begin{array}{rl}
@@ -512,7 +512,7 @@ Ce théorème est plus fort que la convergence en loi car il nous informe que la
 La convergence en loi n'est garantie que dans le cas apériodique.
 
 %-------------------------------------------------------------------------------
-\paragraph{Retour à l'exemple pour $\Ecal = \{0, 1\}$.}
+\paragraph*{Retour à l'exemple pour $\Ecal = \{0, 1\}$.}
 \begin{description}
   \item[$p = q = 0$ :] la chaîne possède 2 classes récurrente ($\{0\}$ et $\{1\}$). Elle reste en fait constante et toute mesure $\nu$ est invariante.
   \item[$p = 0$ et $q \neq 0$ :] la chaîne possède une classe récurrente ($\{0\}$) et une classe transiente ($\{1\}$). La chaîne est 'absorbée' par l'état $0$ en un temps fini et la seule distribution invariante est $\nu = [1 \; 0]$.
