@@ -1,10 +1,10 @@
 %-------------------------------------------------------------------------------
-\subsection{Matrices et déterminants}%-------------------------------------------------------------------------------
+\subsection{Exemples de matrices et déterminants}%-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
-\begin{exercise} \label{exo:AlgLin-Det33}
-  Calculer les déterminants des matrices suivantes 
-  \begin{align*}
+\paragraph{Calculs de déterminants.}
+Calculer les déterminants des matrices suivantes 
+\begin{align*}
 %     A_1 & = \left[\begin{array}{rrr}
 %       2 & -1 & 3 \\ 2 & -1 & 6 \\ -2 & 1 & 0
 %       \end{array}\right], &
@@ -13,14 +13,14 @@
 %       2 & -1 & 3 \\ 2 & -1 & 6 \\ 1 & 0  & 2
 %       \end{array}\right], \\
 %     %
-    A_3 & = \left[\begin{array}{rrr}
-      1 & 1 & 0 \\ -5 & -2 & 5 \\ -1 & 0 & 2
-      \end{array}\right], &
-    A_4 & = \left[\begin{array}{rrr}
-      -1 & 3 & 1 \\ 0 & 2 & 1 \\ 2 & 1 & 2
-      \end{array}\right].  
-  \end{align*}
-\end{exercise}
+  A_3 & = \left[\begin{array}{rrr}
+    1 & 1 & 0 \\ -5 & -2 & 5 \\ -1 & 0 & 2
+    \end{array}\right], &
+  A_4 & = \left[\begin{array}{rrr}
+    -1 & 3 & 1 \\ 0 & 2 & 1 \\ 2 & 1 & 2
+    \end{array}\right].  
+\end{align*}
+
 \solution{
   \begin{align*}
 %     |A_1| & = 0 & & \text{colonne } 1 = -2 \text{ colonne } 2 \\
@@ -34,18 +34,17 @@
 }
 
 %-------------------------------------------------------------------------------
-\begin{exercise} \label{exo:AlgLin-PolCar33}
-  Déterminer le polynôme caratéristique des matrices suivantes et en déduire si elles sont diagonalisables
-  \begin{align*}
-    A_1 & = \left[\begin{array}{rrr}
-      2 & -1 & 3 \\ 2 & -1 & 6 \\ 1 & 0  & 2
-      \end{array}\right], &
-    A_2 & = \left[\begin{array}{rrr}
-      1 & 1 & 0 \\ -5 & -2 & 5 \\ -1 & 0 & 2
-      \end{array}\right], \\ 
-  \end{align*}
-\end{exercise}
-
+\paragraph{Matrices diagonalisables ?}
+Déterminer le polynôme caratéristique des matrices suivantes et en déduire si elles sont diagonalisables
+\begin{align*}
+  A_1 & = \left[\begin{array}{rrr}
+    2 & -1 & 3 \\ 2 & -1 & 6 \\ 1 & 0  & 2
+    \end{array}\right], &
+  A_2 & = \left[\begin{array}{rrr}
+    1 & 1 & 0 \\ -5 & -2 & 5 \\ -1 & 0 & 2
+    \end{array}\right].
+\end{align*}
+  
 \solution{
   \begin{description}
     \item[$A_1$ :] on a
@@ -72,25 +71,89 @@
 }
 
 %-------------------------------------------------------------------------------
-\begin{exercise} \label{exo:AlgLin-Trace}
-  On définit la trace $\tr(A)$ d'une matrice carrée $A \in \Mcal_n$ comme la somme de ses termes diagonaux : $\tr(A) = \sum_{i=1}^n a_{ii}$.
-  \begin{enumerate}
-   \item Montrer que le coefficient d'ordre $n-1$ du polynôme caratéristique de $A$ (noté $P_A$) vaut
+\paragraph{Matrice paramétrée}
+Soit la matrice
+\begin{align*}
+  A & = \left[\begin{array}{rrr}
+    1 & 4 & 2 \\ 0 & \alpha & 0 \\ 1 & 1 & 0
+    \end{array}\right]
+\end{align*}
+\begin{enumerate}
+  \item Déterminer son polynôme caractéristique.
+  \solution{En développant par rapport à la 2ème ligne, on obtient
+    $$
+    P_A(\lambda) 
+    = (\alpha - \lambda) 
+      \left| \begin{array}{cc} 1 - \lambda & 2 \\1 & - \lambda \end{array} \right|
+    = (\alpha - \lambda) (\lambda^2 - \lambda - 2)
+    = (\alpha - \lambda) (\lambda - 2 ) ( \lambda + 1).
+    $$
+  }
+  \item En déduire ses valeurs propres et sa valeur propres dominante en fonction de $\alpha$.
+  \solution{Les valeurs propres de $A$ sont donc $\{\alpha, 2, -1\}$. La valeur propre dominante    est donc $\max(\alpha, 2)$.}
+  \item A quelle condition sur $\alpha$ $A$ est-elle diagonalisable ?
+  \solution{
+    \begin{description}
+    \item[$\alpha \notin \{-1, 2\}$:] les 3 valeurs propres sont réelles et distinctes donc $A$ est diagonalisable.
+    \item[$\alpha = 2$:] $2$ est alors raçine double de $P_A(\lambda)$. Ses vecteurs propres associés sont solutions de 
+    $$
+    \left\{ \begin{array}{rcl}  
+            u_1 + 4 u_2 + 2 u_3 & = & 2 u_1 \\
+            2 u_2 & = & 2 u_2 \\
+            u_1 + u_2 & = & 2 u_3 
+            \end{array} \right.
+    \quad \Leftrightarrow \quad
+    \left\{ \begin{array}{rcl}  
+            2 u_1 + 5 u_2 & = & 2 u_1 \\
+            u_1 + u_2 & = & 2 u_3 
+            \end{array} \right.         
+    \quad \Leftrightarrow \quad
+    \left\{ \begin{array}{rcl}  
+            u_2 & = & 0 \\
+            u_1 & = & 2 u_3 
+            \end{array} \right.         
+    $$
+    qui définit un sous-espace propre de dimension 1 : $A$ n'est donc pas diagonalisable.
+    \item[$\alpha = -1$:] $-1$ est alors raçine double de $P_A(\lambda)$. Ses vecteurs propres associés sont solutions de 
+    $$
+    \left\{ \begin{array}{rcl}  
+            u_1 + 4 u_2 + 2 u_3 & = & - u_1 \\
+            2 u_2 & = & - u_2 \\
+            u_1 + u_2 & = & - u_3 
+            \end{array} \right.
+    \quad \Leftrightarrow \quad
+    \left\{ \begin{array}{rcl}  
+            u_1 + 2 u_3 & = & - u_1 \\
+            u_2 & = & 0 \\
+            u_1& = & - u_3 
+            \end{array} \right.
+    \quad \Leftrightarrow \quad
+    \left\{ \begin{array}{rcl}  
+
+    u_2 & = & 0 \\
+            u_1 & = & - u_3 
+            \end{array} \right.
+    $$
+    qui définit un sous-espace propre de dimension 1 : $A$ n'est donc pas diagonalisable.
+  \end{description}
+  }
+\end{enumerate}
+
+
+%-------------------------------------------------------------------------------
+\subsection{Propriétés générales du déterminant}%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\paragraph{Polynôme caractéristique et trace}
+On définit la trace $\tr(A)$ d'une matrice carrée $A \in \Mcal_n$ comme la somme de ses termes diagonaux : $\tr(A) = \sum_{i=1}^n a_{ii}$.
+\begin{enumerate}
+  \item Montrer que le coefficient d'ordre $n-1$ du polynôme caratéristique de $A$ (noté $P_A$) vaut
   $$
   [\lambda^{n-1}] P_A(\lambda) = (-1)^{n-1} \tr(A).
   $$
   On pourra procéder par récurrence.
-  \item En déduire que la trace est égale à la somme des raçines $\{\lambda_1, \dots \lambda_n\}$ de $P_A(\lambda)$ :
-  $$
-  \tr(A) = \sum_{i=1} \lambda_i
-  $$
-  On pourra utiliser la factorisation du polynôme caractéristique.
-  \end{enumerate}
-\end{exercise}
-
-\solution{
-  \begin{enumerate}
-    \item On vérifie facilement que la propriété est vraie pour $n=2$. En la supposant vraie au rang $n-1$, on peut calculer le polynôme caractéristique de $A \in \Mcal_n$ en développant par la dernière ligne : 
+  \solution{
+    On vérifie facilement que la propriété est vraie pour $n=2$. En la supposant vraie au rang $n-1$, on peut calculer le polynôme caractéristique de $A \in \Mcal_n$ en développant par la dernière ligne : 
     $$
     P_A(\lambda) = 
     \left| A - \lambda I\right|
@@ -109,41 +172,45 @@
     $$
     [\lambda^{n-1}] P_A(\lambda) = (-1)^{n-1} \tr(A).
     $$
-    \item On utilise cette fois la version factorisée de $P_A$, soit 
-    $$
-    P_A(\lambda) 
-    = \prod_{i=1}^n (\lambda_i - \lambda)
-    $$
-    où les $\lambda_i$ sont les $n$ valeurs propres (pas nécessairement distinctes ni réelles) de $A$. Lors du développement de $P_A(\lambda)$, les termes en $\lambda^{n-1}$ apparaissent en multipliant un terme $\lambda_i$ par $n-1$ termes $(-\lambda)$, c'est-à-dire
-    $$
-    \left( \sum_{i=1}^n \lambda_i \right) (-\lambda)^{n-1}
-    = (-1)^{n-1} \left( \sum_{i=1}^n \lambda_i \right) \lambda^{n-1}.
-    $$
-    On a donc
-    $$
-    [\lambda^{n-1}] P_A(\lambda) 
-    = (-1)^{n-1} \left( \sum_{i=1}^n \lambda_i \right) 
-    \qquad \Leftrightarrow \qquad
-    \tr(A) = \sum_{i=1}^n \lambda_i.
-    $$
-  \end{enumerate}
-}
+  }
+  \item En déduire que la trace est égale à la somme des raçines $\{\lambda_1, \dots \lambda_n\}$ de $P_A(\lambda)$ :
+  $$
+  \tr(A) = \sum_{i=1} \lambda_i
+  $$
+  On pourra utiliser la factorisation du polynôme caractéristique.
+  \solution{
+  On utilise cette fois la version factorisée de $P_A$, soit 
+  $$
+  P_A(\lambda) 
+  = \prod_{i=1}^n (\lambda_i - \lambda)
+  $$
+  où les $\lambda_i$ sont les $n$ valeurs propres (pas nécessairement distinctes ni réelles) de $A$. Lors du développement de $P_A(\lambda)$, les termes en $\lambda^{n-1}$ apparaissent en multipliant un terme $\lambda_i$ par $n-1$ termes $(-\lambda)$, c'est-à-dire
+  $$
+  \left( \sum_{i=1}^n \lambda_i \right) (-\lambda)^{n-1}
+  = (-1)^{n-1} \left( \sum_{i=1}^n \lambda_i \right) \lambda^{n-1}.
+  $$
+  On a donc
+  $$
+  [\lambda^{n-1}] P_A(\lambda) 
+  = (-1)^{n-1} \left( \sum_{i=1}^n \lambda_i \right) 
+  \qquad \Leftrightarrow \qquad
+  \tr(A) = \sum_{i=1}^n \lambda_i.
+  $$
+  }
+\end{enumerate}
+
  
 %-------------------------------------------------------------------------------
-\subsection{Calcul du déterminant par la méthode des cofacteurs}%-------------------------------------------------------------------------------
-
-\begin{exercise}
+\paragraph{Calcul par la méthode des cofacteurs}.
   Montrer que, pour toute matrice $A \in \Mcal_n$ et pour tout $i_0, j_0 \in \{1, \dots, n\}$, on a 
   \begin{align*}
     |A| 
     & = \sum_{j=1}^n a_{i_0j} (-1)^{i_0+j} |A^{(i_0j)}| & (\text{développement par rapport à la ligne $i_0$}) \\
     & = \sum_{i=1}^n a_{ij_0} (-1)^{i+j_0} |A^{(ij_0)}| & (\text{développement par rapport à la colonne $j_0$})
   \end{align*}
-\end{exercise}
-
-\todo{Ajouter une question intermédiaire avec $i_0 = 1$ ?} 
 
 \solution{
+  \todo{Ajouter une question intermédiaire avec $i_0 = 1$ ?} \\
   On considère le développement par rapport à la ligne $i_0$. Par multilinéarité, on a
   $$
   |A| = \sum_{j=1}^n a_{i_0j} 
@@ -196,7 +263,7 @@
 }
  
 %-------------------------------------------------------------------------------
-\subsection{Inverse d'un matrice orthonormale}%-------------------------------------------------------------------------------
+\subsection{Inverse d'une matrice orthonormale}%-------------------------------------------------------------------------------
 
 \begin{exercise} \label{exo:AlgLin-Trace}
   Soit $P \in \Mcal_n$ orthonormale. Montrer que $P^{-1} = P^\top$.
@@ -215,10 +282,11 @@
   $$
   (puique les vecteurs $v_j$ sont orthonormés), donc $P^\top P = B = I$. La démonstration de $P P^\top = I$ est symétrique.
 }
-%-------------------------------------------------------------------------------
-\subsection{Dynamique d'une population structurée}%-------------------------------------------------------------------------------
- \todo{Voir notes}
- 
+
+% %-------------------------------------------------------------------------------
+% \subsection{Dynamique d'une population structurée}%-------------------------------------------------------------------------------
+%  \todo{Voir notes}
+
 %-------------------------------------------------------------------------------
 \subsection{Analyse en composante principales}%-------------------------------------------------------------------------------
  \todo{Voir notes + $X_i = U + V_i \Rightarrow \Sigma = \sigma^2 J + \gamma^2 I \Rightarrow$ 1 seule vp non nulle $\lambda = \gamma^2 + n \sigma^2$.}
@@ -227,3 +295,100 @@
 % \subsection{Matrice de rotation}
 % %-------------------------------------------------------------------------------
 % \todo{}
+
+%-------------------------------------------------------------------------------
+\subsection{Modèles dynamique}%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\paragraph{Evolution de fréquences alléliques.}
+Dans une population diploïde panmictique, on s’intéresse à un gène existant sous la forme de
+$m$ allèles $a_1, \dots A_m$. On désigne par $p_i$ la proportion du pool gamétique portant l’allèle $A_i$ ($\sum_i p_i = 1$) et par $p'_i$ cette proportion à la génération qui suit. La dynamique de ces fréquences alléliques est donnée par
+\begin{equation} \label{eq:dynFreqModele}
+  V(p) p'_i = p_i \sum_{j=1}^m a_{ij} p_j, 
+  \qquad \text{où} \quad
+  V(p) = \sum_i \sum_j a_{ij} p_i p_j
+\end{equation}
+(de sorte que $\sum_i p'_i = 1$).
+On note de plus $A = [a_{ij}]$ où les $a_{ij}$ sont positifs ou nuls, mais non tous nuls.
+
+\begin{enumerate}
+  \item Interprêter cette équation. Pourquoi $A$ est-elle symétrique ?
+  \solution{$a_{ij}$ = avantage relatif du génotype $(A_i, A_j)$, symétrique par nature. \\
+  On peut remarquer 
+  \begin{itemize}
+  \item que $V(p) = p^\top A p$ est l'avantage moyen d'un descendant, du fait de la reproduction panmictique et
+  \item que ce modèle est paramétré à une constante près, c'est-à-dire qu'on aboutit à la même dynamique en remplaçant $A$ par $B = k A$ pour n'importe quel $k > 0$.
+  \end{itemize}
+  }
+\end{enumerate}
+
+On suppose maintenant qu'il existe une équilibre $p^* = [p^*_1, \dots p^*_m]^\top$ non trivial ($\forall i, p^*_i \neq 0$). On définit la viabilité à l'équilibre par $V^* = V(p^*)$.
+
+\begin{enumerate}
+  \item Montrer que $V^* = \sum_j a_{ij} p^*_j$.
+  \solution{L'équilibre $p^*$ est un point stationnaire de \eqref{eq:dynFreqModele}, on a donc
+  $$
+  \forall i: \quad V^* p^*_i = p^*_i \sum_{j=1}^m a_{ij} p^*_j,
+  $$
+  soit $V^* = \sum_{j=1}^m a_{ij} p^*_j, \forall i$. }
+  \item En écrivant tout vecteur de fréquence allélique $s = p^* + x$, montrer que $V^*$ est maximale ssi
+  \begin{equation} \label{eq:dynFreqCondition}
+    \forall x: \sum_i x_i = 0, \qquad x^\top A x \leq 0.
+  \end{equation}
+  \solution{  Si $s = p^* + x$, on a 
+  $$
+  V(s) 
+  = s^\top A s
+  = {p^*}^\top A p^* + 2 x^\top A p^* + x^\top A x
+  = V^* + 2 x^\top A p^* + x^\top A x.
+  $$
+  De plus, $s$ et $p^*$ étant des vecteurs de fréquences (leurs coordonnées somment à 1), nécessairement, si $x = p^* +x$, alors $\sum_i x_i = 1_m^\top x = 0$. Or on a vu que $\sum_j a_{ij} p^*_j$ est indépendant de $i$ (et égale à $V^*$), donc $A p^* = V^* 1_m$, et donc
+  $$
+  x^\top A p^* = x^\top V^* 1_m = V^* x^\top 1_m = 0.
+  $$
+  Enfin, $V^*$ est maximale, ssi $\forall s, V(s) = V^* + x^\top A x \leq V^*$, c'est-à-dire ssi
+  \eqref{eq:dynFreqCondition}.
+  }
+  \item Montrer qu'on peut écrire $A$ sous la forme $A = R \Lambda R^\top$ où
+  $$
+  \Lambda = \text{diag}(\lambda_1, \dots, \lambda_p, 
+    \lambda_{p+1}, \dots, \lambda_{p+q}, 
+    0, \dots, 0)
+  $$
+  où $p \geq 1$, $q \geq 0$, $p+q \leq m$, $\lambda_1, \dots \lambda_p > 0$ et $\lambda_{p+1}, \dots \lambda_{p+q} < 0$.
+  \solution{
+  $A$ étant symétrique, elle est diagonalisable et ses vecteurs propres sont orthogonaux. On peut donc l'écrire sous la forme $A = R \Lambda R^\top$ en mettant en premier les valeurs propres strictement positives, puis strictement négatives, puis, éventuellement, nulles. \\
+  La seule propriété restant à démontrer est que $p \geq 1$ (et non $p = 0$). Pour cela, on remarque que, si $p = 0$, alors tous les $\lambda_i$ sont négatifs (ou nuls), donc
+  $$
+  \forall x \in \Rbb^m: \qquad 
+  x^\top A x 
+  = x^\top R \Lambda R^\top x 
+  = y^\top \Lambda y  
+  = \sum_i \lambda_i y_i^2 \leq 0 
+  $$
+  (en posant $y = R^\top x$) or $V^* = {p^*}^\top A p^* > 0$, donc on a nécessairement $p \geq 1$.
+  }
+  \item Montrer que \eqref{eq:dynFreqCondition} peut s'écrire 
+  $$
+  \forall y: \sum_i q_i y_i = 0, \qquad \sum_i \lambda_i y_i^2 \leq 0, 
+  $$
+  où $q$ est un vecteur à préciser.
+  \solution{D'après la question précédente, en posant $y = R^\top x \Leftrightarrow x = R y$, on a que 
+  $$
+  \{x^\top A x \leq 0\} 
+  \qquad \Leftrightarrow \qquad 
+  \left\{y^\top \Lambda y = \sum_i \lambda_i y_i^2 \leq 0\right\}.
+  $$
+  Il reste à formuler la condition $\sum_i x_i = 0$ qui équivaut à 
+  $$
+  \left\{\sum_i \sum_j r_{ij} y_j = 0\right\}
+  \quad \Leftrightarrow \quad 
+  \left\{\sum_j y_j q_j = 0\right\} 
+  \qquad \text{en posant $q_j = \sum_i r_{ij}$}.
+  $$
+  }
+  \item En déduire que $V^\top$ est maximale si $p=1$ et $q \geq 1$.
+  \solution{On a vu que $V^*$ est maximale si $x^\top A x \leq 0$ pour tout $x$ vérifiant $\sum_i x_i = 0$, qui définit une sous-espace de dimension $m-1$. $p$ ne peut donc pas être supérieur ou égal à 2 (car alors il existerait deux dimensions dans lesquelles $x^\top A x > 0$). \\
+  La condition $q \geq 1$ assure seulement qu'il existe des vecteurs de fréquence $p$ donnant une viabilité $V(p) < V^*$.
+  }
+\end{enumerate}

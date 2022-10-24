@@ -67,7 +67,7 @@ or $x^\top A x \geq 0$ et $x^\top x > 0$ donc $\lambda \geq 0$. Si, de plus, $A$
 
 \remark
 \begin{enumerate}
- \item Puisque les vecteurs propres sont orthogonaux deux à deux, les colonnes de la matrice de passage $P$ constituent alors une base orthonormée de $\Rbb^n$. 
+ \item Puisque les vecteurs propres sont orthogonaux deux à deux, si on choisit des vecteurs propres $u_1, \dots u_n$ de norme 1, les colonnes de la matrice de passage $P$ constituent une base orthonormée de $\Rbb^n$. 
  \item La matrice $P^{-1}$ transforme alors les coordonnées d'un vecteur dans la base canonique en ses coordonnées dans le repère constitué des vecteurs propres (voir exercice en TD).
 \end{enumerate}
 
@@ -222,7 +222,7 @@ Le comportement en temps long de la population $\lim_{n \rightarrow\infty} x(n)$
 %   \todo{}
 
 \begin{proposition*}[1.4.8: Itérée d'un matrice diagonalisable]
-  Si est $A \in \Mcal_k$ est diagonalisable ($A = P D P^{-1}$) et telle que sa plus grande valeur propre en module $\lambda_1$ soit d'ordre multiplicité 1 (on parle alors de valeur propre {\em dominante} ou de Perron-Frobénius) :
+  Si est $A \in \Mcal_k$ est diagonalisable ($A = P D P^{-1}$) et que sa plus grande valeur propre en module $\lambda_1$ est d'ordre multiplicité 1 (on parle alors de valeur propre {\em dominante} ou de Perron-Frobénius) :
   $$
   \forall i \geq 2: \qquad |\lambda_i| < |\lambda_1|.
   $$
@@ -270,7 +270,7 @@ Le comportement en temps long de la population $\lim_{n \rightarrow\infty} x(n)$
   Soit $A \in \Mcal_k$ un matrice positive ($A \geq 0$) et régulière:
   \begin{itemize}
     \item $A$ possède une valeur propre dominante $\lambda_1$ réelle;
-    \item Les vecteurs propres $v$ et $u_1$ associés à $\lambda_1$ respectivement à droite et à gauche : 
+    \item Les vecteurs propres $v$ et $u$ associés à $\lambda_1$ respectivement à droite et à gauche : 
     $$
     A v = \lambda_1 v, \qquad u^\top A = \lambda_1 u^\top
     $$
