@@ -233,6 +233,9 @@ Le comportement en temps long de la population $\lim_{n \rightarrow\infty} x(n)$
   où $v_1$ est le premier vecteur colonne de $P$ et $u_1^\top$ est le premier vecteur ligne de $P^{-1}$
 \end{proposition*}
 
+\remark
+La condition $\forall i \geq 2: \qquad |\lambda_i| < |\lambda_1|$ implique que $\lambda_1$ est réelle. En effet, si $\lambda_1$ est complexe, alors $\overline{\lambda}_1$ est également valeur propre et $|\overline{\lambda}_1| = |\lambda_1|$.
+
 \proof
   Puisque $A = P D P^{-1}$, on a
   $$
@@ -269,7 +272,7 @@ Le comportement en temps long de la population $\lim_{n \rightarrow\infty} x(n)$
 \begin{theorem*}[Perron-Frobenius]
   Soit $A \in \Mcal_k$ un matrice positive ($A \geq 0$) et régulière:
   \begin{itemize}
-    \item $A$ possède une valeur propre dominante $\lambda_1$ réelle;
+    \item $A$ possède une valeur propre dominante $\lambda_1$ (réelle) d'ordre de multiplicité 1;
     \item Les vecteurs propres $v$ et $u$ associés à $\lambda_1$ respectivement à droite et à gauche : 
     $$
     A v = \lambda_1 v, \qquad u^\top A = \lambda_1 u^\top
