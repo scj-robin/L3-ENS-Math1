@@ -34,7 +34,7 @@ On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ 
     & h & \rightarrow &  hf'(x)
   \end{array}
   $$
-  est donc une application linéaire, dite tangente à la fonction $f$ au point $x$.
+  est donc une application linéaire, dite {\sl tangente à la fonction $f$ au point $x$}.
   \item On note parfois, de façon équivalente :
   $$
   f(x+h) - f(x) - h f'(h) = o(h)
@@ -285,12 +285,16 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   \item La démonstration de cette propriété passe par le fait que la différentiabilité de $f$ implique celle de chacune des $f_i$. Cette propriété s'étend même à toutes les directions dans $\Rbb^n$. \\
   La réciproque n'est pas vraie : une application $f$ peut ne pas être différentiable en $x$ alors que toutes les $f_i$ le sont.
   \dessin{
-  Exemple :
+  Exemple : soit
   $$
   \begin{array}{rrcl}
     f : & \Rbb^2 & \mapsto & \Rbb \\
-    & x = (x_1, x_2) & \rightarrow & - |x_1 - x_2| \times |x_1 + x_2|
+    & x = (x_1, x_2) & \rightarrow & - |x_1| \times |x_2|
   \end{array}
+  $$
+  On a 
+  $$
+  f(0, x_2) = f(x_1, 0) = 0
   \qquad \Rightarrow \qquad
   J_0f = \left[\begin{array}{c} 0 \\ 0 \end{array} \right]
   $$
@@ -543,13 +547,13 @@ Le calcul pour $(\rho+r) \sin(\theta +t)$ est analogue.
 
 %-------------------------------------------------------------------------------
 \exemple{[Cas de la spirale.]
-  Pour le cas de spirale 'linéaire'
+  La spirale ``linéaire'' est définie par l'équation
   $$
   \rho(\theta) = \rho_0 \theta
   \qquad \Rightarrow \qquad
   \rho'(\theta) = \rho_0,
   $$
-  on obtient
+  pour laquelle on obtient
   $$
   x'(\theta) = \rho_0 \cos \theta - \rho_0 \theta \sin \theta, \qquad 
   y'(\theta) = \rho_0 \sin \theta + \rho_0 \theta \cos \theta
