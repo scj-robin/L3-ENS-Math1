@@ -9,13 +9,13 @@
 
 On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ dans $\Rbb$ à une fonction de $\Rbb^n$ dans $\Rbb^k$. On rappelle d'abord la définition de la dérivabilité pour une fonction de $\Rbb$ dans $\Rbb$.
 
-\begin{definition*}[Dérivabilité]
+\begin{definition}[Dérivabilité] \label{def:derivabilite}
   Une fonction $f: \Rbb \mapsto \Rbb$ est dérivable au point $x$ si la limite
   $$
   \lim_{h \rightarrow 0, h \neq 0} \frac{f(x+h) - f(x)}{h}
   $$
   existe. Cette limite est alors la dérivée de $f$ au point $x$. Elle est notée $f'(x)$ et représente la pente de la tangente au graphe de la fonction $f$ au point $x$.
-\end{definition*}
+\end{definition}
 
 \remarks
 \begin{enumerate}
@@ -41,23 +41,11 @@ On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ 
   \qquad \text{où} \quad
   \lim_{h\rightarrow 0, h \neq 0} \frac{o(h)}{|h|} = 0,
   $$
-  sous-entendant par là 
+  entendant par là 
   $$
   \text{$f(x+h) - f(x) \simeq h f'(h)$ à une fonction $o(h)$ négligeable devant $|h|$ près.}
   $$
 \end{enumerate}
-
-\bigskip
-\progres{Début Cours 5. Rappels :
-\begin{enumerate}[\itemdot]
-\item Rappels sur les normes. $\|\cdot\|_1$, $\|\cdot\|_2$, $\|\cdot\|_\infty$ dans $\Rbb^n$, $\Mcal_n(\Rbb)$ et espace fonctionnel
-\item Normes toutes équivalentes dans un espace de dimension finie.
-\item Rappel sur la dérivée de $f : \Rbb \mapsto \Rbb$ : dérivabilité à gauche et à droite, notation $o(h)$ et application linéaire tangente :
-$$
-f(x+h) - f(x) = h f'(x) + o(|h|).
-$$
-\end{enumerate}
-}
 
 %-------------------------------------------------------------------------------
 \subsection{Différentielle et application linéaire tangente} 
@@ -74,166 +62,164 @@ $$
 $$
 où chaque application $f_j$ ($1 \leq j \leq k$) va de $\Rbb^n$ dans $\Rbb$.
 
-\begin{definition*}[Différentiabilité]
-  La fonction $f$ de $\Rbb^n$ dans $\Rbb^k$ est dite différentiable au point $x$ s'il existe une application $L$ linéaire de $\Rbb^n$ dans $\Rbb^k$ telle que\footnote{Le 0 ici désigne le vecteur nul de $\Rbb^k$.}
+\begin{definition}[Différentiabilité] \label{def:differentiabilité}
+  La fonction $f$ de $\Rbb^n$ dans $\Rbb^k$ est dite différentiable au point $x$ s'il existe une application $L$ linéaire de $\Rbb^n$ dans $\Rbb^k$ telle que
   $$
-  \lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - L(h)}{\|h\|} = 0.
+  \lim_{h\rightarrow 0_n, h \neq 0_n} \frac{f(x+h) - f(x) - L(h)}{\|h\|} = 0_k.
   $$
-  L'application $L$ est souvent notée $D_x f$.
-\end{definition*}
+  L'application $L$ sera notée $D_x f$.
+\end{definition}
 
 \remark
 On note parfois, de même 
 $$
 f(x+h) - f(x) - L(h) = o(h)
 \qquad \text{où} \quad
-\lim_{h\rightarrow 0, h \neq 0} \frac{o(h)}{\|h\|} = 0.
+\lim_{h\rightarrow 0_n, h \neq 0_n} \frac{o(h)}{\|h\|} = 0_k.
 $$
 
-\begin{exercise*}
-  Montrer que l'application $L$ est unique.
-\end{exercise*}
+\begin{proposition} \label{prop:uniciteApplicationLineaireTangente}
+  L'application $D_x f$ est unique.
+\end{proposition}
 
-\solution{
-  Supposons qu'il existe deux applications linéaires différentes $L_1$ et $L_2$ répondant à la définition, on a alors
+\parSR{Démonstration de la proposition \ref{prop:uniciteApplicationLineaireTangente}.}
+Supposons qu'il existe deux applications linéaires différentes $L_1$ et $L_2$ répondant à la définition, on a alors
+$$
+\lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - L_1(h)}{\|h\|}
+- \lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - L_2(h)}{\|h\|} 
+= \lim_{h\rightarrow 0, h \neq 0} \frac{L_2(h) - L_1(h)}{\|h\|} 
+= 0.
+$$
+Il nous reste à montrer que si l'application {\em linéaire} $M(h) = L_2(h) - L_1(h)$ satisfait
+$$
+\lim_{h \rightarrow 0, h \neq 0} \frac{M(h)}{\|h\|} 
+= 0
+$$
+alors elle est nulle partout. \\
+Pour cela, on considère un vecteur $y$ non nul quelconque de $\Rbb^n$. La propriété limite implique que, en posant $h = uy$, 
+$$
+\lim_{u \downarrow 0, u \neq 0} \frac{M(u y)}{\|u y\|} = 0,
+$$  
+or $M$ est linéaire, donc 
+$$
+0
+= \lim_{u \downarrow 0, u \neq 0} \frac{M(u y)}{\|u y\|} 
+= \lim_{u \downarrow 0, u \neq 0} \frac{u M(y)}{u \; \|y\|} 
+= \lim_{u \downarrow 0, u \neq 0} \frac{M(y)}{\|y\|} 
+= \frac{M(y)}{\|y\|},
+$$  
+or $\|y\|$ est non nul, donc $M(y) = 0$. (La nullité de $M(0)$ s'obtient grâce à la continuité des applications linéaires.)
+\eproof
+
+\remark
+De façon évidente, une application linéaire est différentiable partout et est sa propre différentielle.
+
+% \begin{exercise*}
+%  Montrer qu'une application linéaire $f$ de $\Rbb^n$ dans $\Rbb^k$ est différentiable partout et est sa propre différentielle.
+% \end{exercise*}
+% 
+% \solution{Bof...}
+
+%-------------------------------------------------------------------------------
+\exemple{
+Soit une matrice $B \in \Mcal_n$ et l'application
+$$
+\begin{array}{rrcl}
+  f : & \Rbb^n & \mapsto & \Rbb \\
+      & x & \rightarrow & x^\top B x
+\end{array}
+$$
+\begin{enumerate}
+  \item On voit que $f$ est différentiable partout puisque, pour $x \in \Rbb^n$ et pour tout $h \in \Rbb^n$, on a
   $$
-  \lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - L_1(h)}{\|h\|}
-  - \lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - L_2(h)}{\|h\|} 
-  = \lim_{h\rightarrow 0, h \neq 0} \frac{L_2(h) - L_1(h)}{\|h\|} 
+  f(x+h) - f(x) 
+  = (x+h)^\top B (x+h) - x^\top B x
+  = x^\top B h + h^\top B x + h^\top B h
+  $$
+  où le terme $x^\top B h + h^\top B x$ est bien linéaire en $h$. \\
+  De plus, d'après la proposition \ref{prop:normeProduitMatriceVecteur}, on a $\|Ay\|_1 \leq \|A\|_\infty \|y\|_1$, donc
+  $$
+  |h^\top B h| 
+  \leq  \|B h\|_\infty \|h\|_1 
+  \leq  \|B\|_\infty \left(\|h\|_1\right)^2 
+  $$
+  et donc
+  $$
+  \lim_{h \rightarrow 0, h \neq 0} \frac{|h^\top B h|}{\|h\|_1}
+  \leq \lim_{h \rightarrow 0, h \neq 0} \|B\|_\infty \|h\|_1
   = 0.
   $$
-  Il nous reste à montrer que si l'application {\em linéaire} $M(h) = L_2(h) - L_1(h)$ satisfait
+  La fonction $f$ est donc différentiable en tout $x$.
+  \item Sa différentielle est donnée par la partie linéaire de $f(x+h) - f(x) $, soit
   $$
-  \lim_{h \rightarrow 0, h \neq 0} \frac{M(h)}{\|h\|} 
-  = 0
+  D_xf(h) = x^\top B h + h^\top B x.
   $$
-  alors elle est nulle partout. \\
-  Pour cela, on considère un vecteur $y$ non nul quelconque de $\Rbb^n$. La propriété limite implique que, en posant $h = uy$, 
+  En remarquant que $h^\top B x \in \Rbb$, et que donc $h^\top B x = (h^\top B x)^\top = x^\top B^\top h$, on obtient
   $$
-  \lim_{u \downarrow 0, u \neq 0} \frac{M(u y)}{\|u y\|} = 0,
-  $$  
-  or $M$ est linéaire, donc 
+  D_xf(h) = x^\top (B + B^\top) h.
   $$
-  0
-  = \lim_{u \downarrow 0, u \neq 0} \frac{M(u y)}{\|u y\|} 
-  = \lim_{u \downarrow 0, u \neq 0} \frac{u M(y)}{u \; \|y\|} 
-  = \lim_{u \downarrow 0, u \neq 0} \frac{M(y)}{\|y\|} 
-  = \frac{M(y)}{\|y\|},
-  $$  
-  or $\|y\|$ est non nul, donc $M(y) = 0$. (La nullité de $M(0)$ s'obtient grâce à la continuité des applications linéaires.)
+\end{enumerate}
 }
 
-\begin{exercise*}
- Montrer qu'une application linéaire $f$ de $\Rbb^n$ dans $\Rbb^k$ est différentiable partout et est sa propre différentielle.
-\end{exercise*}
-
-\solution{Bof...}
-
-\begin{exercise*}
-  Soit une matrice $B \in \Mcal_n$ et l'application
+%-------------------------------------------------------------------------------
+\exemple{
+Soit 
+$$
+\begin{array}{rrcl}
+  f_k : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+  & X & \rightarrow & X^k
+\end{array}
+$$
+On cherche l'application linéaire tangente $L(H)$ pour $k = 2, 3$.
+\begin{description}
+  \item[$k = 2$:] On a
+  $$
+  f_2(X+H) = X^2 + XH + HX + H^2.
+  $$
+  or
+  $$
+  \|H^2\|_\infty 
+  = \max_{i, k} \left| [H^2]_{jk}\right|
+  = \max_{i, k} \left| \sum_j h_{ij} h_{jk} \right|
+  \leq \max_{i, k} \sum_j |h_{ij}| \; | h_{jk}|
+  \leq n \max_{i, j} |h_{ij}|
+  \leq n (\|H\|_\infty)^2
+  $$
+  donc
+  $$
+  H^2 = o(\|H\|).
+  $$
+  On a donc
+  $$
+  f_2(X+H) - f_2(X) = XH + HX + o(\|H\|)
+  $$
+  où $XH + HX$ est linéaire en $H$. L'application linéaire tangente est donc
   $$
   \begin{array}{rrcl}
-    f : & \Rbb^n & \mapsto & \Rbb \\
-    & x & \rightarrow & x^\top B x
+    L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+    & H & \rightarrow & XH + HX.
   \end{array}
+  $$  
+  \item[$k = 3$:] On a
   $$
-  Montrer que $f$ est différentiable partout et calculer sa différentielle $D_ x f$.
-\end{exercise*}
-
-\solution{
-  \begin{enumerate}
-  \item Soit $x \in \Rbb^n$, pour tout $h \in \Rbb^n$, on a
-    $$
-    f(x+h) - f(x) 
-    = (x+h)^\top B (x+h) - x^\top B x
-    = x^\top B h + h^\top B x + h^\top B h
-    $$
-    où le terme $x^\top B h + h^\top B x$ est linéaire en $h$. 
-    \item De plus, on a vu en exercice que $\|Ay\|_1 \leq \|A\|_\infty \|y\|_1$, donc
-    $$
-    |h^\top B h| 
-    \leq  \|B h\|_\infty \|h\|_1 
-    \leq  \|B\|_\infty \left(\|h\|_1\right)^2 
-    $$
-    et donc
-    $$
-    \lim_{h \rightarrow 0, h \neq 0} \frac{|h^\top B h|}{\|h\|_1}
-    \leq \lim_{h \rightarrow 0, h \neq 0} \|B\|_\infty \|h\|_1
-    = 0.
-    $$
-    La fonction $f$ est donc différentiable en tout $x$.
-    \item Enfin, sa différentielle vaut
-    $$
-    D_xf(h) = x^\top B h + h^\top B x.
-    $$
-    En remarquant que $h^\top B x \in \Rbb$, et que donc $h^\top B x = (h^\top B x)^\top = x^\top B^\top h$, on obtient
-    $$
-    D_xf(h) = x^\top (B + B^\top) h.
-    $$
-  \end{enumerate}
-}
-
-\begin{exercise*}
-  Soit 
+  f_3(X+H) = X^3 + X^2H + XHX + HX^2 + H^2X + HXH + XH^2 + H^3.
+  $$
+  On montre de même que 
+  $$
+  H^2X = o(\|H\|), \qquad HXH  = o(\|H\|), \qquad XH^2  = o(\|H\|), \qquad H^3 = o(\|H\|).
+  $$
+  On a donc 
+  $$
+  f_3(X+H) - f_3(X) = X^2H + XHX + HX^2 + o(\|H\|)
+  $$
+  où $X^2H + XHX + HX^2$ est linéaire en $H$. L'application linéaire tangente est donc
   $$
   \begin{array}{rrcl}
-    f_k : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-    & X & \rightarrow & X^k
+    L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+    & H & \rightarrow & X^2H + XHX + HX^2.
   \end{array}
   $$
-  Déterminer l'application linéatire tangente $L(H)$ pour $k = 2, 3$.
-\end{exercise*}
-
-\solution{
-  \begin{description}
-    \item[$k = 2$:] On a
-    $$
-    f_2(X+H) = X^2 + XH + HX + H^2.
-    $$
-    or
-    $$
-    \|H^2\|_\infty 
-    = \max_{i, k} \left| [H^2]_{jk}\right|
-    = \max_{i, k} \left| \sum_j h_{ij} h_{jk} \right|
-    \leq \max_{i, k} \sum_j |h_{ij}| \; | h_{jk}|
-    \leq n \max_{i, j} |h_{ij}|
-    \leq n (\|H\|_\infty)^2
-    $$
-    donc
-    $$
-    H^2 = o(\|H\|).
-    $$
-    On a donc
-    $$
-    f_2(X+H) - f_2(X) = XH + HX + o(\|H\|)
-    $$
-    où $XH + HX$ est linéaire en $H$. L'application linéaire tangente est donc
-    $$
-    \begin{array}{rrcl}
-      L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-      & H & \rightarrow & XH + HX.
-    \end{array}
-    $$  
-    \item[$k = 2$:] On a
-    $$
-    f_3(X+H) = X^3 + X^2H + XHX + HX^2 + H^2X + HXH + XH^2 + H^3.
-    $$
-    On montre de même que 
-    $$
-    H^2X = o(\|H\|), \qquad HXH  = o(\|H\|), \qquad XH^2  = o(\|H\|), \qquad H^3 = o(\|H\|).
-    $$
-    On a donc 
-    $$
-    f_3(X+H) - f_3(X) = X^2H + XHX + HX^2 + o(\|H\|)
-    $$
-    où $X^2H + XHX + HX^2$ est linéaire en $H$. L'application linéaire tangente est donc
-    $$
-    \begin{array}{rrcl}
-      L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-      & H & \rightarrow & X^2H + XHX + HX^2.
-    \end{array}
-    $$
-  \end{description}
+\end{description}
 }
 
 %-------------------------------------------------------------------------------
@@ -246,14 +232,14 @@ $$
 [J_xf]_{ij} = \frac{\partial f_i(x_1, \dots x_n)}{\partial x_j}.
 $$
 
-\begin{proposition*}
+\begin{proposition} \label{prop:matriceJacobienne}
   Soit $f : \Rbb^n \mapsto \Rbb^k$ différentiable, la matrice jacobienne $J_xf$ est la matrice représentative de $D_xf$, c'est-à-dire :
   $$
   D_xf(h) = J_xf \cdot h.
   $$
-\end{proposition*}
+\end{proposition}
 
-\proof
+\parSR{Démonstration de la proposition \ref{prop:matriceJacobienne}.}
 La preuve consiste à montrer que la différentiabilité de $f$ implique celle de chaque fonction $f_i$ par rapport à chaque coordonnées $x_j$ et à identifier chaque terme de la différentielle $D_xf$ à la dérivée partielle correspondante. 
 \begin{enumerate}
   \item Commençons par observer que, puisque $D_x f$ est linéaire, on a pour tout $h = \sum_{j=1}^n h_j e_j$ (où les $e_j$ sont les vecteurs de la base canonique) :
@@ -290,7 +276,7 @@ La preuve consiste à montrer que la différentiabilité de $f$ implique celle d
 On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice $A_x$ sont ceux de la matrice jacobienne $J_xf$.
 \eproof
 
-\remark
+\remarks
 \begin{enumerate}
   \item Cette propriété justifie l'intérêt de la matrice jacobienne pour approcher les variations de l'application $f$ autour du point $x$ par une application linéaire : 
   $$
@@ -326,20 +312,52 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
 \end{enumerate}
 
 %-------------------------------------------------------------------------------
-\paragraph*{Exemple : surface dans $\Rbb^3$.}
-On considère une surface $S$ de $\Rbb^3$ d'équation
+\exemple{[Passage en coordonnées polaires]
+  Soit l'application
+  $$
+  \begin{array}{rrcl}
+    f : & \Rbb^+ \times [0, 2\pi] & \mapsto & \Rbb^2 \\
+    & (\rho, \theta) & \rightarrow & (x = \rho \cos \theta, y = \rho \sin \theta).
+  \end{array}
+  $$
+  Sa matrice jacobienne est
+  $$
+  J_{(\rho, \theta)}f = \left[ \begin{array}{rclcrcl}
+      \frac{\partial}{\partial \rho} \rho \cos \theta & = & \cos \theta  & &
+      \frac{\partial}{\partial \theta} \rho \cos \theta & = & -\rho \sin \theta  \\
+      \frac{\partial}{\partial \rho} \rho \sin \theta & = & \sin \theta  & & 
+      \frac{\partial}{\partial \theta} \rho \sin \theta & = & \rho \cos \theta  
+    \end{array} \right].
+  $$
+  On peut remarquer que
+  $$
+  |J_{(\rho, \theta)}f| 
+  = \left| \begin{array}{cc}
+      \cos \theta  & -\rho \sin \theta  \\
+      \sin \theta  & \rho \cos \theta  
+    \end{array} \right|
+  = \rho \cos^2\theta + \rho \sin^2 \theta = \rho.
+  $$
+}
+
+
+%-------------------------------------------------------------------------------
+\remark
+On peut déterminer le plan tangent à une surface $S$ de $\Rbb^3$ d'équation
 $$
 z = f(x, y).
 $$
-Pour déterminer le plan tangent à la surface $S$ au point $(x_0, y_0)$, on pose $z_0 = f(x_0, y_0)$ et $h = (x-x_0, y-y0)$, soit 
+au point $(x_0, y_0)$, en posant $z_0 = f(x_0, y_0)$ et $h = (x-x_0, y-y0)$, soit 
 $$
-f(x, y) - f(x_0, x0) = J_{(x_0, y_0)} f h + o(\|h\|).
+f(x, y) - f(x_0, x0) = \left(J_{(x_0, y_0)} f\right) \; h + o(\|h\|).
 $$
-Le plan tangent a donc pour équation
+Le plan tangent a ainsi pour équation
 $$
 z = z_0 + \frac{\partial f}{\partial x}(x_0, y_0) \times (x-x_0) + \frac{\partial f}{\partial y}(x_0, y_0) \times (y-y_0).
 $$
-Ainsi, pour
+
+\exemple{
+Pour
 $$
 f(x, y) = \exp\left(-\frac{x^2 + y^2}{2}\right),
 $$
@@ -356,40 +374,7 @@ z
 = f(x_0, y_0)(1 + x_0^2 + y_0^2 - x_0 x - y_0 y)
 $$
 Ce plan est bien horizontal pour $(x_0, y_0) = (0, 0)$.
-
-\begin{exercise*}[Passage en coordonnées polaires]
-  On considère l'application
-  $$
-  \begin{array}{rrcl}
-    f : & \Rbb^+ \times [0, 2\pi] & \mapsto & \Rbb^2 \\
-    & (\rho, \theta) & \rightarrow & (x = \rho \cos \theta, y = \rho \sin \theta).
-  \end{array}
-  $$
-  Déterminer sa matrice jacobienne. 
-\end{exercise*}
-
-\solution{
-  On a 
-  $$
-  J_{(\rho, \theta)}f = \left[ \begin{array}{rclcrcl}
-      \frac{\partial}{\partial \rho} \rho \cos \theta & = & \cos \theta  & &
-      \frac{\partial}{\partial \theta} \rho \cos \theta & = & -\rho \sin \theta  \\
-      \frac{\partial}{\partial \rho} \rho \sin \theta & = & \sin \theta  & & 
-      \frac{\partial}{\partial \theta} \rho \sin \theta & = & \rho \cos \theta  
-    \end{array} \right]
-  $$
 }
-
-\remark
-On peut remarquer que 
-$$
-|J_{(\rho, \theta)}f| 
-= \left| \begin{array}{cc}
-    \cos \theta  & -\rho \sin \theta  \\
-    \sin \theta  & \rho \cos \theta  
-  \end{array} \right|
-= \rho \cos^2\theta + \rho \sin^2 \theta = \rho.
-$$
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
@@ -401,7 +386,7 @@ $$
 (f \circ g)'(x) = g'(x) (f' \circ g)(x)
 $$
 
-\begin{proposition*}
+\begin{proposition} \label{prop:compositionDéfferentielles}
   Si $g : \Rbb^n \mapsto \Rbb^k$ est différentiable en $x$ et $f : \Rbb^k \mapsto \Rbb^\ell$ est différentiable en $g(x)$, alors
   \begin{itemize}
    \item $f \circ g: \Rbb^n \mapsto \Rbb^\ell$ est différentiable en $x$ et
@@ -414,32 +399,32 @@ $$
    J_x(f \circ g) = J_{g(x)}f \cdot J_xg.
    $$
   \end{itemize}
-\end{proposition*}
+\end{proposition}
 
-\proof Non démontrée \eproof
+Cette proposition n'est pas démontrée ici. \eproof
 
-\progres{
-  Début Cours 6. Rappels :
-  \begin{enumerate}[\itemdot]
-    \item Définition de l'application linéaire tangente $D_x f(h)$ telle que 
-    $$f(x+h) - f(x) - D_x f(h) = o(\|h\|).$$
-    \item Si $f$ différentiable en $x$, la matrice jacobienne $J_xf$ vérifie $D_xf(h) = J_xf \cdot h$
-    \item Exemple $f(x) = x^\top B x : J_x f = x^\top (B + B^\top) $
-    \item Exemple : calcul de $J_x f$ pour le passage en coordonnées polaires (\textcolor{red}{démontrer la différentiabilité de $f$ : cf classeur})
-    \item Composition : 
-    $$
-    D_x(f \circ g) = D_{g(x)}f \circ D_x g
-    \qquad \Rightarrow \qquad
-    J_x(f \circ g) = J_{g(x)}f \cdot D_x g.
-    $$
-    (\textcolor{red}{donner l'exempel de simple juste après})
-    \item Exercice : calculer le pente de la tangente à la courbe $(x = \rho \cos \theta, y = \rho \sin \theta)$ pour $\rho = \rho(\theta)$
-  \end{enumerate}
-}
+% \progres{
+%   Début Cours 6. Rappels :
+%   \begin{enumerate}[\itemdot]
+%     \item Définition de l'application linéaire tangente $D_x f(h)$ telle que 
+%     $$f(x+h) - f(x) - D_x f(h) = o(\|h\|).$$
+%     \item Si $f$ différentiable en $x$, la matrice jacobienne $J_xf$ vérifie $D_xf(h) = J_xf \cdot h$
+%     \item Exemple $f(x) = x^\top B x : J_x f = x^\top (B + B^\top) $
+%     \item Exemple : calcul de $J_x f$ pour le passage en coordonnées polaires (\textcolor{red}{démontrer la différentiabilité de $f$ : cf classeur})
+%     \item Composition : 
+%     $$
+%     D_x(f \circ g) = D_{g(x)}f \circ D_x g
+%     \qquad \Rightarrow \qquad
+%     J_x(f \circ g) = J_{g(x)}f \cdot D_x g.
+%     $$
+%     (\textcolor{red}{donner l'exempel de simple juste après})
+%     \item Exercice : calculer le pente de la tangente à la courbe $(x = \rho \cos \theta, y = \rho \sin \theta)$ pour $\rho = \rho(\theta)$
+%   \end{enumerate}
+% }
 
 %-------------------------------------------------------------------------------
-\paragraph*{Exemple de composition.} 
-Soient $F : \Rbb^k \mapsto \Rbb$ et $g : \Rbb \mapsto \Rbb^k$ telle que $g$ est différentiable en $x^*$ et $f$ en $g(x^*)$, on a
+\exemple{
+Soient $f : \Rbb^k \mapsto \Rbb$ et $g : \Rbb \mapsto \Rbb^k$ telle que $g$ est différentiable en $x^*$ et $f$ en $g(x^*)$, on a
 $$
 J_{y^*}f = \left[\left.\frac{\partial f}{\partial y_1}\right|_{y^*} 
   \cdots 
@@ -462,15 +447,16 @@ J_{x^*}(f \circ g)
     \left[\begin{array}{c} g'_1(x^*) \\ \vdots \\ g'_k(x^*) \end{array}\right] 
   = \sum_{i=1}^k \left.\frac{\partial f}{\partial y_i}\right|_{g(x^*)} g'_i(x^*).
 $$
+}
 
 %-------------------------------------------------------------------------------
 \paragraph*{Transformation en coordonnées polaires.} 
 
-\begin{proposition*}
+\begin{proposition} \label{prop:differentiabiliteCoordonneesPolaires}
   La transformation en coordonnée polaire est partout différentiable sur $\Rbb^{*+} \times \Rbb^+$.
-\end{proposition*}
+\end{proposition}
 
-\proof
+\parSR{Démonstration de la proposition \ref{prop:differentiabiliteCoordonneesPolaires}.}
 Pour $u = [\rho \; \theta]^\top$ et $h = [r \; t ]^\top$, on a
 $$
 f(u+h) = \left[\begin{array}{c} 
@@ -500,12 +486,10 @@ Le calcul pour $(\rho+r) \sin(\theta +t)$ est analogue.
 \eproof
 
 
-\begin{exercise*}[A faire]
-  On considère une courbe exprimée en coordonnées polaires $\rho = \rho(\theta)$. Déterminer les dérivées des coordonnées cartésiennes $x$ et $y$ par rapport à $\theta$. En déduire la pente de la tangente à la courbe paramétrée $(x(\theta), y(\theta))$.
-\end{exercise*}
-
-\solution{
-  On considère les deux applications 
+\exemple{
+  Soit une courbe exprimée en coordonnées polaires $\rho = \rho(\theta)$. 
+  \begin{enumerate}
+   \item On peut déterminer les dérivées des coordonnées cartésiennes $x$ et $y$ par rapport à $\theta$ en considérant les deux applications 
   $$
   \begin{array}{rrcl}
     g : & \Rbb^+ & \mapsto & \Rbb^+ \times \Rbb^+ \\
@@ -549,63 +533,64 @@ Le calcul pour $(\rho+r) \sin(\theta +t)$ est analogue.
   x'(\theta) = \frac{\partial x}{\partial \theta} = \rho'(\theta) \cos \theta  - \rho(\theta) \sin \theta, \qquad 
   y'(\theta) = \frac{\partial y}{\partial \theta} = \rho'(\theta) \sin \theta  + \rho(\theta) \cos \theta.
   $$
-  La pente de la tangente est le rapport des dérivées partielles soit
+  \item La pente de la tangente à la courbe paramétrée $(x(\theta), y(\theta))$ s'obtient alors comme le rapport des dérivées partielles soit
   $$
   \frac{y'(\theta)}{x'(\theta)} 
   = \frac{\rho'(\theta) \sin \theta  + \rho(\theta) \cos \theta}{\rho'(\theta) \cos \theta  - \rho(\theta) \sin \theta}. 
   $$
+  \end{enumerate}
 }
 
 %-------------------------------------------------------------------------------
-\paragraph*{Cas de la spirale.}
-Pour le cas de spirale 'linéaire'
-$$
-\rho(\theta) = \rho_0 \theta
-\qquad \Rightarrow \qquad
-\rho'(\theta) = \rho_0,
-$$
-on obtient
-$$
-x'(\theta) = \rho_0 \cos \theta - \rho_0 \theta \sin \theta, \qquad 
-y'(\theta) = \rho_0 \sin \theta + \rho_0 \theta \cos \theta
-$$
-soit une pente de 
-$$
-\frac{y'(\theta)}{x'(\theta)} = \frac{\sin \theta + \theta \cos \theta}{\cos \theta - \theta \sin \theta}.
-$$
-Pour la spirale logarithmique
-$$
-\rho(\theta) = a b^\theta
-\qquad \Rightarrow \qquad
-\rho'(\theta) = a b^\theta \log b,
-$$
-on obtient
-$$
-x'(\theta) = a b^\theta \log b \cos \theta - a b^\theta \sin \theta, \qquad 
-y'(\theta) = a b^\theta \log b \sin \theta + a b^\theta \cos \theta.
-$$
-soit une pente de 
-$$
-\frac{y'(\theta)}{x'(\theta)} = \frac{\log b \sin \theta + \cos \theta}{\log b \cos \theta - \sin \theta}.
-$$
-% Pour 
-% $$
-% \rho(\theta) = \rho_0 \log(\theta)
-% \qquad \Rightarrow \qquad
-% \rho'(\theta) = \rho_0 / \theta,
-% $$
-% on obtient
-% $$
-% x'(\theta) = \frac{\rho_0 \cos \theta}{\theta} - \rho_0 \log(\theta) \sin \theta, \qquad 
-% y'(\theta) = \frac{\rho_0 \sin \theta}{\theta} + \rho_0 \log(\theta) \cos \theta.
-% $$
-
+\exemple{[Cas de la spirale.]
+  Pour le cas de spirale 'linéaire'
+  $$
+  \rho(\theta) = \rho_0 \theta
+  \qquad \Rightarrow \qquad
+  \rho'(\theta) = \rho_0,
+  $$
+  on obtient
+  $$
+  x'(\theta) = \rho_0 \cos \theta - \rho_0 \theta \sin \theta, \qquad 
+  y'(\theta) = \rho_0 \sin \theta + \rho_0 \theta \cos \theta
+  $$
+  soit une pente de 
+  $$
+  \frac{y'(\theta)}{x'(\theta)} = \frac{\sin \theta + \theta \cos \theta}{\cos \theta - \theta \sin \theta}.
+  $$
+  Pour la spirale logarithmique
+  $$
+  \rho(\theta) = a b^\theta
+  \qquad \Rightarrow \qquad
+  \rho'(\theta) = a b^\theta \log b,
+  $$
+  on obtient
+  $$
+  x'(\theta) = a b^\theta \log b \cos \theta - a b^\theta \sin \theta, \qquad 
+  y'(\theta) = a b^\theta \log b \sin \theta + a b^\theta \cos \theta.
+  $$
+  soit une pente de 
+  $$
+  \frac{y'(\theta)}{x'(\theta)} = \frac{\log b \sin \theta + \cos \theta}{\log b \cos \theta - \sin \theta}.
+  $$
+  % Pour 
+  % $$
+  % \rho(\theta) = \rho_0 \log(\theta)
+  % \qquad \Rightarrow \qquad
+  % \rho'(\theta) = \rho_0 / \theta,
+  % $$
+  % on obtient
+  % $$
+  % x'(\theta) = \frac{\rho_0 \cos \theta}{\theta} - \rho_0 \log(\theta) \sin \theta, \qquad 
+  % y'(\theta) = \frac{\rho_0 \sin \theta}{\theta} + \rho_0 \log(\theta) \cos \theta.
+  % $$
+}
 
 %-------------------------------------------------------------------------------
 \subsection{Fonction implicite}
 %-------------------------------------------------------------------------------
 
-\begin{theorem*}[Fonction implicite]
+\begin{theorem}[Fonction implicite] \label{thm:fonctionImplicite}
   Soient $f : \Rbb^2 \mapsto \Rbb$ continuement différentiable, $\Ccal$ la courbe de niveau de $f$ associées à $c$:
   $$
   \Ccal = \{x, y: f(x, y) = c\},
@@ -622,10 +607,10 @@ $$
   $$
   \phi'(x) = \frac{\partial f(x, \phi(x)) / \partial x}{\partial f(x, \phi(x)) / \partial y}.
   $$
-\end{theorem*}
+\end{theorem}
 
-\proof 
-On ne démontre pas l'existence de $\phi$ mais la détermination de sa dérivée résulte d'un calcul simple. Pour cela, on définit
+\parSR{Démonstration partielle du théorème \ref{thm:fonctionImplicite}.}
+On ne démontre pas ici l'existence de $\phi$. Par contre, la détermination de sa dérivée résulte d'un calcul simple. Pour cela, on définit
 $$
 \begin{array}{rrcl}
   g : & \Rbb & \mapsto & \Rbb^2 \\
@@ -640,6 +625,5 @@ De plus, pour $x \in U$, on a $f(x, \phi(x) = c$, donc $(f \circ g)'(x) = 0$, so
 $$
 \phi'(x) = \frac{\partial f(x, \phi(x)) / \partial x}{\partial f(x, \phi(x)) / \partial y}.
 $$
-
 \eproof
 

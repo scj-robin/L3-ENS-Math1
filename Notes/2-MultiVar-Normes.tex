@@ -1,3 +1,32 @@
+\progres{Rappel cours 2 :
+\begin{enumerate}
+  \item Fin algèbre linéaire: 
+  \begin{itemize}
+    \item Matrices définies positives ($A \succcurlyeq 0$)
+    \item Matrices positives ($A \geq 0$) / theorème de Perron-Frobenius
+  \end{itemize}
+  \item TD : 
+  \begin{itemize}
+    \item Rappel : $AB = I \Rightarrow BA = I$
+  \end{itemize}
+\end{enumerate}
+Programme cours 3 :
+\begin{enumerate}
+  \item Normes = mesure d'une approximation
+  \begin{itemize}
+    \item Normes classiques
+    \item \'Equivalence
+  \end{itemize}
+  \item Différentiabilité = possibilité d'une approximation linéaire
+  \begin{itemize}
+    \item Application linéaire tangente
+    \item Matrice jacobienne
+    \item Composition
+  \end{itemize}
+\end{enumerate}
+}
+
+
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 \section{Préliminaire : normes} \label{sec:Multivar-Norme}
@@ -14,11 +43,11 @@
   \begin{enumerate}[(i)]
     \item $\{\|x\| = 0 \Leftrightarrow x = 0]\}$ ;
     \item $\forall x \in \Ecal, \forall \lambda \in \Rbb: \; \|\lambda x\| = |\lambda| \|x\|$ ;
-    \item $\forall x, y \in \Ecal: \; \|x+y\| = \|x\| + \|y\|$ (inégalité triangulaire);
+    \item $\forall x, y \in \Ecal: \; \|x+y\| \leq \|x\| + \|y\|$ (inégalité triangulaire);
   \end{enumerate}
 \end{definition*}
 
-\remark
+\remarks
 \begin{itemize}
   \item Une norme induit une distance:
   $$
@@ -56,150 +85,160 @@
 
 \dessin{Tracer de la boule unité pour $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ dans $\Rbb^2$.}
 
-\begin{exercise*} ~ 
-  \begin{itemize}
-   \item Montrer que $\|\cdot\|_1$ et $\|\cdot\|_\infty$ sont des normes pour $\Rbb^n$.
-   \item Montrer que $\|\cdot\|_2$ satisfait les conditions ($i$) et ($ii$). (($iii$) utilise Cauchy-Schwartz)
-  \end{itemize}
-\end{exercise*}
+\remark
+On montre facilement que $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ sont des normes pour $\Rbb^n$. En effet, les conditions ($i$) et ($ii$) sont vlairement vérifiées par ces trois normes et pour ($iii$), on a :
+\begin{description}
+  \item[$\|\cdot\|_1:$] 
+  $$\|x+y\|_1 = \sum_i |x_i + y_i| \leq \sum_i |x_i| + |y_i| =  \|x\|_1 + \|y\|_1.$$
+  \item[$\|\cdot\|_\infty:$] 
+  $$\|x+y\|_\infty = \max_i |x_i + y_i| \leq \max_i |x_i| + \max_i |y_i| =  \|x\|_\infty + \|y\|_\infty.$$
+  \item[$\|\cdot\|_2:$] 
+  $$\|x+y\|^2_2 = \sum_i (x_i + y_i)^2 = \sum_i x_i^2 + \sum_i y_i^2 + 2 \sum_i x_i y_i,$$ 
+  or, par Cauchy-Schwarz, on sait que $|x^\top y| < \|x\|_2 \|y\|_2$, donc 
+  $$\|x+y\|^2_2 \leq \|x\|_2^2 + \|y\|_2^2 + 2 \|x\|_2 \|y\|_2 = (\|x\|_2 + \|y\|_2)^2.$$
+\end{description}
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 \subsection{\'Equivalence} 
 %-------------------------------------------------------------------------------
 
-\begin{theorem*}[Théorème 2.1.5]
-  Les normes définies sur une espace $\Ecal$ de dimension finie sont toutes équivalentes. Plus précisément : soit $\|\cdot\|_a$ et $\|\cdot\|_b$ deux normes pour $\Ecal$, il existe 2 constantes positives $c_1$ et $c_2$, telles que, pour tout $x \in \Ecal$ :
+\begin{theorem} \label{thm:equivalenceNormes}
+  Les normes définies sur un espace $\Ecal$ de dimension finie sont toutes équivalentes. Plus précisément : soit $\|\cdot\|_a$ et $\|\cdot\|_b$ deux normes pour $\Ecal$, il existe 2 constantes positives $c_1$ et $c_2$, telles que, pour tout $x \in \Ecal$ :
   $$
   \|x\|_a \leq c_1 \|x\|_b, \qquad
   \|x\|_b \leq c_2 \|x\|_a.
   $$
-\end{theorem*}
+\end{theorem}
 
-\proof Non démontré \eproof
+Ce résultat n'est pas démontré ici. 
 
 \remark
-\begin{itemize}
-  \item Ce théorème fournit un encadrement de chaque norme par l'autre : 
-  $$
-  \forall x \in \Ecal: \qquad
-  \frac1c_2 \|x\|_b \leq \|x\|_a \leq c_1 \|x\|_b, \qquad
-  \frac1c_1 \|x\|_a \leq \|x\|_b \leq c_2 \|x\|_a.
-  $$
-  \item Ce théorème assure aussi l'équivalence des convergences : si la suite $(u_n)_{n \geq 0}$ converge vers $\ell$ au sens de la norme $\|\cdot\|_a$ :
-  $$
-  \lim_{n \rightarrow \infty} \|u_n - \ell\|_a = 0
-  $$
-  alors elle converge aussi au sens de la norme $\|\cdot\|_b$ puisque
-  $$
-  0 = \frac1{c_1} \lim_{n \rightarrow \infty} \|u_n - \ell\|_a
-  \leq \lim_{n \rightarrow \infty} \|u_n - \ell\|_b \leq
-  c_2 \lim_{n \rightarrow \infty} \|u_n - \ell\|_a = 0.
-  $$
-  \item On dit qu'une suite $(u(n))_{n \geq 0}$ d'élément de $\Rbb^k$ converge coordonnée par coordonnée vers $\ell \in \Rbb^k$ si, pour chaque $1 \leq i \leq k$:
+Le théorème \ref{thm:equivalenceNormes} fournit un encadrement de chaque norme par l'autre : 
+$$
+\forall x \in \Ecal: \qquad
+\frac1c_2 \|x\|_b \leq \|x\|_a \leq c_1 \|x\|_b, \qquad
+\frac1c_1 \|x\|_a \leq \|x\|_b \leq c_2 \|x\|_a.
+$$
+
+\exemple{
+  \begin{align*}
+    \|x\|_2 & = \sqrt{\sum_i x_i^2}  \leq \sqrt{n \max_i x_i^2} = \sqrt{n} \max_i |x_i| = \sqrt{n} \|x\|_\infty, \\
+    \|x\|_\infty & = \max_i |x_i| = \sqrt{\max_i x_i^2} \leq \sqrt{\sum_i x_i^2} = \|x\|_2.
+  \end{align*}
+}
+
+\remark
+Le théorème \ref{thm:equivalenceNormes} assure aussi l'équivalence des convergences : si la suite $(u_n)_{n \geq 0}$ converge vers $\ell$ au sens de la norme $\|\cdot\|_a$ :
+$$
+\lim_{n \rightarrow \infty} \|u_n - \ell\|_a = 0
+$$
+alors elle converge aussi au sens de la norme $\|\cdot\|_b$ puisque
+$$
+0 = \frac1{c_1} \lim_{n \rightarrow \infty} \|u_n - \ell\|_a
+\leq \lim_{n \rightarrow \infty} \|u_n - \ell\|_b \leq
+c_2 \lim_{n \rightarrow \infty} \|u_n - \ell\|_a = 0.
+$$
+
+\begin{definition}[Convergence coordonnée par coordonnée.]
+  Une suite $(u(n))_{n \geq 0}$ d'élément de $\Rbb^k$ converge coordonnée par coordonnée vers $\ell \in \Rbb^k$ si, pour chaque $1 \leq i \leq k$:
   $$
   \lim_{n \rightarrow \infty} u_i(n) = \ell_i.
   $$
-\end{itemize}
+\end{definition}
 
-\paragraph*{Exemple.}
-\begin{align*}
-  \|x\|_2 & = \sqrt{\sum_i x_i^2}  \leq \sqrt{n \max_i x_i^2} = \sqrt{n} \max_i |x_i| = \sqrt{n} \|x\|_\infty, \\
-  \|x\|_\infty & = \max_i |x_i| = \sqrt{\max_i x_i^2} \leq \sqrt{\sum_i x_i^2} = \|x\|_2.
-\end{align*}
+\begin{proposition} \label{prop:convergenceParCoordonnee}
+  La convergence coordonnée par coordonnée est équivalente à la convergence de la suite $(u(n))_{n \geq 0}$ vers $\ell$ au sens d'une norme $\|\cdot\|$ quelconque.
+\end{proposition}
 
-\begin{lemma*}[Inversion de la limite et du maximum]
+\begin{lemma}[Inversion de la limite et du maximum] \label{lem:inversionLimiteMaximum}
   Soient $k$ suites réelles $v_1, \dots v_k$, on a
   $$
   \lim_{n \rightarrow \infty} \max_{i=1 \dots k} v_i(n) = 0
   \qquad \Leftrightarrow \qquad
   \max_{i=1 \dots k} \lim_{n \rightarrow \infty} v_i(n) = 0.
   $$
-\end{lemma*}
+\end{lemma}
 
-\proof
+\parSR{Démonstration du lemme \ref{lem:inversionLimiteMaximum}.}
 \begin{description}
   \item[$\Rightarrow$:] $\lim_{n \rightarrow \infty} \max_{i=1 \dots k} v_i(n) = 0$
   \begin{align*}
-    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \max_i v_i(n) < \epsilon\} \\
-    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \forall i, v_i(n) < \epsilon\} \\
-    \Rightarrow \quad & \{\forall i, \forall \epsilon, \exists N_{\epsilon, i}(\equiv N_\epsilon): n > N_{\epsilon, i} \Rightarrow v_i(n) < \epsilon\} \\
+    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow |\max_i v_i(n)| = \max_i |v_i(n)| < \epsilon\} \\
+    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \forall i, |v_i(n)| < \epsilon\} \\
+    \Rightarrow \quad & \{\forall i, \forall \epsilon, \exists N_{\epsilon, i}(\equiv N_\epsilon): n > N_{\epsilon, i} \Rightarrow |v_i(n)| < \epsilon\} \\
     \Rightarrow \quad & \forall i, \lim_{n \rightarrow \infty} v_i(n) = 0 \\
     \Rightarrow \quad & \max_i \lim_{n \rightarrow \infty} v_i(n) = 0.
   \end{align*}
   \item[$\Leftarrow$:] $\max_{i=1 \dots k} \lim_{n \rightarrow \infty} v_i(n) = 0$
   \begin{align*}
     \Rightarrow \quad & \forall i, \lim_{n \rightarrow \infty} v_i(n) = 0 \\
-    \Rightarrow \quad & \{\forall i, \forall \epsilon, \exists N_{\epsilon, i}: n > N_{\epsilon, i} \Rightarrow v_i(n) < \epsilon\}\\
-    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon (= \max_i N_{\epsilon, i}): \forall i, n > N_\epsilon \Rightarrow v_i(n) < \epsilon\}\\
-    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \max_i v_i(n) < \epsilon\}\\
+    \Rightarrow \quad & \{\forall i, \forall \epsilon, \exists N_{\epsilon, i}: n > N_{\epsilon, i} \Rightarrow |v_i(n)| < \epsilon\}\\
+    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon (= \max_i N_{\epsilon, i}): \forall i, n > N_\epsilon \Rightarrow |v_i(n)| < \epsilon\}\\
+    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \max_i |v_i(n)| < \epsilon\}\\
     \Rightarrow \quad & \lim_{n \rightarrow \infty} \max_i v_i(n) = 0
   \end{align*}
 \end{description}
 \eproof
 
-\begin{exercise*}
-  Montrer que la convergence coordonnée par coordonnée est équivalente à la convergence de la suite $(u(n))_{n \geq 0}$ vers $\ell$ au sens d'une norme $\|\cdot\|$ quelconque.
-\end{exercise*}
-
-\solution{
-  Toutes les normes étant équivalentes dans $\Rbb^k$, nous pouvons démontrer chaque implication avec la norme de notre choix.
-  \begin{description}
-    \item[$\Rightarrow$:]
-      \begin{align*}
-  %       \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} u_i(n) = \ell_i
-  %       & \qquad \Rightarrow \qquad & & 
-        \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 
-        & \Rightarrow & & \sum_{i=1}^k \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \\
-        & & \Rightarrow & & \lim_{n \rightarrow \infty} \sum_{i=1}^k |u_i(n) - \ell_i| & = 0 \\
-        & & \Rightarrow & &  \lim_{n \rightarrow \infty} \|u - \ell\|_1 & = 0. 
-      \end{align*}
-    \item[$\Leftarrow$:]
+\parSR{Démonstration de la proposition \ref{prop:convergenceParCoordonnee}.}
+Toutes les normes étant équivalentes dans $\Rbb^k$, nous pouvons démontrer chaque implication avec la norme de notre choix.
+\begin{description}
+  \item[$\Rightarrow$:]
     \begin{align*}
-      \lim_{n \rightarrow \infty} \|u - \ell\|_\infty & = 0
-      & \Rightarrow & & \lim_{n \rightarrow \infty} \max_{i=1 \dots k} |u_i(n) - \ell_i| & = 0 \\
-      & & \Rightarrow & & \max_{i=1 \dots k} \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \qquad \text{(d'après le lemme)}\\
-      & & \Rightarrow & & \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0.
+%       \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} u_i(n) = \ell_i
+%       & \qquad \Rightarrow \qquad & & 
+      \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 
+      & \Rightarrow & & \sum_{i=1}^k \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \\
+      & & \Rightarrow & & \lim_{n \rightarrow \infty} \sum_{i=1}^k |u_i(n) - \ell_i| & = 0 \\
+      & & \Rightarrow & &  \lim_{n \rightarrow \infty} \|u - \ell\|_1 & = 0. 
     \end{align*}
-  \end{description}
-}
+  \item[$\Leftarrow$:]
+  \begin{align*}
+    \lim_{n \rightarrow \infty} \|u - \ell\|_\infty & = 0
+    & \Rightarrow & & \lim_{n \rightarrow \infty} \max_{i=1 \dots k} |u_i(n) - \ell_i| & = 0 \\
+    & & \Rightarrow & & \max_{i=1 \dots k} \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \qquad \text{(d'après le lemme)}\\
+    & & \Rightarrow & & \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0.
+  \end{align*}
+\end{description} 
+\eproof
 
-\begin{exercise}
+\begin{proposition} \label{prop:normeProduitMatriceVecteur}
   Soit $A \in \Mcal_{n, k}$, $x \in \Rbb^k$ et $y = Ax \in \Rbb^n$, montrer que 
   $$
   \|y\|_\infty \leq \|A\|_\infty \|x\|_1, \qquad
   \|y\|_1 \leq \|A\|_1 \|x\|_\infty.
   $$
-\end{exercise}
+\end{proposition}
 
-\solution{
-  On a pour tout $1 \leq j \leq n$ :
+\parSR{Démonstration de la proposition \ref{prop:normeProduitMatriceVecteur}.}
+On a pour tout $1 \leq j \leq n$ :
+$$
+|y_j| 
+\; = \; \left|\sum_{i=1}^k a_{ij} x_i \right| 
+\; \leq \; \sum_{i=1}^k |a_{ij} x_i| 
+\; = \; \sum_{i=1}^k |a_{ij}| \; |x_i|
+$$
+On a donc
+\begin{itemize}
+  \item d'une part
   $$
-  |y_j| 
-  \; = \; \left|\sum_{i=1}^k a_{ij} x_i \right| 
-  \; \leq \; \sum_{i=1}^k |a_{ij} x_i| 
-  \; \leq \; \sum_{i=1}^k |a_{ij}| \; |x_i|
+  \forall 1 \leq j \leq n: \qquad |y_j| 
+  \; \leq \; \max_{i=1 \dots k} |a_{ij}| \times \sum_{i=1}^k |x_i| 
+  \; \leq \; \|A\|_\infty \; \|x\|_1
   $$
-  On a donc
-  \begin{itemize}
-    \item d'une part
-    $$
-    \forall 1 \leq j \leq n: \qquad |y_j| 
-    \; \leq \; \max_{i=1 \dots k} |a_{ij}| \times \sum_{i=1}^k |x_i| 
-    \; \leq \; \|A\|_\infty \; \|x\|_1
-    $$
-    donc $\|y\|_\infty \leq \|A\|_\infty \|x\|_1$,
-    \item et d'autre part
-    $$
-    \forall 1 \leq j \leq n: |y_j| 
-    \leq \max_{i=1 \dots k} |x_i| \times \sum_{i=1}^k |a_{ij}| = \|x\|_\infty \sum_{i=1}^k |a_{ij}| 
-    $$
-    qui implique que
-    $$
-    \sum_{j=1}^n |y_j| 
-    \leq \|x\|_\infty \sum_{i=1}^k \sum_{j=1}^n |a_{ij}| = \|x\|_\infty \|A\|_1,
-    $$
-    c'est-à-dire $\|y\|_1 \leq \|A\|_1 \|x\|_\infty$.
-  \end{itemize}
-}
+  donc $\|y\|_\infty \leq \|A\|_\infty \|x\|_1$,
+  \item et d'autre part
+  $$
+  \forall 1 \leq j \leq n: |y_j| 
+  \leq \max_{i=1 \dots k} |x_i| \times \sum_{i=1}^k |a_{ij}| = \|x\|_\infty \sum_{i=1}^k |a_{ij}| 
+  $$
+  qui implique que
+  $$
+  \sum_{j=1}^n |y_j| 
+  \leq \|x\|_\infty \sum_{i=1}^k \sum_{j=1}^n |a_{ij}| = \|x\|_\infty \|A\|_1,
+  $$
+  c'est-à-dire $\|y\|_1 \leq \|A\|_1 \|x\|_\infty$.
+\end{itemize}
+\eproof
 
