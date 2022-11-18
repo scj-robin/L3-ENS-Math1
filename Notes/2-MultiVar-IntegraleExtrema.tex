@@ -170,34 +170,99 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
   $\nabla^2_{x^*}f$ est notamment symétrique, ce qui implique qu'elle est diagonalisable.
 \end{definition*}
 
-\begin{proposition*}
+\begin{proposition} \label{prop:taylorOrdre2}
   Si $f$ est deux fois différentiable en $x$, alors
   $$
   f(x+h) = f(x) + \nabla_x f^\top \cdot h + \frac12 h^\top \cdot \nabla^2_x f \cdot h + o(\|h\|^2).
   $$
-\end{proposition*}
+\end{proposition}
 
-\proof Non démontrée. \eproof
+\parSR{Démonstration de la proposition \ref{prop:taylorOrdre2}.}
+  Pour alléger les notations, on note ici
+  $$
+  f'_i(x^*) = \left. \frac{\partial f}{\partial x_i}\right|_{x^*}, \qquad 
+  f''_{ij}(x^*) = \left. \frac{\partial^2 f}{\partial x_i \partial x_j}\right|_{x^*}.
+  $$
+  La démonstration repose sur le développement de Taylor en 0 d'une fonction $\phi$ de $\Rbb$ dans $\Rbb$ deux fois différentiable qui vaut
+  \begin{equation} \label{eq:taylor2phi}
+  \phi(t) = \phi(0) + t \phi'(0) + \frac12 \phi''(0) + o(t^2).
+  \end{equation}
+  \begin{enumerate}
+    \item On pose tout d'abord $h = t u$, où $u$ est un vecteur fixe et on définit la fonction 
+    $$
+      \begin{array}{rrcl}
+        g : & \Rbb & \mapsto & \Rbb^n \\
+        & t & \rightarrow & x + t u
+      \end{array}
+    $$
+    qui vérifie
+    $$
+    J_t g = u.
+    $$
+    En posant $\phi = f \circ g$, on obtient ainsi
+    $$
+    f(x + h) = \phi(t).
+    $$
+    \item Il nous faut maintenant déterminer $\phi'(0)$ et $\phi''(0)$.
+    \begin{description}
+      \item[$\phi'(t)$:] on a
+        $$
+        \phi'(t) = J_t \phi 
+        = J_{g(t)} f \cdot J_t g
+        = \nabla_{g(t)}f^\top u
+        = \sum_{i=1}^n u_i f'_i(g(t))
+        $$
+      \item[$\phi''(t)$:] on a
+      $$
+      \phi''(t) 
+      = \frac{\partial}{\partial t} \phi(t)
+      = \sum_{i=1}^n u_i \frac{\partial}{\partial t} f'_i(g(t))
+      $$
+      puisque $u_i$ ne dépend pas de $t$. On remarque alors que
+      $$
+      J_x f_i' = [f''_{i1}(x) \; \dots \; f''_{in}(x)]
+      $$
+      donc
+      $$
+      \frac{\partial}{\partial t} f'_i(g(t)) 
+      = J_{g(t)} f_i' \cdot J_t g
+      = J_{g(t)} f_i' \cdot u
+      = \sum_{j=1}^n u_j f''_{ij}(g(t)),
+      $$
+      soit
+      $$
+      \phi''(t) 
+      = \sum_{i=1}^n u_i \sum_{j=1}^n u_j f''_{ij}(g(t))
+      = u^\top \nabla_{g(t)} u.
+      $$
+    \end{description}
+    En reportant dans l'équation \eqref{eq:taylor2phi}, on obtient
+    \begin{align*}
+      \phi(t) 
+    %       & = \phi(0) + t \phi'(0) + \frac12 t^2 \phi''(0) + o(t^2) \\
+      & = \phi(0) + t \nabla_{g(0)}f^\top u + \frac12 t^2 u^\top \nabla_{g(0)} u + o(t^2) \\
+      & = \phi(0) + \nabla_{g(0)}f^\top h + \frac12 h^\top \nabla_{g(0)} h + o(t^2)
+    \end{align*}
+    car $h = tu$, soit, en utilisant $\phi(t) = f(x)$, $\phi(0) = f(x)$ et $g(0) = x$,
+    $$
+    f(x+h) 
+    = f(x) + \nabla_{x}f^\top h + \frac12 h^\top \nabla_{x} h + o(t^2).
+    $$
+    \item Il reste à vérifier que $o(t^2) = o(\|h\|^2)$, ce qui est vrai car $\|h\|^2 = t^2 \|u\|$ et $\|u\|$ est constante.
+  \end{enumerate}
+\eproof
 
 \remark
-\begin{itemize}
- \item $f$ est deux fois différentiable en $x$ signifie que $f$ est différentiable en $x$ et que l'application $g$ de $\Rbb^k$ dans $\Rbb^k$ définie par $g(x) = \nabla_x f$ est elle-même différentiable en $x$.
- \item Ce résultat étend la formule de Taylor à l'ordre 2 pour une fonction $f : \Rbb \mapsto \Rbb$ : 
- $$
- g(u+t) = g(u) + g'(y) t + \frac12 g''(u) t^2 + o(t^2).
- $$
- Une preuve de la proposition précédente peut être établie en appliquant la formule de Taylor pour une fonction de $\Rbb$ dans $\Rbb$ à la fonction $g_{x, h}(t) = f(x + th)$.
-\end{itemize}
+$f$ est deux fois différentiable en $x$ signifie que $f$ est différentiable en $x$ et que l'application $g$ de $\Rbb^k$ dans $\Rbb^k$ définie par $g(x) = \nabla_x f$ est elle-même différentiable en $x$.
 
-
-\begin{definition*}[Extremum local]
+\begin{definition}[Extremum local]
   Si $f$ est deux fois différentiable en $x$ et que son gradient y est nul : $\nabla_xf = 0$, alors
   \begin{itemize}
    \item $x$ est {\em maximum local} si $\nabla^2_x f$ est définie négative et
    \item $x$ est {\em minimum local} si $\nabla^2_x f$ est définie positive.
   \end{itemize}
   Dans les deux cas, $x$ est un {\em optimum relatif}.
-\end{definition*}
+\end{definition}
 
 \remark
 Puisque le gradient $\nabla_x f$ est nul, on a au voisinage de $x$ :
@@ -230,15 +295,31 @@ Un maximum (resp. minimum) se caractérise par le fait que la fonction $f$ dimin
 %-------------------------------------------------------------------------------
 \paragraph*{Caractérisation des optimums.}
 Toutes les valeurs propres d'une matrice définie positive ou négative sont de même signe. 
-En dimension deux, cela signifie que leur produit est positif.
+En dimension deux, cela signifie que leur produit (qui est égal au déterminant) est positif. Si le produit est positif, leur signe commun est donné par leur somme (qui est égale à la trace).
+
+$a = (x^*, y^*)$ pour lequel $\nabla_a f = 0$ (i.e. $p = q = 0$) est donc
 \begin{itemize}
-  \item $a = (x^*, y^*)$ est donc un optimum relatif de $f$ si le déterminant de la hessienne de $f$ en $a$ est positif : 
+  \item un optimum relatif de $f$ si 
   $$
-  |\nabla^2_a f| = rt - s^2 > 0
-  \qquad \Rightarrow \qquad
-  \text{$a$ est un optimum local} .
+  |\nabla^2_a f| = rt - s^2 > 0 ;
   $$
-  \item Le cas $|\nabla^2_a f| = rt - s^2 < 0$ correspond au cas où les deux valeurs propres sont de signe opposé, c'est-à-dire que $a$ est un maximum dans une direction et un minimum dans une autre : on parle alors de point-selle.
+  \item un maximum relatif de $f$ si 
+  $$
+  |\nabla^2_a f| = rt - s^2 > 0 
+  \qquad \text{et} \qquad
+  \tr(\nabla^2_a f) = r + t < 0 ;
+  $$
+  \item un minimum relatif de $f$ si 
+  $$
+  |\nabla^2_a f| = rt - s^2 > 0 
+  \qquad \text{et} \qquad
+  \tr(\nabla^2_a f) = r + t > 0 ;
+  $$
+  \item un point selle de $f$ si 
+  $$
+  |\nabla^2_a f| = rt - s^2 < 0
+  $$
+  ($a$ est un maximum dans une direction et un minimum dans une autre).
 \end{itemize}
 
 % \progres{

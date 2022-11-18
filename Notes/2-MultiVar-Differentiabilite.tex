@@ -255,6 +255,23 @@ La preuve consiste à montrer que la différentiabilité de $f$ implique celle d
 On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice $A_x$ sont ceux de la matrice jacobienne $J_xf$.
 \eproof
 
+\exemple{[Matrice jacobienne de l'identité]
+  La fonction identité de $\Rbb^n$ :
+  $$
+  \begin{array}{rrcl}
+    f: & \Rbb^n & \mapsto & \Rbb^n \\
+    & x & \rightarrow & f(x) = x
+  \end{array}
+  $$
+  a pour matrice jacobienne la matrice identité $J_xf = I_n$ pour tout $x$. En effet, on a $f_j(x) = x_j$, soit
+  $$
+  \frac{\partial f_j}{\partial x_i} = \left\{\begin{array}{ll}
+                                              1 & \text{si $i=j$}, \\
+                                              0 & \text{sinon}.
+                                             \end{array}\right.
+  $$
+}
+
 \remarks
 \begin{enumerate}
   \item Cette propriété justifie l'intérêt de la matrice jacobienne pour approcher les variations de l'application $f$ autour du point $x$ par une application linéaire : 
@@ -614,9 +631,9 @@ $$
 %-------------------------------------------------------------------------------
 
 \begin{theorem}[Fonction implicite] \label{thm:fonctionImplicite}
-  Soient $f : \Rbb^2 \mapsto \Rbb$ continuement différentiable, $\Ccal$ la courbe de niveau de $f$ associée à $c$:
+  Soient $f : \Rbb^2 \mapsto \Rbb$ continuement différentiable, $\Ccal_z$ la courbe de niveau $z$ de $f$ :
   $$
-  \Ccal = \{x, y: f(x, y) = c\},
+  \Ccal_z = \{x, y: f(x, y) = z\},
   $$
   et $(x_0, y_0) \in \Rbb^2$ tels que 
   $$
@@ -628,7 +645,7 @@ $$
   $$
   De plus
   $$
-  \phi'(x) = \frac{\partial f(x, \phi(x)) / \partial x}{\partial f(x, \phi(x)) / \partial y}.
+  \phi'(x_0) = - \left( \left. \frac{\partial f}{\partial x}\right|_{x_0, \phi(x_0)} \right) \left/ \left( \left. \frac{\partial f}{\partial y}\right|_{x_0, \phi(x_0)} \right. \right).
   $$
 \end{theorem}
 
@@ -637,16 +654,20 @@ On ne démontre pas ici l'existence de $\phi$. Par contre, la détermination de 
 $$
 \begin{array}{rrcl}
   g : & \Rbb & \mapsto & \Rbb^2 \\
-  & x & \rightarrow & \left[\begin{array}{c} x \\ \phi(x) \end{array}\right].
+  & x & \rightarrow & \left[\begin{array}{c} x \\ \phi(x) \end{array}\right]
 \end{array}
 $$
-On a donc $f \circ g (x) = f(x, \phi(x))$ et donc
+pour laquelle on a
 $$
-(f \circ g)'(x) = \frac{\partial}{\partial x} f\left(x, \phi(x)\right) + \phi'(x) \frac{\partial}{\partial y} f(x, \phi(x)).
+J_x g = \left[\begin{array}{c} 1 \\ \phi'(x) \end{array}\right]
 $$
-De plus, pour $x \in U$, on a $f(x, \phi(x)) = c$, donc $(f \circ g)'(x) = 0$, soit
+On a alors $f(x, \phi(x))= f \circ g (x)$ et donc
 $$
-\phi'(x) = \frac{\partial f(x, \phi(x)) / \partial x}{\partial f(x, \phi(x)) / \partial y}.
+(f \circ g)'(x_0) = \left( \left. \frac{\partial f}{\partial x}\right|_{x_0, \phi(x_0)} \right) + \phi'(x) \left( \left. \frac{\partial f}{\partial y}\right|_{x_0, \phi(x_0)} \right).
+$$
+Or, le long de la courbe de niveau $\Ccal_z$, on a $f(x, \phi(x)) \equiv z$, soit $(f \circ g)'(x) = 0$. On a donc
+$$
+\phi'(x_0) = - \left( \left. \frac{\partial f}{\partial x}\right|_{x_0, \phi(x_0)} \right) \left/ \left( \left. \frac{\partial f}{\partial y}\right|_{x_0, \phi(x_0)} \right. \right)..
 $$
 \eproof
 
