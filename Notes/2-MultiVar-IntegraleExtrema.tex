@@ -53,7 +53,7 @@ Ce théorème assure le $C^1$-difféomorphisme sans exiger la différentiabilit�
 \begin{definition*}[Jacobien]
   Pour $g : \Rbb^n \mapsto \Rbb^n$, le jacobien de $f$ au point $x$ est le déterminant de sa matrice jacobienne au point $x$ : 
   $$
-  \det(J_x f).
+  |J_x f|.
   $$
 \end{definition*}
 
@@ -63,7 +63,7 @@ Le jacobien d'un difféomorphisme ne peut pas être nul, puisqu'un difféomorphi
 \begin{theorem*}[Changement de variable]
   Soit $\Xcal$ et $\Ycal$ deux ouverts de $\Rbb^n$ et $g : \Xcal \mapsto \Ycal = g(\Xcal)$ un $C^1$-difféomorphisme et $f : \Ycal \mapsto \Rbb^+$, on a 
   $$
-  \int_\Ycal f(y) \; \d y = \int_\Xcal f \circ g(x) |\det(J_x g)| \; \d x.
+  \int_\Ycal f(y) \; \d y = \int_\Xcal f \circ g(x) |J_x g| \; \d x.
   $$
 \end{theorem*}
 
@@ -90,19 +90,22 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
 \end{itemize}
 \eproof
 
-\begin{exercise*}
-  On veut calculer 
+\exemple{
+  Pour calculer 
   $$
-  I = \int_\Rbb e^{-x^2} \; \d x.
+  I = \int_\Rbb e^{-x^2} \; \d x,
   $$
-  \begin{itemize}
-    \item En utilisant un passage en coordonnées polaires, calculer
-    $$
-    J = \int_\Rbb \int_\Rbb e^{-(x^2+y^2)} \; \d x \; \d y.
-    $$
-    \item Montrer que, de plus, $J = I^2$ et conclure.
-  \end{itemize}
-\end{exercise*}
+  on peut passer en coordonnées polaires pour calculer
+  \begin{align*}
+  J 
+  & = \int_\Rbb \int_\Rbb e^{-(x^2+y^2)} \; \d x \; \d y
+  = \int_{\Rbb^+} \int_0^{2 \pi} e^{-\rho^2} \rho \; \d \rho \; \d \theta \\
+  & = \int_{\Rbb^+} e^{-\rho^2} \rho \; \d \rho \times \int_0^{2 \pi} \d \theta 
+  = \left[-\frac12 e^{-\rho^2}\right]_0^\infty \times 2 \pi \\
+  & = \pi
+  \end{align*}
+  puis remarquer que $J = I^2$ pour conclure que $I = \sqrt{\pi}$.
+}
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
@@ -228,31 +231,33 @@ Un maximum (resp. minimum) se caractérise par le fait que la fonction $f$ dimin
 \paragraph*{Caractérisation des optimums.}
 Toutes les valeurs propres d'une matrice définie positive ou négative sont de même signe. 
 En dimension deux, cela signifie que leur produit est positif.
-$a = (x^*, y^*)$ est donc un optimum relatif de $f$ si le déterminant de la hessienne de $f$ en $a$ est positif : 
-$$
-|\nabla^2_a f| = rt - s^2 > 0
-\qquad \Rightarrow \qquad
-\text{$a$ est un optimum local} .
-$$
-Le cas $|\nabla^2_a f| = rt - s^2 > 0$ correspond au cas où les deux valeurs propres sont de signe opposé, c'est-à-dire que $a$ est un maximum dans une direction et un minimum dans une autre : on parle alors de point selle.
+\begin{itemize}
+  \item $a = (x^*, y^*)$ est donc un optimum relatif de $f$ si le déterminant de la hessienne de $f$ en $a$ est positif : 
+  $$
+  |\nabla^2_a f| = rt - s^2 > 0
+  \qquad \Rightarrow \qquad
+  \text{$a$ est un optimum local} .
+  $$
+  \item Le cas $|\nabla^2_a f| = rt - s^2 < 0$ correspond au cas où les deux valeurs propres sont de signe opposé, c'est-à-dire que $a$ est un maximum dans une direction et un minimum dans une autre : on parle alors de point-selle.
+\end{itemize}
 
-\progres{
-  Début Cours 7. Rappels :
-  \begin{enumerate}[\itemdot]
-    \item Changement de variables
-    $$
-    \int_{\Rbb^n} f(y) \; \d y = \int_{\Rbb^n} f \circ g (x) \; |J_x g| \; \d x
-    $$
-    $|J_x g| =$ jacobien de $g$ au point $x$.
-    \item Extrema
-    $$
-    f(x+h) = f(x) + (\nabla_x f)^\top h + \frac12 h^\top (\nabla^2_x f) h + o(\|h\|^2).
-    $$
-    $x =$ extremum local si $\nabla_x f = 0$, maximum si $\nabla^2_x f \preccurlyeq 0$, minimum si $\nabla^2_x f \succcurlyeq 0$.
-    \item Cas particulier $\Rbb^n = \Rbb^2$ : caractérisation des extrémum à partir du déterminant et de la trace de $\nabla^2_x f$.
-    \item Exercice maison.
-  \end{enumerate}
-}
+% \progres{
+%   Début Cours 7. Rappels :
+%   \begin{enumerate}[\itemdot]
+%     \item Changement de variables
+%     $$
+%     \int_{\Rbb^n} f(y) \; \d y = \int_{\Rbb^n} f \circ g (x) \; |J_x g| \; \d x
+%     $$
+%     $|J_x g| =$ jacobien de $g$ au point $x$.
+%     \item Extrema
+%     $$
+%     f(x+h) = f(x) + (\nabla_x f)^\top h + \frac12 h^\top (\nabla^2_x f) h + o(\|h\|^2).
+%     $$
+%     $x =$ extremum local si $\nabla_x f = 0$, maximum si $\nabla^2_x f \preccurlyeq 0$, minimum si $\nabla^2_x f \succcurlyeq 0$.
+%     \item Cas particulier $\Rbb^n = \Rbb^2$ : caractérisation des extrémum à partir du déterminant et de la trace de $\nabla^2_x f$.
+%     \item Exercice maison.
+%   \end{enumerate}
+% }
 
 \begin{exercise*}[A faire à la maison]
   Déterminer les points stationnaires de la fonction 

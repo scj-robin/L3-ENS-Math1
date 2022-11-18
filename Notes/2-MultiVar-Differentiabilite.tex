@@ -90,13 +90,13 @@ $$
 = \lim_{h\rightarrow 0, h \neq 0} \frac{L_2(h) - L_1(h)}{\|h\|} 
 = 0.
 $$
-Il nous reste à montrer que si l'application {\em linéaire} $M(h) = L_2(h) - L_1(h)$ satisfait
+On montre alors que si l'application {\em linéaire} $M(h) = L_2(h) - L_1(h)$ satisfait
 $$
 \lim_{h \rightarrow 0, h \neq 0} \frac{M(h)}{\|h\|} 
 = 0
 $$
 alors elle est nulle partout. \\
-Pour cela, on considère un vecteur $y$ non nul quelconque de $\Rbb^n$. La propriété limite implique que, en posant $h = uy$, 
+Pour cela, on considère un vecteur $y$ non nul quelconque de $\Rbb^n$. La propriété limite implique que, en posant $h = uy$, $u \in \Rbb$, 
 $$
 \lim_{u \downarrow 0, u \neq 0} \frac{M(u y)}{\|u y\|} = 0,
 $$  
@@ -166,60 +166,39 @@ $$
 Soit 
 $$
 \begin{array}{rrcl}
-  f_k : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-  & X & \rightarrow & X^k
+  f : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+  & X & \rightarrow & X^2
 \end{array}
 $$
-On cherche l'application linéaire tangente $L(H)$ pour $k = 2, 3$.
-\begin{description}
-  \item[$k = 2$:] On a
-  $$
-  f_2(X+H) = X^2 + XH + HX + H^2.
-  $$
-  or
-  $$
-  \|H^2\|_\infty 
-  = \max_{i, k} \left| [H^2]_{jk}\right|
-  = \max_{i, k} \left| \sum_j h_{ij} h_{jk} \right|
-  \leq \max_{i, k} \sum_j |h_{ij}| \; | h_{jk}|
-  \leq n \max_{i, j} |h_{ij}|
-  \leq n (\|H\|_\infty)^2
-  $$
-  donc
-  $$
-  H^2 = o(\|H\|).
-  $$
-  On a donc
-  $$
-  f_2(X+H) - f_2(X) = XH + HX + o(\|H\|)
-  $$
-  où $XH + HX$ est linéaire en $H$. L'application linéaire tangente est donc
-  $$
-  \begin{array}{rrcl}
-    L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-    & H & \rightarrow & XH + HX.
-  \end{array}
-  $$  
-  \item[$k = 3$:] On a
-  $$
-  f_3(X+H) = X^3 + X^2H + XHX + HX^2 + H^2X + HXH + XH^2 + H^3.
-  $$
-  On montre de même que 
-  $$
-  H^2X = o(\|H\|), \qquad HXH  = o(\|H\|), \qquad XH^2  = o(\|H\|), \qquad H^3 = o(\|H\|).
-  $$
-  On a donc 
-  $$
-  f_3(X+H) - f_3(X) = X^2H + XHX + HX^2 + o(\|H\|)
-  $$
-  où $X^2H + XHX + HX^2$ est linéaire en $H$. L'application linéaire tangente est donc
-  $$
-  \begin{array}{rrcl}
-    L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-    & H & \rightarrow & X^2H + XHX + HX^2.
-  \end{array}
-  $$
-\end{description}
+On cherche l'application linéaire tangente $L(H)$ .
+On a
+$$
+f(X+H) = X^2 + XH + HX + H^2.
+$$
+or
+$$
+\|H^2\|_\infty 
+= \max_{i, k} \left| [H^2]_{jk}\right|
+= \max_{i, k} \left| \sum_j h_{ij} h_{jk} \right|
+\leq \max_{i, k} \sum_j |h_{ij}| \; | h_{jk}|
+\leq n \max_{i, j} |h_{ij}|
+\leq n (\|H\|_\infty)^2
+$$
+donc
+$$
+H^2 = o(\|H\|).
+$$
+On a donc
+$$
+f(X+H) - f(X) = XH + HX + o(\|H\|)
+$$
+où $XH + HX$ est linéaire en $H$. L'application linéaire tangente est donc
+$$
+\begin{array}{rrcl}
+  L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+  & H & \rightarrow & XH + HX.
+\end{array}
+$$  
 }
 
 %-------------------------------------------------------------------------------
@@ -260,15 +239,15 @@ La preuve consiste à montrer que la différentiabilité de $f$ implique celle d
   $$
   \lim_{u\rightarrow 0, u \neq 0} \frac{f(x+u) - f(x)}{\|u\|} = D_xf(u).
   $$
-  En prenant un vecteur $u = h_j e_j$ où $h_j \in \Rbb$, il vient
+  En prenant $u = h_j e_j$ où $h_j \in \Rbb$, pour $1 \leq j \leq n$, il vient
   $$
-  \lim_{h_j\rightarrow 0, h_j \neq 0} \frac{f(x+h e_j) - f(x)}{|h_j|} = D_xf(h_j e_j)  =  D_xf(e_j) \; h_j \in \Rbb^k
+  \lim_{h_j\rightarrow 0, h_j \neq 0} \frac{f(x+h_j e_j) - f(x)}{|h_j|} = D_xf(h_j e_j)  =  D_xf(e_j) \; h_j \in \Rbb^k
   $$
   qui implique que pour chaque $i = 1 \dots k$, 
   $$
-  \lim_{h_j\rightarrow 0, h_j \neq 0} \frac{f_i(x+h e_j) - f_i(x)}{|h_j|} = D_xf(h_j e_j)  = [D_xf(e_j)]_i \; h_j.
+  \lim_{h_j\rightarrow 0, h_j \neq 0} \frac{f_i(x+h_j e_j) - f_i(x)}{|h_j|} = D_xf(h_j e_j)  = [D_xf(e_j)]_i \; h_j.
   $$
-  Cette égalité assure que l'application $f_i$ est bien dérivable en $x$ par rapport à $x_j$ et que sa dérivée vaut précisément
+  En utilisant la convergence par coordonnées, cette égalité assure que l'application $f_i$ est bien dérivable en $x$ par rapport à $x_j$ et que sa dérivée vaut précisément
   $$
   \frac{\partial f_i(x_1, \dots x_n)}{\partial x_j} = [D_xf(e_j)]_i.
   $$
@@ -282,10 +261,10 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   $$
   f(x+h) - f(x) = J_xf \cdot h + o(\|h\|).
   $$
-  \item La démonstration de cette propriété passe par le fait que la différentiabilité de $f$ implique celle de chacune des $f_i$. Cette propriété s'étend même à toutes les directions dans $\Rbb^n$. \\
+  \item La démonstration de cette propriété passe par le fait que la différentiabilité de $f$ implique celle de chacune des $f_i$. Cette propriété s'étend même à toutes les directions dans $\Rbb^n$ (contrôlée par le choix du vecteur $u$). \\
   La réciproque n'est pas vraie : une application $f$ peut ne pas être différentiable en $x$ alors que toutes les $f_i$ le sont.
-  \dessin{
-  Exemple : soit
+  \exemple{
+  Soit
   $$
   \begin{array}{rrcl}
     f : & \Rbb^2 & \mapsto & \Rbb \\
@@ -296,8 +275,22 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   $$
   f(0, x_2) = f(x_1, 0) = 0
   \qquad \Rightarrow \qquad
-  J_0f = \left[\begin{array}{c} 0 \\ 0 \end{array} \right]
+  J_0f = \left[\begin{array}{c} 0 \\ 0 \end{array} \right],
   $$
+  mais, soit $h = (u, u)$ avec $u > 0$, on a $f(h) = -u^2$ et $\|h\| = u \sqrt{2}$ donc
+  $$
+%   f(h) - f(0) - J_0f \cdot h = u^2
+%   \qquad \Rightarrow \qquad 
+  \frac1{\|h\|} \left(f(x) - f(0) - J_0 f \cdot h\right)
+  = -\frac{u^2}{u \sqrt{2}} = -\frac{u}{\sqrt{2}},
+  $$
+  or
+  $$
+  \lim_{h \rightarrow 0} -\frac1{\|h\|} \frac{u}{\sqrt{2}}
+  = \lim_{u \rightarrow 0} \frac1{u \sqrt{2}} \frac{-u}{\sqrt{2}}
+  = \lim_{u \rightarrow 0} -\frac1{2} \neq 0.
+  $$
+  En fait, dans la direction $[1 \; 1]$ la pente de l'application linéaire tangente vaut $-1/2$.
   $$
   \includegraphics[width=.5\textwidth]{2-Differentiabilite-A}
   \includegraphics[width=.5\textwidth]{2-Differentiabilite-B}
@@ -314,6 +307,41 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   on a donc montré que $J_x f = x^\top (B + B^\top)$. Dans le cas ou $B$ est symétrique, on obtient $J_x f = 2 x^\top B$ où l'on retrouve la forme de la dérivée de $bx^2$, à savoir $2 bx$.
 
 \end{enumerate}
+
+%-------------------------------------------------------------------------------
+\remark
+On peut déterminer le plan tangent à une surface $S$ de $\Rbb^3$ d'équation
+$$
+z = f(x, y).
+$$
+au point $(x_0, y_0)$, en posant $z_0 = f(x_0, y_0)$ et $h = (x-x_0, y-y_0)$, soit 
+$$
+f(x, y) - f(x_0, x0) = \left(J_{(x_0, y_0)} f\right) \; h + o(\|h\|).
+$$
+Le plan tangent a ainsi pour équation
+$$
+z = z_0 + \frac{\partial f}{\partial x}(x_0, y_0) \times (x-x_0) + \frac{\partial f}{\partial y}(x_0, y_0) \times (y-y_0).
+$$
+
+\exemple{
+Pour
+$$
+f(x, y) = \exp\left(-\frac{x^2 + y^2}{2}\right),
+$$
+on a 
+$$
+\frac{\partial f}{\partial x}(x_0, y_0) = - x_0 f(x_0, y_0), 
+\qquad
+\frac{\partial f}{\partial y}(x_0, y_0) = - y_0 f(x_0, y_0)
+$$
+et le plan tangent a pour équation
+$$
+z 
+= f(x_0, y_0)(1 - x_0 (x-x_0) - y_0 (y-y_0))
+= f(x_0, y_0)(1 + x_0^2 + y_0^2 - x_0 x - y_0 y)
+$$
+Ce plan est bien horizontal pour $(x_0, y_0) = (0, 0)$.
+}
 
 %-------------------------------------------------------------------------------
 \exemple{[Passage en coordonnées polaires]
@@ -344,41 +372,121 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   $$
 }
 
+%-------------------------------------------------------------------------------
+\exemple{
+Soit 
+$$
+\begin{array}{rrcl}
+  f : & \Mcal_n(\Rbb) & \mapsto & \Rbb \\
+  & X & \rightarrow & \log(|X|)
+\end{array}
+$$
+On remarque tout d'abord que $f$ n'est définie que pour les matrices $X$ inversibles. \\
+On cherche à déterminer la matrice de ses dérivées partielles :
+$$
+D_X = [d_{X, ij}]: \qquad d_{X, ij} = \left.\frac{\partial f}{\partial x_{ij}}\right|_X.
+$$
+On remarque tout d'abord que 
+$$
+\frac{\partial \log(|X|)}{\partial x_{ij}}
+= \frac1{|X|} \frac{\partial |X|}{\partial x_{ij}}.
+$$
+Pour calculer la dérivée de $|X|$ par rapport à $x_{ij}$, on utilise le développement par rapport à la $i$-ème ligne : 
+$$
+|X| = \sum_{j=1}^n x_{ij} (-1)^{i+j} |X^{i, j}|, 
+$$
+soit
+$$
+\frac{\partial |X|}{\partial x_{ij}} = (-1)^{i+j} |X^{i, j}|
+$$
+où on reconnaît le cofacteur de $x_{ij}$. On a donc 
+$$
+d_{X, ij} = \frac1{|X|} (-1)^{i+j} |X^{i, j}| 
+\qquad \Rightarrow  \qquad
+D_X = \frac1{|X|} \left[(-1)^{i+j} |X^{i, j}|\right]
+$$
+où on reconnaît la transposée de l'inverse de $X$ : 
+$$
+D_X = (X^{-1})^\top.
+$$
+}
+
+\progres{
+  Rappel cours 3 :
+  \begin{itemize}
+    \item Normes (notion de limite et de convergence, équivalence des normes en dimension finie)
+    \item Différentiabilité (différentiabilité, application linéaire tangente, matrice Jacobienne)
+    \item Revoir l'exemple $f(x, y) = |x| \times |y|$ dans la direction $h = [1 \; 1]^\top$.
+    \item Exercice à faire : matrice des dérivées de $\log |X|$
+  \end{itemize}
+  Programme cours 4 :
+  \begin{itemize}
+    \item Composition et fonction implicite
+    \item Intégration (difféomorphisme et chgt de variables)
+    \item Caractérisation des extremums
+  \end{itemize}
+}
 
 %-------------------------------------------------------------------------------
-\remark
-On peut déterminer le plan tangent à une surface $S$ de $\Rbb^3$ d'équation
-$$
-z = f(x, y).
-$$
-au point $(x_0, y_0)$, en posant $z_0 = f(x_0, y_0)$ et $h = (x-x_0, y-y0)$, soit 
-$$
-f(x, y) - f(x_0, x0) = \left(J_{(x_0, y_0)} f\right) \; h + o(\|h\|).
-$$
-Le plan tangent a ainsi pour équation
-$$
-z = z_0 + \frac{\partial f}{\partial x}(x_0, y_0) \times (x-x_0) + \frac{\partial f}{\partial y}(x_0, y_0) \times (y-y_0).
-$$
+\paragraph*{Transformation en coordonnées polaires.} 
 
-\exemple{
-Pour
+\begin{proposition} \label{prop:differentiabiliteCoordonneesPolaires}
+  La transformation en coordonnée polaire est partout différentiable sur $\Rbb^{*+} \times \Rbb^+$.
+\end{proposition}
+
+\parSR{Démonstration de la proposition \ref{prop:differentiabiliteCoordonneesPolaires}.}
+Pour $u = [\rho \; \theta]^\top$ et $h = [r \; t ]^\top$, on a
 $$
-f(x, y) = \exp\left(-\frac{x^2 + y^2}{2}\right),
+f(u+h) = \left[\begin{array}{c} 
+    (\rho+r) \cos(\theta +t) \\ (\rho+r) \sin(\theta +t) 
+    \end{array} \right]
 $$
-on a 
+or, les fonctions cosinus et sinus sont partout dérivables et on a pour tout $\theta$
 $$
-\frac{\partial f}{\partial x}(x_0, y_0) = - x_0 f(x_0, y_0), 
-\qquad
-\frac{\partial f}{\partial y}(x_0, y_0) = - y_0 f(x_0, y_0)
+\cos(\theta +t) = \cos \theta - t \sin \theta + o(|t|), \qquad 
+\sin(\theta +t) = \sin \theta + t \cos \theta + o(|t|),
 $$
-et le plan tangent a pour équation
-$$
-z 
-= f(x_0, y_0)(1 - x_0 (x-x_0) - y_0 (y-y_0))
-= f(x_0, y_0)(1 + x_0^2 + y_0^2 - x_0 x - y_0 y)
-$$
-Ce plan est bien horizontal pour $(x_0, y_0) = (0, 0)$.
-}
+donc
+\begin{align*}
+  (\rho+r) \cos(\theta +t) 
+    & = (\rho+r)\left(\cos \theta - t \sin \theta + o(|t|)\right) \\
+    & = \rho \cos \theta - \left(\rho t \sin \theta + r \cos \theta\right)
+    - rt \sin \theta + (\rho + r) o(|t|),
+\end{align*}
+et de même pour $(\rho+r) \sin(\theta +t)$.
+On a donc
+\begin{align*}
+  f(u+h) 
+  & =
+  \underset{f(u)}{\underbrace{\left[\begin{array}{c}
+    \rho \cos \theta \\ \rho \sin \theta
+  \end{array} \right]}}
+  +
+  \underset{D_u f \cdot h}{\underbrace{\left[\begin{array}{rr} 
+          \cos \theta & - \rho \sin \theta \\
+          \sin \theta & \rho \cos \theta 
+        \end{array} \right]
+  \left[\begin{array}{c} r \\ t \end{array} \right]}}
+  +
+  \underset{\text{reste}}{\underbrace{\left[\begin{array}{r} 
+          - rt \sin \theta + (\rho + r) o(|t|) \\
+          rt \cos \theta + (\rho + r) o(|t|) 
+        \end{array} \right]}}.
+\end{align*}
+Il reste à montrer que le reste est un $o(\|h\|)$. 
+\begin{itemize}
+  \item En prenant $\|h\| = \|h\|_\infty = \max(|r|, |t|)$, on a clairement $|t| \leq \|h\|$, donc $o(|t|) = o(\|h\|)$. 
+  \item De plus
+  $$
+  \left|\frac{rt}{\|h\|}\right| 
+  \leq \frac{\|h\|^2}{\|h\|}
+  \qquad \Rightarrow \qquad 
+  rt = o(\|h\|).
+  $$
+  $rt \sin \theta$ et $rt \cos \theta$ sont donc des $o(\|h\|)$, 
+\end{itemize}
+Le vecteur reste est donc un $o(\|h\|)$.
+\eproof
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
@@ -387,7 +495,7 @@ Ce plan est bien horizontal pour $(x_0, y_0) = (0, 0)$.
 
 On cherche maintenant à généraliser la formule connue pour deux applications $f$ et $g$ de $\Rbb$ dans $\Rbb$:
 $$
-(f \circ g)'(x) = g'(x) (f' \circ g)(x)
+(f \circ g)'(x) = g'(x) (f' \circ g)(x).
 $$
 
 \begin{proposition} \label{prop:compositionDéfferentielles}
@@ -453,47 +561,9 @@ J_{x^*}(f \circ g)
 $$
 }
 
-%-------------------------------------------------------------------------------
-\paragraph*{Transformation en coordonnées polaires.} 
-
-\begin{proposition} \label{prop:differentiabiliteCoordonneesPolaires}
-  La transformation en coordonnée polaire est partout différentiable sur $\Rbb^{*+} \times \Rbb^+$.
-\end{proposition}
-
-\parSR{Démonstration de la proposition \ref{prop:differentiabiliteCoordonneesPolaires}.}
-Pour $u = [\rho \; \theta]^\top$ et $h = [r \; t ]^\top$, on a
-$$
-f(u+h) = \left[\begin{array}{c} 
-    (\rho+r) \cos(\theta +t) \\ (\rho+r) \sin(\theta +t) 
-    \end{array} \right]
-$$
-or, la fonction cosinus est partout dérivable et on a pour tout $\theta$
-$$
-\cos(\theta +t) = \cos \theta - t \sin \theta + o(|t|)
-$$
-donc
-\begin{align*}
-  (\rho+r) \cos(\theta +t) 
-  & =  (\rho+r) (\cos \theta - t \sin \theta + o(|t|)) \\
-  & = \underset{f(u)}{\underbrace{\rho \cos \theta}} 
-  - \underset{\text{linéaire en $h$}}{\underbrace{\rho t \sin \theta + r \cos \theta}} 
-  - \underset{= o(\|h\|) ?}{\underbrace{rt \sin \theta + (\rho + r) o(|t|)}}.
-\end{align*}
-En prenant $\|h\| = \|h\|_\infty = \max(|r|, |t|)$, on a clairement $|t| \leq \|h\|$, donc $o(|t|) = o(\|h\|)$. De plus
-$$
-\left|\frac{rt}{\|h\|}\right| 
-\leq \frac{\|h\|^2}{\|h\|}
-\qquad \Rightarrow \qquad 
-rt = o(\|h\|).
-$$
-Le calcul pour $(\rho+r) \sin(\theta +t)$ est analogue.
-\eproof
-
-
 \exemple{
   Soit une courbe exprimée en coordonnées polaires $\rho = \rho(\theta)$. 
-  \begin{enumerate}
-   \item On peut déterminer les dérivées des coordonnées cartésiennes $x$ et $y$ par rapport à $\theta$ en considérant les deux applications 
+  On peut déterminer les dérivées des coordonnées cartésiennes $x$ et $y$ par rapport à $\theta$ en considérant les deux applications 
   $$
   \begin{array}{rrcl}
     g : & \Rbb^+ & \mapsto & \Rbb^+ \times \Rbb^+ \\
@@ -537,16 +607,60 @@ Le calcul pour $(\rho+r) \sin(\theta +t)$ est analogue.
   x'(\theta) = \frac{\partial x}{\partial \theta} = \rho'(\theta) \cos \theta  - \rho(\theta) \sin \theta, \qquad 
   y'(\theta) = \frac{\partial y}{\partial \theta} = \rho'(\theta) \sin \theta  + \rho(\theta) \cos \theta.
   $$
-  \item La pente de la tangente à la courbe paramétrée $(x(\theta), y(\theta))$ s'obtient alors comme le rapport des dérivées partielles soit
+}
+
+%-------------------------------------------------------------------------------
+\subsection{Fonction implicite}
+%-------------------------------------------------------------------------------
+
+\begin{theorem}[Fonction implicite] \label{thm:fonctionImplicite}
+  Soient $f : \Rbb^2 \mapsto \Rbb$ continuement différentiable, $\Ccal$ la courbe de niveau de $f$ associée à $c$:
+  $$
+  \Ccal = \{x, y: f(x, y) = c\},
+  $$
+  et $(x_0, y_0) \in \Rbb^2$ tels que 
+  $$
+  \left.\frac{\partial f}{\partial y}\right|_{x_0, y_0} \neq 0,
+  $$
+  il existe un voisinage $U \times V$ de $(x_0, y_0)$ et une application $\phi : \Rbb \mapsto \Rbb$ différentiable tels que, pour tout $(x, y) \in U \times V$
+  $$
+  (x, y) \in \Ccal \quad \Leftrightarrow \quad y = \phi(x).
+  $$
+  De plus
+  $$
+  \phi'(x) = \frac{\partial f(x, \phi(x)) / \partial x}{\partial f(x, \phi(x)) / \partial y}.
+  $$
+\end{theorem}
+
+\parSR{Démonstration partielle du théorème \ref{thm:fonctionImplicite}.}
+On ne démontre pas ici l'existence de $\phi$. Par contre, la détermination de sa dérivée résulte d'un calcul simple. Pour cela, on définit
+$$
+\begin{array}{rrcl}
+  g : & \Rbb & \mapsto & \Rbb^2 \\
+  & x & \rightarrow & \left[\begin{array}{c} x \\ \phi(x) \end{array}\right].
+\end{array}
+$$
+On a donc $f \circ g (x) = f(x, \phi(x))$ et donc
+$$
+(f \circ g)'(x) = \frac{\partial}{\partial x} f\left(x, \phi(x)\right) + \phi'(x) \frac{\partial}{\partial y} f(x, \phi(x)).
+$$
+De plus, pour $x \in U$, on a $f(x, \phi(x)) = c$, donc $(f \circ g)'(x) = 0$, soit
+$$
+\phi'(x) = \frac{\partial f(x, \phi(x)) / \partial x}{\partial f(x, \phi(x)) / \partial y}.
+$$
+\eproof
+
+\exemple{\textcolor{gray}{
+  Soit une courbe exprimée en coordonnées polaires $\rho = \rho(\theta)$. 
+  La pente de la tangente à la courbe paramétrée $(x(\theta), y(\theta))$ s'obtient comme le rapport des dérivées partielles soit
   $$
   \frac{y'(\theta)}{x'(\theta)} 
   = \frac{\rho'(\theta) \sin \theta  + \rho(\theta) \cos \theta}{\rho'(\theta) \cos \theta  - \rho(\theta) \sin \theta}. 
   $$
-  \end{enumerate}
-}
+}}
 
 %-------------------------------------------------------------------------------
-\exemple{[Cas de la spirale.]
+\exemple{\textcolor{gray}{[Cas de la spirale.]
   La spirale ``linéaire'' est définie par l'équation
   $$
   \rho(\theta) = \rho_0 \theta
@@ -588,46 +702,5 @@ Le calcul pour $(\rho+r) \sin(\theta +t)$ est analogue.
   % x'(\theta) = \frac{\rho_0 \cos \theta}{\theta} - \rho_0 \log(\theta) \sin \theta, \qquad 
   % y'(\theta) = \frac{\rho_0 \sin \theta}{\theta} + \rho_0 \log(\theta) \cos \theta.
   % $$
-}
-
-%-------------------------------------------------------------------------------
-\subsection{Fonction implicite}
-%-------------------------------------------------------------------------------
-
-\begin{theorem}[Fonction implicite] \label{thm:fonctionImplicite}
-  Soient $f : \Rbb^2 \mapsto \Rbb$ continuement différentiable, $\Ccal$ la courbe de niveau de $f$ associées à $c$:
-  $$
-  \Ccal = \{x, y: f(x, y) = c\},
-  $$
-  et $(x_0, y_0) \in \Rbb^2$ tels que 
-  $$
-  \left.\frac{\partial f}{\partial y}\right|_{x_0, y_0} \neq 0,
-  $$
-  il existe un voisinage $U \times V$ de $(x_0, y_0)$ et une application $\phi : \Rbb \mapsto \Rbb$ différentiable tels que, pour tout $(x, y) \in U \times V$
-  $$
-  (x, y) \in \Ccal \quad \Leftrightarrow \quad y = \phi(x).
-  $$
-  De plus
-  $$
-  \phi'(x) = \frac{\partial f(x, \phi(x)) / \partial x}{\partial f(x, \phi(x)) / \partial y}.
-  $$
-\end{theorem}
-
-\parSR{Démonstration partielle du théorème \ref{thm:fonctionImplicite}.}
-On ne démontre pas ici l'existence de $\phi$. Par contre, la détermination de sa dérivée résulte d'un calcul simple. Pour cela, on définit
-$$
-\begin{array}{rrcl}
-  g : & \Rbb & \mapsto & \Rbb^2 \\
-  & x & \rightarrow & [x \; \phi(x)]^\top.
-\end{array}
-$$
-On a donc $f \circ g (x) = f(x, \phi(x)$ et donc
-$$
-(f \circ g)'(x) = \frac{\partial}{\partial x} f(x, \phi(x)) + \phi'(x) \frac{\partial}{\partial y} f(x, \phi(x)).
-$$
-De plus, pour $x \in U$, on a $f(x, \phi(x) = c$, donc $(f \circ g)'(x) = 0$, soit
-$$
-\phi'(x) = \frac{\partial f(x, \phi(x)) / \partial x}{\partial f(x, \phi(x)) / \partial y}.
-$$
-\eproof
+}}
 

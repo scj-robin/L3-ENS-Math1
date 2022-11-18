@@ -39,14 +39,14 @@ Programme cours 3 :
 \subsection{Quelques normes classiques} 
 %-------------------------------------------------------------------------------
 
-\begin{definition*}
+\begin{definition}[Norme]
   Soit $\Ecal$ un espace vectoriel. Une application $\|\cdot\|$ de $\Ecal$ dans $\Rbb^+$ est une norme si
   \begin{enumerate}[(i)]
     \item $\{\|x\| = 0 \Leftrightarrow x = 0]\}$ ;
     \item $\forall x \in \Ecal, \forall \lambda \in \Rbb: \; \|\lambda x\| = |\lambda| \|x\|$ ;
     \item $\forall x, y \in \Ecal: \; \|x+y\| \leq \|x\| + \|y\|$ (inégalité triangulaire);
   \end{enumerate}
-\end{definition*}
+\end{definition}
 
 \remarks
 \begin{itemize}
@@ -62,27 +62,29 @@ Programme cours 3 :
 \end{itemize}
 
 %-------------------------------------------------------------------------------
-\paragraph*{Trois normes classiques: $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$.}
-\begin{description}
- \item[Vecteurs :] pour $x = [x_1 \dots x_n]^\top \in \Rbb^n$
- $$
- \|x\|_1 = \sum_{i=1}^n |x_i|, \qquad 
- \|x\|_2 = \sqrt{\sum_{i=1}^n x_i^2}, \qquad 
- \|x\|_\infty = \max_{i = 1 \dots n} |x_i|. 
- $$
- \item[Matrices:] pour $A = [a_{ij}] \in \Mcal_{n, k}(\Rbb)$
- $$
- \|A\|_1 = \sum_{i=1}^n \sum_{j=1}^k |a_{ij}|, \qquad 
- \|A\|_2 = \sqrt{\sum_{i=1}^n \sum_{j=1}^k a_{ij}^2}, \qquad 
- \|A\|_\infty = \max_{i = 1 \dots n, j = 1 \dots k} |a_{ij}|. 
- $$
- \item[Fonctions:] pour $f : [a, b] \mapsto \Rbb$ continue
- $$
- \|f\|_1 = \int_a^b |f(x)| \d x, \qquad 
- \|f\|_2 = \sqrt{\int_a^b f(x)^2 \d x}, \qquad 
- \|f\|_\infty = \sup_{x \in [a, b]} |f(x)|.
- $$
-\end{description}
+\begin{definition}[Trois normes classiques]
+  Les normes $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ sont définies ainsi.
+  \begin{description}
+    \item[Vecteurs :] pour $x = [x_1 \dots x_n]^\top \in \Rbb^n$
+    $$
+    \|x\|_1 = \sum_{i=1}^n |x_i|, \qquad 
+    \|x\|_2 = \sqrt{\sum_{i=1}^n x_i^2}, \qquad 
+    \|x\|_\infty = \max_{i = 1 \dots n} |x_i|. 
+    $$
+    \item[Matrices:] pour $A = [a_{ij}] \in \Mcal_{n, k}(\Rbb)$
+    $$
+    \|A\|_1 = \sum_{i=1}^n \sum_{j=1}^k |a_{ij}|, \qquad 
+    \|A\|_2 = \sqrt{\sum_{i=1}^n \sum_{j=1}^k a_{ij}^2}, \qquad 
+    \|A\|_\infty = \max_{i = 1 \dots n, j = 1 \dots k} |a_{ij}|. 
+    $$
+    \item[Fonctions:] pour $f : [a, b] \mapsto \Rbb$ continue
+    $$
+    \|f\|_1 = \int_a^b |f(x)| \d x, \qquad 
+    \|f\|_2 = \sqrt{\int_a^b f(x)^2 \d x}, \qquad 
+    \|f\|_\infty = \sup_{x \in [a, b]} |f(x)|.
+    $$
+  \end{description}
+\end{definition}
 
 \dessin{Tracer de la boule unité pour $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ dans $\Rbb^2$.}
 
@@ -112,7 +114,7 @@ On montre facilement que $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ sont
   $$
 \end{theorem}
 
-Ce résultat n'est pas démontré ici. 
+Ce résultat n'est pas démontré ici. \eproof
 
 \remark
 Le théorème \ref{thm:equivalenceNormes} fournit un encadrement de chaque norme par l'autre : 
@@ -184,6 +186,8 @@ $$
 
 \parSR{Démonstration de la proposition \ref{prop:convergenceParCoordonnee}.}
 Toutes les normes étant équivalentes dans $\Rbb^k$, nous pouvons démontrer chaque implication avec la norme de notre choix.
+
+\SR{}{Revoir : preuve $\Leftrightarrow$ = suite d'équivalence ?}
 \begin{description}
   \item[$\Rightarrow$:]
     \begin{align*}
@@ -218,7 +222,7 @@ $$
 |y_j| 
 \; = \; \left|\sum_{i=1}^k a_{ij} x_i \right| 
 \; \leq \; \sum_{i=1}^k |a_{ij} x_i| 
-\; = \; \sum_{i=1}^k |a_{ij}| \; |x_i|
+\; = \; \sum_{i=1}^k |a_{ij}| \; |x_i|.
 $$
 On a donc
 \begin{itemize}
