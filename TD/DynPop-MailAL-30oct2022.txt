@@ -1,0 +1,36 @@
+> Salut Amaury,
+>
+> tu m'avais passé un recueil d'exercice (qui est un vrai mine). Je compte m'en servir en TD pour le cours de Math 1 de l'ENS.
+>
+> J'ai une question sur l'exercice 4, p2-3 (dynamique des fréquences alléliques dans une population panmictique). Dans les 2 dernières questions (e) et f)), j'ai l'impression que tu veux faire remarquer qqchose, mais je ne vois pas quoi...
+>
+> Stéphane
+
+Salut mon cher Stéphane ! Merci pour ton message très sympa.
+
+Je suis désolé je crois qu'il y a une erreur : il faut demander \sum_i
+\lambda_i Q_i Y_i=0 et non \sum_i Q_i Y_i=0 :
+
+(e) dans les deux cas il faut évidemment écrire Y = tRX mais avec
+l'énoncé que tu as on a Q = t1R où 1 est le vecteur avec que des 1,
+alors qu'avec le nouvel énoncé, il faut prendre
+
+Q=tPR,
+
+car t1X = 0 est équivalent à t1RY=0, et on peut utiliser le fait que AP
+=V1 ce qui donne Vt1R = VtPtAR = VtPRD=VQD, donc t1RY=0 est équivalent à
+QDY=0.
+
+(f) Supposons que p=2. Si on prend Y défini par Y_1 = \lambda_2 Q_2 et
+Y_2 = -\lambda_1Q_1 (Y_i=0 sinon), alors on a \sum_i \lambda_i Q_i Y_i =
+0, et
+
+\sum_i \lambda_i Y_i^2 = \lambda_1 \lambda_2^2 Q_2^2 +\lambda_2
+\lambda_1^2 Q_1^2 = \lambda_1 \lambda_2 (\lambda_1 Q_1^2 +\lambda_2 Q_2^2)
+
+Or QDtQ = tPAP qui est la viabilité maximale, strictement positive car A
+est non nulle. Donc
+
+0< QDtQ = \sum_i\lambda_iQ_i^2 \le \lambda_1 Q_1^2 + \lambda_2 Q_2^2,
+
+ce qui donne \sum_i \lambda_i Y_i^2>0.
