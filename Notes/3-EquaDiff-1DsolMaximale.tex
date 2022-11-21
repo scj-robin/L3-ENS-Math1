@@ -78,7 +78,7 @@ Ce modèle est connu en dynamique des population sous le nom de {\em modèle de 
 \subsection{Solution maximale} 
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Solution du problème de Cauchy]
+\begin{definition}[Solution du problème de Cauchy]
   Soit $F : \Rbb^n \mapsto \Rbb^n$, $I$ un ouvert de $\Rbb$, $t_0 \in I$ et $y_0 \in \Rbb$. La fonction $f : I \mapsto \Rbb^n$ est dite solution du \emph{problème de Cauchy}, 
   $$
   \left\{\begin{array}{rcl}
@@ -87,25 +87,22 @@ Ce modèle est connu en dynamique des population sous le nom de {\em modèle de 
         \end{array}\right.
   $$
   sur $I$ si $f(t_0) = y_0$ et $\forall t \in I: \dot f(t) = F(f(t))$.
-\end{definition*}
+\end{definition}
 
-\begin{theorem*}[Cauchy-Lipschitz]
+\begin{theorem}[Cauchy-Lipschitz]
   Si $F$ est est $C^1$ par morceaux, il existe une unique solution $f$ sur $I$ au problème de Cauchy qui soit maximale au sens où si $g$ est également solution sur $J$, alors $J \subset I$ et $g(t) = f(t)$ pour tout $t \in J$. $f$ est appelée solution maximale et $I$ intervalle maximal.
-\end{theorem*}
+\end{theorem}
 
 \remark
 $f(t) = y_0 e^{r(t-t_0)}$ est donc l'unique solution du problème $\{y_0 = y(t_0), \; \dot y = r y\}$ sur l'intervalle maximal $\Rbb$.
 
 %-------------------------------------------------------------------------------
-\begin{exercise*}
-  Déterminer la solution et l'intervalle maximal du problème
+\exemple{
+  Pour déterminer la solution et l'intervalle maximal du problème
   $$
-  \{y(0) = 1, \; \dot y = -c y^2\}.
+  \{y(0) = 1, \; \dot y = -c y^2\},
   $$
-\end{exercise*}
-
-\solution{
-  On remarque que
+  on remarque que
   \begin{align*}
     \dot y & = -c y^2 & 
     & \Leftrightarrow & 
@@ -115,24 +112,28 @@ $f(t) = y_0 e^{r(t-t_0)}$ est donc l'unique solution du problème $\{y_0 = y(t_0
     & \Leftrightarrow &
     y(t) & = \frac1{a + ct} \qquad \text{pour } t \neq -\frac{a}c.
   \end{align*}
-  La condition $y(0) = 1$ impose alors que $a = 1$. $f(t) = (1+ ct)^{-1}$ est donc solution maximale sur l'intervalle (maximal) $\Rbb \setminus \{-1/c\}$.
+  La condition $y(0) = 1$ impose alors que $a = 1$. 
+  $$
+  f(t) = (1+ ct)^{-1}
+  $$ 
+  est donc solution maximale sur l'intervalle (maximal) $\Rbb \setminus \{-1/c\}$.
 }
 
 %-------------------------------------------------------------------------------
 \subsection{Point d'équilibre, stabilité} 
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Point d'équilibre]
+\begin{definition}[Point d'équilibre]
   $x^* \ \Rbb^n$ est un point d'équilibre de l'ODE $\dot y = F(y)$ si $F(x^*) = 0$.
-\end{definition*}
+\end{definition}
 
-\begin{definition*}[Stabilité ($n = 1$)]
+\begin{definition}[Stabilité ($n = 1$)]
   Pour $n = 1$, un équilibre $x^*$ est dit (asymptotiquement) stable si il existe $\varepsilon > 0$ tel que pour tout $y_0 \in (x^* - \varepsilon, x^* + \varepsilon)$, la condition initiale $y(0) = y_0$ implique que 
   $$
   \lim_{t \rightarrow \infty} y(t) = x^*.
   $$
   Dans le cas contraire, il est dit {\em instable}. Le caractère stable ou instable d'un équilibre définit sa {\em nature}.
-\end{definition*}
+\end{definition}
 
 \remark
 Un équilibre est donc stable si toute (petite) perturbation $\varepsilon$ autour de $x^*$ laisse le système retourner dans l'état $x^*$.
@@ -205,9 +206,9 @@ Ce modèle est connu sous le nom de {\em modèle de Verhulst}. On suppose typiqu
 \remark
 Le modèle de Verhulst est un des rares modèles non-linéaires pour lesquels il existe une solution explicite. Il n'est cependant pas nécessaire de disposer d'une solution explicite pour étudier la stabilité d'un équilibre.
 
-\begin{theorem*}[Stabilité ($n = 1$)]
+\begin{theorem}[Stabilité ($n = 1$)]
   Pour $n=1$, un point d'équilibre $x^*$ est stable si $F'(x^*) < 0$ et instable si $F'(x^*) > 0$.
-\end{theorem*}
+\end{theorem}
 
 \proof Non démontré. \eproof
 
@@ -227,11 +228,12 @@ soit $e ^{F'(x^*) t}$ qui tend vers 0 si $F'(x^*) < 0$ et vers l'infini si $F'(x
 De nombreux systèmes dynamiques sont exprimés en fonction de paramètres dont dépendent les points d'équilibre et leur nature. Des valeurs proches des paramètres donnent des points d'équilibres proches et de même nature. La théorie des bifurcations s'intéresse aux régions de l'espace des paramètres au sein desquelles les points d'équilibres restent de même nature : plus précisément elle s'intéresse aux frontières entre ces régions.
 
 %-------------------------------------------------------------------------------
-\begin{exercise*}
-  Soit le système $\dot y = F(y) = \mu y - y^3$ étudier les points d'équilibre et déterminer leur nature.
-\end{exercise*}
-
-\solution{
+\exemple{
+  On étudie les points d'équilibre du système 
+  $$
+  \dot y = F(y) = \mu y - y^3
+  $$
+  et on souhaite déterminer leur nature. \\
   On a 
   $$
   F(x) = x(\mu - x^2) = 0 
@@ -247,20 +249,17 @@ De nombreux systèmes dynamiques sont exprimés en fonction de paramètres dont 
   $$
   donc $0$ est toujours instable alors que, pour $\mu > 0$, $-\sqrt{\mu}$ et $\sqrt{\mu}$ sont stables. On peut ainsi tracer le {\em diagramme de bifurcation}.
   $$
-  \includegraphics[width=.5\textwidth, trim=0 400 0 0, clip=]{StabiliteSystemeDynamique-Exemple1}
+  \includegraphics[width=.5\textwidth, trim=0 0 0 15, clip=]{StabiliteSystemeDynamique-Exemple1}
   $$
 }
 
 %-------------------------------------------------------------------------------
 \textcolor{gray}{
-  \begin{exercise*}
-    Déterminer les points d'équilibre (et leur nature) du système
+  \exemple{
+    On souhaite déterminer les points d'équilibre (et leur nature) du système
     $$
     \dot y = F(y) = \mu y + 2 y^3 - y^5.
     $$
-  \end{exercise*}
-  %
-  \solution{
     On a 
     $$
     F(y) = y(\mu + y^2 - y^4)
@@ -273,3 +272,31 @@ De nombreux systèmes dynamiques sont exprimés en fonction de paramètres dont 
     $$
     dont le signe est celui de $\mu$ pour $x=0$ et \todo{nature de $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$.}
   }}
+
+  %-------------------------------------------------------------------------------
+\exemple{[Exercice 2, TD2, L2 Bio SU]
+  On considère le système
+  $$
+  \dot y = - y^3 + 7 y^2 - 14 y + 8.
+  $$
+  Ses points stationnaires sont les racines du polynôme $P(y) = - y^3 + 7 y^2 - 14 y + 8$, donc $y_1 = 1$ fait partie, donc
+  $$
+  P(y) = (y-1) (-y^2 + 6y + 8),
+  $$
+  et les deux racines de $-y^2 + 6y + 8$ sont $2$ et $4$. Les points stationnaires du système sont donc 
+  $$
+  y_1 = 1, \qquad y_2 = 2, \qquad y_3 = 4.
+  $$
+  Leur stabilité est donné par la dérivée de $P$:
+  $$
+  P'(y) = -3y^2 + 14 y - 14,
+  $$
+  soit
+  $$
+  P'(y_1) = -3, \qquad P'(y_2) = 2, \qquad P'(y_3) = -6.
+  $$
+  $y_1$ et $y_3$ sont donc des équilibres stables, et $y_2$ un équilibre instable.
+  $$
+  \includegraphics[width=.5\textwidth]{TD-SUbioL3-TD2Exo2}
+  $$
+}

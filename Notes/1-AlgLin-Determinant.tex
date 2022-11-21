@@ -356,3 +356,64 @@ La démonstration de la proposition \ref{prop:methodeCofacteurs} sera faite en T
   = 1 \times (-3) + 2 \times 0 = -3.
   $$
 \end{itemize}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Inverse d'une matrice $n \times n$}
+%-------------------------------------------------------------------------------
+
+\begin{proposition} \label{prop:inverseMatriceCofacteurs}
+  Soit $A \in \Mcal_n$ une matrice inversible, soit $B$ la matrice de ses cofacteurs : 
+  $$
+  B = [b_{ij}]_{1 \leq i, j \leq n}, \qquad 
+  b_{ij} = (-1)^{i+j} |A^{(ij)}|.
+  $$
+  L'inverse de $A$ est égale à la transposée de la matrice de ses cofacteurs divisée par son déterminant : 
+  $$
+  A^{-1} = \frac1{|A|} B^\top.
+  $$
+\end{proposition}
+
+\parSR{Démonstration de la proposition \ref{prop:inverseMatriceCofacteurs}.} 
+%   voir \url{https://www.techno-science.net/definition/5091.html}
+La démonstration repose sur le calcul d'un élément quelconque du produit $C = A B^\top$. En notant $C = [c_{ik}]_{1 \leq i, k \leq n}$ : 
+$$
+c_{ik} 
+= \sum_{j=1}^n a_{ij} b_{kj} 
+= \sum_{j=1}^n (-1)^{j+k} a_{ij} |A^{(kj)}|.
+$$
+\begin{description}
+  \item[$i = k$:] on reconnaît le calcul du déterminant de $A$ obtenu en développant par rapport à sa $i$-ème ligne : 
+  $$
+  c_{ik} 
+  = \sum_{j=1}^n (-1)^{j+i} a_{ij} |A^{(ij)}|
+  = |A|.
+  $$
+  \item[$i \neq k$:] on reconnaît $(-1)^{j+i} a_{ij} |A^{(kj)}|$ comme le déterminant, calculé par blocs, de la matrice
+  $$
+  \left[\begin{array}{ccccccc}
+         a_{1, 1} & \cdots & a_{1,j-1} & 0 & a_{1, j+1} & \cdots & a_{1, n} \\
+         \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
+         a_{k-1,1} & \cdots & a_{k-1,j-1} & 0 & a_{k-1, j+1} & \cdots & a_{k-1, n} \\
+         0 & \cdots & 0 & a_{i, j} & 0 & \cdots & 0 \\
+         a_{k+1,1} & \cdots & a_{k+1,j-1} & 0 & a_{k+1, j+1} & \cdots & a_{k+1, n} \\
+         \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
+         a_{n, 1} & \cdots & a_{n,j-1} & 0 & a_{n, j+1} & \cdots & a_{n, n} 
+        \end{array}\right].
+  $$
+  $c_{ik}$ est donc le déterminant de la matrice $A$ dont la $k$-ème ligne est remplacée par la $i$-ème ligne. 
+  Cette matrice possède donc deux lignes égales (la $i$-ème et la $k$-ème), son déterminant est donc nul, donc $c_{ik} = 0$.
+\end{description}
+On a ainsi montré que
+$$
+c_{ik} = \left\{\begin{array}{ll} 
+                  |A| & \text{si $i = k$} \\
+                  0 & \text{sinon}.
+                \end{array} \right.
+\qquad \Leftrightarrow \qquad
+C = AB^\top = |A| I
+\qquad \Leftrightarrow \qquad
+A^{-1} = B^\top \left/|A|\right..
+$$
+\eproof

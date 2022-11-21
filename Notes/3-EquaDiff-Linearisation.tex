@@ -20,7 +20,7 @@ On remarque immédiatement que les points d'équilibre $x^*$ sont les élément 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas diagonalisable.}
 
-\begin{proposition*}[ODE linéaire diagonalisable]
+\begin{proposition}[ODE linéaire diagonalisable] \label{prop:odeLineaireDiagonalisable}
   Si la matrice $A$ est diagonalisable : 
   $$
   A = P D P^{-1}
@@ -41,9 +41,9 @@ On remarque immédiatement que les points d'équilibre $x^*$ sont les élément 
   \qquad \text{et} \qquad
   z_0 = P^{-1} y_0.
   $$
-\end{proposition*}
+\end{proposition}
 
-\proof
+\parSR{Démonstration de la proposition \ref{prop:odeLineaireDiagonalisable}.}
 En posant $z(t) = P^{-1} y(t)$ et puisque la dérivation est linéaire, il vient 
 $$
 \dot z (t) = P^{-1} \dot y(t) = P^{-1} A y(t) = P^{-1} P D P^{-1} y(t) = D z(t).
@@ -55,7 +55,7 @@ $$
 avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant à $y(t) = P z(t)$.
 \eproof
 
-\remark
+\remarks
 \begin{enumerate}
   \item La proposition dit que, au prix du changement de base $z = P^{-1} y$, le système $\dot Y = A y$ est équivalent à $n$ équations différentielles linéaires unidimensionnelles.
   \item La condition initiale $y_0$ se décompose sous la forme
@@ -118,7 +118,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas non diagonalisable.}
 
-\begin{theorem*}
+\begin{theorem}
   Soit $A$ non diagonalisable et $\lambda_1, \dots \lambda_n$ les racines (possiblement complexes, non nécessairement distinctes) de son polynôme caractéristique, quelque soit $y_0$, il existe $n^2$ polynômes (à coefficients complexes) $q_{ij}(t)$ tels quel la solution du problème
   $$
   \{y(0) = y_0, \; \dot y = A y\}
@@ -129,10 +129,10 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   $$
   En conséquence, 0 est le seul équilibre stable possible et il l'est à condition que
   $$
-  forall 1 \leq i \leq n: \quad \Re(\lambda_i) < 0
+  \forall 1 \leq i \leq n: \quad \Re(\lambda_i) < 0
   $$
   en notant $\Re(u)$ la partie réelle du nombre complexe $u$.
-\end{theorem*}
+\end{theorem}
 
 %-------------------------------------------------------------------------------
 \subsection{Linéarisation} 
@@ -144,14 +144,14 @@ $$
 $$
 
 %-------------------------------------------------------------------------------
-\begin{theorem*}[Hartman-Grobman]
+\begin{theorem}[Hartman-Grobman]
   Le point d'équilibre $x^*$ de l'ODE $\dot y = F(y)$ a la même nature que l'origine $0$ pour le système linéaire 
   $$
   \dot y = J_{x^*} y
   $$
   à condition que toutes les valeurs propres de $J_{x^*}$ aient une partie réelle non nulle. \\
   En particulier, $x^*$ est stable si $\forall i: \Re(\lambda_i) < 0$.
-\end{theorem*}
+\end{theorem}
 
 %-------------------------------------------------------------------------------
 \paragraph*{Démarche.}
@@ -161,24 +161,24 @@ On peut ainsi définir une démarche systématique pour étudier les équilibres
   $$
   \Ical_k = \{x : F_k(x) = 0\}
   $$
-  puis leur intersection $\bigcap_k \Ical_k$ pour résoudre $F(x) = 0$ ;
-  \item Calculer la matrice jacobienne $J_{x^*} F$ pour tout équilibre $x^*$ ;
+  puis leur intersection $\bigcap_k \Ical_k$ pour déterminer les racines $x^*$ de  $F(x) = 0$ ;
+  \item Calculer la matrice jacobienne $J_{x^*} F$ pour chaque équilibre $x^*$ ;
   \item Déterminer les racines du polynôme caractéristique $P_{J_{x^*}}(\lambda)$ et en déduire la nature de $x^*$ si toutes les racines ont une partie réelle non nulle.
 \end{enumerate}
 
-\vspace{.1\textheight}
-\progres{
-  Début Cours 8. Rappels :
-  \begin{enumerate}[\itemdot]
-    \item Système dynamique défini ppour $y(t) \Rbb^n$:
-    $$
-    \{y(t_0 = y_0, \; \dot y = F(y)\}
-    $$
-    \item Point d'équilibre $x^*$ : $F(x) = 0$
-    \item ($n = 1$) Nature de $x^*$: stable si $F'(x^*) < 0$, instable si $F'(x^*) > 0$.
-    \item ($n \geq 1$) Cas linéaire diagonalisable : caractérisation en fonction du signe des valeurs propres \\
-    $\Rightarrow$ 0 seul équilibre stable possible (à condition que tous les $\lambda_i < 0$) \\
-    $\Rightarrow$ idem cas non-diagonalisable
-    \item ($n \geq 1$) Cas non linéaire : nature d'une équilibre $x^*$ = même nature que l'origine pour le système linéaire avec $A = J_{x^*} F$.
-  \end{enumerate}
-}
+% \vspace{.1\textheight}
+% \progres{
+%   Début Cours 8. Rappels :
+%   \begin{enumerate}[\itemdot]
+%     \item Système dynamique défini ppour $y(t) \Rbb^n$:
+%     $$
+%     \{y(t_0 = y_0, \; \dot y = F(y)\}
+%     $$
+%     \item Point d'équilibre $x^*$ : $F(x) = 0$
+%     \item ($n = 1$) Nature de $x^*$: stable si $F'(x^*) < 0$, instable si $F'(x^*) > 0$.
+%     \item ($n \geq 1$) Cas linéaire diagonalisable : caractérisation en fonction du signe des valeurs propres \\
+%     $\Rightarrow$ 0 seul équilibre stable possible (à condition que tous les $\lambda_i < 0$) \\
+%     $\Rightarrow$ idem cas non-diagonalisable
+%     \item ($n \geq 1$) Cas non linéaire : nature d'une équilibre $x^*$ = même nature que l'origine pour le système linéaire avec $A = J_{x^*} F$.
+%   \end{enumerate}
+% }
