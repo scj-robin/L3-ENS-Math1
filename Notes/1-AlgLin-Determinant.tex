@@ -400,10 +400,22 @@ $$
          a_{k+1,1} & \cdots & a_{k+1,j-1} & 0 & a_{k+1, j+1} & \cdots & a_{k+1, n} \\
          \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
          a_{n, 1} & \cdots & a_{n,j-1} & 0 & a_{n, j+1} & \cdots & a_{n, n} 
+        \end{array}\right]
+  $$
+  qui est égale à celui de la matrice
+  $$
+  \left[\begin{array}{ccccccc}
+         a_{1, 1} & \cdots & a_{1,j-1} & a_{1, j} & a_{1, j+1} & \cdots & a_{1, n} \\
+         \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
+         a_{k-1,1} & \cdots & a_{k-1,j-1} & a_{k-1, j} & a_{k-1, j+1} & \cdots & a_{k-1, n} \\
+         0 & \cdots & 0 & a_{i, j} & 0 & \cdots & 0 \\
+         a_{k+1,1} & \cdots & a_{k+1,j-1} & a_{k+1, j} & a_{k+1, j+1} & \cdots & a_{k+1, n} \\
+         \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
+         a_{n, 1} & \cdots & a_{n,j-1} & a_{n, j} & a_{n, j+1} & \cdots & a_{n, n} 
         \end{array}\right].
   $$
   $c_{ik}$ est donc le déterminant de la matrice $A$ dont la $k$-ème ligne est remplacée par la $i$-ème ligne. 
-  Cette matrice possède donc deux lignes égales (la $i$-ème et la $k$-ème), son déterminant est donc nul, donc $c_{ik} = 0$.
+  Cette matrice possède deux lignes égales (la $i$-ème et la $k$-ème), donc son déterminant est nul, donc $c_{ik} = 0$.
 \end{description}
 On a ainsi montré que
 $$
