@@ -1,0 +1,3 @@
+Exos : 
+
+Mq B définie positive implique de f(x) = x' B x est une norme.
