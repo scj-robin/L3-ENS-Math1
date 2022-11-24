@@ -21,12 +21,12 @@ $$
 \end{tabular}
 $$
 
-\begin{figure*}[ht]
+\begin{figure}[ht]
   \begin{center}
     \includegraphics{L3-SU-MathBio-StabiliteEquilibresD2}
   \end{center}
   \caption{Stabilité des équilibres en dimension 2. $\tau = \tr(A)$, $\delta=|A|$, $\Delta = \tau^2 - 4 \delta$ (discriminant de $P_A(\lambda)$.}
-\end{figure*}
+\end{figure}
 
 Les théorèmes vus jusqu'à présent ne permettent pas d'étudier le dernier cas, qui correspond à des trajectoires limites cycliques.
 
@@ -34,14 +34,14 @@ Les théorèmes vus jusqu'à présent ne permettent pas d'étudier le dernier ca
 \subsection{Existence d'orbites périodiques} 
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Orbite]
+\begin{definition}[Orbite]
   Pour toute solution $(f, I)$ d'une ODE, on appelle \emph{orbite} l'ensemble $\{f(t), t \in I\}$. S'il existe $t_0: [t_0, \infty) \subset I$, l'ensemble $\{f(t), t \geq t_0\}$ est appelé \emph{semi-orbite positive}.
-\end{definition*}
+\end{definition}
 
 %-------------------------------------------------------------------------------
-\begin{theorem*}[Poincarré-Bendixson]
+\begin{theorem}[Poincarré-Bendixson]
   Soit $D$ un fermé borné de $\Rbb^2$ ne contenant pas de point d'équilibre d'une ODE $\dot y = F(y)$. S'il existe une semi-orbite positive $O$ entièrement comprise dans $D$ alors l'ensemble $C$ des points limite de $O$ est une orbite périodique. Si $O$ n'est pas l'ensemble $C$, $C$ et appelé cycle limite.
-\end{theorem*}
+\end{theorem}
 
 \remark
 Le théorème dit que si une trajectoire solution de l'ODE est piégée dans une région $D$ bornée de $\Rbb^2$, elle doit se rapprocher de plus en plus d'une courbe $C$ fermée. Il n'est souvent pas difficile d'identifier une telle région $D$, mais déterminer le cycle limite $C$ est souvent plus difficile.
@@ -49,9 +49,9 @@ Le théorème dit que si une trajectoire solution de l'ODE est piégée dans une
 %-------------------------------------------------------------------------------
 \paragraph*{Détermination d'une cycle limite.} 
 
-\begin{definition*}[Hamiltionien]
+\begin{definition}[Hamiltionien]
   Un hamiltionien (ou une fonction hamiltonienne) d'une ODE est une fonction $H : \Rbb^n \mapsto \Rbb$ qui reste constante le long des trajectoires solution de l'ODE.
-\end{definition*}
+\end{definition}
 
 \remark
 Cette démfinition revient à dire que les solutions $y(t)$ suivent des ligne de niveau de la fonction hamiltonienne.
