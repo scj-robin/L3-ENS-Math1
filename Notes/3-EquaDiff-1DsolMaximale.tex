@@ -32,7 +32,7 @@ $$
 $$
 où $F$ est une fonction de $\Rbb^n$ dans $\Rbb^n$. Une telle équation est appelée {\em équation différentielle ordinaire} (EDO, alias {\em ODE} en anglais).
 
-Comme la notation le laisse entendre, la variable $t$ décrit typiquement un temps et $y(t)$ l'évolution d'un système à $n$ coordonnées au cours du temps partialant d'une {\em condition initiale}
+Comme la notation le laisse entendre, la variable $t$ décrit typiquement un temps et $y(t)$ l'évolution d'un système à $n$ coordonnées au cours du temps partant d'une {\em condition initiale}
 $$
 y(t_0) = y_0.
 $$
@@ -54,7 +54,7 @@ $$
   \dot P & = & b N P  - m P
  \end{array} \right.
  $$
- \item[SIR :] $y(t) = [S(t) \; I(t) \; R(t)]^\top$ avec $S(t) =$ nombre de susceptibles au temps $t$ ,$I(t) =$ nombre d'infectés et $R(t) =$ nombre de 'remis' ({\em recovered}) :
+ \item[SIR :] $y(t) = [S(t) \; I(t) \; R(t)]^\top$ avec $S(t) =$ nombre de susceptibles au temps $t$, $I(t) =$ nombre d'infectés et $R(t) =$ nombre de 'remis' ({\em recovered}) :
  $$
  \left\{ \begin{array}{rcl} 
   \dot S & = & - r S I \\
@@ -62,6 +62,7 @@ $$
   \dot R & = & a I \\
  \end{array} \right.
  $$
+ Un tel modèle est appelé modèles à compartiments, les compartiments étant les populations d'effectif respectifs $S$, $I$ et $R$. 
  (modèle à compartiments).
 \end{description}
 
@@ -88,7 +89,7 @@ a_0 = y_0 e^{-t_0}
 \qquad \Rightarrow \qquad
 y(t) = y_0 e^{r(t-t_0)}.
 $$
-Ce modèle est connu en dynamique des population sous le nom de {\em modèle de Malthus} : il suppose que l'accroissement de la population est directement proportionnel à sa taille. Ce modèle n'inclue pas de limitation de la taille de la population et en prévoit donc une croissance indéfini (pour $r > 0$).
+Ce modèle est connu en dynamique des population sous le nom de {\em modèle de Malthus} : il suppose que l'accroissement de la population est directement proportionnel à sa taille. Ce modèle n'inclue pas de limitation de la taille de la population et en prévoit donc une croissance indéfini pour $r > 0$ (et une extinction pour $r < 0$).
 
 
 %-------------------------------------------------------------------------------
@@ -107,7 +108,7 @@ Ce modèle est connu en dynamique des population sous le nom de {\em modèle de 
 \end{definition}
 
 \begin{theorem}[Cauchy-Lipschitz]
-  Si $F$ est est $C^1$ par morceaux, il existe une unique solution $f$ sur $I$ au problème de Cauchy qui soit maximale au sens où si $g$ est également solution sur $J$, alors $J \subset I$ et $g(t) = f(t)$ pour tout $t \in J$. $f$ est appelée solution maximale et $I$ intervalle maximal.
+  Si $F$ est $C^1$ par morceaux, il existe une unique solution $f$ sur $I$ au problème de Cauchy qui soit maximale au sens où si $g$ est également solution sur $J$, alors $J \subset I$ et $g(t) = f(t)$ pour tout $t \in J$. $f$ est appelée solution maximale et $I$ intervalle maximal.
 \end{theorem}
 
 \remark
@@ -129,7 +130,7 @@ $f(t) = y_0 e^{r(t-t_0)}$ est donc l'unique solution du problème $\{y_0 = y(t_0
     & \Leftrightarrow &
     y(t) & = \frac1{a + ct} \qquad \text{pour } t \neq -\frac{a}c.
   \end{align*}
-  La condition $y(0) = 1$ impose alors que $a = 1$. 
+  La condition $y(0) = 1$ impose alors que $a = 1$, soit 
   $$
   f(t) = (1+ ct)^{-1}
   $$ 
@@ -159,24 +160,27 @@ Un équilibre est donc stable si toute (petite) perturbation $\varepsilon$ autou
 %-------------------------------------------------------------------------------
 \paragraph*{Modèle de Verhulst.}
 Une façon simple d'empêcher la croissance indéfinie de la population prédite par le modèle de Malthus consiste à supposer que le taux de reproduction $\dot y / y$ décroît linéairement avec la taille de la population : 
-$$
+\begin{equation} \label{eq:verhulst}
 \dot y / y = r - cy
 \qquad \Leftrightarrow \qquad
-\dot y = y(r - cy) = ry - c y^2.
-$$
+\dot y = y(r - cy).
+\end{equation}
 Ce modèle est connu sous le nom de {\em modèle de Verhulst}. On suppose typiquement que les paramètres $r$ et $c$ sont positifs.
 \begin{description}
   \item[Points d'équilibre:] $x^* = 0$ et $x^* = K := r/c$ sont des points d'équilibre car alors $\dot y = F(x^*) = 0$.
   \item[Solution pour $y_0 \in \{0, K\}$:] la fonction $y(t)$ reste constante (car $\dot y(t) \equiv 0$).
   \item[Solution pour $0 < y_0 < K$:]
-  On obtient une solution de cette équation en remarquant que, pour $t$ tel que $0 < y(t) < K$, on a
+  On obtient une solution de cette équation en remarquant que, pour $t$ tel que $0 < y(t) < K$, \eqref{eq:verhulst} est équivalente à 
   $$
+  r = \frac{\dot y}y + cy \qquad \Leftrightarrow \qquad y = \frac{\dot y}{r - cy}
+  $$
+  donc
+  \begin{equation} \label{eq:verhulstSolution}
   r 
-  = \frac{r \dot y}{y(r - cy)}
   = \frac{\dot y}{y} + \frac{c \dot y}{r - cy}
   = \frac{\partial}{\partial t} \left(\log y - \log (r - cy) \right)
   = \frac{\partial}{\partial t} \left(\log \left(\frac{y}{r - cy}\right)\right).
-  $$
+  \end{equation}
   En supposant que $0 < y < K$, on obtient comme solution 
   \begin{align*}
     \log \left(\frac{y}{r - cy}\right) & = rt + \log b
@@ -188,36 +192,43 @@ Ce modèle est connu sous le nom de {\em modèle de Verhulst}. On suppose typiqu
     y = \frac{rb e^{rt}}{1 + cb e^{rt}} & = \frac{K a_0 e^{rt}}{1 + a_0 e^{rt}}
     \qquad \text{avec } a_0 = cb.
   \end{align*}
-  Le paramètre $a_0$ étant fixé par la condition initiale \textcolor{red}{(on prend $t_0 = 0$)} $y(0) = y_0$ : 
+  Le paramètre $a_0$ étant fixé par la condition initiale $y(0) = y_0$ : 
   $$
   a_0 = \frac{y_0}{K-y_0} > 0 \qquad (\text{car } 0  < y_0 < K).
   $$
-  On vérifie ainsi que 
+  On vérifie ainsi que $y(t)$ est croissante et que 
   $$
   \dot y(t) = \frac{Ka_0 r e^{rt}}{(1 + a_0 e^{rt})^2} > 0, 
   \qquad 
   \lim_{t \rightarrow -\infty} y(t) = 0, 
   \qquad
-  \lim_{t \rightarrow 0\infty} y(t) = K
+  \lim_{t \rightarrow \infty} y(t) = K
   $$
   donc que $0 < y(t) < K$ pour tout $t \in \Rbb$ : c'est donc une solution maximale sur $\Rbb$. \\
   \item[Solution $y_0 < 0$ ou $y_0 > K$ :] on étudie ces cas de façon analogue au cas $y_0 \in ]0; K[$ en remarquant que pour une fonction $f$ dérivable possiblement négative 
   $$
-  \frac{\dot f}{f} = \frac{\partial}{\partial t} \log |f|.
+  \frac{\dot f}{f} = \frac{\partial}{\partial t} \log |f|
   $$
-  On montre ainsi que 
+  et que donc la forme de la solution \eqref{eq:verhulstSolution} reste valide : 
   $$
   y(t) = \frac{K a_ 0 e^{rt}}{1 +  a_0 e^{rt}}
-  \qquad \text{avec} \quad a_0 = \frac{y_0}{K-y_0} < 0
-  \qquad \text{et pour } \quad t \neq t_* = -\frac1r \log(-a_0)
   $$
-  est solution maximale sur $\Rbb \setminus \left\{t_*\right\}$.
+  mais avec
+  $$
+  a_0 = \frac{y_0}{K-y_0} < 0
+  $$ 
+  et pour 
+  $$
+  t \neq t_* = -\frac1r \log(-a_0)
+  $$
+  (c'est donc une solution maximale sur $\Rbb \setminus \left\{t_*\right\}$). \\
   On montre notamment que $y(t)$ atteint $- \infty$ en un temps fini si $y_0 < 0$ et que $\lim_{t \rightarrow \infty} y(t) = K$ pour $y_0 > K$.
   $$
   \includegraphics[width=.6\textwidth]{Verhulst-solutions}
   $$
+  \todo{Refaire la figure en supprimant les 1/2 courbes inutiles pour $y_0 > K$ et $y_0 < 0$.}
   \item[Stabilité des équilibres :]
-  Le point d'équilibre $x^* = K$ est stable pour $y_0 > 0$. Le point d'équilibre $x^* = 0$ est instable.
+  Le point d'équilibre $x^* = K$ est stable (mais jamais atteint si $y_0 \leq 0$). Le point d'équilibre $x^* = 0$ est instable.
 \end{description}
 
 \remark
@@ -239,6 +250,14 @@ $$
 \dot h(t) = F'(x^*) h(t)
 $$
 soit $e ^{F'(x^*) t}$ qui tend vers 0 si $F'(x^*) < 0$ et vers l'infini si $F'(x^*) > 0$.
+
+\exemple{
+  Dans le cas du modèle de Verhulst, on a $F(y) = y(r - cy)$, soit
+  $$
+  F'(y) = r - 2cy
+  $$
+  qui est bien positive pour $y = 0$ (équilibre instable) et négative pour $y = K = r/c$ (équilibre stable).
+}
 
 %-------------------------------------------------------------------------------
 \paragraph*{Notion de bifurcation.}
@@ -264,10 +283,16 @@ De nombreux systèmes dynamiques sont exprimés en fonction de paramètres dont 
   $$
   F'(x) = \mu - 3 x^2
   $$
-  donc $0$ est toujours instable alors que, pour $\mu > 0$, $-\sqrt{\mu}$ et $\sqrt{\mu}$ sont stables. On peut ainsi tracer le {\em diagramme de bifurcation}.
+  donc
+  \begin{itemize}
+    \item si $\mu < 0$, $0$ le seul équilibre et il est stable, , 
+    \item si $\mu > 0$, $0$ est instable mais $-\sqrt{\mu}$ et $\sqrt{\mu}$ sont stables. 
+  \end{itemize}
+  On peut ainsi tracer le {\em diagramme de bifurcation}.
   $$
   \includegraphics[width=.5\textwidth, trim=0 0 0 15, clip=]{StabiliteSystemeDynamique-Exemple1}
   $$
+  \todo{Refaire la figure avec $y^* = 0$ stable pour $\mu < 0$.}
 }
 
 %-------------------------------------------------------------------------------

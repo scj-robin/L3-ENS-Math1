@@ -82,13 +82,21 @@
 \end{minipage}}\end{center}
 \bigskip
 }
+% \newcommand{\exemple}[1]{
+% \begin{center}\framebox{\begin{minipage}{\textwidth}
+%   \parSR{Exemple.}
+%   #1
+% \end{minipage}}\end{center}
+% \bigskip
+% }
 \newcommand{\exemple}[1]{
-\begin{center}\framebox{\begin{minipage}{\textwidth}
+\begin{breakbox}
   \parSR{Exemple.}
   #1
-\end{minipage}}\end{center}
+\end{breakbox}
 \bigskip
 }
+
 \newcommand{\SRcorrect}[2]{\textcolor{gray}{#1}\textcolor{blue}{#2}}
 \newcommand{\SRcomment}[1]{\textcolor{blue}{[{\sl SR: #1}]}}
 
