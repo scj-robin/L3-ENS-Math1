@@ -3,7 +3,7 @@
 rm(list=ls()); library(lattice)
 figDir <- '../Figures/'
 dataName <- 'Verhulst'
-exportFig <- TRUE
+exportFig <- FALSE
 
 ###############################################################################
 # Modele & parms

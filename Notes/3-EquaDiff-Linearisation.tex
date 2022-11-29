@@ -15,7 +15,7 @@
 \end{definition}
 
 \remark
-On remarque immédiatement que les points d'équilibre $x^*$ sont les élément du noyau $\ker(A)$, i.e. les vecteurs propres associés à la valeur propre 0.
+Les points d'équilibre $y^*$ sont les élément du noyau $\ker(A)$, i.e. les vecteurs propres associés à la valeur propre 0. En conséquence, si $\lambda = 0$ n'est pas valeur propre de $A$, il n'existe pas d'autre point stationnaire que $y^* = 0_n$.
 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas diagonalisable.}
@@ -55,9 +55,33 @@ $$
 avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant à $y(t) = P z(t)$.
 \eproof
 
+%-------------------------------------------------------------------------------
+\begin{definition}{Exponentielle de matrice}
+  L'exponentielle matricielle est la fonction
+  $$
+  \begin{array}{rccc}
+    \exp: & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+      & B & \rightarrow & \exp(B),
+  \end{array}
+  \qquad \text{où} \quad
+  \exp(B) = \sum_{k \geq 0} \frac{B^k}{k !}
+  $$
+\end{definition}
+
+\exemple{[Exponentielle d'un matrice diagonale]
+  Soit $D = \diag[d_1, \dots d_n]$, on a
+  \begin{align*}
+    \exp(D) 
+    & = \sum_{k \geq 0} \frac{D^k}{k !}
+    = \sum_{k \geq 0} \frac1{k !} \diag[d_1^k, \dots d_n^k]
+    = \diag[\exp(d_1), \dots \exp(d_n)].
+  \end{align*}
+}
+
+%-------------------------------------------------------------------------------
 \remarks
 \begin{enumerate}
-  \item La proposition dit que, au prix du changement de base $z = P^{-1} y$, le système $\dot Y = A y$ est équivalent à $n$ équations différentielles linéaires unidimensionnelles.
+  \item La proposition \ref{prop:odeLineaireDiagonalisable} dit que, au prix du changement de base $z = P^{-1} y$, le système $\dot Y = A y$ est équivalent à $n$ équations différentielles linéaires unidimensionnelles.
   \item La condition initiale $y_0$ se décompose sous la forme
   $$
   y_0 = \sum_i z_{i0} v_i
@@ -65,7 +89,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   où les $v_i$ sont les vecteur propres de $A$, i.e. les vecteurs colonnes de $P$.
   \item En définissant l'exponentielle matricielle
   $$
-  \exp(B) = \sum_{k \geq 0} \frac1{k!} B^k,
+  \exp(B) = \sum_{k \geq 0} \frac1{k!} B^k
   \qquad \Rightarrow \qquad
   \exp(P B P^{-1}) = P \exp(B) P^{-1}
   $$
@@ -114,6 +138,20 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   \end{itemize}
   En conclusion, s'il existe au moins un $\lambda_i \geq 0$, un perturbation autour d'un point d'équilibre $x^* \in \ker(A)$ éloignera le système de $x_ *$ dans la direction $v_i$. A l'opposé, si toutes les $\lambda_i$ sont strictement négatives, quelque soit $y_0$, $\lim_{t \rightarrow \infty} y(t) = 0$ qui est donc le seul équilibre stable.
 \end{enumerate}
+
+\progres{
+  Rappel cours 5 :
+  \begin{itemize}
+    \item Equation différentielle ordinaire en dimension 1
+    \item Stabilité des points stationnaires
+    \item Equation différentielle ordinaire en dimension $n$ : $A$ diagonale, diagonalisable
+  \end{itemize}
+  Programme cours 6 :
+  \begin{itemize}
+    \item Equation différentielle ordinaire non-linéaire en dimension $n$, linéarisation
+    \item Equation différentielle ordinaire non-linéaire en dimension $2$
+  \end{itemize}
+}
 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas non diagonalisable.}

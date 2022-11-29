@@ -5,15 +5,15 @@
   \begin{itemize}
     \item Différentiabilité, matrice jacobienne, composition
     \item Intégration et changement de variable
-    \item Caractérisation des extrema
+    \item Caractérisation des extremums
     \item Exercice à faire : extrema de $f(x, y) = x^3 + y^3 - 3xy$.
   \end{itemize}
   Programme cours 5 :
   \begin{itemize}
     \item Chapitre 3 : équations différentielles et systèmes dynamiques
     \item EDO en dimension 1 : solution maximale, stabilité
-    \item EDO en dimension $n$ :cas linéaire
-    \item EDO en dimension $n$ :cas non linéaire
+    \item EDO en dimension $n$ : cas linéaire
+    \item EDO en dimension $n$ : cas non linéaire
   \end{itemize}
 }
 
@@ -62,8 +62,7 @@ $$
   \dot R & = & a I \\
  \end{array} \right.
  $$
- Un tel modèle est appelé modèles à compartiments, les compartiments étant les populations d'effectif respectifs $S$, $I$ et $R$. 
- (modèle à compartiments).
+ Un tel modèle est dit à compartiments, les compartiments étant les populations d'effectifs respectifs $S$, $I$ et $R$. 
 \end{description}
 
 Ces deux modèles sont fondés sur des sytèmes d'équations différentielles en dimension plus grande que 1 et non linéaires.
@@ -165,7 +164,10 @@ Une façon simple d'empêcher la croissance indéfinie de la population prédite
 \qquad \Leftrightarrow \qquad
 \dot y = y(r - cy).
 \end{equation}
-Ce modèle est connu sous le nom de {\em modèle de Verhulst}. On suppose typiquement que les paramètres $r$ et $c$ sont positifs.
+Ce modèle est connu sous le nom de {\em modèle de Verhulst}. On suppose que les paramètres $r$ et $c$ sont positifs et on ôse la condition initiale
+$$
+y(0) = y_0.
+$$
 \begin{description}
   \item[Points d'équilibre:] $x^* = 0$ et $x^* = K := r/c$ sont des points d'équilibre car alors $\dot y = F(x^*) = 0$.
   \item[Solution pour $y_0 \in \{0, K\}$:] la fonction $y(t)$ reste constante (car $\dot y(t) \equiv 0$).
@@ -226,7 +228,7 @@ Ce modèle est connu sous le nom de {\em modèle de Verhulst}. On suppose typiqu
   $$
   \includegraphics[width=.6\textwidth]{Verhulst-solutions}
   $$
-  \todo{Refaire la figure en supprimant les 1/2 courbes inutiles pour $y_0 > K$ et $y_0 < 0$.}
+%  \todo{Refaire la figure en supprimant les 1/2 courbes inutiles pour $y_0 > K$ et $y_0 < 0$.}
   \item[Stabilité des équilibres :]
   Le point d'équilibre $x^* = K$ est stable (mais jamais atteint si $y_0 \leq 0$). Le point d'équilibre $x^* = 0$ est instable.
 \end{description}
@@ -290,55 +292,55 @@ De nombreux systèmes dynamiques sont exprimés en fonction de paramètres dont 
   \end{itemize}
   On peut ainsi tracer le {\em diagramme de bifurcation}.
   $$
-  \includegraphics[width=.5\textwidth, trim=0 0 0 15, clip=]{StabiliteSystemeDynamique-Exemple1}
-  $$
-  \todo{Refaire la figure avec $y^* = 0$ stable pour $\mu < 0$.}
-}
-
-%-------------------------------------------------------------------------------
-\textcolor{gray}{
-  \exemple{
-    On souhaite déterminer les points d'équilibre (et leur nature) du système
-    $$
-    \dot y = F(y) = \mu y + 2 y^3 - y^5.
-    $$
-    On a 
-    $$
-    F(y) = y(\mu + y^2 - y^4)
-    $$
-    qui s'annule pour $y = 0$ et pour les solutions de $(\mu + 2 y^2 - y^4)$. En posant, $z = y^2$, $\mu + 2 z - z^2 = 0$ admet des solutions si $\Delta =  4(1 + \mu) \geq 0$, soit $\mu \geq -1$. Ces solutions sont alors $z^* = -1 \pm \sqrt{1+\mu}$. La seule solution possiblement positive est $z^* = -1 + \sqrt{1+\mu}$ et elle l'est ssi $\mu > 1$. \\
-    Le système admet donc un unique point fixe $x^*=0$ si $\mu < 1$ et un second point fixe $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$. \\
-    On a de plus
-    $$
-    F'(x) = \mu + 3 y^2 - 5y^4
-    $$
-    dont le signe est celui de $\mu$ pour $x=0$ et \todo{nature de $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$.}
-  }}
-
-  %-------------------------------------------------------------------------------
-\exemple{[Exercice 2, TD2, L2 Bio SU]
-  On considère le système
-  $$
-  \dot y = - y^3 + 7 y^2 - 14 y + 8.
-  $$
-  Ses points stationnaires sont les racines du polynôme $P(y) = - y^3 + 7 y^2 - 14 y + 8$, donc $y_1 = 1$ fait partie, donc
-  $$
-  P(y) = (y-1) (-y^2 + 6y + 8),
-  $$
-  et les deux racines de $-y^2 + 6y + 8$ sont $2$ et $4$. Les points stationnaires du système sont donc 
-  $$
-  y_1 = 1, \qquad y_2 = 2, \qquad y_3 = 4.
-  $$
-  Leur stabilité est donné par la dérivée de $P$:
-  $$
-  P'(y) = -3y^2 + 14 y - 14,
-  $$
-  soit
-  $$
-  P'(y_1) = -3, \qquad P'(y_2) = 2, \qquad P'(y_3) = -6.
-  $$
-  $y_1$ et $y_3$ sont donc des équilibres stables, et $y_2$ un équilibre instable.
-  $$
-  \includegraphics[width=.5\textwidth]{TD-SUbioL3-TD2Exo2}
+%  \includegraphics[width=.5\textwidth, trim=0 0 0 15, clip=]{StabiliteSystemeDynamique-Exemple1}
+  \includegraphics[width=.5\textwidth, trim=0 0 0 15, clip=]{StabiliteSystemeDynamique-Bifurcation}
   $$
 }
+
+% %-------------------------------------------------------------------------------
+% \textcolor{gray}{
+%   \exemple{
+%     On souhaite déterminer les points d'équilibre (et leur nature) du système
+%     $$
+%     \dot y = F(y) = \mu y + 2 y^3 - y^5.
+%     $$
+%     On a 
+%     $$
+%     F(y) = y(\mu + y^2 - y^4)
+%     $$
+%     qui s'annule pour $y = 0$ et pour les solutions de $(\mu + 2 y^2 - y^4)$. En posant, $z = y^2$, $\mu + 2 z - z^2 = 0$ admet des solutions si $\Delta =  4(1 + \mu) \geq 0$, soit $\mu \geq -1$. Ces solutions sont alors $z^* = -1 \pm \sqrt{1+\mu}$. La seule solution possiblement positive est $z^* = -1 + \sqrt{1+\mu}$ et elle l'est ssi $\mu > 1$. \\
+%     Le système admet donc un unique point fixe $x^*=0$ si $\mu < 1$ et un second point fixe $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$. \\
+%     On a de plus
+%     $$
+%     F'(x) = \mu + 3 y^2 - 5y^4
+%     $$
+%     dont le signe est celui de $\mu$ pour $x=0$ et \todo{nature de $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$.}
+%   }}
+
+% %-------------------------------------------------------------------------------
+% \exemple{[Exercice 2, TD2, L2 Bio SU]
+%   On considère le système
+%   $$
+%   \dot y = - y^3 + 7 y^2 - 14 y + 8.
+%   $$
+%   Ses points stationnaires sont les racines du polynôme $P(y) = - y^3 + 7 y^2 - 14 y + 8$, donc $y_1 = 1$ fait partie, donc
+%   $$
+%   P(y) = (y-1) (-y^2 + 6y + 8),
+%   $$
+%   et les deux racines de $-y^2 + 6y + 8$ sont $2$ et $4$. Les points stationnaires du système sont donc 
+%   $$
+%   y_1 = 1, \qquad y_2 = 2, \qquad y_3 = 4.
+%   $$
+%   Leur stabilité est donné par la dérivée de $P$:
+%   $$
+%   P'(y) = -3y^2 + 14 y - 14,
+%   $$
+%   soit
+%   $$
+%   P'(y_1) = -3, \qquad P'(y_2) = 2, \qquad P'(y_3) = -6.
+%   $$
+%   $y_1$ et $y_3$ sont donc des équilibres stables, et $y_2$ un équilibre instable.
+%   $$
+%   \includegraphics[width=.5\textwidth]{TD-SUbioL3-TD2Exo2}
+%   $$
+% }

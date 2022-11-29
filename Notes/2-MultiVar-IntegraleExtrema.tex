@@ -16,7 +16,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{definition*}[Difféomorphisme]
-  Soient $\Xcal$ et $\Ycal$ deux ouverts de $\Rbb^n$ et une bijection $g : \Xcal \mapsto \Ycal$. $g$ est un difféomorphisme si $g$ est différentiable partout dans $\Xcal$ et que $g^{-1}$ est différentiable partout dans $\Ycal$. \\
+%   Soient $\Xcal$ et $\Ycal$ deux ouverts de $\Rbb^n$ et une bijection $g : \Xcal \mapsto \Ycal$. $g$ est un difféomorphisme si $g$ est différentiable partout dans $\Xcal$ et que $g^{-1}$ est différentiable partout dans $\Ycal$. \\
   Si, de plus, les dérivées partielles de $g$ et $g^{-1}$ sont partout continues, $g$ est un $C^1$-difféomorphisme.
 \end{definition*}
 
@@ -72,9 +72,11 @@ Non démontrée : la preuve passe par le découpage du domaine d'intégration en
 dilatation).
 \eproof
 
+%-------------------------------------------------------------------------------
 \remark
 La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dépend pas de l'ordre selon lequel on intègre par rapport aux différente coordonnée (théorème Fubini-Tonelli). Le théorème de Fubini-Lebesgue lève cette contrainte mais requiert que $f$ soit bornée.
 
+%-------------------------------------------------------------------------------
 \begin{corollary*}[Coordonnées polaires]
   Pour tout $f : \Rbb^2 \mapsto \Rbb^+$, 
   $$
@@ -90,6 +92,7 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
 \end{itemize}
 \eproof
 
+%-------------------------------------------------------------------------------
 \exemple{
   Pour calculer 
   $$
@@ -122,7 +125,7 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
 \subsection{Extrema}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Gradient]
+\begin{definition}[Gradient]
   Soit $f : \Rbb^k \mapsto \Rbb$ différentiable en $x^*$, le gradient de $f$ en $x^*$ est le vecteur constitué de ses dérivées partielles évaluées en $x^*$ : 
   $$
   \nabla_{x^*}f 
@@ -133,8 +136,9 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
              \end{array}\right]
   = \left[J_{x^*} f\right]^\top.
   $$
-\end{definition*}
+\end{definition}
 
+%-------------------------------------------------------------------------------
 \remark
 \begin{enumerate}
   \item Si $f$ est différentiable en $x$, on a
@@ -145,7 +149,8 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
 \end{enumerate}
 
 
-\begin{definition*}[Matrice hessienne]
+%-------------------------------------------------------------------------------
+\begin{definition}[Matrice hessienne]
   Soit $f : \Rbb^k \mapsto \Rbb$ différentiable en $x^*$, la matrice hessienne ('la hessienne') $f$ en $x^*$ est la matrice ayant pour éléments génériques les dérivées secondes croisées évaluées en $x^*$ : 
   $$
   \nabla^2_{x^*}f 
@@ -168,8 +173,9 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
   = \left.\frac{\partial^2 f}{\partial x_i^2}\right|_{x^*}.
   $$
   $\nabla^2_{x^*}f$ est notamment symétrique, ce qui implique qu'elle est diagonalisable.
-\end{definition*}
+\end{definition}
 
+%-------------------------------------------------------------------------------
 \begin{proposition} \label{prop:taylorOrdre2}
   Si $f$ est deux fois différentiable en $x$, alors
   $$
