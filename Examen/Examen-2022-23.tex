@@ -1,0 +1,99 @@
+\documentclass[french, 12pt]{article}
+
+%-------------------------------------------------------------------------------
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color,xcolor}
+\usepackage{tikz}
+\usepackage{remreset}
+\usepackage{url}
+% \usepackage{extsizes} % Permet \documentclass[french, 14pt]{extreport}
+% \usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=.75cm]{geometry}
+% \usepackage{minitoc}
+
+\graphicspath{{../Figures/}}
+\input{../Macros}
+
+% Section numbering
+\usepackage{chngcntr}
+\renewcommand{\thepart}{\Roman{part}}
+% \counterwithout{section}{part}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+
+% Proposition numbering
+% \numberwithin{proposition}{section}
+% \numberwithin{exercise}{section}
+% \numberwithin{equation}{section}
+
+% %-------------------------------------------------------------------------------
+% %-------------------------------------------------------------------------------
+% \title{\Huge{Ce qu'un biologiste doit savoir en mathématiques}}
+% \author{SR d'après \cite{Lam20} : Annexes}
+% \date{\today}
+
+
+\title{}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\begin{centering}
+  \footnotesize{\sc École Normale Supérieure de Paris} 
+  
+  \bigskip
+  \footnotesize{\sc Licence de Biologie L3}
+  
+  \bigskip
+  \footnotesize{\sc Année 2022–23}
+  
+  \bigskip
+  {\bf Mathématiques I : ce qu’un biologiste ne doit pas ignorer} 
+  
+  \bigskip
+  {\sc Examen}
+  
+\end{centering}
+
+\bigskip
+L'épreuve dure 2 heures. 
+Les notes de cours individuelles sont autorisées.
+L’usage de tout appareil électronique est interdit à l’exception d’une calculatrice.
+
+%-------------------------------------------------------------------------------
+\exemple{
+  On souhaite déterminer les points d'équilibre (et leur nature) du système
+  $$
+  \dot y = F(y) = \mu y + 2 y^3 - y^5.
+  $$
+  On a 
+  $$
+  F(y) = y(\mu + y^2 - y^4)
+  $$
+  qui s'annule pour $y = 0$ et pour les solutions de $(\mu + 2 y^2 - y^4)$. En posant, $z = y^2$, $\mu + 2 z - z^2 = 0$ admet des solutions si $\Delta =  4(1 + \mu) \geq 0$, soit $\mu \geq -1$. Ces solutions sont alors $z^* = -1 \pm \sqrt{1+\mu}$. La seule solution possiblement positive est $z^* = -1 + \sqrt{1+\mu}$ et elle l'est ssi $\mu > 1$. \\
+  Le système admet donc un unique point fixe $x^*=0$ si $\mu < 1$ et un second point fixe $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$. \\
+  On a de plus
+  $$
+  F'(x) = \mu + 3 y^2 - 5y^4
+  $$
+  dont le signe est celui de $\mu$ pour $x=0$ et \todo{nature de $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$.}
+}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+
