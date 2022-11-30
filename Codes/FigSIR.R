@@ -46,10 +46,14 @@ for(i in 1:y0Nb){
 if(exportFig){dev.off()}
 
 
-rho <- r/a
+iRef <- 1
+rho <- r/a; S0 <- y0List[[iRef]][1]/rho; N <- S0 + y0List[[iRef]][2]
 if(exportFig){png(paste0(figDir, dataName, '-finalState.png'))}
-curve(x*exp(-x/rho), from=0, to=2.5, type='l', lwd=3, xlab='S*', ylab='')
+f <- function(x){x*exp(-x/rho)}
+xGrid <- seq(0, 2.5, by=.01)
+plot(xGrid, f(xGrid), type='l', lwd=3, xlab='S*', ylab='', col=4)
 abline(v = rho, col=8, lwd=2, lty=2)
-# abline(h = S0*exp(-N/rho), col=8, lwd=2, lty=2)
+abline(h = S0*exp(-N/rho), lwd=2, lty=2, col=iRef)
+abline(v=xGrid[min(which(abs(f(xGrid) - S0*exp(-N/rho)) < 1e-3))], col=iRef, lty=2, lwd=2)
 if(exportFig){dev.off()}
 

@@ -47,14 +47,14 @@ Les théorèmes vus jusqu'à présent ne permettent pas d'étudier le dernier ca
 Le théorème dit que si une trajectoire solution de l'ODE est piégée dans une région $D$ bornée de $\Rbb^2$, elle doit se rapprocher de plus en plus d'une courbe $C$ fermée. Il n'est souvent pas difficile d'identifier une telle région $D$, mais déterminer le cycle limite $C$ est souvent plus difficile.
 
 %-------------------------------------------------------------------------------
-\paragraph*{Détermination d'une cycle limite.} 
+\paragraph*{Détermination d'un cycle.} 
 
 \begin{definition}[Hamiltionien]
   Un hamiltionien (ou une fonction hamiltonienne) d'une ODE est une fonction $H : \Rbb^n \mapsto \Rbb$ qui reste constante le long des trajectoires solution de l'ODE.
 \end{definition}
 
 \remark
-Cette démfinition revient à dire que les solutions $y(t)$ suivent des ligne de niveau de la fonction hamiltonienne.
+Cette définition revient à dire que les solutions $y(t)$ suivent des lignes de niveau de la fonction hamiltonienne.
 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas $n = 2$.} 
@@ -68,7 +68,7 @@ $$
 $$
 Les orbites sont alors les lignes de niveau du hamiltonien : 
 $$
-\{x, y: H(x, y, ) = c\}.
+\Ccal_z = \{x, y: H(x, y, ) = z\}.
 $$
 
 Toute la difficulté réside alors dans la détermination de la fonction $H$. On a cependant déjà vu que, le long d'une ligne de niveau, la dérivée par rapport au temps de $H(x(t), y(t))$ est nulle, soit
@@ -105,7 +105,7 @@ H(x, y) = h_1(x) + h_2(y)
 $$
 Les fonctions $h_1$ et $h_2$ doivent alors satisfaire
 $$
-h'_1(x) = c f(x), \qquad
-h'_2(x) = - c g(x).
+h'_1(x) = k f(x), \qquad
+h'_2(x) = - k g(x).
 $$
 On utilisera cette méthode pour déterminer les cycles limites du modèle de Lotka-Volterra.
