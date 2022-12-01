@@ -1,6 +1,6 @@
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
-\section{ODE non linéaires} \label{sec:EquaDiff-nonLineaire}
+\section{ODE en dimension $n$} \label{sec:EquaDiff-nonLineaire}
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   \item La proposition \ref{prop:odeLineaireDiagonalisable} dit que, au prix du changement de base $z = P^{-1} y$, le système $\dot Y = A y$ est équivalent à $n$ équations différentielles linéaires unidimensionnelles.
   \item La condition initiale $y_0$ se décompose sous la forme
   $$
-  y_0 = \sum_i z_{i0} v_i
+  y_0 = P z_0 = \sum_i z_{i0} v_i
   $$
   où les $v_i$ sont les vecteur propres de $A$, i.e. les vecteurs colonnes de $P$.
   \item En définissant l'exponentielle matricielle
@@ -136,7 +136,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   $$
   qui dépend de la condition initiale $y_0 = P z_0$.
   \end{itemize}
-  En conclusion, s'il existe au moins un $\lambda_i \geq 0$, un perturbation autour d'un point d'équilibre $x^* \in \ker(A)$ éloignera le système de $x_ *$ dans la direction $v_i$. A l'opposé, si toutes les $\lambda_i$ sont strictement négatives, quelque soit $y_0$, $\lim_{t \rightarrow \infty} y(t) = 0$ qui est donc le seul équilibre stable.
+  En conclusion, s'il existe au moins un $\lambda_i \geq 0$, un perturbation autour d'un point d'équilibre $y^* \in \ker(A)$ éloignera le système de $x_ *$ dans la direction $v_i$. A l'opposé, si toutes les $\lambda_i$ sont strictement négatives, quelque soit $y_0$, $\lim_{t \rightarrow \infty} y(t) = 0$ qui est donc le seul équilibre stable.
 \end{enumerate}
 
 %-------------------------------------------------------------------------------
@@ -176,19 +176,20 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
 \subsection{Linéarisation} 
 %-------------------------------------------------------------------------------
 
-On souhaite maintenant étudier la nature des équilibres d'un système non linéaire. En dimension 1, cet analyse s'est fondée sur la dérivée de la fonction $F$. Le théorème suivant généralise cette représentation fondée sur l'approximation au premier ordre aux abords d'un équilibre $x^*$ en posant $y(t) = x^* + h(t)$: 
+On souhaite maintenant étudier la nature des équilibres d'un système non linéaire. En dimension 1, cet analyse s'est fondée sur la dérivée de la fonction $F$. Le théorème suivant généralise cette représentation fondée sur l'approximation au premier ordre aux abords d'un équilibre $y^*$ en posant $y(t) = y^* + h(t)$: 
 $$
-\dot h(t) = \dot y (t) = F(y(t)) = F(x^* + h(t)) = (D_{x^*} F)(h(t)) = J_{x^*} h(t).
+\dot h(t) = \dot y (t) = F(y(t)) = F(y^* + h(t)) 
+\simeq \underset{=0}{\underbrace{F(y^*)}} + (D_{y^*} F)(h(t)) = J_{y^*} h(t).
 $$
 
 %-------------------------------------------------------------------------------
 \begin{theorem}[Hartman-Grobman]
-  Le point d'équilibre $x^*$ de l'ODE $\dot y = F(y)$ a la même nature que l'origine $0$ pour le système linéaire 
+  Le point d'équilibre $y^*$ de l'ODE $\dot y = F(y)$ a la même nature que l'origine $0$ pour le système linéaire 
   $$
-  \dot y = J_{x^*} y
+  \dot y = J_{y^*} y
   $$
-  à condition que toutes les valeurs propres de $J_{x^*}$ aient une partie réelle non nulle. \\
-  En particulier, $x^*$ est stable si $\forall i: \Re(\lambda_i) < 0$.
+  à condition que toutes les valeurs propres de $J_{y^*}$ aient une partie réelle non nulle. \\
+  En particulier, $y^*$ est stable si $\forall i: \Re(\lambda_i) < 0$.
 \end{theorem}
 
 %-------------------------------------------------------------------------------
@@ -197,11 +198,11 @@ On peut ainsi définir une démarche systématique pour étudier les équilibres
 \begin{enumerate}
   \item Trouver les points équilibres en déterminant d'abord les {\em isoclines}
   $$
-  \Ical_k = \{x : F_k(x) = 0\}
+  \Ical_k = \{y : F_k(y) = 0\}
   $$
-  puis leur intersection $\bigcap_k \Ical_k$ pour déterminer les racines $x^*$ de  $F(x) = 0$ ;
-  \item Calculer la matrice jacobienne $J_{x^*} F$ pour chaque équilibre $x^*$ ;
-  \item Déterminer les racines du polynôme caractéristique $P_{J_{x^*}}(\lambda)$ et en déduire la nature de $x^*$ si toutes les racines ont une partie réelle non nulle.
+  puis leur intersection $\bigcap_k \Ical_k$ pour déterminer les racines $y^*$ de  $F(x) = 0$ ;
+  \item Calculer la matrice jacobienne $J_{y^*} F$ pour chaque équilibre $y^*$ ;
+  \item Déterminer les racines du polynôme caractéristique $P_{J_{y^*}}(\lambda)$ et en déduire la nature de $y^*$ si toutes les racines ont une partie réelle non nulle.
 \end{enumerate}
 
 % \vspace{.1\textheight}
@@ -212,11 +213,11 @@ On peut ainsi définir une démarche systématique pour étudier les équilibres
 %     $$
 %     \{y(t_0 = y_0, \; \dot y = F(y)\}
 %     $$
-%     \item Point d'équilibre $x^*$ : $F(x) = 0$
-%     \item ($n = 1$) Nature de $x^*$: stable si $F'(x^*) < 0$, instable si $F'(x^*) > 0$.
+%     \item Point d'équilibre $y^*$ : $F(x) = 0$
+%     \item ($n = 1$) Nature de $y^*$: stable si $F'(y^*) < 0$, instable si $F'(y^*) > 0$.
 %     \item ($n \geq 1$) Cas linéaire diagonalisable : caractérisation en fonction du signe des valeurs propres \\
 %     $\Rightarrow$ 0 seul équilibre stable possible (à condition que tous les $\lambda_i < 0$) \\
 %     $\Rightarrow$ idem cas non-diagonalisable
-%     \item ($n \geq 1$) Cas non linéaire : nature d'une équilibre $x^*$ = même nature que l'origine pour le système linéaire avec $A = J_{x^*} F$.
+%     \item ($n \geq 1$) Cas non linéaire : nature d'une équilibre $y^*$ = même nature que l'origine pour le système linéaire avec $A = J_{y^*} F$.
 %   \end{enumerate}
 % }

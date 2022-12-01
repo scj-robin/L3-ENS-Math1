@@ -9,7 +9,7 @@ On s'intéresse ici au cas d'une système d'ODE $\dot y = F(y)$ avec $F : \Rbb^2
 \subsection{Classification des équilibres} 
 %-------------------------------------------------------------------------------
 
-La classification des équilibres repose sur l'étude des valeurs propres $\lambda_1$ et $\lambda_2$ de la matrice jacobienne $J_{x^*}$ en tout point d'équilibre $x^*$ solution de $F(x^*) = 0$. On peut ainsi définir la classification suivante :
+La classification des équilibres repose sur l'étude des valeurs propres $\lambda_1$ et $\lambda_2$ de la matrice jacobienne $J_{y^*}$ en tout point d'équilibre $y^*$ solution de $F(y^*) = 0$. On peut ainsi définir la classification suivante :
 $$
 \begin{tabular}{ll}
   $(\lambda_1, \lambda_2) \in \Rbb, (\lambda_1, \lambda_2) < 0 :$ & point stable ou 'puit' ; \\
@@ -72,13 +72,13 @@ $$
 $$
 
 Toute la difficulté réside alors dans la détermination de la fonction $H$. On a cependant déjà vu que, le long d'une ligne de niveau, la dérivée par rapport au temps de $H(x(t), y(t))$ est nulle, soit
-\begin{align*}
+\begin{align} \label{eq:derivHnulle}
   \dot x(t) \frac{\partial H}{\partial x} (x(t), y(t)) +
-  \dot y(t) \frac{\partial H}{\partial y} (x(t), y(t)) & = 0 \\
+  \dot y(t) \frac{\partial H}{\partial y} (x(t), y(t)) & = 0 \nonumber \\
   \Leftrightarrow \qquad 
   F_1(x, y) \frac{\partial H}{\partial x} (x, y) +
   F_2(x, y) \frac{\partial H}{\partial y} (x, y) & = 0
-\end{align*}
+\end{align}
 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas ``séparable''.} 
@@ -86,9 +86,9 @@ Dans le cas particulier où on peut trouver $f$ et $g$ telles que
 $$
 \frac{F_1(x, y)}{F_2(x, y)} = \frac{g(y)}{f(x)}
 \qquad \Leftrightarrow \qquad 
-f(x) F_1(x, y) = g(y) F_2(x, y),
+f(x) F_1(x, y) = g(y) F_2(x, y) =: G(x, y),
 $$
-la condition devient
+en divisant par $G(x, y)$, la condition \eqref{eq:derivHnulle} devient, pour $G(x, y) \neq 0$,
 $$
 F_1(x, y) \frac{\partial H}{\partial x} (x, y) +
 F_2(x, y) \frac{\partial H}{\partial y} (x, y) = 0
@@ -106,6 +106,6 @@ $$
 Les fonctions $h_1$ et $h_2$ doivent alors satisfaire
 $$
 h'_1(x) = k f(x), \qquad
-h'_2(x) = - k g(x).
+h'_2(y) = - k g(y).
 $$
-On utilisera cette méthode pour déterminer les cycles limites du modèle de Lotka-Volterra.
+On utilisera cette méthode pour caractériser les cycles du modèle de Lotka-Volterra.

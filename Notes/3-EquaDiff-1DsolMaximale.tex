@@ -141,19 +141,19 @@ $f(t) = y_0 e^{r(t-t_0)}$ est donc l'unique solution du problème $\{y_0 = y(t_0
 %-------------------------------------------------------------------------------
 
 \begin{definition}[Point d'équilibre]
-  $x^* \ \Rbb^n$ est un point d'équilibre de l'ODE $\dot y = F(y)$ si $F(x^*) = 0$.
+  $y^* \ \Rbb^n$ est un point d'équilibre de l'ODE $\dot y = F(y)$ si $F(y^*) = 0$.
 \end{definition}
 
 \begin{definition}[Stabilité ($n = 1$)]
-  Pour $n = 1$, un équilibre $x^*$ est dit (asymptotiquement) stable si il existe $\varepsilon > 0$ tel que pour tout $y_0 \in (x^* - \varepsilon, x^* + \varepsilon)$, la condition initiale $y(0) = y_0$ implique que 
+  Pour $n = 1$, un équilibre $y^*$ est dit (asymptotiquement) stable si il existe $\varepsilon > 0$ tel que pour tout $y_0 \in (y^* - \varepsilon, y^* + \varepsilon)$, la condition initiale $y(0) = y_0$ implique que 
   $$
-  \lim_{t \rightarrow \infty} y(t) = x^*.
+  \lim_{t \rightarrow \infty} y(t) = y^*.
   $$
   Dans le cas contraire, il est dit {\em instable}. Le caractère stable ou instable d'un équilibre définit sa {\em nature}.
 \end{definition}
 
 \remark
-Un équilibre est donc stable si toute (petite) perturbation $\varepsilon$ autour de $x^*$ laisse le système retourner dans l'état $x^*$.
+Un équilibre est donc stable si toute (petite) perturbation $\varepsilon$ autour de $y^*$ laisse le système retourner dans l'état $y^*$.
 
 
 %-------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ $$
 y(0) = y_0.
 $$
 \begin{description}
-  \item[Points d'équilibre:] $x^* = 0$ et $x^* = K := r/c$ sont des points d'équilibre car alors $\dot y = F(x^*) = 0$.
+  \item[Points d'équilibre:] $y^* = 0$ et $y^* = K := r/c$ sont des points d'équilibre car alors $\dot y = F(y^*) = 0$.
   \item[Solution pour $y_0 \in \{0, K\}$:] la fonction $y(t)$ reste constante (car $\dot y(t) \equiv 0$).
   \item[Solution pour $0 < y_0 < K$:]
   On obtient une solution de cette équation en remarquant que, pour $t$ tel que $0 < y(t) < K$, \eqref{eq:verhulst} est équivalente à 
@@ -194,6 +194,7 @@ $$
     y = \frac{rb e^{rt}}{1 + cb e^{rt}} & = \frac{K a_0 e^{rt}}{1 + a_0 e^{rt}}
     \qquad \text{avec } a_0 = cb.
   \end{align*}
+  La forme de cette solution lui donne également le nom de modèle logistique. \\
   Le paramètre $a_0$ étant fixé par la condition initiale $y(0) = y_0$ : 
   $$
   a_0 = \frac{y_0}{K-y_0} > 0 \qquad (\text{car } 0  < y_0 < K).
@@ -230,28 +231,28 @@ $$
   $$
 %  \todo{Refaire la figure en supprimant les 1/2 courbes inutiles pour $y_0 > K$ et $y_0 < 0$.}
   \item[Stabilité des équilibres :]
-  Le point d'équilibre $x^* = K$ est stable (mais jamais atteint si $y_0 \leq 0$). Le point d'équilibre $x^* = 0$ est instable.
+  Le point d'équilibre $y^* = K$ est stable (mais jamais atteint si $y_0 \leq 0$). Le point d'équilibre $y^* = 0$ est instable.
 \end{description}
 
 \remark
 Le modèle de Verhulst est un des rares modèles non-linéaires pour lesquels il existe une solution explicite. Il n'est cependant pas nécessaire de disposer d'une solution explicite pour étudier la stabilité d'un équilibre.
 
 \begin{theorem}[Stabilité ($n = 1$)]
-  Pour $n=1$, un point d'équilibre $x^*$ est stable si $F'(x^*) < 0$ et instable si $F'(x^*) > 0$.
+  Pour $n=1$, un point d'équilibre $y^*$ est stable si $F'(y^*) < 0$ et instable si $F'(y^*) > 0$.
 \end{theorem}
 
 \proof Non démontré. \eproof
 
 \remark
-On obtient une intuition de ce résultat en étudiant la fonction $h(t) = y(t) - x^*$ au voisinage de $y(t) = x^*$. On a
+On obtient une intuition de ce résultat en étudiant la fonction $h(t) = y(t) - y^*$ au voisinage de $y(t) = y^*$. On a
 $$
-\dot h(t) = \dot y(t) = F(y(t)) = F(x^* + h(t)) \approx \underset{=0}{\underbrace{F(x^*)}} + F'(x^*) h(t) + o(\|h(t)\|),
+\dot h(t) = \dot y(t) = F(y(t)) = F(y^* + h(t)) = \underset{=0}{\underbrace{F(y^*)}} + F'(y^*) h(t) + o(\|h(t)\|),
 $$
 $h(t)$ se comporte donc localement comme la solution de 
 $$
-\dot h(t) = F'(x^*) h(t)
+\dot h(t) = F'(y^*) h(t)
 $$
-soit $e ^{F'(x^*) t}$ qui tend vers 0 si $F'(x^*) < 0$ et vers l'infini si $F'(x^*) > 0$.
+soit $e ^{F'(y^*) t}$ qui tend vers 0 si $F'(y^*) < 0$ et vers l'infini si $F'(y^*) > 0$.
 
 \exemple{
   Dans le cas du modèle de Verhulst, on a $F(y) = y(r - cy)$, soit
@@ -309,12 +310,12 @@ De nombreux systèmes dynamiques sont exprimés en fonction de paramètres dont 
 %     F(y) = y(\mu + y^2 - y^4)
 %     $$
 %     qui s'annule pour $y = 0$ et pour les solutions de $(\mu + 2 y^2 - y^4)$. En posant, $z = y^2$, $\mu + 2 z - z^2 = 0$ admet des solutions si $\Delta =  4(1 + \mu) \geq 0$, soit $\mu \geq -1$. Ces solutions sont alors $z^* = -1 \pm \sqrt{1+\mu}$. La seule solution possiblement positive est $z^* = -1 + \sqrt{1+\mu}$ et elle l'est ssi $\mu > 1$. \\
-%     Le système admet donc un unique point fixe $x^*=0$ si $\mu < 1$ et un second point fixe $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$. \\
+%     Le système admet donc un unique point fixe $y^*=0$ si $\mu < 1$ et un second point fixe $y^* = -1+\sqrt{1+\mu}$ si $\mu > 1$. \\
 %     On a de plus
 %     $$
 %     F'(x) = \mu + 3 y^2 - 5y^4
 %     $$
-%     dont le signe est celui de $\mu$ pour $x=0$ et \todo{nature de $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$.}
+%     dont le signe est celui de $\mu$ pour $x=0$ et \todo{nature de $y^* = -1+\sqrt{1+\mu}$ si $\mu > 1$.}
 %   }}
 
 % %-------------------------------------------------------------------------------

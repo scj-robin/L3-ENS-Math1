@@ -16,7 +16,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{definition*}[Difféomorphisme]
-%   Soient $\Xcal$ et $\Ycal$ deux ouverts de $\Rbb^n$ et une bijection $g : \Xcal \mapsto \Ycal$. $g$ est un difféomorphisme si $g$ est différentiable partout dans $\Xcal$ et que $g^{-1}$ est différentiable partout dans $\Ycal$. \\
+  Soient $\Xcal$ et $\Ycal$ deux ouverts de $\Rbb^n$ et une bijection $g : \Xcal \mapsto \Ycal$. $g$ est un difféomorphisme si $g$ est différentiable partout dans $\Xcal$ et que $g^{-1}$ est différentiable partout dans $\Ycal$. \\
   Si, de plus, les dérivées partielles de $g$ et $g^{-1}$ sont partout continues, $g$ est un $C^1$-difféomorphisme.
 \end{definition*}
 
@@ -58,7 +58,10 @@ Ce théorème assure le $C^1$-difféomorphisme sans exiger la différentiabilit�
 \end{definition*}
 
 \remark
-Le jacobien d'un difféomorphisme ne peut pas être nul, puisqu'un difféomorphisme est bijectif.
+Le jacobien d'un difféomorphisme ne peut pas être nul, puisqu'un difféomorphisme est bijectif :
+$$
+|J_x f| \neq 0.
+$$
 
 \begin{theorem*}[Changement de variable]
   Soit $\Xcal$ et $\Ycal$ deux ouverts de $\Rbb^n$ et $g : \Xcal \mapsto \Ycal = g(\Xcal)$ un $C^1$-difféomorphisme et $f : \Ycal \mapsto \Rbb^+$, on a 

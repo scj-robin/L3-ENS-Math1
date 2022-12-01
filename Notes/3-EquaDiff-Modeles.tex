@@ -9,14 +9,14 @@
 \subsection{Modèle de Lotka-Volterra}
 %-------------------------------------------------------------------------------
 
-On rappelle modèle pour $y(t) = [N(t) \; P(t)]^\top$ avec $N(t) =$ nombre de proies au temps $t$, $(t) = $ nombre prédateurs au temps $t$:
+On rappelle le modèle pour $y(t) = [N(t) \; P(t)]^\top$ où $N(t)$ est le nombre de proies au temps $t$ et $P(t)$ le nombre prédateurs au temps $t$:
 $$
 \left\{ \begin{array}{rcl} 
   \dot N & = & r N - c N P \\
   \dot P & = & b N P  - m P
 \end{array} \right.
 $$
-où les paramètres $r$, $c$, $b$, $m$ sont tous positifs ou nuls.
+et où les paramètres $r$, $c$, $b$, $m$ sont tous positifs ou nuls.
 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas particuliers.}
@@ -40,6 +40,7 @@ $$
   \dot y & = & -m y (1-x) & =: & F_2(x, y)
 \end{array}\right.
 $$
+où $x$ est proportionnel aux nombre de proies et $y$ au nombre de prédateurs.
 
 %-------------------------------------------------------------------------------
 \paragraph*{Points d'équilibres.}
@@ -99,11 +100,11 @@ $$
 Les deux valeurs propres sont des imaginaires pures : on peut chercher un hamiltonien du système pour étudier ce point d'équilibre.
 
 \bigskip
-On a ici
+On remarque que 
 $$
 \frac{F_1(x, y)}{F_2(x, y)} = -\frac{rx(1-y)}{my(1-x)} = \frac{g(y)}{f(x)}
 $$
-pour
+où
 \begin{align*}
 f(x) = -m \frac{(1-x)}{x} = m \left(1 - \frac1x\right), \qquad
 g(y) = r \frac{(1-y)}{y} = r \left(\frac1y - 1\right).
@@ -112,11 +113,7 @@ En choisissant
 \begin{align*}
   h_1(x) = m(x-\log(x)), \qquad h_2(x) = r(y-\log(y)),
 \end{align*}
-on vérifie bien que
-\begin{align*}
-  h'_1(x) = -f(x), \qquad h'_2(x) = g(y),
-\end{align*}
-et donc que 
+on vérifie bien que $h'_1(x) = -f(x)$ et $h'_2(x) = g(y)$ et que 
 $$
 H(x, y) = m(x-\log(x)) + r(y-\log(y))
 $$
@@ -190,9 +187,9 @@ $$
        \end{array}\right.
 $$
 
-\remark.
-\begin{enumerate}[$a$)]
-  \item $\dot x = - rxy$ est toujours négatif : la population de susceptibles décroît systématiquement ; 
+\remarks
+\begin{enumerate}
+  \item $\dot x = - rxy$ est toujours négative : la population de susceptibles décroît systématiquement ; 
   \item la croissance du nombre de susceptible $y = I$ dépend de la position de $x$ par rapport à 1 :
   $$
   \dot y \left\{\begin{array}{lll}
