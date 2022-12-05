@@ -11,7 +11,7 @@
 
 %-------------------------------------------------------------------------------
 \begin{exercise}[Norme]
-  Soit $A$ une matrice de $\Mcal_n$ symétrique définie positive (strictement). Montrer que $\|\cdots\|_A$ définie par $\|x\|_A = (x^\top A x)^{1/2}$ est une norme.
+  Soit $A$ une matrice de $\Mcal_n$ symétrique définie positive (strictement): $A \succ 0$. Montrer que $\|\cdot\|_A$ définie par $\|x\|_A = (x^\top A x)^{1/2}$ est une norme pour $\Rbb^n$.
 \end{exercise}
 \solution{On vérifie les 3 conditions définissant une norme.
   \begin{itemize}
@@ -25,7 +25,7 @@
    et on peut la décomposer sous la forme $A = P \Lambda P^\top$ où $P$ et $P^\top$ sont orthonormales. Posons $u = \Lambda^{1/2} P^\top x$ et $v = \Lambda^{1/2} P^\top y$ qui vérifient
    \begin{align*}
    \|u\|_2 & = \sqrt{x^\top P \Lambda^{1/2} \Lambda^{1/2} P^\top x} = \|x\|_A, & 
-   \|v\|_2 & = \|y\|_A,, \\
+   \|v\|_2 & = \|y\|_A, \\
    x^\top A y & = u^\top v.
    \end{align*}
    Par Cauchy-Schwarz, on a alors
@@ -97,4 +97,6 @@ $$
 \subsection{Extrema}
 %-------------------------------------------------------------------------------
 
-Voir \url{www.bibmath.net/ressources/index.php?action=affiche&quoi=bde/analyse/calculdiff/extrema&type=fexo}, exercice 7
+% Voir \url{www.bibmath.net/ressources/index.php?action=affiche&quoi=bde/analyse/calculdiff/extrema&type=fexo}, exercice 7 (en fait, bof : un peu long)
+
+Voir \url{www.bibmath.net/ressources/index.php?action=affiche&quoi=bde/analyse/calculdiff/extrema&type=fexo}, exercice 16

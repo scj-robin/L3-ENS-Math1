@@ -17,14 +17,3 @@ lines(muGrid[which(muGrid <= 0)], rep(0,sum(muGrid <= 0)), col=4, lwd=lwd, )
 lines(muGrid[which(muGrid > 0)], rep(0, sum(muGrid > 0)), col=2, lwd=lwd, )
 if(exportFig){dev.off()}
 
-################################################################################
-# Exo L2 bio SU
-exName <- 'TD-SUbioL3-TD2Exo2'
-yGrid <- seq(-1, 5, by=.01)
-f <- function(y){-y^3 + 7*y^2 - 14*y + 8}
-if(exportFig){png(paste0(figDir, exName, '.png'))}
-plot(yGrid, f(yGrid), type='l', lwd=lwd, xlab='y', ylab='F(y)', ylim=c(-1, 5))
-abline(h=0, v=0)
-abline(v=c(1, 4), col=4, lty=2, lwd=lwd)
-abline(v=2, col=2, lty=2, lwd=lwd)
-if(exportFig){dev.off()}

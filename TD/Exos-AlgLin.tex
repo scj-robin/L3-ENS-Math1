@@ -164,8 +164,11 @@ On rappelle que la trace $\tr(A)$ d'une matrice carrée $A \in \Mcal_n$ est la s
     \begin{align*}
       P_A(\lambda) 
       & = (a_{nn} -\lambda) P_{A^{(n, n)}}(\lambda) + Q_{n-2}(\lambda) \\
-      & = (a_{nn} -\lambda) \left( (-1)^{n-1} \lambda^{n-1} + (-1)^{n-2} \tr(A^{(n, n)}) \lambda^{n-2} + Q_{n-3}(\lambda) \right) + Q_{n-2}(\lambda)
-      & & (\text{par hypothèse}) \\
+      & = (a_{nn} -\lambda) \left( (-1)^{n-1} \lambda^{n-1} + (-1)^{n-2} \tr(A^{(n, n)}) \lambda^{n-2} + Q_{n-3}(\lambda) \right) + Q_{n-2}(\lambda),
+    \end{align*}
+     par hypothèse, soit, 
+    \begin{align*}
+      P_A(\lambda) 
       & = - \lambda (-1)^{n-1} \lambda^{n-1} 
       + a_{nn} (-1)^{n-1} \lambda^{n-1} 
       - \lambda (-1)^{n-2} \tr(A^{(n, n)}) \lambda^{n-2}
