@@ -56,6 +56,52 @@ Le théorème dit que si une trajectoire solution de l'ODE est piégée dans une
 \remark
 Cette définition revient à dire que les solutions $y(t)$ suivent des lignes de niveau de la fonction hamiltonienne.
 
+\bigskip
+\begin{proposition}[Hamiltionien] \label{prop:hamiltonien}
+  Si $H$ est un hamiltonien de l'EDO $\{\dot y = F(y), y(0) = y_0\}$, où $F$ est une application de $\Rbb^n$ dans $\Rbb^n$, il vérifie :
+  $$
+  \sum_{i=1}^n F_i(y) \left.\frac{\partial H}{\partial y_i}\right|_{y(t)} = 0.
+  $$
+\end{proposition}
+
+\parSR{Démonstration de la proposition \ref{prop:hamiltonien}.}
+  La définition du hamiltonien impose que 
+  $$
+  \frac{\partial}{\partial t} H(y(t)) \equiv 0.
+  $$
+  Pour déterminer la dérivée de $H(y(t))$ par rapport au temps, on utilise la proposition \ref{prop:compositionDifferentielles} avec $f = H$ et $g = y$, soit
+%   $$
+%   \begin{array}{rrcl}
+%     f : & \Rbb^n & \mapsto & \Rbb \\
+%     & y & \rightarrow & f(y) = H(y)
+%   \end{array},
+%   \qquad
+%   \begin{array}{rrcl}
+%     g : & \Rbb & \mapsto & \Rbb^n \\
+%     & t & \rightarrow & g(y) = y(t)
+%   \end{array},
+%   $$
+%   soit
+  $$
+  \frac{\partial}{\partial t} H(y(t)) 
+  = J_{y(t)}H \cdot J_ty
+  $$
+  où
+  $$
+  J_{y(t)}H = \left[ \begin{array}{ccc}
+    \displaystyle{\left.\frac{\partial H}{\partial y_1}\right|_{y(t)}} & 
+    \dots & 
+    \displaystyle{\left.\frac{\partial H}{\partial y_n}\right|_{y(t)}} 
+  \end{array}\right] 
+  \qquad \text{et} \qquad 
+  J_ty = \left[\begin{array}{c} 
+    \dot y_1(t) = F_1(y(t)) \\
+    \vdots \\
+    \dot y_1(t) = F_n(y(t))
+  \end{array}\right] 
+  $$
+\eproof
+
 %-------------------------------------------------------------------------------
 \paragraph*{Cas $n = 2$.} 
 On considère une ODE avec $F : \Rbb^2 \mapsto \Rbb^2$ : 
@@ -71,8 +117,8 @@ $$
 \Ccal_z = \{x, y: H(x, y, ) = z\}.
 $$
 
-Toute la difficulté réside alors dans la détermination de la fonction $H$. On a cependant déjà vu que, le long d'une ligne de niveau, la dérivée par rapport au temps de $H(x(t), y(t))$ est nulle, soit
-\begin{align} \label{eq:derivHnulle}
+La difficulté réside alors dans la détermination d'une fonction $H$ qui vérifie la proposition \ref{prop:hamiltonien} en dimension 2 : 
+\begin{align} \label{eq:derivHnulleD2}
   \dot x(t) \frac{\partial H}{\partial x} (x(t), y(t)) +
   \dot y(t) \frac{\partial H}{\partial y} (x(t), y(t)) & = 0 \nonumber \\
   \Leftrightarrow \qquad 
@@ -82,28 +128,26 @@ Toute la difficulté réside alors dans la détermination de la fonction $H$. On
 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas ``séparable''.} 
-Dans le cas particulier où on peut trouver $f$ et $g$ telles que
+On peut chercher une fonction $H$ séparable, c'est-à-dire de la forme
 $$
-\frac{F_1(x, y)}{F_2(x, y)} = \frac{g(y)}{f(x)}
-\qquad \Leftrightarrow \qquad 
-f(x) F_1(x, y) = g(y) F_2(x, y) =: G(x, y),
+H(x, y) = h_1(x) + h_2(y).
 $$
-en divisant par $G(x, y)$, la condition \eqref{eq:derivHnulle} devient, pour $G(x, y) \neq 0$,
+On a alors
 $$
-F_1(x, y) \frac{\partial H}{\partial x} (x, y) +
-F_2(x, y) \frac{\partial H}{\partial y} (x, y) = 0
-\qquad \Leftrightarrow \qquad 
-\frac1{f(x)} \frac{\partial H}{\partial x} (x, y) +
-\frac1{g(y)} \frac{\partial H}{\partial y} (x, y) = 0
+\frac{\partial H}{\partial x} = h_1'(x), \qquad
+\frac{\partial H}{\partial y} = h_2'(x)
 $$
-On peut alors chercher un hamiltonien de la forme
+et la condition \eqref{eq:derivHnulleD2} devient
 $$
-H(x, y) = h_1(x) + h_2(y)
-\qquad \Rightarrow \qquad 
-\frac{\partial H}{\partial x} (x, y) = h'_1(x), \qquad
-\frac{\partial H}{\partial y} (x, y) = h'_2(y).
+F_1(x, y) h_1'(x) = -F_2(x, y) h_2'(y)
+\qquad \Leftrightarrow \qquad
+\frac{F_1(x, y)}{F_2(x, y)} = -\frac{h_2'(y)}{h_1'(x)}.
 $$
-Les fonctions $h_1$ et $h_2$ doivent alors satisfaire
+On peut donc déterminer un hamiltonien de la forme $H(x, y) = h_1(x) + h_2(y)$ si on peut trouver $f$ et $g$ telles que
+$$
+\frac{F_1(x, y)}{F_2(x, y)} = \frac{g(y)}{f(x)}.
+$$
+Il reste alors à déterminer des fonctions $h_1$ et $h_2$ satisfaisant
 $$
 h'_1(x) = k f(x), \qquad
 h'_2(y) = - k g(y).
