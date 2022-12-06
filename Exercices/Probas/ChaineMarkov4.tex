@@ -2,62 +2,56 @@
 \subsubsection{Exemple de chaîne de Markov}
 %-------------------------------------------------------------------------------
 
-  On considère une chaîne de Markov $(X_n)_{n \geq 0}$ prenant ses valeurs dans $\{1, 2, 3, 4\}$, et on note $p(i, j)$ la probabilité de transition de $i$ à $j$. On suppose que $p(1, 1) = p(4, 4) = 1$, que $p(2, 3) = 1 - p(2, 1) =: p$ et que $p(3, 2) = 1 - p(3, 4) =: q$.
-  \begin{enumerate}
-   \item Donner la matrice de transition de cette chaîne de Markov.
-   \item Quelles sont les classes de communication de cette chaîne ? Donner leur nature. Quels sont les comportements asymptotiques possibles de cette chaîne ?
-   \item On appelle $x_i$ la probabilité que la chaîne soit absorbée en 1 sachant que $X_0 = i$. Donner $x_1$ et $x_4$, ainsi que deux équations reliant $x_2$ et $x_3$, puis les calculer.
-  \end{enumerate}
-
-\solution{
-  \begin{enumerate}
-    \item La matrice de transition est
-    $$
-    P = \left( \begin{array}{cccc}
-                1 & 0 & 0 & 0 \\
-                1-p & 0 & p & 0 \\
-                0 & q & 0 & 1-q \\
-                0 & 0 & 0 & 1
-              \end{array} \right)
-    $$
-    \item Les classes de communications sont 
-    $$
-    C_1 = \{1\}, \qquad C_2 = \{2, 3\}, \qquad C_3 = \{4\}.
-    $$
-    $C_1$ et $C_3$ sont absorbantes, $C_2$ est transiente. \\
-    La chaîne finit nécessairement par être absorbé en 1 ou 4.
-    \item D'après la question précédente, on a 
-    $$
-    x_1 = 1, \qquad x_4 = 0.
-    $$
-    Pour être absorbé en 1 partant de 3, la chaîne doit d'abord passer de 3 en 2 (avec probabilité $q$), puis être absorbée en 1 partant de 2, donc
-    $$
-    x_3 = q x_2.
-    $$
-    Partant de 2 la chaîne peut être immédiatement absorbée en 1 (avec probabilité $1-p$) ou passer en 3 (avec probabilité $p$), puis être absorbée en 1 depuis 3, donc
-    $$
-    x_2 = (1 - p) + p x_3.
-    $$
-    $x_2$ vérifie donc
-    $$
-    x_2 = (1 - p) + p q x_2 
-    \qquad \Leftrightarrow \qquad x_2 = \frac{1-p}{1 - pq}
-    \qquad \Rightarrow \qquad x_3 = \frac{q(1-p)}{1 - pq}.
-    $$
-    On peut aussi calculer directement $x_2$ en définissant le temps d'atteinte de l'état $1$ depuis l'état $2$:
-    $$
-    T_{21} = \inf\{t: X_t = 1 \mid X_0 = 2\}.
-    $$
-    On remarque alors que, pour $k \geq 0$,  
-    $$
-    \Pr\{T_{21} = 2k\} = 0, \qquad \Pr\{T_{21} = 2k + 1\} = (1-p) \; (pq)^k
-    $$
-    et on en déduit
-    $$
-    x_2 = \sum_{n \geq 0} \Pr\{T_{21} = n\} = \sum_{k \geq 0} \Pr\{T_{21} = 2k+1\} 
-    = (1-p) \sum_{k \geq 0} (pq)^k = \frac{1-p}{1 - pq}.
-    $$
-    De même, on peut déterminer $x_3$ directement à partir de la loi du temps d'atteinte $T_{31}$.
-  \end{enumerate}
-}
-
+On considère une chaîne de Markov $(X_n)_{n \geq 0}$ prenant ses valeurs dans $\{1, 2, 3, 4\}$, et on note $p(i, j)$ la probabilité de transition de $i$ à $j$. On suppose que $p(1, 1) = p(4, 4) = 1$, que $p(2, 3) = 1 - p(2, 1) =: p$ et que $p(3, 2) = 1 - p(3, 4) =: q$.
+\begin{enumerate}
+  \item Donner la matrice de transition de cette chaîne de Markov.
+  \solution{La matrice de transition est
+  $$
+  P = \left( \begin{array}{cccc}
+              1 & 0 & 0 & 0 \\
+              1-p & 0 & p & 0 \\
+              0 & q & 0 & 1-q \\
+              0 & 0 & 0 & 1
+            \end{array} \right)
+  $$}
+  \item Quelles sont les classes de communication de cette chaîne ? Donner leur nature. Quels sont les comportements asymptotiques possibles de cette chaîne ?
+  \solution{Les classes de communications sont 
+  $$
+  C_1 = \{1\}, \qquad C_2 = \{2, 3\}, \qquad C_3 = \{4\}.
+  $$
+  $C_1$ et $C_3$ sont absorbantes, $C_2$ est transiente. \\
+  La chaîne finit nécessairement par être absorbé en 1 ou 4.}
+  \item On appelle $x_i$ la probabilité que la chaîne soit absorbée en 1 sachant que $X_0 = i$. Donner $x_1$ et $x_4$, ainsi que deux équations reliant $x_2$ et $x_3$, puis les calculer.
+  \solution{D'après la question précédente, on a 
+  $$
+  x_1 = 1, \qquad x_4 = 0.
+  $$
+  Pour être absorbé en 1 partant de 3, la chaîne doit d'abord passer de 3 en 2 (avec probabilité $q$), puis être absorbée en 1 partant de 2, donc
+  $$
+  x_3 = q x_2.
+  $$
+  Partant de 2 la chaîne peut être immédiatement absorbée en 1 (avec probabilité $1-p$) ou passer en 3 (avec probabilité $p$), puis être absorbée en 1 depuis 3, donc
+  $$
+  x_2 = (1 - p) + p x_3.
+  $$
+  $x_2$ vérifie donc
+  $$
+  x_2 = (1 - p) + p q x_2 
+  \qquad \Leftrightarrow \qquad x_2 = \frac{1-p}{1 - pq}
+  \qquad \Rightarrow \qquad x_3 = \frac{q(1-p)}{1 - pq}.
+  $$
+  On peut aussi calculer directement $x_2$ en définissant le temps d'atteinte de l'état $1$ depuis l'état $2$:
+  $$
+  T_{21} = \inf\{t: X_t = 1 \mid X_0 = 2\}.
+  $$
+  On remarque alors que, pour $k \geq 0$,  
+  $$
+  \Pr\{T_{21} = 2k\} = 0, \qquad \Pr\{T_{21} = 2k + 1\} = (1-p) \; (pq)^k
+  $$
+  et on en déduit
+  $$
+  x_2 = \sum_{n \geq 0} \Pr\{T_{21} = n\} = \sum_{k \geq 0} \Pr\{T_{21} = 2k+1\} 
+  = (1-p) \sum_{k \geq 0} (pq)^k = \frac{1-p}{1 - pq}.
+  $$
+  De même, on peut déterminer $x_3$ directement à partir de la loi du temps d'atteinte $T_{31}$.}
+\end{enumerate}

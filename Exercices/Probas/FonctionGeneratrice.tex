@@ -1,21 +1,24 @@
 %-------------------------------------------------------------------------------
 \subsubsection{Fonction génératrice}
 %-------------------------------------------------------------------------------
-  Soit $(X, Y)$ un couple de variables aléatoires entières et $\phi: [0, 1] \times [0, 1] \mapsto [0, 1]$ sa fonction génératrice de $(X, Y)$ définie par 
-  $$
-  \phi(s, t) = \Esp(s^X t^Y) = \sum_{x \geq 0} \sum_{y geq 0} \Pr\{X=x, Y=y\} \; s^x \; t^y.
-  $$
-  \begin{enumerate}
-   \item Que valent $\phi(1, 1)$, $\phi(1, 0)$, $\phi(0, 1)$ et $\phi(0, 0)$ ?
-   \item Exprimer les fonctions génératrices de $X$, de $Y$ et de $X+Y$ en fonction de $\phi$.
-   \item Montrer que, si $X$ et $Y$ sont indépendantes, alors $\phi(s, t) = \phi(s, 1) \; \phi(1, t)$.
-   \item Montrer que si les couples $(X_1, Y_1)$ et $(X_2, Y_2)$ ont pour fonctions génératrices respectives $\phi_1$ et $\phi_2$, alors le couple $(X_1+X_2, Y_1+Y_2)$ a pour fonction génératrice $\psi = \phi_1 \phi_2$. 
-   \item En déduire que si $N$ est une variable aléatoire entière de fonction génératrice $f$ et que $((X_i, Y_i))_{i \geq 1}$ sont des couples i.i.d. de même fonction génératrice $\phi$, alors le couple $(U, V)$ tel que
-   $$
-   U = \sum_{i=1}^N X_i, \qquad V = \sum_{i=1}^N Y_i
-   $$
-   a pour fonction génératrice $f \circ \phi$.
-  \end{enumerate}
 
-\solution{\todo{}}
+Soit $(X, Y)$ un couple de variables aléatoires entières et $\phi: [0, 1] \times [0, 1] \mapsto [0, 1]$ sa fonction génératrice de $(X, Y)$ définie par 
+$$
+\phi(s, t) = \Esp(s^X t^Y) = \sum_{x \geq 0} \sum_{y \geq 0} \Pr\{X=x, Y=y\} \; s^x \; t^y.
+$$
+\begin{enumerate}
+  \item Que valent $\phi(1, 1)$, $\phi(1, 0)$, $\phi(0, 1)$ et $\phi(0, 0)$ ?
+  \solution{\todo{}}   
+  \item Exprimer les fonctions génératrices de $X$, de $Y$ et de $X+Y$ en fonction de $\phi$.
+  \solution{\todo{}}   
+  \item Montrer que, si $X$ et $Y$ sont indépendantes, alors $\phi(s, t) = \phi(s, 1) \; \phi(1, t)$.
+  \item Montrer que si les couples $(X_1, Y_1)$ et $(X_2, Y_2)$ ont pour fonctions génératrices respectives $\phi_1$ et $\phi_2$, alors le couple $(X_1+X_2, Y_1+Y_2)$ a pour fonction génératrice $\psi = \phi_1 \phi_2$. 
+  \solution{\todo{}}   
+  \item En déduire que si $N$ est une variable aléatoire entière de fonction génératrice $f$ et que $((X_i, Y_i))_{i \geq 1}$ sont des couples i.i.d. de même fonction génératrice $\phi$, alors le couple $(U, V)$ tel que
+  $$
+  U = \sum_{i=1}^N X_i, \qquad V = \sum_{i=1}^N Y_i
+  $$
+  a pour fonction génératrice $f \circ \phi$.
+  \solution{\todo{}}   
+\end{enumerate}
 

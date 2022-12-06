@@ -3,13 +3,7 @@
   On considère un processus de Bienaymé-Galton-Watson partant d'une population de taille 1 et dans laquelle le nombre de descendants par individu suit une loi géométrique $\Gcal(a)$ (pour mémoire, $X \sim \Gcal(a)$ ssi $\Pr\{X = k\} = (1-a) a^k$).
   \begin{enumerate}
     \item Calculer le nombre moyen $m$ de descendants par individus en fonction de $a$.
-    \item Pour quelles valeurs de $a$ le processus est-il critique, sous-critique ou sur-critique ?
-    \item Montrer que, pour $m > 1$, la probabilité d'extinction $q$ de cette population vaut $1/m$.
-  \end{enumerate}
-
-\solution{
-  \begin{enumerate}
-    \item On a
+    \solution{On a
     $$
     m = \Esp(X) 
     = \sum_{k \geq 0} (1-a) \; a^k \; k 
@@ -21,9 +15,11 @@
     = a(1-a) (1-a)^{-2}
     = a / (1-a)
     $$
-    (qui est une fonction monotone croissante de $a$).
-    \item On a $m \leq 1 \; \Leftrightarrow \; a \leq 1-a \; \Leftrightarrow \; a \leq 1/2$.  Le processus est donc critique pour $a = 1/2$, sous critique pour $a < 1/2$ et sur-critique pour $a > 1/2$.
-    \item On sait que la probabilité d'extinction $q$ partant d'une population de taille 1 est le plus petit point fixe de l'équation $s = f_X(s)$ où $f_X$ est la fonction génératrice des probabilités de la loi géométrique : 
+    (qui est une fonction monotone croissante de $a$).}
+    \item Pour quelles valeurs de $a$ le processus est-il critique, sous-critique ou sur-critique ?
+    \solution{On a $m \leq 1 \; \Leftrightarrow \; a \leq 1-a \; \Leftrightarrow \; a \leq 1/2$.  Le processus est donc critique pour $a = 1/2$, sous critique pour $a < 1/2$ et sur-critique pour $a > 1/2$.}
+    \item Montrer que, pour $m > 1$, la probabilité d'extinction $q$ de cette population vaut $1/m$.
+    \solution{On sait que la probabilité d'extinction $q$ partant d'une population de taille 1 est le plus petit point fixe de l'équation $s = f_X(s)$ où $f_X$ est la fonction génératrice des probabilités de la loi géométrique : 
     $$
     f_X(s) = (1 - a) / (1 - as).
     $$
@@ -34,6 +30,5 @@
     où $(1-a)/a < 1$ dès que $a > 1/2$. La probabilité d'extinction vaut donc
     $$
     q = \frac{1-a}a = \frac1m.
-    $$
+    $$}
   \end{enumerate}
-}

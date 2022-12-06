@@ -9,24 +9,7 @@
   A = \left[\begin{array}{cc} a & b \\ c & d\end{array}\right]
   $$
   Déterminer son polynôme caractéristique et donner les conditions sur $p = \tr(A)$ et $q = \det(A)$ pour que $A$ admette deux valeurs propres réelles.
-  %
-  \item Montrer le polynôme caractéristique de la matrice 
-  \begin{align*}
-    B & = \left[\begin{array}{rrr}
-      -1 & 3 & 1 \\ 0 & 2 & 1 \\ \alpha & \beta & 2
-      \end{array}\right].  
-  \end{align*}
-  est
-  $$
-  P_B(\lambda) = -(1+\lambda)(\lambda^2 - 4 \lambda + 4 - \alpha - \beta)
-  $$
-  \item En déduire une condition sur $\alpha$ et $\beta$ pour que $B$ soit diagonalisable.
-\end{enumerate}
-
-\solution{
-  \begin{enumerate}
-% [Ex 1.3.3]
-  \item On a 
+  \solution{On a 
   $$
   |A - \lambda I_2| 
   = \left|\begin{array}{cc} a - \lambda & b \\ c & d - \lambda \end{array}\right|
@@ -39,9 +22,20 @@
   p^2 - 4 q \geq 0
   \qquad \Leftrightarrow \qquad
   q \leq p^2 / 4.
+  $$}
+  \item Montrer le polynôme caractéristique de la matrice 
+  \begin{align*}
+    B & = \left[\begin{array}{rrr}
+      -1 & 3 & 1 \\ 0 & 2 & 1 \\ \alpha & \beta & 2
+      \end{array}\right].  
+  \end{align*}
+  est
   $$
-  \item On développe par rapport à la première colonne.
-  \item La premièrre valeur propre est donc $\lambda_1 = -1$. Le discriminant du polynôme 
+  P_B(\lambda) = -(1+\lambda)(\lambda^2 - 4 \lambda + 4 - \alpha - \beta)
+  $$
+  \solution{On développe par rapport à la première colonne.}
+  \item En déduire une condition sur $\alpha$ et $\beta$ pour que $B$ soit diagonalisable.
+  \solution{La premièrre valeur propre est donc $\lambda_1 = -1$. Le discriminant du polynôme 
   $$
   Q(\lambda) = \lambda^2 - 4 \lambda + 4 - (\alpha+\beta)
   $$
@@ -60,7 +54,5 @@
   \begin{description}
    \item[$\alpha + \beta = 0 \Leftrightarrow \lambda_2 = \lambda_3$:] \todo{déterminer la dimension du sous-espace propre associé.} 
    \item[$\alpha + \beta = 9 \Leftrightarrow \lambda_1 = \lambda_3$:] \todo{déterminer la dimension du sous-espace propre associé.} 
-  \end{description}
-
-  \end{enumerate}
-}
+  \end{description}}
+\end{enumerate}
