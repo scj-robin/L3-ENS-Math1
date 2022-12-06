@@ -33,9 +33,9 @@
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
-\title{\Huge{Ce qu'un biologiste doit savoir en mathématiques}}
-\author{SR (inspiré d'AL)}
-\date{\today}
+% \title{\Huge{Ce qu'un biologiste doit savoir en mathématiques}}
+% \author{SR (inspiré d'AL)}
+% \date{\today}
 
 
 %-------------------------------------------------------------------------------
@@ -44,20 +44,37 @@
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 
-\maketitle
-\tableofcontents
+% \maketitle
+% \tableofcontents
 
-\newpage \section{Algèbre linéaire} \input{../Exercices/Exos-AlgLin}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Algèbre linéaire} 
+\newcommand{\alglin}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/AlgLin}
+%-------------------------------------------------------------------------------
 
-\newpage \section{Fonctions de plusieurs variables} \input{../Exercices/Exos-MultiVar}
+%-------------------------------------------------------------------------------
+\subsection{Exemples de matrices et déterminants}%-------------------------------------------------------------------------------
 
-\newpage \section{\'Equations différentielles et systèmes dynamiques} \input{../Exercices/Exos-EquaDiff}
+\input{\alglin/CalculDeterminant}
 
-\newpage \section{Probabilités} \input{../Exercices/Exos-Probas}
+\input{\alglin/MatriceDiagonalisable}
 
-% %-------------------------------------------------------------------------------
-% \bibliography{/home/robin/Biblio/BibGene}
-% \bibliographystyle{plainnat}
+\input{\alglin/MatriceParametree}
+
+%-------------------------------------------------------------------------------
+\subsection{Propriétés générales du déterminant}%-------------------------------------------------------------------------------
+
+\input{\alglin/PolynomeCaracteristiqueTrace}
+
+\input{\alglin/MethodeCofacteurs}
+
+%-------------------------------------------------------------------------------
+\subsection{Matrices diagonalisables}%-------------------------------------------------------------------------------
+
+\input{\alglin/InverseMatriceOrthonormale}
+
+\input{\alglin/AnalyseComposantePrincipale}
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
