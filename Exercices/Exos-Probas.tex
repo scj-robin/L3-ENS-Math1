@@ -1,127 +1,14 @@
+\newcommand{\probas}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/Probas}
+
 %-------------------------------------------------------------------------------
 \subsection{Chaînes de Markov}
 %-------------------------------------------------------------------------------
 
-%-------------------------------------------------------------------------------
-\begin{exercise}[Chaîne de Markov] \label{exo:ChaineMarkov}
-  On considère une chaîne de Markov $(X_n)_{n \geq 0}$ prenant ses valeurs dans $\{1, 2, 3, 4\}$, et on note $p(i, j)$ la probabilité de transition de $i$ à $j$. On suppose que $p(1, 1) = p(4, 4) = 1$, que $p(2, 3) = 1 - p(2, 1) =: p$ et que $p(3, 2) = 1 - p(3, 4) =: q$.
-  \begin{enumerate}
-   \item Donner la matrice de transition de cette chaîne de Markov.
-   \item Quelles sont les classes de communication de cette chaîne ? Donner leur nature. Quels sont les comportements asymptotiques possibles de cette chaîne ?
-   \item On appelle $x_i$ la probabilité que la chaîne soit absorbée en 1 sachant que $X_0 = i$. Donner $x_1$ et $x_4$, ainsi que deux équations reliant $x_2$ et $x_3$, puis les calculer.
-  \end{enumerate}
-\end{exercise}
+\input{\probas/ChaineMarkov4}
 
-\solution{
-  \begin{enumerate}
-    \item La matrice de transiiton est
-    $$
-    P = \left( \begin{array}{cccc}
-                1 & 0 & 0 & 0 \\
-                1-p & 0 & p & 0 \\
-                0 & q & 0 & 1-q \\
-                0 & 0 & 0 & 1
-              \end{array} \right)
-    $$
-    \item Les classes de communications sont 
-    $$
-    C_1 = \{1\}, \qquad C_2 = \{2, 3\}, \qquad C_3 = \{4\}.
-    $$
-    $C_1$ et $C_3$ sont absorbantes, $C_2$ est transiente. \\
-    La chaîne finit nécessairement par être absorbé en 1 ou 4.
-    \item D'après la question précédente, on a 
-    $$
-    x_1 = 1, \qquad x_4 = 0.
-    $$
-    Pour être absorbé en 1 partant de 3, la chaîne doit d'abord passer de 3 en 2 (avec probabilité $q$), puis être absorbée en 1 partant de 2, donc
-    $$
-    x_3 = q x_2.
-    $$
-    Partant de 2 la chaîne peut être immédiatement absorbée en 1 (avec probabilité $1-p$) ou passer en 3 (avec probabilité $p$), puis être absorbée en 1 depuis 3, donc
-    $$
-    x_2 = (1 - p) + p x_3.
-    $$
-    $x_2$ vérifie donc
-    $$
-    x_2 = (1 - p) + p q x_2 
-    \qquad \Leftrightarrow \qquad x_2 = \frac{1-p}{1 - pq}
-    \qquad \Rightarrow \qquad x_3 = \frac{q(1-p)}{1 - pq}.
-    $$
-    On peut aussi calculer directement $x_2$ en définissant le temps d'atteinte de l'état $1$ depuis l'état $2$:
-    $$
-    T_{21} = \inf\{t: X_t = 1 \mid X_0 = 2\}.
-    $$
-    On remarque alors que, pour $k \geq 0$,  
-    $$
-    \Pr\{T_{21} = 2k\} = 0, \qquad \Pr\{T_{21} = 2k + 1\} = (1-p) \; (pq)^k
-    $$
-    et on en déduit
-    $$
-    x_2 = \sum_{n \geq 0} \Pr\{T_{21} = n\} = \sum_{k \geq 0} \Pr\{T_{21} = 2k+1\} 
-    = (1-p) \sum_{k \geq 0} (pq)^k = \frac{1-p}{1 - pq}.
-    $$
-    De même, on peut déterminer $x_3$ directement à partir de la loi du temps d'atteinte $T_{31}$.
-  \end{enumerate}
-}
+\input{\probas/BGWgeometrique}
 
-%-------------------------------------------------------------------------------
-\begin{exercise}[Processus de branchement] \label{exo:Proba-BGWgeometrique}
-  On considère un processus de Bienaymé-Galton-Watson partant d'une population de taille 1 et dans laquelle le nombre de descendants par individu suit une loi géométrique $\Gcal(a)$ (pour mémoire, $X \sim \Gcal(a)$ ssi $\Pr\{X = k\} = (1-a) a^k$).
-  \begin{enumerate}
-    \item Calculer le nombre moyen $m$ de descendants par individus en fonction de $a$.
-    \item Pour quelles valeurs de $a$ le processus est-il critique, sous-critique ou sur-critique ?
-    \item Montrer que, pour $m > 1$, la probabilité d'extinction $q$ de cette population vaut $1/m$.
-  \end{enumerate}
-\end{exercise}
+\input{\probas/BGWgeometriqueBis}
 
-\solution{
-  \begin{enumerate}
-    \item On a
-    $$
-    m = \Esp(X) 
-    = \sum_{k \geq 0} (1-a) \; a^k \; k 
-    = a(1-a) \sum_{k \geq 0} k \; a^{k-1}
-    $$
-    où on reconnaît la dérivée de la fonction $f(a) = \sum_{k \geq 0} a^{k} = (1-a)^{-1}$, soit $f'(a) = (1-a)^{-2}$. On a donc
-    $$
-    m
-    = a(1-a) (1-a)^{-2}
-    = a / (1-a)
-    $$
-    (qui est une fonction monotone croissante de $a$).
-    \item On a $m \leq 1 \; \Leftrightarrow \; a \leq 1-a \; \Leftrightarrow \; a \leq 1/2$.  Le processus est donc critique pour $a = 1/2$, sous critique pour $a < 1/2$ et sur-critique pour $a > 1/2$.
-    \item On sait que la probabilité d'extinction $q$ partant d'une population de taille 1 est le plus petit point fixe de l'équation $s = f_X(s)$ où $f_X$ est la fonction génératrice des probabilités de la loi géométrique : 
-    $$
-    f_X(s) = (1 - a) / (1 - as).
-    $$
-    On cherche donc à résoudre $1 - a = (1 - as) s \; \Leftrightarrow \; as^2 - s + (1-a) = 0$ dont on sait que $s = 1$ est solution. On peut donc factoriser
-    $$
-    as^2 - s + (1-a) = a (s-1) \left(s  - \frac{1-a}a\right)
-    $$
-    où $(1-a)/a < 1$ dès que $a > 1/2$. La probabilité d'extinction vaut donc
-    $$
-    q = \frac{1-a}a = \frac1m.
-    $$
-  \end{enumerate}
-}
-  
-%-------------------------------------------------------------------------------
-\begin{exercise}[Fonction génératrice] \label{exo:Proba-Generatrice}
-  Soit $(X, Y)$ un couple de variables aléatoires entières et $\phi: [0, 1] \times [0, 1] \mapsto [0, 1]$ sa fonction génératrice de $(X, Y)$ définie par 
-  $$
-  \phi(s, t) = \Esp(s^X t^Y) = \sum_{x \geq 0} \sum_{y geq 0} \Pr\{X=x, Y=y\} \; s^x \; t^y.
-  $$
-  \begin{enumerate}
-   \item Que valent $\phi(1, 1)$, $\phi(1, 0)$, $\phi(0, 1)$ et $\phi(0, 0)$ ?
-   \item Exprimer les fonctions génératrices de $X$, de $Y$ et de $X+Y$ en fonction de $\phi$.
-   \item Montrer que, si $X$ et $Y$ sont indépendantes, alors $\phi(s, t) = \phi(s, 1) \; \phi(1, t)$.
-   \item Montrer que si les couples $(X_1, Y_1)$ et $(X_2, Y_2)$ ont pour fonctions génératrices respectives $\phi_1$ et $\phi_2$, alors le couple $(X_1+X_2, Y_1+Y_2)$ a pour fonction génératrice $\psi = \phi_1 \phi_2$. 
-   \item En déduire que si $N$ est une variable aléatoire entière de fonction génératrice $f$ et que $((X_i, Y_i))_{i \geq 1}$ sont des couples i.i.d. de même fonction génératrice $\phi$, alors le couple $(U, V)$ tel que
-   $$
-   U = \sum_{i=1}^N X_i, \qquad V = \sum_{i=1}^N Y_i
-   $$
-   a pour fonction génératrice $f \circ \phi$.
-  \end{enumerate}
-\end{exercise}
+\input{\probas/FonctionGeneratrice}
 
-\solution{\todo{}}
