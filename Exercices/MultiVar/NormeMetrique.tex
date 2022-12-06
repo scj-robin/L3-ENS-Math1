@@ -1,0 +1,30 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Norme fondée sur une matrice définie positive}
+%-------------------------------------------------------------------------------
+
+  Soit $A$ une matrice de $\Mcal_n$ symétrique définie positive (strictement): $A \succ 0$. Montrer que $\|\cdot\|_A$ définie par $\|x\|_A = (x^\top A x)^{1/2}$ est une norme pour $\Rbb^n$.
+\solution{On vérifie les 3 conditions définissant une norme.
+  \begin{itemize}
+   \item Par définition des matrices définies positives, on a bien pour tout $x \in \Rbb^n$, $x^\top A x \geq 0$  et $\{x^\top A x = 0\} \Leftrightarrow \{x = 0\}$.
+   \item On a également $\|\lambda x\|_A = ((\lambda x)^\top A (\lambda x))^{1/2} = (\lambda^2 x^\top A x)^{1/2} = |\lambda| \|x\|_A$ ;
+   \item Puisque $A$ est symétrique, on a
+   $$
+   \|x + y\|^2_A 
+   = \|x\|^2_A + \| y\|^2_A + 2 x^\top A y
+   $$
+   et on peut la décomposer sous la forme $A = P \Lambda P^\top$ où $P$ et $P^\top$ sont orthonormales. Posons $u = \Lambda^{1/2} P^\top x$ et $v = \Lambda^{1/2} P^\top y$ qui vérifient
+   \begin{align*}
+   \|u\|_2 & = \sqrt{x^\top P \Lambda^{1/2} \Lambda^{1/2} P^\top x} = \|x\|_A, & 
+   \|v\|_2 & = \|y\|_A, \\
+   x^\top A y & = u^\top v.
+   \end{align*}
+   Par Cauchy-Schwarz, on a alors
+   \begin{align*}
+    \|x + y\|^2_A 
+    & = \|u\|^2_2 + \|v\|^2_2 + 2 u^\top v \leq \|u\|^2_2 + \|v\|^2_2 + 2 |u^\top v| \\
+    & \leq \|u\|^2_2 + \|v\|^2_2 + 2 \|u\|_2 \|v\|_2 = (\|u\|_2 + \|v\|_2)^2 \\
+    & = (\|x\|_A + \|y\|_A)^2.    
+   \end{align*}
+  \end{itemize}
+}
+

@@ -1,0 +1,33 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Cube d'une matrice}
+%-------------------------------------------------------------------------------
+
+Soit la fonction
+$$
+\begin{array}{rrcl}
+  f :  & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+  & X & \rightarrow & X^3.
+\end{array}
+$$
+Démontrer qu'elle est partout différentiable et déterminer son application linéaire tangente $D_X f$ en toute matrice $X$ de $\Mcal_n(\Rbb)$.
+\solution{
+  On a
+  $$
+  f(X+H) = X^3 + X^2H + XHX + HX^2 + H^2X + HXH + XH^2 + H^3.
+  $$
+  Comme pour la fonction $f(X) = X^2$, on montre que 
+  $$
+  H^2X = o(\|H\|), \qquad HXH  = o(\|H\|), \qquad XH^2  = o(\|H\|), \qquad H^3 = o(\|H\|).
+  $$
+  On a donc 
+  $$
+  f(X+H) - f(X) = X^2H + XHX + HX^2 + o(\|H\|)
+  $$
+  où $X^2H + XHX + HX^2$ est linéaire en $H$. L'application linéaire tangente est donc
+  $$
+  \begin{array}{rrcl}
+    L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+    & H & \rightarrow & X^2H + XHX + HX^2.
+  \end{array}
+  $$
+}

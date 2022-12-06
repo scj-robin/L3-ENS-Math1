@@ -1,0 +1,28 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Dynamique de population à classes}
+%-------------------------------------------------------------------------------
+
+  On considère une population sexuée panmictique, au sein de laquelle on désigne
+  respectivement par $x(t)$, $y(t)$ et $z(t)$ les densités au temps $t$ de femelles flottantes, de mâles flottants, et de couples. On suppose que la dynamique de la population respecte le système dynamique suivant
+  \begin{equation} \label{eq:DynPop}
+    \left\{\begin{array}{rcl}
+            \dot x(t) & = & - \alpha x y + r z, \\
+            \dot y(t) & = & - \alpha x y + r z, \\
+            \dot z(t) & = & + \alpha x y - c z^2,
+           \end{array} \right.
+  \end{equation}
+  où les coefficients $\alpha$, $r$ et $c$ sont strictement positifs.
+  \begin{enumerate}
+   \item Interpréter ces équations et la signification de chacun des coefficients $\alpha$, $r$ et $c$.
+   \item En notant $S = x(0) - y(0)$, montrer que $x(t) - y(t) = S$ pour tout temps $t$. En déduire les fonctions $y$ et $z$ satisfont le système 
+  \begin{equation} \label{eq:DynPop2}
+    \left\{\begin{array}{rcl}
+            \dot y(t) & = & - \alpha (y^2 + Sy) + r z, \\
+            \dot z(t) & = & + \alpha (y^2 + Sy) - c z^2.
+           \end{array} \right.
+  \end{equation}
+  Dans la suite on supposera que $S > 0$.
+  \item Déterminer les points d'équilibre du système \eqref{eq:DynPop2}.
+  \item \'Ecrire la matrice jacobienne du système \eqref{eq:DynPop2} et étudier la nature du ou des équilibres non triviaux.
+  \end{enumerate}
+
