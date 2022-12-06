@@ -1,0 +1,28 @@
+%-------------------------------------------------------------------------------
+\subsubsection{BGW géométrique (bis)}
+%-------------------------------------------------------------------------------
+
+\begin{exercise}[Probabilités] ~ \label{exam:Proba}
+  Les organismes d’une espèce asexuée se reproduisent suivant un processus de Bienaymé–Galton–Watson, où chaque individu laisse à la génération suivante un nombre aléatoire $X$ d’individus. \\
+  On note $p_k = \Pr\{X = k\}$ et on suppose que 
+  $$
+  p_0 = b
+  \qquad \text{et} \qquad 
+  p_k = (1 - b) (1 - a) a^{k-1} \text{ pour } k \geq 1.
+  $$
+  \begin{enumerate}
+    \item Montrer que la fonction génératrice de $X$ vaut
+    $$
+    f(s) := \Esp(s^X) = b + (1-b)(1-a) \frac{s}{1 - as}.
+    $$
+    \item Déterminer la valeur de la probabilité, notée $q$, qu'une population de cette espèce issue d’un seul individu fondateur s'éteigne.
+  \end{enumerate}
+  On introduit un nombre aléatoire $N$ d'individus de cette espèce dans une île. On note $g$ la fonction génératrice de $N$. On suppose que les descendances des $N$ individus fondateurs évoluent indépendamment les unes des autres. On s'intéresse à la probabilité $p$ de colonisation, c'est-à-dire à la probabilité pour que cette population ne s'éteigne pas.
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item A quelle condition $p$ est-elle non nulle ?
+    \item Exprimer $p$ en fonction de $q$. 
+    \item Déterminer $p$ si $N = 1$ et si $N$ est distribué comme $X$. Commenter.
+  \end{enumerate}
+\end{exercise}
+
