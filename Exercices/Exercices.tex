@@ -1,0 +1,68 @@
+\documentclass[french, 12pt]{article}
+
+%-------------------------------------------------------------------------------
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color,xcolor}
+\usepackage{tikz}
+\usepackage{remreset}
+\usepackage{url}
+\usepackage{boites}
+% \usepackage{extsizes} % Permet \documentclass[french, 14pt]{extreport}
+% \usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=.75cm]{geometry}
+% \usepackage{minitoc}
+
+\graphicspath{{../Figures/}}
+
+\input{../Macros}
+
+% Proposition numbering
+% \numberwithin{proposition}{section}
+\numberwithin{exercise}{section}
+\numberwithin{equation}{section}
+
+% Suppression des solutions
+\renewcommand{\solution}[1]{}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\title{\Huge{Ce qu'un biologiste doit savoir en mathématiques}}
+\author{SR (inspiré d'AL)}
+\date{\today}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\maketitle
+\tableofcontents
+
+\newpage \section{Algèbre linéaire} \input{../Exercices/Exos-AlgLin}
+
+\newpage \section{Fonctions de plusieurs variables} \input{../Exercices/Exos-MultiVar}
+
+\newpage \section{\'Equations différentielles et systèmes dynamiques} \input{../Exercices/Exos-EquaDiff}
+
+\newpage \section{Probabilités} \input{../Exercices/Exos-Probas}
+
+% %-------------------------------------------------------------------------------
+% \bibliography{/home/robin/Biblio/BibGene}
+% \bibliographystyle{plainnat}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+
