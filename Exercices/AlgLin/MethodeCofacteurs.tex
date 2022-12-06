@@ -1,0 +1,66 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Calcul par la méthode des cofacteurs}
+%-------------------------------------------------------------------------------
+
+  Montrer que, pour toute matrice $A \in \Mcal_n$ et pour tout $i_0, j_0 \in \{1, \dots, n\}$, on a 
+  \begin{align*}
+    |A| 
+    & = \sum_{j=1}^n a_{i_0j} (-1)^{i_0+j} |A^{(i_0j)}| & (\text{développement par rapport à la ligne $i_0$}) \\
+    & = \sum_{i=1}^n a_{ij_0} (-1)^{i+j_0} |A^{(ij_0)}| & (\text{développement par rapport à la colonne $j_0$})
+  \end{align*}
+  On pourra commencer par considérer les cas $i_0 = 1$ et $j_0 = 1$.
+
+\solution{
+  On considère le développement par rapport à la ligne $i_0$. Par multilinéarité, on a
+  $$
+  |A| = \sum_{j=1}^n a_{i_0j} 
+    \left|\begin{array}{ccccc}
+      a_{11} & \cdots & a_{1j} & \cdots & a_{1n} \\
+      \vdots & & \vdots & & \vdots \\
+      0 & \cdots & 1 & \cdots & 0 \\
+      \vdots & & \vdots & & \vdots \\
+      a_{n1} & \cdots & a_{nj} & \cdots & a_{nn} \\
+    \end{array}\right|.
+  $$
+  On effectue ensuite les $j-1$ interversions de colonnes adjacentes amenant la colonne $j$ en colonne 1, {\em en préservant l'ordre des autres colonnes entres elles}. Du fait du caractère alterné du déterminant, chaque interversion engendre un changement de signe : 
+  $$
+  |A| = \sum_{j=1}^n (-1)^{j-1} a_{i_0j} 
+    \left|\begin{array}{ccccccc}
+      a_{1j} & a_{11} & \cdots & a_{1,j-1} & a_{1,j+1} & \cdots & a_{1n} \\
+      \vdots & \vdots & & \vdots & \vdots & & \vdots \\
+      1 & 0 & \cdots & 0 & 0 & \cdots & 0 \\
+      \vdots & \vdots & & \vdots & \vdots & & \vdots\\
+      a_{nj} & a_{n1} & \cdots & a_{n,j-1} & a_{n,j+1} & \cdots & a_{nn} \\
+    \end{array}\right|.
+  $$
+  On effectue la même opération pour amener la ligne $i_0$ en premier
+  $$
+  |A| = \sum_{j=1}^n (-1)^{(j-1) + (i_0-1)} a_{i_0j} 
+    \left|\begin{array}{ccccccc}
+      1 & 0 & \cdots & 0 & 0 & \cdots & 0 \\
+      a_{1j} & a_{11} & \cdots & a_{1,j-1} & a_{1,j+1} & \cdots & a_{1n} \\
+      \vdots & \vdots & & \vdots & \vdots & & \vdots \\
+      a_{i_0-1, j} & a_{i_0-1, 1} & \cdots & a_{i_0-1,j-1} & a_{i_0-1, j+1} & \cdots & a_{i_0-1, n} \\
+      a_{i_0+1, j} & a_{i_0+1, 1} & \cdots & a_{i_0+1, j-1} & a_{i_0+1, j+1} & \cdots & a_{i_0+1, n} \\
+      \vdots & \vdots & & \vdots & \vdots & & \vdots\\
+      a_{nj} & a_{n1} & \cdots & a_{n,j-1} & a_{n,j+1} & \cdots & a_{nn} \\
+    \end{array}\right|
+  $$
+  où on remarque que $(-1)^{(j-1) + (i_0-1)} = (-1)^{i_0+j}$. 
+  On utilise alors la formule du déterminant par bloc
+  $$
+  |A| = \sum_{j=1}^n (-1)^{i_0 + j} a_{i_0j} |[1]| \times
+    \left|\begin{array}{cccccc}
+      a_{11} & \cdots & a_{1,j-1} & a_{1,j+1} & \cdots & a_{1n} \\
+      \vdots & & \vdots & \vdots & & \vdots \\
+      a_{i_0-1, 1} & \cdots & a_{i_0-1,j-1} & a_{i_0-1, j+1} & \cdots & a_{i_0-1, n} \\
+      a_{i_0+1, 1} & \cdots & a_{i_0+1, j-1} & a_{i_0+1, j+1} & \cdots & a_{i_0+1, n} \\
+      \vdots & & \vdots & \vdots & & \vdots\\
+      a_{n1} & \cdots & a_{n,j-1} & a_{n,j+1} & \cdots & a_{nn} \\
+    \end{array}\right|
+  $$
+  où on reconnaît les mineurs $A^{(i_0, j)}$ et les cofacteurs $(-1)^{i_0 + j} |A^{(i_0, j}|$. \\
+  La démonstration pour le développement par rapport à une colonne est symétrique.
+}
+ 
+

@@ -1,0 +1,71 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Matrice paramétrée}
+%-------------------------------------------------------------------------------
+
+Soit la matrice
+\begin{align*}
+  A & = \left[\begin{array}{rrr}
+    1 & 4 & 2 \\ 0 & \alpha & 0 \\ 1 & 1 & 0
+    \end{array}\right].
+\end{align*}
+\begin{enumerate}
+  \item Déterminer son polynôme caractéristique.
+  \solution{En développant par rapport à la 2ème ligne, on obtient
+    $$
+    P_A(\lambda) 
+    = (\alpha - \lambda) 
+      \left| \begin{array}{cc} 1 - \lambda & 2 \\1 & - \lambda \end{array} \right|
+    = (\alpha - \lambda) (\lambda^2 - \lambda - 2)
+    = (\alpha - \lambda) (\lambda - 2 ) ( \lambda + 1).
+    $$
+  }
+  \item En déduire ses valeurs propres et sa valeur propre dominante en fonction de $\alpha$.
+  \solution{Les valeurs propres de $A$ sont donc $\{\alpha, 2, -1\}$. La valeur propre dominante est donc $\max(|\alpha|, 2)$.}
+  \item A quelle condition sur $\alpha$ $A$ est-elle diagonalisable ?
+  \solution{
+    \begin{description}
+    \item[$\alpha \notin \{-1, 2\}$:] les 3 valeurs propres sont réelles et distinctes donc $A$ est diagonalisable.
+    \item[$\alpha = 2$:] $2$ est alors raçine double de $P_A(\lambda)$ et ses vecteurs propres associés sont solutions de 
+    $$
+    \left\{ \begin{array}{rcl}  
+            u_1 + 4 u_2 + 2 u_3 & = & 2 u_1 \\
+            2 u_2 & = & 2 u_2 \\
+            u_1 + u_2 & = & 2 u_3 
+            \end{array} \right.
+    \quad \Leftrightarrow \quad
+    \left\{ \begin{array}{rcl}  
+            2 u_1 + 5 u_2 & = & 2 u_1 \\
+            u_1 + u_2 & = & 2 u_3 
+            \end{array} \right.         
+    \quad \Leftrightarrow \quad
+    \left\{ \begin{array}{rcl}  
+            u_2 & = & 0 \\
+            u_1 & = & 2 u_3 
+            \end{array} \right.         
+    $$
+    qui définit un sous-espace propre de dimension 1 : $A$ n'est donc pas diagonalisable.
+    \item[$\alpha = -1$:] $-1$ est alors raçine double de $P_A(\lambda)$ et ses vecteurs propres associés sont solutions de 
+    $$
+    \left\{ \begin{array}{rcl}  
+            u_1 + 4 u_2 + 2 u_3 & = & - u_1 \\
+            2 u_2 & = & - u_2 \\
+            u_1 + u_2 & = & - u_3 
+            \end{array} \right.
+    \quad \Leftrightarrow \quad
+    \left\{ \begin{array}{rcl}  
+            u_1 + 2 u_3 & = & - u_1 \\
+            u_2 & = & 0 \\
+            u_1& = & - u_3 
+            \end{array} \right.
+    \quad \Leftrightarrow \quad
+    \left\{ \begin{array}{rcl}  
+
+    u_2 & = & 0 \\
+            u_1 & = & - u_3 
+            \end{array} \right.
+    $$
+    qui définit un sous-espace propre de dimension 1 : $A$ n'est donc pas diagonalisable.
+  \end{description}
+  }
+\end{enumerate}
+

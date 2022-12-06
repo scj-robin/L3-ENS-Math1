@@ -1,0 +1,40 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Matrices diagonalisables ?}
+%-------------------------------------------------------------------------------
+
+Déterminer le polynôme caratéristique des matrices suivantes et en déduire si elles sont diagonalisables :
+\begin{align*}
+  A & = \left[\begin{array}{rrr}
+    2 & -1 & 3 \\ 2 & -1 & 6 \\ 1 & 0  & 2
+    \end{array}\right], &
+  B & = \left[\begin{array}{rrr}
+    1 & 1 & 0 \\ -5 & -2 & 5 \\ -1 & 0 & 2
+    \end{array}\right].
+\end{align*}
+  
+\solution{
+  \begin{description}
+    \item[$A$ :] on a
+    \begin{align*}
+        P_A(\lambda) 
+        = \left| \begin{array}{rrr}
+          2 - \lambda & -1 & 3 \\ 2 & -1 - \lambda & 6 \\ 1 & 0  & 2 - \lambda 
+          \end{array}\right|
+        = -\lambda^3 + 3 \lambda^2 + \lambda - 3
+        = -(\lambda - 3) (\lambda - 1) (\lambda + 1).
+    \end{align*}
+    Les valeurs propres sont donc $3$, $1$ et $-1$ qui sont toutes réelles et distinctes, donc $A$ est diagonalisable.
+    \item[$B$ :] on a
+    \begin{align*}
+        P_B(\lambda) 
+        = \left| \begin{array}{rrr}
+            1 - \lambda & 1 & 0 \\ -5 & -2 - \lambda & 5 \\ -1 & 0 & 2 - \lambda
+          \end{array}\right|
+        = - \lambda^3 + \lambda^2 - \lambda + 1
+        = - (\lambda-1) (\lambda^2 + 1).
+    \end{align*}
+    Les valeurs propres sont donc $1$, $i$ et $-i$ qui ne sont pas toutes réelles, donc $B$ n'est pas diagonalisable.
+  \end{description}
+}
+
+

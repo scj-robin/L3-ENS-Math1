@@ -1,0 +1,66 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Polynôme caractéristique et trace}
+%-------------------------------------------------------------------------------
+
+On rappelle que la trace $\tr(A)$ d'une matrice carrée $A \in \Mcal_n$ est la somme de ses termes diagonaux : $\tr(A) = \sum_{i=1}^n a_{ii}$.
+\begin{enumerate}
+  \item Montrer que le coefficient d'ordre $n-1$ du polynôme caratéristique de $A$ (noté $P_A$) vaut
+  $$
+  [\lambda^{n-1}] P_A(\lambda) = (-1)^{n-1} \tr(A).
+  $$
+  On pourra procéder par récurrence.
+  \solution{
+    On vérifie facilement que la propriété est vraie pour $n=2$. En la supposant vraie au rang $n-1$, on peut calculer le polynôme caractéristique de $A \in \Mcal_n$ en développant par la dernière ligne : 
+    $$
+    P_A(\lambda) = 
+    \left| A - \lambda I\right|
+    = \sum_{j=1}^{n-1} (-1)^{n+j} a_{nj} \left| (A - \lambda I)^{(n, j)} \right|
+    + (a_{nn} -\lambda) \left| (A - \lambda I)^{(n, n)} \right|
+    $$
+    en notant $B^{(i,j)}$ la matrice $B$ privée de sa $i$ème ligne et $j$ème colonne. On peut alors remarquer que les termes de la première somme sont tous de degré au plus $n-2$ et que $\left|(A - \lambda I)^{(n, n)} \right| = P_{A^{(n, n)}}(\lambda)$. On a donc, en notant $Q_m$ un polynôme quelconque de degré inférieur ou égal à $m$,
+    \begin{align*}
+      P_A(\lambda) 
+      & = (a_{nn} -\lambda) P_{A^{(n, n)}}(\lambda) + Q_{n-2}(\lambda) \\
+      & = (a_{nn} -\lambda) \left( (-1)^{n-1} \lambda^{n-1} + (-1)^{n-2} \tr(A^{(n, n)}) \lambda^{n-2} + Q_{n-3}(\lambda) \right) + Q_{n-2}(\lambda),
+    \end{align*}
+     par hypothèse, soit, 
+    \begin{align*}
+      P_A(\lambda) 
+      & = - \lambda (-1)^{n-1} \lambda^{n-1} 
+      + a_{nn} (-1)^{n-1} \lambda^{n-1} 
+      - \lambda (-1)^{n-2} \tr(A^{(n, n)}) \lambda^{n-2}
+      + Q'_{n-2}(\lambda) \\
+      & = (-1)^n \lambda^n + (-1)^{n-1} \underset{\tr(A)}{\underbrace{(a_{nn} + \tr(A^{(n, n)})}} \lambda^{n-1} + Q'_{n-2}(\lambda)
+    \end{align*}
+    donc
+    $$
+    [\lambda^{n-1}] P_A(\lambda) = (-1)^{n-1} \tr(A).
+    $$
+  }
+  \item En déduire que la trace est égale à la somme des raçines $\{\lambda_1, \dots \lambda_n\}$ de $P_A(\lambda)$ :
+  $$
+  \tr(A) = \sum_{i=1} \lambda_i
+  $$
+  On pourra utiliser la factorisation du polynôme caractéristique.
+  \solution{
+  On utilise cette fois la version factorisée de $P_A$, soit 
+  $$
+  P_A(\lambda) 
+  = \prod_{i=1}^n (\lambda_i - \lambda)
+  $$
+  où les $\lambda_i$ sont les $n$ valeurs propres (pas nécessairement distinctes ni réelles) de $A$. Lors du développement de $P_A(\lambda)$, les termes en $\lambda^{n-1}$ apparaissent en multipliant un terme $\lambda_i$ par $n-1$ termes $(-\lambda)$, c'est-à-dire
+  $$
+  \left( \sum_{i=1}^n \lambda_i \right) (-\lambda)^{n-1}
+  = (-1)^{n-1} \left( \sum_{i=1}^n \lambda_i \right) \lambda^{n-1}.
+  $$
+  On a donc
+  $$
+  [\lambda^{n-1}] P_A(\lambda) 
+  = (-1)^{n-1} \left( \sum_{i=1}^n \lambda_i \right) 
+  \qquad \Leftrightarrow \qquad
+  \tr(A) = \sum_{i=1}^n \lambda_i.
+  $$
+  }
+\end{enumerate}
+
+

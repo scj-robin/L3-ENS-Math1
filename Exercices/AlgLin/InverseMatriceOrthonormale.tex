@@ -1,0 +1,21 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Inverse d'un matrice orthonormale}
+%-------------------------------------------------------------------------------
+
+Soit $P \in \Mcal_n$ orthonormale. Montrer que $P^{-1} = P^\top$.
+
+\solution{
+  En notant $P = [v_{ij}]$, $v_j$ le $j$ème vecteur colonne de $P$ et $B = [b_{ij}] = P^\top P$, on a
+  $$
+  P^\top = [v_{ji}] 
+  \quad \Rightarrow \quad
+  b_{ik} 
+  = \sum_{k=1}^n [P^\top]_{ik} [P]_{kj} 
+  = \sum_{k=1}^n v_{ki} v_{kj}
+  = < v_i, v_j >
+  = \left\{\begin{array}{rl} 1 & \text{si } i = j \\ 0 & \text{sinon} \end{array}\right.
+  $$
+  (puique les vecteurs $v_j$ sont orthonormés), donc $P^\top P = B = I$. La démonstration de $P P^\top = I$ est symétrique.
+}
+
+
