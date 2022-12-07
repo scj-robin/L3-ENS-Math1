@@ -36,16 +36,16 @@ times <- seq(0, 10, by=.001)
 if(exportFig){png(paste0(figDir, exName, '.png'))}
 PlotSystDyn2D(edo=EDO2, y0List=y0List, xGrid=xGrid, yGrid=yGrid, xyGrid=xyGrid, 
               parm=parm, times=times, href=parm$a, vref=parm$a)
-curve(sqrt(parm$a*x), from=min(xGrid), to=max(xGrid), add=TRUE, col=8)
-curve(x^2/parm$a, from=min(xGrid), to=max(xGrid), add=TRUE, col=8)
+curve(sqrt(parm$a*x), from=min(xGrid), to=max(xGrid), add=TRUE, col=8, lty=2)
+curve(x^2/parm$a, from=min(xGrid), to=max(xGrid), add=TRUE, col=8, lty=2)
 if(exportFig){dev.off()}
 
 if(exportFig){png(paste0(figDir, exName, '-zoom.png'))}
 PlotSystDyn2D(edo=EDO2, y0List=y0List, xGrid=xGrid, yGrid=yGrid, xyGrid=xyGrid, 
               xlim=parm$a*c(0.9, 1.1), ylim=parm$a*c(0.9, 1.1),
               parm=parm, times=times, href=parm$a, vref=parm$a)
-curve(sqrt(parm$a*x), from=min(xGrid), to=max(xGrid), add=TRUE, col=8)
-curve(x^2/parm$a, from=min(xGrid), to=max(xGrid), add=TRUE, col=8)
+curve(sqrt(parm$a*x), from=min(xGrid), to=max(xGrid), add=TRUE, col=8, lty=2)
+curve(x^2/parm$a, from=min(xGrid), to=max(xGrid), add=TRUE, col=8, lty=2)
 if(exportFig){dev.off()}
 
 ################################################################################
@@ -65,6 +65,6 @@ y0List <- list(c(0, 0), c(yStar/2, zStar/2), c(yStar/2, 3*zStar/2),
 if(exportFig){png(paste0(figDir, exName, '.png'))}
 PlotSystDyn2D(edo=EDO3, y0List=y0List, xGrid=yGrid, yGrid=zGrid, 
               parm=parm, href=zStar, vref=yStar, xlab='y', ylab='z')
-curve(sqrt(parm$a/parm$c*(x^2 + parm$S*x)), from=min(yGrid), to=max(yGrid), n=1001, add=TRUE, col=8)
-curve(parm$a/parm$r*(x^2 + parm$S*x), from=min(yGrid), to=max(yGrid), n=1001, add=TRUE, col=8)
+curve(sqrt(parm$a/parm$c*(x^2 + parm$S*x)), from=min(yGrid), to=max(yGrid), n=1001, add=TRUE, col=8, lty=2)
+curve(parm$a/parm$r*(x^2 + parm$S*x), from=min(yGrid), to=max(yGrid), n=1001, add=TRUE, col=8, lty=2)
 if(exportFig){dev.off()}
