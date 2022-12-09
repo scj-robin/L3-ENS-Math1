@@ -59,21 +59,31 @@ où les coefficients $\alpha$, $r$ et $c$ sont strictement positifs.
     $$
     y^* = \frac{\sqrt{\Delta} - S}2.
     $$
-    Le second équilibre intéressant est donc $(y^* = (\sqrt{\Delta} - S)/2, z^* = r/c)$. \\
-    $(y^* = (-\sqrt{\Delta} - S)/2, z^* = r/c)$ est bien un point d'équilibre, mais sans intérêt du point de vue du modèle.
+    On a donc 4 points d'équilibres : 
+    $$
+    (0, 0), \qquad
+    (-S, 0), \qquad 
+    \left(\frac{\sqrt{\Delta} - S}2, \frac{r}c\right), \qquad
+    \left(\frac{-\sqrt{\Delta} - S}2, \frac{r}c\right)
+    $$
+    dont les seuls pertinent pour le modèle sont ceux qui se situent dans le cadrant positif, c'est-à-dire
+    $$
+    (y=0, z=0), \qquad
+    \left(y=\frac{\sqrt{\Delta} - S}2, z=\frac{r}c\right).
+    $$
   \end{itemize}
   }
   \item \'Ecrire la matrice jacobienne du système \eqref{eq:Dyn3Pop2} et étudier la nature du ou des équilibres non triviaux.
   \solution{La jacobienne vaut
   $$
-  J = \left[\begin{array}{rr}
+  J F = \left[\begin{array}{rr}
               -2 \alpha y - \alpha S & r \\ 2 \alpha y + \alpha S & -2 c z
             \end{array}\right]
   $$
   \begin{description}
     \item[En $(0, 0)$ :] on a 
     $$
-    J_{(0, 0)} = \left[\begin{array}{rr}
+    J_{(0, 0)} F = \left[\begin{array}{rr}
                 - \alpha S & r \\ \alpha S & 0
               \end{array}\right]
     \qquad \Rightarrow \qquad
@@ -81,19 +91,36 @@ où les coefficients $\alpha$, $r$ et $c$ sont strictement positifs.
     $$
     où
     $$
-    \Delta_0 = \alpha^2 S^2 (1 - 4 r / (\alpha S)).
+    \Delta_0 = \alpha^2 S^2 (1 + 4 r / (\alpha S)) > \alpha^2 S^2.
     $$
-    \begin{itemize}
-      \item Si $\Delta_0 \geq 0$, les deux valeurs propres
-      $$
-      \lambda = \frac{\alpha S}2 \left(-1 \pm \sqrt{1 - 4r/(\alpha S)}\right)
-      $$
-      sont négatives (car $\sqrt{1 - 4r/(\alpha S)} < 1$) et $(0, 0)$ est un équilibre stable. 
-      \item Si $\Delta_0 < 0$, la partie réelle ($-\alpha S/2$) des deux valeurs propres est négative et l'équilibre est également stable.
-    \end{itemize}
+    Les deux valeurs propres
+    \begin{align*}
+    \lambda_1 
+    & = \frac{-\alpha S + \sqrt{\Delta_0}}{2}
+    = \alpha S \left(-1 + \sqrt{1 + \delta}\right), 
+    \\
+    \lambda_2 
+    & = \frac{-\alpha S - \sqrt{\Delta_0}}{2}
+    = \alpha S \left(-1 - \sqrt{1 + \delta}\right), 
+    \end{align*}
+    (où $\delta = 4r/\alpha S$) sont donc de signe opposé : $(0, 0)$ est stable dans une direction et instable dans une autre. \\
+    Il est alors intéressant de savoir quelle direction propre concerne le cadrant positif. On cherche pour cela les vecteurs propres en écrivant que $(u, v)$ est un vecteur propre de $J_{(0, 0)} F$ associé à $ \lambda$ ssi
+    \begin{align*}
+      J_{(0, 0)} F \cdot [u \; v]^\top = \lambda [u \; v]^\top
+      \qquad \Leftrightarrow \qquad
+      \left\{\begin{array}{rcl}
+              - \alpha S u + r v & = & \lambda u \\
+              \alpha S u & = & \lambda v
+             \end{array}\right. .
+    \end{align*}
+    La second équation impose donc
+    $$
+    \alpha S u = \alpha S \left(-1 \pm \sqrt{1 + \delta}\right) v.
+    $$
+    $u$ et $v$ sont donc de même signe pour $\lambda_1 > 0$ (direction instable) et de signe opposé pour $\lambda_2 < 0$ (direction stable). $(0, 0)$ n'est donc pas un point attracteur dans le cadrant positif.
     \item[En $(y^* = \sqrt{\Delta} - S)/2, z^* = r/c)$ :] on a 
     $$
-    J_{(y^*, z^*)} = \left[\begin{array}{rr}
+    J_{(y^*, z^*)} F = \left[\begin{array}{rr}
                 - \alpha \delta & r \\ \alpha \delta & -2 r
               \end{array}\right]
     \qquad \Rightarrow \qquad

@@ -18,13 +18,19 @@
    \|v\|_2 & = \|y\|_A, \\
    x^\top A y & = u^\top v.
    \end{align*}
-   Par Cauchy-Schwarz, on a alors
+   On peut alors utiliser l'inégalité tringulaire pour la norme $\|\cdot\|_2$ : 
    \begin{align*}
-    \|x + y\|^2_A 
-    & = \|u\|^2_2 + \|v\|^2_2 + 2 u^\top v \leq \|u\|^2_2 + \|v\|^2_2 + 2 |u^\top v| \\
-    & \leq \|u\|^2_2 + \|v\|^2_2 + 2 \|u\|_2 \|v\|_2 = (\|u\|_2 + \|v\|_2)^2 \\
-    & = (\|x\|_A + \|y\|_A)^2.    
+    \|x + y\|_A 
+    = \|u + v\|_2 
+    \leq \|u\|_2 + \|v\|_2
+    = \|x\|_A + \|y\|_A.    
    \end{align*}
+   \SR{Pour mémoire, l'inégalité triangulaire pour la norme $\|\cdot\|_2$ se démontre par Cauchy-Schwarz :
+   \begin{align*}
+    \|u + v\|^2_2 
+    & = \|u\|^2_2 + \|v\|^2_2 + 2 u^\top v \leq \|u\|^2_2 + \|v\|^2_2 + 2 |u^\top v| \\
+    & \leq \|u\|^2_2 + \|v\|^2_2 + 2 \|u\|_2 \|v\|_2 = (\|u\|_2 + \|v\|_2)^2.    
+   \end{align*}}{}
   \end{enumerate}
 }
 

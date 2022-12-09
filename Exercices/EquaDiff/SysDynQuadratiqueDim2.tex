@@ -2,7 +2,7 @@
 \subsubsection{Système dynamique quadratique} \label{SystDyn-Quadratique}
 %-------------------------------------------------------------------------------
 
-On considère le système dynamique d’activation réciproque suivant avec compétition intraspécifique
+On considère le système dynamique d’activation réciproque avec compétition intraspécifique suivant 
 $$
 %   \SR{
 %   \left\{\begin{array}{rcl}
@@ -19,10 +19,8 @@ $$
 %   où $r$ et $c$ sont deux constantes strictement positives.
 où $a$ est une constante strictement positive.
 \begin{enumerate}
-  \item Donner la valeur $(x^*, y^*)$ de l’unique équilibre ``non trivial''
-%   \footnote{'Trivial' signifie à la fois évident et sans intérêt. En l'occurrence, le point d'équilibre trivial est le point $(0, 0)$.} 
-  de ce système dans le quadrant positif. Quel est l’autre équilibre ?
-  \solution{$(x=0, y=0)$ est le point d'équilibre trivial. L'autre point d'équilibre s'obtient en résolvant
+  \item Déterminer les équilibres de ce modèle.
+  \solution{$(x=0, y=0)$ est un point d'équilibre trivial. L'autre point d'équilibre s'obtient en résolvant
   $$
   \left\{\begin{array}{rcl}
           a y & = & x^2 \\
@@ -39,7 +37,7 @@ où $a$ est une constante strictement positive.
           a^3 & = & x^3
         \end{array}\right.
   \quad \Leftrightarrow \quad
-  x^* = y^* = a
+  x^* = y^* = a.
   $$}
   \item Donner la nature de chacun de ces deux équilibres.
   \solution{En notant
@@ -62,7 +60,7 @@ où $a$ est une constante strictement positive.
     $$
     qui s'annule pour $\lambda = \pm a$. Des vecteurs associés à $a$ et $-a$ sont, respectivement $[1 \; 1]^\top$ et $[-1 \; 1]^\top$. \\
     $(0, 0)$ est un équilibre instable dans la direction de la première bissectrice et stable dans celle de la seconde.
-    \item[Point $(a, a)$:] an a
+    \item[Point $(a, a)$:] on a
     $$
     J_{(0, 0)} F = \left[\begin{array}{cc}-2a & a \\ a & -2a\end{array}\right]
     \quad \Rightarrow \quad
@@ -78,8 +76,8 @@ où $a$ est une constante strictement positive.
   \solution{
   On peut remarquer que 
   $$
-  \{\dot x = 0\} \Leftrightarrow \{y = x^2/a\}, \qquad
-  \{\dot y = 0\} \Leftrightarrow \{y = \sqrt{a x}\}
+  \dot x \geq 0 \quad \Leftrightarrow \quad y \geq x^2/a, \qquad \qquad
+  \dot y \geq 0 \quad \Leftrightarrow \quad y \leq \sqrt{a x}.
   $$
   $$
   \includegraphics[width=.45\textwidth, trim=0 10 20 20, clip=]{ActivationReciproque}
@@ -88,7 +86,7 @@ où $a$ est une constante strictement positive.
   Toutes les trajectoires convergent vers $(a, a)$.
   \begin{description}
     \item[$(x_0 < a, y_0 < a)$:] la trajectoire converge directement vers $(a, a)$.
-    \item[$(x_0 < a, y_0 > a)$:] la trajectoire franchit l'axe $y = a$ avant de revenir en $(a, a$.
+    \item[$(x_0 < a, y_0 > a)$:] la trajectoire franchit l'axe $y = a$ avant de revenir en $(a, a)$.
     \item[$(x_0 > a, y_0 > a)$:] la trajectoire converge directement vers $(a, a)$.
     \item[$(x_0 > a, y_0 < a)$:] la trajectoire franchit l'axe $x = a$ avant de revenir en $(a, a)$.
   \end{description}
