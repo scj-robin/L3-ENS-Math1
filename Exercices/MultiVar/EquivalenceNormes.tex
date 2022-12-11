@@ -31,21 +31,33 @@ Donner des constantes $c_1$ et $c_2$ permettant de comparer les trois normes $\|
     $$
     \|x\|_2 \leq \sum_i \|u_i\|_2 \leq \sum_i |x_i| = \|x\|_1 ;
     $$
-    \item \todo{montrer que 
+    \item en remarquant que la boule unité de la norme $\|\cdot\|_2$ est incluse dans la boule de rayon $\sqrt{n}$ de la norme $\|\cdot\|_1$, il vient que 
     $$
     \|x\|_1 \leq \sqrt{n} \|x\|_2.
     $$
-    par l'inégalité de Minkowski ?}
   \end{enumerate}
 \end{description}
   On peut vérifier que les constantes sont optimales en donnant des exemples pour lesquels chacune des égalités est obtenue.
 \begin{description}
   \item[$\|x\|_2$ et $\|x\|_\infty$:] Si tous les coordonnées de $x$ sont égales, on a $\|x\|_2 = \sqrt{n} \|x\|_\infty$. \\
   Si tous les coordonnées de $x$ sont nulles, sauf une, on a $\|x\|_2 = \|x\|_\infty$.
-  \item[$\|x\|_1$ et $\|x\|_\infty$:] Si tous les coordonnées de $x$ sont égales, on a $\|x\|_1 = n \|x\|_1$. \\
+  \item[$\|x\|_1$ et $\|x\|_\infty$:] Si tous les coordonnées de $x$ sont égales, on a $\|x\|_1 = n \|x\|_\infty$. \\
   Si tous les coordonnées de $x$ sont nulles, sauf une, on a $\|x\|_1 = \|x\|_\infty$. 
   \item[$\|x\|_1$ et $\|x\|_2$:] Si tous les coordonnées de $x$ sont nulles sauf une, on a $\|x\|_2 = \|x\|_1$. \\
-  \todo{Si tous les coordonnées de $x$ sont égales, on a  $\|x\|_1 \leq \sqrt{n} \|x\|_2$.}
+  Si tous les coordonnées de $x$ sont égales, on a  $\|x\|_1 \leq \sqrt{n} \|x\|_2$.
 \end{description}
+  $$
+  \begin{tabular}{ccc}
+    $\|\cdot\|_2$ et $\|\cdot\|_\infty$ &
+    $\|\cdot\|_1$ et $\|\cdot\|_\infty$ &
+    $\|\cdot\|_1$ et $\|\cdot\|_2$ \\
+  \includegraphics[width=.3\textwidth]{EquivalenceNorme-R2-2inf} & 
+  \includegraphics[width=.3\textwidth]{EquivalenceNorme-R2-1inf} & 
+  \includegraphics[width=.3\textwidth]{EquivalenceNorme-R2-12}
+  \end{tabular}
+  $$
+%   $$
+%   \includegraphics[width=.5\textwidth]{EquivalenceNorme-R2}
+%   $$
 }
 
