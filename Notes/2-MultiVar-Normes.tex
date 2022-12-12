@@ -56,7 +56,7 @@ Programme cours 3 :
   $$
   \item Une norme induit une définition de la convergence : $(u_n)_{n \geq 0}$ converge vers $\ell$ ssi
   $$
-  \lim_{n \rightarrow \infty} \|u_n - \ell\| = 0;
+  \lim_{n \to \infty} \|u_n - \ell\| = 0;
   $$
   On dit alors que $(u_n)_{n \geq 0}$ converge vers $\ell$ {\em au sens de $\|\cdot\|$}.
 \end{itemize}
@@ -134,19 +134,19 @@ $$
 \remark
 Le théorème \ref{thm:equivalenceNormes} assure aussi l'équivalence des convergences : si la suite $(u_n)_{n \geq 0}$ converge vers $\ell$ au sens de la norme $\|\cdot\|_a$ :
 $$
-\lim_{n \rightarrow \infty} \|u_n - \ell\|_a = 0
+\lim_{n \to \infty} \|u_n - \ell\|_a = 0
 $$
 alors elle converge aussi au sens de la norme $\|\cdot\|_b$ puisque
 $$
-0 = \frac1{c_1} \lim_{n \rightarrow \infty} \|u_n - \ell\|_a
-\leq \lim_{n \rightarrow \infty} \|u_n - \ell\|_b \leq
-c_2 \lim_{n \rightarrow \infty} \|u_n - \ell\|_a = 0.
+0 = \frac1{c_1} \lim_{n \to \infty} \|u_n - \ell\|_a
+\leq \lim_{n \to \infty} \|u_n - \ell\|_b \leq
+c_2 \lim_{n \to \infty} \|u_n - \ell\|_a = 0.
 $$
 
 \begin{definition}[Convergence coordonnée par coordonnée.]
   Une suite $(u(n))_{n \geq 0}$ d'élément de $\Rbb^k$ converge coordonnée par coordonnée vers $\ell \in \Rbb^k$ si, pour chaque $1 \leq i \leq k$:
   $$
-  \lim_{n \rightarrow \infty} u_i(n) = \ell_i.
+  \lim_{n \to \infty} u_i(n) = \ell_i.
   $$
 \end{definition}
 
@@ -157,30 +157,30 @@ $$
 \begin{lemma}[Inversion de la limite et du maximum] \label{lem:inversionLimiteMaximum}
   Soient $k$ suites réelles $v_1, \dots v_k$, on a
   $$
-  \lim_{n \rightarrow \infty} \max_{i=1 \dots k} v_i(n) = 0
+  \lim_{n \to \infty} \max_{i=1 \dots k} v_i(n) = 0
   \qquad \Leftrightarrow \qquad
-  \max_{i=1 \dots k} \lim_{n \rightarrow \infty} v_i(n) = 0.
+  \max_{i=1 \dots k} \lim_{n \to \infty} v_i(n) = 0.
   $$
 \end{lemma}
 
 % {Démonstration du lemme \ref{lem:inversionLimiteMaximum}.}
 \proof
 \begin{description}
-  \item[$\Rightarrow$:] $\lim_{n \rightarrow \infty} \max_{i=1 \dots k} v_i(n) = 0$
+  \item[$\Rightarrow$:] $\lim_{n \to \infty} \max_{i=1 \dots k} v_i(n) = 0$
   \begin{align*}
     \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow |\max_i v_i(n)| = \max_i |v_i(n)| < \epsilon\} \\
     \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \forall i, |v_i(n)| < \epsilon\} \\
     \Rightarrow \quad & \{\forall i, \forall \epsilon, \exists N_{\epsilon, i}(\equiv N_\epsilon): n > N_{\epsilon, i} \Rightarrow |v_i(n)| < \epsilon\} \\
-    \Rightarrow \quad & \forall i, \lim_{n \rightarrow \infty} v_i(n) = 0 \\
-    \Rightarrow \quad & \max_i \lim_{n \rightarrow \infty} v_i(n) = 0.
+    \Rightarrow \quad & \forall i, \lim_{n \to \infty} v_i(n) = 0 \\
+    \Rightarrow \quad & \max_i \lim_{n \to \infty} v_i(n) = 0.
   \end{align*}
-  \item[$\Leftarrow$:] $\max_{i=1 \dots k} \lim_{n \rightarrow \infty} v_i(n) = 0$
+  \item[$\Leftarrow$:] $\max_{i=1 \dots k} \lim_{n \to \infty} v_i(n) = 0$
   \begin{align*}
-    \Rightarrow \quad & \forall i, \lim_{n \rightarrow \infty} v_i(n) = 0 \\
+    \Rightarrow \quad & \forall i, \lim_{n \to \infty} v_i(n) = 0 \\
     \Rightarrow \quad & \{\forall i, \forall \epsilon, \exists N_{\epsilon, i}: n > N_{\epsilon, i} \Rightarrow |v_i(n)| < \epsilon\}\\
     \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon (= \max_i N_{\epsilon, i}): \forall i, n > N_\epsilon \Rightarrow |v_i(n)| < \epsilon\}\\
     \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \max_i |v_i(n)| < \epsilon\}\\
-    \Rightarrow \quad & \lim_{n \rightarrow \infty} \max_i v_i(n) = 0
+    \Rightarrow \quad & \lim_{n \to \infty} \max_i v_i(n) = 0
   \end{align*}
 \end{description}
 \eproof
@@ -193,19 +193,19 @@ Toutes les normes étant équivalentes dans $\Rbb^k$, nous pouvons démontrer ch
 \begin{description}
   \item[$\Rightarrow$:]
     \begin{align*}
-%       \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} u_i(n) = \ell_i
+%       \forall 1 \leq i \leq k: \lim_{n \to \infty} u_i(n) = \ell_i
 %       & \qquad \Rightarrow \qquad & & 
-      \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 
-      & \Rightarrow & & \sum_{i=1}^k \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \\
-      & & \Rightarrow & & \lim_{n \rightarrow \infty} \sum_{i=1}^k |u_i(n) - \ell_i| & = 0 \\
-      & & \Rightarrow & &  \lim_{n \rightarrow \infty} \|u - \ell\|_1 & = 0. 
+      \forall 1 \leq i \leq k: \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 
+      & \Rightarrow & & \sum_{i=1}^k \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 \\
+      & & \Rightarrow & & \lim_{n \to \infty} \sum_{i=1}^k |u_i(n) - \ell_i| & = 0 \\
+      & & \Rightarrow & &  \lim_{n \to \infty} \|u - \ell\|_1 & = 0. 
     \end{align*}
   \item[$\Leftarrow$:]
   \begin{align*}
-    \lim_{n \rightarrow \infty} \|u - \ell\|_\infty & = 0
-    & \Rightarrow & & \lim_{n \rightarrow \infty} \max_{i=1 \dots k} |u_i(n) - \ell_i| & = 0 \\
-    & & \Rightarrow & & \max_{i=1 \dots k} \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0 \qquad \text{(d'après le lemme)}\\
-    & & \Rightarrow & & \forall 1 \leq i \leq k: \lim_{n \rightarrow \infty} |u_i(n) - \ell_i| & = 0.
+    \lim_{n \to \infty} \|u - \ell\|_\infty & = 0
+    & \Rightarrow & & \lim_{n \to \infty} \max_{i=1 \dots k} |u_i(n) - \ell_i| & = 0 \\
+    & & \Rightarrow & & \max_{i=1 \dots k} \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 \qquad \text{(d'après le lemme)}\\
+    & & \Rightarrow & & \forall 1 \leq i \leq k: \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0.
   \end{align*}
 \end{description} 
 \eproof

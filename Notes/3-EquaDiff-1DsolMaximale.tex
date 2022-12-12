@@ -23,7 +23,7 @@ On s'intéresse à une fonction
 $$
 \begin{array}{rrcl}
   y : & \Rbb & \mapsto & \Rbb^n \\
-  & t & \rightarrow & y(t) = [y_1(t) \dots y_n(t)]^\top 
+  & t & \to & y(t) = [y_1(t) \dots y_n(t)]^\top 
 \end{array}
 $$
 qui soit solution d'une équation {\em fonctionnelle} de la forme
@@ -147,7 +147,7 @@ $f(t) = y_0 e^{r(t-t_0)}$ est donc l'unique solution du problème $\{y_0 = y(t_0
 \begin{definition}[Stabilité ($n = 1$)]
   Pour $n = 1$, un équilibre $y^*$ est dit (asymptotiquement) stable si il existe $\varepsilon > 0$ tel que pour tout $y_0 \in (y^* - \varepsilon, y^* + \varepsilon)$, la condition initiale $y(0) = y_0$ implique que 
   $$
-  \lim_{t \rightarrow \infty} y(t) = y^*.
+  \lim_{t \to \infty} y(t) = y^*.
   $$
   Dans le cas contraire, il est dit {\em instable}. Le caractère stable ou instable d'un équilibre définit sa {\em nature}.
 \end{definition}
@@ -203,9 +203,9 @@ $$
   $$
   \dot y(t) = \frac{Ka_0 r e^{rt}}{(1 + a_0 e^{rt})^2} > 0, 
   \qquad 
-  \lim_{t \rightarrow -\infty} y(t) = 0, 
+  \lim_{t \to -\infty} y(t) = 0, 
   \qquad
-  \lim_{t \rightarrow \infty} y(t) = K
+  \lim_{t \to \infty} y(t) = K
   $$
   donc que $0 < y(t) < K$ pour tout $t \in \Rbb$ : c'est donc une solution maximale sur $\Rbb$. 
   \item[Solution $y_0 < 0$ ou $y_0 > K$ :] on étudie ces cas de façon analogue au cas $y_0 \in ]0; K[$ en remarquant que pour une fonction $f$ dérivable possiblement négative 
@@ -241,7 +241,7 @@ $$
   \begin{itemize}
     \item $y(0) = y_0 > K$ (soit $t^* < 0$) : dans ce cas, on a toujours
     $$
-    \lim_{t \rightarrow \infty} y(t) = K,
+    \lim_{t \to \infty} y(t) = K,
     $$
     et $y^* = K$ est un équilibre stable.
     \item $y(0) = y_0 < 0$ (soit $t^* > 0$) : la limite précédente reste vraie, mais, puisque

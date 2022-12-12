@@ -24,7 +24,7 @@ Les fonctions génératrices (il en existe plusieurs) permettent de manupuler fa
   $$
   \begin{array}{rrcl}
     f_X : & [0, 1] & \mapsto & [0, 1] \\
-      & s & \rightarrow & f_X(s) = \Esp\left(s^X\right).
+      & s & \to & f_X(s) = \Esp\left(s^X\right).
   \end{array}
   $$
 \end{definition}
@@ -69,14 +69,14 @@ On voit facilement que $f_X(1) = 1$ et $f_X$ est monotone croissante.
   $C^\infty$ non démontré. Formule de $f_X^{(k)}(s)$ directe comme dérivées successives de $s^n$.
 \eproof
 
-\begin{corollary*}
+\begin{corollary}
   En conséquence, on a
   \begin{align*}
     \forall k \geq 0: \quad \Pr\{X = k\} & = f_X^{(k)}(0) / (k!), \\
     \Esp(X) & = f'_X(1), &
     \Esp(X(X-1)) & = f''_X(1).
   \end{align*}
-\end{corollary*}
+\end{corollary}
 
 \proof 
 Directe.
@@ -98,9 +98,11 @@ En fait, la fonction génératrice caractérise complètement la loi de la varia
   $$
   (X_n)_{n \geq 0} \overset{\Lcal}{\longrightarrow} X
   \qquad \Leftrightarrow \qquad
-  \forall s \in [0, 1]: \quad \lim_{n \rightarrow \infty} f_{X_n}(s) = f_X(s).
+  \forall s \in [0, 1]: \quad \lim_{n \to \infty} f_{X_n}(s) = f_X(s).
   $$
 \end{proposition}
+
+\proof Non démontrée. \eproof
 
 \begin{proposition}[Fonction génératrice de la somme]
   Soient $X$ et $Y$ deux variables aléatoires positives indépendantes, on a
@@ -152,21 +154,26 @@ On conditionne par $N$ :
 %-------------------------------------------------------------------------------
 
 On reprend une population évoluant de la façon décrite au début de la section. 
-
 On note $Z_n$ la taille de la population à la $n$ème génération ($n \geq 0$) et $X_{ni}$ le nombre de descendants du $i$ individu de la $n$ème génération. 
 On suppose que les $\{X_{ni})_{n \geq 0, 1 \geq i \geq Z_n}$ sont iid (et indépendants de $Z_0$).
 
+\bigskip
 La taille de la population à la génération $n+1$ est donnée par 
 \begin{equation} \label{eq:recurrenceBGW}
 Z_{n+1} = \sum_{i = 1}^{Z_n} X_{ni}.
 \end{equation}
 La suite $(Z_n)_{n \geq 0}$ forme donc une \cM sur $\Nbb$, puisque $Z_{n+1}$ est donné par $Z_n$ et que les $\{X_{ni})_{1 \geq i \geq Z_n}$ sont indépendants du passé.
 
-Cette récurrence nous assure notamment que
+\bigskip
+On s'intéresse notamment à l'événement d'extinction défini par 
 $$
-\Esp(Z_{n+1}) = \Esp_{Z_n}\Esp(Z_{n+1} \mid Z_n)) = m \Esp(Z_n).
+Ext = \{T_0 < \infty\}.
 $$
-Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
+et à la probabilité d'extinction partant d'une population de taille 1 : 
+$$
+q := \Pr_1\{Ext\}.
+$$
+
 
 %-------------------------------------------------------------------------------
 \paragraph*{Matrice de transition.} 
@@ -183,16 +190,21 @@ $$
 On observe qu'il s'agit bien d'une \cM homogène (puisque la fonction génératrice ne dépend par de $n$).
 
 %-------------------------------------------------------------------------------
+\paragraph*{Classification des états.} 
+\begin{itemize}
+ \item L'état $\{0\}$ ne communique avec aucun autre : il constitue donc une classe. Comme il est de plus impossible d'en sortir ($p_{00} = 1$), il est récurrent : on parle d'état absorbant.
+ \item Si $\Pr\{X \geq 2\} > 0$, tous les autres états communiquent, ils constituent donc une unique classe et possède tous la même nature.
+ \item On peut montrer que tous les états, hormis $\{0\}$ sont transient.
+\end{itemize}
+
+Le caractère transient des états non nuls signifie qu'ils ne sont visités qu'un nombre fini de fois, ce qui signifie que soit la \cM est absorbée en 0, soit elle part vers l'infini : 
+$$
+\Pr_\mu\left\{ \lim_{n \to \infty} Z_n = + \infty\right\} = 1 - \Pr_\mu\{Ext\}.
+$$
+
+%-------------------------------------------------------------------------------
 \paragraph*{Extinction de la population.} 
-On définit l'événement d'extinction par 
-$$
-Ext = \{T_0 < \infty\}.
-$$
-et à la probabilité d'extinction partant d'une population de taille 1 : 
-$$
-q := \Pr_1\{Ext\}.
-$$
-On suppose de plus que $f_X(0) \notin \{0, 1\}$, c'est-à-dire que 
+On suppose que $f_X(0) \notin \{0, 1\}$, c'est-à-dire que 
 $$
 0 < \Pr\{X = 0\} < 1.
 $$
@@ -209,7 +221,7 @@ On commence par remarquer que la probabilité d'extinction partant de $k$ indivi
 $$
 \Pr_k\{Ext\} = \Pr_1\{Ext\}^k = q^k,
 $$
-puisqu'il faut pour cela que la $k$ populations s'éteignent. En sommant sur toutes les tailles possibles à la première génération on a donc
+puisqu'il faut pour cela que la $k$ populations indépendantes s'éteignent. En sommant sur toutes les tailles possibles à la première génération on a donc
 $$
 q 
 = \Pr_1\{Ext\} 
@@ -239,8 +251,8 @@ $$
   \item Il reste à étudier le cas sur-critique pour déterminer quel point fixe donne la probabilité d'extinction.
 \end{enumerate}
 
-\begin{proposition}
-  La fonction génératrice $Z_n$ partant de $Z_0 = 1$ est
+\begin{proposition} \label{prop:fonctionGeneratriceZn}
+  La fonction génératrice de $Z_n$ partant de $Z_0 = 1$ est
   $$
   f_{Z_n}(s) = \Esp_1(s^{Z_n}) = \underset{n \text{ fois}}{\underbrace{f_X \circ f_X \circ \dots \circ f_X}}(s).
   $$
@@ -257,6 +269,13 @@ f_{Z_n} = f_{Z_{n-1}} \circ f_X
 $$
 et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
 
+\remark
+Cette récurrence nous assure notamment que, en notant $m = \Esp(X_{ni}) = f'_X
+(1)$, $$
+\Esp(Z_{n+1}) = \Esp_{Z_n}\Esp(Z_{n+1} \mid Z_n)) = m \Esp(Z_n).
+$$
+Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
+
 \begin{proposition}
   La probabilité d'extinction $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$.
 \end{proposition}
@@ -264,33 +283,61 @@ et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
 \proof
 On note, pour $n \geq 0$:
 $$
-q_n := \Pr_1\{Z_n = 0\} \qquad = \Pr_1\{T_0 \leq n\}\geq \Pr_1\{T_0 = n\}.
+q_n := \Pr_1\{Z_n = 0\} = \Pr_1\{T_0 \leq n\}\geq \Pr_1\{T_0 = n\}.
 $$
 Par la proposition précédente on a:
 $$
 q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 $$
-La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous
-qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
-\dessin{
-$$
-\includegraphics[width=.5\textwidth]{ExGaltonWatson-fixPoint}
-$$
-}
+$q$ est donc bien un point fixe de $f$. Il nous reste à étudier le nombre de points fixes et la convergence vers le plus petit d'entre eux.
+% La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
+\begin{description}
+  \item[Nombre de points fixes.] Il s'agit de montrer que la position de
+  $$
+  m = \Esp(X) = f'_X(1)
+  $$
+  par rapport à 1 contrôle la valeur de la probabilité s'extinction $q$ dont on sait que c'est un point fixe de $f_X$ : 
+  $$
+  q = f_X(q).
+  $$
+  On écarte le cas $f_x(0) = 0 = \Pr\{X = 0\}$, qui implique que chaque individu a au moins un descendant et donc que $q = 0$. 
+  La preuve repose alors sur l'étude des deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0$.
+  \begin{itemize}
+    \item Si $\Pr\{X\geq 2\} = 0$, alors $X \in \{0, 1\}$, donc c'est une variable de Bernoulli $\Bcal(m)$ et $f_X(s)$ est linéaire, de pente $m \leq 1$. $f_X$ ne croise donc la première bissectrice qu'en $s = 1$.
+    \item Si $\Pr\{X\geq 2\} > 0$, alors
+    $$
+    f''_X(s) = \Esp(X(X-1) s^X) = \sum_{x \geq 2} x (x-1) s^x > 0
+    \qquad \text{pour } 0 < s \leq 1.
+    $$
+    La fonction $f_X$ est donc monotone croissante sur $[0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) > 0$. Ses intersections avec la première bissectrice dans $[0, 1]$ sont donc
+    \begin{align*}
+      \{s = 1\} & \text{ si } m \leq 1, \\
+      \{0 < s_1 < 1, s_2=1\} & \text{ si } m > 1.
+    \end{align*}
+  \end{itemize}
+  \item[Convergence vers le plus petit point fixe.]
+  Pour montrer que $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$, on note, pour $n \geq 0$:
+  $$
+  q_n := \Pr_1\{Z_n = 0\}.
+  $$
+  Par la proposition \ref{prop:fonctionGeneratriceZn}, on a:
+  $$
+  q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
+  $$
+  La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
+  $$
+  \begin{tabular}{cc}
+    \begin{tabular}{lc}
+      \textcolor{red}{\bf --} : $f_X(s)$ \\ ~ \\
+      \textcolor{blue}{\bf--} : première bissectrice \\ ~ \\
+      \textcolor{black}{\bf --} : itérations du point fixe
+    \end{tabular}
+    &
+    \begin{tabular}{c}
+    \includegraphics[width=.4\textwidth]{ExGaltonWatson-fixPoint}  
+    \end{tabular}
+  \end{tabular}
+  $$
+\end{description}
 \eproof
-
-\todo{Inclure la note {\tt GaltonWatson.tex} pour conclure.}
-
-%-------------------------------------------------------------------------------
-\paragraph*{Classification des états.} 
-\begin{itemize}
- \item L'état $\{0\}$ ne communique avec aucun autre : il constitue donc une classe. Comme il est de plus impossible d'en sortir ($p_{00} = 1$), il est récurrent : on parle d'état absorbant.
- \item Si $\Pr\{X \geq 2\} > 0$, tous les autres états communiquent, ils constituent donc une unique classe et possède tous la même nature.
- \item On peut montrer que tous les états, hormis $\{0\}$ sont transient.
-\end{itemize}
-
-Le caractère transient des états non nul signifie qu'ils ne sont visité qu'un nombre fini de fois, ce qui signifie que soit la \cM est absorbée en 0, soit elle part vers l'infini : 
-$$
-\Pr_\mu\left\{ \lim_{n \rightarrow \infty} Z_n = + \infty\right\} = 1 - \Pr_\mu\{Ext\}.
-$$
 

@@ -62,7 +62,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   $$
   \begin{array}{rccc}
     \exp: & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-      & B & \rightarrow & \exp(B),
+      & B & \to & \exp(B),
   \end{array}
   \qquad \text{où} \quad
   \exp(B) = \sum_{k \geq 0} \frac{B^k}{k !}
@@ -110,14 +110,14 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   $$
   \item On peut étudier le comportement en temps long du système en considérant
   \begin{align*}
-    \lim_{t \rightarrow \infty} y(t)
-    & = \lim_{t \rightarrow \infty} \exp(t A) y_0 
-    = P \left(\lim_{t \rightarrow \infty} \exp(t D)\right) \underset{z_0}{\underbrace{P^{-1} y_0}}
-    = \sum_{i=1}^n \left(z_{0i} \lim_{t \rightarrow \infty} e^{\lambda_i t}\right) v_i.
+    \lim_{t \to \infty} y(t)
+    & = \lim_{t \to \infty} \exp(t A) y_0 
+    = P \left(\lim_{t \to \infty} \exp(t D)\right) \underset{z_0}{\underbrace{P^{-1} y_0}}
+    = \sum_{i=1}^n \left(z_{0i} \lim_{t \to \infty} e^{\lambda_i t}\right) v_i.
   \end{align*}
   Comme
   $$
-  \lim_{t \rightarrow \infty} e^{\lambda_i t} = 
+  \lim_{t \to \infty} e^{\lambda_i t} = 
   \left\{\begin{array}{rr}
           0 & \text{si } \lambda_i < 0 \\
           1 & \text{si } \lambda_i = 0 \\
@@ -128,7 +128,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   \begin{itemize}
   \item soit il existe $\lambda_i > 0$ telle que $z_{0i} \neq 0$, et on a alors
   $$
-  \lim_{t \rightarrow \infty} \|y(t)\| = + \infty
+  \lim_{t \to \infty} \|y(t)\| = + \infty
   $$
   (le système explose dans la direction $v_i$), 
   \item soit le système tend vers une combinaison linéaire d'éléments du noyau de $A$ :
@@ -137,7 +137,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   $$
   qui dépend de la condition initiale $y_0 = P z_0$.
   \end{itemize}
-  En conclusion, s'il existe au moins un $\lambda_i \geq 0$, un perturbation autour d'un point d'équilibre $y^* \in \ker(A)$ éloignera le système de $x_ *$ dans la direction $v_i$. A l'opposé, si toutes les $\lambda_i$ sont strictement négatives, quelque soit $y_0$, $\lim_{t \rightarrow \infty} y(t) = 0$ qui est donc le seul équilibre stable.
+  En conclusion, s'il existe au moins un $\lambda_i \geq 0$, un perturbation autour d'un point d'équilibre $y^* \in \ker(A)$ éloignera le système de $x_ *$ dans la direction $v_i$. A l'opposé, si toutes les $\lambda_i$ sont strictement négatives, quelque soit $y_0$, $\lim_{t \to \infty} y(t) = 0$ qui est donc le seul équilibre stable.
 \end{enumerate}
 
 %-------------------------------------------------------------------------------

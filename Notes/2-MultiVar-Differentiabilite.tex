@@ -12,26 +12,26 @@ On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ 
 \begin{definition}[Dérivabilité] \label{def:derivabilite}
   Une fonction $f: \Rbb \mapsto \Rbb$ est dérivable au point $x$ si la limite
   $$
-  \lim_{h \rightarrow 0, h \neq 0} \frac{f(x+h) - f(x)}{h}
+  \lim_{h \to 0, h \neq 0} \frac{f(x+h) - f(x)}{h}
   $$
   existe. Cette limite est alors la dérivée de $f$ au point $x$. Elle est notée $f'(x)$ et représente la pente de la tangente au graphe de la fonction $f$ au point $x$.
 \end{definition}
 
 \remarks
 \begin{enumerate}
-  \item La limite est définie pour $h \rightarrow 0$, sans spécifier par valeur inférieure ($h \uparrow 0$) ou supérieure ($h \downarrow 0$), ce qui impose que les limites à gauche ($h \uparrow 0$) et à droite ($h \downarrow 0$) soient égales. En dimension supérieure à 1, il sera nécessaire de garantir l'existence d'une même limite dans toutes les directions de l'espace $\Rbb^n$.
+  \item La limite est définie pour $h \to 0$, sans spécifier par valeur inférieure ($h \uparrow 0$) ou supérieure ($h \downarrow 0$), ce qui impose que les limites à gauche ($h \uparrow 0$) et à droite ($h \downarrow 0$) soient égales. En dimension supérieure à 1, il sera nécessaire de garantir l'existence d'une même limite dans toutes les directions de l'espace $\Rbb^n$.
   \dessin{Fonction non dérivable, mais dérivable à gauche et à droite}
   \item Cette définition est équivalente à
   $$
-  \lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - hf'(x)}{h} = 0
+  \lim_{h\to 0, h \neq 0} \frac{f(x+h) - f(x) - hf'(x)}{h} = 0
   \quad \Leftrightarrow \quad 
-  \lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - hf'(x)}{|h|} = 0
+  \lim_{h\to 0, h \neq 0} \frac{f(x+h) - f(x) - hf'(x)}{|h|} = 0
   $$
   L'application 
   $$
   \begin{array}{rrcl}
     L :  & \Rbb & \mapsto & \Rbb \\
-    & h & \rightarrow &  hf'(x)
+    & h & \to &  hf'(x)
   \end{array}
   $$
   est donc une application linéaire, dite {\sl tangente à la fonction $f$ au point $x$}.
@@ -39,7 +39,7 @@ On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ 
   $$
   f(x+h) - f(x) - h f'(h) = o(h)
   \qquad \text{où} \quad
-  \lim_{h\rightarrow 0, h \neq 0} \frac{o(h)}{|h|} = 0,
+  \lim_{h\to 0, h \neq 0} \frac{o(h)}{|h|} = 0,
   $$
   entendant par là 
   $$
@@ -55,7 +55,7 @@ On considère maintenant une fonction $f$ de $\Rbb^n$ dans $\Rbb^k$ :
 $$
 \begin{array}{rrcl}
   f : & \Rbb^n & \mapsto & \Rbb^k \\
-  & x & \rightarrow & f(x) = \left[\begin{array}{c}
+  & x & \to & f(x) = \left[\begin{array}{c}
       f_1(x_1, \dots x_n) \\ \vdots \\ f_k(x_1, \dots x_n)
     \end{array}\right].
 \end{array}
@@ -65,7 +65,7 @@ où chaque application $f_j$ ($1 \leq j \leq k$) va de $\Rbb^n$ dans $\Rbb$.
 \begin{definition}[Différentiabilité] \label{def:differentiabilité}
   La fonction $f$ de $\Rbb^n$ dans $\Rbb^k$ est dite différentiable au point $x$ s'il existe une application $L$ linéaire de $\Rbb^n$ dans $\Rbb^k$ telle que
   $$
-  \lim_{h\rightarrow 0_n, h \neq 0_n} \frac{f(x+h) - f(x) - L(h)}{\|h\|} = 0_k.
+  \lim_{h\to 0_n, h \neq 0_n} \frac{f(x+h) - f(x) - L(h)}{\|h\|} = 0_k.
   $$
   L'application $L$ sera notée $D_x f$.
 \end{definition}
@@ -75,7 +75,7 @@ On note parfois, de même
 $$
 f(x+h) - f(x) - L(h) = o(h)
 \qquad \text{où} \quad
-\lim_{h\rightarrow 0_n, h \neq 0_n} \frac{o(h)}{\|h\|} = 0_k.
+\lim_{h\to 0_n, h \neq 0_n} \frac{o(h)}{\|h\|} = 0_k.
 $$
 
 \begin{proposition} \label{prop:uniciteApplicationLineaireTangente}
@@ -86,14 +86,14 @@ $$
 \proof
 Supposons qu'il existe deux applications linéaires différentes $L_1$ et $L_2$ répondant à la définition, on a alors
 $$
-\lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - L_1(h)}{\|h\|}
-- \lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - L_2(h)}{\|h\|} 
-= \lim_{h\rightarrow 0, h \neq 0} \frac{L_2(h) - L_1(h)}{\|h\|} 
+\lim_{h\to 0, h \neq 0} \frac{f(x+h) - f(x) - L_1(h)}{\|h\|}
+- \lim_{h\to 0, h \neq 0} \frac{f(x+h) - f(x) - L_2(h)}{\|h\|} 
+= \lim_{h\to 0, h \neq 0} \frac{L_2(h) - L_1(h)}{\|h\|} 
 = 0.
 $$
 On montre alors que si l'application {\em linéaire} $M(h) = L_2(h) - L_1(h)$ satisfait
 $$
-\lim_{h \rightarrow 0, h \neq 0} \frac{M(h)}{\|h\|} 
+\lim_{h \to 0, h \neq 0} \frac{M(h)}{\|h\|} 
 = 0
 $$
 alors elle est nulle partout. \\
@@ -127,7 +127,7 @@ Soit une matrice $B \in \Mcal_n$ et l'application
 $$
 \begin{array}{rrcl}
   f : & \Rbb^n & \mapsto & \Rbb \\
-      & x & \rightarrow & x^\top B x
+      & x & \to & x^\top B x
 \end{array}
 $$
 \begin{enumerate}
@@ -146,8 +146,8 @@ $$
   $$
   et donc
   $$
-  \lim_{h \rightarrow 0, h \neq 0} \frac{|h^\top B h|}{\|h\|_1}
-  \leq \lim_{h \rightarrow 0, h \neq 0} \|B\|_\infty \|h\|_1
+  \lim_{h \to 0, h \neq 0} \frac{|h^\top B h|}{\|h\|_1}
+  \leq \lim_{h \to 0, h \neq 0} \|B\|_\infty \|h\|_1
   = 0.
   $$
   La fonction $f$ est donc différentiable en tout $x$.
@@ -168,7 +168,7 @@ Soit
 $$
 \begin{array}{rrcl}
   f : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-  & X & \rightarrow & X^2
+  & X & \to & X^2
 \end{array}
 $$
 On cherche l'application linéaire tangente $L(H)$ .
@@ -197,7 +197,7 @@ où $XH + HX$ est linéaire en $H$. L'application linéaire tangente est donc
 $$
 \begin{array}{rrcl}
   L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-  & H & \rightarrow & XH + HX.
+  & H & \to & XH + HX.
 \end{array}
 $$  
 }
@@ -239,15 +239,15 @@ La preuve consiste à montrer que la différentiabilité de $f$ implique celle d
   $$
   \item Maintenant, puisque $f$ est différentiable, on a pour tout $x$ et $u$
   $$
-  \lim_{u\rightarrow 0, u \neq 0} \frac{f(x+u) - f(x)}{\|u\|} = D_xf(u).
+  \lim_{u\to 0, u \neq 0} \frac{f(x+u) - f(x)}{\|u\|} = D_xf(u).
   $$
   En prenant $u = h_j e_j$ où $h_j \in \Rbb$, pour $1 \leq j \leq n$, il vient
   $$
-  \lim_{h_j\rightarrow 0, h_j \neq 0} \frac{f(x+h_j e_j) - f(x)}{|h_j|} = D_xf(h_j e_j)  =  D_xf(e_j) \; h_j \in \Rbb^k
+  \lim_{h_j\to 0, h_j \neq 0} \frac{f(x+h_j e_j) - f(x)}{|h_j|} = D_xf(h_j e_j)  =  D_xf(e_j) \; h_j \in \Rbb^k
   $$
   qui implique que pour chaque $i = 1 \dots k$, 
   $$
-  \lim_{h_j\rightarrow 0, h_j \neq 0} \frac{f_i(x+h_j e_j) - f_i(x)}{|h_j|} = D_xf(h_j e_j)  = [D_xf(e_j)]_i \; h_j.
+  \lim_{h_j\to 0, h_j \neq 0} \frac{f_i(x+h_j e_j) - f_i(x)}{|h_j|} = D_xf(h_j e_j)  = [D_xf(e_j)]_i \; h_j.
   $$
   En utilisant la convergence par coordonnées, cette égalité assure que l'application $f_i$ est bien dérivable en $x$ par rapport à $x_j$ et que sa dérivée vaut précisément
   $$
@@ -262,7 +262,7 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   $$
   \begin{array}{rrcl}
     f: & \Rbb^n & \mapsto & \Rbb^n \\
-    & x & \rightarrow & f(x) = x
+    & x & \to & f(x) = x
   \end{array}
   $$
   a pour matrice jacobienne la matrice identité $J_xf = I_n$ pour tout $x$. En effet, on a $f_j(x) = x_j$, soit
@@ -287,7 +287,7 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   $$
   \begin{array}{rrcl}
     f : & \Rbb^2 & \mapsto & \Rbb \\
-    & x = (x_1, x_2) & \rightarrow & - |x_1| \times |x_2|
+    & x = (x_1, x_2) & \to & - |x_1| \times |x_2|
   \end{array}
   $$
   On a 
@@ -305,9 +305,9 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   $$
   or
   $$
-  \lim_{h \rightarrow 0} -\frac1{\|h\|} \frac{u}{\sqrt{2}}
-  = \lim_{u \rightarrow 0} \frac1{u \sqrt{2}} \frac{-u}{\sqrt{2}}
-  = \lim_{u \rightarrow 0} -\frac1{2} \neq 0.
+  \lim_{h \to 0} -\frac1{\|h\|} \frac{u}{\sqrt{2}}
+  = \lim_{u \to 0} \frac1{u \sqrt{2}} \frac{-u}{\sqrt{2}}
+  = \lim_{u \to 0} -\frac1{2} \neq 0.
   $$
   En fait, dans la direction $[1 \; 1]$ la pente de l'application linéaire tangente vaut $-1/2$.
   $$
@@ -320,7 +320,7 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   $$
   \begin{array}{rrcl}
     f : & \Rbb^n & \mapsto & \Rbb \\
-    & x & \rightarrow & x^\top B x
+    & x & \to & x^\top B x
   \end{array}
   $$
   on a donc montré que $J_x f = x^\top (B + B^\top)$. Dans le cas ou $B$ est symétrique, on obtient $J_x f = 2 x^\top B$ où l'on retrouve la forme de la dérivée de $bx^2$, à savoir $2 bx$.
@@ -368,7 +368,7 @@ Ce plan est bien horizontal pour $(x_0, y_0) = (0, 0)$.
   $$
   \begin{array}{rrcl}
     f : & \Rbb^+ \times [0, 2\pi] & \mapsto & \Rbb^2 \\
-    & (\rho, \theta) & \rightarrow & (x = \rho \cos \theta, y = \rho \sin \theta).
+    & (\rho, \theta) & \to & (x = \rho \cos \theta, y = \rho \sin \theta).
   \end{array}
   $$
   Sa matrice jacobienne est
@@ -414,7 +414,7 @@ Soit
 $$
 \begin{array}{rrcl}
   f : & \Mcal_n(\Rbb) & \mapsto & \Rbb \\
-  & X & \rightarrow & \log(|X|)
+  & X & \to & \log(|X|)
 \end{array}
 $$
 On remarque tout d'abord que $f$ n'est définie que pour les matrices $X$ inversibles. \\
@@ -588,14 +588,14 @@ $$
   $$
   \begin{array}{rrcl}
     g : & \Rbb^+ & \mapsto & \Rbb^+ \times \Rbb^+ \\
-    & \theta & \rightarrow & g(\theta) = (\rho(\theta), \theta)
+    & \theta & \to & g(\theta) = (\rho(\theta), \theta)
   \end{array}
   $$
   et
   $$
   \begin{array}{rrcl}
     f : & \Rbb^+ \times \Rbb^+ & \mapsto & \Rbb^2 \\
-    & (\rho, \theta) & \rightarrow & f(\rho, \theta) = (x = \rho \cos \theta, y = \rho \sin \theta).
+    & (\rho, \theta) & \to & f(\rho, \theta) = (x = \rho \cos \theta, y = \rho \sin \theta).
   \end{array}
   $$
   On a
@@ -659,7 +659,7 @@ On ne démontre pas ici l'existence de $\phi$. Par contre, la détermination de 
 $$
 \begin{array}{rrcl}
   g : & \Rbb & \mapsto & \Rbb^2 \\
-  & x & \rightarrow & \left[\begin{array}{c} x \\ \phi(x) \end{array}\right]
+  & x & \to & \left[\begin{array}{c} x \\ \phi(x) \end{array}\right]
 \end{array}
 $$
 pour laquelle on a

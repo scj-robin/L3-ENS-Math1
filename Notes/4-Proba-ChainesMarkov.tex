@@ -172,24 +172,24 @@ $$
 \begin{definition}[Convergence en loi]
   Une suite de v.a. $(Y_n)_{n \geq 0}$ à valeur dans $\Ecal$ converge en loi vers une distribution $\nu$ sur $\Ecal$ :
   $$
-  (Y_n)_{n \geq 0} \overset{\Lcal}{\underset{n \rightarrow \infty}{\longrightarrow}} \nu
+  (Y_n)_{n \geq 0} \overset{\Lcal}{\underset{n \to \infty}{\longrightarrow}} \nu
   $$
   si
   $$
-  \forall i \in \Ecal: \qquad \lim_{n \rightarrow \infty} \Pr\{Y_n = i\} = \nu_i.
+  \forall i \in \Ecal: \qquad \lim_{n \to \infty} \Pr\{Y_n = i\} = \nu_i.
   $$
 \end{definition}
 
 \begin{proposition} \label{prop:convergenceEsperance}
   Si
   $$
-  (Y_n)_{n \geq 0} \overset{\Lcal}{\underset{n \rightarrow \infty}{\longrightarrow}} \nu
+  (Y_n)_{n \geq 0} \overset{\Lcal}{\underset{n \to \infty}{\longrightarrow}} \nu
   $$
   alors, pour toute fonction $f : \Ecal \mapsto \Rbb$ bornée, 
   $$
-  \lim_{n \rightarrow \infty} \Esp(f(Y_n)) = \sum_{i \in \Ecal} \nu_i f(i)
+  \lim_{n \to \infty} \Esp(f(Y_n)) = \sum_{i \in \Ecal} \nu_i f(i)
   $$
-  (c'est à dire $\lim_{n \rightarrow \infty} \Esp(f(Y_n)) = \Esp(f(Y))$ pour $Y \sim \nu$).
+  (c'est à dire $\lim_{n \to \infty} \Esp(f(Y_n)) = \Esp(f(Y))$ pour $Y \sim \nu$).
 \end{proposition}
 
 % {Démonstration de la proposition \ref{prop:convergenceEsperance}.}
@@ -197,16 +197,16 @@ $$
 \begin{description}
   \item[$\Ecal$ fini :] la démonstration vient en intervertissant la somme et la limite : 
   $$
-  \lim_{n \rightarrow \infty} \Esp(f(Y_n)) 
-  = \lim_{n \rightarrow \infty} \left(\sum_{i \in \Ecal} \Pr\{Y_n = i\} f(i)\right)
-  = \sum_{i \in \Ecal} \left(\lim_{n \rightarrow \infty} \Pr\{Y_n = i\} \right) f(i) 
+  \lim_{n \to \infty} \Esp(f(Y_n)) 
+  = \lim_{n \to \infty} \left(\sum_{i \in \Ecal} \Pr\{Y_n = i\} f(i)\right)
+  = \sum_{i \in \Ecal} \left(\lim_{n \to \infty} \Pr\{Y_n = i\} \right) f(i) 
   = \sum_{i \in \Ecal} \nu_i f(i).
   $$
   \item[$\Ecal$ infini dénombrable :] sans perte de généralité, on identifie $\Ecal$ à $\Nbb$. Comme pour le cas fini, on montre facilement que, pour tout $i$,
   $$
-  \lim_{n \rightarrow \infty} \Pr\{Y_n \leq i\} = \Pr\{Y \leq i\}
+  \lim_{n \to \infty} \Pr\{Y_n \leq i\} = \Pr\{Y \leq i\}
   \qquad \Rightarrow \qquad 
-  \lim_{n \rightarrow \infty} \Pr\{Y_n > i\} = \Pr\{Y > i\}.
+  \lim_{n \to \infty} \Pr\{Y_n > i\} = \Pr\{Y > i\}.
   $$
   On note $M$ un majorant de $f$ (qui est bornée). On peut écrire que
   \begin{align*}
@@ -247,7 +247,7 @@ $$
 \begin{definition}
   Une distribution $\nu$ sur $\Ecal$ est dite stationnaire pour la \cM $X$ si il existe une distribution $\mu$ telle que 
   $$
-  \lim_{n \rightarrow \infty} \mu^\top P^n = \nu.
+  \lim_{n \to \infty} \mu^\top P^n = \nu.
   $$
   C'est à dire que la \cM $X$ de transition $P$ et de distribution initiale $\mu$ converge en loi vers $\nu$.
 \end{definition}
@@ -267,14 +267,14 @@ $$
 \proof
 \begin{description}
   \item[$\Leftarrow$ :] il suffit de prendre $\mu = \nu$ pour s'assurer que $\mu^\top P^n = \nu^\top P^n = \nu$ pour tout $n$. La \cM est alors dite {\em stationnaire}.
-  \item[$\Rightarrow$ :] si $\nu$ est stationnaire alors il existe $\mu$ telle que $\mu^\top P^n$ converge vers $\nu$ (i.e. $\lim_{n \rightarrow \infty} [\mu^\top P]_j = \nu_j$), ce qui implique que $\mu^\top P^{n+1}$ converge également vers $\nu$, i.e.
+  \item[$\Rightarrow$ :] si $\nu$ est stationnaire alors il existe $\mu$ telle que $\mu^\top P^n$ converge vers $\nu$ (i.e. $\lim_{n \to \infty} [\mu^\top P]_j = \nu_j$), ce qui implique que $\mu^\top P^{n+1}$ converge également vers $\nu$, i.e.
   $$
-  \lim_{n \rightarrow \infty} [\mu^\top P^{n+1}]_j = \nu_j.
+  \lim_{n \to \infty} [\mu^\top P^{n+1}]_j = \nu_j.
   $$
   Or, par l'exercice précédent, en prenant $f(i) = p_{ij}$, on a
   $$
-  \lim_{n \rightarrow \infty} [\mu^\top P^{n+1}]_j
-  = \lim_{n \rightarrow \infty} \sum_{i \in \Nbb} [\mu^\top P^n]_i p_{ij}
+  \lim_{n \to \infty} [\mu^\top P^{n+1}]_j
+  = \lim_{n \to \infty} \sum_{i \in \Nbb} [\mu^\top P^n]_i p_{ij}
   = \sum_{i \in \Nbb} \nu_i p_{ij}
   = [\nu^\top P]_j,
   $$
@@ -373,7 +373,7 @@ $$
 Le théorème de Perron-Frobenius nous assure que les vecteurs propres (à gauche et à droite) associés à $\lambda_1 = 1$ ont toutes leurs coordonnées positives. On a ainsi démontré que, pour $\Ecal$ fini, si $P$ est régulière, 
 \begin{itemize}
   \item elle admet une unique distribution stationnaire $\nu$ et que $\nu_i > 0$ pour tout $i \in \Ecal$, 
-  \item quelque soit la distribution initiale $\mu$, $\mu P^n \rightarrow \nu$, c'est-à-dire que $X_n$ converge en loi vers $\nu$.
+  \item quelque soit la distribution initiale $\mu$, $\mu P^n \to \nu$, c'est-à-dire que $X_n$ converge en loi vers $\nu$.
 \end{itemize}
 
 \begin{definition}[Communication entre états]
@@ -438,11 +438,11 @@ $$
    \item $X$ admet une unique distribution stationnaire $\nu$,
    \item $X$ est ergodique, c'est à dire que, pour toute distribution initiale $\mu$, on a
    $$
-   \Pr_\mu\left\{\lim_{n \rightarrow \infty} \frac1n \left|\{1 \leq k \leq n: X_k = i\}\right| = \nu_i\right\} = 1,
+   \Pr_\mu\left\{\lim_{n \to \infty} \frac1n \left|\{1 \leq k \leq n: X_k = i\}\right| = \nu_i\right\} = 1,
    $$
    \item si de plus $X$ est apériodique alors $X$ converge en distribution vers $\nu$ : 
    $$
-   \lim_{n \rightarrow \infty} \Pr_\mu\{X_n = i\} = \nu_i.
+   \lim_{n \to \infty} \Pr_\mu\{X_n = i\} = \nu_i.
    $$
   \end{itemize}
 \end{theorem}
@@ -459,7 +459,7 @@ La convergence en loi n'est garantie que dans le cas apériodique.
   \item[$p = q = 0$ :] la chaîne possède 2 classes récurrente ($\{0\}$ et $\{1\}$). Elle reste en fait constante et toute mesure $\nu$ est invariante.
   \item[$p = 0$ et $q \neq 0$ :] la chaîne possède une classe récurrente ($\{0\}$) et une classe transiente ($\{1\}$). La chaîne est 'absorbée' par l'état $0$ en un temps fini et la seule distribution invariante est $\nu = [1 \; 0]$.
   \item[$p = q = 1$ :] la chaîne est irréductible (on vérifie que $P^2 = I$) et récurrente positive, donc elle est ergodique (chaque état est visité la moitié du temps) mais elle est périodique et ne converge pas en loi.
-  \item[$p + q = 1$ et $pq < 1$:] la chaîne est irréductible, récurrente positive et périodique donc elle est ergodique et converge en loi vers $\nu$.
+  \item[$p + q = 1$ et $pq < 1$:] la chaîne est irréductible, récurrente positive et apériodique donc elle est ergodique et converge en loi vers $\nu$.
 \end{description}
 }
 
@@ -531,7 +531,7 @@ $$
   $$
   la loi des grands nombre nous assure que 
   $$
-  \lim_{n \rightarrow \infty} \frac{X_n}n = \lim_{n \rightarrow \infty} \left(\frac{X_0}n + \frac1n \sum_{i=1}^n X_i\right) = 2p - 1.
+  \lim_{n \to \infty} \frac{X_n}n = \lim_{n \to \infty} \left(\frac{X_0}n + \frac1n \sum_{i=1}^n X_i\right) = 2p - 1.
   $$
   \item[$p \in (0, 1)$ et $p \neq 1/2$:] alors $X_n$ se comporte comme $(2p-1)n$ : la trajectoire est dite {\em balistique} (elle s'écarte de son origine à vitesse linéaire). $X_n$ tend vers $+\infty$ si $p > 1/2$ et vers $-\infty$ si $p < 1/2$. La \cM est transiente.
   \item[$p = 1/2$:] on parle alors de marche aléatoire {\em symétrique}. En remarquant que 
@@ -542,10 +542,10 @@ $$
   le théorème centrale limite nous assure que 
   $X_n/n$ converge en loi vers $\Ncal(0, 1)$, c'est-à-dire que 
   $$
-  \lim_{n \rightarrow \infty} \Pr\left\{\frac{X_n}n \in [a, b]\right\} = \Pr\{\Ncal(0, 1) \in [a, b]\}.
+  \lim_{n \to \infty} \Pr\left\{\frac{X_n}n \in [a, b]\right\} = \Pr\{\Ncal(0, 1) \in [a, b]\}.
   $$
   $X_n$ si situe alors typiquement à une distance $\sqrt{n}$ de son origine. \\
-  On peut montrer que $X$ est récurrente nulle : la \cM repasse un nombre infini de fois dns chaque état, mais les temps de passage sont de plus en plus espacés.
+  On peut montrer que $X$ est récurrente nulle : la \cM repasse un nombre infini de fois dans chaque état, mais les temps de passage sont de plus en plus espacés.
 \end{description}
 }
 

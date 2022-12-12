@@ -216,7 +216,7 @@ où on a
 $$
 x(n) = A^n x(0).
 $$
-Le comportement en temps long de la population $\lim_{n \rightarrow\infty} x(n)$ est contrôlé par celui de $A^n$ : $\lim_{n \rightarrow\infty} A^n$.
+Le comportement en temps long de la population $\lim_{n \to\infty} x(n)$ est contrôlé par celui de $A^n$ : $\lim_{n \to\infty} A^n$.
 
 % \paragraph*{Exemple.} Modèle de dynamique de population (cf section \ref{sec:MatLeslie})
 %   \todo{}
@@ -228,7 +228,7 @@ Le comportement en temps long de la population $\lim_{n \rightarrow\infty} x(n)$
   $$
   alors
   $$
-  \lim_{n \rightarrow \infty} \lambda_1^{-n} A^n = v_1 u_1^\top
+  \lim_{n \to \infty} \lambda_1^{-n} A^n = v_1 u_1^\top
   $$
   où $v_1$ est le premier vecteur colonne de $P$ et $u_1^\top$ est le premier vecteur ligne de $P^{-1}$
 \end{proposition}
@@ -245,11 +245,11 @@ La condition $\forall i \geq 2: \qquad |\lambda_i| < |\lambda_1|$ implique que $
   $$
   et 
   $$
-  \lim_{n \rightarrow \infty} \lambda_1^{-n} D^n = C = \diag(1 \; 0 \; \dots \; 0),
+  \lim_{n \to \infty} \lambda_1^{-n} D^n = C = \diag(1 \; 0 \; \dots \; 0),
   $$
   donc
   $$
-  \lim_{n \rightarrow \infty} \lambda_1^{-n} A^n = P C P^{-1}.
+  \lim_{n \to \infty} \lambda_1^{-n} A^n = P C P^{-1}.
   $$
   Il reste à vérifier que
   $$
@@ -280,7 +280,7 @@ La condition $\forall i \geq 2: \qquad |\lambda_i| < |\lambda_1|$ implique que $
     sont strictement positifs : $v > 0$, $u > 0$;
     \item On a 
     $$
-    \lim_{n \rightarrow \infty} \lambda_1^{-n} A^n = v u^\top.
+    \lim_{n \to \infty} \lambda_1^{-n} A^n = v u^\top.
     $$
   \end{itemize}
 \end{theorem}
@@ -295,7 +295,7 @@ Puisque $v$ et $u$ sont strictement positifs, on peut toujours les choisir de te
 \remark
 S'agissant d'un modèle de dynamique de population $x(n) = A^n x(0)$, le théorème de Perron-Frobénieus implique que 
 $$
-\lim_{n \rightarrow \infty} \lambda_1^{-n} x(n) = v u^\top x(0)
+\lim_{n \to \infty} \lambda_1^{-n} x(n) = v u^\top x(0)
 $$
 ce qui signifie que
 \begin{itemize}
