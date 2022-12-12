@@ -124,7 +124,7 @@ On cherche à généraliser cette définition et ces propriétés à des matrice
 
 Le théorème \ref{thm:uniciteDeterminant} n'est pas démontré ici. On peut, par exemple, en trouver une démonstration dans \cite{GAJ94} (Thm 3, p14, ii/) ou \cite{Ser01} (prop 2.2.1, p16).
 \eproof
-% \parSR{Démonstration du théorème \ref{thm:uniciteDeterminant}.}
+% {Démonstration du théorème \ref{thm:uniciteDeterminant}.}
 % On ne démontre que la propriété ($a$).
 % Par définition de l'inversibilité, $A$ est inversible ssi l'application
 % $$
@@ -182,7 +182,8 @@ En effet, en appliquant la $n$-linéarité à chacun des termes diagonaux de la 
   \end{enumerate}
 \end{lemma}
 
-\parSR{Démonstration du Lemme \ref{lem:determinantNul}.}
+% {Démonstration du Lemme \ref{lem:determinantNul}.}
+\proof 
 \begin{enumerate}[($i$)]
 \item La $n$-linéarité implique que, si la matrice $B$ est construite à partir de la matrice $A$ en multipliant une de ses colonnes par $\lambda$, on a $|B| = \lambda |A|$. La propriété s'obtient en prenant $\lambda = 0$.
 \item On commence par remarquer que le caractère alterné du déterminant implique qu'il est nulle pour une matrice ayant deux colonnes égales puisque
@@ -276,7 +277,8 @@ La proposition \ref{prop:determinantParBlocs} est donnée sans démonstration. I
   $$
 \end{proposition}
 
-\parSR{Démonstration de la proposition \ref{prop:determinantMatriceTriangulaire}.}
+% {Démonstration de la proposition \ref{prop:determinantMatriceTriangulaire}.}
+\proof
 En appliquant le calcul de déterminant par blocs par récurrence:
 \begin{align*}
   |A| 
@@ -375,8 +377,9 @@ La démonstration de la proposition \ref{prop:methodeCofacteurs} sera faite en T
   $$
 \end{proposition}
 
-\parSR{Démonstration de la proposition \ref{prop:inverseMatriceCofacteurs}.} 
+% {Démonstration de la proposition \ref{prop:inverseMatriceCofacteurs}.} 
 %   voir \url{https://www.techno-science.net/definition/5091.html}
+\proof
 La démonstration repose sur le calcul d'un élément quelconque du produit $C = A B^\top$. En notant $C = [c_{ik}]_{1 \leq i, k \leq n}$ : 
 $$
 c_{ik} 

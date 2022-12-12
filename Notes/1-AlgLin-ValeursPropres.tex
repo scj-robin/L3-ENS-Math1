@@ -9,9 +9,9 @@
 \subsection{Valeurs et vecteurs propres} \label{sec:ValVecPropres}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Valeur et vecteur propre]
+\begin{definition}[Valeur et vecteur propre]
   $\lambda \in \Rbb$ est une valeur propre de $A \in \Mcal_n(\Rbb)$ ssi, il existe un vecteur non nul $x \in \Rbb^n$ tel que $A x = \lambda x$. $x$ est appelé vecteur propre de $A$ associé à $\lambda$.
-\end{definition*}
+\end{definition}
 
 \begin{exercise*}
   Donner $n$ valeurs propres (et les vecteurs propres associés) de la matrice 
@@ -22,9 +22,9 @@
 
 \solution{Les $n$ vecteurs de la base canonique.}
 
-\begin{proposition*}[Vecteur propre]
+\begin{proposition}[Vecteur propre]
   Si $x$ est un vecteur de propre de $A$ associé à la valeur propre $\lambda$, $y = k x$ l'est également.
-\end{proposition*}
+\end{proposition}
 
 \proof 
   C'est une conséquence de la linéarité de la multiplication de $x$ par $A$ : 
@@ -61,7 +61,7 @@
 \subsection{Polynôme caractéristique} \label{sec:polCarac}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Polynôme caractéristique]
+\begin{definition}[Polynôme caractéristique]
   Le polynôme caractéristique de la matrice $A \in \Mcal_n$ est l'application 
   $$
   \begin{array}{r|rcl}
@@ -69,12 +69,12 @@
     & \lambda & \rightarrow & |A - \lambda I_n|.
   \end{array}
   $$
-\end{definition*}
+\end{definition}
 
 \bigskip
-\begin{theorem*}
+\begin{theorem}
   $\lambda$ est une valeur propre de la matrice $A$ ssi $P_A(\lambda) = 0$.
-\end{theorem*}
+\end{theorem}
 
 \proof 
   \todo{Pb : théorème du rang non vu ici.} \\
@@ -230,12 +230,12 @@ Ax = -3 u_1 + 4 u_2 =  \left[\begin{array}{r} 2 \\ 10 \end{array}\right].
 $$
 }
 
-\begin{definition*}[Trace]
+\begin{definition}[Trace]
   La trace d'une matrice $A \in \Mcal_n$ est notée $\tr(A)$ et est égale à la somme de ses termes diagonaux :
   $$
   \tr(A) = \sum_{i=1}^n a_{ii}.
   $$
-\end{definition*}
+\end{definition}
 
 
 \begin{exercise*}[Ex 1.3.3 : Cas d'une matrice $2 \times 2$]
@@ -266,14 +266,14 @@ $$
   $$
 }
 
-\begin{theorem*}[Propriétés du polynôme caractéristique]
+\begin{theorem}[Propriétés du polynôme caractéristique]
   Le polynôme caractéristique $P_A$ de la matrice $A \in \Mcal_n(\Rbb)$ est de degré exactement $n$ et, en notant $[\lambda^k]P_A(\lambda)$ le coefficient d'ordre $k$ de $P_A(\lambda)$:
   $$
   [\lambda^n]P_A(\lambda) = (-1)^n, \qquad
   \textcolor{gray}{[\lambda^{n-1}]P_A(\lambda) = (-1)^{n-1} \tr(A), \qquad}
   [\lambda^0]P_A(\lambda) = \det(A).
   $$
-\end{theorem*}
+\end{theorem}
 
 \proof
 \begin{enumerate}[\itemdot]
@@ -308,13 +308,13 @@ et le degré de $P_A$ est donc supérieur ou égal à $n$.}{}
 \subsubsection{Rappel sur les polynômes} 
 %-------------------------------------------------------------------------------
 
-\begin{proposition*}[Polynômes à coefficients réels]
+\begin{proposition}[Polynômes à coefficients réels]
   Tout polynôme à coefficients réels est scindé sur $\Cbb$, c'est à dire que, pour $P$ de degré exactement $n$, il existe un réel $a$ non nul et $n$ nombres complexes $x_1, \dots, x_n$ (non nécessairement distincts) tels que
   $$
   P(x) = a \prod_{i=1}^n (x_i - x).
   $$
   $x_1, \dots, x_n$ sont des racines de $P$.
-\end{proposition*}
+\end{proposition}
 
 \proof
 Non démontré
@@ -332,13 +332,13 @@ Non démontré
 Les $\lambda_i$ sont les racines de $P_A$ et le coefficient $a$ vaut 1 puisque $[\lambda^n]P_A(\lambda) = (-1)^n$.
 \eproof
 
-\begin{definition*}[Ordre de multiplicité]
+\begin{definition}[Ordre de multiplicité]
   On note $d$ le nombre de racines distinctes d'un polynôme $P$ de degré $n$ et $x_1, x_2, \dots x_d$ ces racines. On peut alors écrire $P$ sous la forme
   $$
   P(x) = a \prod_{j=1}^d (x_j - x)^{m_j}
   $$
   et $m_j$ est appelé ordre de multiplicité de la racine $x_j$ et les $m_j$ vérifient $ \sum_{j=1}^d m_j = n$.
-\end{definition*}
+\end{definition}
 
 %-------------------------------------------------------------------------------
 \paragraph*{Exemple.} 
@@ -377,7 +377,7 @@ Evident.\eproof
 \subsubsection{Sous-espaces propres} 
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Sous-espace propre]
+\begin{definition}[Sous-espace propre]
   On appelle sous-espace propre associé à la valeur propre $\lambda$, l'ensemble des vecteurs propres associés à $\lambda$ :
   $$
   \Ecal(\lambda) = \{x \in \Rbb: Ax = \lambda x\},
@@ -386,26 +386,26 @@ Evident.\eproof
   $$
   \Ecal(\lambda) = \{x \in \Rbb: (A - \lambda I)x = 0\} = \ker(A - \lambda I).
   $$
-\end{definition*}
+\end{definition}
 
-\begin{proposition*}[Intersection des espaces propres]
+\begin{proposition}[Intersection des espaces propres]
   Soit deux valeurs propres distinctes $\lambda_1$ et $\lambda_2$ d'une matrice $A \in \Mcal_n(\Rbb)$:
   $$
   \Ecal(\lambda_1) \cap \Ecal(\lambda_2) = 0_n.
   $$
-\end{proposition*}
+\end{proposition}
 
 \proof
 Directe car $Ax = \lambda_1 x = \lambda_2 x$ avec $\lambda_1 \neq \lambda_2$ ssi $x = 0$.
 \eproof
 
 
-\begin{proposition*}[Dimension de l'espace propre]
+\begin{proposition}[Dimension de l'espace propre]
   Pour toute matrice $A \in \Mcal_n(\Rbb)$ et pour chacune de ses valeurs propres, 
   $$
   \dim(\Ecal(\lambda_i)) \leq m_i.
   $$
-\end{proposition*}
+\end{proposition}
 
 \proof
 Non démontré
@@ -423,15 +423,15 @@ Non démontré
 \subsection{Matrices diagonalisables} \label{sec:MatDiag}
 %-------------------------------------------------------------------------------
 
-\begin{lemma*}
+\begin{lemma}
   L'inverse de la matrice diagonale $D = \diag(\mu_1, \dots \mu_n$) dont tous les termes diagonaux sont non nuls est la matrice diagonale $D^{-1} = \diag(\mu_1^{-1}, \dots \mu_n^{-1})$.
-\end{lemma*}
+\end{lemma}
 
 \proof
 On vérifie que $D D^{-1} = D^{-1} D = I_n$.
 \eproof
 
-\begin{definition*}[Matrice diagonalisable]
+\begin{definition}[Matrice diagonalisable]
   Une matrice $A \in \Mcal_n(\Rbb)$ est dite diagonalisable s'il existe un matrice $\Lambda \in \Mcal_n(\Rbb)$ diagonale et une matrice $P \in \Mcal_n(\Rbb)$ inversible telles que
   $$
   A = P \Lambda P^{-1}
@@ -440,11 +440,11 @@ On vérifie que $D D^{-1} = D^{-1} D = I_n$.
   $$
   \forall 1 \leq j \leq n: \quad A u_j = \lambda_j u_j.
   $$
-\end{definition*}
+\end{definition}
 
-\begin{proposition*}
+\begin{proposition}
   Les terme diagonaux de la matrice $\Lambda$ sont les valeurs propres de $A$ et les colonnes de la matrice $P$ sont les vecteurs propres associés.
-\end{proposition*}
+\end{proposition}
 
 \proof
   On note $P = [u_1 \; u_2 \; \dots u_n]$ les colonnes de $P$ et on calcule tous les produits $A u_i$ simultanément : 
@@ -462,9 +462,9 @@ Une matrice $A$ est diagonalisable si son application consiste à
  \item[$P$:] Revenir dans la base canonique.
 \end{description}
 
-% \begin{proposition*}
+% \begin{proposition}
 %   Le déterminant d'une matrice diagonalisable est égal au produit de ses valeurs propres.
-% \end{proposition*}
+% \end{proposition}
 
 % \proof
 % D'après la définition, les valeurs propres de $A$ sont les éléments diagonaux de la matrice $\Lambda$. On observe alors que
@@ -473,15 +473,15 @@ Une matrice $A$ est diagonalisable si son application consiste à
 % $$
 % \eproof
 
-\begin{proposition*}
+\begin{proposition}
   Si la matrice $A$ est diagonalisable ($A = P \Lambda P^{-1}$), son inverse vaut $A^{-1} = P \Lambda^{-1} P^{-1}$.
-\end{proposition*}
+\end{proposition}
 
 \proof
 On vérifie que $A A^{-1} = P \Lambda P^{-1} P \Lambda^{-1} P^{-1} = P \Lambda \Lambda^{-1} P^{-1} = P P^{-1} = I_n$ et idem dans l'autre sens.
 \eproof
 
-\begin{theorem*}[Théorème 1.3.8: Matrice diagonalisable]
+\begin{theorem}[Théorème 1.3.8: Matrice diagonalisable]
   La matrice $A \in \Mcal_n(\Rbb)$ est diagonalisable ssi 
   \begin{enumerate}
    \item toutes ses valeurs propres $\lambda_i$ sont réelles et, 
@@ -490,7 +490,7 @@ On vérifie que $A A^{-1} = P \Lambda P^{-1} P \Lambda^{-1} P^{-1} = P \Lambda \
    \dim(\Ecal(\lambda_i)) = m_i.
    $$
   \end{enumerate}
-\end{theorem*}
+\end{theorem}
 
 \proof
 Non démontré
@@ -636,9 +636,9 @@ C'est une conséquence de la proposition selon laquelle les intersections des so
   $$
 }
 
-\begin{theorem*}[Matrices réelles symétriques]
+\begin{theorem}[Matrices réelles symétriques]
   Toute matrice $A \in \Mcal_n(\Rbb)$ symétrique ($A = A^\top$) est diagonalisable et ses vecteurs propres sont orthogonaux. 
-\end{theorem*}
+\end{theorem}
 
 \proof
 Non démontrée (programme de classe prépa BCPST). 

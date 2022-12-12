@@ -19,7 +19,7 @@ Si on part d'un seul individu, et qu'on note $X_{0, 1}$ le nombre de ses descend
 
 Les fonctions génératrices (il en existe plusieurs) permettent de manupuler facilement des combinaisons (notamment des sommes de variables aléatoires.
 
-\begin{definition*}[Fonction génératrice]
+\begin{definition}[Fonction génératrice]
   Soit $X$ une variable aléatoire positive. On note $f_X$ sa {\em fonction génératrice des probabilité} (= '{\em pgf}') qui est définies comme
   $$
   \begin{array}{rrcl}
@@ -27,7 +27,7 @@ Les fonctions génératrices (il en existe plusieurs) permettent de manupuler fa
       & s & \rightarrow & f_X(s) = \Esp\left(s^X\right).
   \end{array}
   $$
-\end{definition*}
+\end{definition}
 
 \remark
 On voit facilement que $f_X(1) = 1$ et $f_X$ est monotone croissante.
@@ -56,14 +56,14 @@ On voit facilement que $f_X(1) = 1$ et $f_X$ est monotone croissante.
 %-------------------------------------------------------------------------------
 \paragraph*{Quelques propriétés des fonctions génératrices de probabilités.}
 
-\begin{proposition*}
+\begin{proposition}
   La fonction génératrice $f_X$ est $C^\infty$ sur $[0, 1]$ et sa $k$ème dérivée vaut
   \begin{align*}
     f_X^{(k)}(s) 
     & = \sum_{n \geq k} \Pr\{X = n\} n(n-1)  \dots (n-k+1) s^{n-k} \\
     & = \Esp(X (X-1) \dots (X-n+1) s^{n-k})
   \end{align*}
-\end{proposition*}
+\end{proposition}
 
 \proof
   $C^\infty$ non démontré. Formule de $f_X^{(k)}(s)$ directe comme dérivées successives de $s^n$.
@@ -93,21 +93,21 @@ Le corollaire justifie le nom de 'fonction génératrice des probabilités'. $F_
 \end{align*}
 En fait, la fonction génératrice caractérise complètement la loi de la variable $X$. Elle permet également d'assurer la convergence en loi.
 
-\begin{proposition*}[Convergence de la fonction génératrice]
+\begin{proposition}[Convergence de la fonction génératrice]
   Soient $(X_n)_{n \geq 0}$ une suite de variables aléatoires positives et $X$ un variable aléatoires positives :
   $$
   (X_n)_{n \geq 0} \overset{\Lcal}{\longrightarrow} X
   \qquad \Leftrightarrow \qquad
   \forall s \in [0, 1]: \quad \lim_{n \rightarrow \infty} f_{X_n}(s) = f_X(s).
   $$
-\end{proposition*}
+\end{proposition}
 
-\begin{proposition*}[Fonction génératrice de la somme]
+\begin{proposition}[Fonction génératrice de la somme]
   Soient $X$ et $Y$ deux variables aléatoires positives indépendantes, on a
   $$
   f_{X+Y}(s) = f_X(s) \; f_Y(s).
   $$
-\end{proposition*}
+\end{proposition}
 
 \proof
 Il suffit de partir de la définition et d'utiliser l'indépendance :
@@ -125,7 +125,7 @@ f_{X_1 + \dots + X_n}(s) = \left(f(X_1)\right)^n.
 $$
 Cette propriété donne une autre démonstration de la formule de $f_X$ pour la loi binomiale, vue comme une somme de $n$ variables de Bernoulli indépendantes.
 
-\begin{proposition*}[Fonction génératrice d'une somme en nombre aléatoire]
+\begin{proposition}[Fonction génératrice d'une somme en nombre aléatoire]
   Soient $(X_n)_{n \geq 1}$ une suite de variables aléatoires positives iid et $N$ une variables positive indépendante, on s'intéresse à la somme des $N$ premiers éléments de la suite :
   $$
   Z = \sum_{n=1}^N X_n.
@@ -134,7 +134,7 @@ Cette propriété donne une autre démonstration de la formule de $f_X$ pour la 
   $$
   f_{Z}(s) = f_X \circ f_X(s).
   $$
-\end{proposition*}
+\end{proposition}
 
 \proof
 On conditionne par $N$ :
@@ -197,12 +197,12 @@ $$
 0 < \Pr\{X = 0\} < 1.
 $$
 
-\begin{proposition*}
+\begin{proposition}
   La probabilité d'extinction $q$ est un point fixe de la fonction génératrice de $Z_1$ :
   $$
   q = f_{Z_1}(q).
   $$
-\end{proposition*}
+\end{proposition}
 
 \proof
 On commence par remarquer que la probabilité d'extinction partant de $k$ individus indépendants vaut
@@ -218,9 +218,9 @@ q
 = f_{Z_1}(q).
 $$
 
-\begin{definition*}
+\begin{definition}
   Soit $m = \Esp(X) = f'_X(1)$ le nombre moyen de descendants. Le processus BGW est dit critique si $m=1$, sous-critique si $m < 1$ et sur-critique si $m > 1$.
-\end{definition*}
+\end{definition}
 
 \dessin{
   $$
@@ -239,12 +239,12 @@ $$
   \item Il reste à étudier le cas sur-critique pour déterminer quel point fixe donne la probabilité d'extinction.
 \end{enumerate}
 
-\begin{proposition*}
+\begin{proposition}
   La fonction génératrice $Z_n$ partant de $Z_0 = 1$ est
   $$
   f_{Z_n}(s) = \Esp_1(s^{Z_n}) = \underset{n \text{ fois}}{\underbrace{f_X \circ f_X \circ \dots \circ f_X}}(s).
   $$
-\end{proposition*}
+\end{proposition}
 
 \proof 
 C'est une conséquence directe de la proposition sur les sommes en nombre aléatoires : puisque
@@ -257,9 +257,9 @@ f_{Z_n} = f_{Z_{n-1}} \circ f_X
 $$
 et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
 
-\begin{proposition*}
+\begin{proposition}
   La probabilité d'extinction $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$.
-\end{proposition*}
+\end{proposition}
 
 \proof
 On note, pour $n \geq 0$:

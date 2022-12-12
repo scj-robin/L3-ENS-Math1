@@ -27,19 +27,19 @@
 \subsection{Matrice de covariance} \label{sec:MatCov}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Matrice de covariance]
+\begin{definition}[Matrice de covariance]
   $A$ = matrice de covariance des variables aléatoires $X_1, \dots X_n$ :
   $$
   a_{ij} = \Cov(X_i, X_j) = \Esp[(X_i - \Esp(X_i)) (X_j - \Esp(X_j))].
   $$
-\end{definition*}
+\end{definition}
 
-\begin{proposition*}[Propriétés d'une matrice de covariance] ~
+\begin{proposition}[Propriétés d'une matrice de covariance] ~
   \begin{itemize}
    \item $\Cov(X_i, X_j) = \Esp(X_i X_j) - \Esp(X_i) \Esp(X_j)$
    \item $a_{ij} = a_{ji}$ ($A$ symétrique) et $a_{ii} \geq 0$
   \end{itemize}
-\end{proposition*}
+\end{proposition}
 
 \proof Directe. \eproof
 
@@ -89,7 +89,7 @@ $$
 \subsection{Matrice jacobienne}  \label{sec:MatJacob}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Matrice jacobienne]
+\begin{definition}[Matrice jacobienne]
   Soit la fonction
   $$
   \begin{array}{r|rcl}
@@ -110,7 +110,7 @@ $$
   $$
   \frac{\partial f_i}{\partial x_j}.
   $$
-\end{definition*}
+\end{definition}
 
 \begin{exercise*}
   Calculer la matrice jacobienne $J_x(f)$ pour
@@ -133,16 +133,16 @@ $$
 \subsection{Matrice stochastique}  \label{sec:MatStoch}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Matrice stochastique]
+\begin{definition}[Matrice stochastique]
   $A \in \Mcal_{n, p}$ est stochastique si $a_{ij} \geq 0$ et, pour tout $1 \leq i \leq n$:
   $$
   \sum_{j=1}^p a_{ij} = 1.
   $$
-\end{definition*}
+\end{definition}
 
-\begin{proposition*}[Produit de deux matrices stochastiques]
+\begin{proposition}[Produit de deux matrices stochastiques]
   Si $A \in \Mcal_{\ell, m}$ et $B \in \Mcal_{m, n}$ sont stochastiques, alors $C = A B$ est stochastique.
-\end{proposition*}
+\end{proposition}
 
 \proof Directe. \eproof
 

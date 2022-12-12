@@ -82,7 +82,8 @@ $$
   L'application $D_x f$ est unique.
 \end{proposition}
 
-\parSR{Démonstration de la proposition \ref{prop:uniciteApplicationLineaireTangente}.}
+% {Démonstration de la proposition \ref{prop:uniciteApplicationLineaireTangente}.}
+\proof
 Supposons qu'il existe deux applications linéaires différentes $L_1$ et $L_2$ répondant à la définition, on a alors
 $$
 \lim_{h\rightarrow 0, h \neq 0} \frac{f(x+h) - f(x) - L_1(h)}{\|h\|}
@@ -218,7 +219,8 @@ $$
   $$
 \end{proposition}
 
-\parSR{Démonstration de la proposition \ref{prop:matriceJacobienne}.}
+% {Démonstration de la proposition \ref{prop:matriceJacobienne}.}
+\proof
 La preuve consiste à montrer que la différentiabilité de $f$ implique celle de chaque fonction $f_i$ par rapport à chaque coordonnées $x_j$ et à identifier chaque terme de la différentielle $D_xf$ à la dérivée partielle correspondante. 
 \begin{enumerate}
   \item Commençons par observer que, puisque $D_x f$ est linéaire, on a pour tout $h = \sum_{j=1}^n h_j e_j$ (où les $e_j$ sont les vecteurs de la base canonique) :
@@ -452,7 +454,8 @@ $$
   La transformation en coordonnée polaire est partout différentiable sur $\Rbb^{*+} \times \Rbb^+$.
 \end{proposition}
 
-\parSR{Démonstration de la proposition \ref{prop:differentiabiliteCoordonneesPolaires}.}
+% {Démonstration de la proposition \ref{prop:differentiabiliteCoordonneesPolaires}.}
+\proof
 Pour $u = [\rho \; \theta]^\top$ et $h = [r \; t ]^\top$, on a
 $$
 f(u+h) = \left[\begin{array}{c} 
@@ -650,7 +653,8 @@ $$
   $$
 \end{theorem}
 
-\parSR{Démonstration partielle du théorème \ref{thm:fonctionImplicite}.}
+% {Démonstration partielle du théorème \ref{thm:fonctionImplicite}.}
+\proof [partielle]
 On ne démontre pas ici l'existence de $\phi$. Par contre, la détermination de sa dérivée résulte d'un calcul simple. Pour cela, on définit
 $$
 \begin{array}{rrcl}

@@ -5,20 +5,20 @@
 
 % Jacobien et changement de variables en dimension supérieure ou égale à 2.
 
-% \begin{theorem*}{Fubini-Tonelli}
-% \end{theorem*}
+% \begin{theorem}{Fubini-Tonelli}
+% \end{theorem}
 % 
-% \begin{theorem*}{Fubini-Lebesque}
-% \end{theorem*}
+% \begin{theorem}{Fubini-Lebesque}
+% \end{theorem}
 
 %-------------------------------------------------------------------------------
 \subsection{Difféomorphisme}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Difféomorphisme]
+\begin{definition}[Difféomorphisme]
   Soient $\Xcal$ et $\Ycal$ deux ouverts de $\Rbb^n$ et une bijection $g : \Xcal \mapsto \Ycal$. $g$ est un difféomorphisme si $g$ est différentiable partout dans $\Xcal$ et que $g^{-1}$ est différentiable partout dans $\Ycal$. \\
   Si, de plus, les dérivées partielles de $g$ et $g^{-1}$ sont partout continues, $g$ est un $C^1$-difféomorphisme.
-\end{definition*}
+\end{definition}
 
 %-------------------------------------------------------------------------------
 \paragraph*{Différentielle de la réciproque.}
@@ -37,9 +37,9 @@ $$
 \qquad \text{ou} \quad x = g^{-1}(y).
 $$
 
-\begin{theorem*}[Inversion globale]
+\begin{theorem}[Inversion globale]
   Soit $\Xcal$ un ouvert de $\Rbb^n$ et $g : \Xcal \mapsto \Rbb$. Supposons que $g$ est injective, différentiable sur tout $\Xcal$ et que ses dérivées partielles sont partout continues dans $\Xcal$. Si, de plus, $D_x g$ est inversible sur tout $\Xcal$, alors $g : \Xcal \mapsto \Ycal = g(\Xcal)$ est un $C^1$-difféomorphisme.
-\end{theorem*}
+\end{theorem}
 
 \proof Non démontré. \eproof
 
@@ -50,12 +50,12 @@ Ce théorème assure le $C^1$-difféomorphisme sans exiger la différentiabilit�
 \subsection{Jacobien, changement de variable}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Jacobien]
+\begin{definition}[Jacobien]
   Pour $g : \Rbb^n \mapsto \Rbb^n$, le jacobien de $f$ au point $x$ est le déterminant de sa matrice jacobienne au point $x$ : 
   $$
   |J_x f|.
   $$
-\end{definition*}
+\end{definition}
 
 \remark
 Le jacobien d'un difféomorphisme ne peut pas être nul, puisqu'un difféomorphisme est bijectif :
@@ -63,12 +63,12 @@ $$
 |J_x f| \neq 0.
 $$
 
-\begin{theorem*}[Changement de variable]
+\begin{theorem}[Changement de variable]
   Soit $\Xcal$ et $\Ycal$ deux ouverts de $\Rbb^n$ et $g : \Xcal \mapsto \Ycal = g(\Xcal)$ un $C^1$-difféomorphisme et $f : \Ycal \mapsto \Rbb^+$, on a 
   $$
   \int_\Ycal f(y) \; \d y = \int_\Xcal f \circ g(x) |J_x g| \; \d x.
   $$
-\end{theorem*}
+\end{theorem}
 
 \proof
 Non démontrée : la preuve passe par le découpage du domaine d'intégration en fonction des différents type d'action de la matrice jacobienne $J_x g$ (transvection, permutation ou
@@ -186,7 +186,8 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
   $$
 \end{proposition}
 
-\parSR{Démonstration de la proposition \ref{prop:taylorOrdre2}.}
+% {Démonstration de la proposition \ref{prop:taylorOrdre2}.}
+\proof
   Pour alléger les notations, on note ici
   $$
   f'_i(x^*) = \left. \frac{\partial f}{\partial x_i}\right|_{x^*}, \qquad 
@@ -284,7 +285,7 @@ Un maximum (resp. minimum) se caractérise par le fait que la fonction $f$ dimin
 \subsection*{Cas de $f : \Rbb^2 \mapsto \Rbb$}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Notation de Monge]
+\begin{definition}[Notation de Monge]
   Pour $f : \Rbb^2 \mapsto \Rbb$, on note les dérivées au point $a = (x^*, y^*) \in \Rbb^2$
   \begin{align*}
     p & = \left.\frac{\partial f}{\partial x}\right|_a, &
@@ -299,7 +300,7 @@ Un maximum (resp. minimum) se caractérise par le fait que la fonction $f$ dimin
   \qquad 
   \nabla^2_af = \left[\begin{array}{cc} r & s \\ s & t \end{array} \right].
   $$
-\end{definition*}
+\end{definition}
 
 %-------------------------------------------------------------------------------
 \paragraph*{Caractérisation des optimums.}

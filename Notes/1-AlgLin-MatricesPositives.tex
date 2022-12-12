@@ -45,9 +45,9 @@ x^\top T x = (x^\top T x)^\top = x^\top T^\top x = x^\top (- T) x = - x^\top T x
 $$
 
 
-\begin{proposition*}
+\begin{proposition}
   Si $A$ est (symétrique) positive, toutes ses valeurs propres sont positives ou nulles; si elle est définie positive toutes ses valeurs propres sont strictement positives.
-\end{proposition*}
+\end{proposition}
 
 \proof
 $\lambda$ est une valeur propre de $A$ ssi, il existe $x \neq 0$ tel que
@@ -57,9 +57,9 @@ $$
 or $x^\top A x \geq 0$ et $x^\top x > 0$ donc $\lambda \geq 0$. Si, de plus, $A$ est définie positive, $x^\top A x > 0$ pour tout $x$ non nul et donc $\lambda > 0$.
 \eproof
 
-% \begin{proposition*}[Matrice positive symétrique]
+% \begin{proposition}[Matrice positive symétrique]
 %   Si $A$ est positive ($A \succcurlyeq 0$) et symétrique ($A = A^\top$), elle est est diagonalisable. De plus ses valeurs propres sont positives et ses vecteurs propres sont orthogonaux deux à deux.
-% \end{proposition*}
+% \end{proposition}
 % 
 % \proof
 % Il suffit de combiner le dernier théorème de la section \ref{sec:MatDiag} avec la proposition précédente.
@@ -71,9 +71,9 @@ or $x^\top A x \geq 0$ et $x^\top x > 0$ donc $\lambda \geq 0$. Si, de plus, $A$
  \item La matrice $P^{-1}$ transforme alors les coordonnées d'un vecteur dans la base canonique en ses coordonnées dans le repère constitué des vecteurs propres (voir exercice en TD).
 \end{enumerate}
 
-% \begin{proposition*}[Inverse d'un matrice orthonormale] \todo{A faire en TD}
+% \begin{proposition}[Inverse d'un matrice orthonormale] \todo{A faire en TD}
 %   Si $P \in \Mcal_n$ est orthonormale, alors $P^{-1} = P^\top$.
-% \end{proposition*}
+% \end{proposition}
 
 % \proof
 % En notant $P = [v_{ij}]$, $v_j$ le $j$ème vecteur colonne de $P$ et $B = [b_{ij}] = P^\top P$, on a
@@ -95,14 +95,14 @@ or $x^\top A x \geq 0$ et $x^\top x > 0$ donc $\lambda \geq 0$. Si, de plus, $A$
 
 On revient à l'étude des matrices de variance-covariance introduite à la section \ref{sec:MatCov}.
 
-\begin{proposition*}[Matrice de variance-covariance]
+\begin{proposition}[Matrice de variance-covariance]
   Soit $\Sigma$ la matrice de variance-covariance d'un vecteur aléatoire $X = [X_1, \dots X_n]^\top$.
   \begin{enumerate}
     \item $\Sigma$ est diagonalisable ;
     \item $\Sigma$ est positive : $\Sigma \succcurlyeq 0$ ;
     \item $\Sigma$ est définie positive sauf si une des $n$ variables est une fonction déterministe des $n-1$ autres.
   \end{enumerate}
-\end{proposition*}
+\end{proposition}
 
 \proof
 \begin{enumerate}
@@ -199,10 +199,10 @@ Les $n$ variables aléatoires $X_1, \dots X_n$ sont donc construites de façon d
 
 % Théorie de Perron–Frobenius sur les matrices à coefficients positifs. Régularité, valeur propre dominante, théorème de Perron–Frobenius. Application à la dynamique des populations structurées
 
-\begin{definition*}[Matrice positive]
+\begin{definition}[Matrice positive]
   Une matrice $A = [a_{ij}]$ est dite positive ('{\em non-negative}' : $A \geq 0$) si tous ses éléments sont positifs : $a_{ij} \geq 0$. \\
   Elle dite strictement positive ('{\em positive}' : $A > 0$) si tous ses éléments sont strictement positifs : $a_{ij} > 0$. 
-\end{definition*}
+\end{definition}
 
 %-------------------------------------------------------------------------------
 \subsubsection{Dynamique d'une population structurée}
@@ -221,7 +221,7 @@ Le comportement en temps long de la population $\lim_{n \rightarrow\infty} x(n)$
 % \paragraph*{Exemple.} Modèle de dynamique de population (cf section \ref{sec:MatLeslie})
 %   \todo{}
 
-\begin{proposition*}[1.4.8: Itérée d'un matrice diagonalisable]
+\begin{proposition}[1.4.8: Itérée d'un matrice diagonalisable]
   Si est $A \in \Mcal_k$ est diagonalisable ($A = P D P^{-1}$) et que sa plus grande valeur propre en module $\lambda_1$ est d'ordre multiplicité 1 (on parle alors de valeur propre {\em dominante} ou de Perron-Frobénius) :
   $$
   \forall i \geq 2: \qquad |\lambda_i| < |\lambda_1|.
@@ -231,7 +231,7 @@ Le comportement en temps long de la population $\lim_{n \rightarrow\infty} x(n)$
   \lim_{n \rightarrow \infty} \lambda_1^{-n} A^n = v_1 u_1^\top
   $$
   où $v_1$ est le premier vecteur colonne de $P$ et $u_1^\top$ est le premier vecteur ligne de $P^{-1}$
-\end{proposition*}
+\end{proposition}
 
 \remark
 La condition $\forall i \geq 2: \qquad |\lambda_i| < |\lambda_1|$ implique que $\lambda_1$ est réelle. En effet, si $\lambda_1$ est complexe, alors $\overline{\lambda}_1$ est également valeur propre et $|\overline{\lambda}_1| = |\lambda_1|$.
@@ -265,11 +265,11 @@ La condition $\forall i \geq 2: \qquad |\lambda_i| < |\lambda_1|$ implique que $
 \subsubsection{Perron-Frobenius}
 %-------------------------------------------------------------------------------
 
-\begin{definition*}[Matrice régulière]
+\begin{definition}[Matrice régulière]
   Une matrice $A \in \Mcal_k$ positive ($A \geq 0$) est dite régulière s'il existe $n \in \Nbb$ tel que $A^n$ est strictement positive : $A^n > 0$.
-\end{definition*}
+\end{definition}
 
-\begin{theorem*}[Perron-Frobenius]
+\begin{theorem}[Perron-Frobenius]
   Soit $A \in \Mcal_k$ un matrice positive ($A \geq 0$) et régulière:
   \begin{itemize}
     \item $A$ possède une valeur propre dominante $\lambda_1$ (réelle) d'ordre de multiplicité 1;
@@ -283,7 +283,7 @@ La condition $\forall i \geq 2: \qquad |\lambda_i| < |\lambda_1|$ implique que $
     \lim_{n \rightarrow \infty} \lambda_1^{-n} A^n = v u^\top.
     $$
   \end{itemize}
-\end{theorem*}
+\end{theorem}
 
 \proof
 Non démontré
@@ -329,7 +329,7 @@ ce qui signifie que
 % 
 % On revient maintenant aux chaînes de Markov introduites à la section \ref{sec:MatStoch} et qui seront étudiées plus en détail à la section \ref{sec:Proba-Markov}.
 % 
-% \begin{definition*}
+% \begin{definition}
 %   Une chaîne de Markov homogène à espace fini est une suite de variables aléatoires $\{X(n)\}_{n \geq 0}$ à valeur dans $\Xcal$ (identifié à $\{1, \dots k\}$) non indépendantes mais telles que
 %   $$
 %   \Pr\{X(n+1) = j \mid X(0)=x_0, X(1) = x_1) \dots X(n) = i\}
@@ -337,19 +337,19 @@ ce qui signifie que
 %   = p_{ij}.
 %   $$
 %   La matrice $P = [p_{ij}]$ est appelée matrice de transition de la chaîne de Markov.
-% \end{definition*}
+% \end{definition}
 % 
 % La matrice $P$ est une matrice stochastique car tous ses éléments sont positifs ou nuls et leur somme en ligne vaut 1 : 
 % $$
 % \sum_{j = 1}^k p_{ij} = 1.
 % $$
 % 
-% \begin{proposition*}
+% \begin{proposition}
 %   Soit $\mu_0$ la distribution de $X(0)$ : $\mu_{0i} = \Pr\{X(0) = i\}$ et $mu_n^{\mu_0}$ la distribution de $X(n)$ sachant la distribution initiale $\mu_0$, on a 
 %   $$
 %   \mu_n^{\mu_0} = \mu_0 A^n 
 %   $$
-% \end{proposition*}
+% \end{proposition}
 % 
 % \proof
 % Par récurrence, partant de $\mu_1^{\mu_0} = A \mu_0$.
@@ -369,9 +369,9 @@ ce qui signifie que
 % \end{enumerate}
 % \esolution
 % 
-% \begin{proposition*}
+% \begin{proposition}
 %   Si $A$ est diagonalisable, ses valeurs propres sont aussi les valeurs propres de $A^\top$ et les vecteurs propres de $A^\top$ sont les vecteurs lignes de $P^{-1}$.
-% \end{proposition*}
+% \end{proposition}
 % 
 % \proof
 %   Il suffit de remarquer que, puique $A = P D P^{-1}$, on a 

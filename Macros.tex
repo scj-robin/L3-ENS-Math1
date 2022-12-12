@@ -13,11 +13,18 @@
 \newtheorem*{remark*}{Remarque}
 \newtheorem*{exercise*}{Exercice}
 \newtheorem{exercise}{Exercice}
-\newcommand{\remark}{\bigskip\noindent\textbf{\textsl{Remarque.}}\xspace}
-\newcommand{\remarks}{\bigskip\noindent\textbf{\textsl{Remarques.}}\xspace}
-\newcommand{\parSR}[1]{\paragraph*{\textsl{#1}}\xspace}
-\renewcommand{\proof}{\bigskip\noindent\underline{\textsl{Démonstration}.}\xspace}
-\newcommand{\eproof}{$\blacksquare$}
+\newcommand{\parbfsl}[1]{
+%   \medskip
+  \noindent {\bf \textsl{#1.}} \xspace}
+\newcommand{\parsl}[1]{
+%   \medskip
+  \noindent {\sl #1.} \xspace}
+\newcommand{\remark}{\parbfsl{Remarque}}
+\newcommand{\remarks}{\parbfsl{Remarques}}
+\renewcommand{\proof}{\parbfsl{Démonstration}}
+\newcommand{\eproof}{
+$\blacksquare$
+\bigskip}
 
 % Effets, couleurs
 \newcommand{\emphase}[1]{\textcolor{red}{#1}}
@@ -64,33 +71,27 @@
 \newcommand{\SR}[2]{\textcolor{gray}{#1}\textcolor{red}{#2}}
 \newcommand{\todo}[1]{\textcolor{red}{\`A faire~: {\sl #1}}}
 \newcommand{\dessin}[1]{
-\begin{center}\framebox{\begin{minipage}{\textwidth}
-  \textcolor{purple}{#1}
-\end{minipage}}\end{center}
 \bigskip
+\begin{breakbox} \noindent \textcolor{purple}{{\sl #1}} \end{breakbox}
 }
 \newcommand{\progres}[1]{
-\begin{center}\framebox{\begin{minipage}{\textwidth}
-  \textcolor{blue}{{\sl #1}}
-\end{minipage}}\end{center}
 \bigskip
+\begin{breakbox} \noindent \textcolor{blue}{{\sl #1}} \end{breakbox}
 }
 \newcommand{\solution}[1]{
 \bigskip
-\begin{breakbox}
-  \noindent{\sl Solution.}
-  #1
+\begin{breakbox} \parsl{Solution.}
+  \noindent #1
 \end{breakbox}
-\bigskip
+\medskip
 }
 \newcommand{\exemple}[1]{
-\begin{breakbox}
-  \parSR{Exemple.}
-  #1
-\end{breakbox}
 \bigskip
+\begin{breakbox} \parbfsl{Exemple.}
+  \noindent #1
+\end{breakbox}
+\medskip
 }
-
 \newcommand{\SRcorrect}[2]{\textcolor{gray}{#1}\textcolor{blue}{#2}}
 \newcommand{\SRcomment}[1]{\textcolor{blue}{[{\sl SR: #1}]}}
 
