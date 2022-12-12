@@ -285,7 +285,6 @@ Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
 \end{lemma}
 
 \proof
-On a écarté le cas $f_x(0) = \Pr\{X = 0\} = 0$, qui implique que chaque individu a au moins un descendant et donc que $q = 0$. \\
 Il s'agit alors de montrer que la position de
 $$
 m = \Esp(X) = f'_X(1)
@@ -305,8 +304,10 @@ On distingue les deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0$.
   La fonction $f_X$ est donc monotone croissante sur $[0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) > 0$ : son graphe coupe donc la première bissectrice en 
   $0 < s_1 < 1$ et en $s_2=1$.
 \end{itemize}
-  
 \eproof
+
+\remark
+Dans le lemme \ref{lem:BGWnombrePointsFixes}, on écarte le cas $f_x(0) = \Pr\{X = 0\} = 0$, car alors chaque individu a au moins un descendant et donc $q = 0$. 
 
 \begin{proposition}
   La probabilité d'extinction $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$.
@@ -321,9 +322,9 @@ Par la proposition précédente on a:
 $$
 q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 $$
-$q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:BGWnombrePointsFixes} indique que leur nombre dépend de la posuition de $m$ par rapport à 1.Il nous reste montrer la convergence vers le plus petit d'entre eux.
+$q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:BGWnombrePointsFixes} indique que leur nombre dépend de la position de $m$ par rapport à 1. Il reste montrer que $q$ est le plus petit d'entre eux. \\
 % La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
-Pour montrer que $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$, on note, pour $n \geq 0$:
+On note, pour $n \geq 0$:
 $$
 q_n := \Pr_1\{Z_n = 0\}.
 $$
@@ -331,7 +332,7 @@ Par la proposition \ref{prop:fonctionGeneratriceZn}, on a:
 $$
 q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 $$
-La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
+La convergence de la suite $(q_n)_{n \geq 0}$ vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
 $$
 \begin{tabular}{cc}
   \begin{tabular}{lc}
