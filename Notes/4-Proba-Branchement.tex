@@ -276,6 +276,38 @@ Cette récurrence nous assure notamment que, en notant $m = \Esp(X_{ni}) = f'_X
 $$
 Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
 
+\begin{lemma} \label{lem:BGWnombrePointsFixes}
+  Si $f_x(0) > 0$, $f_X$ admet pour points fixes dans $[0, 1]$
+  \begin{align*}
+    \{s = 1\} & \text{ si } m \leq 1, &
+    \{0 < s_1 < 1, s_2=1\} & \text{ si } m > 1.
+  \end{align*}
+\end{lemma}
+
+\proof
+On a écarté le cas $f_x(0) = \Pr\{X = 0\} = 0$, qui implique que chaque individu a au moins un descendant et donc que $q = 0$. \\
+Il s'agit alors de montrer que la position de
+$$
+m = \Esp(X) = f'_X(1)
+$$
+par rapport à 1 contrôle la valeur de la probabilité s'extinction $q$ dont on sait que c'est un point fixe de $f_X$ : 
+$$
+q = f_X(q).
+$$
+On distingue les deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0$.
+\begin{itemize}
+  \item Si $\Pr\{X\geq 2\} = 0$, alors $X \in \{0, 1\}$, donc c'est une variable de Bernoulli $\Bcal(m)$ et $f_X(s)$ est linéaire, de pente $m \leq 1$. $f_X$ ne croise donc la première bissectrice qu'en $s = 1$.
+  \item Si $\Pr\{X\geq 2\} > 0$, alors
+  $$
+  f''_X(s) = \Esp(X(X-1) s^X) = \sum_{x \geq 2} x (x-1) s^x > 0
+  \qquad \text{pour } 0 < s \leq 1.
+  $$
+  La fonction $f_X$ est donc monotone croissante sur $[0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) > 0$ : son graphe coupe donc la première bissectrice en 
+  $0 < s_1 < 1$ et en $s_2=1$.
+\end{itemize}
+  
+\eproof
+
 \begin{proposition}
   La probabilité d'extinction $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$.
 \end{proposition}
@@ -289,55 +321,30 @@ Par la proposition précédente on a:
 $$
 q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 $$
-$q$ est donc bien un point fixe de $f$. Il nous reste à étudier le nombre de points fixes et la convergence vers le plus petit d'entre eux.
+$q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:BGWnombrePointsFixes} indique que leur nombre dépend de la posuition de $m$ par rapport à 1.Il nous reste montrer la convergence vers le plus petit d'entre eux.
 % La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
-\begin{description}
-  \item[Nombre de points fixes.] Il s'agit de montrer que la position de
-  $$
-  m = \Esp(X) = f'_X(1)
-  $$
-  par rapport à 1 contrôle la valeur de la probabilité s'extinction $q$ dont on sait que c'est un point fixe de $f_X$ : 
-  $$
-  q = f_X(q).
-  $$
-  On écarte le cas $f_x(0) = 0 = \Pr\{X = 0\}$, qui implique que chaque individu a au moins un descendant et donc que $q = 0$. 
-  La preuve repose alors sur l'étude des deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0$.
-  \begin{itemize}
-    \item Si $\Pr\{X\geq 2\} = 0$, alors $X \in \{0, 1\}$, donc c'est une variable de Bernoulli $\Bcal(m)$ et $f_X(s)$ est linéaire, de pente $m \leq 1$. $f_X$ ne croise donc la première bissectrice qu'en $s = 1$.
-    \item Si $\Pr\{X\geq 2\} > 0$, alors
-    $$
-    f''_X(s) = \Esp(X(X-1) s^X) = \sum_{x \geq 2} x (x-1) s^x > 0
-    \qquad \text{pour } 0 < s \leq 1.
-    $$
-    La fonction $f_X$ est donc monotone croissante sur $[0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) > 0$. Ses intersections avec la première bissectrice dans $[0, 1]$ sont donc
-    \begin{align*}
-      \{s = 1\} & \text{ si } m \leq 1, \\
-      \{0 < s_1 < 1, s_2=1\} & \text{ si } m > 1.
-    \end{align*}
-  \end{itemize}
-  \item[Convergence vers le plus petit point fixe.]
-  Pour montrer que $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$, on note, pour $n \geq 0$:
-  $$
-  q_n := \Pr_1\{Z_n = 0\}.
-  $$
-  Par la proposition \ref{prop:fonctionGeneratriceZn}, on a:
-  $$
-  q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
-  $$
-  La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
-  $$
-  \begin{tabular}{cc}
-    \begin{tabular}{lc}
-      \textcolor{red}{\bf --} : $f_X(s)$ \\ ~ \\
-      \textcolor{blue}{\bf--} : première bissectrice \\ ~ \\
-      \textcolor{black}{\bf --} : itérations du point fixe
-    \end{tabular}
-    &
-    \begin{tabular}{c}
-    \includegraphics[width=.4\textwidth]{ExGaltonWatson-fixPoint}  
-    \end{tabular}
+Pour montrer que $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$, on note, pour $n \geq 0$:
+$$
+q_n := \Pr_1\{Z_n = 0\}.
+$$
+Par la proposition \ref{prop:fonctionGeneratriceZn}, on a:
+$$
+q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
+$$
+La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
+$$
+\begin{tabular}{cc}
+  \begin{tabular}{lc}
+    \textcolor{red}{\bf --} : $f_X(s)$ \\ ~ \\
+    \textcolor{blue}{\bf--} : première bissectrice \\ ~ \\
+    \textcolor{black}{\bf --} : valeurs successives des $q_n$
+    %itérations du point fixe
   \end{tabular}
-  $$
-\end{description}
+  &
+  \begin{tabular}{c}
+  \includegraphics[width=.4\textwidth]{ExGaltonWatson-fixPoint}  
+  \end{tabular}
+\end{tabular}
+$$
 \eproof
 
