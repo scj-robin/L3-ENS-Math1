@@ -210,9 +210,9 @@ $$
 $$
 
 \begin{proposition}
-  La probabilité d'extinction $q$ est un point fixe de la fonction génératrice de $Z_1$ :
+  La probabilité d'extinction $q$ est un point fixe de la fonction génératrice de $X$ :
   $$
-  q = f_{Z_1}(q).
+  q = f_X(q).
   $$
 \end{proposition}
 
@@ -227,29 +227,13 @@ q
 = \Pr_1\{Ext\} 
 = \sum_{k \geq 0} \Pr_1\{Z_1 = k\} \Pr_k\{Ext\}
 = \sum_{k \geq 0} \Pr_1\{Z_1 = k\} q^k
-= f_{Z_1}(q).
+= f_{Z_1}(q)
+= f_X(q).
 $$
 
 \begin{definition}
   Soit $m = \Esp(X) = f'_X(1)$ le nombre moyen de descendants. Le processus BGW est dit critique si $m=1$, sous-critique si $m < 1$ et sur-critique si $m > 1$.
 \end{definition}
-
-\dessin{
-  $$
-  \includegraphics[width=.5\textwidth]{ExGaltonWatson-pgf}
-  $$
-  $f_X$ monotone croissante de $f_X(0) \in ]0, 1[$ à $f_X(1) = 1$ et bissectrice :
-  \begin{itemize}
-    \item si $m = f'_X(1) \leq 1$: 1 est le seul point fixe,
-    \item si $m > 1$ : plusieurs points fixes
-  \end{itemize}
-}
-
-\remark
-\begin{enumerate}
-  \item On voit facilement que la probabilité d'extinction $q$ vaut $q = 1$ si le processus est critique ou sous-critique. 
-  \item Il reste à étudier le cas sur-critique pour déterminer quel point fixe donne la probabilité d'extinction.
-\end{enumerate}
 
 \begin{proposition} \label{prop:fonctionGeneratriceZn}
   La fonction génératrice de $Z_n$ partant de $Z_0 = 1$ est
@@ -269,15 +253,21 @@ f_{Z_n} = f_{Z_{n-1}} \circ f_X
 $$
 et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
 
-\remark
-Cette récurrence nous assure notamment que, en notant $m = \Esp(X_{ni}) = f'_X
-(1)$, $$
-\Esp(Z_{n+1}) = \Esp_{Z_n}\Esp(Z_{n+1} \mid Z_n)) = m \Esp(Z_n).
-$$
-Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
+\remarks
+\begin{enumerate}
+  \item Cette récurrence nous assure notamment que, en notant $m = \Esp(X_{ni}) = f'_X
+  (1)$, $$
+  \Esp(Z_{n+1}) = \Esp_{Z_n}\Esp(Z_{n+1} \mid Z_n)) = m \Esp(Z_n).
+  $$
+  Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
+  \item Dans le cas où $Z_0$ est aléatoire, de fonction génératrice $f_{Z_0}$, on obtient de la même manière
+  $$
+  f_{Z_n} = \underset{n \text{ fois}}{\underbrace{f_X \circ f_X \circ \dots \circ f_X}} \circ f_{Z_0}.
+  $$
+\end{enumerate}
 
 \begin{lemma} \label{lem:BGWnombrePointsFixes}
-  Si $f_x(0) > 0$, $f_X$ admet pour points fixes dans $[0, 1]$
+  Si $f_X(0) > 0$, $f_X$ admet pour points fixes dans $[0, 1]$
   \begin{align*}
     \{s = 1\} & \text{ si } m \leq 1, &
     \{0 < s_1 < 1, s_2=1\} & \text{ si } m > 1.
@@ -285,15 +275,12 @@ Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
 \end{lemma}
 
 \proof
-Il s'agit alors de montrer que la position de
+Il s'agit de montrer que la position de
 $$
 m = \Esp(X) = f'_X(1)
 $$
-par rapport à 1 contrôle la valeur de la probabilité s'extinction $q$ dont on sait que c'est un point fixe de $f_X$ : 
-$$
-q = f_X(q).
-$$
-On distingue les deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0$.
+par rapport à 1 contrôle le nombre de points fixes de $f_X$.
+Pour cela, on distingue les deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0$.
 \begin{itemize}
   \item Si $\Pr\{X\geq 2\} = 0$, alors $X \in \{0, 1\}$, donc c'est une variable de Bernoulli $\Bcal(m)$ et $f_X(s)$ est linéaire, de pente $m \leq 1$. $f_X$ ne croise donc la première bissectrice qu'en $s = 1$.
   \item Si $\Pr\{X\geq 2\} > 0$, alors
@@ -306,8 +293,26 @@ On distingue les deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0$.
 \end{itemize}
 \eproof
 
-\remark
-Dans le lemme \ref{lem:BGWnombrePointsFixes}, on écarte le cas $f_x(0) = \Pr\{X = 0\} = 0$, car alors chaque individu a au moins un descendant et donc $q = 0$. 
+$$
+\begin{tabular}{cc}
+  \begin{tabular}{lc}
+    \textcolor{red}{\bf --} : $m < 1$ \\ ~ \\
+    \textcolor{green}{\bf --} : $m = 1$ \\ ~ \\
+    \textcolor{blue}{\bf --} : $m > 1$
+  \end{tabular}
+  &
+  \begin{tabular}{cc}
+  \includegraphics[width=.4\textwidth]{GaltonWatson-pgf}
+  \end{tabular}
+\end{tabular}
+$$
+
+\remarks
+\begin{enumerate}
+  \item Dans le lemme \ref{lem:BGWnombrePointsFixes}, on écarte le cas $f_x(0) = \Pr\{X = 0\} = 0$, car alors chaque individu a au moins un descendant et donc $q = 0$. 
+  \item On voit ainsi que la probabilité d'extinction vaut $q = 1$ si le processus est sous-critique ($m < 1$) ou sous-critique ($m = 1$, puisque $\Pr\{X = 0\} > 0$). 
+  \item Il reste à étudier le cas sur-critique pour déterminer quel point fixe donne la probabilité d'extinction.
+\end{enumerate}
 
 \begin{proposition}
   La probabilité d'extinction $q$ est la plus petite solution de l'équation de point fixe $s = f_X(s)$.
@@ -318,42 +323,40 @@ On note, pour $n \geq 0$:
 $$
 q_n := \Pr_1\{Z_n = 0\} = \Pr_1\{T_0 \leq n\}\geq \Pr_1\{T_0 = n\}.
 $$
-Par la proposition précédente on a:
+Par la proposition \ref{prop:fonctionGeneratriceZn} on a:
 $$
 q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 $$
-$q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:BGWnombrePointsFixes} indique que leur nombre dépend de la position de $m$ par rapport à 1. Il reste montrer que $q$ est le plus petit d'entre eux, noté $s^*$. \\
-% La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
-On note, pour $n \geq 0$:
-$$
-q_n := \Pr_1\{Z_n = 0\}.
-$$
-Par la proposition \ref{prop:fonctionGeneratriceZn}, on a:
-$$
-q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
-$$
-La convergence de la suite $(q_n)_{n \geq 0}$ vers le plus petit point fixe s'obtient en remarquant que
+% $q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:BGWnombrePointsFixes} indique que leur nombre dépend de la position de $m$ par rapport à 1. Il reste montrer que $q$ est le plus petit d'entre eux, noté $s^*$. \\
+% % La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
+% On note, pour $n \geq 0$:
+% $$
+% q_n := \Pr_1\{Z_n = 0\}.
+% $$
+% Par la proposition \ref{prop:fonctionGeneratriceZn}, on a:
+% $$
+% q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
+% $$
+La convergence de la suite $(q_n)_{n \geq 0}$ vers le plus petit point fixe s'obtient en remarquant que $f_X$ est une fonction croissante et que
 $$
 s < s^* \; \Rightarrow \; f(s) > s, \qquad \qquad
-s > s^* \; \Rightarrow \; f(s) < s
+s > s^* \; \Rightarrow \; f(s) < s.
 $$
-et en appliquant la récurrence précédente :
+$(q_n)_{n \geq 0}$ est donc une suite croissante si $q_0  < s^*$ et décroissante dans le cas contraire :
 $$
 \begin{tabular}{ccc}
   & $q_0 = .05$ & $q_0 = .75$ \\
   \begin{tabular}{lc}
-    \textcolor{red}{\bf --} : $f_X(s)$ \\ ~ \\
-%     \textcolor{blue}{\bf--} : première bissectrice \\ ~ \\
-    \textcolor{blue}{\bf --} : $(q_n)_{n \geq 0}$
-    %itérations du point fixe
+    \textcolor{blue}{\bf --} : $f_X(s)$ \\ ~ \\
+    \textcolor{red}{\bf --} : $(q_n)_{n \geq 0}$
   \end{tabular}
   &
   \begin{tabular}{cc}
-  \includegraphics[width=.4\textwidth, trim=0 10 25 50, clip=]{ExGaltonWatson-fixPoint-q05}
+  \includegraphics[width=.4\textwidth, trim=0 10 25 50, clip=]{GaltonWatson-fixPoint-q05}
   \end{tabular}
   &
   \begin{tabular}{cc}
-  \includegraphics[width=.4\textwidth, trim=0 10 25 50, clip=]{ExGaltonWatson-fixPoint-q075}
+  \includegraphics[width=.4\textwidth, trim=0 10 25 50, clip=]{GaltonWatson-fixPoint-q075}
   \end{tabular}
 \end{tabular}
 $$
