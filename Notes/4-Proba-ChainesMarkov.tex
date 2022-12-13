@@ -509,6 +509,58 @@ On cherche maintenant à établir une classification des comportements possibles
 \end{proposition}
 
 %-------------------------------------------------------------------------------
+\exemple{[Modèle de Wright-Fisher]
+  Le modèle de Wright-Fisher peut servir de fil rouge au début de ce chapitre. On y considère les générations successive d'une population de taille fixe $N$ de reproduction non-sexuée. Parmi ces $N$ individus, $x$ sont porteurs de l'allèle $A$ (et $N-x$ sont porteurs de l'allèle $B$) d'un gène donné. On s'intéresse au processus $X = (X_n)_{n \geq 0}$ où
+  $$
+  X_n = \text{nombre d'individus porteurs de l'allèle $A$ à la génération $n$}
+  $$
+  en supposant que, à chaque génération, chacun de $N$ nouveaux individus tire indépendamment et uniformément son parent parmi la génération précédente (et hérite de son allèle). 
+  \begin{description}
+    \item[Probabilité de transition.] Un individu de la génération $n+1$ a donc un probabilité $x_n/N$ de porter l'allèle $A$. Les individus étant indépendant, on a
+    $$
+    (X_{n+1} \mid X_n=x) \sim \Bcal(N, x/N).
+    $$
+    La probabilité de transition vaut donc
+    $$
+    p_{ij} = \binom{N}{j} \left(\frac{i}N\right)^j \left(\frac{N-i}N\right)^{N-j}.
+    $$
+    \item[Classification des états.]
+    Ce modèle admet deux états absorbants : 
+    $$
+    x = 0 \qquad \text{et} \qquad x = N
+    $$
+    et finira nécessairement par atteindre l'un des deux. Les autres états sont donc transients.
+    \item[Probabilité de fixation.] Il reste à savoir quel état absorbant sera atteint en premier. Notons $q_i$ la probabilité d'atteindre l'état $x=N$ (avant l'état $x=0$) en partant de $X_0 = i$. On a 
+    $$
+    q_0 = 0, \qquad q_N = 1.
+    $$
+    Pour les autres valeurs de $i$, en décomposant les chemins allant de $i$ à $N$ : 
+    \begin{itemize}
+      \item soit $i \to N$ en une étape, 
+      \item soit $i \to j \notin \{0, N\}$ en une étape, puis $j \to N$ en un nombre indéterminé d'étapes, 
+    \end{itemize}
+    on peut écrire que :
+    $$
+    q_i = \sum_{j=1}^{N-1} p_{ij} q_j + p_{iN}
+    $$
+    et vérifier que $q_i = i/N$ satisfait cette équation, en effet :
+    \begin{align*}
+      \sum_{j=1}^{N-1} p_{ij} \frac{j}N + p_{iN}
+      & = \sum_{j=1}^{N-1} \binom{N}{j} \left(\frac{i}N\right)^j \left(\frac{N-i} N\right)^{N-j} \frac{j}N + \left(\frac{i}N\right)^N \\
+%       & = \binom{N}{j} \left(\frac{N-i} N\right)^N \sum_{j=1}^{N-1} \left(\frac{i}N\right)^j \left(\frac{N-i} N\right)^{-j} \frac{j}N + \left(\frac{i}N\right)^N \\
+      & = \sum_{j=1}^{N-1} \binom{N-1}{j-1} \left(\frac{i}N\right)^j \left(\frac{N-i} N\right)^{N-j} + \left(\frac{i}N\right)^N \\
+      & = \frac{i}N \sum_{k=0}^{N-2} \binom{N-1}{k} \left(\frac{i}N\right)^k \left(\frac{N-i} N\right)^{N-1-k} + \left(\frac{i}N\right)^N \\
+      & = \frac{i}N \left[\left(\frac{i}N + \frac{N-i}N\right)^{N-1} - \left(\frac{i}N\right)^{N-1}\right] + \left(\frac{i}N\right)^N \\
+      & = i/N.
+    \end{align*}
+    (On ne démontre pas ici que $q_i = i/N$ est l'unique solution.) La probabilité de fixation de l'allèle $A$ est donc $i/N$ (et celle de l'allèle $B$ est $(N-i)/N$).
+  \end{description}
+  
+}
+
+
+
+%-------------------------------------------------------------------------------
 \exemple{[Marche aléatoire sur $\Zbb$]
 On considère la \cM $X$ à valeur dans $\Ecal = \Zbb$, de probabilités de transition
 $$
