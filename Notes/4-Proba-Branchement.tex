@@ -322,7 +322,7 @@ Par la proposition précédente on a:
 $$
 q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 $$
-$q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:BGWnombrePointsFixes} indique que leur nombre dépend de la position de $m$ par rapport à 1. Il reste montrer que $q$ est le plus petit d'entre eux. \\
+$q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:BGWnombrePointsFixes} indique que leur nombre dépend de la position de $m$ par rapport à 1. Il reste montrer que $q$ est le plus petit d'entre eux, noté $s^*$. \\
 % La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
 On note, pour $n \geq 0$:
 $$
@@ -332,20 +332,31 @@ Par la proposition \ref{prop:fonctionGeneratriceZn}, on a:
 $$
 q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 $$
-La convergence de la suite $(q_n)_{n \geq 0}$ vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
+La convergence de la suite $(q_n)_{n \geq 0}$ vers le plus petit point fixe s'obtient en remarquant que
 $$
-\begin{tabular}{cc}
+s < s^* \; \Rightarrow \; f(s) > s, \qquad \qquad
+s > s^* \; \Rightarrow \; f(s) < s
+$$
+et en appliquant la récurrence précédente :
+$$
+\begin{tabular}{ccc}
+  & $q_0 = .05$ & $q_0 = .75$ \\
   \begin{tabular}{lc}
     \textcolor{red}{\bf --} : $f_X(s)$ \\ ~ \\
-    \textcolor{blue}{\bf--} : première bissectrice \\ ~ \\
-    \textcolor{black}{\bf --} : valeurs successives des $q_n$
+%     \textcolor{blue}{\bf--} : première bissectrice \\ ~ \\
+    \textcolor{blue}{\bf --} : $(q_n)_{n \geq 0}$
     %itérations du point fixe
   \end{tabular}
   &
-  \begin{tabular}{c}
-  \includegraphics[width=.4\textwidth]{ExGaltonWatson-fixPoint}  
+  \begin{tabular}{cc}
+  \includegraphics[width=.4\textwidth, trim=0 10 25 50, clip=]{ExGaltonWatson-fixPoint-q05}
+  \end{tabular}
+  &
+  \begin{tabular}{cc}
+  \includegraphics[width=.4\textwidth, trim=0 10 25 50, clip=]{ExGaltonWatson-fixPoint-q075}
   \end{tabular}
 \end{tabular}
 $$
+La convergence est donc démontrée pour $Z_0$ aléatoire, avec $q_0 = \Pr\{Z_0 = 0\} \in [0, 1)$ quelconque. Le cas $Z_0 = 1$ correspond au cas $q_0 = 0$.
 \eproof
 
