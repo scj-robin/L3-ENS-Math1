@@ -7,20 +7,22 @@
 \paragraph*{Processus de (Bienaymé) Galton-Watson.}
 On suit une population au cours des générations. A chaque génération, chaque individu peut avoir des descendants, qui peuvent avoir eux-même des descendants, etc. On constitue ainsi un processus de branchement qui reflète la généalogie des individus.
 
-Si on part d'un seul individu, et qu'on note $X_{0, 1}$ le nombre de ses descendants, et $X_{1, 1}$, $X_{1, 2}$, \dots le nombre de descendants de chacun de ces descendants, on voit que la population vaut
+Si on part d'un seul individu, et qu'on note $X_{0, 1}$ le nombre de ses descendants, et $X_{1, 1}$, $X_{1, 2}$, \dots le nombre de descendants de chacun de ces descendants, on voit que la taille de la population vaut successivement
 \begin{align*}
-  Z_1 & = X_{0, 1} && \text{au bout d'une génération}, \\
-  Z_2 & = \sum_{i=1}^{X_{0, 1}} X_{1, i} && \text{au bout de deux générations}.
+  Z_1 & = X_{0, 1}, &
+  Z_2 & = \sum_{i=1}^{Z_1} X_{1, i}, &
+  Z_3 & = \sum_{i=1}^{Z_2} X_{2, i}, &
+  \dots
 \end{align*}
 
 %-------------------------------------------------------------------------------
 \subsection{Fonction génératrice des probabilités} 
 %-------------------------------------------------------------------------------
 
-Les fonctions génératrices (il en existe plusieurs) permettent de manupuler facilement des combinaisons (notamment des sommes de variables aléatoires.
+Les fonctions génératrices (il en existe plusieurs) permettent de manupuler facilement des combinaisons (notamment des sommes) de variables aléatoires.
 
 \begin{definition}[Fonction génératrice]
-  Soit $X$ une variable aléatoire positive. On note $f_X$ sa {\em fonction génératrice des probabilité} (= '{\em pgf}') qui est définies comme
+  Soit $X$ une variable aléatoire positive. On note $f_X$ sa {\em fonction génératrice des probabilités} (= '{\em pgf}') définie comme
   $$
   \begin{array}{rrcl}
     f_X : & [0, 1] & \mapsto & [0, 1] \\
@@ -30,7 +32,7 @@ Les fonctions génératrices (il en existe plusieurs) permettent de manupuler fa
 \end{definition}
 
 \remark
-On voit facilement que $f_X(1) = 1$ et $f_X$ est monotone croissante.
+On voit facilement que $f_X(1) = 1$ et que $f_X$ est monotone croissante.
 
 %-------------------------------------------------------------------------------
 \paragraph*{Fonction génératrices de quelques lois de probabilités.}
@@ -57,7 +59,7 @@ On voit facilement que $f_X(1) = 1$ et $f_X$ est monotone croissante.
 \paragraph*{Quelques propriétés des fonctions génératrices de probabilités.}
 
 \begin{proposition}
-  La fonction génératrice $f_X$ est $C^\infty$ sur $[0, 1]$ et sa $k$ème dérivée vaut
+  La fonction génératrice $f_X$ est $C^\infty$ sur $[0, 1]$ et sa $k$-ème dérivée vaut
   \begin{align*}
     f_X^{(k)}(s) 
     & = \sum_{n \geq k} \Pr\{X = n\} n(n-1)  \dots (n-k+1) s^{n-k} \\
@@ -82,16 +84,18 @@ On voit facilement que $f_X(1) = 1$ et $f_X$ est monotone croissante.
 Directe.
 \eproof.
 
-\remark
-Le corollaire justifie le nom de 'fonction génératrice des probabilités'. $F_X$ nous donne également les moments de $X$. Notamment
-\begin{align*}
-  \Var(X) 
-  & = \Esp(X^2) - (\Esp X)^2 \\
-  & = \Esp(X(X-1) + X) - (\Esp X)^2
-  = \Esp(X(X-1)) + \Esp X - (\Esp X)^2 \\
-  & = f''_X(1) + f'_X(1)(1 - f'_X(1)). 
-\end{align*}
-En fait, la fonction génératrice caractérise complètement la loi de la variable $X$. Elle permet également d'assurer la convergence en loi.
+\remarks
+\begin{itemize}
+  \item Le corollaire justifie le nom de 'fonction génératrice des probabilités'. $F_X$ nous donne également les moments de $X$. Notamment
+  \begin{align*}
+    \Var(X) 
+    & = \Esp(X^2) - (\Esp X)^2 \\
+    & = \Esp(X(X-1) + X) - (\Esp X)^2
+    = \Esp(X(X-1)) + \Esp X - (\Esp X)^2 \\
+    & = f''_X(1) + f'_X(1)(1 - f'_X(1)). 
+  \end{align*}
+  \item En fait, la fonction génératrice caractérise complètement la loi de la variable $X$. Elle permet également d'assurer la convergence en loi.
+\end{itemize}
 
 \begin{proposition}[Convergence de la fonction génératrice]
   Soient $(X_n)_{n \geq 0}$ une suite de variables aléatoires positives et $X$ un variable aléatoires positives :
@@ -120,12 +124,14 @@ f_{X+Y}(s)
 $$
 \eproof
 
-\remark
-Une conséquence directe est que si $X_1$, $X_2$, \dots $X_n$ sont positives et iid, alors la fonction génératrice de leur somme vaut
-$$
-f_{X_1 + \dots + X_n}(s) = \left(f(X_1)\right)^n.
-$$
-Cette propriété donne une autre démonstration de la formule de $f_X$ pour la loi binomiale, vue comme une somme de $n$ variables de Bernoulli indépendantes.
+\remarks
+\begin{itemize}
+  \item Une conséquence directe est que si $X_1$, $X_2$, \dots $X_n$ sont positives et iid, alors la fonction génératrice de leur somme vaut
+  $$
+  f_{X_1 + \dots + X_n}(s) = \left(f(X_1)\right)^n.
+  $$
+  \item Cette propriété donne une autre démonstration de la formule de $f_X$ pour la loi binomiale, vue comme une somme de $n$ variables de Bernoulli indépendantes.
+\end{itemize}
 
 \begin{proposition}[Fonction génératrice d'une somme en nombre aléatoire]
   Soient $(X_n)_{n \geq 1}$ une suite de variables aléatoires positives iid et $N$ une variables positive indépendante, on s'intéresse à la somme des $N$ premiers éléments de la suite :
@@ -134,7 +140,7 @@ Cette propriété donne une autre démonstration de la formule de $f_X$ pour la 
   $$
   On a 
   $$
-  f_{Z}(s) = f_X \circ f_X(s).
+  f_{Z}(s) = f_N \circ f_X(s).
   $$
 \end{proposition}
 
@@ -154,7 +160,7 @@ On conditionne par $N$ :
 %-------------------------------------------------------------------------------
 
 On reprend une population évoluant de la façon décrite au début de la section. 
-On note $Z_n$ la taille de la population à la $n$ème génération ($n \geq 0$) et $X_{ni}$ le nombre de descendants du $i$ individu de la $n$ème génération. 
+On note $Z_n$ la taille de la population à la $n$-ème génération ($n \geq 0$) et $X_{ni}$ le nombre de descendants du $i$ individu de la $n$-ème génération. 
 On suppose que les $\{X_{ni})_{n \geq 0, 1 \geq i \geq Z_n}$ sont iid (et indépendants de $Z_0$).
 
 \bigskip
@@ -255,11 +261,18 @@ et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
 
 \remarks
 \begin{enumerate}
-  \item Cette récurrence nous assure notamment que, en notant $m = \Esp(X_{ni}) = f'_X
-  (1)$, $$
-  \Esp(Z_{n+1}) = \Esp_{Z_n}\Esp(Z_{n+1} \mid Z_n)) = m \Esp(Z_n).
+  \item Cette récurrence nous assure notamment que
   $$
-  Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_{n+1}) = m^{n+1}$.
+  \Esp(Z_n) = m \Esp(Z_{n-1}),
+  $$
+  en effet
+  \begin{align*}
+    \Esp(Z_n) 
+    = f'_{Z_n}(1) = (f_{Z_{n-1}} \circ f_X)'(1) 
+    = f'_X(1) \times f'_{Z_{n-1}}\left(f_X(1)\right) 
+    = m f'_{Z_{n-1}}(1) = m \Esp(Z_{n-1}).
+  \end{align*}
+  Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_n) = m^n$.
   \item Dans le cas où $Z_0$ est aléatoire, de fonction génératrice $f_{Z_0}$, on obtient de la même manière
   $$
   f_{Z_n} = \underset{n \text{ fois}}{\underbrace{f_X \circ f_X \circ \dots \circ f_X}} \circ f_{Z_0}.
@@ -275,11 +288,7 @@ et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
 \end{lemma}
 
 \proof
-Il s'agit de montrer que la position de
-$$
-m = \Esp(X) = f'_X(1)
-$$
-par rapport à 1 contrôle le nombre de points fixes de $f_X$.
+Nous allons montrer que la position du nombre moyen de descendants $m$ par rapport à 1 contrôle le nombre de points fixes de $f_X$.
 Pour cela, on distingue les deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0$.
 \begin{itemize}
   \item Si $\Pr\{X\geq 2\} = 0$, alors $X \in \{0, 1\}$, donc c'est une variable de Bernoulli $\Bcal(m)$ et $f_X(s)$ est linéaire, de pente $m \leq 1$. $f_X$ ne croise donc la première bissectrice qu'en $s = 1$.
@@ -309,8 +318,8 @@ $$
 
 \remarks
 \begin{enumerate}
-  \item Dans le lemme \ref{lem:BGWnombrePointsFixes}, on écarte le cas $f_x(0) = \Pr\{X = 0\} = 0$, car alors chaque individu a au moins un descendant et donc $q = 0$. 
-  \item On voit ainsi que la probabilité d'extinction vaut $q = 1$ si le processus est sous-critique ($m < 1$) ou sous-critique ($m = 1$, puisque $\Pr\{X = 0\} > 0$). 
+  \item Dans le lemme \ref{lem:BGWnombrePointsFixes}, on écarte le cas $f_X(0) = \Pr\{X = 0\} = 0$, car alors chaque individu a au moins un descendant et donc $q = 0$. 
+  \item On voit ainsi que la probabilité d'extinction vaut $q = 1$ si le processus est sous-critique ($m < 1$) ou critique ($m = 1$, puisque $\Pr\{X = 0\} > 0$). 
   \item Il reste à étudier le cas sur-critique pour déterminer quel point fixe donne la probabilité d'extinction.
 \end{enumerate}
 
@@ -321,7 +330,11 @@ $$
 \proof
 On note, pour $n \geq 0$:
 $$
-q_n := \Pr_1\{Z_n = 0\} = \Pr_1\{T_0 \leq n\}\geq \Pr_1\{T_0 = n\}.
+q_n := f_{Z_n}(0) = \Pr_1\{Z_n = 0\} = \Pr_1\{T_0 \leq n\}.
+$$
+On a donc
+$$
+q = \lim_{n \to \infty} q_n.
 $$
 Par la proposition \ref{prop:fonctionGeneratriceZn} on a:
 $$
@@ -337,7 +350,7 @@ $$
 % $$
 % q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 % $$
-La convergence de la suite $(q_n)_{n \geq 0}$ vers le plus petit point fixe s'obtient en remarquant que $f_X$ est une fonction croissante et que
+La convergence de la suite $(q_n)_{n \geq 0}$ vers le plus petit point fixe s'obtient en remarquant que $f_X$ est une fonction croissante et que, puisqu'elle est convexe sur $(0, 1]$, on a
 $$
 s < s^* \; \Rightarrow \; f(s) > s, \qquad \qquad
 s > s^* \; \Rightarrow \; f(s) < s.
@@ -360,6 +373,9 @@ $$
   \end{tabular}
 \end{tabular}
 $$
-La convergence est donc démontrée pour $Z_0$ aléatoire, avec $q_0 = \Pr\{Z_0 = 0\} \in [0, 1)$ quelconque. Le cas $Z_0 = 1$ correspond au cas $q_0 = 0$.
 \eproof
+
+\remark
+La convergence est donc démontrée pour $Z_0$ aléatoire, avec $q_0 = \Pr\{Z_0 = 0\} \in [0, 1)$ quelconque. Le cas $Z_0 = 1$ correspond au cas $q_0 = 0$.
+
 

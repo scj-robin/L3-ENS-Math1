@@ -9,9 +9,9 @@ Programme cours 7 :
   \item Dernier chapitre : probabilités (procesus)
   \item Chaînes de Makov
   \item Distribution stationnaire / comportement en temps long
-  \item Classification des états
 \end{itemize}
 }
+
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 \section{Chaînes de Markov}  \label{sec:Proba-Markov}
@@ -21,6 +21,8 @@ Programme cours 7 :
 \newcommand{\CM}{{Chaîne de Markov}\xspace}
 \newcommand{\per}{\text{per}}
 
+\todo{Trouver un exemple simple de \cM servant de fil rouge.}
+
 % Chaînes de Markov : classes de communication, irréductibilité, états transients,
 % récurrents, absorbants. 
 % 
@@ -29,8 +31,9 @@ Programme cours 7 :
 % \todo{Voir 1-AlgLin-MatricesPositives / Chaîne de Markov}
 
 \paragraph*{Objectif.}
-Etudier une suite de variable aléatoires $(X_0, X_1, \dots X_n, \dots)$ non indépendantes. L'indice $n$ se réfère souvent à un temps et une telle suite est alors appelées {\em processus stochastique} ou {\em chaîne}. On note alors $X = (X_t)_{t \geq 0}$.
+Etudier une suite de variable aléatoires $(X_0, X_1, \dots X_n, \dots)$ non indépendantes. L'indice $n$ se réfère souvent à un temps et une telle suite est alors appelées {\em processus stochastique} à temps discert ou {\em chaîne}. % On note alors $X = (X_t)_{t \geq 0}$.
 
+\bigskip
 On suppose ici que les variables $X_n$ sont toutes à valeurs dans un même ensemble $\Ecal$ fini ou dénombrable.
 
 %-------------------------------------------------------------------------------
@@ -46,15 +49,6 @@ On suppose ici que les variables $X_n$ sont toutes à valeurs dans un même ense
   \Pr\{X_{n+1} = x_{n+1} \mid X_0 = x_0, X_1 = x_1, \dots X_n = x_n\} 
   = 
   \Pr\{X_{n+1} = x_{n+1} \mid X_n = x_n\}.
-  $$
-\end{definition}
-
-\begin{definition}[\CM homogène]
-  Une \cM $X$ est homogène si
-  $$
-  \forall n \geq 1: \qquad 
-  \Pr\{X_{n+1} = j \mid X_n = i\} = p_{ij} 
-  \qquad (\text{indépendant de $n$}).
   $$
 \end{definition}
 
@@ -88,6 +82,15 @@ On utilise le théorème des probabilités totales pour sommer sur toutes les va
 
 %-------------------------------------------------------------------------------
 \subsubsection{Matrice de transition}
+
+\begin{definition}[\CM homogène]
+  Une \cM $X$ est homogène si
+  $$
+  \forall n \geq 1: \qquad 
+  \Pr\{X_{n+1} = j \mid X_n = i\} = p_{ij} 
+  \qquad (\text{indépendant de $n$}).
+  $$
+\end{definition}
 
 \begin{definition}[Probabilité et matrice de transition]
   Soit $X$ un \cM homogène, on appelle probabilités de transition les probabilités :
@@ -169,6 +172,15 @@ $$
 \subsection{Distribution stationnaire}  
 %-------------------------------------------------------------------------------
 
+\begin{definition}
+  Une distribution $\nu$ sur $\Ecal$ est dite \emph{invariante} pour la \cM $X$ si 
+  $$
+  \nu^\top P = \nu^\top.
+  $$
+\end{definition}
+
+Les distributions invariantes jouent pour les chaînes de Markov un rôle analogue au point stationnaires en système dynamique : une fois atteinte, la distribution reste constante. Comme pour les systèmes dynamiques, la question est alors de savoir si elles seront atteintes et à quelle condition. Pour répondre à cette question, il nous faut d'abord définir une notion de convergence pour des distributions.
+
 \begin{definition}[Convergence en loi]
   Une suite de v.a. $(Y_n)_{n \geq 0}$ à valeur dans $\Ecal$ converge en loi vers une distribution $\nu$ sur $\Ecal$ :
   $$
@@ -195,7 +207,7 @@ $$
 % {Démonstration de la proposition \ref{prop:convergenceEsperance}.}
 \proof 
 \begin{description}
-  \item[$\Ecal$ fini :] la démonstration vient en intervertissant la somme et la limite : 
+  \item[$\Ecal$ fini :] la démonstration vient en intervertissant la somme et la limite (puisque $\Ecal$ est fini) : 
   $$
   \lim_{n \to \infty} \Esp(f(Y_n)) 
   = \lim_{n \to \infty} \left(\sum_{i \in \Ecal} \Pr\{Y_n = i\} f(i)\right)
@@ -225,38 +237,47 @@ $$
   \lim_{i \to \infty} \Pr\{Y_n > i\} = 0
   $$
   (puisque la somme $\sum_{n \in \Nbb} \Pr\{U = i\}$ converge). \\
-  Donc, pour tout $\epsilon > 0$, il existe un $i$ et un $n_3^{(i)}$ tels que 
+  Donc, pour tout $\epsilon > 0$, il existe un $i$ et un $n_1^{(i)}$ tels que 
   \begin{align*}
   \Pr\{Y > i\} & < \epsilon / 3M, \\
   \text{et} \qquad 
-  \forall n > n_0^{(i)}: \quad \Pr\{Y_n > i\} & < \epsilon / 3M.
+  \forall n > n_1^{(i)}: \quad \Pr\{Y_n > i\} & < \epsilon / 3M.
   \end{align*}
-  \item D'autre part, puisque $i$ est fini, il existe de plus $n_1^{(i)}$ tel que 
+  \item D'autre part, puisque $i$ est fini (i.e. en utilisant le résultat dans le cas fini), il existe de plus $n_2^{(i)}$ tel que 
   $$
-  \forall n > n_1, \; \forall j \leq i: \quad \left|\Pr\{Y_n=j\} - \nu_j\right| < \frac\epsilon{3M(i+1)}.
+  \forall n > n_2, \; \forall j \leq i: \quad \left|\Pr\{Y_n=j\} - \nu_j\right| < \frac\epsilon{3M(i+1)}.
   $$
   \end{itemize}
   On a donc, 
  \begin{align*}
-   \forall n > \max(i, n_0^{(i)}, n_1^{(i)}): \qquad 
+   \forall n > \max(i, n_1^{(i)}, n_2^{(i)}): \qquad 
    \left|\Esp(f(Y_n)) - \Esp(Y)\right| \leq \frac{M\epsilon}{3M} \underset{=1}{\underbrace{\sum_{j=0}^i \frac1{i+1}}} + \frac{M\epsilon}{3M} + \frac{M\epsilon}{3M} = \epsilon.
   \end{align*}
 \end{description}
 \eproof
 
+\remarks
+\begin{itemize}
+\item Si $\Ecal$ est fini, la proposition \ref{prop:convergenceEsperance} nous assure par exemple que, si $(Y_n)_{n \geq 0}$ converge en loi vers $\nu$ et que $Y \sim \nu$, on a, en prenant respectivement $f(x) = x$ et $f(x) = x^2$, 
+$$
+\lim_{n \to \infty} \Esp(Y_n) = \Esp(Y), \qquad
+\lim_{n \to \infty} \Esp(Y_n^2) = \Esp(Y^2)
+$$
+et, par conséquent, $\lim_{n \to \infty} \Var(Y_n) = \Var(Y)$. 
+\item Pour $\Ecal$ quelconque, en prenant $f(x) = \Ibb\{x \leq u\}$, on a $\Esp(f(Y_n)) = \Pr\{Y_n \leq u\}$ et donc, pour tout $u$, 
+$$
+(Y_n)_{n \geq 0} \overset{\Lcal}{\rightarrow} \nu
+\qquad \Rightarrow \qquad
+\lim_{n \to \infty} \Pr\{Y_n \leq u\} = \Pr\{Y \leq u\}.
+$$
+\end{itemize}
+
 \begin{definition}
-  Une distribution $\nu$ sur $\Ecal$ est dite stationnaire pour la \cM $X$ si il existe une distribution $\mu$ telle que 
+  Une distribution $\nu$ sur $\Ecal$ est dite \emph{stationnaire} pour la \cM $X$ si il existe une distribution $\mu$ telle que 
   $$
   \lim_{n \to \infty} \mu^\top P^n = \nu.
   $$
   C'est à dire que la \cM $X$ de transition $P$ et de distribution initiale $\mu$ converge en loi vers $\nu$.
-\end{definition}
-
-\begin{definition}
-  Une distribution $\nu$ sur $\Ecal$ est dite invariante pour la \cM $X$ si 
-  $$
-  \nu^\top P = \nu^\top.
-  $$
 \end{definition}
 
 \begin{proposition} \label{prop:stationnaireInvariante}
@@ -266,7 +287,7 @@ $$
 % {Démonstration de la proposition \ref{prop:stationnaireInvariante}.}
 \proof
 \begin{description}
-  \item[$\Leftarrow$ :] il suffit de prendre $\mu = \nu$ pour s'assurer que $\mu^\top P^n = \nu^\top P^n = \nu$ pour tout $n$. La \cM est alors dite {\em stationnaire}.
+  \item[$\Leftarrow$ :] il suffit de prendre $\mu = \nu$ pour s'assurer que $\mu^\top P^n = \nu^\top P^n = \nu$ pour tout $n$. (La \cM est alors dite {\em stationnaire}.)
   \item[$\Rightarrow$ :] si $\nu$ est stationnaire alors il existe $\mu$ telle que $\mu^\top P^n$ converge vers $\nu$ (i.e. $\lim_{n \to \infty} [\mu^\top P]_j = \nu_j$), ce qui implique que $\mu^\top P^{n+1}$ converge également vers $\nu$, i.e.
   $$
   \lim_{n \to \infty} [\mu^\top P^{n+1}]_j = \nu_j.
@@ -370,11 +391,28 @@ $$
 \eproof
 
 \remark
-Le théorème de Perron-Frobenius nous assure que les vecteurs propres (à gauche et à droite) associés à $\lambda_1 = 1$ ont toutes leurs coordonnées positives. On a ainsi démontré que, pour $\Ecal$ fini, si $P$ est régulière, 
+Le théorème \ref{thm:perronFrobenius} de Perron-Frobenius nous assure que les vecteurs propres (à gauche et à droite) associés à $\lambda_1 = 1$ ont toutes leurs coordonnées positives. On a ainsi démontré que, pour $\Ecal$ fini, si $P$ est régulière, 
 \begin{itemize}
   \item elle admet une unique distribution stationnaire $\nu$ et que $\nu_i > 0$ pour tout $i \in \Ecal$, 
   \item quelque soit la distribution initiale $\mu$, $\mu P^n \to \nu$, c'est-à-dire que $X_n$ converge en loi vers $\nu$.
 \end{itemize}
+
+\progres{
+Rappel cours 7 :
+\begin{itemize}
+  \item Chaînes de Markov
+  \item Probabilités et matrice de transition
+  \item Distribution invariante et stationnaire
+  \item Comportement en temps long et convergence vers une distribution stationnaire (redonner la proposition \ref{prop:perronFrobeniusCM})
+\end{itemize}
+Programme cours 8 :
+\begin{itemize}
+  \item Communication entre états
+  \item Classification des états
+  \item Quelques exemples de \cM (Wright-Fisher)
+  \item Processus de branchement
+\end{itemize}
+}
 
 \begin{definition}[Communication entre états]
   On dit qu'il existe un {\em chemin de $i$ vers $j$} (ou que $j$ est {\em accessible depuis $i$}) s'il existe $n \geq 0: p_{ij}(n) > 0$. \\
@@ -386,9 +424,9 @@ Par définition, tout état communique avec lui même (en prenant $n= 0 : P^0 = 
 
 La relation de communication est une relation d'équivalence, c'est à dire qu'elle est :
 \begin{itemize}
-  \item reflexive: $\forall i \in \Ecal: i \Rcal i$,
-  \item symétrique: $\forall i, j \in \Ecal: i \Rcal j \Rightarrow j \Ecal i$,
-  \item transitive: $\forall i, j, k \in \Ecal: i \Rcal j, j \Rcal k \Rightarrow i \Ecal k$.
+  \item reflexive: $\forall i \in \Ecal: \Rcal(i, j)$,
+  \item symétrique: $\forall i, j \in \Ecal: \Rcal(i, j) \Rightarrow \Rcal(j, i)$,
+  \item transitive: $\forall i, j, k \in \Ecal: \Rcal(i, j), \Rcal(j, k) \Rightarrow \Rcal(i, k)$.
 \end{itemize}
 Elle définit donc des classes d'équivalences $\Ccal_1, \Ccal_2, \dots $, qui constituent une partition de $E$:
 $$
@@ -415,7 +453,7 @@ P = \left[\begin{array}{ccc}
 $$
 \begin{description}
   \item[$p = q = 0$ :] alors $P = I$ et toute distribution est stationnaire, mais $P$ n'est pas régulière et la loi de $X_n$ est la même que celle de $X_0$.
-  \item[$0 < pq < 1$ :] alors on montre que la seule distribution stationnaire est 
+  \item[$0 < p, q < 1$ :] alors la seule distribution stationnaire est 
   $$
   \nu = \left[ \frac{p}{p+q} \;  \frac{q}{p+q} \right],
   $$
@@ -424,45 +462,10 @@ $$
   $$
   \nu = \left[ \frac12 \;  \frac12 \right],
   $$
-  mais comme $P$ n'est pas régulière, $X_n$ ne converge pas nécessairement vers $\nu$. \\En fait $X_n$ alterne entre les états $0$ et $1$ et ne converge en loi vers $\nu$ que si $\mu = \nu$ (et alors $X_n \sim \nu, \forall n$). Si $X_0 = 0$ ou $X_0 = 1$, alors $X_n$ ne converge pas du tout.
+  mais comme $P$ n'est pas régulière, $X_n$ ne converge pas nécessairement vers $\nu$. \\En fait $X_n$ alterne entre les états $0$ et $1$ et ne converge en loi vers $\nu$ que si $\mu = \nu$ (et alors $X_n \sim \nu, \forall n$). Si $X_0 = 0$ ou $X_0 = 1$ (ou $\mu \neq \nu$), alors $X_n$ ne converge pas du tout.
 \end{description}
 }
  
-%-------------------------------------------------------------------------------
-%\subsection{Théorème ergodique}  
-%-------------------------------------------------------------------------------
-
-\begin{theorem}[Théorème ergodique]
-  Si $X$ est une \cM irreductible et récurrente positive, alors 
-  \begin{itemize}
-   \item $X$ admet une unique distribution stationnaire $\nu$,
-   \item $X$ est ergodique, c'est à dire que, pour toute distribution initiale $\mu$, on a
-   $$
-   \Pr_\mu\left\{\lim_{n \to \infty} \frac1n \left|\{1 \leq k \leq n: X_k = i\}\right| = \nu_i\right\} = 1,
-   $$
-   \item si de plus $X$ est apériodique alors $X$ converge en distribution vers $\nu$ : 
-   $$
-   \lim_{n \to \infty} \Pr_\mu\{X_n = i\} = \nu_i.
-   $$
-  \end{itemize}
-\end{theorem}
-
-\remark
-Ce théorème est plus fort que la convergence en loi car il nous informe que la trajectoire de $X = (X_n)_{n \geq 0}$ elle même en assurant qu'elle passe par chaque état $i$ un nombre de fois proportionnelle à $\nu_i$.
-
-\remark
-La convergence en loi n'est garantie que dans le cas apériodique.
-
-%-------------------------------------------------------------------------------
-\exemple{[$\Ecal = \{0, 1\}$]
-\begin{description}
-  \item[$p = q = 0$ :] la chaîne possède 2 classes récurrente ($\{0\}$ et $\{1\}$). Elle reste en fait constante et toute mesure $\nu$ est invariante.
-  \item[$p = 0$ et $q \neq 0$ :] la chaîne possède une classe récurrente ($\{0\}$) et une classe transiente ($\{1\}$). La chaîne est 'absorbée' par l'état $0$ en un temps fini et la seule distribution invariante est $\nu = [1 \; 0]$.
-  \item[$p = q = 1$ :] la chaîne est irréductible (on vérifie que $P^2 = I$) et récurrente positive, donc elle est ergodique (chaque état est visité la moitié du temps) mais elle est périodique et ne converge pas en loi.
-  \item[$p + q = 1$ et $pq < 1$:] la chaîne est irréductible, récurrente positive et apériodique donc elle est ergodique et converge en loi vers $\nu$.
-\end{description}
-}
-
 %-------------------------------------------------------------------------------
 \subsection{Classification des états}  
 %-------------------------------------------------------------------------------
@@ -510,7 +513,7 @@ On cherche maintenant à établir une classification des comportements possibles
 
 %-------------------------------------------------------------------------------
 \exemple{[Modèle de Wright-Fisher]
-  Le modèle de Wright-Fisher peut servir de fil rouge au début de ce chapitre. On y considère les générations successive d'une population de taille fixe $N$ de reproduction non-sexuée. Parmi ces $N$ individus, $x$ sont porteurs de l'allèle $A$ (et $N-x$ sont porteurs de l'allèle $B$) d'un gène donné. On s'intéresse au processus $X = (X_n)_{n \geq 0}$ où
+  Le modèle de Wright-Fisher est un modèle classique en génétique des populations. On y considère les générations successive d'une population de taille fixe $N$ de reproduction non-sexuée. Parmi ces $N$ individus, $x$ sont porteurs de l'allèle $A$ (et $N-x$ sont porteurs de l'allèle $B$) d'un gène donné. On s'intéresse au processus $X = (X_n)_{n \geq 0}$ où
   $$
   X_n = \text{nombre d'individus porteurs de l'allèle $A$ à la génération $n$}
   $$
@@ -558,46 +561,79 @@ On cherche maintenant à établir une classification des comportements possibles
   
 }
 
-
-
 %-------------------------------------------------------------------------------
 \exemple{[Marche aléatoire sur $\Zbb$]
-On considère la \cM $X$ à valeur dans $\Ecal = \Zbb$, de probabilités de transition
-$$
-p_{i, j} = \left\{\begin{array}{rl}
-                   p & \text{si } j = i+1, \\
-                   1 - p & \text{si } j = i-1, \\
-                   0 & \text{sinon.}
-                  \end{array}\right.
-$$
+  On considère la \cM $X$ à valeur dans $\Ecal = \Zbb$, de probabilités de transition
+  $$
+  p_{i, j} = \left\{\begin{array}{rl}
+                    p & \text{si } j = i+1, \\
+                    1 - p & \text{si } j = i-1, \\
+                    0 & \text{sinon.}
+                    \end{array}\right.
+  $$
+  \begin{description}
+    \item[$p = 0$ ou $p = 1$:] chaque singleton constitue une classe transiente (la \cM y passe une fois et une seule).
+    %
+    \item[$p \in (0, 1)$:] $X$ est irréductible ($\Zbb$ forme une unique classe de communication). En notant $E_n$ le déplacement $X_n - X_{n-1}$, on voit que les $E_n$ sont iid à valeur dans $\{-1, +1\}$ et de loi
+    $$
+    \Pr\{E_n = 1\} = p = 1 - \Pr\{E_n = -1\}.
+    $$
+    On a donc $\Esp(E_n) = 2p-1$ et, puisque
+    $$
+    X_n = X_0 + \sum_{i=1}^n X_i,
+    $$
+    la loi des grands nombre nous assure que 
+    $$
+    \lim_{n \to \infty} \frac{X_n}n = \lim_{n \to \infty} \left(\frac{X_0}n + \frac1n \sum_{i=1}^n X_i\right) = 2p - 1.
+    $$
+    \item[$p \in (0, 1)$ et $p \neq 1/2$:] alors $X_n$ se comporte comme $(2p-1)n$ : la trajectoire est dite {\em balistique} (elle s'écarte de son origine à vitesse linéaire). $X_n$ tend vers $+\infty$ si $p > 1/2$ et vers $-\infty$ si $p < 1/2$. La \cM est transiente.
+    \item[$p = 1/2$:] on parle alors de marche aléatoire {\em symétrique}. En remarquant que 
+    \begin{align*}
+        \Var(E_n) & = \Esp(E_n^2) - (2p - 1)^2 = 1 - (4p^2 - 4p + 1) = 4p(1-p) \\
+        & = 1 \text{ si } p = 1/2,
+    \end{align*}
+    le théorème centrale limite nous assure que 
+    $X_n/n$ converge en loi vers $\Ncal(0, 1)$, c'est-à-dire que 
+    $$
+    \lim_{n \to \infty} \Pr\left\{\frac{X_n}n \in [a, b]\right\} = \Pr\{\Ncal(0, 1) \in [a, b]\}.
+    $$
+    $X_n$ si situe alors typiquement à une distance $\sqrt{n}$ de son origine. \\
+    On peut montrer que $X$ est récurrente nulle : la \cM repasse un nombre infini de fois dans chaque état, mais les temps de passage sont de plus en plus espacés.
+  \end{description}
+}
+
+%-------------------------------------------------------------------------------
+%\subsection{Théorème ergodique}  
+%-------------------------------------------------------------------------------
+
+\begin{theorem}[Théorème ergodique]
+  Si $X$ est une \cM irreductible et récurrente positive, alors 
+  \begin{itemize}
+   \item $X$ admet une unique distribution stationnaire $\nu$,
+   \item $X$ est ergodique, c'est à dire que, pour toute distribution initiale $\mu$, on a
+   $$
+   \Pr_\mu\left\{\lim_{n \to \infty} \frac1n \left|\{1 \leq k \leq n: X_k = i\}\right| = \nu_i\right\} = 1,
+   $$
+   \item si de plus $X$ est apériodique alors $X$ converge en distribution vers $\nu$ : 
+   $$
+   \lim_{n \to \infty} \Pr_\mu\{X_n = i\} = \nu_i.
+   $$
+  \end{itemize}
+\end{theorem}
+
+\remark
+Ce théorème est plus fort que la convergence en loi car il nous informe que la trajectoire de $X = (X_n)_{n \geq 0}$ elle même en assurant qu'elle passe par chaque état $i$ un nombre de fois proportionnelle à $\nu_i$.
+
+\remark
+La convergence en loi n'est garantie que dans le cas apériodique.
+
+%-------------------------------------------------------------------------------
+\exemple{[$\Ecal = \{0, 1\}$]
 \begin{description}
-  \item[$p = 0$ ou $p = 1$:] chaque singleton constitue une classe transiente (la \cM y passe une fois et une seule).
-  %
-  \item[$p \in (0, 1)$:] $X$ est irréductible ($\Zbb$ forme une unique classe de communication). En notant $E_n$ le déplacement $X_n - X_{n-1}$, on voit que les $E_n$ sont iid à valeur dans $\{-1, +1\}$ et de loi
-  $$
-  \Pr\{E_n = 1\} = p = 1 - \Pr\{E_n = -1\}.
-  $$
-  On a donc $\Esp(E_n) = 2p-1$ et, puisque
-  $$
-  X_n = X_0 + \sum_{i=1}^n X_i,
-  $$
-  la loi des grands nombre nous assure que 
-  $$
-  \lim_{n \to \infty} \frac{X_n}n = \lim_{n \to \infty} \left(\frac{X_0}n + \frac1n \sum_{i=1}^n X_i\right) = 2p - 1.
-  $$
-  \item[$p \in (0, 1)$ et $p \neq 1/2$:] alors $X_n$ se comporte comme $(2p-1)n$ : la trajectoire est dite {\em balistique} (elle s'écarte de son origine à vitesse linéaire). $X_n$ tend vers $+\infty$ si $p > 1/2$ et vers $-\infty$ si $p < 1/2$. La \cM est transiente.
-  \item[$p = 1/2$:] on parle alors de marche aléatoire {\em symétrique}. En remarquant que 
-  \begin{align*}
-      \Var(E_n) & = \Esp(E_n^2) - (2p - 1)^2 = 1 - (4p^2 - 4p + 1) = 4p(1-p) \\
-      & = 1 \text{ si } p = 1/2,
-  \end{align*}
-  le théorème centrale limite nous assure que 
-  $X_n/n$ converge en loi vers $\Ncal(0, 1)$, c'est-à-dire que 
-  $$
-  \lim_{n \to \infty} \Pr\left\{\frac{X_n}n \in [a, b]\right\} = \Pr\{\Ncal(0, 1) \in [a, b]\}.
-  $$
-  $X_n$ si situe alors typiquement à une distance $\sqrt{n}$ de son origine. \\
-  On peut montrer que $X$ est récurrente nulle : la \cM repasse un nombre infini de fois dans chaque état, mais les temps de passage sont de plus en plus espacés.
+  \item[$p = q = 0$ :] la chaîne possède 2 classes récurrente ($\{0\}$ et $\{1\}$). Elle reste en fait constante et toute mesure $\nu$ est invariante.
+  \item[$p = 0$ et $q \neq 0$ :] la chaîne possède une classe récurrente ($\{0\}$) et une classe transiente ($\{1\}$). La chaîne est 'absorbée' par l'état $0$ en un temps fini et la seule distribution invariante est $\nu = [1 \; 0]$.
+  \item[$p = q = 1$ :] la chaîne est irréductible (on vérifie que $P^2 = I$) et récurrente positive, donc elle est ergodique (chaque état est visité la moitié du temps) mais elle est périodique et ne converge pas en loi.
+  \item[$p + q = 1$ et $pq < 1$:] la chaîne est irréductible, récurrente positive et apériodique donc elle est ergodique et converge en loi vers $\nu$.
 \end{description}
 }
 
