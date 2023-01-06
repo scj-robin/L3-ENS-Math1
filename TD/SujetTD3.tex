@@ -1,0 +1,73 @@
+\documentclass[french, 12pt]{article}
+
+%-------------------------------------------------------------------------------
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color,xcolor}
+\usepackage{tikz}
+\usepackage{remreset}
+\usepackage{url}
+\usepackage{boites}
+% \usepackage{extsizes} % Permet \documentclass[french, 14pt]{extreport}
+% \usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=.75cm]{geometry}
+% \usepackage{minitoc}
+
+\graphicspath{{../Figures/}}
+
+\input{../Macros}
+
+% Proposition numbering
+% \numberwithin{proposition}{section}
+\numberwithin{exercise}{section}
+\numberwithin{equation}{section}
+
+% Suppression des solutions
+% \renewcommand{\solution}[1]{}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\begin{center}
+  \small{\sc \'Ecole normale supérieure de Paris, Licence de Biologie L3, Année 2022-23} \\
+  \bigskip
+  \large{\bf Ce qu'un biologiste doit savoir en mathématiques} \\
+  \bigskip  
+  {\bf TD n° 3}
+\end{center}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Processus markoviens} 
+\newcommand{\probas}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/Probas}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\subsection{Chaîne de Markov}
+%-------------------------------------------------------------------------------
+
+\input{\probas/ChaineMarkov4}
+
+%-------------------------------------------------------------------------------
+\subsection{Processus de branchement}
+%-------------------------------------------------------------------------------
+
+\input{\probas/BGWgeometrique}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+
