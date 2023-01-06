@@ -1,0 +1,47 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Processus Galton–Watson géométrique avec excès de zéro}
+%-------------------------------------------------------------------------------
+
+Les organismes d’une espèce asexuée se reproduisent suivant un processus de Galton–Watson, où chaque individu laisse à la génération suivante un nombre aléatoire $X$ d’individus. \\
+On note $p_k = \Pr\{X = k\}$ et on suppose que 
+$$
+p_0 = b
+\qquad \text{et} \qquad 
+p_k = (1 - b) (1 - a) a^{k-1} \text{ pour } k \geq 1.
+$$
+\begin{enumerate}
+  \item Montrer que la fonction génératrice de $X$ vaut
+  $$
+  f(s) := \Esp(s^X) = b + (1-b)(1-a) \frac{s}{1 - as}.
+  $$
+  \solution{Par définition, on a
+  \begin{align*}
+    f(s) 
+    & =\Esp(s^X) = \sum_{k \geq 0} p_k s^k 
+    = b + (1-b) \sum_{\textcolor{red}{k \geq 1}} (1 - a) a^{k-1} s^k \\
+    & = b + (1 - b) s \sum_{k \geq 1} (1 - a) (as)^{k-1}
+    = b + (1 - b) s \sum_{k \geq 0} (1 - a) (as)^k
+  \end{align*}
+  où on reconnaît la fonction génératrice d'une variable aléatoire géométrique : 
+  $$
+  \sum_{k \geq 0} (1 - a) (as)^k = \frac{1 - a}{1 - as},
+  $$
+  qui donne le résultat.
+  }
+  \item Déterminer la valeur de la probabilité, notée $q$, qu'une population de cette espèce issue d’un seul individu fondateur s'éteigne.
+  \solution{On sait que $q$ est le plus petit point fixe de la fonction $f$ dans l'intervalle $(0, 1]$. Il faut donc résoudre $f(s) = s$
+  \begin{align*}
+    \Leftrightarrow \qquad 
+    b(1 - as) + (1-b)(1-a) s & = a - as^2 \\
+    \Leftrightarrow \qquad
+    as^2 - (a+b) s + b & = 0
+  \end{align*}
+  dont le discriminant vaut $\Delta = (a+b)^2 - 4ab = (a-b)^2$ et les solutions sont donc
+  $$
+  s = \frac{(a+b) \pm (a-b)}{2}
+  \qquad \Leftrightarrow \qquad
+  s \in \left\{\frac{b}a, 1\right\}.
+  $$
+  La probabilité d'extinction est donc $q = b/a$ si $b < a$ et 1 sinon.
+  }
+\end{enumerate}
