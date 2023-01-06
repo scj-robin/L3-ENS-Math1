@@ -4,7 +4,7 @@
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
-\paragraph*{Processus de (Bienaymé) Galton-Watson.}
+\paragraph*{Processus de (Bienaymé-)Galton-Watson.}
 On suit une population au cours des générations. A chaque génération, chaque individu peut avoir des descendants, qui peuvent avoir eux-même des descendants, etc. On constitue ainsi un processus de branchement qui reflète la généalogie des individus.
 
 Si on part d'un seul individu, et qu'on note $X_{0, 1}$ le nombre de ses descendants, et $X_{1, 1}$, $X_{1, 2}$, \dots le nombre de descendants de chacun de ces descendants, on voit que la taille de la population vaut successivement
@@ -157,7 +157,7 @@ On conditionne par $N$ :
 \eproof
 
 %-------------------------------------------------------------------------------
-\subsection{Processus de Bienaymé-Galton-Watson (BGW)} 
+\subsection{Processus de Galton-Watson (GW)} 
 %-------------------------------------------------------------------------------
 
 On reprend une population évoluant de la façon décrite au début de la section. 
@@ -166,7 +166,7 @@ On suppose que les $\{X_{ni})_{n \geq 0, 1 \geq i \geq Z_n}$ sont iid (et indép
 
 \bigskip
 La taille de la population à la génération $n+1$ est donnée par 
-\begin{equation} \label{eq:recurrenceBGW}
+\begin{equation} \label{eq:recurrenceGW}
 Z_{n+1} = \sum_{i = 1}^{Z_n} X_{ni}.
 \end{equation}
 La suite $(Z_n)_{n \geq 0}$ forme donc une \cM sur $\Nbb$, puisque $Z_{n+1}$ est donné par $Z_n$ et par les $\{X_{ni})_{1 \geq i \geq Z_n}$, qui sont indépendants du passé.
@@ -188,7 +188,7 @@ On peut caractériser les probabilités de transition
 $$
 p_{ij} = \Pr\{Z_{n+1} = j \mid Z_n = i\}
 $$
-par leur fonction génératrice. En effet, \eqref{eq:recurrenceBGW} donne
+par leur fonction génératrice. En effet, \eqref{eq:recurrenceGW} donne
 $$
 \Esp(s^{Z_{n+1}} \mid Z_n) = f_X^{Z_n}(s)
 \qquad \Rightarrow \qquad 
@@ -262,7 +262,7 @@ et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
 \eproof
 
 \begin{definition}
-  Soit $m = \Esp(X) = f'_X(1)$ le nombre moyen de descendants. Le processus BGW est dit critique si $m=1$, sous-critique si $m < 1$ et sur-critique si $m > 1$.
+  Soit $m = \Esp(X) = f'_X(1)$ le nombre moyen de descendants. Le processus GW est dit critique si $m=1$, sous-critique si $m < 1$ et sur-critique si $m > 1$.
 \end{definition}
 
 \remarks
@@ -285,7 +285,7 @@ et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
   $$
 \end{enumerate}
 
-\begin{lemma} \label{lem:BGWnombrePointsFixes}
+\begin{lemma} \label{lem:GWnombrePointsFixes}
   Si $f_X(0) > 0$, $f_X$ admet pour points fixes dans $[0, 1]$
   \begin{align*}
     \{s = 1\} & \text{ si } m \leq 1, &
@@ -344,7 +344,7 @@ Par la proposition \ref{prop:fonctionGeneratriceZn} on a:
 $$
 q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 $$
-% $q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:BGWnombrePointsFixes} indique que leur nombre dépend de la position de $m$ par rapport à 1. Il reste montrer que $q$ est le plus petit d'entre eux, noté $s^*$. \\
+% $q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:GWnombrePointsFixes} indique que leur nombre dépend de la position de $m$ par rapport à 1. Il reste montrer que $q$ est le plus petit d'entre eux, noté $s^*$. \\
 % % La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
 % On note, pour $n \geq 0$:
 % $$

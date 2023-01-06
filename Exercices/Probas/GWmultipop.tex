@@ -1,0 +1,29 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Evolution de plusieurs populations de Galton–Watson}
+%-------------------------------------------------------------------------------
+
+On considère une espèce dont les générations sont régies par un processus de Bienaymé-Galton-Watson. On note $f$ la fonction génératrice du nombre de descendants et $q$ la probabilité d'extinction d'une population issue d'un unique individu.
+
+On introduit un nombre aléatoire $N$ d'individus de cette espèce dans une île. On note $g$ la fonction génératrice de $N$. On suppose que les descendances des $N$ individus fondateurs évoluent indépendamment les unes des autres. On s'intéresse à la probabilité $p$ de colonisation, c'est-à-dire à la probabilité pour que cette population ne s'éteigne pas.
+\begin{enumerate}
+  \setcounter{enumi}{2}
+  \item A quelle condition $p$ est-elle non nulle ?
+  \solution{La colonisation réussit si la descendance d'au moins un individu fondateur ne s'éteint pas, ce qui se produit avec probabilité $1 - q^N$. $p$ est donc nulle pour tout $N$ si $q = 1$ et non nulle ssi $q < 1$, c'est à dire si $b < a$.}
+  \item Exprimer $p$ en fonction de $q$. 
+  \solution{$1 - q^N$ est la probabilité de colonisation conditionnelle à l'effectif initial $N$. La probabilité de colonisation vaut donc
+  $$
+  p = \Esp(1 - q^N) = 1 - \Esp(q^N) = 1 - g(q).
+  $$}
+  \item Déterminer $p$ si $N = 1$ et si $N$ est distribué comme $X$. Commenter.
+  \solution{
+  \begin{description}
+    \item[$N = 1$ :] on a immédiatement $p = 1 - q$. 
+    \item[$N \overset{\Delta}{=} X$:] alors $g = f$ et donc
+    $$
+    p = 1 - g(q) = 1 - f(q) = 1 - q
+    $$
+    puisque $q$ est un point fixe de $f$ ($f(q) = q$). 
+  \end{description}
+  L'égalité des résultats n'est pas surprenante puisque le second cas correspond au premier décalé d'une génération.}
+\end{enumerate}
+
