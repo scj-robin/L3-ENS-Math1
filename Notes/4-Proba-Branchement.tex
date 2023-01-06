@@ -41,6 +41,7 @@ On voit facilement que $f_X(1) = 1$ et que $f_X$ est monotone croissante.
   $$
   f_X(s) = (1-p) s^0 + p s^1 = 1 - p + p s.
   $$
+  Notamment, si $p = 1$, $f_X(s) = s$.
   \item[Binomiale:] si $X \sim \Bcal(n, p)$
   $$
   f_X(s) = \sum_{k=0}^n {{n}\choose{k}} (1-p)^{n-k} (ps)^k = (1 - p + ps)^n.
@@ -62,7 +63,7 @@ On voit facilement que $f_X(1) = 1$ et que $f_X$ est monotone croissante.
   La fonction génératrice $f_X$ est $C^\infty$ sur $[0, 1]$ et sa $k$-ème dérivée vaut
   \begin{align*}
     f_X^{(k)}(s) 
-    & = \sum_{n \geq k} \Pr\{X = n\} n(n-1)  \dots (n-k+1) s^{n-k} \\
+    & = \sum_{n \geq k} \Pr\{X = n\} n(n-1)  \dots (n-k+1) s^{X-k} \\
     & = \Esp(X (X-1) \dots (X-n+1) s^{n-k})
   \end{align*}
 \end{proposition}
@@ -85,7 +86,7 @@ Directe.
 \eproof.
 
 \remarks
-\begin{itemize}
+\begin{enumerate}
   \item Le corollaire justifie le nom de 'fonction génératrice des probabilités'. $F_X$ nous donne également les moments de $X$. Notamment
   \begin{align*}
     \Var(X) 
@@ -95,7 +96,7 @@ Directe.
     & = f''_X(1) + f'_X(1)(1 - f'_X(1)). 
   \end{align*}
   \item En fait, la fonction génératrice caractérise complètement la loi de la variable $X$. Elle permet également d'assurer la convergence en loi.
-\end{itemize}
+\end{enumerate}
 
 \begin{proposition}[Convergence de la fonction génératrice]
   Soient $(X_n)_{n \geq 0}$ une suite de variables aléatoires positives et $X$ un variable aléatoires positives :
@@ -125,13 +126,13 @@ $$
 \eproof
 
 \remarks
-\begin{itemize}
+\begin{enumerate}
   \item Une conséquence directe est que si $X_1$, $X_2$, \dots $X_n$ sont positives et iid, alors la fonction génératrice de leur somme vaut
   $$
   f_{X_1 + \dots + X_n}(s) = \left(f(X_1)\right)^n.
   $$
   \item Cette propriété donne une autre démonstration de la formule de $f_X$ pour la loi binomiale, vue comme une somme de $n$ variables de Bernoulli indépendantes.
-\end{itemize}
+\end{enumerate}
 
 \begin{proposition}[Fonction génératrice d'une somme en nombre aléatoire]
   Soient $(X_n)_{n \geq 1}$ une suite de variables aléatoires positives iid et $N$ une variables positive indépendante, on s'intéresse à la somme des $N$ premiers éléments de la suite :
@@ -168,7 +169,7 @@ La taille de la population à la génération $n+1$ est donnée par
 \begin{equation} \label{eq:recurrenceBGW}
 Z_{n+1} = \sum_{i = 1}^{Z_n} X_{ni}.
 \end{equation}
-La suite $(Z_n)_{n \geq 0}$ forme donc une \cM sur $\Nbb$, puisque $Z_{n+1}$ est donné par $Z_n$ et que les $\{X_{ni})_{1 \geq i \geq Z_n}$ sont indépendants du passé.
+La suite $(Z_n)_{n \geq 0}$ forme donc une \cM sur $\Nbb$, puisque $Z_{n+1}$ est donné par $Z_n$ et par les $\{X_{ni})_{1 \geq i \geq Z_n}$, qui sont indépendants du passé.
 
 \bigskip
 On s'intéresse notamment à l'événement d'extinction défini par 
@@ -191,14 +192,18 @@ par leur fonction génératrice. En effet, \eqref{eq:recurrenceBGW} donne
 $$
 \Esp(s^{Z_{n+1}} \mid Z_n) = f_X^{Z_n}(s)
 \qquad \Rightarrow \qquad 
-\sum_{j \geq 0} p_{ij} s^j = \Esp(s^{Z_{n+1}} \mid Z_n=i) = f_X(s)^i.
+\sum_{j \geq 0} p_{ij} s^j = \Esp(s^{Z_{n+1}} \mid Z_n=i) = f_X(s)^i,
+$$
+donc
+$$
+p_{ij} = \frac{\left(f_X(s)^i\right)^{(j)}}{j!}.
 $$
 On observe qu'il s'agit bien d'une \cM homogène (puisque la fonction génératrice ne dépend par de $n$).
 
 %-------------------------------------------------------------------------------
 \paragraph*{Classification des états.} 
 \begin{itemize}
- \item L'état $\{0\}$ ne communique avec aucun autre : il constitue donc une classe. Comme il est de plus impossible d'en sortir ($p_{00} = 1$), il est récurrent : on parle d'état absorbant.
+ \item L'état $\{0\}$ ne communique avec aucun autre : il constitue donc une classe à lui seul. Comme il est de plus impossible d'en sortir ($p_{00} = 1$), il est récurrent : on parle d'état absorbant.
  \item Si $\Pr\{X \geq 2\} > 0$, tous les autres états communiquent, ils constituent donc une unique classe et possède tous la même nature.
  \item On peut montrer que tous les états, hormis $\{0\}$ sont transient.
 \end{itemize}
@@ -227,7 +232,7 @@ On commence par remarquer que la probabilité d'extinction partant de $k$ indivi
 $$
 \Pr_k\{Ext\} = \Pr_1\{Ext\}^k = q^k,
 $$
-puisqu'il faut pour cela que la $k$ populations indépendantes s'éteignent. En sommant sur toutes les tailles possibles à la première génération on a donc
+puisqu'il faut pour cela que les $k$ populations indépendantes s'éteignent. En sommant sur toutes les tailles possibles à la première génération on a donc
 $$
 q 
 = \Pr_1\{Ext\} 
@@ -236,10 +241,6 @@ q
 = f_{Z_1}(q)
 = f_X(q).
 $$
-
-\begin{definition}
-  Soit $m = \Esp(X) = f'_X(1)$ le nombre moyen de descendants. Le processus BGW est dit critique si $m=1$, sous-critique si $m < 1$ et sur-critique si $m > 1$.
-\end{definition}
 
 \begin{proposition} \label{prop:fonctionGeneratriceZn}
   La fonction génératrice de $Z_n$ partant de $Z_0 = 1$ est
@@ -258,6 +259,11 @@ $$
 f_{Z_n} = f_{Z_{n-1}} \circ f_X
 $$
 et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
+\eproof
+
+\begin{definition}
+  Soit $m = \Esp(X) = f'_X(1)$ le nombre moyen de descendants. Le processus BGW est dit critique si $m=1$, sous-critique si $m < 1$ et sur-critique si $m > 1$.
+\end{definition}
 
 \remarks
 \begin{enumerate}
@@ -275,7 +281,7 @@ et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
   Notamment, partant de $Z_0 = 1$, on a $\Esp_1(Z_n) = m^n$.
   \item Dans le cas où $Z_0$ est aléatoire, de fonction génératrice $f_{Z_0}$, on obtient de la même manière
   $$
-  f_{Z_n} = \underset{n \text{ fois}}{\underbrace{f_X \circ f_X \circ \dots \circ f_X}} \circ f_{Z_0}.
+  f_{Z_n} =  f_{Z_0} \circ \underset{n \text{ fois}}{\underbrace{f_X \circ f_X \circ \dots \circ f_X}}.
   $$
 \end{enumerate}
 
@@ -297,20 +303,19 @@ Pour cela, on distingue les deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0
   f''_X(s) = \Esp(X(X-1) s^X) = \sum_{x \geq 2} x (x-1) s^x > 0
   \qquad \text{pour } 0 < s \leq 1.
   $$
-  La fonction $f_X$ est donc monotone croissante sur $[0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) > 0$ : son graphe coupe donc la première bissectrice en 
-  $0 < s_1 < 1$ et en $s_2=1$.
+  La fonction $f_X$ est donc monotone croissante sur $[0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) > 0$ et $f'_X(1) > 1$ : son graphe coupe donc la première bissectrice en   $0 < s_1 < 1$ et en $s_2=1$.
 \end{itemize}
 \eproof
 
 $$
 \begin{tabular}{cc}
-  \begin{tabular}{lc}
+  \begin{tabular}{l}
     \textcolor{red}{\bf --} : $m < 1$ \\ ~ \\
     \textcolor{green}{\bf --} : $m = 1$ \\ ~ \\
     \textcolor{blue}{\bf --} : $m > 1$
   \end{tabular}
   &
-  \begin{tabular}{cc}
+  \begin{tabular}{c}
   \includegraphics[width=.4\textwidth]{GaltonWatson-pgf}
   \end{tabular}
 \end{tabular}
@@ -318,7 +323,6 @@ $$
 
 \remarks
 \begin{enumerate}
-  \item Dans le lemme \ref{lem:BGWnombrePointsFixes}, on écarte le cas $f_X(0) = \Pr\{X = 0\} = 0$, car alors chaque individu a au moins un descendant et donc $q = 0$. 
   \item On voit ainsi que la probabilité d'extinction vaut $q = 1$ si le processus est sous-critique ($m < 1$) ou critique ($m = 1$, puisque $\Pr\{X = 0\} > 0$). 
   \item Il reste à étudier le cas sur-critique pour déterminer quel point fixe donne la probabilité d'extinction.
 \end{enumerate}

@@ -23,13 +23,6 @@ Programme cours 7 :
 
 \todo{Trouver un exemple simple de \cM servant de fil rouge.}
 
-% Chaînes de Markov : classes de communication, irréductibilité, états transients,
-% récurrents, absorbants. 
-% 
-% Période d’une chaîne de Markov irréductible.
-
-% \todo{Voir 1-AlgLin-MatricesPositives / Chaîne de Markov}
-
 \paragraph*{Objectif.}
 Etudier une suite de variable aléatoires $(X_0, X_1, \dots X_n, \dots)$ non indépendantes. L'indice $n$ se réfère souvent à un temps et une telle suite est alors appelées {\em processus stochastique} à temps discert ou {\em chaîne}. % On note alors $X = (X_t)_{t \geq 0}$.
 
@@ -257,7 +250,7 @@ Les distributions invariantes jouent pour les chaînes de Markov un rôle analog
 \eproof
 
 \remarks
-\begin{itemize}
+\begin{enumerate}
 \item Si $\Ecal$ est fini, la proposition \ref{prop:convergenceEsperance} nous assure par exemple que, si $(Y_n)_{n \geq 0}$ converge en loi vers $\nu$ et que $Y \sim \nu$, on a, en prenant respectivement $f(x) = x$ et $f(x) = x^2$, 
 $$
 \lim_{n \to \infty} \Esp(Y_n) = \Esp(Y), \qquad
@@ -270,7 +263,7 @@ $$
 \qquad \Rightarrow \qquad
 \lim_{n \to \infty} \Pr\{Y_n \leq u\} = \Pr\{Y \leq u\}.
 $$
-\end{itemize}
+\end{enumerate}
 
 \begin{definition}
   Une distribution $\nu$ sur $\Ecal$ est dite \emph{stationnaire} pour la \cM $X$ si il existe une distribution $\mu$ telle que 
@@ -386,7 +379,7 @@ $$
 \begin{enumerate}
  \item On montre facilement que 1 est valeur propre de $P$ (car $P$ est stochastique), donc $\lambda_1 \geq 1$.
  \item Soit $\lambda$ une valeur propre de $P$ et $v$ un vecteur propre associé, on a $P^n v = \lambda^n v$ où $P^n$ est stochastique (voir section \ref{sec:MatStoch}), donc les coordonnées de $P^n v$ sont bornées par la plus grande coordonnée de $v$, ce qui impose que $\lambda \leq 1$, donc $\lambda_1 \leq 1$.
- \item Le fait que $P$ soit régulière assure, par le théorème de Perron-Frobenius, que $\lambda_1$ est la valeur propre unique de module 1, toutes les autres ayant des modules strictement inférieurs. 
+ \item Le fait que $P$ soit régulière assure, par le théorème \ref{thm:perronFrobenius} de Perron-Frobenius, que $\lambda_1$ est la valeur propre unique de module 1, toutes les autres ayant des modules strictement inférieurs. 
 \end{enumerate}
 \eproof
 
@@ -419,16 +412,26 @@ Programme cours 8 :
   S'il existe une chemin de $i$ vers $j$ et un chemin de $j$ vers $i$, on dit que $i$ et $j$ communique et on note $i \sim j$.
 \end{definition}
 
-\remark
-Par définition, tout état communique avec lui même (en prenant $n= 0 : P^0 = I \Rightarrow p_{ii}(0) = 1$).
 
-La relation de communication est une relation d'équivalence, c'est à dire qu'elle est :
+\begin{proposition}  \label{prop:communicationEquivalence}
+  La relation de communication 
+  $$
+  \Rcal(i, j) \Leftrightarrow \{\text{$i$ communique avec $j$}\}
+  $$
+  est une relation d'équivalence. 
+\end{proposition}
+
+\proof
+$\Rcal$ vérifie les trois condition d'une relation d'équivalence : 
 \begin{itemize}
-  \item reflexive: $\forall i \in \Ecal: \Rcal(i, j)$,
-  \item symétrique: $\forall i, j \in \Ecal: \Rcal(i, j) \Rightarrow \Rcal(j, i)$,
-  \item transitive: $\forall i, j, k \in \Ecal: \Rcal(i, j), \Rcal(j, k) \Rightarrow \Rcal(i, k)$.
+  \item reflexivité: $\forall i \in \Ecal: \Rcal(i, i)$ en prenant $n = 0$, soit $P^0 = I$ ;
+  \item symétrie : $\forall i, j \in \Ecal: \Rcal(i, j) \Rightarrow \Rcal(j, i)$ ;
+  \item transitivité : $\forall i, j, k \in \Ecal: \Rcal(i, j), \Rcal(j, k) \Rightarrow \Rcal(i, k)$.
 \end{itemize}
-Elle définit donc des classes d'équivalences $\Ccal_1, \Ccal_2, \dots $, qui constituent une partition de $E$:
+\eproof
+
+\remark
+$\Rcal$ définit donc des classes d'équivalences $\Ccal_1, \Ccal_2, \dots $, qui constituent une partition de $E$:
 $$
 \cup_{k \geq 0} \Ccal_k = \Ecal, \qquad \forall j \neq k: \quad \Ccal_j \cap \Ccal_k = \varnothing.
 $$
@@ -455,7 +458,7 @@ $$
   \item[$p = q = 0$ :] alors $P = I$ et toute distribution est stationnaire, mais $P$ n'est pas régulière et la loi de $X_n$ est la même que celle de $X_0$.
   \item[$0 < p, q < 1$ :] alors la seule distribution stationnaire est 
   $$
-  \nu = \left[ \frac{p}{p+q} \;  \frac{q}{p+q} \right],
+  \nu = \left[ \frac{q}{p+q} \;  \frac{p}{p+q} \right],
   $$
   et comme $P$ est régulière, $X_n$ converge en loi vers $\nu$ quelque soit la distribution initiale $\mu$.
   \item[$p = q = 1$ :] alors la seule distribution stationnaire est 
@@ -527,12 +530,11 @@ On cherche maintenant à établir une classification des comportements possibles
     $$
     p_{ij} = \binom{N}{j} \left(\frac{i}N\right)^j \left(\frac{N-i}N\right)^{N-j}.
     $$
-    \item[Classification des états.]
-    Ce modèle admet deux états absorbants : 
+    \item[Classification des états.] Les états se répartissent en trois classes
     $$
-    x = 0 \qquad \text{et} \qquad x = N
+    \Ccal_1 = \{0\}, \qquad \Ccal_2 = \{N\}, \qquad \Ccal_3 = \{1, \dots, N-1\}.
     $$
-    et finira nécessairement par atteindre l'un des deux. Les autres états sont donc transients.
+    Les classes $\Ccal_1$ et $\Ccal_2$ sont absorantes. La \cM finira nécessairement par atteindre l'une d'entre elles, $\Ccal_3$ est donc transiente.
     \item[Probabilité de fixation.] Il reste à savoir quel état absorbant sera atteint en premier. Notons $q_i$ la probabilité d'atteindre l'état $x=N$ (avant l'état $x=0$) en partant de $X_0 = i$. On a 
     $$
     q_0 = 0, \qquad q_N = 1.
@@ -578,28 +580,50 @@ On cherche maintenant à établir une classification des comportements possibles
     $$
     \Pr\{E_n = 1\} = p = 1 - \Pr\{E_n = -1\}.
     $$
-    On a donc $\Esp(E_n) = 2p-1$ et, puisque
+    On a notamment
+    \begin{align*}
+      \Esp(E_n) & = n (2p - 1) =: m, \\
+      \Var(E_n) & = \Esp(E_n^2) - (2p - 1)^2 = 1 - (4p^2 - 4p + 1) = 4p(1-p) =: s^2.
+    \end{align*}
+    Puisque
     $$
     X_n = X_0 + \sum_{i=1}^n X_i,
     $$
     la loi des grands nombre nous assure que 
     $$
-    \lim_{n \to \infty} \frac{X_n}n = \lim_{n \to \infty} \left(\frac{X_0}n + \frac1n \sum_{i=1}^n X_i\right) = 2p - 1.
+    \lim_{n \to \infty} \frac{X_n}n = \lim_{n \to \infty} \left(\frac{X_0}n + \frac1n \sum_{i=1}^n X_i\right) = m.
     $$
-    \item[$p \in (0, 1)$ et $p \neq 1/2$:] alors $X_n$ se comporte comme $(2p-1)n$ : la trajectoire est dite {\em balistique} (elle s'écarte de son origine à vitesse linéaire). $X_n$ tend vers $+\infty$ si $p > 1/2$ et vers $-\infty$ si $p < 1/2$. La \cM est transiente.
-    \item[$p = 1/2$:] on parle alors de marche aléatoire {\em symétrique}. En remarquant que 
-    \begin{align*}
-        \Var(E_n) & = \Esp(E_n^2) - (2p - 1)^2 = 1 - (4p^2 - 4p + 1) = 4p(1-p) \\
-        & = 1 \text{ si } p = 1/2,
-    \end{align*}
-    le théorème centrale limite nous assure que 
-    $X_n/n$ converge en loi vers $\Ncal(0, 1)$, c'est-à-dire que 
+    Plus précisémment encore, le théorème central limite nous assure (puisque $X_0 /n \to 0$) que
     $$
-    \lim_{n \to \infty} \Pr\left\{\frac{X_n}n \in [a, b]\right\} = \Pr\{\Ncal(0, 1) \in [a, b]\}.
+    \frac{\sqrt{n}}{s}\left(\frac{X_n}n - m\right) \overset{\Lcal}\rightarrow \Ncal(0, 1),
+    $$
+    c'est-à-dire que
+    $$
+    \lim_{n \to \infty} \Pr\left\{\frac{\sqrt{n}}{s}\left(\frac{X_n}n - m\right) \in [a, b]\right\} = \Pr\{\Ncal(0, 1) \in [a, b]\}.
+    $$
+    \item[$p \in (0, 1)$ et $p \neq 1/2$:] alors $\Esp(X_n) = nm$ et
+    $$
+    \frac{\sqrt{n}}{s}\left(\frac{X_n}n - m\right) \in [a, b]
+    \qquad \Leftrightarrow \qquad
+    X_n \in [nm + \sqrt{n}as, nm + \sqrt{n}bs].
+    $$
+    La trajectoire est dite {\em balistique} (elle s'écarte de son origine à vitesse linéaire) et son écart type $\sqrt{\Var(X)}$ croît seulement en $\sqrt{n}$. $X_n$ tend vers $+\infty$ si $p > 1/2$ et vers $-\infty$ si $p < 1/2$ et la \cM est transiente.
+    \item[$p = 1/2$:] on parle alors de marche aléatoire {\em symétrique}. Dans ce cas, $m=0$ et $s^2 = 1$, donc
+    $$
+    \frac{\sqrt{n}}{s}\left(\frac{X_n}n - m\right) \in [a, b]
+    \qquad \Leftrightarrow \qquad
+    X_n \in [\sqrt{n}a, \sqrt{n}b].
     $$
     $X_n$ si situe alors typiquement à une distance $\sqrt{n}$ de son origine. \\
     On peut montrer que $X$ est récurrente nulle : la \cM repasse un nombre infini de fois dans chaque état, mais les temps de passage sont de plus en plus espacés.
   \end{description}
+  $$
+  \begin{array}{cc}
+    p = 1/3 & p = 1/2 \\
+    \includegraphics[width=.4\textwidth, trim=0 0 20 50, clip=]{MarcheAleatoire-p33} & 
+    \includegraphics[width=.4\textwidth, trim=0 0 20 50, clip=]{MarcheAleatoire-p50} 
+  \end{array}
+  $$
 }
 
 %-------------------------------------------------------------------------------
@@ -621,11 +645,12 @@ On cherche maintenant à établir une classification des comportements possibles
   \end{itemize}
 \end{theorem}
 
-\remark
-Ce théorème est plus fort que la convergence en loi car il nous informe que la trajectoire de $X = (X_n)_{n \geq 0}$ elle même en assurant qu'elle passe par chaque état $i$ un nombre de fois proportionnelle à $\nu_i$.
+\remarks
+\begin{enumerate}
+ \item Ce théorème est plus fort que la convergence en loi car il assure que la trajectoire de $X = (X_n)_{n \geq 0}$ elle même passe par chaque état $i$ un nombre de fois proportionnelle à $\nu_i$.
+ \item La convergence en loi n'est garantie que dans le cas apériodique.
+\end{enumerate}
 
-\remark
-La convergence en loi n'est garantie que dans le cas apériodique.
 
 %-------------------------------------------------------------------------------
 \exemple{[$\Ecal = \{0, 1\}$]
