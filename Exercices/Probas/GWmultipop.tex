@@ -6,7 +6,6 @@ On considère une espèce dont les générations sont régies par un processus d
 
 On introduit un nombre aléatoire $N$ d'individus de cette espèce dans une île. On note $g$ la fonction génératrice de $N$. On suppose que les descendances des $N$ individus fondateurs évoluent indépendamment les unes des autres. On s'intéresse à la probabilité $p$ de colonisation, c'est-à-dire à la probabilité pour que cette population ne s'éteigne pas.
 \begin{enumerate}
-  \setcounter{enumi}{2}
   \item A quelle condition $p$ est-elle non nulle ?
   \solution{La colonisation réussit si la descendance d'au moins un individu fondateur ne s'éteint pas, ce qui se produit avec probabilité $1 - q^N$. $p$ est donc nulle pour tout $N$ si $q = 1$ et non nulle ssi $q < 1$, c'est à dire si $b < a$.}
   \item Exprimer $p$ en fonction de $q$. 

@@ -2,6 +2,8 @@
 \subsubsection{\'Evolution de fréquences alléliques}
 %-------------------------------------------------------------------------------
 
+\todo{Bof : voir {\tt DynPop-MailAL-30oct2022} pour une preuve alternative de la fin.}
+
 Dans une population diploïde panmictique, on s’intéresse à un gène existant sous la forme de
 $m$ allèles. On désigne par $p_i$ la proportion du pool gamétique portant l’allèle $i$ ($\sum_i p_i = 1$) et par $p'_i$ cette proportion à la génération qui suit. La dynamique des fréquences alléliques est donnée par
 \begin{equation} \label{eq:dynFreqModele}
@@ -10,10 +12,10 @@ $m$ allèles. On désigne par $p_i$ la proportion du pool gamétique portant l�
   V(p) = \sum_i \sum_j a_{ij} p_i p_j
 \end{equation}
 (de sorte que $\sum_i p'_i = 1$).
-On note de plus $A = [a_{ij}]$ où les $a_{ij}$ sont positifs ou nuls, mais non tous nuls.
+On définit de plus la matrice, supposée symétrique, $A = [a_{ij}]$ où les $a_{ij}$ sont positifs ou nuls, mais non tous nuls.
 
 \begin{enumerate}
-  \item Interpréter cette équation. Pourquoi $A$ est-elle symétrique ?
+  \item Interpréter l'équation \eqref{eq:dynFreqModele}. Pourquoi $A$ est-elle supposée symétrique ?
   \solution{$a_{ij}$ = avantage relatif du génotype $(A_i, A_j)$, symétrique par nature. \\
   Deux remarques : 
   \begin{itemize}
@@ -24,16 +26,17 @@ On note de plus $A = [a_{ij}]$ où les $a_{ij}$ sont positifs ou nuls, mais non 
 \end{enumerate}
 
 \bigskip
-\noindent On suppose maintenant qu'il existe un équilibre $p^* = [p^*_1, \dots p^*_m]^\top$ non trivial ($\forall i, p^*_i \neq 0$). On définit la viabilité à l'équilibre par $V^* = V(p^*)$.
+\noindent On suppose maintenant qu'il existe un équilibre $p^* = [p^*_1, \dots p^*_m]^\top$ non trivial ($\forall i, p^*_i \neq 0$). On définit la viabilité à l'équilibre par $V^* = V(p^*) > 0$.
 
 \begin{enumerate}
   \setcounter{enumi}{1}
-  \item Montrer que $V^* = \sum_j a_{ij} p^*_j$.
-  \solution{L'équilibre $p^*$ est un point stationnaire de \eqref{eq:dynFreqModele}, on a donc
+  \item Montrer que, pour tout $i$, $V^* = \sum_j a_{ij} p^*_j$.
+  \solution{L'équilibre $p^*$ est un point stationnaire de \eqref{eq:dynFreqModele}, donc
   $$
   \forall i: \quad V^* p^*_i = p^*_i \sum_{j=1}^m a_{ij} p^*_j,
   $$
   soit $V^* = \sum_{j=1}^m a_{ij} p^*_j, \forall i$. }
+  %
   \item En écrivant tout vecteur de fréquences alléliques $p$ sous la forme $p = p^* + x$, montrer que $V^*$ est maximale ssi
   \begin{equation} \label{eq:dynFreqCondition}
     \forall x: \sum_i x_i = 0, \qquad x^\top A x \leq 0.
@@ -57,16 +60,21 @@ On note de plus $A = [a_{ij}]$ où les $a_{ij}$ sont positifs ou nuls, mais non 
   Enfin, $V^*$ est maximale, ssi $\forall p, V(p) \leq V^*$, c'est-à-dire ssi
   \eqref{eq:dynFreqCondition}.
   }
+  %
   \item Montrer qu'on peut écrire $A$ sous la forme $A = R \Lambda R^\top$ où
   $$
   \Lambda = \text{diag}(\lambda_1, \dots, \lambda_k, 
     \lambda_{k+1}, \dots, \lambda_{k+\ell}, 
     0, \dots, 0)
   $$
-  où $k \geq 1$, $\ell \geq 0$, $k+\ell \leq m$, $\lambda_1, \dots \lambda_k > 0$ et $\lambda_{k+1}, \dots \lambda_{k+\ell} < 0$.
+  où $k \geq 0$, $\ell \geq 0$, $k+\ell \leq m$, $\lambda_1, \dots \lambda_k > 0$ et $\lambda_{k+1}, \dots \lambda_{k+\ell} < 0$.
   \solution{
-  $A$ étant symétrique, elle est diagonalisable et ses vecteurs propres sont orthogonaux. On peut donc l'écrire sous la forme $A = R \Lambda R^\top$ en mettant en premier les valeurs propres strictement positives, puis strictement négatives, puis, éventuellement, nulles. \\
-  La seule propriété restant à démontrer est que $k \geq 1$ (et non $k = 0$). Pour cela, on remarque que, si $k = 0$, alors tous les $\lambda_i$ sont négatifs (ou nuls), donc
+  $A$ étant symétrique, elle est diagonalisable et ses vecteurs propres sont orthogonaux. On peut donc l'écrire sous la forme $A = R \Lambda R^\top$ en mettant en premier les valeurs propres strictement positives, puis strictement négatives, puis, éventuellement, nulles. 
+  }
+  %
+  \item Montrer que $k \geq 1$.
+  \solution{
+  Si $k = 0$, alors tous les $\lambda_i$ sont négatifs (ou nuls), donc
   $$
   \forall x \in \Rbb^m: \qquad 
   x^\top A x 
@@ -74,34 +82,49 @@ On note de plus $A = [a_{ij}]$ où les $a_{ij}$ sont positifs ou nuls, mais non 
   = y^\top \Lambda y  
   = \sum_i \lambda_i y_i^2 \leq 0 
   $$
-  (en posant $y = R^\top x$) or $V^* = {p^*}^\top A p^* > 0$, donc on a nécessairement $k \geq 1$.
+  en posant $y = R^\top x$, or $V^* = {p^*}^\top A p^* > 0$ (car $A \geq 0$ et $p^*_i > 0$, $\forall i$), donc on a nécessairement $k \geq 1$.
   }
-  \item Montrer que \eqref{eq:dynFreqCondition} peut s'écrire 
-  $$
-  \forall y: \sum_i q_i y_i = 0, \qquad \sum_i \lambda_i y_i^2 \leq 0, 
-  $$
-  où $q$ est un vecteur à préciser.
-  \solution{
-  D'après la question précédente, en posant $y = R^\top x \Leftrightarrow x = R y$, on a que 
-  $$
-  \{x^\top A x \leq 0\} 
-  \qquad \Leftrightarrow \qquad 
-  \left\{y^\top \Lambda y = \sum_i \lambda_i y_i^2 \leq 0\right\}.
-  $$
-  Il reste à formuler la condition $\sum_i x_i = 0$ qui équivaut à 
-  $$
-  \left\{\sum_i \sum_j r_{ij} y_j = 0\right\}
-  \quad \Leftrightarrow \quad 
-  \left\{\sum_j y_j q_j = 0\right\} 
-  \qquad \text{en posant $q_j = \sum_i r_{ij}$}.
-  $$
-  \todo{Utilité de cette question ?}
-  }
+  %
+%   \item Montrer que \eqref{eq:dynFreqCondition} peut s'écrire 
+%   $$
+%   \forall y: \sum_i \lambda_i q_i y_i = 0, \qquad \sum_i \lambda_i y_i^2 \geq 0, 
+%   $$
+%   où $q$ est un vecteur à préciser.
+%   \solution{
+%   D'après la question précédente, toujours en posant $y = R^\top x \Leftrightarrow x = R y$, on a 
+%   \begin{align*}
+%     1_n^\top x & = 0 &
+%     \Leftrightarrow \qquad 1_n^\top R y & = 0 & 
+%     \Leftrightarrow \qquad V^* 1_n^\top R y & = 0 & 
+%   \end{align*}
+%   car $V^* > 0$. En utilisant la question 1, on a $V^* 1_n = A p^*$, donc
+%   $$
+%   1_n^\top x = 0 
+%   \quad \Leftrightarrow \quad {p^*}^\top A R y = 0 
+%   \quad \Leftrightarrow \quad {p^*}^\top R \Lambda y = 0 
+%   \quad \Leftrightarrow \quad q^\top \Lambda y = \sum_i \lambda_i q_i y_i = 0
+%   $$
+%   en prenant $q = R^\top p^*$.
+%   }
+  %
   \item En déduire que si $V^*$ maximale, alors $k=1$ et $\ell \geq 1$.
-  \solution{On a vu que, pour que $V^*$ soit maximale, il faut que $x^\top A x \leq 0$ pour tout $x$ vérifiant $\sum_i x_i = 0$, qui définit une sous-espace de dimension $m-1$. $k$ ne peut donc pas être supérieur ou égal à 2 (car alors il existerait deux dimensions dans lesquelles $x^\top A x > 0$). \\
+  \solution{
+%   Supposons $p \geq 2$ et prenons 
+%   $$
+%   y = \left[\lambda_2 q_2 \quad -\lambda_1 q_1 \quad 0 \quad \dots \quad 0\right]\top.
+%   $$
+%   $y$ vérifie bien
+%   $$
+%   \sum_i \lambda_i q_i y_i = \lambda_1 q_1 \lambda_2 q_2 - \lambda_2 q_2 \lambda_1 q_1 = 0
+%   $$
+%   et on a
+%   $$
+%   \sum_i \lambda_i y_i^2 = \lambda_1 \lambda_2 (\lambda_1 q_1^2 + \lambda_2 q_2^2).
+%   $$
+  On a vu que, pour que $V^*$ soit maximale, il faut que $x^\top A x \leq 0$ pour tout $x$ vérifiant $\sum_i x_i = 0$, qui définit une sous-espace de dimension $m-1$. $k$ ne peut donc pas être supérieur ou égal à 2 (car alors il existerait alors au moins deux dimensions dans lesquelles $x^\top A x > 0$). \\
   La condition $\ell \geq 1$ assure seulement qu'il existe des vecteurs de fréquences $p$ donnant une viabilité $V(p) < V^*$. 
   }
-  $$
-  \text{\textcolor{red}{Voir mail AL 30 oct 2022}}
-  $$
+%   $$
+%   \text{\textcolor{red}{Voir mail AL 30 oct 2022}}
+%   $$
 \end{enumerate}
