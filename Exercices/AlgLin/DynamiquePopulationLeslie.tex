@@ -1,0 +1,132 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Dynamique d'une population de Leslie}
+%-------------------------------------------------------------------------------
+
+On considère une population structurée en $n$ classes d'âge. Pour $1 \leq i \leq n$, on note $x_{ti}$ le nombre d'individus de la classe $i$ à la génération $t$ et $x_t = [x_{t1} \dots x_{tn}]^\top$ le vecteur décrivant l'ensemble de la population à cette même génération. On suppose que l'évolution de cette population est régit par la récurrence
+$$
+x_{t+1} = A x_t
+$$
+où $A$ est la matrice de Leslie
+$$
+A = \left[\begin{array}{cccccc}
+            f_1 & f_2 & \cdots  & \cdots & f_n \\
+            s_1 & 0 & \cdots  & \cdots & 0 \\
+            0 & \ddots  & \ddots & & \vdots \\
+            \vdots & \ddots & \ddots & \ddots & \vdots \\
+            0 & \cdots & 0 & s_{n-1} & 0 \\
+          \end{array}\right]
+$$
+où tous les coefficients $f_i$ et $s_i$ sont supposés strictement positifs. On note de plus
+$$
+\ell_1 = 1 \qquad \text{et} \qquad 
+\ell_k = \prod_{i=1}^{k-1} s_i \quad \text{pour $2 \leq k \leq n$}.
+$$
+
+\begin{enumerate}
+  \item Interprêter les coefficients $f_i$ et $s_i$.
+  \solution{$f_i$ est le taux de fertilité de la classe $i$ (qui alimente la classe 1). $S_i$ est le taux de survie de la classe $i$ (qui alimente la classe $i+1$).}
+  %
+  \item Soient $B_{k1} \in \Mcal_{k-1}$, $B_{k2} \in \Mcal_{n-k}$ définies par :
+  $$
+  B_{k1} = \left[\begin{array}{cccc}
+            s_1 & -\lambda & &  \\
+            & \ddots & \ddots & \\
+            & & \ddots & -\lambda \\
+            & & & s_{k-1}
+          \end{array}\right], \qquad
+  B_{k2} = \left[\begin{array}{cccc}
+            -\lambda & & & \\
+            s_{k+1} & \ddots & & \\
+            & \ddots & \ddots & \\
+            & & s_{n-1} & -\lambda
+          \end{array}\right].
+  $$
+  En notant $0_{p,q}$ la matrice $p \times q$ dont tous les éléments sont nuls, calculer le déterminant de la matrice $B_k \in \Mcal_{n-1}$ :
+  $$
+  B_k = \left[\begin{array}{cc}
+            B_{k1} & 0_{k-1, n-k} \\
+            0_{n-k, k-1} & B_{k2}
+          \end{array}\right].
+  $$
+  \solution{On utilise le calcul du déterminant par bloc pour obtenir
+  $$
+  |B| = |B_{k1}| \times |B_{k2}|
+  $$
+  et on remarque que, puisque $B_{k1}$ et $B_{k2}$ sont respectivement triangulaires supérieure et inférieure, leurs déterminants sont égaux au produit de leurs termes diagonaux, soit
+  $$
+  |B_{k1}| = \ell_k, \qquad |B_{k2}| = (-\lambda)^{n-k}
+  $$
+  }
+  %
+  \item Montrer que le polynôme caractéristique de $A$ est
+  $$
+  P_A(\lambda) = (f_1 - \lambda) (-\lambda)^{n-1} + \sum_{k=2}^{n} (-1)^{k-1} f_k \ell_k (-\lambda)^{n-k}.
+  $$
+  \solution{Les termes successifs du développement du déterminant 
+  $$
+  |A - \lambda I| 
+  = \left|\begin{array}{cccccc}
+            f_1-\lambda & f_2 & \cdots  & \cdots & f_n \\
+            s_1 & -\lambda & 0  & \cdots & 0 \\
+            0 & s_2 & \ddots & \ddots & \vdots \\
+            \vdots & \vdots & \ddots & \ddots & 0 \\
+            0 & \cdots & 0 & s_{n-1} & -\lambda \\
+          \end{array}\right|
+  $$ 
+  par rapport à la première ligne sont
+  \begin{align*}
+  (f_1 - \lambda) |B_1| & = (f_1-\lambda) (-\lambda^{n-1}), &
+  - f_2 |B_2| & = -f_2 s_1 (-\lambda)^{n-2}, \\
+  f_3 |B_3| & = f_3 s_1 s_2 (-\lambda)^{n-3}, & 
+  -f_4 |B_4| & = -f_4 s_1 s_2 s_3 (-\lambda)^{n-4}, \qquad \dots
+  \end{align*}
+  }
+  %
+  \item En déduire que la plus grande valeur propre en module $\lambda_1$ de la matrice $A$ vérifie
+  $$
+  \sum_{k=1}^n \ell_k f_k \lambda_1^{-k} = 1.
+  $$
+  \solution{Toutes les valeurs propres, dont $\lambda_1$, sont solutions de $P_A(\lambda) = 0$, soit
+  \begin{align*}
+  (f_1 - \lambda) (-\lambda)^{n-1} + \sum_{k=2}^{n} (-1)^{k-1} f_k \ell_k (-\lambda)^{n-k} & = 0 \\
+  \Leftrightarrow \qquad \sum_{k=1}^{n} (-1)^{k-1} f_k \ell_k (-\lambda)^{n-k} & = (-\lambda)^{n-1} & 
+  \Leftrightarrow \qquad \sum_{k=1}^{n} f_k \ell_k \lambda^k & = 1.
+  \end{align*}
+  }
+\end{enumerate}
+
+On note 
+$$
+a = \sum_{k=1}^n \ell_k \lambda_1^{-k}, \qquad
+b = \sum_{k=1}^n k \ell_k f_k \lambda_1^{-k}.
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{4}
+  \item Montrer que le vecteur $v$ de coordonnées
+  $$
+  v_k = \frac1a \ell_k \lambda_1^{-k}, \qquad 1 \leq k \leq n,
+  $$
+  est un vecteur propre à droite de $A$ associé à la valeur propre $\lambda_1$.
+  \solution{Soit le vecteur $w = Av$. Ses coordonnées sont
+  \begin{align*}
+    w_1 & = \sum_{k=1}^n f_k v_k = \frac1a \sum_{k=1}^n f_k \ell_k \lambda_1^{-k} = \frac1a = \lambda_1 v_1, \\
+    w_k & = s_{k-1} v_{k-1} = \frac1a s_{k-1} \ell_{k-1} \lambda_1^{-k+1}  = \frac1a \ell_k \lambda_1^{-k+1} = \lambda_1 v_k, \qquad \text{pour $2 \leq k \leq n$}.
+  \end{align*}
+  }
+  \item Montrer que le vecteur $u$ de coordonnées
+  $$
+  u_k = \frac1{b v_k} \sum_{j=k}^n \ell_j f_j \lambda_1^{-j}, \qquad 1 \leq k \leq n,
+  $$
+  est un vecteur propre à gauche de $A$ associé à la valeur propre $\lambda_1$.
+  \solution{Soit le vecteur $w^\top = u^\top A$. Ses coordonnées sont
+  \begin{align*}
+    w_k & = f_k u_1 + s_k u_{k+1} 
+    = \frac{a \lambda_1^k}{b \ell_k} \sum_{j=k}^n \ell_j f_j \lambda_1^{-j}, \qquad \text{pour $1 \leq k \leq n-1$}, \\
+    w_n & = f_n u_1
+    = f_n \frac{a \lambda_1}{b} \sum_{j=1}^n \ell_j f_j \lambda_1^{-j}
+  \end{align*}
+  \todo{pas fini}
+  }
+\end{enumerate}
+
