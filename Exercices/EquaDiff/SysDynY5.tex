@@ -1,0 +1,19 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Système dynamique quadratique en $y^5$ \todo{}}
+%-------------------------------------------------------------------------------
+
+On souhaite déterminer les points d'équilibre (et leur nature) du système
+$$
+\dot y = F(y) = \mu y + 2 y^3 - y^5.
+$$
+On a 
+$$
+F(y) = y(\mu + y^2 - y^4)
+$$
+qui s'annule pour $y = 0$ et pour les solutions de $(\mu + 2 y^2 - y^4)$. En posant, $z = y^2$, $\mu + 2 z - z^2 = 0$ admet des solutions si $\Delta =  4(1 + \mu) \geq 0$, soit $\mu \geq -1$. Ces solutions sont alors $z^* = -1 \pm \sqrt{1+\mu}$. La seule solution possiblement positive est $z^* = -1 + \sqrt{1+\mu}$ et elle l'est ssi $\mu > 1$. \\
+Le système admet donc un unique point fixe $x^*=0$ si $\mu < 1$ et un second point fixe $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$. \\
+On a de plus
+$$
+F'(x) = \mu + 3 y^2 - 5y^4
+$$
+dont le signe est celui de $\mu$ pour $x=0$ et \todo{nature de $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$.}
