@@ -2,9 +2,9 @@
 \subsubsection{Chaîne de Markov à 4 états}
 %-------------------------------------------------------------------------------
 
-On considère une chaîne de Markov $(X_n)_{n \geq 0}$ prenant ses valeurs dans $\{1, 2, 3, 4\}$, et on note $p(i, j)$ la probabilité de transition de $i$ à $j$. On suppose que $p(1, 1) = p(4, 4) = 1$, que $p(2, 3) = 1 - p(2, 1) =: p$ et que $p(3, 2) = 1 - p(3, 4) =: q$.
+On considère une chaîne de Markov $(X_n)_{n \geq 0}$ prenant ses valeurs dans $\{1, 2, 3, 4\}$, et on note $p_{i, j}$ la probabilité de transition de $i$ à $j$. On suppose que $p_{1, 1} = p_{4, 4} = 1$, que $p_{2, 3} = 1 - p_{2, 1} =: p$ et que $p_{3, 2} = 1 - p_{3, 4} =: q$.
 \begin{enumerate}
-  \item Donner la matrice de transition de cette chaîne de Markov.
+  \item Donner la matrice de transition  et tracer le graphe de transition de cette chaîne de Markov.
   \solution{La matrice de transition est
   $$
   P = \left( \begin{array}{cccc}
@@ -39,19 +39,5 @@ On considère une chaîne de Markov $(X_n)_{n \geq 0}$ prenant ses valeurs dans 
   x_2 = (1 - p) + p q x_2 
   \qquad \Leftrightarrow \qquad x_2 = \frac{1-p}{1 - pq}
   \qquad \Rightarrow \qquad x_3 = \frac{q(1-p)}{1 - pq}.
-  $$
-  On peut aussi calculer directement $x_2$ en définissant le temps d'atteinte de l'état $1$ depuis l'état $2$:
-  $$
-  T_{21} = \inf\{t: X_t = 1 \mid X_0 = 2\}.
-  $$
-  On remarque alors que, pour $k \geq 0$,  
-  $$
-  \Pr\{T_{21} = 2k\} = 0, \qquad \Pr\{T_{21} = 2k + 1\} = (1-p) \; (pq)^k
-  $$
-  et on en déduit
-  $$
-  x_2 = \sum_{n \geq 0} \Pr\{T_{21} = n\} = \sum_{k \geq 0} \Pr\{T_{21} = 2k+1\} 
-  = (1-p) \sum_{k \geq 0} (pq)^k = \frac{1-p}{1 - pq}.
-  $$
-  De même, on peut déterminer $x_3$ directement à partir de la loi du temps d'atteinte $T_{31}$.}
+  $$}
 \end{enumerate}
