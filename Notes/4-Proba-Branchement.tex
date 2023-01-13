@@ -102,7 +102,7 @@ Directe.
 \progres{
 Rappel cours 8 :
 \begin{itemize}
-  \item Fin chaînes de Markov, processus de Wright-Fisher
+  \item Fin chaînes de Markov, processus de Wright-Fisher, marche aléatoire
   \item Processus de branchement
   \item Fonction génératrice
 \end{itemize}
@@ -150,7 +150,7 @@ $$
   \item Cette propriété donne une autre démonstration de la formule de $f_X$ pour la loi binomiale, vue comme une somme de $n$ variables de Bernoulli indépendantes.
 \end{enumerate}
 
-\begin{proposition}[Fonction génératrice d'une somme en nombre aléatoire]
+\begin{proposition}[Fonction génératrice d'une somme en nombre aléatoire] \label{prop:fGeneratriceSommeAleatoire}
   Soient $(X_n)_{n \geq 1}$ une suite de variables aléatoires positives iid et $N$ une variables positive indépendante, on s'intéresse à la somme des $N$ premiers éléments de la suite :
   $$
   Z = \sum_{n=1}^N X_n.
@@ -212,7 +212,7 @@ $$
 $$
 donc
 $$
-p_{ij} = \frac{\left(f_X(s)^i\right)^{(j)}}{j!}.
+p_{ij} = \frac{\left(f_X(0)^i\right)^{(j)}}{j!}.
 $$
 On observe qu'il s'agit bien d'une \cM homogène (puisque la fonction génératrice ne dépend par de $n$).
 
@@ -235,6 +235,9 @@ On suppose que $f_X(0) \notin \{0, 1\}$, c'est-à-dire que
 $$
 0 < \Pr\{X = 0\} < 1.
 $$
+
+\remark
+$\Pr\{X = 0\} = 1$ implique une extinction immédiate de la population et $\Pr\{X = 0\} = 0$, au contraire, interdit l'extinction.
 
 \begin{proposition}
   La probabilité d'extinction $q$ est un point fixe de la fonction génératrice de $X$ :
@@ -266,7 +269,7 @@ $$
 \end{proposition}
 
 \proof 
-C'est une conséquence directe de la proposition sur les sommes en nombre aléatoires : puisque
+C'est une conséquence directe de la proposition \ref{prop:fGeneratriceSommeAleatoire} : puisque
 $$
 Z_n = \sum_{i=1}^{Z_{n-1}} X_{n-1, i},
 $$
@@ -319,7 +322,11 @@ Pour cela, on distingue les deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0
   f''_X(s) = \Esp(X(X-1) s^X) = \sum_{x \geq 2} x (x-1) s^x > 0
   \qquad \text{pour } 0 < s \leq 1.
   $$
-  La fonction $f_X$ est donc monotone croissante sur $[0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) > 0$ et $f'_X(1) > 1$ : son graphe coupe donc la première bissectrice en   $0 < s_1 < 1$ et en $s_2=1$.
+  La fonction $f_X$ est donc monotone croissante sur $[0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) > 0$ et $f'_X(1) > 1$. Son graphe coupe donc la première bissectrice 
+  \begin{itemize}
+  \item en $s^* < 1$ et en 1 si $m > 1$,
+  \item en 1 seulement si $m \leq 1$.
+  \end{itemize}
 \end{itemize}
 \eproof
 
@@ -348,10 +355,11 @@ $$
 \end{proposition}
 
 \proof
-On note, pour $n \geq 0$:
+On note, pour $n \geq 0$, la probabilité que la population soit éteinte à la génération $n$ :
 $$
 q_n := f_{Z_n}(0) = \Pr_1\{Z_n = 0\} = \Pr_1\{T_0 \leq n\}.
 $$
+(On retrouve que la limite $q$ de cette suite doit vérifier $q = f_X(q)$.) 
 On a donc
 $$
 q = \lim_{n \to \infty} q_n.
@@ -395,7 +403,10 @@ $$
 $$
 \eproof
 
-\remark
-La convergence est donc démontrée pour $Z_0$ aléatoire, avec $q_0 = \Pr\{Z_0 = 0\} \in [0, 1)$ quelconque. Le cas $Z_0 = 1$ correspond au cas $q_0 = 0$.
+\remarks
+\begin{enumerate}
+ \item La convergence est donc démontrée pour $Z_0$ aléatoire, avec $q_0 = \Pr\{Z_0 = 0\} \in [0, 1)$ quelconque. Le cas $Z_0 = 1$ correspond au cas $q_0 = 0$.
+ \item La convergence vers le point fixe $s^*$ peut également s'obtenir en montrant qu'il est contractant, c'est-à-dire que $|f'_X(s^*)| < 1$. Pour cela, on rapelle d'abord que $0 < f'_X(0) < 1$ et que $m = f'_x(1) > 1$. En appliquant le théorème des valeurs intermédiaire à $f'_X$, on conclue qu'il existe $\widetilde{s} \in (s^*, 1)$ tel que $f'_X(\widetilde{s}) = 1$. Comme enfin $f_X$ est strictement convexe, $f'_X(s)$ est strictement monotone croissante et donc $0 < f'_X(0) < f'_X(s^*) < f'_X(\widetilde{s}) = 1$.
+\end{enumerate}
 
 
