@@ -1,0 +1,27 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Linear tangent application to a quadratic form} 
+%-------------------------------------------------------------------------------
+
+Consider a symmetric matrix $A \in \Mcal_n$, a vector $v \in \Rbb^n$ and the function 
+$$
+\begin{array}{rlll}
+  f : & \Rbb^n & \mapsto & \Rbb \\
+  & x & \to & f(x) = x^\top A x + v^\top x.
+\end{array}
+$$
+
+\begin{enumerate}
+  \item Show that there exists a vector $g(x) \in \Rbb^n$, which you will specify, such that the linear application tangent to $f$ at $x$ is 
+  $$
+  \begin{array}{rlll}
+    D_xf : & \Rbb^n & \mapsto & \Rbb^n \\
+    & h & \to & D_xf(h) = g(x)^\top h.
+  \end{array}
+  $$
+  %
+  \item Assuming that $A$ is invertible, determine the stationary point $x^*$ where $g(x)$ is zero.
+  \item Give a condition on $A$ for $x^*$ to be a local minimum. (We may calculate the hessian matrix of $A$).
+  \item Discuss the usefulness of the assumption that $A$ is symmetric.
+\end{enumerate}
+
+

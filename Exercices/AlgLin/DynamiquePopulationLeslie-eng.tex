@@ -1,0 +1,91 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Dynamics of a Leslie population}
+%-------------------------------------------------------------------------------
+
+% Cf exercice 5 AL
+
+We consider a population structured in $n$ age classes. For $1 \leq k \leq n$, we note $x_k(t)$ the number of individuals of the class $k$ at the generation $t$ and $x(t) = [x_1(t) \dots x_n(t)]^\top$ the vector describing the whole population at this same generation. We suppose that the evolution of this population is governed by the recurrence
+\begin{equation} \label{eq:recurrenceLeslie}
+  x(t+1) = A \; x(t)
+\end{equation}
+where $A$ is the Leslie matrix
+$$
+A = \left[\begin{array}{cccccc}
+            f_1 & f_2 & \cdots  & \cdots & f_n \\
+            s_1 & 0 & \cdots  & \cdots & 0 \\
+            0 & \ddots  & \ddots & & \vdots \\
+            \vdots & \ddots & \ddots & \ddots & \vdots \\
+            0 & \cdots & 0 & s_{n-1} & 0 \\
+          \end{array}\right]
+$$
+where all coefficients $f_i$ and $s_i$ are assumed to be strictly positive. We note moreover
+$$
+\ell_1 = 1 \qquad \text{et} \qquad 
+\ell_k = \prod_{i=1}^{k-1} s_i \quad \text{pour $2 \leq k \leq n$}.
+$$
+
+\paragraph{Characteristic polynomial.}
+\begin{enumerate}
+  \item Interpret the coefficients $f_i$ and $s_i$.
+  %
+  \item Let $B_{k1} \in \Mcal_{k-1}$ and $B_{k2} \in \Mcal_{n-k}$ defined by :
+  $$
+  B_{k1} = \left[\begin{array}{cccc}
+            s_1 & -\lambda & &  \\
+            & \ddots & \ddots & \\
+            & & \ddots & -\lambda \\
+            & & & s_{k-1}
+          \end{array}\right], \qquad
+  B_{k2} = \left[\begin{array}{cccc}
+            -\lambda & & & \\
+            s_{k+1} & \ddots & & \\
+            & \ddots & \ddots & \\
+            & & s_{n-1} & -\lambda
+          \end{array}\right].
+  $$
+  Denoting $0_{p,q}$ the matrix $p \times q$ whose elements are all zero, calculate the determinant of the matrix $B_k \in \Mcal_{n-1}$ :
+  $$
+  B_k = \left[\begin{array}{cc}
+            B_{k1} & 0_{k-1, n-k} \\
+            0_{n-k, k-1} & B_{k2}
+          \end{array}\right].
+  $$
+  %
+  \item Show that the characteristic polynomial of $A$ is
+  $$
+  P_A(\lambda) = (f_1 - \lambda) (-\lambda)^{n-1} + \sum_{k=2}^{n} (-1)^{k-1} f_k \ell_k (-\lambda)^{n-k}.
+  $$
+  %
+  \item Deduce that the largest eigenvalue in modulus, denoted $\lambda_1$, of the matrix $A$ verifies
+  $$
+  \sum_{k=1}^n \ell_k f_k \lambda_1^{-k} = 1.
+  $$
+\end{enumerate}
+
+\paragraph{Eigenvectors.}
+We are now interested in the left and right eigenvectors of the matrix $A$. We note $$
+a = \sum_{k=1}^n \ell_k \lambda_1^{-k}, \qquad
+b = \sum_{k=1}^n k \ell_k f_k \lambda_1^{-k}.
+$$
+\begin{enumerate}
+  \setcounter{enumi}{4}
+  \item Show that the vector $v$ with coordinates
+  $$
+  v_k = \frac1a \ell_k \lambda_1^{-k}, \qquad 1 \leq k \leq n,
+  $$
+  is an right-eigenvector of $A$ associated with the eigenvalue $lambda_1$.
+  \item Show that the vector $u$ with coordinates
+  $$
+  u_k = \frac1{b v_k} \sum_{j=k}^n \ell_j f_j \lambda_1^{-j}, \qquad 1 \leq k \leq n,
+  $$
+  is an left-eigenvector of $A$ associated with the eigenvalue $\lambda_1$.
+\end{enumerate}
+
+\paragraph{Asymptotic behavior.}
+Finally, we are interested in the asymptotic behavior of the vector $x(t)$ describing the composition of the population after $t$ generations.
+\begin{enumerate}
+  \setcounter{enumi}{6}
+  \item Calculate $\sum_{k=1}^n v_k$ and $\sum_{k=1}^n v_k u_k$.
+  %
+  \item Starting from an initial composition vector $x(0)$, what is the asymptotic behavior of $x(t)$ when $t$ tends to infinity?
+\end{enumerate}

@@ -1,0 +1,47 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Markov chain with two absorbing states}
+%-------------------------------------------------------------------------------
+
+We consider a Markov chain $(X_n)_{n \geq 0}$ with values in $\{0, \dots, \ell\}$, and we note $p_{i, j}$ the transition probability from state $i$ to state $j$. It is assumed that 
+$$
+p_{0, 0} = p_{\ell, \ell} = 1 
+$$
+and that, for any $1 \leq i, j \leq \ell-1$, 
+$$
+p_{i, 0} = a > 0, \qquad p_{i, \ell} = b > 0, \qquad p_{i, j} \geq 0.
+$$
+We also note $T_{i, j}$ the time to reach the state $j$ from the state $i$:
+$$
+T_{i, j} = \min\{n: X_n = j \mid X_0 = i\}.
+$$
+
+\begin{enumerate}
+  \item Give the transition matrix and draw the transition graph of this Markov chain.
+  \item What are the communication classes of this chain? Give their nature. What are the possible asymptotic behaviors of this chain?
+  \item Let $1 \leq i \leq \ell-1$, give the probability that $X_{n+1}$ is between 1 and $\ell-1$ (included) knowing that $X_n = i$.
+  \item Deduce that, for $1 \leq i \leq \ell-1$, noting $c = a + b$, 
+  $$
+  \Pr\{T_{i, 0} = n\} = a (1 - c)^{n-1}, \qquad
+  \Pr\{T_{i, \ell} = n\} = b (1 - c)^{n-1}.
+  $$
+  \item For $1 \leq i \leq \ell-1$, we now note $T_i$ the absorption time (in 0 or in $\ell$) : 
+  $$
+  T_i = \min(T_{i, 0}, T_{i, \ell}).
+  $$
+  Show that $T_i$ has a geometric distribution $\Gcal(c)$ : $\Pr\{T_i = n\} = c (1 - c)^{n-1}$. \\
+  Deduce its expectation.  
+%   \item Montrer que, pour $1 \leq i \leq \ell-1$, 
+%   $$
+%   \Pr\{T_{i, 0} < n\} = \frac{a [1 - (1 - c)^{n-1}]}{c}.
+%   $$
+%   \solution{
+%   \begin{align*}
+%   \Pr\{T_{i, 0} < n\} 
+%   & = \sum_{m =1}^{n-1} \Pr\{T_{i, 0} = m \} 
+%   = a \sum_{m = 1}^{n-1} (1 - c)^{m-1} \\
+%   & = \frac{a [1 - (1 - c)^{n-1}]}{1 - (1 - c)} 
+%   = \frac{a [1 - (1 - c)^{n-1}]}{c}.
+%   \end{align*}}
+  \item For $1 \leq i \leq \ell-1$, calculate the probability that, starting from $X_0 = i$ the Markov chain reaches the state 0 before the state $\ell$.
+  \item What are the respective expectations of $T_{i, 0}$ and $T_{i, \ell}$ for $1 \leq i \leq \ell-1$?
+\end{enumerate}

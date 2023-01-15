@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+
+%-------------------------------------------------------------------------------
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+% \usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color,xcolor}
+\usepackage{tikz}
+\usepackage{remreset}
+\usepackage{url}
+\usepackage{boites}
+% \usepackage{extsizes} % Permet \documentclass[french, 14pt]{extreport}
+% \usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=.75cm]{geometry}
+% \usepackage{minitoc}
+
+\graphicspath{{../Figures/}}
+\input{../Macros}
+
+% Section numbering
+\usepackage{chngcntr}
+\renewcommand{\thepart}{\Roman{part}}
+% \counterwithout{section}{part}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+
+% Proposition numbering
+\renewcommand{\subsubsection}{\section}
+% \numberwithin{exercise}{section}
+% \numberwithin{equation}{section}
+
+% Suppression des solutions
+\renewcommand{\solution}[1]{}
+
+\newcommand{\alglin}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/AlgLin}
+\newcommand{\multivar}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/MultiVar}
+\newcommand{\equadiff}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/EquaDiff}
+\newcommand{\probas}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/Probas}
+
+
+% %-------------------------------------------------------------------------------
+% %-------------------------------------------------------------------------------
+% \title{\Huge{Ce qu'un biologiste doit savoir en mathématiques}}
+% \author{SR d'après \cite{Lam20} : Annexes}
+% \date{\today}
+
+
+\title{}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\begin{centering}
+  \footnotesize{\sc École Normale Supérieure de Paris} 
+  
+  \bigskip
+  \footnotesize{\sc Licence de Biologie L3}
+  
+  \bigskip
+  \footnotesize{\sc Année 2022–23}
+  
+  \bigskip
+  {\bf Mathématiques I : ce qu’un biologiste ne doit pas ignorer} 
+  
+  \bigskip
+  {\sc Examen}
+  
+\end{centering}
+
+\bigskip
+The test lasts 2 hours. 
+Individual course notes are allowed.
+The use of any electronic device is forbidden except a calculator.
+
+%-------------------------------------------------------------------------------
+% \section{Algèbre linéaire}
+\input{\alglin/DynamiquePopulationLeslie-eng}
+
+%-------------------------------------------------------------------------------
+% \section{Fonction de plusieurs variables}
+\input{\multivar/AL-Exo7-eng}
+
+%-------------------------------------------------------------------------------
+% \section{Systèmes dynamiques}
+\input{\equadiff/L3bioSU-TD2exo2-eng}
+
+%-------------------------------------------------------------------------------
+% \section{Probabilités}
+\input{\probas/ChaineMarkov2etatsAbsorbants-eng}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+

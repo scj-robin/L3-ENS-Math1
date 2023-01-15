@@ -4,9 +4,9 @@
 
 % Cf exercice 5 AL
 
-On considère une population structurée en $n$ classes d'âge. Pour $1 \leq i \leq n$, on note $x_k(t)$ le nombre d'individus de la classe $k$ à la génération $t$ et $x(t) = [x_1(t) \dots x_n(t)]^\top$ le vecteur décrivant l'ensemble de la population à cette même génération. On suppose que l'évolution de cette population est régit par la récurrence
+On considère une population structurée en $n$ classes d'âge. Pour $1 \leq k \leq n$, on note $x_k(t)$ le nombre d'individus de la classe $k$ à la génération $t$ et $x(t) = [x_1(t) \dots x_n(t)]^\top$ le vecteur décrivant l'ensemble de la population à cette même génération. On suppose que l'évolution de cette population est régi par la récurrence
 \begin{equation} \label{eq:recurrenceLeslie}
-  x(t+1) = A x(t)
+  x(t+1) = A \; x(t)
 \end{equation}
 où $A$ est la matrice de Leslie
 $$
@@ -24,8 +24,9 @@ $$
 \ell_k = \prod_{i=1}^{k-1} s_i \quad \text{pour $2 \leq k \leq n$}.
 $$
 
+\paragraph{Polynôme caractéristique.}
 \begin{enumerate}
-  \item Interprêter les coefficients $f_i$ et $s_i$.
+  \item Interpréter les coefficients $f_i$ et $s_i$.
   \solution{$f_i$ est le taux de fertilité de la classe $i$ (qui alimente la classe 1). $S_i$ est le taux de survie de la classe $i$ (qui alimente la classe $i+1$).}
   %
   \item Soient $B_{k1} \in \Mcal_{k-1}$, $B_{k2} \in \Mcal_{n-k}$ définies par :
@@ -57,8 +58,7 @@ $$
   et on remarque que, puisque $B_{k1}$ et $B_{k2}$ sont respectivement triangulaires supérieure et inférieure, leurs déterminants sont égaux au produit de leurs termes diagonaux, soit
   $$
   |B_{k1}| = \ell_k, \qquad |B_{k2}| = (-\lambda)^{n-k}.
-  $$
-  }
+  $$}
   %
   \item Montrer que le polynôme caractéristique de $A$ est
   $$
@@ -81,10 +81,9 @@ $$
   - f_2 |B_2| & = -f_2 s_1 (-\lambda)^{n-2}, \\
   f_3 |B_3| & = f_3 s_1 s_2 (-\lambda)^{n-3}, & 
   -f_4 |B_4| & = -f_4 s_1 s_2 s_3 (-\lambda)^{n-4}, \qquad \dots
-  \end{align*}
-  }
+  \end{align*}}
   %
-  \item En déduire que la plus grande valeur propre en module $\lambda_1$ de la matrice $A$ vérifie
+  \item En déduire que la plus grande valeur propre en module de la matrice $A$, notée $\lambda_1$, vérifie
   $$
   \sum_{k=1}^n \ell_k f_k \lambda_1^{-k} = 1.
   $$
@@ -93,10 +92,10 @@ $$
   (f_1 - \lambda) (-\lambda)^{n-1} + \sum_{k=2}^{n} (-1)^{k-1} f_k \ell_k (-\lambda)^{n-k} & = 0 \\
   \Leftrightarrow \qquad \sum_{k=1}^n (-1)^{k-1} f_k \ell_k (-\lambda)^{n-k} & = (-\lambda)^{n-1} & 
   \Leftrightarrow \qquad \sum_{k=1}^n f_k \ell_k \lambda^k & = 1.
-  \end{align*}
-  }
+  \end{align*}}
 \end{enumerate}
 
+\paragraph{Vecteurs propres.}
 On s'intéresse maintenant aux vecteurs propres à gauche et à droite de la matrice $A$. On note 
 $$
 a = \sum_{k=1}^n \ell_k \lambda_1^{-k}, \qquad
@@ -141,6 +140,7 @@ $$
   \end{align*}}
 \end{enumerate}
 
+\paragraph{Comportement asymptotique.}
 On s'intéresse enfin au comportement asymptotique du vecteur $x(t)$ décrivant la composition de la population au bout de $t$ générations.
 \begin{enumerate}
   \setcounter{enumi}{6}

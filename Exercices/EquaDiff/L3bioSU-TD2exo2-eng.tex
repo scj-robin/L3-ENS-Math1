@@ -1,0 +1,25 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Third order differential system} 
+%-------------------------------------------------------------------------------
+
+Consider the nonlinear ordinary differential equation\begin{equation} \label{eq:L3BioSUTD2E2}
+\dot x = f(x) = -x^3 + 7x^2 - 15x + 8.
+\end{equation}
+% dans laquelle $x$ désigne la concentration d'un métabolite : \eqref{eq:L3BioSUTD2E2} modélisant l'ensemble des réactions biochimiques impliquées dans la production/dégradation de ce métabolite.
+
+\begin{enumerate}
+  \item Determine the set of stationary points of \eqref{eq:L3BioSUTD2E2}.
+  \item Study the stability of each of these stationary points.
+  \solution{On calcule
+  $$
+  f'(x) = -3 x^2 + 14x -15
+  $$
+  et on conclue 
+  \begin{align*}
+    f'(x^*_1) & = -3 < 0 & \Rightarrow \quad x^*_1 & = 1 \text{ est stable}, \\ 
+    f'(x^*_2) & = + 2 > 0 & \Rightarrow \quad x^*_2 & = 2 \text{ est instable}, \\ 
+    f'(x^*_3) & = -6 < 0 & \Rightarrow \quad x^*_3 & = 4 \text{ est stable}. 
+  \end{align*}}
+  \item Draw the stability diagram of the system.
+  \item From a system behavior point of view, what are the respective roles of each of the stationary points.
+\end{enumerate}
