@@ -15,19 +15,33 @@
 \usepackage{remreset}
 \usepackage{url}
 \usepackage{boites}
+\usepackage{fancyhdr}
+% \usepackage{extsizes} % Permet \documentclass[french, 14pt]{extreport}
+% \usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=.75cm]{geometry}
+% \usepackage{minitoc}
 
 \graphicspath{{../Figures/}}
 \input{../Macros}
 
 % Proposition numbering
-\addto\captionsfrench{\renewcommand{\partname}{TD}}
 % \numberwithin{proposition}{section}
-% \numberwithin{exercise}{section}
-% \numberwithin{equation}{section}
+\numberwithin{exercise}{subsection}
+\numberwithin{equation}{subsection}
+
+\addto\captionsfrench{\renewcommand{\partname}{TD}}
+\numberwithin{equation}{subsubsection}
 
 % Suppression des solutions
-% \renewcommand{\solution}[1]{}
+\renewcommand{\solution}[1]{}
 
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{ \fancyplain{}{ENS Paris, L3 Biologie, Année 2022–23} }
+\rhead{ \fancyplain{}{Mathématiques I : TD} }
+% \rhead{ \fancyplain{}{\thepage} }
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 \title{Ce qu'un biologiste doit savoir en mathématiques \\ Sujets de travaux dirigés}
 \date{}
 \author{SR}
@@ -38,19 +52,23 @@
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 
-% \begin{center}
-%   \small{\sc \'Ecole normale supérieure de Paris, Licence de Biologie L3, Année 2022-23} 
-% \end{center}
-
 \maketitle
-
 \tableofcontents
 
-\newpage \part{} \input{ExosTD1}
+\newpage \part{} 
+% \pagestyle{myheadings}
+% \markright{ENS Paris, L3 Biologie \hfill Année 2022–23 \hfill Mathématiques I : TD \hfill }
+\input{ExosTD1}
 
-\newpage \part{} \input{ExosTD2}
+\newpage \part{} 
+% \pagestyle{myheadings}
+% \markright{ENS Paris, L3 Biologie \hfill Année 2022–23 \hfill Mathématiques I : TD \hfill }
+\input{ExosTD2}
 
-\newpage \part{} \input{ExosTD3}
+\newpage \part{} 
+% \pagestyle{myheadings}
+% \markright{ENS Paris, L3 Biologie \hfill Année 2022–23 \hfill Mathématiques I : TD \hfill }
+\input{ExosTD3}
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------

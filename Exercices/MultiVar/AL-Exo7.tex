@@ -1,4 +1,63 @@
 %-------------------------------------------------------------------------------
-\subsubsection{AL-Exo7 \todo{}} 
+\subsubsection{Application linéaire tangente à une forme quadratique} 
 %-------------------------------------------------------------------------------
+
+On considère une matrice $A \in \Mcal_n$ symétrique, un vecteur $v \in \Rbb^n$ et la fonction 
+$$
+\begin{array}{rlll}
+  f : & \Rbb^n & \mapsto & \Rbb \\
+  & x & \to & f(x) = x^\top A x + v^\top x.
+\end{array}
+$$
+
+\begin{enumerate}
+  \item Montrer qu'il existe un vecteur $g(x) \in \Rbb^n$, qu'on précisera, tel que l'application linéaire tangente à $f$ en $x$ s'écrit
+  $$
+  \begin{array}{rlll}
+    D_xf : & \Rbb^n & \mapsto & \Rbb^n \\
+    & h & \to & D_xf(h) = g(x)^\top h.
+  \end{array}
+  $$
+  \solution{On écrit
+  \begin{align*}
+    f(x+h) 
+    & = (x+h)^\top A (x+h) + v^\top (x+h)
+    = f(x) + x^\top A h + h^\top A x + h^\top A h + v^\top h \\
+    & = f(x) + (2 x^\top A + v^\top) h + h^\top A h
+  \end{align*}
+  puisque $x^\top A h = h^\top A x$. On remarque alors que $h^\top A h = o(\|h\|)$ pour conclure que, puisque $A$ est symétrique, l'application linéaire tangent $D_x f$ s'écrit bien
+  $$
+  D_xf(h) = g(x)^\top h
+  \qquad \text{avec} \quad
+  g(x) = 2 A x + v.
+  $$}
+  \item En supposant que $A$ est inversible, déterminer le point stationnaire $x^*$ où $g(x)$ s'annule.
+  \solution{En supposant $A$ inversible, on a
+  $$
+  g(x^*) = 0
+  \qquad \Leftrightarrow \qquad
+  2 A x^* + v = 0
+  \qquad \Leftrightarrow \qquad
+  x^* = - \frac12 A^{-1} v.
+  $$}
+  \item Donner une condition sur$A$ pour que $A$ soit un minimum local. (On pourra calculer la matrice hessienne de $A$.)
+  \solution{La matrice hessienne de l'application $f$ en tout point $x$ vaut $H_x = 2 A$ (il suffit de déterminer l'application linéaire tangente à $g(x)$).
+  $x^*$ est donc un minimum ssi $A$ est strictement définie négative}
+  \item Discuter l'utilité de l'hypothèse selon laquelle $A$ est symétrique.
+  \solution{On peut décomposer $A$ en ses parties symétrique $S$ et anti-symétrique $T$ : 
+  $$
+  S = \frac12(A + A^\top), \qquad 
+  T = \frac12(A - A^\top), \qquad 
+  \Rightarrow \quad
+  A = S + T
+  $$
+  et remarquer que
+  $$
+  f(x) 
+  = x^\top A x + v^\top x
+  = x^\top S x + \frac12 \underset{=0}{\underbrace{(x^\top A x - x^\top A^\top x)}} + v^\top x,  
+  $$
+  c'est-à-dire que seulle la partie symétrique de $A$ contribue à la fonction Ode $f$.}
+\end{enumerate}
+
 

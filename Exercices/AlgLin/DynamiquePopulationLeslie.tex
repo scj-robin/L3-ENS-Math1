@@ -1,11 +1,13 @@
 %-------------------------------------------------------------------------------
-\subsubsection{Dynamique d'une population de Leslie \todo{}}
+\subsubsection{Dynamique d'une population de Leslie}
 %-------------------------------------------------------------------------------
 
-On considère une population structurée en $n$ classes d'âge. Pour $1 \leq i \leq n$, on note $x_{ti}$ le nombre d'individus de la classe $i$ à la génération $t$ et $x_t = [x_{t1} \dots x_{tn}]^\top$ le vecteur décrivant l'ensemble de la population à cette même génération. On suppose que l'évolution de cette population est régit par la récurrence
-$$
-x_{t+1} = A x_t
-$$
+% Cf exercice 5 AL
+
+On considère une population structurée en $n$ classes d'âge. Pour $1 \leq i \leq n$, on note $x_k(t)$ le nombre d'individus de la classe $k$ à la génération $t$ et $x(t) = [x_1(t) \dots x_n(t)]^\top$ le vecteur décrivant l'ensemble de la population à cette même génération. On suppose que l'évolution de cette population est régit par la récurrence
+\begin{equation} \label{eq:recurrenceLeslie}
+  x(t+1) = A x(t)
+\end{equation}
 où $A$ est la matrice de Leslie
 $$
 A = \left[\begin{array}{cccccc}
@@ -54,7 +56,7 @@ $$
   $$
   et on remarque que, puisque $B_{k1}$ et $B_{k2}$ sont respectivement triangulaires supérieure et inférieure, leurs déterminants sont égaux au produit de leurs termes diagonaux, soit
   $$
-  |B_{k1}| = \ell_k, \qquad |B_{k2}| = (-\lambda)^{n-k}
+  |B_{k1}| = \ell_k, \qquad |B_{k2}| = (-\lambda)^{n-k}.
   $$
   }
   %
@@ -89,18 +91,17 @@ $$
   \solution{Toutes les valeurs propres, dont $\lambda_1$, sont solutions de $P_A(\lambda) = 0$, soit
   \begin{align*}
   (f_1 - \lambda) (-\lambda)^{n-1} + \sum_{k=2}^{n} (-1)^{k-1} f_k \ell_k (-\lambda)^{n-k} & = 0 \\
-  \Leftrightarrow \qquad \sum_{k=1}^{n} (-1)^{k-1} f_k \ell_k (-\lambda)^{n-k} & = (-\lambda)^{n-1} & 
-  \Leftrightarrow \qquad \sum_{k=1}^{n} f_k \ell_k \lambda^k & = 1.
+  \Leftrightarrow \qquad \sum_{k=1}^n (-1)^{k-1} f_k \ell_k (-\lambda)^{n-k} & = (-\lambda)^{n-1} & 
+  \Leftrightarrow \qquad \sum_{k=1}^n f_k \ell_k \lambda^k & = 1.
   \end{align*}
   }
 \end{enumerate}
 
-On note 
+On s'intéresse maintenant aux vecteurs propres à gauche et à droite de la matrice $A$. On note 
 $$
 a = \sum_{k=1}^n \ell_k \lambda_1^{-k}, \qquad
 b = \sum_{k=1}^n k \ell_k f_k \lambda_1^{-k}.
 $$
-
 \begin{enumerate}
   \setcounter{enumi}{4}
   \item Montrer que le vecteur $v$ de coordonnées
@@ -119,14 +120,50 @@ $$
   u_k = \frac1{b v_k} \sum_{j=k}^n \ell_j f_j \lambda_1^{-j}, \qquad 1 \leq k \leq n,
   $$
   est un vecteur propre à gauche de $A$ associé à la valeur propre $\lambda_1$.
-  \solution{Soit le vecteur $w^\top = u^\top A$. Ses coordonnées sont
+  \solution{Soit le vecteur $w^\top = u^\top A$. On a
+  $$
+  w_n = f_n u_1
+    = f_n \frac{a \lambda_1}b \sum_{j=1}^n \ell_j f_j \lambda_1^{-j}
+    = f_n \frac{a \lambda_1}b
+  $$
+  or
+  $$
+  u_n = \frac{\ell_n f_n \lambda_1^{-n}}{b v_n} = \frac{a f_n}{b}, 
+  \qquad \text{donc} \quad w_n = \lambda_1 u_n.
+  $$
+  De plus, pour $1 \leq k \leq n-1$, on a
   \begin{align*}
     w_k & = f_k u_1 + s_k u_{k+1} 
-    = \frac{a \lambda_1^k}{b \ell_k} \sum_{j=k}^n \ell_j f_j \lambda_1^{-j}, \qquad \text{pour $1 \leq k \leq n-1$}, \\
-    w_n & = f_n u_1
-    = f_n \frac{a \lambda_1}{b} \sum_{j=1}^n \ell_j f_j \lambda_1^{-j}
-  \end{align*}
-  \todo{pas fini}
-  }
+    = f_k \frac{a \lambda_1}{b} \sum_{j=1}^n \ell_j f_j \lambda_1^{-j} + s_k \frac{a \lambda_1^{k+1}}{b \ell_{k+1}} \sum_{j=k+1}^n \ell_j f_j \lambda_1^{-j} \\
+    & = \frac{a \lambda_1^{k+1}}{b \ell_k} \left(f_k \ell_k \lambda_1^{-k} + \sum_{j=k+1}^n \ell_j f_j \lambda_1^{-j}\right)
+    = \lambda_1 \frac{a \lambda_1^k}{b \ell_k} \sum_{j=k}^n \ell_j f_j \lambda_1^{-j}
+    = \lambda_1 u_k.
+  \end{align*}}
 \end{enumerate}
 
+On s'intéresse enfin au comportement asymptotique du vecteur $x(t)$ décrivant la composition de la population au bout de $t$ générations.
+\begin{enumerate}
+  \setcounter{enumi}{6}
+  \item Calculer $\sum_{k=1}^n v_k$ et $\sum_{k=1}^n v_k u_k$.
+  \solution{On a
+  \begin{align*}
+    \sum_{k=1}^n v_k 
+      & = \frac1a \sum_{k=1}^n \ell_k \lambda_i^{-k} = 1 \\
+    \sum_{k=1}^n v_k u_k 
+      & = \frac1b \sum_{k=1}^n \sum_{j=k}^n \ell_j f_j \lambda_1^{-j}
+      = \frac1b \sum_{k=1}^n k \ell_k f_k \lambda_1^{-k} = 1.
+  \end{align*}}
+  \item Partant d'un vecteur de composition initial $x(0)$, quel est le comportement asymptotique de $x(t)$ quand $t$ tend vers l'infini ?
+  \solution{La récurrence \eqref{eq:recurrenceLeslie} implique que $x(t) = A^t x(0)$. De plus, le théorème de Perron-Frobénius nous assure que $\lim_{t \to \infty} \lambda_1^{-t} A^t = v u^\top$. On a donc
+  $$
+  \lim_{t \to \infty} \lambda_1^{-t} x(t) 
+  = \lim_{t \to \infty} \lambda_1^{-t} A^t x_0(t)
+  = v u^\top x(0) = \left(u^\top x(0)\right) v
+  $$
+  soit $x(t) \approx c_0 \lambda_1^t v$, avec $c_0 = u^\top x(0)$.
+  \begin{itemize}
+   \item La taille totale de la population évolue asymptotiquement comme $\lambda_1^n$. 
+   \item La composition asymptotique relative de la population est donnée par les coordonnées du vecteur $v$ (qui somment à 1). 
+   \item Le produit scalaire $c_0$ indique comment les effectifs initiaux $x_k(0)$ contribuent respectivement (à proportion de $u_k$) à la taille asymptotique de la population.
+  \end{itemize}}
+\end{enumerate}

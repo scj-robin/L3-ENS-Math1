@@ -30,9 +30,18 @@
 \setcounter{tocdepth}{1}
 
 % Proposition numbering
-% \numberwithin{proposition}{section}
+\renewcommand{\subsubsection}{\section}
 % \numberwithin{exercise}{section}
 % \numberwithin{equation}{section}
+
+% Suppression des solutions
+\renewcommand{\solution}[1]{}
+
+\newcommand{\alglin}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/AlgLin}
+\newcommand{\multivar}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/MultiVar}
+\newcommand{\equadiff}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/EquaDiff}
+\newcommand{\probas}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/Probas}
+
 
 % %-------------------------------------------------------------------------------
 % %-------------------------------------------------------------------------------
@@ -71,42 +80,21 @@ L'épreuve dure 2 heures.
 Les notes de cours individuelles sont autorisées.
 L’usage de tout appareil électronique est interdit à l’exception d’une calculatrice.
 
-\tableofcontents
+%-------------------------------------------------------------------------------
+% \section{Algèbre linéaire}
+\input{\alglin/DynamiquePopulationLeslie}
 
 %-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
-\section{Algèbre linéaire}
-%-------------------------------------------------------------------------------
-
-\input{../Exercices/AlgLin/EvolutionFrequenceAlleliques}
+% \section{Fonction de plusieurs variables}
+\input{\multivar/AL-Exo7}
 
 %-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
-\section{Fonction de plusieurs variables}
-%-------------------------------------------------------------------------------
-
-\input{../Exercices/MultiVar/AL-Exo7}
+% \section{Systèmes dynamiques}
+\input{\equadiff/L3bioSU-TD2exo2}
 
 %-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
-\section{Systèmes dynamiques}
-%-------------------------------------------------------------------------------
-
-\input{../Exercices/EquaDiff/L3bioSU-TD2exo1}
-
-\input{../Exercices/EquaDiff/L3bioSU-TD1exo2}
-
-\input{../Exercices/EquaDiff/SysDynY5}
-
-%-------------------------------------------------------------------------------
-\todo{Voir L3 Bio SU : TD1, exercice 2}
-
-%-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
-\section{Probabilités}
-%-------------------------------------------------------------------------------
-
-\input{../Exercices/Probas/GWquadratique}
+% \section{Probabilités}
+\input{\probas/ChaineMarkov2etatsAbsorbants}
 
 
 %-------------------------------------------------------------------------------
