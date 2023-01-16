@@ -29,7 +29,7 @@ $$
   \item Interpréter les coefficients $f_i$ et $s_i$.
   \solution{$f_i$ est le taux de fertilité de la classe $i$ (qui alimente la classe 1). $S_i$ est le taux de survie de la classe $i$ (qui alimente la classe $i+1$).}
   %
-  \item Soient $B_{k1} \in \Mcal_{k-1}$, $B_{k2} \in \Mcal_{n-k}$ définies par :
+  \item Soient $B_{k1} \in \Mcal_{k-1}$ et $B_{k2} \in \Mcal_{n-k}$ définies par :
   $$
   B_{k1} = \left[\begin{array}{cccc}
             s_1 & -\lambda & &  \\
@@ -99,7 +99,7 @@ $$
 On s'intéresse maintenant aux vecteurs propres à gauche et à droite de la matrice $A$. On note 
 $$
 a = \sum_{k=1}^n \ell_k \lambda_1^{-k}, \qquad
-b = \sum_{k=1}^n k \ell_k f_k \lambda_1^{-k}.
+b = \sum_{k=1}^n k \, \ell_k f_k \lambda_1^{-k}.
 $$
 \begin{enumerate}
   \setcounter{enumi}{4}
