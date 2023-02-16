@@ -9,7 +9,7 @@ exportFig <- TRUE
 
 # Paramétrisation en x = b N /m, y = c P /r
 r <- 2; m <- 1; parms <- c(r=r, m=m)
-y0List <- list(c(.1, 0), c(0, .1), c(.1, .1), c(.25, .25), c(.5, .5), c(.75, .75)); y0Nb <- length(y0List)
+y0List <- list(c(.1, 3), c(0, .1), c(.1, .1), c(.25, .25), c(.5, .5), c(.75, .75)); y0Nb <- length(y0List)
 tMax <- 15; tNb <- 1e3; tGrid <- seq(0, tMax, length.out=tNb)
 
 ###############################################################################
