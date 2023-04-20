@@ -266,6 +266,25 @@ $$
   $$
 }
 
+\begin{exercise*}[Cas d'une matrice $2 \times 2$ symétrique]
+  On considère la matrice $A \in \Mcal_2$:
+  $$
+  A = \left[\begin{array}{cc} a & b \\ b & c\end{array}\right]
+  $$
+  Montrer que ses deux valeurs propres sont réelles.
+\end{exercise*}
+
+\solution{D'après l'exercice précédent, il suffit de vérifier que
+\begin{align*}
+  p^2 - 4 q &
+  = (a + c)^2 - 4(ac - b^2)
+  = a^2 +2ac +c^2 - 4ac + 4b^2
+  = (a - c)^2 + 4b^2 > 0.
+\end{align*}
+}
+
+
+
 \begin{theorem}[Propriétés du polynôme caractéristique]
   Le polynôme caractéristique $P_A$ de la matrice $A \in \Mcal_n(\Rbb)$ est de degré exactement $n$ et, en notant $[\lambda^k]P_A(\lambda)$ le coefficient d'ordre $k$ de $P_A(\lambda)$:
   $$
