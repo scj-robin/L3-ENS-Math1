@@ -1,0 +1,9 @@
+AlgLin : 
+* Valeurs propres d'un bloc diagonal d'une matrice de variance comprise dans le range du spectre de la matrice entière : 
+https://math.stackexchange.com/questions/2415208/computing-eigenvalues-of-a-specific-block-covariance-matrix
+
+Syst Dyn : 
+* Système dynamique à 3 populations : cf notes F. Guichard / journées réseaux IEES mai 2023
+
+Probas : 
+* Variance dans le processus de Wright-Fisher au cours des générations : cf notes de cours Aussois G. Achaz
