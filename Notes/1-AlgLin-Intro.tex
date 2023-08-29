@@ -54,7 +54,7 @@ $x(t) = (x_1(t), \dots, x_i(t), \dots, x_k(t))$ répartition d'une population au
 $$
 x_i(t+1) = \sum_{i=1}^k a_{ij} x_j(t) 
 $$
-$A \in \Mcal_k$, $a_{ij} \geq 0 : $ fraction de la catégorie $j$ de la population passant dans la catégorie $i$ au temps suivant. \textcolor{red}{Les colonnes contribuent aux lignes : orientation différentes de chaînes de Markov}
+$A \in \Mcal_k$, $a_{ij} \geq 0 : $ fraction de la catégorie $j$ de la population passant dans la catégorie $i$ au temps suivant. 
 
 C'est-à-dire
 $$
@@ -73,7 +73,7 @@ Catégories $(1, \dots k)$ = classes d'âges : $a_{ij} = 0$ sauf
   a_{i, i-1} : & \text{ taux de survie de la classe d'âge $i$}, \\
   a_{1, i} : & \text{ taux de fécondité de la classe d'âge $i$}, 
 \end{align*}
-soit (\textcolor{red}{les colonnes contribuent aux lignes : orientation inverses des chaînes de Markov})
+soit \warning{Les colonnes contribuent aux lignes : orientation inverse des chaînes de Markov.}
 $$
 A = \left[\begin{array}{cccccc}
             a_{11} & a_{12} & \cdots  & \cdots & a_{1k} \\
