@@ -12,13 +12,28 @@
   \begin{enumerate}
     \item Montrer que la fonction génératrice de $X$ est
     $$
-    f(s) = 1 - (+b) + as + bs^2.
+    f(s) = 1 - a - b + as + bs^2.
     $$
     \solution{\todo{}}
+    \item En déduire le nombre de descendants moyen par individu $m$
+    $$
+    m = a + 2b.
+    $$
+    \solution{On a $f'_X(s) = a + 2bs$, soit $m = f'_X(1) = a + 2b$.}
     \item Montrer que les solutions de l'équation $s = f(s)$ sont de la forme
     $$
     s = \frac{(1-a) \pm |m-1|}{2(1 -(a+b))}
     $$
     où $m$ est l'espérance du nombre de descendants d'un individu.
-    \solution{\todo{}}
+    \solution{On résoud
+    $$
+    s = f(s)
+    \qquad \Leftrightarrow \qquad
+    (1 - a -b) + (a-1)s + bs^2 = 0
+    $$
+    dont le discriminant est
+    $$
+    \Delta = (a-1)^2 - 4 b (1 - a -b) = ... = (a + 2b - 1)^2 = (m-1)^2
+    $$
+    soit}
   \end{enumerate}
