@@ -55,3 +55,16 @@ curve(fX, ylim=c(0, 1), col=2, lwd=2, xlab='s', ylab='fX(s)')
 abline(0, 1, col=1, lwd=2)
 abline(v = uniroot(gX, c(1e-4, 1-1e-4))$root, lwd=2, col=4)
 abline(h=c(0, 1), v=c(0, 1), col=8)
+
+gXlambda <- function(s, lambda){exp(lambda*(s-1))-s}
+qPoisson <- function(lambda){uniroot(gXlambda, c(1e-4, 1-1e-4), lambda=lambda)$root}
+qPoisson(1+1e-4)
+lambdaGrid <- seq(1+1e-4, 5, length.out=1e2)
+plot(lambdaGrid, sapply(lambdaGrid, function(lambda){qPoisson(lambda)}), 
+     type='l', col=2, lwd=2, xlab='lambda', ylab='q')
+abline(h=.5, v=2*log(2), col=4, lty=2, lwd=2)
+
+qGrid <- seq(1e-4, 1-1e-4, length.out=1000)
+plot(qGrid, -log(qGrid)/(1-qGrid), type='l', col=2, lwd=2, xlab='q', ylab='lambda')
+abline(h=-log(0.001)/(1-0.001), v=0.001, col=4, lty=2, lwd=2)
+
