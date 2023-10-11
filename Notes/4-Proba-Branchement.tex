@@ -274,9 +274,9 @@ $$
 Z_n = \sum_{i=1}^{Z_{n-1}} X_{n-1, i},
 $$
 on a la récurrence 
-$$
+\begin{equation} \label{eq:recurrenceFonctionGeneratriceGW}
 f_{Z_n} = f_{Z_{n-1}} \circ f_X
-$$
+\end{equation}
 et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
 \eproof
 
@@ -286,7 +286,7 @@ et la preuve se conclue en remarquant que $f_{Z_1} = f_X$, puisque $Z_0 = 1$.
 
 \remarks
 \begin{enumerate}
-  \item Cette récurrence nous assure notamment que
+  \item La récurrence \eqref{eq:recurrenceFonctionGeneratriceGW} nous assure notamment que
   $$
   \Esp(Z_n) = m \Esp(Z_{n-1}),
   $$
@@ -318,14 +318,23 @@ Pour cela, on distingue les deux cas $\Pr\{X\geq 2\} = 0$ ou $\Pr\{X\geq 2\} > 0
 \begin{itemize}
   \item Si $\Pr\{X\geq 2\} = 0$, alors $X \in \{0, 1\}$, donc c'est une variable de Bernoulli $\Bcal(m)$ et $f_X(s)$ est linéaire, de pente $m \leq 1$. $f_X$ ne croise donc la première bissectrice qu'en $s = 1$.
   \item Si $\Pr\{X\geq 2\} > 0$, alors
-  $$
-  f''_X(s) = \Esp(X(X-1) s^X) = \sum_{x \geq 2} x (x-1) s^x > 0
-  \qquad \text{pour } 0 < s \leq 1.
-  $$
-  La fonction $f_X$ est donc monotone croissante sur $[0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) > 0$ et $f'_X(1) > 1$. Son graphe coupe donc la première bissectrice 
+  \begin{align*}
+  f'_X(s) 
+  & = \Esp(X s^{X-1}) 
+  = s^{-1} \Esp(X s^X) > 0 
+  & & \text{pour} \quad s > 0, 
+  \\
+  f''_X(s) 
+  & = \Esp(X(X-1) s^{X-2}) \\
+  & = \sum_{x \geq 2} x (x-1) s^x 
+  = \sum_{x \geq 0} (x+2) (x+1) s^x 
+  > 0 
+  & & \text{pour} \quad 0 < s \leq 1.
+  \end{align*}
+  La fonction $f_X$ est donc monotone croissante sur $(0, 1]$ et strictement convexe sur $(0, 1]$ avec $f_X(0) = \Pr\{X = 0\} > 0$. Son graphe coupe donc la première bissectrice 
   \begin{itemize}
-  \item en $s^* < 1$ et en 1 si $m > 1$,
-  \item en 1 seulement si $m \leq 1$.
+  \item en $s^* < 1$ et en 1 si $f'_X(1) = m > 1$,
+  \item en 1 seulement si $f'_X(1) = m \leq 1$.
   \end{itemize}
 \end{itemize}
 \eproof
