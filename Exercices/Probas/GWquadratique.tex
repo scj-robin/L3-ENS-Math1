@@ -20,20 +20,16 @@
     m = a + 2b.
     $$
     \solution{On a $f'_X(s) = a + 2bs$, soit $m = f'_X(1) = a + 2b$.}
-    \item Montrer que les solutions de l'équation $s = f(s)$ sont de la forme
+    \item Montrer que les solutions de l'équation $q = f(q)$ sont de la forme
     $$
-    s = \frac{(1-a) \pm |m-1|}{2(1 -(a+b))}
+    q = \frac{(1-a) \pm (m-1)}{2(1 - a - b)}.
     $$
-    où $m$ est l'espérance du nombre de descendants d'un individu.
-    \solution{On résoud
-    $$
-    s = f(s)
-    \qquad \Leftrightarrow \qquad
-    (1 - a -b) + (a-1)s + bs^2 = 0
-    $$
+    \solution{On veur résoudre $q = f(q)$, c'est-à-dire
+    $(1 - a -b) + (a-1)q + bq^2 = 0$
     dont le discriminant est
     $$
     \Delta = (a-1)^2 - 4 b (1 - a -b) = ... = (a + 2b - 1)^2 = (m-1)^2
     $$
-    soit}
+    d'où la solution.}
+    \todo{En fait les solutions sont $q = 1$ et $q = b/(1 - a - b)$}.
   \end{enumerate}
