@@ -64,7 +64,7 @@ On voit facilement que $f_X(1) = 1$ et que $f_X$ est monotone croissante.
   \begin{align*}
     f_X^{(k)}(s) 
     & = \sum_{n \geq k} \Pr\{X = n\} n(n-1)  \dots (n-k+1) s^{X-k} \\
-    & = \Esp(X (X-1) \dots (X-n+1) s^{n-k})
+    & = \Esp(X (X-1) \dots (X-k+1) s^{X-k})
   \end{align*}
 \end{proposition}
 
@@ -221,7 +221,7 @@ On observe qu'il s'agit bien d'une \cM homogène (puisque la fonction génératr
 \begin{itemize}
  \item L'état $\{0\}$ ne communique avec aucun autre : il constitue donc une classe à lui seul. Comme il est de plus impossible d'en sortir ($p_{00} = 1$), il est récurrent : on parle d'état absorbant.
  \item Si $\Pr\{X \geq 2\} > 0$, tous les autres états communiquent, ils constituent donc une unique classe et possède tous la même nature.
- \item On peut montrer que tous les états, hormis $\{0\}$ sont transient.
+ \item On peut montrer que tous les états, hormis $\{0\}$ sont transients.
 \end{itemize}
 
 Le caractère transient des états non nuls signifie qu'ils ne sont visités qu'un nombre fini de fois, ce qui signifie que soit la \cM est absorbée en 0, soit elle part vers l'infini : 
