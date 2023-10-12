@@ -1,0 +1,26 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Processus de Galton–Watson poissonnien} %-------------------------------------------------------------------------------
+  On considère un processus de Bienaymé-Galton-Watson partant d'une population de taille 1 et dans laquelle le nombre de descendants par individu suit une loi géométrique $\Pcal(\lambda)$ :
+  $$
+  \Pr\{X = k\} = e^{-\lambda} \frac{\lambda^k}{k!}.
+  $$
+  \begin{enumerate}
+    \item Rappeler le nombre moyen $m$ de descendants par individu.
+    \solution{$m = \lambda$.}
+    \item Déterminer la fonction génératrice $\phi_X$ du nombre de descendants par individu.
+    \solution{Si $X \sim \Pcal(\lambda)$, 
+    $$
+    \phi_X(s) 
+    = \Esp(s^X) 
+    = e^{-\lambda} \sum_{k \geq 0} \frac{(\lambda s)^k}{k!} 
+    = e^{\lambda(s-1)}.
+    $$}
+    \item A quelle condition sur $\lambda$ la probabilité d'extinction est-elle strictement inférieure à 1 ?
+    \solution{Si $m = \lambda > 1$.}
+    \item Pour quelle valeur de $\lambda$ as-t-on $q = 1/2$ ?
+    \solution{On sait que $q$ vérifie $q = \phi_X(q)$, soit, 
+    $$
+    \lambda = \frac{\log q}{q - 1},
+    $$
+    soit, pour $q = 1/2$, $\lambda = 2 \log 2 \simeq 1.386$.}
+  \end{enumerate}
