@@ -43,7 +43,7 @@
 
 \proof Directe. \eproof
 
-\remark section \ref{sec:LinAlg-Pos} : définie positivité.
+\remark Section \ref{sec:LinAlg-Pos} : définie positivité.
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ x(t+1) = A x(t)
 x(t) = A^t x(0).
 $$
 
-\remark section \ref{sec:LinAlg-Pos} : comportement contrôlé par sa valeur propre dominante.
+\remark Section \ref{sec:LinAlg-Pos} : comportement contrôlé par sa valeur propre dominante.
 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas particulier = 'Matrice de Leslie'.}
@@ -122,8 +122,22 @@ $$
   $$
 pour un $x$ quelconque, puis pour $x = (0, 0)$ et pour $x=(1, 1)$.
 \end{exercise*}
+\solution{Directement
+$$
+J_x(f) = \left[\begin{array}{cc}
+                  a - c x_2 & -c x_1 \\
+                  d x_2 & -b + d x_1
+               \end{array}\right]
+$$
+soit
+$$
+J_{(0, 0)}(f) = \left[\begin{array}{cc} a & 0 \\ 0 & -b \end{array}\right], 
+\qquad
+J_{(1, 1)}(f) = \left[\begin{array}{cc} a - c & -c \\ d & -b + d \end{array}\right]
+$$
+}
 
-\remark section \ref{sec:Multivar-Diff} pour l'étude de $J_x(f)$ et section \ref{sec:EquaDiff-nonLineaire2D} pour l'étude de systèmes dynamique de la forme
+\remark Section \ref{sec:Multivar-Diff} pour l'étude de $J_x(f)$ et section \ref{sec:EquaDiff-nonLineaire2D} pour l'étude de systèmes dynamique de la forme
 $$
 \dot{x} = f(x).
 $$
@@ -148,4 +162,4 @@ $$
 
 \paragraph*{Cas particulier.} Si $A \in \Mcal_n$, $A$ est dite \emph{matrice de transition} et $A^n$ est également stochastique.
 
-\remark section \ref{sec:LinAlg-Pos} pour l'étude des valeurs propres de $A$ et section \ref{sec:Proba-Markov} pour son utilisation dans l'étude des chaînes de Markov.
+\remark Section \ref{sec:LinAlg-Pos} pour l'étude des valeurs propres de $A$ et section \ref{sec:Proba-Markov} pour son utilisation dans l'étude des chaînes de Markov.

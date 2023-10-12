@@ -10,9 +10,9 @@
 
 Il existe alors une unique matrice $B$ telle que 
 $$
-AB = BA = I_n
+AB = BA = I_n.
 $$
-et notée $A^{-1} = B$. La solution de $Ax = y$ est alors $x = A^{-1} y$.
+On note alors $A^{-1} := B$. La solution de $Ax = y$ est alors $x = A^{-1} y$.
 
 \bigskip
 On cherche à déterminer à quelle condition une matrice carrée $A$ est inversible.
@@ -29,14 +29,44 @@ A = \left[\begin{array}{cc} a & b \\ c & d \end{array} \right]
 $$
 soit inversible est que 
 $$
-ad - bc \neq 0
+ad - bc \neq 0.
 $$
-(il suffit de résoudre le système $A x  = y$). Son inverse est alors
+\solution{On cherche à résoudre le système $A x  = y$ : 
 $$
-A^{-1} = \frac1{ad - bc} \left[\begin{array}{rr} d & -b \\ -c & a \end{array}\right].
+\left\{\begin{array}{rcl}
+          a x_1 + b x_2 & = & y_1 \\
+          c x_1 + d x_2 & = & y_2
+       \end{array}\right..
 $$
-
-\solution{Voir \cite{Lam20}, p 6.}
+On commence par faire disparaître $x_2$ :
+$$
+\left\{\begin{array}{rcl}
+          d a x_1 + d b x_2 & = & d y_1 \\
+          b c x_1 + b d x_2 & = & b y_2
+       \end{array}\right.
+$$
+dont la différence donne $(d a - b c) x_1 = d y_1 - b y_2$, puis on fait disparaître $x_1$ : 
+$$
+\left\{\begin{array}{rcl}
+          c a x_1 + c b x_2 & = & c y_1 \\
+          a c x_1 + a d x_2 & = & a y_2
+       \end{array}\right.
+$$
+dont la différence donne $(c b - a d ) x_2 = c y_1 - a y_2$, soit au total
+$$
+\left\{\begin{array}{rcl}
+         (d a - b c) x_1 & = & d y_1 - b y_2 \\
+         (c b - a d) x_2 & = & c y_1 - a y_2
+       \end{array}\right..
+$$
+$A x = y$ a donc une unique solution ssi $(d a - b c) \neq 0$ et cette solution est alors $y = A^{-1} x$, avec
+$$
+A^{-1} = \frac1{a d - b c} \left[\begin{array}{rcl}
+         d & - b \\ c & - a
+       \end{array}\right].
+$$
+}
+% \solution{Voir \cite{Lam20}, p 6.}
 
 \begin{definition}[1.2.2: Déterminant d'une matrice de $\Mcal_2$] \label{def:determinantMatrice22}
   Le déterminant de la matrice $A \in \Mcal_2$ est noté $\det(A)$ ou $|A|$ et vaut
