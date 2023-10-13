@@ -252,7 +252,7 @@ Programme cours 2 :
 \end{definition}
 
 
-\begin{exercise*}[Ex 1.3.3 : Cas d'une matrice $2 \times 2$]
+\begin{exercise*}[Cas d'une matrice $2 \times 2$]
   On considère la matrice $A \in \Mcal_2$:
   $$
   A = \left[\begin{array}{cc} a & b \\ c & d\end{array}\right]
@@ -298,44 +298,69 @@ Programme cours 2 :
 et $p^2 - 4 q = 0$ ssi $b = 0$ et $a=c$ (les deux valeurs propres étant alors égales à $a$).
 }
 
-
-
 \begin{theorem}[Propriétés du polynôme caractéristique]
   Le polynôme caractéristique $P_A$ de la matrice $A \in \Mcal_n(\Rbb)$ est de degré exactement $n$ et, en notant $[\lambda^k]P_A(\lambda)$ le coefficient d'ordre $k$ de $P_A(\lambda)$:
   $$
   [\lambda^n]P_A(\lambda) = (-1)^n, \qquad
-  \textcolor{gray}{[\lambda^{n-1}]P_A(\lambda) = (-1)^{n-1} \tr(A), \qquad}
+  [\lambda^{n-1}]P_A(\lambda) = (-1)^{n-1} \tr(A), \qquad
   [\lambda^0]P_A(\lambda) = \det(A).
   $$
 \end{theorem}
 
 \proof
-\begin{enumerate}[\itemdot]
- \item La propriété $[\lambda^0]P_A(\lambda) = \det(A)$ est immédiate en se remarquant que
-$$
-[\lambda^0]P_A(\lambda) = P_A(0) = |A - 0 I_n| = |A|.
-$$
-\item La formule \eqref{eq:determinant} montre que le degré de $P_A$ ne peut excéder $n$ puisque chaque permutation emprunte au plus $n$ termes diagonaux.
-\item \SR{}{Exhiber l'unique chemin qui donne un terme en $\lambda^n$.}\\
-\SR{Les autres propriétés se montrent par récurrence en commençant par remarquer qu'elles sont toutes vraies pour $n = 2$ (cf Exercice 1.3.3). Pour la récurrence, on développe $|A - \lambda I_n|$ par rapport à la dernière ligne : 
-$$
-|A - \lambda I_n| 
-= \sum_{j=1}^{n-1} a_{nj} \underset{\scriptsize
-  \begin{tabular}{c}\text{degrée $\leq n-1$ par \eqref{eq:determinant}} \\
-  \text{car aucune permutation n'emprunte} \\
-  \text{2 fois la même ligne ou la même colonne}\end{tabular}
-  }{\underbrace{|(A - \lambda I_n)^{(nj)}|}} + (a_{nn} - \lambda) \underset{\text{degrée $= n-1$ par hypothèse}}{\underbrace{|(A - \lambda I_n)^{(nn)}|}}
-$$
-Donc
-$$
-[\lambda^n]|A - \lambda I_n| 
-= [\lambda^n](-\lambda |(A - \lambda I_n)^{(nn)}|) 
-= - [\lambda^{n-1}]\underset{\text{$= (-1)^{n-1}$ par hypothèse}}{\underbrace{(|(A - \lambda I_n)^{(nn)}|)}}
-= (-1)^n
-$$
-et le degré de $P_A$ est donc supérieur ou égal à $n$.}{}
-\item \SR{La démonstration pour le coefficient d'ordre $n-1$ ($= [\lambda^{n-1}]P_A(\lambda)$) suit le même principe.}{[Voir TD]}
-\end{enumerate}
+\begin{description}
+  \item[Degrés :] la formule \eqref{eq:determinant} montre que le degré de $P_A$ ne peut excéder $n$ puisque chaque permutation emprunte au plus $n$ termes diagonaux. La propriété suivante montre que le coefficiant d'ordre $n$ est non nul.
+  %
+  \item[Coefficient de degré $n$ :] on raisonne par récurrence. Pour $n = 1$, on a bien $P_A(\lambda) = a- \lambda$. Si la propriété est vraie au rang $n-1$, on développe $|A - \lambda I_n|$ par rapport à la dernière ligne : 
+  $$
+  |A - \lambda I_n| 
+  = \sum_{j=1}^{n-1} a_{nj} \underset{\scriptsize
+    \begin{tabular}{c}\text{degrée $\leq n-1$ d'après} \\
+    \text{la propriété précédente}\end{tabular}
+    }{\underbrace{|(A - \lambda I_n)^{(nj)}|}} + (a_{nn} - \lambda) \underset{\text{degrée $= n-1$ par hypothèse}}{\underbrace{|(A - \lambda I_n)^{(nn)}|}}
+  $$
+  Donc
+  $$
+  [\lambda^n]|A - \lambda I_n| 
+  = [\lambda^n](-\lambda |(A - \lambda I_n)^{(nn)}|) 
+  = - [\lambda^{n-1}]\underset{\text{$= (-1)^{n-1}$ par hypothèse}}{\underbrace{(|(A - \lambda I_n)^{(nn)}|)}}
+  = (-1)^n
+  $$
+  et le degré de $P_A$ est donc supérieur ou égal à $n$.
+  %
+  \item[Coefficient de degré $n-1$ :] cette propriété sera démontrée en TD.
+  %
+  \item[Coefficient de degré $0$ :] immédiat en remarquant que
+    $$
+    [\lambda^0]P_A(\lambda) = P_A(0) = |A - 0 I_n| = |A|.
+    $$
+\end{description}
+% \begin{enumerate}[\itemdot]
+%  \item La propriété $[\lambda^0]P_A(\lambda) = \det(A)$ est immédiate en se remarquant que
+% $$
+% [\lambda^0]P_A(\lambda) = P_A(0) = |A - 0 I_n| = |A|.
+% $$
+% \item La formule \eqref{eq:determinant} montre que le degré de $P_A$ ne peut excéder $n$ puisque chaque permutation emprunte au plus $n$ termes diagonaux.
+% \item \SR{}{Exhiber l'unique chemin qui donne un terme en $\lambda^n$.}\\
+% \SR{Les autres propriétés se montrent par récurrence en commençant par remarquer qu'elles sont toutes vraies pour $n = 2$ (cf Exercice 1.3.3). Pour la récurrence, on développe $|A - \lambda I_n|$ par rapport à la dernière ligne : 
+% $$
+% |A - \lambda I_n| 
+% = \sum_{j=1}^{n-1} a_{nj} \underset{\scriptsize
+%   \begin{tabular}{c}\text{degrée $\leq n-1$ par \eqref{eq:determinant}} \\
+%   \text{car aucune permutation n'emprunte} \\
+%   \text{2 fois la même ligne ou la même colonne}\end{tabular}
+%   }{\underbrace{|(A - \lambda I_n)^{(nj)}|}} + (a_{nn} - \lambda) \underset{\text{degrée $= n-1$ par hypothèse}}{\underbrace{|(A - \lambda I_n)^{(nn)}|}}
+% $$
+% Donc
+% $$
+% [\lambda^n]|A - \lambda I_n| 
+% = [\lambda^n](-\lambda |(A - \lambda I_n)^{(nn)}|) 
+% = - [\lambda^{n-1}]\underset{\text{$= (-1)^{n-1}$ par hypothèse}}{\underbrace{(|(A - \lambda I_n)^{(nn)}|)}}
+% = (-1)^n
+% $$
+% et le degré de $P_A$ est donc supérieur ou égal à $n$.}{}
+% \item \SR{La démonstration pour le coefficient d'ordre $n-1$ ($= [\lambda^{n-1}]P_A(\lambda)$) suit le même principe.}{[Voir TD]}
+% \end{enumerate}
 \eproof
 
 %-------------------------------------------------------------------------------
@@ -359,7 +384,7 @@ Non démontré
   $$
   P_A(\lambda) = \prod_{i=1}^n (\lambda_i - \lambda)
   $$
-  où les $\lambda_i$ sont les $n$ valeurs propres (non nécessairement distinctes) de $A$.
+  où les $\lambda_i$ sont les $n$ valeurs propres (non nécessairement distinctes, ni réelles) de $A$.
 \end{corollary*}
 
 \proof
@@ -377,7 +402,7 @@ Les $\lambda_i$ sont les racines de $P_A$ et le coefficient $a$ vaut 1 puisque $
 %-------------------------------------------------------------------------------
 \paragraph*{Exemple.} 
 $$
-P(x) = x^3 - 4x^2 + 5x - 2 = (x-2)(x-1)^2 = - (2-x)(1-x)^2
+P(x) = x^3 - 4x^2 + 5x - 2 = - (2-x)(1-x)^2
 $$ 
 admet $x_1 = 1$ et $x_2 = 2$ pour racines avec $m_1 = 2$ et $m_2 = 1$.
 
@@ -468,24 +493,28 @@ On vérifie que $D D^{-1} = D^{-1} D = I_n$.
 \begin{definition}[Matrice diagonalisable]
   Une matrice $A \in \Mcal_n(\Rbb)$ est dite diagonalisable s'il existe un matrice $\Lambda \in \Mcal_n(\Rbb)$ diagonale et une matrice $P \in \Mcal_n(\Rbb)$ inversible telles que
   $$
-  A = P \Lambda P^{-1}
-  $$
-  et, en notant $\Lambda = \diag(\lambda_1, \dots \lambda_n)$ et $P = [u_1 \dots u_n]$, 
-  $$
-  \forall 1 \leq j \leq n: \quad A u_j = \lambda_j u_j.
+  A = P \Lambda P^{-1}.
   $$
 \end{definition}
 
 \begin{proposition}
-  Les terme diagonaux de la matrice $\Lambda$ sont les valeurs propres de $A$ et les colonnes de la matrice $P$ sont les vecteurs propres associés.
+  Les terme diagonaux de la matrice $\Lambda$ sont les valeurs propres de $A$ et les colonnes de la matrice $P$ sont les vecteurs propres associés :
+  en notant $\Lambda = \diag(\lambda_1, \dots \lambda_n)$ et $P = [u_1 \dots u_n]$, 
+  $$
+  \forall \; 1 \leq j \leq n: \quad A u_j = \lambda_j u_j.
+  $$
 \end{proposition}
 
 \proof
-  On note $P = [u_1 \; u_2 \; \dots u_n]$ les colonnes de $P$ et on calcule tous les produits $A u_i$ simultanément : 
+  On calcule tous les produits $A u_i$ simultanément : 
   $$
-  A P = P \Lambda P^{-1} P = P \Lambda,
+  A P 
+  = P \Lambda P^{-1} P 
+  = P \Lambda
+  = [\lambda_1 u_1 \; \lambda_2 u_2 \; \dots \lambda_n u_n],
   $$
-  il suffit de se rappeler que la multiplication à droit par une matrice diagonale multiple chaque colonne par le terme diagonal correspondant pour conclure que $P u_i = \lambda_i u_i$ pour chaque $1 \leq i \leq n$.
+  en se rappelant que la multiplication à droite par une matrice diagonale multiple chaque colonne par le terme diagonal correspondant. On a donc bien $A u_i = \lambda_i u_i$ pour chaque $1 \leq i \leq n$. \\
+  $A$ admet au plus $n$ valeurs propres et les $\lambda_i$ sont au nombre de $n$, donc les $\lambda_i$ sont bien {\em les} valeurs propres de $A$.
 \eproof
 
 \remark
@@ -515,7 +544,7 @@ Une matrice $A$ est diagonalisable si son application consiste à
 On vérifie que $A A^{-1} = P \Lambda P^{-1} P \Lambda^{-1} P^{-1} = P \Lambda \Lambda^{-1} P^{-1} = P P^{-1} = I_n$ et idem dans l'autre sens.
 \eproof
 
-\begin{theorem}[Théorème 1.3.8: Matrice diagonalisable]
+\begin{theorem}[Matrice diagonalisable]
   La matrice $A \in \Mcal_n(\Rbb)$ est diagonalisable ssi 
   \begin{enumerate}
    \item toutes ses valeurs propres $\lambda_i$ sont réelles et, 

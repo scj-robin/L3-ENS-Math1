@@ -152,6 +152,7 @@ On cherche à généraliser cette définition et ces propriétés à des matrice
   \end{enumerate}
 \end{theorem}
 
+\proof
 Le théorème \ref{thm:uniciteDeterminant} n'est pas démontré ici. On peut, par exemple, en trouver une démonstration dans \cite{GAJ94} (Thm 3, p14, ii/) ou \cite{Ser01} (prop 2.2.1, p16).
 \eproof
 % {Démonstration du théorème \ref{thm:uniciteDeterminant}.}
@@ -265,7 +266,7 @@ La proposition \ref{prop:formuleGeneraleDeterminant} n'est pas démontrée ici. 
   \item D'un point de vue géométrique, un déterminant peut être interprété comme un volume. Il existe notamment deux cas simples :
   \begin{itemize}
   \item En dimension 2 : faire le calcul
-    Soit $x = (a, c)$ et $y = (b, d)$, la surface $S$ parallélograme de sommets $\{0, x, y, x+y\}$ est égale à la surface du rectangle de sommet supérieur droit $x+y$ privé des surface $(1)$, $(2)$, $(3)$ et $(4)$ : 
+    Soit $x = (a, c)$ et $y = (b, d)$, la surface $S$ parallélogramme de sommets $\{0, x, y, x+y\}$ est égale à la surface du rectangle de sommet supérieur droit $x+y$ privé des surface $(1)$, $(2)$, $(3)$ et $(4)$ : 
     $$
     \includegraphics{DeterminantVolumeDimension2}
     $$
@@ -303,8 +304,12 @@ On s'intéresse ici au calcul effectif d'un déterminant.
   $$
 \end{proposition}
 
-La proposition \ref{prop:determinantParBlocs} est donnée sans démonstration. Intuitivement, elle repose sur la formule générale du déterminant \eqref{eq:determinant} : toute permutation $\sigma$ intervertissant un des $p$ premiers éléments avec un des $n-p$ derniers fait nécessaire intervenir un élément du bloc $0_{n-p, p}$ et le produit qui lui est associé est donc nul.
+\proof
+La proposition \ref{prop:determinantParBlocs} est donnée sans démonstration. 
 \eproof
+
+\remark 
+Intuitivement, elle repose sur la formule générale du déterminant \eqref{eq:determinant} : toute permutation $\sigma$ intervertissant un des $p$ premiers éléments avec un des $n-p$ derniers fait nécessaire intervenir un élément du bloc $0_{n-p, p}$ et le produit qui lui est associé est donc nul.
 
 \remark Le déterminant de $A$ ne dépend donc pas des éléments de $C$.
 
