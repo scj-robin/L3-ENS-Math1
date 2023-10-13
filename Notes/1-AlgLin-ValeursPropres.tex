@@ -209,6 +209,7 @@ Ax = -3 u_1 + 4 u_2 =  \left[\begin{array}{r} 2 \\ 10 \end{array}\right].
 $$
 }
 
+\newpage
 \progres{Rappel cours 1 :
 \begin{enumerate}
   \item Déterminant : 
@@ -470,6 +471,7 @@ Directe car $Ax = \lambda_1 x = \lambda_2 x$ avec $\lambda_1 \neq \lambda_2$ ssi
 Non démontré
 \eproof
 
+
 \remarks
 \begin{enumerate}
   \item L'action d'une matrice $A$ dans chacun de ces sous-espaces est une simple homothétie si la valeurs propres associée est réelle.
@@ -482,15 +484,7 @@ Non démontré
 \subsection{Matrices diagonalisables} \label{sec:MatDiag}
 %-------------------------------------------------------------------------------
 
-\begin{lemma}
-  L'inverse de la matrice diagonale $D = \diag(\mu_1, \dots \mu_n$) dont tous les termes diagonaux sont non nuls est la matrice diagonale $D^{-1} = \diag(\mu_1^{-1}, \dots \mu_n^{-1})$.
-\end{lemma}
-
-\proof
-On vérifie que $D D^{-1} = D^{-1} D = I_n$.
-\eproof
-
-\begin{definition}[Matrice diagonalisable]
+\begin{definition}[Matrice diagonalisable] \label{def:matriceDiagonalisable}
   Une matrice $A \in \Mcal_n(\Rbb)$ est dite diagonalisable s'il existe un matrice $\Lambda \in \Mcal_n(\Rbb)$ diagonale et une matrice $P \in \Mcal_n(\Rbb)$ inversible telles que
   $$
   A = P \Lambda P^{-1}.
@@ -559,6 +553,9 @@ On vérifie que $A A^{-1} = P \Lambda P^{-1} P \Lambda^{-1} P^{-1} = P \Lambda \
 Non démontré
 \eproof
 
+\remark
+Le résultat est intuitif en reprenant la définition \ref{def:matriceDiagonalisable} et en remarquant que chaque $\lambda_i$ distinct apparaît alors $m_i$ fois dans la diagonale de $\Lambda$ et qu'on peut donc lui associer $m_i$ vecteurs colonnes de $P$, qui engendrent bien un espace de dimension $m_i$, puique que $P$ est inversible.
+
 \begin{corollary*}
   Toute matrice $A \in \Mcal_n(\Rbb)$ dont les $n$ valeurs propres sont réelles et distinctes ($m_i = 1$, pour tout $i = 1 \dots n$) est diagonalisable.
 \end{corollary*}
@@ -568,7 +565,7 @@ Tous les sous-espaces propres sont de dimension au moins 1 (puisqu'il existe un 
 \eproof
 
 \begin{corollary*}
-  Si la matrice $A \in \Mcal_n(\Rbb)$ est diagonalisable, l'ensemble des sous-espace propres engendrent $\Rbb^n$ tout entier.
+  Si la matrice $A \in \Mcal_n(\Rbb)$ est diagonalisable, l'ensemble des sous-espaces propres engendrent $\Rbb^n$ tout entier.
 \end{corollary*}
 
 \proof
@@ -707,7 +704,7 @@ C'est une conséquence de la proposition selon laquelle les intersections des so
 Non démontrée (programme de classe prépa BCPST). 
 % Voir Fre14-Notes-SymmetricMatricesAndEigendecomposition, section2, propositions 3 et 4.
 \SRcorrect{\begin{itemize}
-  \item Valeurs propres réelles : Le polynôme caractéristique de $A$ admet au plus $n$ racines éventuellement multiples et complexes. Si $\lambda$ est une valeur propre de $A$, en notant $\overline{\lambda}$ le conjugué de $\lambda$ ($\overline{\lambda} = \lambda \Leftrightarrow \lambda \in \Rbb$), il existe un vecteur $x$ tel que
+  \item Valeurs propres réelles : le polynôme caractéristique de $A$ admet au plus $n$ racines éventuellement multiples et complexes. Si $\lambda$ est une valeur propre de $A$, en notant $\overline{\lambda}$ le conjugué de $\lambda$ ($\overline{\lambda} = \lambda \Leftrightarrow \lambda \in \Rbb$), il existe un vecteur $x$ tel que
   \begin{align*}
     Ax & = \lambda x & 
     \Rightarrow \qquad \overline{Ax} & = \overline{\lambda x} &
@@ -717,10 +714,10 @@ Non démontrée (programme de classe prépa BCPST).
   puisque $A$ est réelle et que $\overline{a b} = \overline{a} \overline{b}$. De même on a
   \begin{align*}
     Ax & = \lambda x & 
-    \Rightarrow \qquad \overline{x}^\top A x & = \lambda \overline{x}^\top x
+    \Rightarrow \qquad \overline{x}^\top A x & = \lambda \overline{x}^\top x &
     \Rightarrow \qquad x^\top A \overline{x} & = \lambda \overline{x}^\top x
   \end{align*}
-  puisque $A$ est symétrique.
+  puisque $A$ est symétrique. On a donc $\overline{\lambda} x^\top \overline{x} =  \lambda \overline{x}^\top x$ avec $\overline{x}^\top x \neq 0$, donc $\overline{\lambda} = \lambda$, donc $\lambda$ est réelle.
   \item \todo{}
 \end{itemize}}{}
 \eproof

@@ -129,68 +129,68 @@ $$
 \end{enumerate}
 \eproof
 
-%-------------------------------------------------------------------------------
-\paragraph*{Analyse en composantes principales} \todo{A faire en TD}
-L'analyse en composantes principales consiste précisément à diagonaliser la matrice de variance (estimée) d'un vecteur aléatoire $X = [X_1 \; X_2 \; \dots \; X_n]^\top$ pour déterminer les combinaisons linéaires de plus grande variances. Pour cela, on ordonne les valeurs propres de $\Sigma = \Var(X)$ : 
-$$
-\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n
-$$
-et on définit les composantes principales comme les vecteurs propres associés aux plus grandes valeurs propres $\lambda_1, \lambda_2, \lambda_3$.
-
-\dessin{Exemple pour $n = 2$ : Dessin avec grand axe et petit axe de l'ellipse. Par exemple
-$$
-\Sigma = \left[\begin{array}{cc} 1 & \sqrt{7}/2 \\ \sqrt{7}/2 & \sqrt{7}/2 \end{array}\right]
-$$
-donne
-$$
-\left(\lambda_1 = \frac{9}2, \quad 
-v_1 = \frac{1}{2\sqrt{2}} \left[\begin{array}{r} 1 \\ \sqrt{7} \end{array}\right]\right), 
-\qquad
-\left(\lambda_2 = \frac{1}2, \quad 
-v_2 = \frac{1}{2\sqrt{2}} \left[\begin{array}{r} -\sqrt{7} \\ 1 \end{array}\right]\right).
-$$}
-
-%-------------------------------------------------------------------------------
-\paragraph*{Interprétation de l'ACP.}
-La diagonalisation de $\Sigma = P D P^{-1}$ où
-$$
-D = \diag(\lambda_1, \dots \lambda_n), \qquad
-P = [v_{ij}], \qquad
-P^{-1} = [u_{ij}]
-$$
-permet de définir un vecteur aléatoire $Y = [Y_1 \; Y_2 \; \dots \; Y_n]^\top$ tel que
-$$
-Y_i = \sum_{j=1}^n u_{ij} X_j
-\qquad \Rightarrow \qquad
-Y = P^{-1} X
-\qquad \Rightarrow \qquad
-X = P Y.
-$$
-De plus les coordonnées de $Y$ sont non corrélées entre elles puisque
-$$
-\Var(Y) = \Var(P^{-1} X) = P^{-1} \Var(X) P = P^{-1} \Sigma P = P^{-1} P D P^{-1} P = D
-$$
-donc
-$$
-\Cov(Y_i, Y_j) = 0 \text{ si } i \neq j 
-\qquad \text{et} \qquad
-\Var(Y_i) = \lambda_i.
-$$
-
-Si, de plus, $\Sigma$ est positive, mais non définie positive (elle est alors dite {\em semie-définie positive}), elle possède 0 pour valeur propre. On note $m$ l'ordre de multiplicité de $\lambda = 0$ et $r = n-m$ la somme des ordres de multiplicité des valeurs propres non-nulles ($r$ est le {\em rang} de $\Sigma$). On peut alors écrire
-$$
-X = P^{-1} Y = [v_1 \dots v_n] \left[\begin{array}{c} Y_1 \\ \vdots \\ Y_n \end{array} \right]
-$$
-sous la forme
-$$
-X = [v_1 \dots v_r] \left[\begin{array}{c} Y_1 \\ \vdots \\ Y_r \end{array} \right],
-$$
-puisque, pour $r+1 \leq j \leq n$, $\Var(Y_j) = 0 \; \Rightarrow \; Y_j = 0$.
-Les $n$ variables aléatoires $X_1, \dots X_n$ sont donc construites de façon déterministes à partir de $r < n$ variables aléatoires $Y_1 \dots Y_r$ non corrélées.
-
-
-%-------------------------------------------------------------------------------
-\paragraph*{Exemple.} \dessin{\url{SeedsPCA}}
+% %-------------------------------------------------------------------------------
+% \paragraph*{Analyse en composantes principales} \todo{A faire en TD}
+% L'analyse en composantes principales consiste précisément à diagonaliser la matrice de variance (estimée) d'un vecteur aléatoire $X = [X_1 \; X_2 \; \dots \; X_n]^\top$ pour déterminer les combinaisons linéaires de plus grande variances. Pour cela, on ordonne les valeurs propres de $\Sigma = \Var(X)$ : 
+% $$
+% \lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n
+% $$
+% et on définit les composantes principales comme les vecteurs propres associés aux plus grandes valeurs propres $\lambda_1, \lambda_2, \lambda_3$.
+% 
+% \dessin{Exemple pour $n = 2$ : Dessin avec grand axe et petit axe de l'ellipse. Par exemple
+% $$
+% \Sigma = \left[\begin{array}{cc} 1 & \sqrt{7}/2 \\ \sqrt{7}/2 & \sqrt{7}/2 \end{array}\right]
+% $$
+% donne
+% $$
+% \left(\lambda_1 = \frac{9}2, \quad 
+% v_1 = \frac{1}{2\sqrt{2}} \left[\begin{array}{r} 1 \\ \sqrt{7} \end{array}\right]\right), 
+% \qquad
+% \left(\lambda_2 = \frac{1}2, \quad 
+% v_2 = \frac{1}{2\sqrt{2}} \left[\begin{array}{r} -\sqrt{7} \\ 1 \end{array}\right]\right).
+% $$}
+% 
+% %-------------------------------------------------------------------------------
+% \paragraph*{Interprétation de l'ACP.}
+% La diagonalisation de $\Sigma = P D P^{-1}$ où
+% $$
+% D = \diag(\lambda_1, \dots \lambda_n), \qquad
+% P = [v_{ij}], \qquad
+% P^{-1} = [u_{ij}]
+% $$
+% permet de définir un vecteur aléatoire $Y = [Y_1 \; Y_2 \; \dots \; Y_n]^\top$ tel que
+% $$
+% Y_i = \sum_{j=1}^n u_{ij} X_j
+% \qquad \Rightarrow \qquad
+% Y = P^{-1} X
+% \qquad \Rightarrow \qquad
+% X = P Y.
+% $$
+% De plus les coordonnées de $Y$ sont non corrélées entre elles puisque
+% $$
+% \Var(Y) = \Var(P^{-1} X) = P^{-1} \Var(X) P = P^{-1} \Sigma P = P^{-1} P D P^{-1} P = D
+% $$
+% donc
+% $$
+% \Cov(Y_i, Y_j) = 0 \text{ si } i \neq j 
+% \qquad \text{et} \qquad
+% \Var(Y_i) = \lambda_i.
+% $$
+% 
+% Si, de plus, $\Sigma$ est positive, mais non définie positive (elle est alors dite {\em semie-définie positive}), elle possède 0 pour valeur propre. On note $m$ l'ordre de multiplicité de $\lambda = 0$ et $r = n-m$ la somme des ordres de multiplicité des valeurs propres non-nulles ($r$ est le {\em rang} de $\Sigma$). On peut alors écrire
+% $$
+% X = P^{-1} Y = [v_1 \dots v_n] \left[\begin{array}{c} Y_1 \\ \vdots \\ Y_n \end{array} \right]
+% $$
+% sous la forme
+% $$
+% X = [v_1 \dots v_r] \left[\begin{array}{c} Y_1 \\ \vdots \\ Y_r \end{array} \right],
+% $$
+% puisque, pour $r+1 \leq j \leq n$, $\Var(Y_j) = 0 \; \Rightarrow \; Y_j = 0$.
+% Les $n$ variables aléatoires $X_1, \dots X_n$ sont donc construites de façon déterministes à partir de $r < n$ variables aléatoires $Y_1 \dots Y_r$ non corrélées.
+% 
+% 
+% %-------------------------------------------------------------------------------
+% \paragraph*{Exemple.} \dessin{\url{SeedsPCA}}
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
@@ -305,8 +305,6 @@ ce qui signifie que
  sont interprétées comme les {\em valeurs reproductives} des classes.
 \end{itemize}
 
-
-
 \begin{exercise*}[Dynamique d'une population structurée]
   $x(n) = (j(n), f(n), b(n)) :$ $j =$ juvéniles, $f = $ ('floaters' = flottants : non-territoriaux, puis repreoducteurs -- cf carnivores), $b = $ reproducteurs ('breeders') et
   $$
@@ -318,7 +316,44 @@ ce qui signifie que
   Donner les conditions sur $m$, $s_j$, $s_f$ et $s_b$ pour que la population ne s'éteigne pas.
 \end{exercise*}
 
-\solution{\todo{voir classeur}}
+\solution{
+  On commence par remarquer que $A \geq 0$ et que $A^4 > 0$ (ne calculer que les termes non-nuls) : $A$ est donc régulière.
+  \begin{description}
+    \item[Polynôme caractéristique.] On cherche ensuite à savoir s'il existe une valeur propre plus grande que 1 en étudiant les racines du polynôme caractéristique
+    $$
+    P_A(\lambda) 
+    = -\lambda \left| \begin{array}{cc} 
+                        -\lambda & 0 \\ s_f & s_b - \lambda 
+                      \end{array} \right|
+      + m \left| \begin{array}{cc} 
+                        s_j & 0 \\ & s_f - \lambda 
+                      \end{array} \right|
+    = - \lambda^3 + s_b \lambda^2 + ms_js_f.
+    $$
+    La dérivée de ce polynôme est
+    $$
+    P'_A(\lambda) 
+    = - 3 \lambda^2 + 2 s_b \lambda
+    = - \lambda (3 \lambda - 2 s_b)
+    $$
+    qui s'annule en $\lambda = 0$ et $\lambda = 2 s_b/3$ : 
+    $P_A$ est donc décroissant ($P'_A(\lambda) < 0$) avant $\lambda = 0$, puis croissant jusqu'en  $\lambda = 2 s_b/3$, puis décroissant.
+    % 
+    \item[Racines du polynôme caractéristique.] 
+    On remarque que $P_A(0) = ms_j s_f > 0$, donc il existe au plus une racine positive, notée $\lambda_1$. Cette racine est plus grande que 1, si $P_A(1) >0$, c'est-à-dire si 
+    $$
+    -1 + s_b + ms_js_f > 0
+    \qquad \Leftrightarrow \qquad
+    s_b + ms_js_f > 1
+    \qquad \Leftrightarrow \qquad
+    \frac{ms_js_f}{1 - s_b} > 1.
+    $$
+    % 
+    \item[Interprétation.] 
+    La quantité $s_b + ms_js_f$ s'interprête comme le nombre moyen de reproducteurs engendré par un reproducteur (qui doit donc être supérieure à 1 pour assurer la surviende la population). \\
+    Le rapport $m s_j s_f/(1 - s_b)$ s'interprête comme le produit du taux de transition de juvénile à reproducteur ($m s_j s_f$) par le taux de survie des reproducteurs ($1/(1 - s_b) = 1 + s_b + s_b^2 + ...$).
+  \end{description}
+}
 
 % %-------------------------------------------------------------------------------
 % \subsubsection{Chaîne de Markov}
