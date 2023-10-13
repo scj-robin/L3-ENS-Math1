@@ -5,7 +5,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{definition}[Matrice inversible] \label{def:matriceInversible}
-  Une matrice $A \in \Mcal_n$ est dite inversible si la solution $x \in \Rbb^n$ du système linéaire $A x = y$ est unique quelque soit le vecteur $y \in \Rbb$.
+  Une matrice $A \in \Mcal_n$ est dite inversible si la solution $x \in \Rbb^n$ du système linéaire $A x = y$ est unique quelque soit le vecteur $y \in \Rbb^n$.
 \end{definition}
 
 Il existe alors une unique matrice $B$ telle que 
@@ -147,7 +147,7 @@ On cherche à généraliser cette définition et ces propriétés à des matrice
   De plus
   \begin{enumerate}[($a$)]
    \item Pour toute $A \in \Mcal_n$: $\det(A) \neq 0 \Leftrightarrow A$ inversible;
-   \item Pour toute $A$de $\Mcal_n$: $\det(A) = \det(A^\top)$;
+   \item Pour toute $A \in \Mcal_n$: $\det(A) = \det(A^\top)$;
    \item Pour toutes $A$ et $B$ de $\Mcal_n$: $\det(A B) = \det(B A) = \det(A) \det(B)$.
   \end{enumerate}
 \end{theorem}
@@ -184,13 +184,13 @@ Le théorème \ref{thm:uniciteDeterminant} n'est pas démontré ici. On peut, pa
   $$
   |AB| = |A| |B| = |I_n| = 1
   $$
-  donc $|A|$ n'est pas nul et donc $A$ est inversible (de même que $B$ d'ailleurs) et donc $A^{-1}$ existe. Donc
+  donc $|A|$ n'est pas nul et donc $A$ est inversible (de même que $B$) et donc $A^{-1}$ existe. Donc
   $$
   I_n = A^{-1} A = A^{-1} I_n A = A^{-1} A B A = B A.
   $$
 \end{enumerate}
 
-\paragraph*{Exemple.}
+\remark
 La $n$-linéarité et le fait que $|I_n| = 1$, suffisent à montrer que 
 \begin{equation} \label{eq:determiantMatriceDiagonale}
 |\diag(\lambda_1, \dots \lambda_n)| = \prod_{i = 1}^n \lambda_i.
@@ -220,36 +220,44 @@ En effet, en appliquant la $n$-linéarité à chacun des termes diagonaux de la 
 $$
 det(u_1, u_1, u_2,\dots, u_n) = -det(u_1, u_1, u_2,\dots, u_n)
 $$
-La $n$-linéarité implique donc que, si on ajoute une combinaison linéaire de toute les colonnes à l'une d'entre elle, le déterminant ne change pas. En effet
-\begin{align*}
-  \det\left(u_1, \dots, u_{n-1}, u_n + \sum_{i=1}^{n-1} \lambda_i u_i\right)
-  & = \det\left(u_1, \dots, u_{n-1}, u_n\right)
-  + \sum_{i=1}^{n-1} \lambda_i \det\left(u_1, \dots, u_{n-1}, u_i\right)
-\end{align*}
-or, pour tout $i = 1, \dots n-1$, $ \det\left(u_1, \dots, u_i, \dots, u_{n-1}, u_i\right) = 0$. \\
-L'ajout d'une combinaison linéaire des autres colonnes à l'une d'entre elles ne change donc pas le déterminant (\cite{GAJ94}, Prop 12, p13). \\
-Le cas où une colonne est combinaison linéaire des autres correspond au cas ou $u_n = 0_n$, soit
+% La $n$-linéarité implique donc que, si on ajoute une combinaison linéaire de toute les colonnes à l'une d'entre elle, le déterminant ne change pas. En effet
+% \begin{align*}
+%   \det\left(u_1, \dots, u_{n-1}, u_n + \sum_{i=1}^{n-1} \lambda_i u_i\right)
+%   & = \det\left(u_1, \dots, u_{n-1}, u_n\right)
+%   + \sum_{i=1}^{n-1} \lambda_i \det\left(u_1, \dots, u_{n-1}, u_i\right)
+% \end{align*}
+% or, pour tout $i = 1, \dots n-1$, $ \det\left(u_1, \dots, u_i, \dots, u_{n-1}, u_i\right) = 0$. \\
+% L'ajout d'une combinaison linéaire des autres colonnes à l'une d'entre elles ne change donc pas le déterminant (\cite{GAJ94}, Prop 12, p13). \\
+% Le cas où une colonne est combinaison linéaire des autres correspond au cas ou $u_n = 0_n$, soit
+% $$
+% \det\left(u_1, \dots u_{n-1}, 0_n + \sum_{i=1}^{n-1} \lambda_i u_i\right)
+% = \det\left(u_1, \dots, u_{n-1}, 0_n\right)
+% = 0
+% $$
+% d'après le ($i$).
+On peut alors écrire que 
 $$
-\det\left(u_1, \dots u_{n-1}, 0_n + \sum_{i=1}^{n-1} \lambda_i u_i\right)
-= \det\left(u_1, \dots, u_{n-1}, 0_n\right)
-= 0
+\det\left(u_1, \dots, u_{n-1}, \sum_{i=1}^{n-1} \lambda_i u_i\right)
+= \sum_{i=1}^{n-1} \lambda_i \det\left(u_1, \dots, u_{n-1}, u_i\right)
 $$
-d'après le ($i$).
+où chaque matrice $\left[u_1, \dots, u_{n-1}, u_i\right]$ possède deux colonnes identiques et est donc de déterminant nul.
 \end{enumerate}
 (On peut noter que ($i$) est un cas particulier de ($ii$).)
 \eproof
 
 \begin{proposition} \label{prop:formuleGeneraleDeterminant}
   \begin{equation} \label{eq:determinant}
-    |A| = \sum_{\sigma \in \Scal_n} (-1)^{s(\sigma)} \prod_{i=1}^n a_{i, \sigma(i)} 
+    |A| = \sum_{\sigma \in \Scal_n} s(\sigma) \prod_{i=1}^n a_{i, \sigma(i)} 
     \end{equation}
-    où $\Scal$ est l'ensemble des permutation de $\{1, \dots n\}$ et $s(\sigma) \in \{-1, +1\}$ désigne la signature de la permutation $\sigma$. Cette formule est rarement utilisée en pratique (notamment parce que $|\Scal| = n!$), sauf pour $n=2$ ou $n=3$.
+    où $\Scal$ est l'ensemble des permutation de $\{1, \dots n\}$ et $s(\sigma) \in \{-1, +1\}$ désigne la signature de la permutation $\sigma$. 
 \end{proposition}
 
 La proposition \ref{prop:formuleGeneraleDeterminant} n'est pas démontrée ici. \eproof.
 
 \remarks 
 \begin{enumerate}
+ \item Le formule \eqref{eq:determinant} est rarement utilisée en pratique (notamment parce que $|\Scal| = n!$), sauf pour $n=2$ ou $n=3$.
+ %
  \item La propriété $|A| = |A^\top|$ entraîne que les propriétés du déterminant quant aux colonnes (forme alternée, multilinéarité) sont également vraies pour les lignes. 
  %
  \item La propriété selon laquelle une matrice dont une colonne est combinaison linéaire des autres a un déterminant nul donne une intuition du lien entre nullité du déterminant et non inversibilité. En supposant que cette colonne soit la dernière, le calcul de $A e_n$ (où $e_n$ est le dernier vecteur de la basse canonique) montre que c'est une combinaison linéaire des vecteurs $A e_i$ pour $1 \leq i \leq n-1$ et les images des vecteurs de $\Rbb^n$ appartiennent toutes à un espace de dimension au plus $n-1$, ce qui interdit à $A$ d'être inversible.
@@ -423,38 +431,71 @@ $$
   = \sum_{j=1}^n (-1)^{j+i} a_{ij} |A^{(ij)}|
   = |A|.
   $$
-  \item[$i \neq k$:] on reconnaît $(-1)^{j+i} a_{ij} |A^{(kj)}|$ comme le déterminant, calculé par blocs, de la matrice
+  \item[$i \neq k$:] 
+%   on reconnaît $(-1)^{j+k} a_{ij} |A^{(kj)}|$ comme le déterminant, calculé par blocs, de la matrice
+%   $$
+%   \left[\begin{array}{ccccccc}
+%          a_{1, 1} & \cdots & a_{1,j-1} & 0 & a_{1, j+1} & \cdots & a_{1, n} \\
+%          \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
+%          a_{k-1,1} & \cdots & a_{k-1,j-1} & 0 & a_{k-1, j+1} & \cdots & a_{k-1, n} \\
+%          0 & \cdots & 0 & a_{i, j} & 0 & \cdots & 0 \\
+%          a_{k+1,1} & \cdots & a_{k+1,j-1} & 0 & a_{k+1, j+1} & \cdots & a_{k+1, n} \\
+%          \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
+%          a_{n, 1} & \cdots & a_{n,j-1} & 0 & a_{n, j+1} & \cdots & a_{n, n} 
+%         \end{array}\right]
+%   $$
+%   qui est égale à celui de la matrice
+%   $$
+%   D_i^{jk} = 
+%   \left[\begin{array}{ccccccc}
+%          a_{1, 1} & \cdots & a_{1,j-1} & a_{1, j} & a_{1, j+1} & \cdots & a_{1, n} \\
+%          \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
+%          a_{k-1,1} & \cdots & a_{k-1,j-1} & a_{k-1, j} & a_{k-1, j+1} & \cdots & a_{k-1, n} \\
+%          0 & \cdots & 0 & a_{i, j} & 0 & \cdots & 0 \\
+%          a_{k+1,1} & \cdots & a_{k+1,j-1} & a_{k+1, j} & a_{k+1, j+1} & \cdots & a_{k+1, n} \\
+%          \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
+%          a_{n, 1} & \cdots & a_{n,j-1} & a_{n, j} & a_{n, j+1} & \cdots & a_{n, n} 
+%         \end{array}\right].
+%   $$
+%   On a notamment
+%   \begin{align*}
+%     D_1^{jk} 
+%       & = \left[\begin{array}{cccc}
+%             a_{1, 1} & a_{1,2} & \cdots & a_{1, n} \\
+%             \vdots & \vdots & & \vdots \\
+%             a_{k-1, 2}  & a_{k-1,2} & \cdots & a_{k-1, n} \\
+%             a_{i, 1} & 0 & \cdots & 0 \\
+%             a_{k+1, 1}  & a_{k+1,2} & \cdots & a_{k+1, n} \\
+%             \vdots & \vdots & & \vdots \\
+%             a_{n, 1}  & a_{n,2} & \cdots & a_{n, n} 
+%             \end{array}\right], \quad
+%     D_2^{jk} 
+%       & = \left[\begin{array}{ccccc}
+%             a_{1,1} & a_{1,2}  & a_{1,3} & \cdots & a_{1, n} \\
+%             \vdots & \vdots & \vdots & & \vdots \\
+%             a_{k-1,1} & a_{k-1,2}  & a_{k-1,3} & \cdots & a_{k-1, n} \\
+%             0 & a_{i, 2} & 0 & \cdots & 0 \\
+%             a_{k+1,1} & a_{k+1,2}  & a_{k+1,3} & \cdots & a_{k+1, n} \\
+%             \vdots & \vdots & \vdots & & \vdots \\
+%             a_{n,1} & a_{n,2}  & a_{n,3} & \cdots & a_{n, n} 
+%         \end{array}\right].
+%   \end{align*}
+  soit $\widetilde{A} = [\widetilde{a}_{ij}]$ la matrice égale à la matrice $A$ dont la $k$-ème ligne est remplacée par la $i$-ème ligne ($\widetilde{a}_{i'j} = a_{i'j}$ si $i' \neq k$ et $\widetilde{a}_{kj} = a_{ij}$). Cette matrice possède deux lignes égales (la $i$-ème et la $k$-ème), donc son déterminant est nul : $|\widetilde{A}| = 0$. \\
+  Mais, par développement le long de la $k$-ème ligne, puisque $\widetilde{A}^{kj}= A^{ij}$ pour tout $j$, on a
   $$
-  \left[\begin{array}{ccccccc}
-         a_{1, 1} & \cdots & a_{1,j-1} & 0 & a_{1, j+1} & \cdots & a_{1, n} \\
-         \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
-         a_{k-1,1} & \cdots & a_{k-1,j-1} & 0 & a_{k-1, j+1} & \cdots & a_{k-1, n} \\
-         0 & \cdots & 0 & a_{i, j} & 0 & \cdots & 0 \\
-         a_{k+1,1} & \cdots & a_{k+1,j-1} & 0 & a_{k+1, j+1} & \cdots & a_{k+1, n} \\
-         \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
-         a_{n, 1} & \cdots & a_{n,j-1} & 0 & a_{n, j+1} & \cdots & a_{n, n} 
-        \end{array}\right]
+  |\widetilde{A}|
+  = \sum_{j=1}^n (-1)^{k+j} \widetilde{a}_{kj} |\widetilde{A}^{kj}|
+  = \sum_{j=1}^n (-1)^{k+j} \textcolor{red}{a_{ij}} |\widetilde{A}^{kj}|
+  = \sum_{j=1}^n (-1)^{k+j} a_{ij} |\textcolor{red}{A^{ij}}|
+  = c_{ik}, 
   $$
-  qui est égale à celui de la matrice
-  $$
-  \left[\begin{array}{ccccccc}
-         a_{1, 1} & \cdots & a_{1,j-1} & a_{1, j} & a_{1, j+1} & \cdots & a_{1, n} \\
-         \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
-         a_{k-1,1} & \cdots & a_{k-1,j-1} & a_{k-1, j} & a_{k-1, j+1} & \cdots & a_{k-1, n} \\
-         0 & \cdots & 0 & a_{i, j} & 0 & \cdots & 0 \\
-         a_{k+1,1} & \cdots & a_{k+1,j-1} & a_{k+1, j} & a_{k+1, j+1} & \cdots & a_{k+1, n} \\
-         \vdots & & \vdots & \vdots & \vdots &  & \vdots \\
-         a_{n, 1} & \cdots & a_{n,j-1} & a_{n, j} & a_{n, j+1} & \cdots & a_{n, n} 
-        \end{array}\right].
-  $$
-  $c_{ik}$ est donc le déterminant de la matrice $A$ dont la $k$-ème ligne est remplacée par la $i$-ème ligne. 
-  Cette matrice possède deux lignes égales (la $i$-ème et la $k$-ème), donc son déterminant est nul, donc $c_{ik} = 0$.
+  donc $c_{ik} = 0$.
 \end{description}
 On a ainsi montré que
 $$
 c_{ik} = \left\{\begin{array}{ll} 
                   |A| & \text{si $i = k$} \\
-                  0 & \text{sinon}.
+                  0 & \text{sinon}
                 \end{array} \right.
 \qquad \Leftrightarrow \qquad
 C = AB^\top = |A| I
