@@ -46,7 +46,8 @@ $$
 
 
 \begin{proposition}
-  Si $A$ est (symétrique) positive, toutes ses valeurs propres sont positives ou nulles; si elle est définie positive toutes ses valeurs propres sont strictement positives.
+  Si $A$ est (symétrique) positive, toutes ses valeurs propres sont positives ou nulles. \\
+  Si elle est définie positive toutes ses valeurs propres sont strictement positives.
 \end{proposition}
 
 \proof
@@ -100,7 +101,7 @@ On revient à l'étude des matrices de variance-covariance introduite à la sect
 
 \proof
 \begin{enumerate}
-\item Cela résulte directement du fait que $\Sigma$ est réelle et symétrique.
+\item Cela résulte du fait que $\Sigma$ est réelle et symétrique.
 \item On considère un vecteur $v = [v_1 \dots v_n]^\top$ quelconque et on définit la variable aléatoire 
 $$
 Y = \sum_{i=1}^n v_i X_i.
@@ -269,7 +270,7 @@ La condition $\forall i \geq 2: |\lambda_i| < |\lambda_1|$ implique que $\lambda
     A v = \lambda_1 v, \qquad u^\top A = \lambda_1 u^\top
     $$
     sont strictement positifs : $v > 0$, $u > 0$;
-    \item On a 
+    \item de plus
     $$
     \lim_{n \to \infty} \lambda_1^{-n} A^n = v u^\top.
     $$
@@ -277,11 +278,12 @@ La condition $\forall i \geq 2: |\lambda_i| < |\lambda_1|$ implique que $\lambda
 \end{theorem}
 
 \proof
-Non démontré
+Non démontré. 
 \eproof
 
 \remark
-Puisque $v$ et $u$ sont strictement positifs, on peut toujours les choisir de telle manière que $\sum_i u_i = 1$ et $u^\top v = 1$. Il suffit, partant de $v$ et $u$ quelconque, de définir $u' = u / \sum_i u_i$, puis $v' = v / (u')^\top v$.
+Puisque $v$ et $u$ sont strictement positifs, on peut toujours les choisir de telle manière que $\sum_i v_i = 1$.
+% et $u^\top v = 1$. Il suffit, partant de $v$ et $u$ quelconque, de définir $v' = v / \sum_i v_i$, puis $u' = u / u^\top v'$.
 
 \remark
 S'agissant d'un modèle de dynamique de population $x(n) = A^n x(0)$, le théorème de Perron-Frobénieus implique que 
@@ -304,7 +306,7 @@ ce qui signifie que
   $$
   x(n+1) = A x(n) 
   \qquad \text{avec} \qquad
-  A = \left[\begin{array}{ccc} 0 & 0 & m \\ s_j & 0 & 0 \\ 0 & s_f & s_m \end{array}\right]
+  A = \left[\begin{array}{ccc} 0 & 0 & m \\ s_j & 0 & 0 \\ 0 & s_f & s_b \end{array}\right]
   $$
   où $m =$ fertilité moyenne des reproducteurs et $s_j, s_f, s_b =$ taux de survie des juvéniles, flottants et reproducteurs. \\
   Donner les conditions sur $m$, $s_j$, $s_f$ et $s_b$ pour que la population ne s'éteigne pas.
@@ -320,7 +322,7 @@ ce qui signifie que
                         -\lambda & 0 \\ s_f & s_b - \lambda 
                       \end{array} \right|
       + m \left| \begin{array}{cc} 
-                        s_j & 0 \\ & s_f - \lambda 
+                        s_j & -\lambda \\ 0 & s_f
                       \end{array} \right|
     = - \lambda^3 + s_b \lambda^2 + ms_js_f.
     $$

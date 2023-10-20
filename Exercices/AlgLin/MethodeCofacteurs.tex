@@ -8,7 +8,7 @@
     & = \sum_{j=1}^n a_{i_0j} (-1)^{i_0+j} |A^{(i_0j)}| & (\text{développement par rapport à la ligne $i_0$}) \\
     & = \sum_{i=1}^n a_{ij_0} (-1)^{i+j_0} |A^{(ij_0)}| & (\text{développement par rapport à la colonne $j_0$})
   \end{align*}
-  On pourra commencer par considérer les cas $i_0 = 1$ et $j_0 = 1$.
+  On pourra utiliser la $n$-linéarité et le caractère alterné du déterminant.
 
 \solution{
   On considère le développement par rapport à la ligne $i_0$. Par multilinéarité, on a
@@ -49,7 +49,7 @@
   où on remarque que $(-1)^{(j-1) + (i_0-1)} = (-1)^{i_0+j}$. 
   On utilise alors la formule du déterminant par bloc
   $$
-  |A| = \sum_{j=1}^n (-1)^{i_0 + j} a_{i_0j} |[1]| \times
+  |A| = \sum_{j=1}^n (-1)^{i_0 + j} a_{i_0j} \times 1 \times
     \left|\begin{array}{cccccc}
       a_{11} & \cdots & a_{1,j-1} & a_{1,j+1} & \cdots & a_{1n} \\
       \vdots & & \vdots & \vdots & & \vdots \\

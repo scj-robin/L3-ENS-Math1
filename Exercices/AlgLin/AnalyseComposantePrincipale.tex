@@ -9,17 +9,10 @@ $$
 de plus grande variance, où $a = [a_1, \dots a_n]^\top \in \Rbb^n$.
 
 \begin{enumerate}
-  \item Montrer que, pour tout réel $k$ et $b = k a$, on a $\Var(b^\top X) = k^2 \Var(a^\top X)$ et commenter.
+  \item Montrer que, pour tout réel $k$ et $b = k a$, on a $\Var(b^\top X) = k^2 \Var(a^\top X)$ et justifier que, dans la suite, on suppose que  $\|a\| = 1$.
   \solution{Soit $Z = b^\top X = k a^\top X = k Y$, on a $\Var(Z) = k^2 \Var(Y)$, d'où le résultat. \\
   La recherche de la combinaison ``de plus grande variance'' n'a donc pas de sens si on impose pas de contrainte au vecteur $a$.
   }
-\end{enumerate}
-
-\bigskip
-\noindent On supposera dans la suite que $\|a\| = 1$.
-
-\begin{enumerate}
-  \setcounter{enumi}{1}
   \item Montrer qu'on peut décomposer $\Sigma$ sous la forme $\Sigma = P \Lambda P^\top$ et que, pour tout vecteur $a$ de norme 1, il existe un vecteur $b$, de norme 1 également, que l'on précisera, et tel que
   $$
   a^\top \Sigma a = \sum_{i=1}^n \lambda_i b_i^2.
@@ -42,7 +35,7 @@ de plus grande variance, où $a = [a_1, \dots a_n]^\top \in \Rbb^n$.
   $$
   Cette borne supérieure est atteinte uniquement pour le vecteur $b^* = [1 \; 0 \; \dots \; 0]^\top$.
   }
-  \item En déduire la combinaison linéaire $Y^* = {a^*}^\top X$ de variance maximale (pour $\|a^*\| = 1$).
+  \item En déduire la combinaison linéaire $Y^* = {a^*}^\top X$ de variance maximale (pour $\|a^*\| = 1$) et donner sa variance.
   \solution{Puisque $\Var(Y) = a^\top \Sigma a$ et que pour tout $a$, $a^\top \Sigma a = \sum_i \lambda_i b_i^2$ en prenant 
   $$
   b = P^\top a \qquad \Leftrightarrow \qquad a = P b,
@@ -52,8 +45,11 @@ de plus grande variance, où $a = [a_1, \dots a_n]^\top \in \Rbb^n$.
   a^* = P b^* = v_1
   $$
   en notant $P = [v_1 v_2 \dots v_n]$. \\
-  $a^*$ est donc le premier vecteur propre de $\Sigma$, c'est-à-dire le vecteur propre associé à $\lambda_1$. \\
-  Remarques : 
+  $a^*$ est donc le premier vecteur propre de $\Sigma$, c'est-à-dire le vecteur propre associé à $\lambda_1$. La variance de $Y$ est alors
+  $$
+  \Var(Y) = a^\top \Sigma a = a^\top \lambda_1 a = \lambda_1.
+  $$
+  \remarks
   \begin{itemize}
   \item Si $\lambda_1$ est une valeur propre multiple, la solution du problème n'est pas unique.
   \item Si toutes les valeurs propres sont simples, la combinaison linéaire $Y' = a'^\top X$ de plus grande variance (pour $a'$ de norme 1) et non corrélée à $Y^* = a^* X$ ($\Cov(Y', Y^*) = 0$) est donnée par $a' = v_2$, le deuxième vecteur propre de $\Sigma$.
@@ -62,52 +58,61 @@ de plus grande variance, où $a = [a_1, \dots a_n]^\top \in \Rbb^n$.
 \end{enumerate}
 
 \bigskip
-\noindent On considère maintenant $n$ variables aléatoires $V_1, \dots V_n$ indépendantes et de même variance $\sigma^2$. On considère de plus la variable $U$, indépendante des $V_i$ et de variance $\gamma^2$. On pose enfin, pour $1 \leq i \leq n$,
+\noindent On considère maintenant 
+\begin{itemize}
+  \item $n$ variables aléatoires $V_1, \dots V_n$ indépendantes et de variance $1$ et
+  \item une variable $U$, indépendante des $\{V_i\}_{1 \leq i \leq n}$ et de variance $\sigma^2$,  On 
+\end{itemize}
+et on pose, pour $1 \leq i \leq n$,
 $$
 X_i = U + V_i.
 $$
 
 \begin{enumerate}
   \setcounter{enumi}{4}
-  \item Déterminer la matrice $\Sigma$.
+  \item Déterminer la matrice de covariance $\Sigma$ de $(X_1, \dots X_n)$.
   \solution{On a
   \begin{align*}
-    \Var(X_i) & = \Var(U) + \Var(V_i) = \gamma^2 + \sigma^2, \\
-    \Cov(X_i, X_j) & = \Cov(U+V_i, U+V_j) = \Cov(U, U) = \gamma^2, & & \text{pour $i \neq j$},
+    \Var(X_i) & = \Var(U) + \Var(V_i) = \sigma^2 + 1, \\
+    \Cov(X_i, X_j) & = \Cov(U+V_i, U+V_j) = \Cov(U, U) = \sigma^2, & & \text{pour $i \neq j$},
   \end{align*}
   soit
   $$
   \Sigma 
   = \left[\begin{array}{cccc}
-    \gamma^2 + \sigma^2 & \gamma^2 & \dots & \gamma^2 \\
-    \gamma^2 & \ddots & \ddots & \vdots \\
-    \vdots & \ddots & \ddots & \gamma^2 \\
-    \gamma^2 & \dots & \gamma^2 & \gamma^2 + \sigma^2
+    \sigma^2 + 1 & \sigma^2 & \dots & \sigma^2 \\
+    \sigma^2 & \ddots & \ddots & \vdots \\
+    \vdots & \ddots & \ddots & \sigma^2 \\
+    \sigma^2 & \dots & \sigma^2 & \sigma^2 + 1
   \end{array}\right]
-  = \gamma^2 J + \sigma^2 I 
+  = \sigma^2 J + I 
   $$
   }
-  \item Déterminer la combinaison linéaire $Y = \sum_{i=1}^n a_i X_i$ de plus grande variance.
+  \item Déterminer la combinaison linéaire $Y = \sum_{i=1}^n a_i X_i$ de plus grande variance et donner sa variance.
   \solution{Il s'agit de déterminer les valeurs et vecteurs propres de $\Sigma$. 
   Puisque $J = 1_n 1_n^\top$, on a, pour tout vecteur $v$
   $$
   \Sigma v = \lambda v 
   \qquad \Leftrightarrow \qquad 
-  \gamma^2 (1_n^\top v) 1_n + \sigma^2 v = \lambda v.
+  \sigma^2 1_n 1_n^\top v  + v = \lambda v.
   $$
-  On peut distinguer deux cas :
+  On peut distinguer deux cas.
   \begin{description}
-    \item[$1_n^\top v = 0$:] on a alors $\sigma^2 v = \lambda v$, soit $\lambda = \sigma^2$ pour tout vecteur $v$ tel que $1_n^\top v = \sum_i v_i = 0$, ce qui définit un sous espace propre de dimension $n-1$. 
+    \item[$1_n^\top v = 0$:] on a alors $v = \lambda v$, soit $\lambda = 1$. Tout vecteur $v$ tel que $1_n^\top v = \sum_i v_i = 0$ est donc propre associé à $\lambda = 1$, ce qui définit un sous espace propre de dimension $n-1$. 
     \item[$1_n^\top v \neq 0$:] pour $v = 1_n$ (donc $1_n^\top v = n$), on a
     $$
-    \Sigma v = n \gamma^2 v + \sigma^2 v = \lambda v,
+    \Sigma v = n \sigma^2 v + v = \lambda v,
     $$
-    soit $\lambda = n \gamma^2 + \sigma^2$, associée au vecteur propre $v = 1_n$.
+    soit $\lambda = n \sigma^2 + 1$, associée au vecteur propre $v = 1_n$.
   \end{description}
-  La valeur propre dominante est $\lambda_1 = n \gamma^2 + \sigma^2$ et le vecteur propre de norme 1 associé est $a^* = 1/\sqrt{n} 1_n$, soit
+  La valeur propre dominante est $\lambda_1 = n \sigma^2 + 1$ et le vecteur propre de norme 1 associé est $a^* = 1/\sqrt{n} 1_n$, soit
   $$
   Y^* 
-  = \frac1{\sqrt{n}} \sum_i X_i.
+  = \frac1{\sqrt{n}} \sum_i X_i
+  $$
+  dont la variance est donnée par la valeur propre dominante $\lambda_1$, soit
+  $$
+  \Var(Y^*) = n \sigma^2 + 1.
   $$
   }
 \end{enumerate}

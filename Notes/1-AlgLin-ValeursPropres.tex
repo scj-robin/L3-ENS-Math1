@@ -223,9 +223,6 @@ $$
   \begin{itemize}
     \item Définition
     \item Polynôme caractéristique
-  \end{itemize}
-  \item Valeurs propres vecteurs propres
-  \begin{itemize}
     \item Val. propres réelles : interprétation géométrique
   \end{itemize}
 \end{enumerate}
@@ -258,7 +255,7 @@ Programme cours 2 :
   $$
   A = \left[\begin{array}{cc} a & b \\ c & d\end{array}\right]
   $$
-  Déterminer le polynôme caractéristique de $A$ et donner les condtions sur $p = \tr(A)$ et $q = \det(A)$ pour que $A$ admette deux valeurs propres réelles.
+  Déterminer le polynôme caractéristique de $A$ et donner les conditions sur $p = \tr(A)$ et $q = \det(A)$ pour que $A$ admette deux valeurs propres réelles.
 \end{exercise*}
 
 \solution{
@@ -311,15 +308,15 @@ et $p^2 - 4 q = 0$ ssi $b = 0$ et $a=c$ (les deux valeurs propres étant alors �
 
 \proof
 \begin{description}
-  \item[Degrés :] la formule \eqref{eq:determinant} montre que le degré de $P_A$ ne peut excéder $n$ puisque chaque permutation emprunte au plus $n$ termes diagonaux. La propriété suivante montre que le coefficiant d'ordre $n$ est non nul.
+  \item[Degré :] la formule \eqref{eq:determinant} montre que le degré de $P_A$ ne peut excéder $n$ puisque chaque permutation emprunte au plus $n$ termes diagonaux. La propriété suivante montre que le coefficient d'ordre $n$ est non nul.
   %
-  \item[Coefficient de degré $n$ :] on raisonne par récurrence. Pour $n = 1$, on a bien $P_A(\lambda) = a- \lambda$. Si la propriété est vraie au rang $n-1$, on développe $|A - \lambda I_n|$ par rapport à la dernière ligne : 
+  \item[Coefficient de degré $n$ :] on raisonne par récurrence. Pour $n = 1$, on a bien $P_A(\lambda) = a_{11} - \lambda$. Si la propriété est vraie au rang $n-1$, on développe $|A - \lambda I_n|$ par rapport à la dernière ligne : 
   $$
   |A - \lambda I_n| 
   = \sum_{j=1}^{n-1} a_{nj} \underset{\scriptsize
-    \begin{tabular}{c}\text{degrée $\leq n-1$ d'après} \\
-    \text{la propriété précédente}\end{tabular}
-    }{\underbrace{|(A - \lambda I_n)^{(nj)}|}} + (a_{nn} - \lambda) \underset{\text{degrée $= n-1$ par hypothèse}}{\underbrace{|(A - \lambda I_n)^{(nn)}|}}
+    \begin{tabular}{c}\text{degré $\leq n-1$ par le même} \\
+    \text{argument que précédemment}\end{tabular}
+    }{\underbrace{|(A - \lambda I_n)^{(nj)}|}} + (a_{nn} - \lambda) \underset{\text{degré $= n-1$ par hypothèse}}{\underbrace{|(A - \lambda I_n)^{(nn)}|}}
   $$
   Donc
   $$
@@ -332,7 +329,7 @@ et $p^2 - 4 q = 0$ ssi $b = 0$ et $a=c$ (les deux valeurs propres étant alors �
   %
   \item[Coefficient de degré $n-1$ :] cette propriété sera démontrée en TD.
   %
-  \item[Coefficient de degré $0$ :] immédiat en remarquant que
+  \item[Coefficient de degré $0$ :] on remarquant que
     $$
     [\lambda^0]P_A(\lambda) = P_A(0) = |A - 0 I_n| = |A|.
     $$
@@ -418,7 +415,7 @@ admet $x_1 = 1$ et $x_2 = 2$ pour racines avec $m_1 = 2$ et $m_2 = 1$.
 \end{corollary*}
 
 \proof
-Evident.\eproof
+Directe.\eproof
 
 \begin{corollary*}
   Le déterminant est égal au produit des valeurs propres : 
@@ -428,7 +425,7 @@ Evident.\eproof
 \end{corollary*}
 
 \proof
-  Il suffit de remarquer que, du fait des propriétés du polynôme caratéristique et de sa factorisation, 
+  Du fait des propriétés du polynôme caractéristique et de sa factorisation, on a
   $$
   |A| = [\lambda^0]P_A(\lambda) = P_A(0) = \prod_{j=1}^d \lambda_j^{m_j}.
   $$
@@ -493,7 +490,7 @@ Non démontré
 \end{definition}
 
 \begin{proposition}
-  Les terme diagonaux de la matrice $\Lambda$ sont les valeurs propres de $A$ et les colonnes de la matrice $P$ sont les vecteurs propres associés :
+  Les termes diagonaux de la matrice $\Lambda$ sont les valeurs propres de $A$ et les colonnes de la matrice $P$ sont les vecteurs propres associés :
   en notant $\Lambda = \diag(\lambda_1, \dots \lambda_n)$ et $P = [u_1 \dots u_n]$, 
   $$
   \forall \; 1 \leq j \leq n: \quad A u_j = \lambda_j u_j.
@@ -538,7 +535,7 @@ Une matrice $A$ est diagonalisable si son application consiste à
 \end{proposition}
 
 \proof
-On vérifie que $A A^{-1} = P \Lambda P^{-1} P \Lambda^{-1} P^{-1} = P \Lambda \Lambda^{-1} P^{-1} = P P^{-1} = I_n$ et idem dans l'autre sens.
+On vérifie que $A A^{-1} = P \Lambda P^{-1} P \Lambda^{-1} P^{-1} = P \Lambda \Lambda^{-1} P^{-1} = P P^{-1} = I_n$.
 \eproof
 
 \begin{theorem}[Matrice diagonalisable]
@@ -667,7 +664,7 @@ C'est une conséquence de la proposition selon laquelle les intersections des so
   % = -(1 + \lambda)(\lambda^2 - 2\lambda - 3)
   = -(1 + \lambda)^2(\lambda - 3)
   $$
-  donc les valeurs propres sont $\lambda_1 = -1$ et $\lambda_2 = 3$ avec $m_1 = 2$, $m_2 = 1$ et
+  donc les valeurs propres sont $\lambda_1 = -1$ et $\lambda_2 = 3$ avec $m_1 = 2$, $m_2 = 1$ et, pour $\lambda_1 = 1$, on a
   $$
   Ax = -x \quad\Leftrightarrow \quad 
   \left\{\begin{array}{rcl}
