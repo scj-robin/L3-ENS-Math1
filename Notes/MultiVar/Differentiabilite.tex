@@ -34,7 +34,7 @@ On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ 
     & h & \to &  hf'(x)
   \end{array}
   $$
-  est donc une application linéaire, dite {\sl tangente à la fonction $f$ au point $x$}.
+  est donc une {\sl application linéaire}, dite {\sl tangente à la fonction $f$ au point $x$}.
   \item On note parfois, de façon équivalente :
   $$
   f(x+h) - f(x) - h f'(h) = o(h)
@@ -113,7 +113,7 @@ or $\|y\|$ est non nul, donc $M(y) = 0$. (La nullité de $M(0)$ s'obtient grâce
 \eproof
 
 \remark
-De façon évidente, une application linéaire est différentiable partout et est sa propre différentielle.
+Une application linéaire est différentiable partout et est sa propre différentielle puisque $f(x+h) - f(x) = f(x) + f(h) - f(x) = f(h)$, ou $f$ est linéaire et en prenant $o(|\|h\|) = 0$.
 
 % \begin{exercise*}
 %  Montrer qu'une application linéaire $f$ de $\Rbb^n$ dans $\Rbb^k$ est différentiable partout et est sa propre différentielle.
@@ -239,17 +239,22 @@ La preuve consiste à montrer que la différentiabilité de $f$ implique celle d
   $$
   \item Maintenant, puisque $f$ est différentiable, on a pour tout $x$ et $u$
   $$
-  \lim_{u\to 0, u \neq 0} \frac{f(x+u) - f(x)}{\|u\|} = D_xf(u).
+  \lim_{u\to 0, u \neq 0} \frac{f(x+u) - f(x) - D_xf(u)}{\|u\|} = 0_k.
   $$
-  En prenant $u = h_j e_j$ où $h_j \in \Rbb$, pour $1 \leq j \leq n$, il vient
+  En prenant $u = h_j e_j$ où $h_j \in \Rbb$, pour $1 \leq j \leq n$, il vient (par linéarité)
   $$
-  \lim_{h_j\to 0, h_j \neq 0} \frac{f(x+h_j e_j) - f(x)}{|h_j|} = D_xf(h_j e_j)  =  D_xf(e_j) \; h_j \in \Rbb^k
+  \lim_{h_j\to 0, h_j \neq 0} \frac{f(x+h_j e_j) - f(x) - D_xf(h_j e_j)}{|h_j|} 
+  = \lim_{h_j\to 0, h_j \neq 0} \frac{f(x+h_j e_j) - f(x) - D_xf(e_j) \; h_j}{|h_j|} 
+  =  0_k
   $$
-  qui implique que pour chaque $i = 1 \dots k$, 
+  qui implique (par convergence coordonnée par coordonnée) que pour chaque $i = 1 \dots k$, 
   $$
-  \lim_{h_j\to 0, h_j \neq 0} \frac{f_i(x+h_j e_j) - f_i(x)}{|h_j|} = D_xf(h_j e_j)  = [D_xf(e_j)]_i \; h_j.
+  \lim_{h_j\to 0, h_j \neq 0} \frac{f_i(x+h_j e_j) - f_i(x) - D_xf(h_j e_j)}{|h_j|} 
+  =   
+  \lim_{h_j\to 0, h_j \neq 0} \frac{f_i(x+h_j e_j) - f_i(x) - [D_xf(e_j)]_i \; h_j}{|h_j|} 
+  = 0.
   $$
-  En utilisant la convergence par coordonnées, cette égalité assure que l'application $f_i$ est bien dérivable en $x$ par rapport à $x_j$ et que sa dérivée vaut précisément
+  Cette égalité assure que l'application $f_i$ est bien dérivable en $x$ par rapport à $x_j$ et que sa dérivée vaut précisément
   $$
   \frac{\partial f_i(x_1, \dots x_n)}{\partial x_j} = [D_xf(e_j)]_i.
   $$
@@ -265,9 +270,9 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
     & x & \to & f(x) = x
   \end{array}
   $$
-  a pour matrice jacobienne la matrice identité $J_xf = I_n$ pour tout $x$. En effet, on a $f_j(x) = x_j$, soit
+  a pour matrice jacobienne la matrice identité $J_xf = I_n$ pour tout $x$. En effet, on a $f_i(x) = x_i$, soit
   $$
-  \frac{\partial f_j}{\partial x_i} = \left\{\begin{array}{ll}
+  \frac{\partial f_i}{\partial x_j} = \left\{\begin{array}{ll}
                                               1 & \text{si $i=j$}, \\
                                               0 & \text{sinon}.
                                              \end{array}\right.
@@ -301,9 +306,10 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
 %   f(h) - f(0) - J_0f \cdot h = u^2
 %   \qquad \Rightarrow \qquad 
   \frac1{\|h\|} \left(f(x) - f(0) - J_0 f \cdot h\right)
-  = -\frac{u^2}{u \sqrt{2}} = -\frac{u}{\sqrt{2}},
+  = -\frac{u^2}{u \sqrt{2}} = -\frac{u}{\sqrt{2}}
+  \neq o(\|h\|).
   $$
-  or
+  D'ailleurs
   $$
   \lim_{h \to 0} -\frac1{\|h\|} \frac{u}{\sqrt{2}}
   = \lim_{u \to 0} \frac1{u \sqrt{2}} \frac{-u}{\sqrt{2}}
@@ -326,6 +332,7 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   on a donc montré que $J_x f = x^\top (B + B^\top)$. Dans le cas ou $B$ est symétrique, on obtient $J_x f = 2 x^\top B$ où l'on retrouve la forme de la dérivée de $bx^2$, à savoir $2 bx$.
 
 \end{enumerate}
+
 
 %-------------------------------------------------------------------------------
 \remark
@@ -389,23 +396,6 @@ Ce plan est bien horizontal pour $(x_0, y_0) = (0, 0)$.
     \end{array} \right|
   = \rho \cos^2\theta + \rho \sin^2 \theta = \rho.
   $$
-}
-
-%-------------------------------------------------------------------------------
-\progres{
-  Rappel cours 3 :
-  \begin{itemize}
-    \item Normes (notion de limite et de convergence, équivalence des normes en dimension finie)
-    \item Différentiabilité (différentiabilité, application linéaire tangente, matrice Jacobienne)
-    \item Revoir l'exemple $f(x, y) = |x| \times |y|$ dans la direction $h = [1 \; 1]^\top$.
-    \item Exercice à faire : matrice des dérivées de $\log |X|$
-  \end{itemize}
-  Programme cours 4 :
-  \begin{itemize}
-    \item Composition et fonction implicite
-    \item Intégration (difféomorphisme et chgt de variables)
-    \item Caractérisation des extremums
-  \end{itemize}
 }
 
 %-------------------------------------------------------------------------------

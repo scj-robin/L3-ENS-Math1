@@ -1,33 +1,3 @@
-% \progres{Rappel cours 2 :
-% \begin{enumerate}
-%   \item Fin algèbre linéaire: 
-%   \begin{itemize}
-%     \item Matrices définies positives ($A \succcurlyeq 0$)
-%     \item Matrices positives ($A \geq 0$) / theorème de Perron-Frobenius
-%   \end{itemize}
-%   \item TD : 
-%   \begin{itemize}
-%     \item Matrice de covariance $\succcurlyeq 0$ et ACP
-%     \item Rappel : $AB = I \Rightarrow BA = I$
-%   \end{itemize}
-% \end{enumerate}
-% Programme cours 3 :
-% \begin{enumerate}
-%   \item Normes = mesure d'une approximation
-%   \begin{itemize}
-%     \item Normes classiques
-%     \item \'Equivalence
-%   \end{itemize}
-%   \item Différentiabilité = possibilité d'une approximation linéaire
-%   \begin{itemize}
-%     \item Application linéaire tangente
-%     \item Matrice jacobienne
-%     \item Composition
-%   \end{itemize}
-% \end{enumerate}
-% }
-
-
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 \section{Préliminaire : normes} \label{sec:Multivar-Norme}
@@ -42,7 +12,7 @@
 \begin{definition}[Norme]
   Soit $\Ecal$ un espace vectoriel. Une application $\|\cdot\|$ de $\Ecal$ dans $\Rbb^+$ est une norme si
   \begin{enumerate}[(i)]
-    \item $\{\|x\| = 0 \Leftrightarrow x = 0]\}$ ;
+    \item $\{\|x\| = 0 \Leftrightarrow x = 0\}$ ;
     \item $\forall x \in \Ecal, \forall \lambda \in \Rbb: \; \|\lambda x\| = |\lambda| \|x\|$ ;
     \item $\forall x, y \in \Ecal: \; \|x+y\| \leq \|x\| + \|y\|$ (inégalité triangulaire);
   \end{enumerate}
@@ -54,11 +24,11 @@
   $$
   d(x, y) = \|x - y\|.
   $$
-  \item Une norme induit une définition de la convergence : $(u_n)_{n \geq 0}$ converge vers $\ell$ ssi
+  \item Une norme induit une définition de la convergence : $(u(n))_{n \geq 0}$ converge vers $\ell$ ssi
   $$
-  \lim_{n \to \infty} \|u_n - \ell\| = 0;
+  \lim_{n \to \infty} \|u(n) - \ell\| = 0;
   $$
-  On dit alors que $(u_n)_{n \geq 0}$ converge vers $\ell$ {\em au sens de $\|\cdot\|$}.
+  On dit alors que $(u(n))_{n \geq 0}$ converge vers $\ell$ {\em au sens de $\|\cdot\|$}.
 \end{enumerate}
 
 %-------------------------------------------------------------------------------
@@ -129,22 +99,24 @@ $$
     \|x\|_2 & = \sqrt{\sum_i x_i^2}  \leq \sqrt{n \max_i x_i^2} = \sqrt{n} \max_i |x_i| = \sqrt{n} \|x\|_\infty, \\
     \|x\|_\infty & = \max_i |x_i| = \sqrt{\max_i x_i^2} \leq \sqrt{\sum_i x_i^2} = \|x\|_2.
   \end{align*}
+  Le coefficient $\sqrt{n}$ signale le fait qu'on se place en dimension finie. \\
+  D'autres comparaisons seront établies en TD.
 }
 
 \remark
-Le théorème \ref{thm:equivalenceNormes} assure aussi l'équivalence des convergences : si la suite $(u_n)_{n \geq 0}$ converge vers $\ell$ au sens de la norme $\|\cdot\|_a$ :
+Le théorème \ref{thm:equivalenceNormes} assure aussi l'équivalence des convergences : si la suite $(u(n))_{n \geq 0}$ converge vers $\ell$ au sens de la norme $\|\cdot\|_a$ :
 $$
-\lim_{n \to \infty} \|u_n - \ell\|_a = 0
+\lim_{n \to \infty} \|u(n) - \ell\|_a = 0
 $$
 alors elle converge aussi au sens de la norme $\|\cdot\|_b$ puisque
 $$
-0 = \frac1{c_1} \lim_{n \to \infty} \|u_n - \ell\|_a
-\leq \lim_{n \to \infty} \|u_n - \ell\|_b \leq
-c_2 \lim_{n \to \infty} \|u_n - \ell\|_a = 0.
+0 = \frac1{c_1} \lim_{n \to \infty} \|u(n) - \ell\|_a
+\leq \lim_{n \to \infty} \|u(n) - \ell\|_b \leq
+c_2 \lim_{n \to \infty} \|u(n) - \ell\|_a = 0.
 $$
 
-\begin{definition}[Convergence coordonnée par coordonnée.]
-  Une suite $(u(n))_{n \geq 0}$ d'élément de $\Rbb^k$ converge coordonnée par coordonnée vers $\ell \in \Rbb^k$ si, pour chaque $1 \leq i \leq k$:
+\begin{definition}[Convergence coordonnée par coordonnée]
+  Une suite $(u(n))_{n \geq 0}$ d'éléments de $\Rbb^k$ converge coordonnée par coordonnée vers $\ell \in \Rbb^k$ si, pour chaque $1 \leq i \leq k$:
   $$
   \lim_{n \to \infty} u_i(n) = \ell_i.
   $$
@@ -164,7 +136,7 @@ $$
 \end{lemma}
 
 % {Démonstration du lemme \ref{lem:inversionLimiteMaximum}.}
-\proof
+\proof (Démonstration du Lemme)
 \begin{description}
   \item[$\Rightarrow$:] $\lim_{n \to \infty} \max_{i=1 \dots k} v_i(n) = 0$
   \begin{align*}
@@ -182,32 +154,40 @@ $$
     \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \max_i |v_i(n)| < \epsilon\}\\
     \Rightarrow \quad & \lim_{n \to \infty} \max_i v_i(n) = 0
   \end{align*}
+  La démonstration est presqu'entièrement symétrique. La différence se fait lors du choix des $N_{\epsilon, i}$ et de $N_\epsilon$. Le choix de ce dernier comme un max est possible grâce à la dimension finie.
 \end{description}
 \eproof
 
 % {Démonstration de la proposition \ref{prop:convergenceParCoordonnee}.}
 \proof
-Toutes les normes étant équivalentes dans $\Rbb^k$, nous pouvons démontrer chaque implication avec la norme de notre choix.
-
-\SR{}{Revoir : preuve $\Leftrightarrow$ = suite d'équivalence ?}
-\begin{description}
-  \item[$\Rightarrow$:]
-    \begin{align*}
-%       \forall 1 \leq i \leq k: \lim_{n \to \infty} u_i(n) = \ell_i
-%       & \qquad \Rightarrow \qquad & & 
-      \forall 1 \leq i \leq k: \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 
-      & \Rightarrow & & \sum_{i=1}^k \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 \\
-      & & \Rightarrow & & \lim_{n \to \infty} \sum_{i=1}^k |u_i(n) - \ell_i| & = 0 \\
-      & & \Rightarrow & &  \lim_{n \to \infty} \|u - \ell\|_1 & = 0. 
-    \end{align*}
-  \item[$\Leftarrow$:]
-  \begin{align*}
-    \lim_{n \to \infty} \|u - \ell\|_\infty & = 0
-    & \Rightarrow & & \lim_{n \to \infty} \max_{i=1 \dots k} |u_i(n) - \ell_i| & = 0 \\
-    & & \Rightarrow & & \max_{i=1 \dots k} \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 \qquad \text{(d'après le lemme)}\\
-    & & \Rightarrow & & \forall 1 \leq i \leq k: \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0.
-  \end{align*}
-\end{description} 
+Toutes les normes étant équivalentes dans $\Rbb^k$, nous pouvons choisir la norme infinie.
+% \SR{}{Revoir : preuve $\Leftrightarrow$ = suite d'équivalence ?}
+% \begin{description}
+%   \item[$\Rightarrow$:]
+%     \begin{align*}
+% %       \forall 1 \leq i \leq k: \lim_{n \to \infty} u_i(n) = \ell_i
+% %       & \qquad \Rightarrow \qquad & & 
+%       \forall 1 \leq i \leq k: \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 
+%       & \Rightarrow & & \sum_{i=1}^k \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 \\
+%       & & \Rightarrow & & \lim_{n \to \infty} \sum_{i=1}^k |u_i(n) - \ell_i| & = 0 \\
+%       & & \Rightarrow & &  \lim_{n \to \infty} \|u - \ell\|_1 & = 0. 
+%     \end{align*}
+%   \item[$\Leftarrow$:]
+%   \begin{align*}
+%     \lim_{n \to \infty} \|u - \ell\|_\infty & = 0
+%     & \Rightarrow & & \lim_{n \to \infty} \max_{i=1 \dots k} |u_i(n) - \ell_i| & = 0 \\
+%     & & \Rightarrow & & \max_{i=1 \dots k} \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 \qquad \text{(d'après le lemme)}\\
+%     & & \Rightarrow & & \forall 1 \leq i \leq k: \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0.
+%   \end{align*}
+% \end{description} 
+On a
+\begin{align*}
+  \lim_{n \to \infty} \|u - \ell\|_\infty & = 0 & 
+  \Leftrightarrow \quad \lim_{n \to \infty} \max_{i=1 \dots k} |u_i(n) - \ell_i| & = 0 & \qquad \text{(par définition de $\|\cdot\|_\infty$)} \\
+  & & \Leftrightarrow  \quad \max_{i=1 \dots k} \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 & \qquad \text{(par le lemme \ref{lem:inversionLimiteMaximum})} \\
+  & & \Leftrightarrow  \quad \forall 1 \leq i \leq k: \lim_{n \to \infty} |u_i(n) - \ell_i| & = 0 & 
+  \qquad \text{(par définition du max)}.
+\end{align*}
 \eproof
 
 \begin{proposition} \label{prop:normeProduitMatriceVecteur}
