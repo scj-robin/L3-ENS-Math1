@@ -1,0 +1,224 @@
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{ODE en dimension $n$} \label{sec:EquaDiff-nonLineaire}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\subsection{ODE linéaire en dimension $n$.}
+%-------------------------------------------------------------------------------
+
+\begin{definition}
+  Une ODE $\dot y = F(y)$ est dite linéaire si l'application $F : \Rbb \mapsto \Rbb$ est linéaire : 
+  $$
+  \dot y (t) = A y(t).
+  $$
+\end{definition}
+
+\remark
+Les points d'équilibre $y^*$ sont les élément du noyau $\ker(A)$, i.e. les vecteurs propres associés à la valeur propre 0. En conséquence, si $\lambda = 0$ n'est pas valeur propre de $A$, il n'existe pas d'autre point stationnaire que $y^* = 0_n$.
+
+%-------------------------------------------------------------------------------
+\paragraph*{Cas diagonalisable.}
+
+\begin{proposition}[ODE linéaire diagonalisable] \label{prop:odeLineaireDiagonalisable}
+  Si la matrice $A$ est diagonalisable : 
+  $$
+  A = P D P^{-1}
+  \qquad \text{avec}  \quad 
+  D = \diag(\lambda_1, \dots \lambda_n),
+  $$
+  la solution du problème
+  $$
+  \{y(0) = y_0, \; \dot y = A y\}
+  $$
+  est
+  $$
+  y(t) = P E(t) P^{-1} y_0  
+  $$
+  avec
+  $$
+  E(t) = \diag\left(e^{\lambda_1 t} \dots e^{\lambda_n t} \right)
+  \qquad \text{et} \qquad
+  z_0 = P^{-1} y_0.
+  $$
+\end{proposition}
+
+% {Démonstration de la proposition \ref{prop:odeLineaireDiagonalisable}.}
+\proof
+En posant $z(t) = P^{-1} y(t)$ et puisque la dérivation est linéaire, il vient 
+$$
+\dot z (t) = P^{-1} \dot y(t) = P^{-1} A y(t) = P^{-1} P D P^{-1} y(t) = D z(t).
+$$
+On obtient ainsi que les fonctions $z_i(t)$ sont respectivement solutions de $\dot z_i = \lambda_i z_i$, soit 
+$$
+z_i(t) = z_{0i} e^{\lambda_i t}
+$$
+avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant à $y(t) = P z(t)$.
+\eproof
+
+%-------------------------------------------------------------------------------
+\begin{definition}{Exponentielle de matrice}
+  L'exponentielle matricielle est la fonction
+  $$
+  \begin{array}{rccc}
+    \exp: & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+      & B & \to & \exp(B),
+  \end{array}
+  \qquad \text{où} \quad
+  \exp(B) = \sum_{k \geq 0} \frac{B^k}{k !}
+  $$
+\end{definition}
+
+\exemple{[Exponentielle d'un matrice diagonale]
+  Soit $D = \diag[d_1, \dots d_n]$, on a
+  \begin{align*}
+    \exp(D) 
+    & = \sum_{k \geq 0} \frac{D^k}{k !}
+    = \sum_{k \geq 0} \frac1{k !} \diag[d_1^k, \dots d_n^k]
+    = \diag[\exp(d_1), \dots \exp(d_n)].
+  \end{align*}
+}
+
+%-------------------------------------------------------------------------------
+\remarks
+\begin{enumerate}
+  \item La proposition \ref{prop:odeLineaireDiagonalisable} dit que, au prix du changement de base $z = P^{-1} y$, le système $\dot Y = A y$ est équivalent à $n$ équations différentielles linéaires unidimensionnelles.
+  \item La condition initiale $y_0$ se décompose sous la forme
+  $$
+  y_0 = P z_0 = \sum_i z_{i0} v_i
+  $$
+  où les $v_i$ sont les vecteur propres de $A$, i.e. les vecteurs colonnes de $P$.
+  \item En définissant l'exponentielle matricielle
+  $$
+  \exp(B) = \sum_{k \geq 0} \frac1{k!} B^k
+  \qquad \Rightarrow \qquad
+  \exp(P B P^{-1}) = P \exp(B) P^{-1}
+  $$
+  on obtient ainsi que
+  $$
+  E(t) = \exp(t D) 
+  \qquad \text{et} \qquad 
+  P E(t) P^{-1} = P \exp(t D) P^{-1} = \exp(t P D P^{-1}) = \exp(t A).
+  $$
+  On retrouve ainsi que la solution du problème
+  $$
+  \{y(0) = y_0, \; \dot y = A y\}
+  $$
+  s'écrit
+  $$
+  y(t) = \underset{\in \Mcal_n}{\underbrace{\exp(t A)}} \; y_0.
+  $$
+  \item On peut étudier le comportement en temps long du système en considérant
+  \begin{align*}
+    \lim_{t \to \infty} y(t)
+    & = \lim_{t \to \infty} \exp(t A) y_0 
+    = P \left(\lim_{t \to \infty} \exp(t D)\right) \underset{z_0}{\underbrace{P^{-1} y_0}}
+    = \sum_{i=1}^n \left(z_{0i} \lim_{t \to \infty} e^{\lambda_i t}\right) v_i.
+  \end{align*}
+  Comme
+  $$
+  \lim_{t \to \infty} e^{\lambda_i t} = 
+  \left\{\begin{array}{rr}
+          0 & \text{si } \lambda_i < 0 \\
+          1 & \text{si } \lambda_i = 0 \\
+          +\infty & \text{si } \lambda_i > 0
+         \end{array}\right.
+  $$
+  on peut donc distinguer deux cas : 
+  \begin{itemize}
+  \item soit il existe $\lambda_i > 0$ telle que $z_{0i} \neq 0$, et on a alors
+  $$
+  \lim_{t \to \infty} \|y(t)\| = + \infty
+  $$
+  (le système explose dans la direction $v_i$), 
+  \item soit le système tend vers une combinaison linéaire d'éléments du noyau de $A$ :
+  $$
+  \sum_{i : \lambda_i = 0} z_{0i} v_i \in \ker(A)
+  $$
+  qui dépend de la condition initiale $y_0 = P z_0$.
+  \end{itemize}
+  En conclusion, s'il existe au moins un $\lambda_i \geq 0$, un perturbation autour d'un point d'équilibre $y^* \in \ker(A)$ éloignera le système de $x_ *$ dans la direction $v_i$. A l'opposé, si toutes les $\lambda_i$ sont strictement négatives, quelque soit $y_0$, $\lim_{t \to \infty} y(t) = 0$ qui est donc le seul équilibre stable.
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+\paragraph*{Cas non diagonalisable.}
+
+\begin{theorem}
+  Soit $A$ non diagonalisable et $\lambda_1, \dots \lambda_n$ les racines (possiblement complexes, non nécessairement distinctes) de son polynôme caractéristique, quelque soit $y_0$, il existe $n^2$ polynômes (à coefficients complexes) $q_{ij}(t)$ tels quel la solution du problème
+  $$
+  \{y(0) = y_0, \; \dot y = A y\}
+  $$
+  soit
+  $$
+  y_i(t) = \sum_{j=1}^n q_{ij}(t) e^{\lambda_j t}.
+  $$
+  En conséquence, 0 est le seul équilibre stable possible et il l'est à condition que
+  $$
+  \forall 1 \leq i \leq n: \quad \Re(\lambda_i) < 0
+  $$
+  en notant $\Re(u)$ la partie réelle du nombre complexe $u$.
+\end{theorem}
+
+\progres{
+  Rappel cours 5 :
+  \begin{itemize}
+    \item Equation différentielle ordinaire en dimension 1
+    \item Stabilité des points stationnaires
+    \item Equation différentielle ordinaire en dimension $n$ : $A$ diagonale, diagonalisable
+  \end{itemize}
+  Programme cours 6 :
+  \begin{itemize}
+    \item Equation différentielle ordinaire non-linéaire en dimension $n$, linéarisation
+    \item Equation différentielle ordinaire non-linéaire en dimension $2$
+  \end{itemize}
+}
+
+%-------------------------------------------------------------------------------
+\subsection{Linéarisation} 
+%-------------------------------------------------------------------------------
+
+On souhaite maintenant étudier la nature des équilibres d'un système non linéaire. En dimension 1, cet analyse s'est fondée sur la dérivée de la fonction $F$. Le théorème suivant généralise cette représentation fondée sur l'approximation au premier ordre aux abords d'un équilibre $y^*$ en posant $y(t) = y^* + h(t)$: 
+$$
+\dot h(t) = \dot y (t) = F(y(t)) = F(y^* + h(t)) 
+\simeq \underset{=0}{\underbrace{F(y^*)}} + (D_{y^*} F)(h(t)) = J_{y^*} h(t).
+$$
+
+%-------------------------------------------------------------------------------
+\begin{theorem}[Hartman-Grobman]
+  Le point d'équilibre $y^*$ de l'ODE $\dot y = F(y)$ a la même nature que l'origine $0$ pour le système linéaire 
+  $$
+  \dot y = J_{y^*} y
+  $$
+  à condition que toutes les valeurs propres de $J_{y^*}$ aient une partie réelle non nulle. \\
+  En particulier, $y^*$ est stable si $\forall i: \Re(\lambda_i) < 0$.
+\end{theorem}
+
+%-------------------------------------------------------------------------------
+\paragraph*{Démarche.}
+On peut ainsi définir une démarche systématique pour étudier les équilibres d'un système $\dot y = F(y)$ :
+\begin{enumerate}
+  \item Trouver les points équilibres en déterminant d'abord les {\em isoclines}
+  $$
+  \Ical_k = \{y : F_k(y) = 0\}
+  $$
+  puis leur intersection $\bigcap_k \Ical_k$ pour déterminer les racines $y^*$ de  $F(x) = 0$ ;
+  \item Calculer la matrice jacobienne $J_{y^*} F$ pour chaque équilibre $y^*$ ;
+  \item Déterminer les racines du polynôme caractéristique $P_{J_{y^*}}(\lambda)$ et en déduire la nature de $y^*$ si toutes les racines ont une partie réelle non nulle.
+\end{enumerate}
+
+% \vspace{.1\textheight}
+% \progres{
+%   Début Cours 8. Rappels :
+%   \begin{enumerate}[\itemdot]
+%     \item Système dynamique défini ppour $y(t) \Rbb^n$:
+%     $$
+%     \{y(t_0 = y_0, \; \dot y = F(y)\}
+%     $$
+%     \item Point d'équilibre $y^*$ : $F(x) = 0$
+%     \item ($n = 1$) Nature de $y^*$: stable si $F'(y^*) < 0$, instable si $F'(y^*) > 0$.
+%     \item ($n \geq 1$) Cas linéaire diagonalisable : caractérisation en fonction du signe des valeurs propres \\
+%     $\Rightarrow$ 0 seul équilibre stable possible (à condition que tous les $\lambda_i < 0$) \\
+%     $\Rightarrow$ idem cas non-diagonalisable
+%     \item ($n \geq 1$) Cas non linéaire : nature d'une équilibre $y^*$ = même nature que l'origine pour le système linéaire avec $A = J_{y^*} F$.
+%   \end{enumerate}
+% }
