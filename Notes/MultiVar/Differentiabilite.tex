@@ -342,7 +342,7 @@ z = f(x, y).
 $$
 au point $(x_0, y_0)$, en posant $z_0 = f(x_0, y_0)$ et $h = (x-x_0, y-y_0)$, soit 
 $$
-f(x, y) - f(x_0, x0) = \left(J_{(x_0, y_0)} f\right) \; h + o(\|h\|).
+f(x, y) - f(x_0, x_0) = \left(J_{(x_0, y_0)} f\right) \; h + o(\|h\|).
 $$
 Le plan tangent a ainsi pour équation
 $$
@@ -524,7 +524,7 @@ $$
   \end{itemize}
 \end{proposition}
 
-Cette proposition n'est pas démontrée ici. \eproof
+\proof Cette proposition n'est pas démontrée ici. \eproof
 
 % \progres{
 %   Début Cours 6. Rappels :
@@ -620,6 +620,18 @@ $$
   $$
 }
 
+\exemple{
+  [Cas de la spirale linéaire : $\rho(\theta) = b \theta$.]
+  $$
+  \begin{tabular}{ccc}
+    $(x(\theta), y(\theta))$ & $(\theta, x(\theta))$ & $(\theta, y(\theta))$ \\
+    \includegraphics[width=.3\textwidth, trim=0 10 20 30, clip=]{Spirale-XY} & 
+    \includegraphics[width=.3\textwidth, trim=0 10 20 30, clip=]{Spirale-thetaX} & 
+    \includegraphics[width=.3\textwidth, trim=0 10 20 30, clip=]{Spirale-thetaY} 
+  \end{tabular}
+  $$
+}
+
 %-------------------------------------------------------------------------------
 \subsection{Fonction implicite}
 %-------------------------------------------------------------------------------
@@ -643,6 +655,10 @@ $$
   $$
 \end{theorem}
 
+$$
+\includegraphics[width=.6\textwidth]{FonctionImplicite}
+$$
+
 % {Démonstration partielle du théorème \ref{thm:fonctionImplicite}.}
 \proof [partielle]
 On ne démontre pas ici l'existence de $\phi$. Par contre, la détermination de sa dérivée résulte d'un calcul simple. Pour cela, on définit
@@ -658,7 +674,9 @@ J_x g = \left[\begin{array}{c} 1 \\ \phi'(x) \end{array}\right]
 $$
 On a alors $f(x, \phi(x))= f \circ g (x)$ et donc
 $$
-(f \circ g)'(x_0) = \left( \left. \frac{\partial f}{\partial x}\right|_{x_0, \phi(x_0)} \right) + \phi'(x) \left( \left. \frac{\partial f}{\partial y}\right|_{x_0, \phi(x_0)} \right).
+(f \circ g)'(x_0) 
+= J_{g(x_0)}f \;.\; J_{x_0}g
+= \left( \left. \frac{\partial f}{\partial x}\right|_{x_0, \phi(x_0)} \right) + \phi'(x) \left( \left. \frac{\partial f}{\partial y}\right|_{x_0, \phi(x_0)} \right).
 $$
 Or, le long de la courbe de niveau $\Ccal_z$, on a $f(x, \phi(x)) \equiv z$, soit $(f \circ g)'(x) = 0$. On a donc
 $$

@@ -38,7 +38,7 @@ $$
 $$
 
 \begin{theorem}[Inversion globale]
-  Soit $\Xcal$ un ouvert de $\Rbb^n$ et $g : \Xcal \mapsto \Rbb$. Supposons que $g$ est injective, différentiable sur tout $\Xcal$ et que ses dérivées partielles sont partout continues dans $\Xcal$. Si, de plus, $D_x g$ est inversible sur tout $\Xcal$, alors $g : \Xcal \mapsto \Ycal = g(\Xcal)$ est un $C^1$-difféomorphisme.
+  Soit $\Xcal$ un ouvert de $\Rbb^n$ et $g : \Xcal \mapsto \Rbb^n$. Supposons que $g$ est injective, différentiable sur tout $\Xcal$ et que ses dérivées partielles sont partout continues dans $\Xcal$. Si, de plus, $D_x g$ est inversible sur tout $\Xcal$, alors $g : \Xcal \mapsto \Ycal = g(\Xcal)$ est un $C^1$-difféomorphisme.
 \end{theorem}
 
 \proof Non démontré. \eproof
@@ -90,7 +90,7 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
 
 \proof
 \begin{itemize}
-  \item On a vu que $f$ est partout différentiable et que $|J_{(\rho, \theta)}f| = \rho$.
+  \item On a vu que la rtansformation de coordonnée polaire $g$ est partout différentiable et que $|J_{(\rho, \theta)}g| = \rho$.
   \item On vérifie facilement que $g$ est bijective et que ses dérivées partielles sont partout continues.
 \end{itemize}
 \eproof
@@ -112,6 +112,12 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
   \end{align*}
   puis remarquer que $J = I^2$ pour conclure que $I = \sqrt{\pi}$.
 }
+
+\remark
+Par le le même calcul, on montre que $\int_\Rbb e^{-x^2/2} \; \d x = \sqrt{2 \pi}$, ce qui justifie la constante de normalisation de la densité de la loi normale d'espérance nulle et de variance 1 : 
+$$
+\phi(x) = \frac1{\sqrt{2\pi}} \exp(- x^2/2).
+$$
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
@@ -154,10 +160,10 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
 
 %-------------------------------------------------------------------------------
 \begin{definition}[Matrice hessienne]
-  Soit $f : \Rbb^k \mapsto \Rbb$ différentiable en $x^*$, la matrice hessienne ('la hessienne') $f$ en $x^*$ est la matrice ayant pour éléments génériques les dérivées secondes croisées évaluées en $x^*$ : 
+  Soit $f : \Rbb^n \mapsto \Rbb$ différentiable en $x^*$, la matrice hessienne ('la hessienne') $f$ en $x^*$ est la matrice ayant pour éléments génériques les dérivées secondes croisées évaluées en $x^*$ : 
   $$
   \nabla^2_{x^*}f 
-  = \left[\left.\frac{\partial^2 f}{\partial x_i\partial x_j}\right|_{x^*} \right]_{1 \leq i, j \leq k}
+  = \left[\left.\frac{\partial^2 f}{\partial x_i\partial x_j}\right|_{x^*} \right]_{1 \leq i, j \leq n}
 %   = \left[\begin{array}{ccc}
 %               \displaystyle{\left.\frac{\partial^2 f}{\partial x_1^2}\right|_{x^*}} & 
 %               \cdots & 
@@ -225,7 +231,7 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
       \item[$\phi''(t)$:] on a
       $$
       \phi''(t) 
-      = \frac{\partial}{\partial t} \phi(t)
+      = \frac{\partial}{\partial t} \phi'(t)
       = \sum_{i=1}^n u_i \frac{\partial}{\partial t} f'_i(g(t))
       $$
       puisque $u_i$ ne dépend pas de $t$. On remarque alors que
@@ -258,7 +264,7 @@ La contrainte de signe pour $f$ assure que le résultat de l'intégration ne dé
     f(x+h) 
     = f(x) + \nabla_{x}f^\top h + \frac12 h^\top \nabla_{x} h + o(t^2).
     $$
-    \item Il reste à vérifier que $o(t^2) = o(\|h\|^2)$, ce qui est vrai car $\|h\|^2 = t^2 \|u\|$ et $\|u\|$ est constante.
+    \item Il reste à vérifier que $o(t^2) = o(\|h\|^2)$, ce qui est vrai car $\|h\|^2 = t^2 \|u\|^2$ et $\|u\|^2$ est constante.
   \end{enumerate}
 \eproof
 
