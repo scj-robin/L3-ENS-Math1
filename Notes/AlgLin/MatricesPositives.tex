@@ -46,16 +46,24 @@ $$
 
 
 \begin{proposition}
-  Si $A$ est (symétrique) positive, toutes ses valeurs propres sont positives ou nulles. \\
-  Si elle est définie positive toutes ses valeurs propres sont strictement positives.
+  $A$ (symétrique) est positive (resp. définie) ssi toutes ses valeurs propres sont (resp. strictement) positives ou nulles. 
 \end{proposition}
 
 \proof
-$\lambda$ est une valeur propre de $A$ ssi, il existe $x \neq 0$ tel que
-$$
-Ax = \lambda x \qquad \Rightarrow \qquad x^\top A x = \lambda x^\top x,
-$$
-or $x^\top A x \geq 0$ et $x^\top x > 0$ donc $\lambda \geq 0$. Si, de plus, $A$ est définie positive, $x^\top A x > 0$ pour tout $x$ non nul et donc $\lambda > 0$.
+Puisque $A$ est symétrique, elle est diagonalisable et s'écrit $A = P^\top \Lambda P$.
+\begin{description}
+  \item[$\Rightarrow$:] $\lambda$ est une valeur propre de $A$ ssi, il existe $x \neq 0$ tel que
+  $$
+  Ax = \lambda x \qquad \Rightarrow \qquad x^\top A x = \lambda x^\top x,
+  $$
+  or $x^\top A x \geq 0$ et $x^\top x > 0$ donc $\lambda \geq 0$. \\
+  Si $A$ est définie positive, $x^\top A x > 0$ pour tout $x$ non nul et donc $\lambda > 0$.
+  \item[$\Leftarrow$:] si toutes les valeurs propres de $A$ sont (strictement) positives, on a pour tout $x \neq 0$, en posant $y = P x$:
+  $$
+  x^\top A x = x^\top P^\top \Lambda P x = y^\top \Lambda y = \sum_i \lambda_i y_i^2
+  $$
+  qui est (strictement) positif si toutes les valeurs propres sont (strictement) positives.
+\end{description}
 \eproof
 
 % \begin{proposition}[Matrice positive symétrique]
