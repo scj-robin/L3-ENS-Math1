@@ -31,10 +31,22 @@ Donner des constantes $c_1$ et $c_2$ permettant de comparer les trois normes $\|
     $$
     \|x\|_2 \leq \sum_i \|u_i\|_2 \leq \sum_i |x_i| = \|x\|_1 ;
     $$
-    \item en remarquant que la boule unité de la norme $\|\cdot\|_2$ est incluse dans la boule de rayon $\sqrt{n}$ de la norme $\|\cdot\|_1$, il vient que 
+    \item en remarquant que, par Cauchy-Schwartz, on a
+%     la boule unité de la norme $\|\cdot\|_2$ est incluse dans la boule de rayon $\sqrt{n}$ de la norme $\|\cdot\|_1$, il vient que 
+%     $$
+%     \|x\|_1 \leq \sqrt{n} \|x\|_2.
+%     $$
     $$
-    \|x\|_1 \leq \sqrt{n} \|x\|_2.
+    \|x\|_1^2
+    = \left(\sum_i |x_i|\right)^2
+    =  \sum_i |x_i|^2 + \sum_{i \neq j} 2 |x_i||x_j| 
+    \leq \sum_i |x_i|^2 + \sum_{i \neq j} (|x_i|^2 + |x_j|^2) 
     $$
+    où chaque $|x_i|^2$ apparaît $n-1$ fois dans le 2nd terme, soit
+    $$
+    \|x\|_1^2 \leq \sum_i n |x_i|^2 = n \|x\|_2^2
+    $$
+    soit $\|x\|_1 \leq \sqrt{n} \|x\|_2$.
   \end{enumerate}
 \end{description}
   On peut vérifier que les constantes sont optimales en donnant des exemples pour lesquels chacune des égalités est obtenue.
