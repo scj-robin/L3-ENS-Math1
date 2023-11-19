@@ -26,47 +26,43 @@ Donner des constantes $c_1$ et $c_2$ permettant de comparer les trois normes $\|
 %   & \frac1{\sqrt{n}} \|x\|_2 \leq \|x\|_1 \leq n \|x\|_2.
   \end{align*}
   On peut cependant affiner les deux constantes :
-  \begin{enumerate}
-    \item en remarquant que, en définissant les vecteurs $u_i = x_i e_i$ (où les $e_i$ sont les vecteurs de la base canonique), l'inégalité triangulaire implique que
+  \begin{description}
+    \item[$\|x\|_2 \leq c_1 \|x\|_1$ :] en définissant, pur $1 \leq i \leq n$, les vecteurs $u_i = x_i e_i$ (où les $e_i$ sont les vecteurs de la base canonique), l'inégalité triangulaire pour la norme $\|\cdot\|_2$ implique que
     $$
-    \|x\|_2 \leq \sum_i \|u_i\|_2 \leq \sum_i |x_i| = \|x\|_1 ;
+    \|x\|_2 \leq \sum_i \|u_i\|_2 = \sum_i |x_i| = \|x\|_1 ;
     $$
-    \item en utilisant Cauchy-Schwartz, on a
+    \item[$\|x\|_1 \leq c_2 \|x\|_2$ :] en utilisant le fait que $2ab \leq a^2 + b²$, il vient
 %     la boule unité de la norme $\|\cdot\|_2$ est incluse dans la boule de rayon $\sqrt{n}$ de la norme $\|\cdot\|_1$, il vient que $\|x\|_1 \leq \sqrt{n} \|x\|_2$.
-    $$
-    \|x\|_1^2
-    = \left(\sum_i |x_i|\right)^2
-    =  \sum_i |x_i|^2 + \sum_{i \neq j} 2 |x_i||x_j| 
-    \leq \sum_i |x_i|^2 + \sum_{i \neq j} (|x_i|^2 + |x_j|^2) 
-    $$
-    où chaque $|x_i|^2$ apparaît $n-1$ fois dans le 2nd terme (et une fois dans le 1er), soit
-    $$
-    \|x\|_1^2 \leq \sum_i n |x_i|^2 = n \|x\|_2^2,
-    $$
-    c'est-à-dire : $\|x\|_1 \leq \sqrt{n} \|x\|_2$.
-  \end{enumerate}
-\end{description}
-  On peut vérifier que les constantes sont optimales en donnant des exemples pour lesquels chacune des égalités est obtenue.
-\begin{description}
-  \item[$\|x\|_2$ et $\|x\|_\infty$:] Si tous les coordonnées de $x$ sont égales, on a $\|x\|_2 = \sqrt{n} \|x\|_\infty$. \\
-  Si tous les coordonnées de $x$ sont nulles, sauf une, on a $\|x\|_2 = \|x\|_\infty$.
-  \item[$\|x\|_1$ et $\|x\|_\infty$:] Si tous les coordonnées de $x$ sont égales, on a $\|x\|_1 = n \|x\|_\infty$. \\
-  Si tous les coordonnées de $x$ sont nulles, sauf une, on a $\|x\|_1 = \|x\|_\infty$. 
-  \item[$\|x\|_1$ et $\|x\|_2$:] Si tous les coordonnées de $x$ sont nulles sauf une, on a $\|x\|_2 = \|x\|_1$. \\
-  Si tous les coordonnées de $x$ sont égales, on a  $\|x\|_1 \leq \sqrt{n} \|x\|_2$.
-\end{description}
+    \begin{align*}
+      \|x\|_1^2
+      & = \left(\sum_i |x_i|\right)^2
+      =  \sum_i |x_i|^2 + \sum_{i < j} 2 |x_i||x_j| \\ 
+      & \leq \sum_i |x_i|^2 + \sum_{i < j} (|x_i|^2 + |x_j|^2) 
+      = \sum_i |x_i|^2 + \sum_{i \neq j} |x_i|^2 \\
+      & = n \sum_i |x_i|^2 = n \|x\|_2^2,
+    \end{align*}
+    c'est-à-dire : $\|x\|_1 \leq \sqrt{n} \|x\|_2$ ;
+  \end{description}
+  soit au total
   $$
-  \begin{tabular}{ccc}
-    $\|\cdot\|_2$ et $\|\cdot\|_\infty$ &
-    $\|\cdot\|_1$ et $\|\cdot\|_\infty$ &
-    $\|\cdot\|_1$ et $\|\cdot\|_2$ \\
-  \includegraphics[width=.3\textwidth]{EquivalenceNorme-R2-2inf} & 
-  \includegraphics[width=.3\textwidth]{EquivalenceNorme-R2-1inf} & 
-  \includegraphics[width=.3\textwidth]{EquivalenceNorme-R2-12}
-  \end{tabular}
+  \frac1{\sqrt{n}} \|x\|_1 \leq \|x\|_2 \leq \|x\|_1.
   $$
-%   $$
-%   \includegraphics[width=.5\textwidth]{EquivalenceNorme-R2}
-%   $$
+\end{description}
+On peut vérifier que les constantes sont optimales en donnant des exemples pour lesquels chacune des égalités est obtenue. Considérons le vecteur $x$ dont toutes les coordonnées sont égales et le vecteur $y$ dont toutes les coordonnées sont nulles, sauf une (par exemple, la première) :
+$$
+x = a 1_n, \qquad y = b e_1.
+$$
+On a :
+\begin{align*}
+  & \text{pour } \|\cdot\|_2 \text{ et } \|\cdot\|_\infty : & 
+  \|x\|_2 & = \sqrt{n} \|x\|_\infty, & 
+  \|y\|_2 & = \|y\|_\infty; \\
+  & \text{pour } \|\cdot\|_1 \text{ et } \|\cdot\|_\infty : & 
+  \|x\|_1 & = n \|x\|_\infty, & 
+  \|y\|_1 & = \|y\|_\infty; \\
+  & \text{pour } \|\cdot\|_1 \text{ et } \|\cdot\|_2 : & 
+  \|y\|_2 & = \|y\|_1, &
+  \|x\|_1 & = \sqrt{n} \|x\|_2.
+\end{align*}
 }
 
