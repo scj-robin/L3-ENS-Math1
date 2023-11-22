@@ -11,9 +11,9 @@
 
 On rappelle le modèle pour $y(t) = [N(t) \; P(t)]^\top$ où $N(t)$ est le nombre de proies au temps $t$ et $P(t)$ le nombre prédateurs au temps $t$:
 $$
-\left\{ \begin{array}{rcl} 
-  \dot N & = & r N - c N P \\
-  \dot P & = & b N P  - m P
+\left\{ \begin{array}{rclcl} 
+  \dot N & = & r N - c N P & = & \displaystyle{r N \left( 1 - \frac{cP}r \right)} \\
+  \dot P & = & b N P  - m P & = & \displaystyle{m P \left( \frac{bN}m - 1 \right)} 
 \end{array} \right.
 $$
 et où les paramètres $r$, $c$, $b$, $m$ sont tous positifs ou nuls.
@@ -21,13 +21,13 @@ et où les paramètres $r$, $c$, $b$, $m$ sont tous positifs ou nuls.
 %-------------------------------------------------------------------------------
 \paragraph*{Cas particuliers.}
 \begin{description}
-  \item[$P(t) = 0 $ (absence de prédateur) :] le système devient alors $\dot N = r N$ dont la solution est $N(t) = N_0 e^{rt}$ : la population de proies explose comme dans un modèle de Mathus.
-  \item[$N(t) = 0 $ (absence de proie) :] le système devient alors $\dot P = - m P$ dont la solution est $P(t) = P_0 e^{-mt}$ : la population de prédateurs s'éteint à vitesse exponentielle.
+  \item[$P(t) = 0 $ (absence de prédateur) :] le système devient alors $\{\dot N = r N, \dot P \equiv 0\}$ dont la solution est $N(t) = N_0 e^{rt}$ : la population de proies explose comme dans un modèle de Mathus.
+  \item[$N(t) = 0 $ (absence de proie) :] le système devient alors $\{\dot N \equiv 0, \dot P = - m P\}$ dont la solution est $P(t) = P_0 e^{-mt}$ : la population de prédateurs s'éteint à vitesse exponentielle.
 \end{description}
 
 %-------------------------------------------------------------------------------
 \paragraph*{Changement de variable.}
-Pour mener l'analyse mathématique de ce modèle, il est confortable de poser
+Pour mener l'analyse mathématique de ce modèle, il est confortable de ``reparamétriser'' le problème, c'est-à-dire de poser
 $$
 x(t) = \frac{b}m N(t)
 \qquad \text{et} \qquad
@@ -72,7 +72,7 @@ $$
 On a 
 $$
 J_{(0, 0)}F = 
-  \left[\begin{array}{ccc} 
+  \left[\begin{array}{rcr} 
     r  & & 0 \\
     0 & & -m 
   \end{array}\right]
@@ -88,7 +88,7 @@ dont les deux valeurs propres de $J_{(0, 0)}F$ sont $r$ et $-m$, qui sont de sig
 On a 
 $$
 J_{(1, 1)}F = 
-  \left[\begin{array}{ccc} 
+  \left[\begin{array}{rcr} 
     0 & & -r  \\
     m  & & 0
   \end{array}\right]
@@ -161,9 +161,9 @@ $$
 
 On rappelle le modèle pour $y(t) = [S(t) \; I(t) \; R(t)]^\top$ avec $S(t) =$ nombre de susceptibles au temps $t$, $I(t) =$ nombre d'infectés et $R(t) =$ nombre de 'remis' ({\em recovered}) :
 $$
-\left\{ \begin{array}{rcl} 
+\left\{ \begin{array}{rclcl} 
 \dot S & = & - r S I \\
-\dot I & = & r S I - a I \\
+\dot I & = & r S I - a I & = & \displaystyle{a \left(\frac{rS}a  - 1\right)} \\
 \dot R & = & a I \\
 \end{array} \right.
 $$
@@ -183,7 +183,7 @@ soit
 $$
 \left\{\begin{array}{rclcl}
         \dot x & = & -r x y & =: & F_1(x, y) \\
-        \dot y & = & a y (1-x) & =: & F_2(x, y)
+        \dot y & = & a y (x - 1) & =: & F_2(x, y)
        \end{array}\right.
 $$
 
@@ -192,10 +192,10 @@ $$
   \item $\dot x = - rxy$ est toujours négative : la population de susceptibles décroît systématiquement ; 
   \item la croissance du nombre de susceptible $y = I$ dépend de la position de $x$ par rapport à 1 :
   $$
-  \dot y \left\{\begin{array}{lll}
-                < 0 & (y \downarrow) & \text{si } x > 1, \\
-                = 0  & (y = \cst) & \text{si } x = 1, \\
-                > 0  & (y \uparrow) & \text{si } x < 1,
+  \left\{\begin{array}{lllll}
+                \dot y < 0 & & (y \downarrow) & \text{si } x > 1, \\
+                \dot y = 0 & & (y = \cst) & & \text{si } x = 1, \\
+                \dot y > 0 & & (y \uparrow) & & \text{si } x < 1,
                 \end{array}\right..
   $$
 \end{enumerate}
@@ -220,17 +220,17 @@ $$
 On calcule la jacobienne
 $$
 J_{(x, y)}F = 
-  \left[\begin{array}{ccc} 
+  \left[\begin{array}{rcr} 
     - r y & & -r x \\
-    - a y & & a (1 - x)
+    - a y & & a (x - 1)
   \end{array}\right].
 $$
 soit, pour $y = 0$
 $$
 J_{(x, 0)}F = 
-  \left[\begin{array}{ccc} 
+  \left[\begin{array}{rcr} 
     0 & & -r x \\
-    0 & & a (1 - x)
+    0 & & a (x - 1)
   \end{array}\right].
 $$
 
@@ -238,15 +238,15 @@ $$
 \paragraph*{Nature du point d'équilibre $(x^*, 0)$.}
 Le polynôme caractéristique de $J_{(x^*, 0)}F$ est
 $$
-P(\lambda) = \lambda (\lambda - a (1 - x^*)).
+P(\lambda) = \lambda (\lambda - a (x^* - 1)).
 $$
 Les valeurs propres sont donc $\lambda_1 = 0$ et 
 $$
-\lambda_2 = a (1 - x^*) 
+\lambda_2 = a (x^* - 1) 
 \qquad \Rightarrow \qquad 
 \left\{\begin{array}{ll} 
-  \lambda_2 > 0 & \text{si } x^* < 1, \\
-  \lambda_2 < 0 & \text{si } x^* > 1
+  \lambda_2 > 0 & \text{si } x^* > 1, \\
+  \lambda_2 < 0 & \text{si } x^* < 1
 \end{array} \right.
 $$
 et les vecteurs propres associés vérifient 
@@ -278,8 +278,8 @@ et les vecteurs propres associés vérifient
 %-------------------------------------------------------------------------------
 \paragraph*{\'Etude de stabilité.}
 \begin{description}
-  \item[$x^* < 1$ :] dans ce cas $\lambda_2 > 0$, donc le système est instable (dans la direction verticale = infectés) : si on part avec un $y_0$ faible et un $x_0 = rS_0/a > 1$ fort, le système s'éloigne du point départ avec déclenchement d'une épidémie ($x \uparrow$)
-  \item[$x^* > 1$ :] dans ce cas $\lambda_2 < 0$, donc le système est stable (dans la direction verticale = infectés) : si on part avec un $y_0$ faible et un $x_0 = rS/a < 1$ faible, le système retourne vers le un point $(x^*, 0)$ proche du point départ sans déclenchement d'une épidémie ($x \downarrow$)
+  \item[$x^* > 1$ :] dans ce cas $\lambda_2 > 0$, donc le système est instable (dans la direction verticale = infectés) : si on part avec un $y_0$ faible et un $x_0 = rS_0/a > 1$ fort, le système s'éloigne du point départ avec déclenchement d'une épidémie ($x \uparrow$)
+  \item[$x^* < 1$ :] dans ce cas $\lambda_2 < 0$, donc le système est stable (dans la direction verticale = infectés) : si on part avec un $y_0$ faible et un $x_0 = rS/a < 1$ faible, le système retourne vers le un point $(x^*, 0)$ proche du point départ sans déclenchement d'une épidémie ($x \downarrow$)
 \end{description}
 
 \dessin{
@@ -341,4 +341,10 @@ $$
 \includegraphics[width=.5\textwidth, trim=0 40 0 0, clip=]{SIR-finalState} 
 $$
 }
-Puisqu'on sait que $x_\infty  < 1$, on a $S_\infty < \rho$ : $S_\infty$ est donné par la plus petite valeur pour laquelle $f(x)$ vaut $S_0 e^{- N / \rho}$
+Puisqu'on sait que $x_\infty  < 1$, on a $S_\infty < \rho$ : $S_\infty$ est donné par la plus petite valeur pour laquelle $f(x)$ vaut $S_0 e^{- N / \rho}$.
+
+On peut vértifier que cette valeur existe bien en posant $C_0 = N - S_0$, on a
+$$
+0 < S_0 e^{-N/\rho} = e^{-c_0/\rho} S_0 e^{-s_0 / \rho}  = e^{-c_0/\rho} f(S_0) \leq f(S_0)
+$$
+(puisque $e^{-c_0/\rho} \leq 1$). La valeur $S_0 e^{-N/\rho}$ est donc bien atteinte par la fonction $f$.

@@ -115,16 +115,17 @@ $$
 $$
 Les orbites sont alors les lignes de niveau du hamiltonien : 
 $$
-\Ccal_z = \{x, y: H(x, y, ) = z\}.
+\Ccal_z = \{x, y: H(x, y) = z\}.
 $$
 
-La difficulté réside alors dans la détermination d'une fonction $H$ qui vérifie la proposition \ref{prop:hamiltonien} en dimension 2 : 
+La difficulté réside alors dans la détermination d'une fonction $H$ qui vérifie la proposition \ref{prop:hamiltonien} en dimension 2. En appliquant la règle de composition $J_x f \circ g = J_{g(x)} f \; J_x g$, il vient : 
 \begin{align} \label{eq:derivHnulleD2}
-  \dot x(t) \frac{\partial H}{\partial x} (x(t), y(t)) +
-  \dot y(t) \frac{\partial H}{\partial y} (x(t), y(t)) & = 0 \nonumber \\
+  \dot H(x, y) =
+  \frac{\partial H}{\partial x} (x(t), y(t)) \dot x(t) +
+  \frac{\partial H}{\partial y} (x(t), y(t)) \dot y(t) & = 0 \nonumber \\
   \Leftrightarrow \qquad 
   F_1(x, y) \frac{\partial H}{\partial x} (x, y) +
-  F_2(x, y) \frac{\partial H}{\partial y} (x, y) & = 0
+  F_2(x, y) \frac{\partial H}{\partial y} (x, y) & = 0.
 \end{align}
 
 %-------------------------------------------------------------------------------

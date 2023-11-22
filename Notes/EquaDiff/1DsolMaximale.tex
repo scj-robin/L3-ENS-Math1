@@ -1,21 +1,21 @@
 % \'Equations différentielles et systèmes dynamiques en temps continu. Existence, unicité des solutions. Recherche des équilibres et linéarisation. Classification des équilibres en dimensions 1 et 2.
 
-\progres{
-  Rappel cours 4 :
-  \begin{itemize}
-    \item Différentiabilité, matrice jacobienne, composition
-    \item Intégration et changement de variable
-    \item Caractérisation des extremums
-    \item Exercice à faire : extrema de $f(x, y) = x^3 + y^3 - 3xy$.
-  \end{itemize}
-  Programme cours 5 :
-  \begin{itemize}
-    \item Chapitre 3 : équations différentielles et systèmes dynamiques
-    \item EDO en dimension 1 : solution maximale, stabilité
-    \item EDO en dimension $n$ : cas linéaire
-    \item EDO en dimension $n$ : cas non linéaire
-  \end{itemize}
-}
+% \progres{
+%   Rappel cours 4 :
+%   \begin{itemize}
+%     \item Différentiabilité, matrice jacobienne, composition
+%     \item Intégration et changement de variable
+%     \item Caractérisation des extremums
+%     \item Exercice à faire : extrema de $f(x, y) = x^3 + y^3 - 3xy$.
+%   \end{itemize}
+%   Programme cours 5 :
+%   \begin{itemize}
+%     \item Chapitre 3 : équations différentielles et systèmes dynamiques
+%     \item EDO en dimension 1 : solution maximale, stabilité
+%     \item EDO en dimension $n$ : cas linéaire
+%     \item EDO en dimension $n$ : cas non linéaire
+%   \end{itemize}
+% }
 
 %-------------------------------------------------------------------------------
 \paragraph*{Objectif.} 
@@ -110,6 +110,8 @@ Ce modèle est connu en dynamique des population sous le nom de {\em modèle de 
   Si $F$ est $C^1$ par morceaux, il existe une unique solution $f$ sur $I$ au problème de Cauchy qui soit maximale au sens où si $g$ est également solution sur $J$, alors $J \subset I$ et $g(t) = f(t)$ pour tout $t \in J$. $f$ est appelée solution maximale et $I$ intervalle maximal.
 \end{theorem}
 
+\proof Non démontré. \eproof
+
 \remark
 $f(t) = y_0 e^{r(t-t_0)}$ est donc l'unique solution du problème $\{y_0 = y(t_0), \; \dot y = r y\}$ sur l'intervalle maximal $\Rbb$.
 
@@ -123,7 +125,7 @@ $f(t) = y_0 e^{r(t-t_0)}$ est donc l'unique solution du problème $\{y_0 = y(t_0
   \begin{align*}
     \dot y & = -c y^2 & 
     & \Leftrightarrow & 
-    c & = - \frac{\dot y}{y^2} = \frac{\partial}{\partial t} \frac1y \\
+    c & = - \frac{\dot y}{y^2} = \frac{\partial}{\partial t} \frac1y = \dot{\left(\frac1y\right)}\\
     \text{donc} \qquad 
     \frac1y & = a + ct & 
     & \Leftrightarrow &
@@ -223,14 +225,25 @@ $$
   t \neq t_* = -\frac1r \log(-a_0),
   $$
   qui est donc une solution maximale sur $\Rbb \setminus \left\{t_*\right\}$ pour $y_0 < 0$ comme pour $y_0 > K$. \\
-  On remarque que
+  On remarque de plus que
   $$
   \dot y(t) = \frac{K a_0 r e^{rt}}{(1 + a_0 e^{rt})^2}  < 0.
   $$
-  $$
-  \includegraphics[width=.6\textwidth]{Verhulst-solutions}
-  $$
-  On remarque cependant que
+  
+  \begin{tabular}{cc}
+    \begin{tabular}{p{0.2\textwidth}}
+      \textcolor{red}{$y_0 > K$}
+      
+      \bigskip
+      \textcolor{darkgreen}{$y_0 < K$}
+    \end{tabular}
+    &
+    \begin{tabular}{p{0.5\textwidth}}
+      \includegraphics[width=.6\textwidth]{Verhulst-solutions}
+    \end{tabular}
+  \end{tabular}
+  
+  On remarque que
   \begin{align*}
     y_0 & < 0 & \Rightarrow \quad |y_0| & < |K - y_0| & 
     \Rightarrow \quad |a_0| & < 1 & \Rightarrow \quad t_* & > 0, \\

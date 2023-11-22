@@ -3,7 +3,7 @@
 rm(list=ls()); library(lattice)
 figDir <- '../Figures/'
 dataName <- 'Verhulst'
-exportFig <- FALSE
+exportFig <- TRUE
 
 ###############################################################################
 # Modele & parms
@@ -21,6 +21,8 @@ for(s in 1:length(y0List)){
    tList[[s]] <- -log(y0List[[s]]/(y0List[[s]]-K))/r
    yGridList[[s]][which(abs(yGridList[[s]])>10*K)] <- NA
 }
+yGridList[[2]][which(yGridList[[2]] < 0)] <- NA
+yGridList[[3]][which(yGridList[[3]] > K)] <- NA
 
 # Figures
 if(exportFig){png(paste0(figDir, dataName, '-solutions.png'))}
