@@ -113,7 +113,7 @@ En choisissant
 \begin{align*}
   h_1(x) = m(x-\log(x)), \qquad h_2(x) = r(y-\log(y)),
 \end{align*}
-on vérifie bien que $h'_1(x) = -f(x)$ et $h'_2(x) = g(y)$ et que 
+on vérifie bien que $h'_1(x) = f(x)$ et $h'_2(x) = -g(y)$ et que 
 $$
 H(x, y) = m(x-\log(x)) + r(y-\log(y))
 $$
@@ -136,7 +136,13 @@ $$
 \nabla^2 H = \left[\begin{array}{ccc} m/x^2 & & 0 \\ 0 & & r/y^2 \end{array}\right] 
 $$
 qui est (strictement) définie positive.
-$H$ admet donc un unique minimum en $(x^* = 1, y^*=1)$ et est partout strictement convexe : ses lignes de niveaux sont donc closes.
+$H$ admet donc un unique minimum en $(x^* = 1, y^*=1)$ et est partout strictement convexe et ses limites sont infinies dans toutes les directions : 
+$$
+\lim_{x \to 0} H(x, y) = \lim_{x \to \infty} H(x, y) =
+\lim_{y \to 0} H(x, y) = \lim_{y \to \infty} H(x, y) =
++ \infty.
+$$
+Ses lignes de niveau sont donc closes.
 
 \bigskip
 Partant d'un état ($x_0, y_0$), le système suit une trajectoire cyclique 
@@ -193,9 +199,9 @@ $$
   \item la croissance du nombre de susceptible $y = I$ dépend de la position de $x$ par rapport à 1 :
   $$
   \left\{\begin{array}{lllll}
-                \dot y < 0 & & (y \downarrow) & \text{si } x > 1, \\
+                \dot y < 0 & & (y \downarrow) & & \text{si } x < 1, \\
                 \dot y = 0 & & (y = \cst) & & \text{si } x = 1, \\
-                \dot y > 0 & & (y \uparrow) & & \text{si } x < 1,
+                \dot y > 0 & & (y \uparrow) & & \text{si } x > 1,
                 \end{array}\right..
   $$
 \end{enumerate}
@@ -302,25 +308,29 @@ $$
 
 %-------------------------------------------------------------------------------
 \paragraph*{Devenir de la population.}
-On veut connaître les valeurs finales $(S_\infty, 0, R_\infty = N - S_\infty)$ partant d'un point $(S_0, I_0, 0)$. En reprenant la paramétrisation initiale, on remarque que, puisque
-$$
-\dot S = - r S I \qquad \Leftrightarrow \qquad r I = - \dot S / S,
-$$
-on a
-$$
-r \int_0^\infty I(t) \; \d t
-= - \int_0^\infty \frac{\dot S(t)}{S(t)} \; \d t
-= - [\log S(t)]_0^\infty
-= \log \frac{S_0}{S_\infty}
-$$
-et que, puisque, $\dot R = aI$, on a
-$$
-a \int_0^\infty I(t) \; \d t
-= \int_0^\infty \dot R(t) \; \d t
-= [R(t)]_0^\infty
-= R_\infty = N - S_\infty
-$$
-donc
+On veut connaître les valeurs finales $(S_\infty, 0, R_\infty = N - S_\infty)$ partant d'un point $(S_0, I_0, 0)$. On se propose pour cela d'évaluer
+$\int_0^\infty I(t) \d t$ de deux manières différentes pour faire apparaître $S_\infty$.
+\begin{enumerate}
+  \item En reprenant la paramétrisation initiale, on remarque que, puisque
+  $$
+  \dot S = - r S I \qquad \Leftrightarrow \qquad r I = - \dot S / S,
+  $$
+  on a
+  $$
+  r \int_0^\infty I(t) \; \d t
+  = - \int_0^\infty \frac{\dot S(t)}{S(t)} \; \d t
+  = - [\log S(t)]_0^\infty
+  = \log \frac{S_0}{S_\infty}.
+  $$
+  \item D'autre part, puisque, $\dot R = aI$, on a
+  $$
+  a \int_0^\infty I(t) \; \d t
+  = \int_0^\infty \dot R(t) \; \d t
+  = [R(t)]_0^\infty
+  = R_\infty = N - S_\infty
+  $$
+\end{enumerate}
+On a donc
 \begin{align*}
   \frac1r \log \frac{S_0}{S_\infty} & = \frac1a (N - S_\infty) & 
   & \Leftrightarrow \qquad & 
@@ -343,8 +353,10 @@ $$
 }
 Puisqu'on sait que $x_\infty  < 1$, on a $S_\infty < \rho$ : $S_\infty$ est donné par la plus petite valeur pour laquelle $f(x)$ vaut $S_0 e^{- N / \rho}$.
 
-On peut vértifier que cette valeur existe bien en posant $C_0 = N - S_0$, on a
+On vérifie que cette valeur est bien atteinte par $f$ car
 $$
-0 < S_0 e^{-N/\rho} = e^{-c_0/\rho} S_0 e^{-s_0 / \rho}  = e^{-c_0/\rho} f(S_0) \leq f(S_0)
+0 
+< S_0 e^{-N/\rho} 
+= e^{-(N - S_0)/\rho} S_0 e^{-S_0 / \rho}  = e^{-(N - S_0)/\rho} f(S_0) \leq f(S_0)
 $$
-(puisque $e^{-c_0/\rho} \leq 1$). La valeur $S_0 e^{-N/\rho}$ est donc bien atteinte par la fonction $f$.
+La valeur $S_0 e^{-N/\rho}$ est donc bien atteinte par la fonction $f$.

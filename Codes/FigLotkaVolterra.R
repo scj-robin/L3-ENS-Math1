@@ -5,7 +5,7 @@
 rm(list=ls()); library(deSolve)
 figDir <- '../Figures/'
 dataName <- 'LotkaVolterra'
-exportFig <- TRUE
+exportFig <- FALSE
 
 # Paramétrisation en x = b N /m, y = c P /r
 r <- 2; m <- 1; parms <- c(r=r, m=m)

@@ -4,7 +4,7 @@ rm(list=ls()); par(pch=20, mfrow=c(1, 1));
 
 figDir <- '../Figures/'
 dataName <- 'L3bioSU-ProiePredateur'
-exportFig <- TRUE
+exportFig <- FALSE
 palette('R3')
 
 

@@ -29,21 +29,22 @@
   $$
   Q(\lambda) = \lambda^2 - 4 \lambda + 4 - (\alpha+\beta)
   $$
-  vaut $\Delta = 16 - 4(4 - (\alpha+\beta)) = \alpha + \beta$. Les deux valeurs propres restantes $\lambda_2$ et $\lambda_3$ sont donc réelles et distinctes ssi $\alpha + \beta > 0$ et valent alors
+  vaut $\Delta = 16 - 4(4 - (\alpha+\beta)) = 4(\alpha + \beta)$. Les deux valeurs propres restantes $\lambda_2$ et $\lambda_3$ sont donc réelles et distinctes ssi $\alpha + \beta > 0$ et valent alors
   $$
-  \lambda_2 = \frac{4 + \sqrt{\alpha + \beta}}{2}, 
-  \qquad \lambda_3 = \frac{4 - \sqrt{\alpha + \beta}}{2}.
+  \lambda_2 = 2 + \sqrt{\alpha + \beta}, 
+  \qquad \lambda_3 = 2 - \sqrt{\alpha + \beta}.
   $$
   Elles sont de plus distinctes de $\lambda_1 = -1$ ssi 
   $$
-  \lambda_3 \neq -1 \qquad \leftrightarrow \qquad
+  \lambda_3 \neq -1 \qquad \Leftrightarrow \qquad
   \alpha + \beta \neq 9.
   $$
-  Dans ce cas ($\alpha + \beta > 0$ et $\alpha + \beta \neq 9$), les 3 valeurs propres sont réelles et distinctes et $B$ est donc diagonalisable. \\
-  Reste à étudier les cas 
+  Dans ce cas ($\alpha + \beta > 0$ et $\alpha + \beta \neq 9$), les 3 valeurs propres sont réelles et distinctes et $B$ est donc diagonalisable. 
+  
+  Reste à étudier les cas $\alpha + \beta = 0$ et $\alpha + \beta = 9$.
   \begin{description}
-   \item[$\alpha + \beta = 0 \Leftrightarrow \lambda_2 = \lambda_3$:] \todo{déterminer la dimension du sous-espace propre associé.} 
-   \item[$\alpha + \beta = 9 \Leftrightarrow \lambda_1 = \lambda_3$:] \todo{déterminer la dimension du sous-espace propre associé.} 
+   \item[$\alpha + \beta = 0$ :] On a alors $\lambda_2 = \lambda_3 = 2$. En posant $u = [x \; y \; z]^\top$ et en résolvant $Bu = 2u$, on obtient $\{x=y, z=0\}$, soit une seule direction propre (donnée par $u = [1 \; 1 \; 0]^\top$) : la matrice n'est pas diagonalisable. 
+   \item[$\alpha + \beta = 9$ :] On a alors $\lambda_1 = \lambda_3 = -1$. En posant $u = [x \; y \; z]^\top$ et en résolvant $Bu = -u$, on obtient $\{x=y, z=-3y\}$, soit une seule direction propre (donnée par $u = [1 \; 1 \; -3]^\top$) : la matrice n'est pas diagonalisable non plus. 
   \end{description}
 
   \end{enumerate}
