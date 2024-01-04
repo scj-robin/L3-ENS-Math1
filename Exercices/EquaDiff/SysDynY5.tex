@@ -2,20 +2,45 @@
 \subsubsection{Système dynamique en $y^5$ \todo{}}
 %-------------------------------------------------------------------------------
 
-On souhaite déterminer les points d'équilibre (et leur nature) du système
+On s'intéresse à un système dynamique gouverné par l'équation
 $$
 \dot y = F(y) = \mu y + 2 y^3 - y^5.
 $$
-\solution{
-On a 
-$$
-F(y) = y(\mu + y^2 - y^4)
-$$
-qui s'annule pour $y = 0$ et pour les solutions de $(\mu + 2 y^2 - y^4)$. En posant, $z = y^2$, $\mu + 2 z - z^2 = 0$ admet des solutions si $\Delta =  4(1 + \mu) \geq 0$, soit $\mu \geq -1$. Ces solutions sont alors $z^* = -1 \pm \sqrt{1+\mu}$. La seule solution possiblement positive est $z^* = -1 + \sqrt{1+\mu}$ et elle l'est ssi $\mu > 1$. \\
-Le système admet donc un unique point fixe $x^*=0$ si $\mu < 1$ et un second point fixe $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$. \\
-On a de plus
-$$
-F'(x) = \mu + 3 y^2 - 5y^4
-$$
-dont le signe est celui de $\mu$ pour $x=0$ et \todo{nature de $x^* = -1+\sqrt{1+\mu}$ si $\mu > 1$.}
-}
+
+\begin{enumerate}
+  \item Donner une condition sur $\mu$ pour que le système admette un ou deux points d'équilibre et préciser ces points d'équilibre.
+  \solution{
+  On a 
+  $$
+  F(y) = y(\mu + 2 y^2 - y^4)
+  $$
+  qui s'annule pour $y = 0$ et pour les solutions de $(\mu + 2 y^2 - y^4)$. \\
+  En posant, $z = y^2$, $\mu + 2 z - z^2 = 0$ admet des solutions si $\Delta =  4(1 + \mu) \geq 0$, soit $\mu \geq -1$. Ces solutions sont alors $-1 \pm \sqrt{1+\mu}$. \\ Puisque $z$ est un carré, on retient la seule solution possiblement positive, à savoir $$
+  z^* = \sqrt{1+\mu} - 1, 
+  $$
+  qui est effectivement positive ssi $\mu \geq 0$. \\
+  Le système admet donc un unique point fixe $y^*=0$ si $\mu \geq 0$ et un second point fixe $y^* = \sqrt{z^*}$ si $\mu \geq 0$.}
+  %
+  \item \'Etudier la nature d'équilibre quand il est unique. 
+  ({\sl On se contentera de discuter brièvement le cas limite.})
+  \solution{
+  On a 
+  $$
+  F'(y) = \mu + 6 y^2 - 5y^4.
+  $$
+  \begin{description}
+    \item[$\mu < 0$.] $y^* = 0$ est le seul point d'équilibre et $F'(y^*) = F'(0) = \mu < 0$. $y^* = 0$ est donc un équilibre stable. 
+    \item[$\mu = 0$.] $y^* = 0$ est toujours le seul point d'équilibre mais $F'(y^*) = \mu = 0$ : l'étude du signe de $F'$ ne suffit donc pas à conclure sur la stabilité de cet équilibre.
+  \end{description}
+  }
+  \item \'Etudier la nature des équilibres quand ils sont deux. 
+  \solution{
+  On a alors $\mu > 0$ et les points d'équilibre sont $y_1^* = 0$ et $y^*_2 = \sqrt{z^*} > 0$. 
+  \begin{description}
+    \item[$y_1^*$ : ] $F'(y_1^*) = \mu > 0$ et $y_1^* = 0$ est alors instable. 
+    \item[$y^*_2$ :] on étudie le signe de la fonction $f: \Rbb^{*+} \mapsto \Rbb$, telle que $f(z) = F'(\sqrt{z}) = \mu + 6z - 5 z^2$.
+  \end{description}
+
+  dont le signe est celui de $\mu$ pour $y=0$ et \todo{nature de $y^* = -1+\sqrt{1+\mu}$ si $\mu > 1$.}
+  }
+\end{enumerate}
