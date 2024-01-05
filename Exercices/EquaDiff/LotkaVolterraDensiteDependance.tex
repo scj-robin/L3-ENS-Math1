@@ -73,18 +73,18 @@ Soit la matrice $J^*$ définie par
 \begin{enumerate}
   \setcounter{enumi}{4}
   \item Interpréter les paramètres $m$ et $a$ du modèle \eqref{eq:LVDD}.
-  \solution{$m$ est le taux de mort des prédateurs en absence de proies (si $x(0)= 0$, $y(t) = y_0 e^{-mt}$). $a$ rend compte de la compétition entre proies, c'est à dire de la limitation des ressources du milieu.}
-  \item Déterminer les points stationnaires du système.
+  \solution{$m$ est le taux de mort des prédateurs en absence de proies (si $x(0)= 0$, $y(t) = y_0 e^{-mt}$). $a$ rend compte de la compétition entre proies, c'est-à-dire de la limitation des ressources du milieu.}
+  \item Déterminer les points d'équilibre du système.
   \solution{
-  L'isocline $\{\dot x = 0\}$ est $\Ical_x = \{x = 0\} \cup \{y = 1 - ax\}$ et l'isocline $\{\dot y = 0\}$ est $\Ical_y = \{y = 0\} \cup \{x = 1\}$. Les points stationnaires sont donc $(0, 0)$ et $(1, 1-a)$.}
-  \item Expliquer la position du point stationnaire $(x^*, y^*)$ non trivial (i.e. pour lequel les deux effectifs sont non-nuls) par rapport au point d'équilibre du modèle de Lotka-Volterra classique ($a=0$)
+  L'isocline $\{\dot x = 0\}$ est $\Ical_x = \{x = 0\} \cup \{y = 1 - ax\}$ et l'isocline $\{\dot y = 0\}$ est $\Ical_y = \{y = 0\} \cup \{x = 1\}$. Les points d'équilibre sont donc $(0, 0)$ et $(1, 1-a)$.}
+  \item Expliquer la position du point d'équilibre $(x^*, y^*)$ non trivial (i.e. pour lequel les deux effectifs sont non-nuls) par rapport au point d'équilibre du modèle de Lotka-Volterra classique ($a=0$)
   \solution{L'équilibre non-trivial du modèle de Lotka-Volterra est le point $(1, 1)$. Le point d'équilibre des proies est conservé ($x^* = 1$), mais celui des prédateurs diminue $y^* = 1-a < 1$ : la contrainte imposée par le milieu au proies nuit, {\it in fine} à la population des prédateurs.}
 \end{enumerate}
 
 \bigskip
 \bigskip
-\paragraph{Stabilité du point stationnaire non-trivial.}
-On s'intéresse maintenant à la stabilité du point stationnaire $(x^*, y^*)$ non trivial, c'est à dire où les deux effectifs sont non-nuls. \\
+\paragraph{Stabilité du point d'équilibre non-trivial.}
+On s'intéresse maintenant à la stabilité du point d'équilibre $(x^*, y^*)$ non trivial, c'est-à-dire celui pour lequel les deux effectifs sont non-nuls. \\
 ({\sl Les questions de ce paragraphe peuvent être traitées sans connaître les valeurs exactes des seuils $0 < a_1 < a_2$.})
 
 \bigskip
@@ -128,7 +128,7 @@ $$
   \includegraphics[width=.32\textwidth, trim=0 0 0 50, clip=]{LotkaVolterraDD-m0.5-a0.5.png}
 \end{array}
 $$
-La courbe grise indique la trajectoire du modèle de Lotka-Volterra sans densité-dépendance ($m = 1/2$, $a = 0$). Les repères grisés indiquent l'état stationnaire de ce même modèle.
+La courbe grise indique la trajectoire du modèle de Lotka-Volterra sans densité-dépendance ($m = 1/2$, $a = 0$). Les repères grisés indiquent le point d'équilibre de ce même modèle.
 
 \begin{enumerate}
   \setcounter{enumi}{10}
@@ -142,7 +142,7 @@ La courbe grise indique la trajectoire du modèle de Lotka-Volterra sans densit�
   }
   \item Donner la limite de $x(t)$ quand $t$ tend vers l'infini dans le cas ($ii$).
   \solution{
-  Dans ce cas, $y(t)$ tend vers 0 quand $t \to\infty$, le système \eqref{eq:LVDD-Jstar} devient donc simplement $\dot x = F(x)$ avec $F(x) = x (1 - ax)$. Ce système adment deux point stationnaire en $x_1 = 0$ et $x_2 = 1/a$ et seul le second est stable (car $F'(x_1) > 0$ et $F'(x_2) < 0$). \\
+  Dans ce cas, $y(t)$ tend vers 0 quand $t \to\infty$, le système \eqref{eq:LVDD-Jstar} devient donc simplement $\dot x = F(x)$ avec $F(x) = x (1 - ax)$. Ce système adment deux points d'équilibre en $x_1 = 0$ et $x_2 = 1/a$ et seul le second est stable (car $F'(x_1) > 0$ et $F'(x_2) < 0$). \\
   Après extinction des prédateurs, la population des proies tend donc vers $x_2 = 1/a = 2/3$ : elle n'explose donc pas, contrairement au modèle de Lotka-Volterra classique.
   }
 \end{enumerate}
