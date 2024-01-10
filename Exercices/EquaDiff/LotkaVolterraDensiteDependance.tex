@@ -2,21 +2,40 @@
 \subsubsection{Modèle de Lotka-Volterra avec densité dépendance} 
 %-------------------------------------------------------------------------------
 
-On considère un modèle de Lotka-Volterra avec densité dépendance. Plus précisémment, en reprenant la re-paramétrisation vue en cours, en notant $x(t)$ une variables proportionnelles au nombre de proies et $y(t)$ une variable proportionnelle au nombre de prédateurs et en supposant le taux de croissantce des proies égale à 1 ($r = 1$), on pose
+\paragraph{Rappel.}
+En notant 
+\begin{itemize}
+  \item $x(t)$ une variable proportionnelle au nombre de proies et
+  \item $y(t)$ une variable proportionnelle au nombre de prédateurs,
+\end{itemize}
+le modèle Lotka-Volterra classique s'écrit, 
+$$
+\left\{\begin{array}{rcr}
+        \dot x & = & r x (1 - y), \\ 
+        \dot y & = & - m y (1 - x).
+        \end{array}\right.
+$$
+Ce modèle admet deux points d'équilibre en $(x=0, y=0)$ et $(x=1, h=1)$.
+
+\paragraph{Prise en compte d'une densité-dépendance.}
+On considère ici un modèle de Lotka-Volterra avec densité dépendance. Plus précisément, en supposant le taux de croissance des proies égale à 1 ($r = 1$), on considère le modèle
 \begin{equation} \label{eq:LVDD}
-\left\{\begin{array}{rcl}
-        \dot x & = & x (1 - y - ax)\\ 
-        \dot y & = & - m y (1 - x)
+\left\{\begin{array}{rcr}
+        \dot x & = & x (1 - y - ax), \\ 
+        \dot y & = & - m y (1 - x), 
         \end{array}\right.
 \end{equation}
-où les paramètres $m$ et $a$ sont strictement positifs.
+où les paramètres $m$ et $a$ sont strictement positifs. On remarque que le cas $a=0$ correspond au modèle de Lotka-Volterra classique (avec $r=1$).
 
 \bigskip
-\paragraph{Question préliminaire (I).}
+\paragraph{Questions préliminaires (I).}
 Soit la fonction $f: \Rbb^+ \mapsto \Rbb$, définie par $f(x) = \sqrt{x(x+1)} - x$.
 \begin{enumerate}
-  \item Montrer que $0 < f(x) < 1/2$. \label{q:LVDD-f}
-  \solution{On a facilement $f(x) > 0$, puisque $\sqrt{x(x+1)} > \sqrt{x^2} = x$. D'autre part, on a
+  \item Montrer que $f(x) > 0$. \label{q:LVDD-f1}
+  \solution{On a $\sqrt{x(x+1)} > \sqrt{x^2} = x$, donc $f(x) > 0$.
+  }
+  \item Montrer que $f(x) < 1/2$. \label{q:LVDD-f2}
+  \solution{On a
   $$
   f(x) < \frac12 
   \qquad \Leftrightarrow \qquad
@@ -39,21 +58,21 @@ Soit la matrice $J^*$ définie par
 
 \bigskip
 \begin{enumerate}
-  \setcounter{enumi}{1}
-  \item Déterminer le polynôme caractérisque $P$ de $J^*$.
+  \setcounter{enumi}{2}
+  \item Déterminer le polynôme caractéristique $P$ de $J^*$.
   \solution{$P(\lambda) = \lambda^2 + a \lambda + m(1-a)$.}
-  \item Déterminer une valeur seuil pour $a$ (mais dépendant de $m$), notée $a_1$, au delà de laquelle les valeurs propres de $J^*$ sont réelles. \\
-  ({\sl On pourra étudier le discriminant $\Delta$ de $P$ comme une fonction de $a$, notée $\Delta(a)$}.)
-  \solution{La nature des valeurs propres de $J^*$ est donnée par le signe du discriminant $\Delta$ de $P$ : $\Delta(a) = a^2 + 4am - 4m$ qui est lui même un polynôme en $a$. \\
+  \item Déterminer une valeur seuil pour $a$ (mais dépendant de $m$), notée $a_1$, au delà de laquelle les valeurs propres de $J^*$ sont réelles. 
+  ({\sl On pourra étudier le discriminant $\Delta$ de $P$ comme une fonction de $a$.})
+  \solution{La nature des valeurs propres de $J^*$ est donnée par le signe du discriminant de $P$ : $\Delta = \Delta(a) = a^2 + 4am - 4m$ qui est lui même un polynôme en $a$. \\
   Son discriminant est $\delta = 16m^2 + 16m = 16 m(m+1)$ est positif. 
-  $\Delta(a)$ admet donc deux racines réelles $2 (-m \pm \sqrt{m(m+1)})$ dont la plus grande, notée $a_1 = 2 (\sqrt{m(m+1)} - m)$ est strictement positive d'après la question \ref{q:LVDD-f}. 
+  $\Delta(a)$ admet donc deux racines réelles $2 (-m \pm \sqrt{m(m+1)})$ dont la plus grande, notée $a_1 = 2 (\sqrt{m(m+1)} - m)$ est strictement positive d'après la question \ref{q:LVDD-f1}. 
   \\ $\Delta(a)$ est donc positif dès que
   $$
   a \geq a_1 = 2 \left(\sqrt{m(m+1)} - m\right) > 0.
   $$
   et $P$ admet alors deux racines réelles. 
   }
-  \item Déterminer une seconde valeur seuil pour $a$, notée $a_2$ et telle que $a_2 > a_1$, au delà de laquelle les valeurs propres de $J^*$ sont de signes différents.
+  \item Déterminer une seconde valeur seuil pour $a$, notée $a_2$, telle que $a_2 > a_1$, et au delà de laquelle les valeurs propres de $J^*$ sont de signes différents.
   \solution{Si $a > a_1$, $P$ admet pour racines réelles $\lambda_1 = (-a -\sqrt{\Delta(a)})/2$ et $\lambda_2 = (-a + \sqrt{\Delta(a)})/2$. $\lambda_1$ est toujours négative, mais $\lambda_2$ est positive dès que 
   $$
   \sqrt{\Delta(a)} \geq a
@@ -62,8 +81,8 @@ Soit la matrice $J^*$ définie par
   \qquad \Leftrightarrow \qquad
   a \geq 1.
   $$
-  $J^*$ a donc des valeurs propres de racines distinces dès que $a > 1 = a_2$. \\
-  La question \ref{q:LVDD-f} nous assure de plus que $a_1 < 1 = a_2$.
+  $J^*$ a donc des valeurs propres de racines distinctes dès que $a > 1 = a_2$. \\
+  La question \ref{q:LVDD-f2} nous assure de plus que $a_1 < 1 = a_2$.
   }
 \end{enumerate}
   
@@ -71,25 +90,25 @@ Soit la matrice $J^*$ définie par
 \bigskip
 \paragraph{Interprétation du modèle.}
 \begin{enumerate}
-  \setcounter{enumi}{4}
+  \setcounter{enumi}{5}
   \item Interpréter les paramètres $m$ et $a$ du modèle \eqref{eq:LVDD}.
   \solution{$m$ est le taux de mort des prédateurs en absence de proies (si $x(0)= 0$, $y(t) = y_0 e^{-mt}$). $a$ rend compte de la compétition entre proies, c'est-à-dire de la limitation des ressources du milieu.}
   \item Déterminer les points d'équilibre du système.
   \solution{
   L'isocline $\{\dot x = 0\}$ est $\Ical_x = \{x = 0\} \cup \{y = 1 - ax\}$ et l'isocline $\{\dot y = 0\}$ est $\Ical_y = \{y = 0\} \cup \{x = 1\}$. Les points d'équilibre sont donc $(0, 0)$ et $(1, 1-a)$.}
-  \item Expliquer la position du point d'équilibre $(x^*, y^*)$ non trivial (i.e. pour lequel les deux effectifs sont non-nuls) par rapport au point d'équilibre du modèle de Lotka-Volterra classique ($a=0$)
+  \item Expliquer la position du point d'équilibre $(x^*, y^*)$ non nul par rapport au point d'équilibre non nul du modèle de Lotka-Volterra classique ($a=0$)
   \solution{L'équilibre non-trivial du modèle de Lotka-Volterra est le point $(1, 1)$. Le point d'équilibre des proies est conservé ($x^* = 1$), mais celui des prédateurs diminue $y^* = 1-a < 1$ : la contrainte imposée par le milieu au proies nuit, {\it in fine} à la population des prédateurs.}
 \end{enumerate}
 
 \bigskip
 \bigskip
-\paragraph{Stabilité du point d'équilibre non-trivial.}
-On s'intéresse maintenant à la stabilité du point d'équilibre $(x^*, y^*)$ non trivial, c'est-à-dire celui pour lequel les deux effectifs sont non-nuls. \\
+\paragraph{Stabilité du point d'équilibre non nul.}
+On s'intéresse maintenant à la stabilité du point d'équilibre $(x^*, y^*)$ non nul, c'est-à-dire celui pour lequel $x$ et $y$ sont non-nuls. \\
 ({\sl Les questions de ce paragraphe peuvent être traitées sans connaître les valeurs exactes des seuils $0 < a_1 < a_2$.})
 
 \bigskip
 \begin{enumerate}
-  \setcounter{enumi}{7}
+  \setcounter{enumi}{8}
   \item Déterminer la matrice jacobienne du système en un point $(x, y)$ quelconque.
   \solution{
   $$
@@ -99,6 +118,7 @@ On s'intéresse maintenant à la stabilité du point d'équilibre $(x^*, y^*)$ n
   $$
   }
   \item En déduire que la matrice jacobienne en $(x^*, y^*)$ est égale à la matrice $J^*$ définie à l'équation \eqref{eq:LVDD-Jstar}.
+  \solution{Direct.}
   \item Etudier la nature de l'équilibre $(x^*, y^*)$ en fonction de la position de $a$ par rapport aux deux valeurs seuils $a_1$ et $a_2$ : $a < a_1$, $a_1 < a < a_2$ ou $a > a_2$.
   \solution{
   \begin{description}
@@ -131,7 +151,7 @@ $$
 La courbe grise indique la trajectoire du modèle de Lotka-Volterra sans densité-dépendance ($m = 1/2$, $a = 0$). Les repères grisés indiquent le point d'équilibre de ce même modèle.
 
 \begin{enumerate}
-  \setcounter{enumi}{10}
+  \setcounter{enumi}{11}
   \item Associer chacune des trajectoires ($i$), ($ii$) et ($iii$) à l'une des trois valeurs de $a$ : $a = 1/2$, $a = 9/10$ ou $a = 3/2$.
   \solution{On a dans ce cas $a_1 = \sqrt{3} - 1 \simeq 0.73$ et $a_2 = 1$.
   \begin{description}
