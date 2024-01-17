@@ -15,10 +15,10 @@ le modèle Lotka-Volterra classique s'écrit,
         \dot y & = & - m y (1 - x).
         \end{array}\right.
 \end{equation}
-Ce modèle admet deux points d'équilibre en $(x=0, y=0)$ et $(x=1, y=1)$.
+Notamment, ce modèle admet deux points d'équilibre en $(x=0, y=0)$ et $(x=1, y=1)$.
 
 \paragraph{Prise en compte d'une densité-dépendance.}
-On considère ici un modèle de Lotka-Volterra avec densité dépendance. Plus précisément, en supposant le taux de croissance des proies égale à 1 ($r = 1$), on considère le modèle
+On considère ici un modèle de Lotka-Volterra avec densité dépendance. Plus précisément, en supposant le taux de croissance des proies égale à 1 ($r = 1$), on pose le modèle
 \begin{equation} \label{eq:LVDD}
 \left\{\begin{array}{rcr}
         \dot x & = & x (1 - y - ax), \\ 
@@ -29,9 +29,22 @@ où les paramètres $m$ et $a$ sont strictement positifs.
 % On remarque que le cas $a=0$ correspond au modèle de Lotka-Volterra classique (avec $r=1$).
 
 \bigskip
-\paragraph{Questions préliminaires (I).}
+\paragraph{Interprétation du modèle \eqref{eq:LVDD}.}
+\begin{enumerate}
+  \item Interpréter les paramètres $m$ et $a$ du modèle \eqref{eq:LVDD}.
+  \solution{$m$ est le taux de mort des prédateurs en absence de proies (si $x(0)= 0$, $y(t) = y_0 e^{-mt}$). $a$ rend compte de la compétition entre les proies, c'est-à-dire de la limitation des ressources du milieu.}
+  \item Déterminer les points d'équilibre du système \eqref{eq:LVDD}.
+  \solution{
+  L'isocline $\{\dot x = 0\}$ est $\Ical_x = \{x = 0\} \cup \{y = 1 - ax\}$ et l'isocline $\{\dot y = 0\}$ est $\Ical_y = \{y = 0\} \cup \{x = 1\}$. Les points d'équilibre sont donc $(0, 0)$ et $(1, 1-a)$.}
+  \item Expliquer la position du point d'équilibre $(x^*, y^*)$ non nul (c'est-à-dire pour lequel $x^*$ et $y^*$ sont non nuls) par rapport au point d'équilibre non nul du modèle de Lotka-Volterra classique \eqref{eq:LV}.
+  \solution{L'équilibre non-trivial du modèle de Lotka-Volterra est le point $(1, 1)$. Le point d'équilibre des proies est conservé ($x^* = 1$), mais celui des prédateurs diminue $y^* = 1-a < 1$ : la contrainte imposée par le milieu au proies nuit, {\it in fine} à la population des prédateurs.}
+\end{enumerate}
+
+\bigskip
+\paragraph{Questions intermédiaires (I).}
 Soit la fonction $f: \Rbb^+ \mapsto \Rbb$, définie par $f(x) = \sqrt{x(x+1)} - x$.
 \begin{enumerate}
+  \setcounter{enumi}{3}
   \item Montrer que $f(x) > 0$. \label{q:LVDD-f1}
   \solution{On a $\sqrt{x(x+1)} > \sqrt{x^2} = x$, donc $f(x) > 0$.
   }
@@ -49,7 +62,7 @@ Soit la fonction $f: \Rbb^+ \mapsto \Rbb$, définie par $f(x) = \sqrt{x(x+1)} - 
 \end{enumerate}
 
 \bigskip 
-\paragraph{Questions préliminaires (II).}
+\paragraph{Questions intermédiaires (II).}
 Soit la matrice $J^*$ définie par
 \begin{equation} \label{eq:LVDD-Jstar}
   J^* = \left(\begin{array}{cc}
@@ -59,11 +72,11 @@ Soit la matrice $J^*$ définie par
 
 \bigskip
 \begin{enumerate}
-  \setcounter{enumi}{2}
+  \setcounter{enumi}{5}
   \item Déterminer le polynôme caractéristique $P$ de $J^*$.
   \solution{$P(\lambda) = \lambda^2 + a \lambda + m(1-a)$.}
   %
-  \item Montrer que les valeurs propres de $J^*$ sont réelles si et seulement si $a \geq 2 f(m)$. Dans la suite, on notera $a_1 = 2 f(m)$. 
+  \item Montrer que les valeurs propres de $J^*$ sont réelles si et seulement si $a \geq a_1 = 2 f(m)$, où $f$ est la fonction définie en (I). 
   ({\sl On pourra étudier le discriminant $\Delta$ de $P$ comme une fonction de $a$.})
   \solution{La nature des valeurs propres de $J^*$ est donnée par le signe du discriminant de $P$ : $\Delta = \Delta(a) = a^2 + 4am - 4m$ qui est lui même un polynôme en $a$. \\
   Son discriminant est $\delta = 16m^2 + 16m = 16 m(m+1)$ est positif puisque $m$ est positif. 
@@ -86,19 +99,6 @@ Soit la matrice $J^*$ définie par
   }
 \end{enumerate}
   
-
-\bigskip
-\paragraph{Interprétation du modèle.}
-\begin{enumerate}
-  \setcounter{enumi}{5}
-  \item Interpréter les paramètres $m$ et $a$ du modèle \eqref{eq:LVDD}.
-  \solution{$m$ est le taux de mort des prédateurs en absence de proies (si $x(0)= 0$, $y(t) = y_0 e^{-mt}$). $a$ rend compte de la compétition entre les proies, c'est-à-dire de la limitation des ressources du milieu.}
-  \item Déterminer les points d'équilibre du système \eqref{eq:LVDD}.
-  \solution{
-  L'isocline $\{\dot x = 0\}$ est $\Ical_x = \{x = 0\} \cup \{y = 1 - ax\}$ et l'isocline $\{\dot y = 0\}$ est $\Ical_y = \{y = 0\} \cup \{x = 1\}$. Les points d'équilibre sont donc $(0, 0)$ et $(1, 1-a)$.}
-  \item Expliquer la position du point d'équilibre $(x^*, y^*)$ non nul (c'est-à-dire pour lequel $x^*$ et $y^*$ sont non nuls) par rapport au point d'équilibre non nul du modèle de Lotka-Volterra classique \eqref{eq:LV}.
-  \solution{L'équilibre non-trivial du modèle de Lotka-Volterra est le point $(1, 1)$. Le point d'équilibre des proies est conservé ($x^* = 1$), mais celui des prédateurs diminue $y^* = 1-a < 1$ : la contrainte imposée par le milieu au proies nuit, {\it in fine} à la population des prédateurs.}
-\end{enumerate}
 
 \bigskip
 \paragraph{Stabilité du point d'équilibre non nul.}
@@ -136,7 +136,7 @@ On s'intéresse maintenant à la stabilité du point d'équilibre $(x^*, y^*)$ n
 
 \bigskip
 \paragraph{Trajectoires.}
-Les trajectoires ($i$), ($ii$) et ($iii$) suivantes ont été obtenues par intégration numérique avec $m = 1/2$ et partant de l'état initial $(x_0 = 3/2,\;  y_0 = 1)$ pour trois valeurs de $a$ différentes.
+Les trajectoires ($i$), ($ii$) et ($iii$) suivantes ont été obtenues par intégration numérique avec $m = 1/2$ et partant de l'état initial $(x_0 = 2,\;  y_0 = 3/2)$ pour trois valeurs de $a$ différentes :
 $$
 \begin{array}{ccc}
   (i) & (ii) & (iii) \\
@@ -145,11 +145,11 @@ $$
   \includegraphics[width=.32\textwidth, trim=0 0 0 50, clip=]{LotkaVolterraDD-m0.5-a0.5.png}
 \end{array}
 $$
-La courbe grise indique la trajectoire du modèle de Lotka-Volterra sans densité-dépendance ($m = 1/2$, $a = 0$). Les repères grisés indiquent le point d'équilibre de ce même modèle.
+La courbe grise indique la trajectoire du modèle de Lotka-Volterra \eqref{eq:LV} sans densité-dépendance ($m = 1/2$, $a = 0$), partant du même point initial. Les repères grisés indiquent le point d'équilibre de ce même modèle \eqref{eq:LV}.
 
 \begin{enumerate}
   \setcounter{enumi}{11}
-  \item Associer chacune des trajectoires ($i$), ($ii$) et ($iii$) à l'une des trois valeurs de $a$ : $a = 1/2$, $a = 9/10$ ou $a = 3/2$.
+  \item Associer chacune des trajectoires ($i$), ($ii$) et ($iii$) à l'une des trois valeurs de $a$ : $a = 1/2$, $a = 9/10$ et $a = 3/2$.
   \solution{On a dans ce cas $a_1 = 2 f(1/2) = \sqrt{3} - 1 \simeq 0.73$.
   \begin{description}
     \item[$a = 1/2 < a_1$ :] le système possède un équilibre stable en ($x^* = 1, y^* = 1/2$) et les valeurs propres de $J^*$ possèdent une partie imaginaire non nulle qui induit un enroulement autour de l'équilibre : on reconnaît la trajectoire ($iii$).

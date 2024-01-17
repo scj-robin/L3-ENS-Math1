@@ -2,7 +2,7 @@
 
 rm(list=ls()); par(mfrow=c(1, 1), lwd=2)
 library(deSolve)
-exportFig <- TRUE
+exportFig <- FALSE
 dirFig <- '../Figures/'
 figName <- 'LotkaVolterraDD'
 
