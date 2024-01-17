@@ -1,11 +1,11 @@
 %-------------------------------------------------------------------------------
 \subsubsection{Processus de Galton–Watson poissonnien} %-------------------------------------------------------------------------------
-  On considère un processus de Bienaymé-Galton-Watson partant d'une population de taille 1 et dans laquelle le nombre de descendants par individu suit une loi de Poisson $\Pcal(\lambda)$ :
+  On considère un processus de Galton-Watson partant d'une population de taille 1 et dans lequel le nombre de descendants $X$ par individu suit une loi de Poisson $\Pcal(\lambda)$ :
   $$
   \Pr\{X = k\} = e^{-\lambda} \frac{\lambda^k}{k!}.
   $$
   \begin{enumerate}
-    \item Rappeler le nombre moyen $m$ de descendants par individu.
+    \item Donner le nombre moyen $m$ de descendants par individu.
     \solution{$m = \Esp(X) = \lambda$.}
     \item A quelle condition sur $\lambda$ la probabilité d'extinction $q$ est-elle strictement inférieure à 1 ?
     \solution{Si $m = \lambda > 1$.}
@@ -17,15 +17,10 @@
     = e^{-\lambda} \sum_{k \geq 0} \frac{(\lambda s)^k}{k!} 
     = e^{\lambda(s-1)}.
     $$}
-    \item Pour quelle valeur de $\lambda$ la probabilité d'extinction $q$ vaut-elle $1/2$ ?
+    \item Pour quelles valeurs de $\lambda$ la probabilité d'extinction $q$ vaut-elle $1/2$,  $1/10$ et $1/100$ ?
     \solution{On sait que $q$ vérifie $q = \phi(q)$, soit, 
-    $$
-    q = \exp{\lambda(q - 1)}
-    \qquad \Leftrightarrow \qquad 
-    \lambda = \frac{\log q}{q - 1},
-    $$
-    soit, pour $q = 1/2$, 
-    $$
-    \lambda = \frac{\log(1/2)}{(-1/2)} = 2 \log 2 \simeq 1.386.
-    $$}
+    $q = \exp{\lambda(q - 1)}$, c'est-à-dire $\lambda = \log q / (q - 1)$. 
+    On obtient ainsi $\lambda \simeq 1.4$ pour $q = 1/2$, $\lambda \simeq 2.6$ pour $q = 1/10$ et $\lambda\simeq4.7$ pour $q = 1/100$. \\
+    Avec presque 5 descendants (en moyenne) par individus, la population a encore 1\% de chance de s'éteindre. ($q \simeq .007$ pour $\lambda = 5$).
+    }
   \end{enumerate}
