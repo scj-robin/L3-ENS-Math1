@@ -4,13 +4,23 @@
 rm(list=ls())
 figDir <- '../Figures/'
 figName <- 'ExoSystDynY5'
-exportFig <- TRUE
+exportFig <- FALSE
 
 Fy <- function(y){y*(mu + 2*y^2 - y^4)}
 Fpy <- function(y){mu + 6*y^2 - 5*y^4}
 gz <- function(z){(mu + 2*z - z^2)}
 hz <- function(z){mu + 6*z - 5*z^2}
 
+# Forme de F(y) (et nb racines)
+muList <- seq(-2, 1, by=.25)
+par(mfrow=c(4, 4))
+for(m in 1:length(muList)){
+  mu <- muList[m]
+  curve(Fy(x), from=-1.5, to=1.5, main=paste0('mu=', muList[m]))
+  abline(h=0, v=c(-1, 0, 1), lty=2)
+}
+
+# Etats stat pour mu donné
 mu <- -.5; from <- -(1+abs(mu)); to <- -from
 zStar <- 1 + sqrt(mu+1)*c(-1, 1); yStar <- c(-sqrt(zStar), sqrt(zStar))
 cat(Fy(yStar), '/', gz(zStar), '\n')
@@ -24,6 +34,7 @@ curve(gz(x), from=from, to=to^2, n=1001, type='l', lwd=2, , ylim=ylim)
 curve(hz(x), from=from, to=to^2, n=1001, add=TRUE, lwd=2, col=2)
 abline(h=0, v=c(0, zStar), lty=2)
 
+# Etats stat = f(mu)
 if(exportFig){png(paste0(figDir, figName, '-yStar.png'))}
 plot(curve(0*x, from=-2, to=2, n=1001), 
      type='l', lwd=2, ylim=c(-3, 3), ylab=expression(y[star]), xlab=expression(mu))

@@ -12,8 +12,13 @@ y0List <- list(c(2, 1.5), c(.1, 3), c(.1, .1), c(.25, .25), c(.5, .5), c(.75, .7
 y0Nb <- length(y0List)
 
 ################################################################################
+# Function sqrt(x(x+1)) - x
+curve(sqrt(x*(x+1)) - x, from=0, to=10)
+abline(h=c(0, 1/2))
+
+################################################################################
 # Regular Lotka-Volterra (r = 1)
-# xp = x ( 1 - y); yp = - m y (1 - x)
+# xp = x (1 - y); yp = - m y (1 - x)
 m <- 1; parms1 <- c(m=m)
 Model1 <- function(t, y, parms){return(list(c(y[1]*(1-y[2]), -parms[1]*y[2]*(1-y[1]))))}
 Model1(0, y0List[[1]], parms1)

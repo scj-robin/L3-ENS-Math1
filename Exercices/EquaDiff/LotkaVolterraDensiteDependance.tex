@@ -35,7 +35,7 @@ où les paramètres $m$ et $a$ sont strictement positifs.
   \solution{$m$ est le taux de mort des prédateurs en absence de proies (si $x(0)= 0$, $y(t) = y_0 e^{-mt}$). $a$ rend compte de la compétition entre les proies, c'est-à-dire de la limitation des ressources du milieu.}
   \item Déterminer les points d'équilibre du système \eqref{eq:LVDD}.
   \solution{
-  L'isocline $\{\dot x = 0\}$ est $\Ical_x = \{x = 0\} \cup \{y = 1 - ax\}$ et l'isocline $\{\dot y = 0\}$ est $\Ical_y = \{y = 0\} \cup \{x = 1\}$. Les points d'équilibre sont donc $(0, 0)$ et $(1, 1-a)$.}
+  L'isocline $\{\dot x = 0\}$ est $\Ical_x = \{x = 0\} \cup \{y = 1 - ax\}$ et l'isocline $\{\dot y = 0\}$ est $\Ical_y = \{y = 0\} \cup \{x = 1\}$. Les points d'équilibre sont donc $(0, 0)$, $(0, 1/a)$ et $(1, 1-a)$.}
   \item Expliquer la position du point d'équilibre $(x^*, y^*)$ non nul (c'est-à-dire pour lequel $x^*$ et $y^*$ sont non nuls) par rapport au point d'équilibre non nul du modèle de Lotka-Volterra classique \eqref{eq:LV}.
   \solution{L'équilibre non-trivial du modèle de Lotka-Volterra est le point $(1, 1)$. Le point d'équilibre des proies est conservé ($x^* = 1$), mais celui des prédateurs diminue $y^* = 1-a < 1$ : la contrainte imposée par le milieu au proies nuit, {\it in fine} à la population des prédateurs.}
 \end{enumerate}
@@ -95,7 +95,8 @@ Soit la matrice $J^*$ définie par
   \qquad \Leftrightarrow \qquad
   a \geq 1.
   $$
-  $J^*$ a donc des valeurs propres de racines distinctes dès que $a > 1 > a_1$. \\
+  $J^*$ a donc des valeurs propres de racines distinctes dès que $a > 1 > a_1$. \\ 
+  Alternativement, par les propriétés du polynôme caractéristique d'une matrice de $\Mcal_2$, $\lambda_1$ et $\lambda_2$ sont de même signe ssi $\lambda_1 \lambda_2 = |J^*| = m(1-a) > 0$, c'est-à-dire si $a <1$, puisque $m > 0$.
   }
 \end{enumerate}
   
@@ -159,7 +160,7 @@ La courbe grise indique la trajectoire du modèle de Lotka-Volterra \eqref{eq:LV
   }
   \item Donner la limite de $x(t)$ quand $t$ tend vers l'infini dans le cas ($ii$).
   \solution{
-  Dans ce cas, $y(t)$ tend vers 0 quand $t \to\infty$, le système \eqref{eq:LVDD-Jstar} devient donc simplement $\dot x = F(x)$ avec $F(x) = x (1 - ax)$. Ce système adment deux points d'équilibre en $x_1 = 0$ et $x_2 = 1/a$ et seul le second est stable (car $F'(x_1) > 0$ et $F'(x_2) < 0$). \\
-  Après extinction des prédateurs, la population des proies tend donc vers $x_2 = 1/a = 2/3$ : elle n'explose donc pas, contrairement au modèle de Lotka-Volterra classique, du fait de la densité-dépendance.
+  Dans ce cas, $y(t)$ tend vers 0 quand $t \to\infty$, le système \eqref{eq:LVDD-Jstar} devient donc simplement $\dot x = F(x)$ avec $F(x) = x (1 - ax)$. Ce système admet deux points d'équilibre en $x_1 = 0$ et $x_2 = 1/a$ et seul le second est stable (car $F'(x_1) > 0$ et $F'(x_2) < 0$). \\
+  Après extinction des prédateurs, la population des proies tend donc vers un des équilibres 'nuls' : $(x_2 = 1/a = 2/3, y=0)$. Du fait de la densité-dépendance, la population des proies n'explose donc pas, contrairement au modèle de Lotka-Volterra classique.
   }
 \end{enumerate}
