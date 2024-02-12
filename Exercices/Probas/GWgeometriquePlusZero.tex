@@ -44,4 +44,18 @@ $$
   $$
   La probabilité d'extinction est donc $q = b/a$ si $b < a$ et 1 sinon.
   }
+  \item Par quel autre moyen peut-on déterminer à quelle condition la probabilité d'extinction est strictement inférieure à 1 ?
+  \solution{
+  On sait que la probabilité d'extinction est strictement inférieure à 1 si le nombre de descendant moyen $m$ est strictement supérieur à 1. Il suffit donc de calculer $m$ pour la loi $p$. \\
+  On rappelle l'espérance d'une loi géométrique : si $Z \sim \Gcal(1-a)$, alors
+  $$
+  \Esp Z 
+  = (1-a) \sum_{z \geq 1} z a^{z-1}
+  = (1-a) \; \partial_a \left(\sum_{z \geq 0} a^z\right)
+  = (1-a) \; \partial_a \left(\frac1{1-a}\right)
+  % = (1-a) \frac1{(1-a)^2}
+  = \frac1{1-a}.
+  $$
+  On a donc $m = \Esp X = b \times 0 + (1-b) \Esp Z = (1-b) / (1-a)$ et on retrouve $m > 1 \; \Leftrightarrow \; b < a$.
+  }
 \end{enumerate}
