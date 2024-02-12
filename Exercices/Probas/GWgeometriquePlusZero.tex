@@ -29,16 +29,21 @@ $$
   qui donne le résultat.
   }
   \item Déterminer la valeur de la probabilité, notée $q$, qu'une population de cette espèce issue d’un seul individu fondateur s'éteigne.
-  \solution{On sait que $q$ est le plus petit point fixe de la fonction $f$ dans l'intervalle $(0, 1]$. Il faut donc résoudre $f(s) = s$
+  \solution{On sait que $q$ est le plus petit point fixe de la fonction $f$ dans l'intervalle $(0, 1]$. Il faut donc résoudre 
   \begin{align*}
-    \Leftrightarrow \qquad 
-    b(1 - as) + (1-b)(1-a) s & = a - as^2 \\
-    \Leftrightarrow \qquad
-    as^2 - (a+b) s + b & = 0
+    f(s) = s 
+    \quad \Leftrightarrow \quad
+    b(1 - as) + (1-b)(1-a) s = a - as^2
+    \quad \Leftrightarrow \quad
+    as^2 - (a+b) s + b = 0,
   \end{align*}
-  dont le discriminant vaut $\Delta = (a+b)^2 - 4ab = (a-b)^2$ et les solutions sont donc
+  qu'on factoriser, sachant que $s=1$ est raçine, en
   $$
-  s = \frac{(a+b) \pm (a-b)}{2}
+  (s - 1) (a s - b) = 0
+%   $$
+%   dont le discriminant vaut $\Delta = (a+b)^2 - 4ab = (a-b)^2$ et les solutions sont donc
+%   $$
+%   s = \frac{(a+b) \pm (a-b)}{2}
   \qquad \Leftrightarrow \qquad
   s \in \left\{\frac{b}a, 1\right\}.
   $$
