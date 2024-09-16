@@ -49,11 +49,12 @@
 \begin{enumerate}
   \item Parler ``du'' vecteur propre $x$ associé à la valeur propre $\lambda$ est donc un abus de langage. Tous les vecteurs engendrés par $x$ sont également propres : on peut aussi parler plus précisément de {\em direction propre}. 
   \item Notamment, on peut toujours choisir des vecteurs propres de norme 1 $(\|v_i\| = 1$). 
-  \item Cela implique aussi que, si $\lambda$ est valeur propre de $A$, l'équation
+  \item On peut aussi noter que, si $\lambda$ est valeur propre de $A$, l'équation
   \begin{equation} \label{eq:RqValeurPropre}
     Ax = \lambda x \qquad \Leftrightarrow \qquad (A - \lambda I)x = 0
   \end{equation}
   admet une infinité de solutions, donc que la matrice $A - \lambda I$ n'est pas inversible.
+  \item La réciproque est d'ailleurs vraie: si $A - \lambda I$ n'est pas inversible, alors il existe un $y$ tel que $(A  - \lambda I)x_1 = y = (A - \lambda I)x_2$ avec $x_1 \neq x_2$. Par différence on a donc $(A  - \lambda I)(x_1 - x_2) = 0$, soit $A(x_1 - x_2) = \lambda(x_1 - x_2)$ et $\lambda$ est donc valeur propre de $A$ associée à $x_1 - x_2$.
 \end{enumerate}
 
 %-------------------------------------------------------------------------------
@@ -78,8 +79,8 @@
 
 \proof 
   \begin{description}
-    \item[$\Rightarrow$:] voir la remarque de l'équation \eqref{eq:RqValeurPropre}.
-    \item[$\Leftarrow$:] $p_A(\lambda) = 0$ implique on a $A - \lambda I$ n'est pas inversible, donc
+    \item[$\Rightarrow$:] d'après la remarque de l'équation \eqref{eq:RqValeurPropre}, puisque $A - \lambda I$ n'est pas inversible, son déterminant $|A - \lambda I| = P_A(\lambda)$ est nul.
+    \item[$\Leftarrow$:] $p_A(\lambda) = 0$ implique que $A - \lambda I$ n'est pas inversible, donc
       \begin{align*}
         & \exists y: (A - \lambda I)x = y \text{ admet plusieurs solutions $x$} \\
         & \Rightarrow \quad \exists x_1 \neq x_2: (A - \lambda I)x_1 = (A - \lambda I)x_2 = y \\

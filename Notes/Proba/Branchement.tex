@@ -99,19 +99,19 @@ Directe.
 \end{enumerate}
 
 %-------------------------------------------------------------------------------
-\progres{
-Rappel cours 8 :
-\begin{itemize}
-  \item Fin chaînes de Markov, processus de Wright-Fisher, marche aléatoire
-  \item Processus de branchement
-  \item Fonction génératrice
-\end{itemize}
-Programme cours 9 :
-\begin{itemize}
-  \item Processus de Galton-Watson
-  \item TD chaînes de Makov, processus de branchement
-\end{itemize}
-}
+% \progres{
+% Rappel cours 8 :
+% \begin{itemize}
+%   \item Fin chaînes de Markov, processus de Wright-Fisher, marche aléatoire
+%   \item Processus de branchement
+%   \item Fonction génératrice
+% \end{itemize}
+% Programme cours 9 :
+% \begin{itemize}
+%   \item Processus de Galton-Watson
+%   \item TD chaînes de Makov, processus de branchement
+% \end{itemize}
+% }
 
 %-------------------------------------------------------------------------------
 \begin{proposition}[Convergence de la fonction génératrice]
@@ -185,6 +185,7 @@ La taille de la population à la génération $n+1$ est donnée par
 \begin{equation} \label{eq:recurrenceGW}
 Z_{n+1} = \sum_{i = 1}^{Z_n} X_{ni}.
 \end{equation}
+
 La suite $(Z_n)_{n \geq 0}$ forme donc une \cM sur $\Nbb$, puisque $Z_{n+1}$ est donné par $Z_n$ et par les $\{X_{ni})_{1 \geq i \geq Z_n}$, qui sont indépendants du passé.
 
 \bigskip

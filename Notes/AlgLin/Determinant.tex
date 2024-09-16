@@ -134,7 +134,7 @@ On cherche à généraliser cette définition et ces propriétés à des matrice
 \end{definition}
 
 \begin{definition}[Application alternée] \label{def:applicationAlternee}
-  Soit $E$ un espace vectoriel et $f: E^n \mapsto \Rbb$. $f$ est dite alternée si elle prend la valeur opposée quand on permuted eux variables : 
+  Soit $E$ un espace vectoriel et $f: E^n \mapsto \Rbb$. $f$ est dite alternée si elle prend la valeur opposée quand on permute deux variables : 
   $$
   f(u_1, \dots u_i, \dots u_j, \dots u_n)
   =
@@ -217,9 +217,9 @@ En effet, en appliquant la $n$-linéarité à chacun des termes diagonaux de la 
 \proof 
 \begin{enumerate}[($i$)]
 \item La $n$-linéarité implique que, si la matrice $B$ est construite à partir de la matrice $A$ en multipliant une de ses colonnes par $\lambda$, on a $|B| = \lambda |A|$. La propriété s'obtient en prenant $\lambda = 0$.
-\item On commence par remarquer que le caractère alterné du déterminant implique qu'il est nulle pour une matrice ayant deux colonnes égales puisque
+\item On commence par remarquer que le caractère alterné du déterminant implique qu'il est nul pour une matrice ayant deux colonnes égales puisque
 $$
-det(u_1, u_1, u_2,\dots, u_n) = -det(u_1, u_1, u_2,\dots, u_n)
+det(u_1, u_1, u_2,\dots, u_n) = -det(u_1, u_1, u_2,\dots, u_n) = 0.
 $$
 % La $n$-linéarité implique donc que, si on ajoute une combinaison linéaire de toute les colonnes à l'une d'entre elle, le déterminant ne change pas. En effet
 % \begin{align*}
@@ -265,7 +265,7 @@ La proposition \ref{prop:formuleGeneraleDeterminant} n'est pas démontrée ici. 
  %
   \item D'un point de vue géométrique, un déterminant peut être interprété comme un volume. Il existe notamment deux cas simples :
   \begin{itemize}
-  \item En dimension 2 : faire le calcul
+  \item En dimension 2 : 
     Soit $x = (a, c)$ et $y = (b, d)$, la surface $S$ parallélogramme de sommets $\{0, x, y, x+y\}$ est égale à la surface du rectangle de sommet supérieur droit $x+y$ privé des surface $(1)$, $(2)$, $(3)$ et $(4)$ : 
     $$
     \includegraphics{DeterminantVolumeDimension2}
@@ -278,7 +278,8 @@ La proposition \ref{prop:formuleGeneraleDeterminant} n'est pas démontrée ici. 
       - \underset{(2)}{\underbrace{c\left(b + \frac{a}2\right)}} 
       - \underset{(3)}{\underbrace{\left(\frac{ac}2\right)}} 
       - \underset{(4)}{\underbrace{\left(\frac{bd}2\right)}} \\
-      & = \dots = ad - bc.
+      & = ac + bc + ad + bd - bc - \frac{bd}2 - bc - \frac{ac}2 - \frac{ac}2 - \frac{bd}2 \\
+      & = ad - bc.
     \end{align*}
   \item En dimension $n$ : matrice diagonale = volume d'un parallélépipède.
   \end{itemize}
