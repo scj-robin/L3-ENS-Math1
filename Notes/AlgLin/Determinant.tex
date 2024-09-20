@@ -44,22 +44,30 @@ $$
           d a x_1 + d b x_2 & = & d y_1 \\
           b c x_1 + b d x_2 & = & b y_2
        \end{array}\right.
+\qquad \Rightarrow \qquad
+(d a - b c) x_1 = d y_1 - b y_2,
 $$
-dont la différence donne $(d a - b c) x_1 = d y_1 - b y_2$, puis on fait disparaître $x_1$ : 
+puis on fait disparaître $x_1$ : 
 $$
 \left\{\begin{array}{rcl}
           c a x_1 + c b x_2 & = & c y_1 \\
           a c x_1 + a d x_2 & = & a y_2
        \end{array}\right.
+\qquad \Rightarrow \qquad
+(a d - b c ) x_2 = - c y_1 + a y_2,
 $$
-dont la différence donne $(c b - a d ) x_2 = c y_1 - a y_2$, soit au total
+soit au total
 $$
 \left\{\begin{array}{rcl}
          (d a - b c) x_1 & = & d y_1 - b y_2 \\
-         (c b - a d) x_2 & = & c y_1 - a y_2
-       \end{array}\right..
+         (a d - b c) x_2 & = & - c y_1 + a y_2
+       \end{array}\right.
+\qquad \Leftrightarrow \qquad
+(a d - b c) x = \left[\begin{array}{rcl}
+         d & - b \\ c & - a
+       \end{array}\right] y.
 $$
-$A x = y$ a donc une unique solution ssi $(d a - b c) \neq 0$ et cette solution est alors $y = A^{-1} x$, avec
+$A x = y$ a donc une unique solution ssi $(a d - b c) \neq 0$ et cette solution est alors $y = A^{-1} x$, avec
 $$
 A^{-1} = \frac1{a d - b c} \left[\begin{array}{rcl}
          d & - b \\ c & - a
@@ -189,6 +197,7 @@ Le théorème \ref{thm:uniciteDeterminant} n'est pas démontré ici. On peut, pa
   $$
   I_n = A^{-1} A = A^{-1} I_n A = A^{-1} A B A = B A.
   $$
+ \item La propriété $|A| = |A^\top|$ entraîne que les propriétés du déterminant quant aux colonnes (forme alternée, multilinéarité) sont également vraies pour les lignes. 
 \end{enumerate}
 
 \remark
@@ -206,61 +215,29 @@ En effet, en appliquant la $n$-linéarité à chacun des termes diagonaux de la 
 \end{align*}
 
 \begin{lemma} \label{lem:determinantNul}
-  $|A| = 0$ dans les deux cas suivants :
-  \begin{enumerate}[($i$)] 
-  \item $A$ comporte une colonne nulle ;
-  \item une colonne de $A$ est combinaison linéaire des autres.
-  \end{enumerate}
+  $|A| = 0$ si une colonne de $A$ est combinaison linéaire des autres.
+  Notamment $|A| = 0$ si $A$ comporte une colonne nulle.
 \end{lemma}
 
-% {Démonstration du Lemme \ref{lem:determinantNul}.}
 \proof 
-\begin{enumerate}[($i$)]
-\item La $n$-linéarité implique que, si la matrice $B$ est construite à partir de la matrice $A$ en multipliant une de ses colonnes par $\lambda$, on a $|B| = \lambda |A|$. La propriété s'obtient en prenant $\lambda = 0$.
+\begin{enumerate}
 \item On commence par remarquer que le caractère alterné du déterminant implique qu'il est nul pour une matrice ayant deux colonnes égales puisque
 $$
 det(u_1, u_1, u_2,\dots, u_n) = -det(u_1, u_1, u_2,\dots, u_n) = 0.
 $$
-% La $n$-linéarité implique donc que, si on ajoute une combinaison linéaire de toute les colonnes à l'une d'entre elle, le déterminant ne change pas. En effet
-% \begin{align*}
-%   \det\left(u_1, \dots, u_{n-1}, u_n + \sum_{i=1}^{n-1} \lambda_i u_i\right)
-%   & = \det\left(u_1, \dots, u_{n-1}, u_n\right)
-%   + \sum_{i=1}^{n-1} \lambda_i \det\left(u_1, \dots, u_{n-1}, u_i\right)
-% \end{align*}
-% or, pour tout $i = 1, \dots n-1$, $ \det\left(u_1, \dots, u_i, \dots, u_{n-1}, u_i\right) = 0$. \\
-% L'ajout d'une combinaison linéaire des autres colonnes à l'une d'entre elles ne change donc pas le déterminant (\cite{GAJ94}, Prop 12, p13). \\
-% Le cas où une colonne est combinaison linéaire des autres correspond au cas ou $u_n = 0_n$, soit
-% $$
-% \det\left(u_1, \dots u_{n-1}, 0_n + \sum_{i=1}^{n-1} \lambda_i u_i\right)
-% = \det\left(u_1, \dots, u_{n-1}, 0_n\right)
-% = 0
-% $$
-% d'après le ($i$).
-On peut alors écrire que 
+\item On peut alors écrire que 
 $$
 \det\left(u_1, \dots, u_{n-1}, \sum_{i=1}^{n-1} \lambda_i u_i\right)
 = \sum_{i=1}^{n-1} \lambda_i \det\left(u_1, \dots, u_{n-1}, u_i\right)
 $$
 où chaque matrice $\left[u_1, \dots, u_{n-1}, u_i\right]$ possède deux colonnes identiques et est donc de déterminant nul.
 \end{enumerate}
-(On peut noter que ($i$) est un cas particulier de ($ii$).)
+%\item La $n$-linéarité implique que, si la matrice $B$ est construite à partir de la matrice $A$ en multipliant une de ses colonnes par $\lambda$, on a $|B| = \lambda |A|$. La propriété s'obtient en prenant $\lambda = 0$.
+Le cas où $A$ comporte une colonne nulle correspond au cas où tous les coefficients $\lambda_i$ sont nuls.
 \eproof
-
-\begin{proposition} \label{prop:formuleGeneraleDeterminant}
-  \begin{equation} \label{eq:determinant}
-    |A| = \sum_{\sigma \in \Scal_n} s(\sigma) \prod_{i=1}^n a_{i, \sigma(i)} 
-    \end{equation}
-    où $\Scal$ est l'ensemble des permutation de $\{1, \dots n\}$ et $s(\sigma) \in \{-1, +1\}$ désigne la signature de la permutation $\sigma$. 
-\end{proposition}
-
-La proposition \ref{prop:formuleGeneraleDeterminant} n'est pas démontrée ici. \eproof.
 
 \remarks 
 \begin{enumerate}
- \item Le formule \eqref{eq:determinant} est rarement utilisée en pratique (notamment parce que $|\Scal| = n!$), sauf pour $n=2$ ou $n=3$.
- %
- \item La propriété $|A| = |A^\top|$ entraîne que les propriétés du déterminant quant aux colonnes (forme alternée, multilinéarité) sont également vraies pour les lignes. 
- %
  \item La propriété selon laquelle une matrice dont une colonne est combinaison linéaire des autres a un déterminant nul donne une intuition du lien entre nullité du déterminant et non inversibilité. En supposant que cette colonne soit la dernière, le calcul de $A e_n$ (où $e_n$ est le dernier vecteur de la basse canonique) montre que c'est une combinaison linéaire des vecteurs $A e_i$ pour $1 \leq i \leq n-1$ et les images des vecteurs de $\Rbb^n$ appartiennent toutes à un espace de dimension au plus $n-1$, ce qui interdit à $A$ d'être inversible.
  %
   \item D'un point de vue géométrique, un déterminant peut être interprété comme un volume. Il existe notamment deux cas simples :
@@ -284,6 +261,19 @@ La proposition \ref{prop:formuleGeneraleDeterminant} n'est pas démontrée ici. 
   \item En dimension $n$ : matrice diagonale = volume d'un parallélépipède.
   \end{itemize}
 \end{enumerate}
+
+
+\begin{proposition} \label{prop:formuleGeneraleDeterminant}
+  \begin{equation} \label{eq:determinant}
+    |A| = \sum_{\sigma \in \Scal_n} s(\sigma) \prod_{i=1}^n a_{i, \sigma(i)} 
+    \end{equation}
+    où $\Scal$ est l'ensemble des permutation de $\{1, \dots n\}$ et $s(\sigma) \in \{-1, +1\}$ désigne la signature de la permutation $\sigma$. 
+\end{proposition}
+
+La proposition \ref{prop:formuleGeneraleDeterminant} n'est pas démontrée ici. \eproof.
+
+\remark
+Le formule \eqref{eq:determinant} est rarement utilisée en pratique (notamment parce que $|\Scal| = n!$), sauf pour $n=2$ ou $n=3$.
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
@@ -487,12 +477,11 @@ $$
 %         \end{array}\right].
 %   \end{align*}
   soit $\widetilde{A} = [\widetilde{a}_{ij}]$ la matrice égale à la matrice $A$ dont la $k$-ème ligne est remplacée par la $i$-ème ligne ($\widetilde{a}_{i'j} = a_{i'j}$ si $i' \neq k$ et $\widetilde{a}_{kj} = a_{ij}$). Cette matrice possède deux lignes égales (la $i$-ème et la $k$-ème), donc son déterminant est nul : $|\widetilde{A}| = 0$. \\
-  Mais, par développement le long de la $k$-ème ligne, puisque $\widetilde{A}^{kj}= A^{ij}$ pour tout $j$, on a
+  Mais, par développement le long de la $k$-ème ligne, puisque $\widetilde{a}_{kj} = a_{ij}$ et $\widetilde{A}^{kj}= A^{ij}$ pour tout $j$, on a
   $$
   |\widetilde{A}|
   = \sum_{j=1}^n (-1)^{k+j} \widetilde{a}_{kj} |\widetilde{A}^{kj}|
-  = \sum_{j=1}^n (-1)^{k+j} \textcolor{red}{a_{ij}} |\widetilde{A}^{kj}|
-  = \sum_{j=1}^n (-1)^{k+j} a_{ij} |\textcolor{red}{A^{ij}}|
+  = \sum_{j=1}^n (-1)^{k+j} \textcolor{red}{a_{ij}} |\textcolor{red}{A^{ij}}|
   = c_{ik}, 
   $$
   donc $c_{ik} = 0$.

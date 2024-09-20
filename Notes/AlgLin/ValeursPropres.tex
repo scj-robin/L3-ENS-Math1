@@ -53,7 +53,7 @@
   \begin{equation} \label{eq:RqValeurPropre}
     Ax = \lambda x \qquad \Leftrightarrow \qquad (A - \lambda I)x = 0
   \end{equation}
-  admet une infinité de solutions, donc que la matrice $A - \lambda I$ n'est pas inversible.
+  admet une infinité de solutions (tous les $kx$), donc que la matrice $A - \lambda I$ n'est pas inversible.
   \item La réciproque est d'ailleurs vraie: si $A - \lambda I$ n'est pas inversible, alors il existe un $y$ tel que $(A  - \lambda I)x_1 = y = (A - \lambda I)x_2$ avec $x_1 \neq x_2$. Par différence on a donc $(A  - \lambda I)(x_1 - x_2) = 0$, soit $A(x_1 - x_2) = \lambda(x_1 - x_2)$ et $\lambda$ est donc valeur propre de $A$ associée à $x_1 - x_2$.
 \end{enumerate}
 
@@ -138,6 +138,36 @@
   \end{enumerate}
 \end{exercise*}
 
+\progres{
+Rappel cours 1
+\begin{enumerate}
+  \item Déterminant
+  \begin{itemize}
+    \item Inversibilité, déterminant
+    \item Propriété du déterminant, calcul effectif
+    \item Calcul de l'inverse d'une matrice
+  \end{itemize}
+  \item Valeurs et vecteur propres
+  \begin{itemize}
+    \item Polynôme caractéristique
+  \end{itemize}    
+\end{enumerate}
+Programme cours 2
+\begin{enumerate}
+  \item Valeurs et vecteur propres
+  \begin{itemize}
+    \item Propriété du polynôme caractéristique
+    \item Sous-espace propres
+    \item Matrice diagonalisable
+  \end{itemize}
+  \item Matrices positives
+  \begin{itemize}
+    \item Au sens du produit scalaire
+    \item Au sens de Perron-Frobenius
+  \end{itemize}
+\end{enumerate}
+}
+
 \begin{exercise*}
   Soit la matrice 
   $$
@@ -206,7 +236,10 @@ La composante de $x$ dans la direction de $u_1$ est multipliée par $\lambda_1 =
 $$
 x = u_1 + 2u_2 = \left[\begin{array}{r} 3 \\ -1 \end{array}\right]
 \qquad \Rightarrow \qquad
-Ax = -3 u_1 + 4 u_2 =  \left[\begin{array}{r} 2 \\ 10 \end{array}\right].
+Ax = -2 u_1 + 4 u_2 =  \left[\begin{array}{r} 2 \\ 10 \end{array}\right].
+$$
+$$
+\includegraphics[width=0.5\textwidth]{TransformationComposantesVecteur}
 $$
 }
 

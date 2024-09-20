@@ -21,7 +21,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{definition}[Matrice de covariance]
-  $A$ = matrice de covariance des variables aléatoires $X_1, \dots X_n$ :
+  $A \in \Mcal_n$ = matrice de covariance des variables aléatoires $X_1, \dots X_n$ :
   $$
   a_{ij} = \Cov(X_i, X_j) = \Esp[(X_i - \Esp(X_i)) (X_j - \Esp(X_j))].
   $$
@@ -63,7 +63,7 @@ $$
 
 Catégories $(1, \dots k)$ = classes d'âges : $a_{ij} = 0$ sauf 
 \begin{align*}
-  a_{i, i-1} : & \text{ taux de survie de la classe d'âge $i$}, \\
+  a_{i+1, i} : & \text{ taux de survie de la classe d'âge $i$}, \\
   a_{1, i} : & \text{ taux de fécondité de la classe d'âge $i$}, 
 \end{align*}
 soit \warning{Les colonnes contribuent aux lignes : orientation inverse des chaînes de Markov.}
