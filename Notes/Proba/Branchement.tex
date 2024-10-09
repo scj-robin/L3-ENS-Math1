@@ -167,7 +167,7 @@ On conditionne par $N$ :
   f_Z(s) 
   = \Esp_N \left(\Esp(e^Z \mid N) \right)
   = \Esp_N \left(f_X(s)^N \right)
-  = f_N \left(f_X(s)^N \right) = f_X \circ f_X(s).
+  = f_N \left(f_X(s)^N \right) = f_N \circ f_X(s).
 \end{align*}
 
 \eproof
@@ -250,7 +250,7 @@ $\Pr\{X = 0\} = 1$ implique une extinction immédiate de la population et $\Pr\{
 \proof
 On commence par remarquer que la probabilité d'extinction partant de $k$ individus indépendants vaut
 $$
-\Pr_k\{Ext\} = \Pr_1\{Ext\}^k = q^k,
+\Pr_k\{Ext\} = \left(\Pr_1\{Ext\}\right)^k = q^k,
 $$
 puisqu'il faut pour cela que les $k$ populations indépendantes s'éteignent. En sommant sur toutes les tailles possibles à la première génération on a donc
 $$
@@ -365,12 +365,11 @@ $$
 \end{proposition}
 
 \proof
-On note, pour $n \geq 0$, la probabilité que la population soit éteinte à la génération $n$ :
+On note, pour $n \geq 1$, la probabilité que la population soit éteinte à la génération $n$ :
 $$
 q_n := f_{Z_n}(0) = \Pr_1\{Z_n = 0\} = \Pr_1\{T_0 \leq n\}.
 $$
-(On retrouve que la limite $q$ de cette suite doit vérifier $q = f_X(q)$.) 
-On a donc
+Par définition de $q$, on a
 $$
 q = \lim_{n \to \infty} q_n.
 $$
@@ -378,6 +377,7 @@ Par la proposition \ref{prop:fonctionGeneratriceZn} on a:
 $$
 q_{n+1} = f_{Z_{n+1}}(0) = f_X \circ f_{Z_n} (0) = f_X(\Pr_1\{Z_n = 0\}) = f_X(q_n).
 $$
+(On retrouve que la limite $q$ de la suite $(q_n)_{n \geq n}$ doit vérifier $q = f_X(q)$.) \\
 % $q$ est donc bien un point fixe de $f$. Le lemme \ref{lem:GWnombrePointsFixes} indique que leur nombre dépend de la position de $m$ par rapport à 1. Il reste montrer que $q$ est le plus petit d'entre eux, noté $s^*$. \\
 % % La convergence vers le plus petit point fixe s'obtient en remarquant que, puisque $Z_0 = 1$, on a $q_0 = 0$ et en considérant la figure ci-dessous qui s'appuie sur le fait que $f_X(s) > s$ pour $s$ inférieur au plus petit point fixe.
 % On note, pour $n \geq 0$:
@@ -390,13 +390,13 @@ $$
 % $$
 La convergence de la suite $(q_n)_{n \geq 0}$ vers le plus petit point fixe s'obtient en remarquant que $f_X$ est une fonction croissante et que, puisqu'elle est convexe sur $(0, 1]$, on a
 $$
-s < s^* \; \Rightarrow \; f(s) > s, \qquad \qquad
-s > s^* \; \Rightarrow \; f(s) < s.
+s < s^* \; \Rightarrow \; f_X(s) > s, \qquad \qquad
+s > s^* \; \Rightarrow \; f_X(s) < s.
 $$
 $(q_n)_{n \geq 0}$ est donc une suite croissante si $q_0  < s^*$ et décroissante dans le cas contraire :
 $$
 \begin{tabular}{ccc}
-  & $q_0 = .05$ & $q_0 = .75$ \\
+  & $q_1 = .05$ & $q_1 = .75$ \\
   \begin{tabular}{lc}
     \textcolor{blue}{\bf --} : $f_X(s)$ \\ ~ \\
     \textcolor{red}{\bf --} : $(q_n)_{n \geq 0}$
