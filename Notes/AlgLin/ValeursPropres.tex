@@ -156,6 +156,7 @@ Programme cours 2
 \begin{enumerate}
   \item Valeurs et vecteur propres
   \begin{itemize}
+    \item Interprétation géométrique
     \item Propriété du polynôme caractéristique
     \item Sous-espace propres
     \item Matrice diagonalisable
@@ -331,7 +332,7 @@ et $p^2 - 4 q = 0$ ssi $b = 0$ et $a=c$ (les deux valeurs propres étant alors �
   %
   \item[Coefficient de degré $n-1$ :] cette propriété sera démontrée en TD.
   %
-  \item[Coefficient de degré $0$ :] on remarquant que
+  \item[Coefficient de degré $0$ :] on remarque
     $$
     [\lambda^0]P_A(\lambda) = P_A(0) = |A - 0 I_n| = |A|.
     $$
@@ -373,14 +374,14 @@ et $p^2 - 4 q = 0$ ssi $b = 0$ et $a=c$ (les deux valeurs propres étant alors �
   $$
   P(x) = a \prod_{i=1}^n (x_i - x).
   $$
-  $x_1, \dots, x_n$ sont des racines de $P$.
+  $x_1, \dots, x_n$ sont les racines de $P$.
 \end{proposition}
 
 \proof
 Non démontré
 \eproof
 
-\begin{corollary*}[Polynôme caractéristique]
+\begin{corollary*}[Polynôme caractéristique] %\label{cor:factorisationPolynomeCaracteristique}
   Le polynôme caractéristique $P_A$ d'une matrice réelle s'écrit
   $$
   P_A(\lambda) = \prod_{i=1}^n (\lambda_i - \lambda)
@@ -417,7 +418,7 @@ admet $x_1 = 1$ et $x_2 = 2$ pour racines avec $m_1 = 2$ et $m_2 = 1$.
 \end{corollary*}
 
 \proof
-Directe.\eproof
+Directe d'après la factorisation du polynôme caractériqtique vue plus haut..\eproof
 
 \begin{corollary*}
   Le déterminant est égal au produit des valeurs propres : 
@@ -440,7 +441,7 @@ Directe.\eproof
 \begin{definition}[Sous-espace propre]
   On appelle sous-espace propre associé à la valeur propre $\lambda$, l'ensemble des vecteurs propres associés à $\lambda$ :
   $$
-  \Ecal(\lambda) = \{x \in \Rbb: Ax = \lambda x\},
+  \Ecal(\lambda) = \{x \in \Rbb^n: Ax = \lambda x\},
   $$
   qui est aussi le noyau de $A - \lambda I$ : 
   $$

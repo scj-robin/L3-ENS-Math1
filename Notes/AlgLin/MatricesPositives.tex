@@ -4,10 +4,14 @@
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 
-\remark Il existe deux acceptions du terme ``matrice positive'' :
-\begin{enumerate}[$\bullet$]
-  \item matrice positive au sens du produit scalaire $A \succcurlyeq 0$
-  \item matrice positive au sens de Perron-Frobénius $A \geq 0$
+\remarks 
+\begin{enumerate}
+  \item On ne s'intéresse ici qu'à des matrices carrées : $A \in \Mcal_n$.
+  \item Il existe deux acceptions du terme ``matrice positive'' :
+  \begin{enumerate}[$\bullet$]
+    \item matrice positive au sens du produit scalaire $A \succcurlyeq 0$
+    \item matrice positive au sens de Perron-Frobénius $A \geq 0$
+  \end{enumerate}
 \end{enumerate}
 
 
@@ -44,9 +48,8 @@ $$
 x^\top T x = (x^\top T x)^\top = x^\top T^\top x = x^\top (- T) x = - x^\top T x.
 $$
 
-
 \begin{proposition}
-  $A$ (symétrique) est positive (resp. définie) ssi toutes ses valeurs propres sont (resp. strictement) positives ou nulles. 
+  $A$ (symétrique) est positive (resp. définie positive) ssi toutes ses valeurs propres sont (resp. strictement) positives ou nulles. 
 \end{proposition}
 
 \proof
@@ -228,9 +231,9 @@ Le comportement en temps long de la population $\lim_{n \to\infty} x(n)$ est con
   $$
   alors
   $$
-  \lim_{n \to \infty} \lambda_1^{-n} A^n = v_1 u_1^\top
+  \lim_{n \to \infty} \lambda_1^{-n} A^n = v_1 u_1^\top \qquad (\in \Mcal_n)
   $$
-  où $v_1$ est le premier vecteur colonne de $P$ et $u_1^\top$ est le premier vecteur ligne de $P^{-1}$
+  où $v_1$ est le premier vecteur colonne de $P$ et $u_1^\top$ est le premier vecteur ligne de $P^{-1}$.
 \end{proposition}
 
 \remark
