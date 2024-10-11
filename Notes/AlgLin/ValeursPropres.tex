@@ -149,7 +149,7 @@ Rappel cours 1
   \end{itemize}
   \item Valeurs et vecteur propres
   \begin{itemize}
-    \item Polynôme caractéristique
+    \item Polynôme caractéristique $P_A(\lambda) = |A - \lambda I|$
   \end{itemize}    
 \end{enumerate}
 Programme cours 2
@@ -381,6 +381,9 @@ et $p^2 - 4 q = 0$ ssi $b = 0$ et $a=c$ (les deux valeurs propres étant alors �
 Non démontré
 \eproof
 
+\remark
+En développant le produit, on voit que $a = (-1)^n [x^n] P(x)$.
+
 \begin{corollary*}[Polynôme caractéristique] %\label{cor:factorisationPolynomeCaracteristique}
   Le polynôme caractéristique $P_A$ d'une matrice réelle s'écrit
   $$
@@ -418,7 +421,7 @@ admet $x_1 = 1$ et $x_2 = 2$ pour racines avec $m_1 = 2$ et $m_2 = 1$.
 \end{corollary*}
 
 \proof
-Directe d'après la factorisation du polynôme caractériqtique vue plus haut..\eproof
+Directe d'après la factorisation du polynôme caractéristique vue plus haut.\eproof
 
 \begin{corollary*}
   Le déterminant est égal au produit des valeurs propres : 
@@ -457,7 +460,7 @@ Directe d'après la factorisation du polynôme caractériqtique vue plus haut..\
 \end{proposition}
 
 \proof
-Directe car $Ax = \lambda_1 x = \lambda_2 x$ avec $\lambda_1 \neq \lambda_2$ ssi $x = 0$.
+Directe car, si $\lambda_1 \neq \lambda_2$, alors $Ax = \lambda_1 x = \lambda_2 x$ avec  ssi $x = 0$.
 \eproof
 
 
@@ -475,7 +478,7 @@ Non démontré
 
 \remarks
 \begin{enumerate}
-  \item L'action d'une matrice $A$ dans chacun de ces sous-espaces est une simple homothétie si la valeurs propres associée est réelle.
+  \item L'action d'une matrice $A$ dans chacun de ces sous-espaces est une simple homothétie si la valeur propre associée est réelle.
   \item On sait donc que les différentes valeurs propres sont associées à des sous-espaces propres qui engendrent un sous-espace de $\Rbb^n$, mais pas nécessairement $\Rbb^n$ tout entier. 
   \item On s'intéresse notamment aux matrices dont toutes les valeurs propres sont réelles et dont la réunion des espaces propres engendre $\Rbb^n$.
 \end{enumerate}
@@ -534,7 +537,7 @@ Une matrice $A$ est diagonalisable si son application consiste à
 % \eproof
 
 \begin{proposition}
-  Si la matrice $A$ est diagonalisable ($A = P \Lambda P^{-1}$), son inverse vaut $A^{-1} = P \Lambda^{-1} P^{-1}$.
+  Si la matrice $A$ est diagonalisable ($A = P \Lambda P^{-1}$) et que toutes ses valeurs propres sont non nulles, son inverse vaut $A^{-1} = P \Lambda^{-1} P^{-1}$.
 \end{proposition}
 
 \proof
@@ -557,7 +560,7 @@ Non démontré
 \eproof
 
 \remark
-Le résultat est intuitif en reprenant la définition \ref{def:matriceDiagonalisable} et en remarquant que chaque $\lambda_i$ distinct apparaît alors $m_i$ fois dans la diagonale de $\Lambda$ et qu'on peut donc lui associer $m_i$ vecteurs colonnes de $P$, qui engendrent bien un espace de dimension $m_i$, puique que $P$ est inversible.
+Le résultat est intuitif en reprenant la définition \ref{def:matriceDiagonalisable} et en remarquant que chaque $\lambda_i$ distinct apparaît alors $m_i$ fois dans la diagonale de $\Lambda$ et qu'on peut donc lui associer $m_i$ vecteurs colonnes de $P$, qui engendrent bien un espace de dimension $m_i$, puisque que $P$ est inversible.
 
 \begin{corollary*}
   Toute matrice $A \in \Mcal_n(\Rbb)$ dont les $n$ valeurs propres sont réelles et distinctes ($m_i = 1$, pour tout $i = 1 \dots n$) est diagonalisable.
@@ -611,12 +614,14 @@ C'est une conséquence de la proposition selon laquelle les intersections des so
  \item Soit la matrice {\em circulante}
  $$
  A = \left[\begin{array}{rrr} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{array}\right],
- \qquad 
+ $$ 
+ son polynome caractéristique
+ $$
  P_A(\lambda) 
  = \left|\begin{array}{rrr} -\lambda & 1 & 0 \\ 0 & -\lambda & 1 \\ 1 & 0 & -\lambda \end{array}\right|
- = -\lambda^3 + 1
+ = -\lambda^3 + 1 = (1- \lambda)(\lambda^2 + \lambda + 1)
  $$
- qui s'annule pour 
+ s'annule pour 
  $$
  \lambda \in \left\{1, \frac{-1+i\sqrt{3}}{2}, \frac{-1-i\sqrt{3}}{2}, \right\}.
  $$
@@ -625,7 +630,7 @@ C'est une conséquence de la proposition selon laquelle les intersections des so
  A x = \lambda_1 x \quad \Leftrightarrow \quad 
  \left\{\begin{array}{rcl} x_2 & = & x_1 \\ x_3 & = & x_2 \\ x_1 & = & x_3 \end{array} \right.
  $$
- L'action de $A$ dans les autres dimensions est une rotation.
+ L'action de $A$ est une rotation autoir de la première bissectrice de $\Rbb^3$.
 \end{enumerate}
 
 % \begin{exercise*}

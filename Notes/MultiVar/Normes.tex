@@ -4,6 +4,35 @@
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 
+\progres{
+Rappel cours 2 : Fin de l'algèbre linéaire
+\begin{enumerate}
+  \item Valeurs et vecteur propres
+  \begin{itemize}
+    \item Sous-espace propre
+    \item Matrice diagonalisable
+  \end{itemize}
+  \item Matrices positives
+  \begin{itemize}
+    \item Au sens du produit scalaire
+    \item Au sens de Perron-Frobenius
+  \end{itemize}
+\end{enumerate}
+Programme cours 3 : Fonctions de plusieurs variables
+\begin{enumerate}
+  \item Normes
+  \item Différentiabilité
+  \begin{itemize}
+    \item Différentielle et application linéaire tangente
+    \item Matrice jacobienne
+    \item Composition
+    \item Fonction implicite
+  \end{itemize}
+  \item Intégrales
+  \item Extremums
+\end{enumerate}
+}
+
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 \subsection{Quelques normes classiques} 
@@ -84,7 +113,9 @@ On montre facilement que $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ sont
   $$
 \end{theorem}
 
-Ce résultat n'est pas démontré ici. \eproof
+\begin{proof}
+Ce résultat n'est pas démontré ici. 
+\end{proof}
 
 \remark
 Le théorème \ref{thm:equivalenceNormes} fournit un encadrement de chaque norme par l'autre : 
@@ -99,8 +130,11 @@ $$
     \|x\|_2 & = \sqrt{\sum_i x_i^2}  \leq \sqrt{n \max_i x_i^2} = \sqrt{n} \max_i |x_i| = \sqrt{n} \|x\|_\infty, \\
     \|x\|_\infty & = \max_i |x_i| = \sqrt{\max_i x_i^2} \leq \sqrt{\sum_i x_i^2} = \|x\|_2.
   \end{align*}
-  Le coefficient $\sqrt{n}$ signale le fait qu'on se place en dimension finie. \\
-  D'autres comparaisons seront établies en TD.
+  \begin{itemize}
+    \item Les constantes $c_1$ et $c_2$ sont optimales pour qu'on a $\|x\|_2 =\sqrt{n} \|x\|_\infty$ pour un vecteur ayant toutes ses coordonnées égales et $\|x\|_\infty = \|x\|_2$ ayant toutes ses coordonnées nulles sauf une.
+    \item Le coefficient $\sqrt{n}$ signale le fait qu'on se place en dimension finie. 
+    \item D'autres comparaisons seront établies en TD.
+  \end{itemize}
 }
 
 \remark
@@ -154,8 +188,8 @@ $$
     \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \max_i |v_i(n)| < \epsilon\}\\
     \Rightarrow \quad & \lim_{n \to \infty} \max_i v_i(n) = 0
   \end{align*}
-  La démonstration est presqu'entièrement symétrique. La différence se fait lors du choix des $N_{\epsilon, i}$ et de $N_\epsilon$. Le choix de ce dernier comme un max est possible grâce à la dimension finie.
 \end{description}
+La démonstration est presqu'entièrement symétrique. La différence se fait lors du choix des $N_{\epsilon, i}$ et de $N_\epsilon$. Le choix de ce dernier comme un max est possible grâce à la dimension finie.
 \eproof
 
 % {Démonstration de la proposition \ref{prop:convergenceParCoordonnee}.}

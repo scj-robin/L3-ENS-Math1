@@ -233,7 +233,7 @@ Le comportement en temps long de la population $\lim_{n \to\infty} x(n)$ est con
   $$
   \lim_{n \to \infty} \lambda_1^{-n} A^n = v_1 u_1^\top \qquad (\in \Mcal_n)
   $$
-  où $v_1$ est le premier vecteur colonne de $P$ et $u_1^\top$ est le premier vecteur ligne de $P^{-1}$^.
+  où $v_1$ est le premier vecteur colonne de $P$ et $u_1^\top$ est le premier vecteur ligne de $P^{-1}$.
 \end{proposition}
 
 \remark
@@ -343,11 +343,24 @@ ce qui signifie que
     = - 3 \lambda^2 + 2 s_b \lambda
     = - \lambda (3 \lambda - 2 s_b)
     $$
-    qui s'annule en $\lambda = 0$ et $\lambda = 2 s_b/3$ : 
+    qui s'annule en $\lambda = 0$ et $\lambda = 2 s_b/3 > 0$ : 
     $P_A$ est donc décroissant ($P'_A(\lambda) < 0$) avant $\lambda = 0$, puis croissant jusqu'en  $\lambda = 2 s_b/3$, puis décroissant.
+    $$
+    \begin{array}{c|ccccccc}
+      \lambda & - \infty & & 0 & & 2 s_b/3 & & + \infty \\
+      \hline
+      P'_A(\lambda) & & - & 0 & + & 0 & - \\
+      \hline
+      P_A(\lambda) & +\infty & \qquad \searrow \qquad & ms_js_f > 0 & \qquad \nearrow \qquad & > 0 & \qquad \searrow \qquad &
+    \end{array}
+    $$
     % 
     \item[Racines du polynôme caractéristique.] 
-    On remarque que $P_A(0) = ms_j s_f > 0$, donc il existe au plus une racine positive, notée $\lambda_1$. Cette racine est plus grande que 1, si $P_A(1) >0$, c'est-à-dire si 
+    On remarque que $P_A(0) = ms_j s_f > 0$, donc il existe au plus une racine réelle, notée $\lambda_1$ qui est de plus positive. 
+    $$
+    \includegraphics[width=0.4\textwidth]{DynPop3classes}
+    $$
+    Cette racine est plus grande que 1, si $P_A(1) >0$, c'est-à-dire si 
     $$
     -1 + s_b + ms_js_f > 0
     \qquad \Leftrightarrow \qquad
