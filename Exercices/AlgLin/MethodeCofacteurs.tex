@@ -8,12 +8,21 @@
     & = \sum_{j=1}^n a_{i_0j} (-1)^{i_0+j} |A^{(i_0j)}| & (\text{développement par rapport à la ligne $i_0$}) \\
     & = \sum_{i=1}^n a_{ij_0} (-1)^{i+j_0} |A^{(ij_0)}| & (\text{développement par rapport à la colonne $j_0$})
   \end{align*}
-  On pourra utiliser la $n$-linéarité et le caractère alterné du déterminant.
+%   On pourra utiliser la $n$-linéarité et le caractère alterné du déterminant.
 
 \solution{
   On considère le développement par rapport à la ligne $i_0$. Par multilinéarité, on a
   $$
-  |A| = \sum_{j=1}^n a_{i_0j} 
+  |A| 
+  = \sum_{j=1}^n 
+    \left|\begin{array}{ccccc}
+      a_{11} & \cdots & a_{1j} & \cdots & a_{1n} \\
+      \vdots & & \vdots & & \vdots \\
+      0 & \cdots & a_{i_0j} & \cdots & 0 \\
+      \vdots & & \vdots & & \vdots \\
+      a_{n1} & \cdots & a_{nj} & \cdots & a_{nn} \\
+    \end{array}\right|
+  = \sum_{j=1}^n a_{i_0j} 
     \left|\begin{array}{ccccc}
       a_{11} & \cdots & a_{1j} & \cdots & a_{1n} \\
       \vdots & & \vdots & & \vdots \\

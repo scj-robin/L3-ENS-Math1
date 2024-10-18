@@ -15,7 +15,7 @@ de plus grande variance, où $a = [a_1, \dots a_n]^\top \in \Rbb^n$.
   }
   \item Montrer qu'on peut décomposer $\Sigma$ sous la forme $\Sigma = P \Lambda P^\top$ et que, pour tout vecteur $a$ de norme 1, il existe un vecteur $b$, de norme 1 également, que l'on précisera, et tel que
   $$
-  a^\top \Sigma a = \sum_{i=1}^n \lambda_i b_i^2.
+  \Var(Y) = \Var(a^\top X) = \sum_{i=1}^n \lambda_i b_i^2.
   $$
   \solution{$\Sigma$ étant symétrique, elle est diagonalisable et ses vecteurs propres sont orthogonaux, on peut donc la décomposer sous la forme indiquée, où $P$ est une matrice orthonormale. \\
   Pour tout vecteur $a$ de norme 1, on a donc
@@ -99,17 +99,18 @@ $$
   On peut distinguer deux cas.
   \begin{description}
     \item[$1_n^\top v = 0$:] on a alors $v = \lambda v$, soit $\lambda = 1$. Tout vecteur $v$ tel que $1_n^\top v = \sum_i v_i = 0$ est donc propre associé à $\lambda = 1$, ce qui définit un sous espace propre de dimension $n-1$. 
-    \item[$1_n^\top v \neq 0$:] pour $v = 1_n$ (donc $1_n^\top v = n$), on a
+    \item[$1_n^\top v \neq 0$:] du fait de l'orthogonalité des vecteurs propres de $\Sigma$, on a alors $v = 1_n$, on a
     $$
     \Sigma v = n \sigma^2 v + v = \lambda v,
     $$
     soit $\lambda = n \sigma^2 + 1$, associée au vecteur propre $v = 1_n$.
   \end{description}
-  La valeur propre dominante est $\lambda_1 = n \sigma^2 + 1$ et le vecteur propre de norme 1 associé est $a^* = 1/\sqrt{n} 1_n$, soit
+  La valeur propre dominante est donc $\lambda_1 = n \sigma^2 + 1$ et le vecteur propre de norme 1 associé est $a^* = 1/\sqrt{n} 1_n$, soit
   $$
   Y^* 
-  = \frac1{\sqrt{n}} \sum_i X_i
+  = \frac1{\sqrt{n}} \sum_i X_i,
   $$
+  (qui est donc proportionnel à la moyenne)
   dont la variance est donnée par la valeur propre dominante $\lambda_1$, soit
   $$
   \Var(Y^*) = n \sigma^2 + 1.

@@ -20,7 +20,7 @@ Soit la matrice
     $$
   }
   \item En déduire ses valeurs propres et sa valeur propre dominante en fonction de $\alpha$.
-  \solution{Les valeurs propres de $A$ sont donc $\{\alpha, 2, -1\}$. La valeur propre dominante est donc $\max(|\alpha|, 2)$.}
+  \solution{Les valeurs propres de $A$ sont donc $\{\alpha, 2, -1\}$. La valeur propre dominante est donc $\max(|\alpha|, 2)$ si $|\alpha| \neq 2$. Si $|\alpha| = 2$, la plus grande valeur propre en module n'est pas unique : elle n'est donc pas dominante.}
   \item A quelle condition sur $\alpha$ $A$ est-elle diagonalisable ?
   \solution{
     \begin{description}
@@ -64,8 +64,14 @@ Soit la matrice
             u_1 & = & - u_3 
             \end{array} \right.
     $$
-    qui définit un sous-espace propre de dimension 1 : $A$ n'est donc pas diagonalisable.
+    qui définit un sous-espace propre de dimension 1 : $A$ n'est donc pas diagonalisable. 
   \end{description}
+  Alternativement, on peut 
+  \begin{enumerate}
+    \item former les matrices $A - I$ et $A + I$ et déterminer leurs rangs en exhibant des vecteurs colonnes indépendants, 
+    \item en déduire la dimension de l'image $\dim(Im(A - \lambda I)$, qui vaut 2 pour $\lambda = 2$ et $\lambda = -1$, 
+    \item puis en déduire la dimension du sous-espace propre associé $\dim(\Ecal(\lambda)) = \dim(Ker(A - \lambda I)) = 3 - \dim(Im(A - \lambda I)$, qui vaut 1 dans les deux cas.
+  \end{enumerate}
   }
 \end{enumerate}
 
