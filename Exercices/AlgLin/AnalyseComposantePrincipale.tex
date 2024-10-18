@@ -13,16 +13,16 @@ de plus grande variance, où $a = [a_1, \dots a_n]^\top \in \Rbb^n$.
   \solution{Soit $Z = b^\top X = k a^\top X = k Y$, on a $\Var(Z) = k^2 \Var(Y)$, d'où le résultat. \\
   La recherche de la combinaison ``de plus grande variance'' n'a donc pas de sens si on impose pas de contrainte au vecteur $a$.
   }
-  \item Montrer qu'on peut décomposer $\Sigma$ sous la forme $\Sigma = P \Lambda P^\top$ et que, pour tout vecteur $a$ de norme 1, il existe un vecteur $b$, de norme 1 également, que l'on précisera, et tel que
+  \item Montrer que, pour tout vecteur $a$ de norme 1, il existe un vecteur $b$, de norme 1 également, que l'on précisera, et tel que
   $$
   \Var(Y) = \Var(a^\top X) = \sum_{i=1}^n \lambda_i b_i^2.
   $$
-  \solution{$\Sigma$ étant symétrique, elle est diagonalisable et ses vecteurs propres sont orthogonaux, on peut donc la décomposer sous la forme indiquée, où $P$ est une matrice orthonormale. \\
+  \solution{$\Sigma$ étant symétrique, elle est diagonalisable et ses vecteurs propres sont orthogonaux, on peut donc la décomposer sous la forme $\Sigma = P \Lambda P^\top$ avec $\Lambda = \text{diag}(\lambda_1 \dots \lambda_n)$ indiquée, où $P$ est une matrice orthonormale. \\
   Pour tout vecteur $a$ de norme 1, on a donc
   $$
-  a^\top \Sigma a = a^\top P \Lambda P^\top a = b^\top \Lambda b = \sum_i \lambda_i b_i^2
+  \Var(a^\top X) = a^\top \Sigma a = a^\top P \Lambda P^\top a = b^\top \Lambda b = \sum_i \lambda_i b_i^2
   $$
-  en posant $b = P^\top a$, qui vérifie bien
+  en posant $b = P^\top a$ et où les $\lambda_i$ sont les valeurs propres de $\Sigma$, qui vérifie bien
   $$
   \|b\|^2 = b^\top b = a^\top P P^\top a = a^\top a = 1.
   $$
@@ -54,6 +54,11 @@ de plus grande variance, où $a = [a_1, \dots a_n]^\top \in \Rbb^n$.
   \item Si $\lambda_1$ est une valeur propre multiple, la solution du problème n'est pas unique.
   \item Si toutes les valeurs propres sont simples, la combinaison linéaire $Y' = a'^\top X$ de plus grande variance (pour $a'$ de norme 1) et non corrélée à $Y^* = a^* X$ ($\Cov(Y', Y^*) = 0$) est donnée par $a' = v_2$, le deuxième vecteur propre de $\Sigma$.
   \end{itemize}
+  
+  \paragraph{Schéma de preuve.} Les questions 2 à 4 constitue une preuve selon le schéma suivant : 
+  $$
+  \includegraphics[width=0.5\textwidth]{Demo-ACP-ModèleMixte}
+  $$
   }
 \end{enumerate}
 
