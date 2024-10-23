@@ -1,0 +1,23 @@
+%-------------------------------------------------------------------------------
+\subsection{Modèle d'apparition de tumeurs}
+%-------------------------------------------------------------------------------
+
+% Inspiré du modèle d'apparition des tumeurs CDH1 de type II, avec A. Bonnet
+% https://www.overleaf.com/project/61fa6f1f2e1b2e66da2e825b
+% Transféré dans /home/robin/Bureau/RECHERCHE/GENETIQUE/CDH1/Doc/CDH1_Poisson
+
+\paragraph{Modèle.}
+On considère l'apparition de tumeurs en deux étapes. Les sites tumoraux de type I (bénins) apparaissent selon en processus de Poisson homogène d'intensité $\lambda$. Chaque tumeur de type I se transforme ensuite en une tumeur de type II (malignes) au bout d'un temps exponentiel de paramètre $\mu$.
+
+On note $N(t)$ le nombre total de tumeurs apparues au temps $t$ : 
+$$
+\{N(t)\}_{t \geq 0} \sim PP(\lambda).
+$$
+et $M(t)$ le nombre de tumeurs de type II au temps $t$. Le nombre de site de type I au temps $t$ vaut donc $N(t) - M(t)$.
+
+\bigskip
+\paragraph{Modèle.}
+\begin{enumerate}
+  \item Donner la loi du nombre total $N(t)$ de tumeurs au temps $t$.  
+  \solution{Propriété du processus de Poisson: $N(t) \sim \Pcal(\lambda t)$}
+\end{enumerate}
