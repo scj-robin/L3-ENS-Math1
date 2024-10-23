@@ -5,6 +5,7 @@
 % Inspiré du modèle d'apparition des tumeurs CDH1 de type II, avec A. Bonnet
 % https://www.overleaf.com/project/61fa6f1f2e1b2e66da2e825b
 % Transféré dans /home/robin/Bureau/RECHERCHE/GENETIQUE/CDH1/Doc/CDH1_Poisson
+% ATTENTION : chgt de notation ! \pi(t) -> 1 - \pi(t).
 
 \paragraph{Modèle.}
 On considère l'apparition de tumeurs en deux étapes. Les sites tumoraux de type I (bénins) apparaissent selon en processus de Poisson homogène d'intensité $\lambda$. Chaque tumeur de type I se transforme ensuite en une tumeur de type II (malignes) au bout d'un temps exponentiel de paramètre $\mu$.
@@ -16,8 +17,98 @@ $$
 et $M(t)$ le nombre de tumeurs de type II au temps $t$. Le nombre de site de type I au temps $t$ vaut donc $N(t) - M(t)$.
 
 \bigskip
-\paragraph{Modèle.}
+\paragraph{Question préliminaire.}
 \begin{enumerate}
+  \item Montrer que si $X$ suit une loi de Poisson $\Pcal(\alpha)$ et $Y$ sachant suit un loi binomiale : $(Y \mid X=x) \sim \Bcal(x, p)$, alors $Y$ suit une loi de Poisson $\Pcal(\alpha p)$.
+  \solution{
+  On intègre la loi conditionnelle de $Y \mid X$ par rapport à la loi de $X$, soit : 
+  \begin{align*}
+    \Pr\{Y = y\}
+    & 
+    = \sum_{x \geq y} \Pr\{Y = y \mid X = x\} \Pr\{X = x\}
+    = \sum_{x \geq y} \left(\begin{array}{c}x \\ y \end{array}\right) p^y (1-p)^{x-y}e^{-\alpha} \frac{\alpha^x}{x !} \\
+    &
+    = e^{-\alpha} \sum_{x \geq y} \left(\begin{array}{c}x \\ y \end{array}\right) (\alpha p)^y (\alpha - p)^{x-y} {x !} 
+    = e^{-\alpha} \frac{(\alpha p)^y}{y !} \sum_{x \geq y} \frac1{(x - y) !}(\alpha - \alpha p)^{x-y}, 
+  \end{align*}
+  or, en posant $z = x-y$, on a
+  $$
+  \sum_{x \geq y} \frac1{(x - y) !} (\alpha - \alpha p)^{x-y} 
+  =
+  \sum_{z \geq 0} \frac1{z !}(\alpha - \alpha p)^{z} 
+  =
+  e^{\alpha p - \alpha},
+  $$
+  soit finalement
+  $$
+  \Pr\{Y = y\}
+  = e^{-\alpha} \frac{(\alpha p)^y}{y !} e^{\alpha p - \alpha}
+  = e^{-\alpha p} \frac{(\alpha p)^y}{y !}
+  $$
+  où on reconnaît la loi de Poisson $\Pcal(\alpha p)$. 
+  }
+\end{enumerate}
+
+
+\bigskip
+\paragraph{Loi du nombre de tumeurs de type II.}
+\begin{enumerate}
+  \setcounter{enumi}{1}
   \item Donner la loi du nombre total $N(t)$ de tumeurs au temps $t$.  
-  \solution{Propriété du processus de Poisson: $N(t) \sim \Pcal(\lambda t)$}
+  \solution{
+  C'est une des propriétés du processus de Poisson: $N(t) \sim \Pcal(\lambda t)$.
+  }
+  %
+  \item Donner la probabilité qu'une tumeur de type I apparue au temps $s$ soit toujours de type I au temps $t > s$.
+  \solution{
+  Les tumeurs de type I se transforment en tumeurs de type II au bout d'une durée exponentielle de paramètre $\mu$. Une telle durée dépasse $u$ avec probabilité $e^{-\mu u}$, la probabilité demandée vaut donc
+  $e^{-\mu (t-s)}$.
+  }  
+  %
+  \item Montrer que la probabilité qu'une tumeur de type I apparue avant $t$ soit toujours de type I au temps $t > s$ vaut
+  $$
+  \pi(t) = \frac1{\mu t} (1 - e^{-\mu t}).
+  $$
+  \solution{
+  D'après une autre propriété du processus de Poisson, sachant qu'une tumeur est apparue avant $t$, sa date d'apparition $T$ est distribuée uniformément sur l'intervalle $[0, T]$ (et sa densité vaut donc $1/t$ partout entre $0$ et $t$). La probabilité demandée vaut donc
+  \begin{align*}
+    \int_0^t \frac1t e^{-\mu (t-s)} \; \d s
+    = \frac1t e^{-\mu t} \int_0^t e^{\mu s} \; \d s
+    = \frac1t e^{-\mu t} \frac1\mu (e^{\mu t} - 1)
+    = \frac1{\mu t} (1 - e^{-\mu t}).
+  \end{align*}
+  \todo{Ajouter la figure}
+  }  
+  %
+  \item En déduire la loi du nombre $M(t)$ de tumeurs de type II sachant le nombre total $N(t)$ de tumeurs apparues avant $t$ est égale à $n$: $N(t) = n$.
+  \solution{
+  Chaque tumeur apparue avant $t$ est encore de type I avec probabilité $\pi(t)$ et est donc de type II avec probabilité $1 - \pi(t)$. Les tumeurs apparaissant et se transformant indépendamment, le nombre de tumeurs de type II au temps $t$ suit donc un loi binomiale :
+  $$
+  \left(M(t) \mid N(t) = n\right) \sim \Bcal(n, 1 - \pi(t)).
+  $$
+  Notamment :
+  $$
+  \Pr\{M(t) = m \mid N(t) = n\}
+  = \left(\begin{array}{c}n \\ m \end{array}\right) \pi(t)^m [1 - \pi(t)]^{n-m}. 
+  $$
+  }
+  %
+  \item En déduire la loi du nombre $M(t)$ de tumeurs de type II apparues avant $t$.
+  \solution{
+  On applique le résultat de la question préliminaire avec $X = N(t)$, $\alpha = \lambda t$, $Y = M(t)$ et $p = 1 - \pi(t)$ pour obtenir que le nombre de tumeurs de type II au temps $t$ suit une loi de Poisson :
+  $$
+  M(t) \sim \Pcal\left(\lambda t [1 - \pi(t)]\right).
+  $$
+  }
+  %
+  \item Donner la probabilité qu'aucune tumeur de type II ne soit apparu au temps $t$.
+  \solution{
+  Puisque la probabilité qu'une variable de Poisson de paramètre $m$ soit nulle vaut $e^{-m}$, on a 
+  $$
+  \Pr\{M(t) = 0\} 
+  = \exp\left(- \lambda t [1 - \pi(t)]\right)
+  = \exp\left(- \lambda \left[t - \frac{1 - e^{-\mu t}}{\mu}\right]\right)
+  $$
+  \todo{Ajouter la figure}
+  }
 \end{enumerate}
