@@ -8,12 +8,56 @@ $$
 $$
 \begin{enumerate}
   \item Que valent $\phi(1, 1)$, $\phi(1, 0)$, $\phi(0, 1)$ et $\phi(0, 0)$ ?
-  \solution{\todo{}}   
+  \solution{
+  \begin{align*}
+    \phi(1, 1) & = \sum_{x \geq 0} \sum_{y \geq 0} \Pr\{X=x, Y=y\} = 1, \\
+    \phi(1, 0) & = \sum_{x \geq 0} \Pr\{X=x, Y=0\} \; s^x = \Esp(s^X \mid Y=0) \Pr\{-Y = 0\}, \\
+    \phi(0, 1) & = \sum_{y \geq 0} \Pr\{X=0, Y=y\} \; t^y = \Esp(t^Y \mid X=0) \Pr\{X = 0\}, \\
+    \phi(0, 0) & = \Pr\{X=0, Y=0\}.
+  \end{align*}
+  }   
   \item Exprimer les fonctions génératrices de $X$, de $Y$ et de $X+Y$ en fonction de $\phi$.
-  \solution{\todo{}}   
+  \solution{
+  On a $\phi_X(s) = \Esp(s^X) = \phi(s, 1)$, $\phi_Y(t) = \Esp(t^Y) = \phi(1, t)$ et
+  $$
+  \phi_{X+Y}(u) = \phi_X(u) \phi_Y(u) = \phi(u, 1) \phi(1, u).
+  $$
+  }   
   \item Montrer que, si $X$ et $Y$ sont indépendantes, alors $\phi(s, t) = \phi(s, 1) \; \phi(1, t)$.
-  \item Montrer que si les couples $(X_1, Y_1)$ et $(X_2, Y_2)$ ont pour fonctions génératrices respectives $\phi_1$ et $\phi_2$, alors le couple $(X_1+X_2, Y_1+Y_2)$ a pour fonction génératrice $\psi = \phi_1 \phi_2$. 
-  \solution{\todo{}}   
+  \solution{
+  Si $X$ et $Y$ sont indépendantes, on a
+  \begin{align*}
+    \phi(s, t) 
+    & = \sum_{x \geq 0} \sum_{y \geq 0} \Pr\{X=x\} \Pr\{Y=y\} \; s^x \; t^y   
+    = \left(\sum_{x \geq 0} \Pr\{X=x\} s^x\right) \left(\sum_{y \geq 0} \Pr\{Y=y\}t^y\right) \\
+    & = \phi_X(s) \phi_Y(t).
+  \end{align*}
+  }   
+  \item Montrer que si les couples $(X_1, Y_1)$ et $(X_2, Y_2)$ sont indépendants et ont pour fonctions génératrices respectives $\phi_1$ et $\phi_2$, alors le couple $(X_1+X_2, Y_1+Y_2)$ a pour fonction génératrice $\psi = \phi_1 \phi_2$. 
+  \solution{
+  Par définition, 
+  $$
+  \phi_{X_1+X_2, Y_1+Y_2}(s, t)
+  =
+  \sum_{x \geq 0} \sum_{y \geq 0} \Pr\{X_1+X_2=x, Y_1+Y_2=y\} \; s^x \; t^y
+  $$
+  où
+  $$
+  \Pr\{X_1+X_2=x, Y_1+Y_2=y\} 
+  =
+  \sum_{x_1=0}^x \sum_{y_1=0}^y \Pr\{X_1=x_1, X_2=x-x_1, Y_1=y_1, Y_2=y-y_1\}.
+  $$
+  En redéfinissant les indices, $\phi_{X_1+X_2, Y_1+Y_2}(s, t)$ vaut donc, 
+  \begin{align*}
+  & \sum_{x_1 \geq 0} \sum_{y_1 \geq 0} \sum_{x_2 \geq 0} \sum_{y_2 \geq 0} \Pr\{X_1=x_1, X_2=x_2, Y_1=y_1, Y_2=y_2\} \; s^{x_1} \; s^{x_2} \; t^{y_1} \; t^{y_2} \\ 
+  & \sum_{x_1 \geq 0} \sum_{y_1 \geq 0} \sum_{x_2 \geq 0} \sum_{y_2 \geq 0} \Pr\{X_1=x_1, Y_1=y_1\} \; \Pr\{X_2=x_2, Y_2=y_2\} \; s^{x_1} \; s^{x_2} \; t^{y_1} \; t^{y_2} 
+  \end{align*}
+  grâce à l'indépendance, soit
+  $$
+  \left(\sum_{x_1 \geq 0} \sum_{y_1 \geq 0}\Pr\{X_1=x_1, Y_1=y_1\} \; s^{x_1} \; s^{x_2} \; t^{y_1}\right) \left(\sum_{x_2 \geq 0} \sum_{y_2 \geq 0} \Pr\{X_2=x_2, Y_2=y_2\} s^{x_2} t^{y_2}\right)
+  $$
+  où on reconnaît $\phi_{X_1, Y_1}(s, t) \times \phi_{X_2, Y_2}(s, t)$.
+  }   
   \item En déduire que si $N$ est une variable aléatoire entière de fonction génératrice $f$ et que $((X_i, Y_i))_{i \geq 1}$ sont des couples i.i.d. de même fonction génératrice $\phi$, alors le couple $(U, V)$ tel que
   $$
   U = \sum_{i=1}^N X_i, \qquad V = \sum_{i=1}^N Y_i
