@@ -8,22 +8,22 @@
 % ATTENTION : chgt de notation ! \pi(t) -> 1 - \pi(t).
 
 \paragraph{Modèle.}
-On considère l'apparition de tumeurs en deux étapes:
+On considère l'apparition de tumeurs malignes en deux étapes:
 \begin{enumerate}
-  \item les sites tumoraux de type I (bénins) apparaissent selon un processus de Poisson homogène d'intensité $\lambda$ et
-  \item chaque tumeur de type I se transforme ensuite en une tumeur de type II (maligne) au bout d'un temps exponentiel de paramètre $\mu$.
+  \item les sites tumoraux de type B (bénins) apparaissent selon un processus de Poisson homogène d'intensité $\lambda$ et
+  \item chaque tumeur de type B se transforme ensuite en une tumeur de type M (maligne) au bout d'un temps exponentiel de paramètre $\mu$.
 \end{enumerate}
 
 On note $N(t)$ le nombre total de tumeurs apparues au temps $t$ : 
 $$
-\{N(t)\}_{t \geq 0} \sim PP(\lambda).
+\{N(t)\}_{t \geq 0} \sim PP(\lambda t).
 $$
-et $M(t)$ le nombre de tumeurs de type II au temps $t$. Le nombre de site de type I au temps $t$ vaut donc $N(t) - M(t)$.
+et $M(t)$ le nombre de tumeurs de type M au temps $t$. Le nombre de tumeurs bénignes au temps $t$ vaut donc $B(t) = N(t) - M(t)$.
 
 \bigskip
 \paragraph{Question préliminaire.}
 \begin{enumerate}
-  \item Montrer que si $X$ suit une loi de Poisson $\Pcal(\alpha)$ et $Y$ sachant $X=x$ suit un loi binomiale $\Bcal(x, p)$, alors $Y$ suit une loi de Poisson $\Pcal(\alpha p)$.
+  \item Montrer que si $X$ suit une loi de Poisson $\Pcal(\alpha)$ et que $Y$ sachant $X=x$ suit un loi binomiale $\Bcal(x, p)$, alors $Y$ suit une loi de Poisson $\Pcal(\alpha p)$.
   \solution{
   On intègre la loi conditionnelle de $Y \mid X$ par rapport à la loi de $X$, soit : 
   \begin{align*}
@@ -35,7 +35,7 @@ et $M(t)$ le nombre de tumeurs de type II au temps $t$. Le nombre de site de typ
     = e^{-\alpha} \sum_{x \geq y} \left(\begin{array}{c}x \\ y \end{array}\right) (\alpha p)^y (\alpha - p)^{x-y} {x !} 
     = e^{-\alpha} \frac{(\alpha p)^y}{y !} \sum_{x \geq y} \frac1{(x - y) !}(\alpha - \alpha p)^{x-y}. 
   \end{align*}
-  En posant $z = x-y$, on a
+  En posant $z = x-y$, on reconnaît
   $$
   \sum_{x \geq y} \frac1{(x - y) !} (\alpha - \alpha p)^{x-y} 
   =
@@ -50,12 +50,23 @@ et $M(t)$ le nombre de tumeurs de type II au temps $t$. Le nombre de site de typ
   = e^{-\alpha p} \frac{(\alpha p)^y}{y !}
   $$
   où on reconnaît la loi de Poisson $\Pcal(\alpha p)$. 
+  \paragraph{\sl Alternative.} On peut aussi se souvenir que la fonction génératrice de la loi de Poisson vaut $\phi_X(s) = e^{\alpha(s-1)}$ et que celle de la loi de Bernoulli est $\phi_Z(s) = 1 -p + ps$. Puisque $Y$ est la somme de $X$ variables aléatoires de Bernoulli (de paramètre $p$) indépendantes, sa fonction génératrice vaut 
+  $
+  \phi_Y(s) 
+  = \phi_X \circ \phi_Z(z)
+  = \exp(\alpha(-p + ps)) 
+  = \exp(\alpha p (s - 1)),
+  $
+  qui est la fonction génératrice de la loi de Poisson $\Pcal(\alpha p)$.
   }
 \end{enumerate}
 
 
 \bigskip
-\paragraph{Loi du nombre de tumeurs de type II.}
+\paragraph{Loi du nombre de tumeurs de type B.}
+On s'intéresse d'abord à l'apparition des tumeurs et au temps durant lequel elle restent de type $B$.
+
+\bigskip
 \begin{enumerate}
   \setcounter{enumi}{1}
   \item Donner la loi du nombre total $N(t)$ de tumeurs au temps $t$.  
@@ -63,13 +74,13 @@ et $M(t)$ le nombre de tumeurs de type II au temps $t$. Le nombre de site de typ
   C'est une des propriétés du processus de Poisson: $N(t) \sim \Pcal(\lambda t)$.
   }
   %
-  \item Donner la probabilité qu'une tumeur de type I apparue au temps $s$ soit toujours de type I au temps $t > s$.
+  \item Donner la probabilité qu'une tumeur de type B apparue au temps $s$ soit toujours de type B au temps $t > s$.
   \solution{
-  Les tumeurs de type I se transforment en tumeurs de type II au bout d'une durée exponentielle de paramètre $\mu$. Une telle durée dépasse $u$ avec probabilité $e^{-\mu u}$, la probabilité demandée vaut donc
+  Les tumeurs de type B se transforment en tumeurs de type M au bout d'une durée exponentielle de paramètre $\mu$. Une telle durée dépasse $u$ avec probabilité $e^{-\mu u}$, la probabilité demandée vaut donc
   $e^{-\mu (t-s)}$.
   }  
   %
-  \item Montrer que la probabilité qu'une tumeur de type I apparue avant $t$ soit toujours de type I au temps $t > s$ vaut
+  \item Montrer que la probabilité qu'une tumeur de type B apparue avant $t$ soit toujours de type B au temps $t > s$ vaut
   $$
   \pi(t) = \frac1{\mu t} (1 - e^{-\mu t}).
   $$
@@ -93,15 +104,24 @@ et $M(t)$ le nombre de tumeurs de type II au temps $t$. Le nombre de site de typ
 %     \end{center}
 %   \end{figure}
   %
-  \item En déduire la loi du nombre $M(t)$ de tumeurs de type II sachant le nombre total $N(t)$ de tumeurs apparues avant $t$ est égale à $n$: $N(t) = n$.
+\end{enumerate}
+
+\bigskip
+\paragraph{Loi du nombre de tumeurs de type M.}
+On s'intéresse maintenant à la vitesse d'apparition des tumeurs de type M.
+
+\bigskip
+\begin{enumerate}
+  \setcounter{enumi}{4}
+  \item Donner la loi du nombre $M(t)$ de tumeurs de type M sachant le nombre total $N(t)$ de tumeurs apparues avant $t$ est égale à $n$: $N(t) = n$.
   \solution{
-  Conditionnellement au fait que $n$ tumeurs sont apparaues au temps $t$, chacune d'entre elle est encore de type I avec probabilité $\pi(t)$ et est donc de type II avec probabilité $1 - \pi(t)$. Ces tumeurs étant apparues et s'étant transformées indépendamment, le nombre de tumeurs de type II au temps $t$ suit une loi binomiale :
+  Conditionnellement au fait que $n$ tumeurs sont apparues au temps $t$, chacune d'entre elle est encore de type B avec probabilité $\pi(t)$ et est donc de type M avec probabilité $1 - \pi(t)$. Ces tumeurs étant apparues et s'étant transformées indépendamment, le nombre de tumeurs de type M au temps $t$ suit une loi binomiale :
   $$
   \left(M(t) \mid N(t) = n\right) \sim \Bcal(n, 1 - \pi(t)).
   $$
-  \paragraph{\sl Alternative.} On peut aussi reprendre le calcul de la question précédente en intégrant simultanément sur les temps d'apparition $s_1 \dots s_n$ des $n$ cellules présentes et en distinguant celles qui sont restées de type I (avec probabilité $e^{-\mu(t - s)}$) de celles qui se sont transformées en cellules de type II (avec probabilité $1 - e^{-\mu(t - s)}$). On écrit ainsi $\Pr\{M(t) = m \mid N(t) = n\}$
+  \paragraph{\sl Alternative.} On peut aussi reprendre le calcul de la question précédente en intégrant simultanément sur les temps d'apparition $s_1 \dots s_n$ des $n$ cellules présentes et en distinguant celles qui sont restées de type B (avec probabilité $e^{-\mu(t - s)}$) de celles qui se sont transformées en cellules de type M (avec probabilité $1 - e^{-\mu(t - s)}$). On écrit ainsi $\Pr\{M(t) = m \mid N(t) = n\}$
   \begin{align*}
-    & = \idotsint_{[0, t]^n} \binom{n}{m} \prod_{j=1}^m \frac1t \underset{\text{passée en type II}}{\underbrace{(1- e^{-\mu(t-s_j)})}} \d s_j \prod_{k=m+1}^{n} \frac1t \underset{\text{toujours de type I}}{\underbrace{e^{-\mu(t-s_k)}}} \d s_k \\
+    & = \idotsint_{[0, t]^n} \binom{n}{m} \prod_{j=1}^m \frac1t \underset{\text{passée en type M}}{\underbrace{(1- e^{-\mu(t-s_j)})}} \d s_j \prod_{k=m+1}^{n} \frac1t \underset{\text{toujours de type B}}{\underbrace{e^{-\mu(t-s_k)}}} \d s_k \\
     & = \binom{n}{m} \prod_{j=1}^m \left(\frac1t \int_{[0, t]} (1- e^{-\mu(t-s_j)}) \d s_j \right) \prod_{k=m+1}^{n} \left(\frac1t \int_{[0, t]} e^{-\mu(t-s_k)} \d s_k\right) \\
 %     & = \binom{n}{m} \left(1 -e^{-\mu t} \left[\frac{e^{\mu t}-1}{\mu}\right]\right)^m  \left( e^{-\mu t} \left[\frac{e^{\mu t}-1}{\mu}\right]\right)^{n-m} \\
     &= \binom{n}{m} \left(1- \frac{1 - e^{-\mu t}}{\mu t}\right)^m \left( \frac{1 - e^{-\mu t}}{\mu t}\right)^{n-m}
@@ -112,15 +132,15 @@ et $M(t)$ le nombre de tumeurs de type II au temps $t$. Le nombre de site de typ
   $$
   }
   %
-  \item En déduire la loi du nombre $M(t)$ de tumeurs de type II apparues avant $t$.
+  \item En déduire la loi du nombre $M(t)$ de tumeurs de type M apparues avant $t$.
   \solution{
-  On applique le résultat de la question préliminaire avec $X = N(t)$, $\alpha = \lambda t$, $Y = M(t)$ et $p = 1 - \pi(t)$ pour obtenir que le nombre de tumeurs de type II au temps $t$ suit une loi de Poisson :
+  On applique le résultat de la question préliminaire avec $X = N(t)$, $\alpha = \lambda t$, $Y = M(t)$ et $p = 1 - \pi(t)$ pour obtenir que le nombre de tumeurs de type M au temps $t$ suit une loi de Poisson :
   $$
   M(t) \sim \Pcal\left(\lambda t [1 - \pi(t)]\right).
   $$
   }
   %
-  \item Donner la probabilité qu'aucune tumeur de type II ne soit apparu au temps $t$.
+  \item Donner la probabilité qu'aucune tumeur de type M ne soit apparue au temps $t$.
   \solution{
   Puisque la probabilité qu'une variable de Poisson de paramètre $m$ soit nulle vaut $e^{-m}$, on a 
   $$
