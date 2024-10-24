@@ -163,18 +163,18 @@ $$
 \begin{lemma}[Inversion de la limite et du maximum] \label{lem:inversionLimiteMaximum}
   Soient $k$ suites réelles $v_1, \dots v_k$, on a
   $$
-  \lim_{n \to \infty} \max_{i=1 \dots k} v_i(n) = 0
+  \lim_{n \to \infty} \max_{i=1 \dots k} |v_i(n)| = 0
   \qquad \Leftrightarrow \qquad
-  \max_{i=1 \dots k} \lim_{n \to \infty} v_i(n) = 0.
+  \max_{i=1 \dots k} \lim_{n \to \infty} |v_i(n)| = 0.
   $$
 \end{lemma}
 
 % {Démonstration du lemme \ref{lem:inversionLimiteMaximum}.}
 \proof [Lemme \ref{lem:inversionLimiteMaximum}]
 \begin{description}
-  \item[$\Rightarrow$:] $\lim_{n \to \infty} \max_{i=1 \dots k} v_i(n) = 0$
+  \item[$\Rightarrow$:] $\lim_{n \to \infty} \max_{i=1 \dots k} |v_i(n)| = 0$
   \begin{align*}
-    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow |\max_i v_i(n)| = \max_i |v_i(n)| < \epsilon\} \\
+    \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \max_i |v_i(n)| < \epsilon\} \\
     \Rightarrow \quad & \{\forall \epsilon, \exists N_\epsilon: n > N_\epsilon \Rightarrow \forall i, |v_i(n)| < \epsilon\} \\
     \Rightarrow \quad & \{\forall i, \forall \epsilon, \exists N_{\epsilon, i}(\equiv N_\epsilon): n > N_{\epsilon, i} \Rightarrow |v_i(n)| < \epsilon\} \\
     \Rightarrow \quad & \forall i, \lim_{n \to \infty} v_i(n) = 0 \\
