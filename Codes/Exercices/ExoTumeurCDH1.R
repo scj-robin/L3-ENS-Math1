@@ -48,3 +48,10 @@ timeHalf <- sapply(muGrid, function(mu){
   uniroot(f=function(t){exp(-mu*t) -1 - mu*(log(2)/lambda - t)}, lower=0, upper=10*tMax)$root
 })
 plot(muGrid, timeHalf, , type='l', col=1, xlab=expression(mu), ylab='', lwd=3, cex.lab=1.5)
+
+# Application numérique
+lambda <- 1 # 1 site / an
+mu <- 1/5 # transformation au bout de 5 ans
+t <- 10 # probabilité au bout de 10 ans
+proba <- (1 - exp(-mu * t)) / (mu * t)
+proba <- exp(-lambda*t*(1 - proba))
