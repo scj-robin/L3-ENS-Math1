@@ -48,6 +48,7 @@ On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ 
 \end{enumerate}
 
 %-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 \subsection{Différentielle et application linéaire tangente} 
 %-------------------------------------------------------------------------------
 
@@ -73,7 +74,7 @@ où chaque application $f_j$ ($1 \leq j \leq k$) va de $\Rbb^n$ dans $\Rbb$.
 \remark
 On note parfois, de même 
 $$
-f(x+h) - f(x) - L(h) = o(h)
+f(x+h) - f(x) - D_xf(h) = o(h)
 \qquad \text{où} \quad
 \lim_{h\to 0_n, h \neq 0_n} \frac{o(h)}{\|h\|} = 0_k.
 $$
@@ -109,7 +110,7 @@ $$
   = \lim_{u \downarrow 0, u \neq 0} \frac{M(y)}{\|y\|} 
   = \frac{M(y)}{\|y\|},
   $$  
-  or $\|y\|$ est non nul, donc $M(y) = 0$ par continuité des applications linéaires (en $0_n$, en l'occurrence).
+  or $\|y\|$ est non nul, donc $M(y) = 0$.
 \end{enumerate}
 \eproof
 
@@ -197,7 +198,7 @@ $$
 où $XH + HX$ est linéaire en $H$. L'application linéaire tangente est donc
 $$
 \begin{array}{rrcl}
-  L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+  D_X f : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
   & H & \to & XH + HX.
 \end{array}
 $$  
@@ -208,10 +209,22 @@ $$
 \subsection{Matrice jacobienne} 
 %-------------------------------------------------------------------------------
 
-\paragraph*{Rappel.} La matrice jabobienne au point $x$ d'une application $f : \Rbb^n \mapsto \Rbb^k$, notée $J_xf$, est la matrice de $\Mcal_{k, n}$ dont l'élément $(i, j)$ vaut la dérivée de la fonction $f_i$ par rapport à la coordonnée $x_i$
-$$
-[J_xf]_{ij} = \frac{\partial f_i(x_1, \dots x_n)}{\partial x_j}.
-$$
+\begin{definition} \label{def:matriceJacobienne}
+  La matrice jabobienne au point $x$ d'une application $f : \Rbb^n \mapsto \Rbb^k$, notée $J_xf$, est la matrice de $\Mcal_{k, n}$ dont l'élément $(i, j)$ vaut la dérivée de la fonction $f_i$ par rapport à la coordonnée $x_i$
+  $$
+  [J_xf]_{ij} 
+  = \frac{\partial f_i(x)}{\partial x_j}
+  $$
+  Plus précisément, en notant $e_j$ le $j$-ème vecteur de la base canonique, 
+%   et $g_{x, j}$ la fonction de $\Rbb$ dans $\Rbb$ telle que $g_{x, j}(u) = f_i(x + u e_j)$, 
+  la dérivée partielle de $f_i$ par rapport à $x_j$ est définie comme
+%   la dérive de $g_{x, j}$ par rapport à $u$:
+  $$
+  \frac{\partial f_i(x)}{\partial x_j} 
+%   = g'(u) 
+  = \lim_{u \to 0} \frac{f_i(x + u e_j) - f_i(x)}{|u|}.
+  $$
+\end{definition}
 
 \begin{proposition} \label{prop:matriceJacobienne}
   Soit $f : \Rbb^n \mapsto \Rbb^k$ différentiable, la matrice jacobienne $J_xf$ est la matrice représentative de $D_xf$, c'est-à-dire :
@@ -238,28 +251,31 @@ La preuve consiste à montrer que la différentiabilité de $f$ implique celle d
   \qquad \text{avec} \qquad
   A_x = \left[ [D_xf(e_j)]_i \right] \in \Mcal_{k, n}.
   $$
-  \item Maintenant, puisque $f$ est différentiable, on a pour tout $x$ et $u$
+  \item Maintenant, puisque $f$ est différentiable au point $x$, on a 
   $$
-  \lim_{u\to 0, u \neq 0} \frac{f(x+u) - f(x) - D_xf(u)}{\|u\|} = 0_k.
+  \lim_{h\to 0, h \neq 0} \frac{f(x+h) - f(x) - D_xf(h)}{\|h\|} = 0_k.
   $$
-  En prenant $u = h_j e_j$ où $h_j \in \Rbb$, pour $1 \leq j \leq n$, il vient (par linéarité)
+  En prenant $h = u e_j$ où $u \in \Rbb$, pour $1 \leq j \leq n$, on a $\|h\| = |u|$ et il vient (par linéarité)
   $$
-  \lim_{h_j\to 0, h_j \neq 0} \frac{f(x+h_j e_j) - f(x) - D_xf(h_j e_j)}{|h_j|} 
-  = \lim_{h_j\to 0, h_j \neq 0} \frac{f(x+h_j e_j) - f(x) - D_xf(e_j) \; h_j}{|h_j|} 
+  \lim_{u\to 0, u \neq 0} \frac{f(x+u e_j) - f(x) - D_xf(u e_j)}{|u|} 
+  = \lim_{u\to 0, u \neq 0} \frac{f(x+u e_j) - f(x) - D_xf(e_j) \; u}{|u|} 
   =  0_k
   $$
   qui implique (par convergence coordonnée par coordonnée) que pour chaque $i = 1 \dots k$, 
   $$
-%   \lim_{h_j\to 0, h_j \neq 0} \frac{f_i(x+h_j e_j) - f_i(x) - D_xf(h_j e_j)}{|h_j|} 
+%   \lim_{u\to 0, u \neq 0} \frac{f_i(x+u e_j) - f_i(x) - D_xf(u e_j)}{|u|} 
 %   =   
-  \lim_{h_j\to 0, h_j \neq 0} \frac{f_i(x+h_j e_j) - f_i(x) - [D_xf(e_j)]_i \; h_j}{|h_j|} 
+  \lim_{u\to 0, u \neq 0} \frac{f_i(x+u e_j) - f_i(x) - [D_xf(e_j)]_i \; u}{|u|} 
   = 0.
   $$
-  Cette égalité assure que l'application $f_i$ est bien dérivable en $x$ par rapport à $x_j$ et que sa dérivée vaut précisément
-  $$
-  \frac{\partial f_i(x_1, \dots x_n)}{\partial x_j}
-  $$
-  vaut précisément $[D_xf(e_j)]_i$.
+  Cette égalité 
+  \begin{itemize}
+   \item assure que l'application $f_i$ est bien dérivable en $x$ par rapport à $x_j$ et 
+   \item permet de reconnaître la dérivée partielle donnée à la définition \ref{def:matriceJacobienne}, d'où : 
+   $$
+   [D_xf(e_j)]_i = \frac{\partial f_i(x)}{\partial x_j}.
+   $$
+  \end{itemize}
 \end{enumerate}
 On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice $A_x$ sont ceux de la matrice jacobienne $J_xf$.
 \eproof
@@ -287,7 +303,7 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   $$
   f(x+h) - f(x) = J_xf \cdot h + o(\|h\|).
   $$
-  \item La démonstration de cette propriété passe par le fait que la différentiabilité de $f$ implique celle de chacune des $f_i$. Cette propriété s'étend même à toutes les directions dans $\Rbb^n$ (contrôlée par le choix du vecteur $u$). \\
+  \item La démonstration de cette propriété passe par le fait que la différentiabilité de $f$ implique celle de chacune des $f_i$. Cette propriété s'étend même à toutes les directions dans $\Rbb^n$ (contrôlée par le choix du vecteur $h$). \\
   La réciproque n'est pas vraie : une application $f$ peut ne pas être différentiable en $x$ alors que toutes les $f_i$ le sont.
   \exemple{
   Soit
@@ -307,7 +323,7 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   $$
 %   f(h) - f(0) - J_0f \cdot h = u^2
 %   \qquad \Rightarrow \qquad 
-  \frac1{\|h\|} \left(f(x) - f(0) - J_0 f \cdot h\right)
+  \frac1{\|h\|} \left(f(h) - f(0) - J_0 f \cdot h\right)
   = -\frac{u^2}{u \sqrt{2}} = -\frac{u}{\sqrt{2}}
   \neq o(\|h\|).
   $$
@@ -335,14 +351,38 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
 
 \end{enumerate}
 
+\progres{
+  Rappel cours 3:
+  \begin{enumerate}
+    \item Normes et équivalence de normes en dimension finie
+    \item Différentiabilité 
+    \begin{itemize}
+     \item Application linéaire tangente
+     \item Matrice jacobienne
+    \end{itemize}
+  \end{enumerate}
+  Début cours 4. 
+  \begin{enumerate}
+    \item Différentiabilité
+    \begin{itemize}
+     \item Plan tangent, coordonnées polaires
+     \item Composition
+     \item Fonction implicite
+    \end{itemize}
+    \item Intégrales
+    \item Extremums
+  \end{enumerate}
+}
+
 
 %-------------------------------------------------------------------------------
-\remark
+\subsubsection*{Plan tangent}
+%-------------------------------------------------------------------------------
 On peut déterminer le plan tangent à une surface $S$ de $\Rbb^3$ d'équation
 $$
 z = f(x, y).
 $$
-au point $(x_0, y_0)$, en posant $z_0 = f(x_0, y_0)$ et $h = (x-x_0, y-y_0)$, soit 
+au point $(x_0, y_0)$ pour peut que $f$ soit différentiable en $(x, y)$. Pour cela, on pose $z_0 = f(x_0, y_0)$ et $h = (x-x_0, y-y_0)$, qui donne
 $$
 f(x, y) - f(x_0, x_0) = \left(J_{(x_0, y_0)} f\right) \; h + o(\|h\|).
 $$
@@ -369,35 +409,6 @@ z
 = f(x_0, y_0)(1 + x_0^2 + y_0^2 - x_0 x - y_0 y)
 $$
 Ce plan est bien horizontal pour $(x_0, y_0) = (0, 0)$.
-}
-
-%-------------------------------------------------------------------------------
-\exemple{[Passage en coordonnées polaires]
-  Soit l'application
-  $$
-  \begin{array}{rrcl}
-    f : & \Rbb^+ \times [0, 2\pi] & \mapsto & \Rbb^2 \\
-    & (\rho, \theta) & \to & (x = \rho \cos \theta, y = \rho \sin \theta).
-  \end{array}
-  $$
-  Sa matrice jacobienne est
-  $$
-  J_{(\rho, \theta)}f = \left[ \begin{array}{rclcrcl}
-      \frac{\partial}{\partial \rho} \rho \cos \theta & = & \cos \theta  & &
-      \frac{\partial}{\partial \theta} \rho \cos \theta & = & -\rho \sin \theta  \\
-      \frac{\partial}{\partial \rho} \rho \sin \theta & = & \sin \theta  & & 
-      \frac{\partial}{\partial \theta} \rho \sin \theta & = & \rho \cos \theta  
-    \end{array} \right].
-  $$
-  On peut remarquer que
-  $$
-  |J_{(\rho, \theta)}f| 
-  = \left| \begin{array}{cc}
-      \cos \theta  & -\rho \sin \theta  \\
-      \sin \theta  & \rho \cos \theta  
-    \end{array} \right|
-  = \rho \cos^2\theta + \rho \sin^2 \theta = \rho.
-  $$
 }
 
 %-------------------------------------------------------------------------------
@@ -440,10 +451,18 @@ $$
 }
 
 %-------------------------------------------------------------------------------
-\paragraph*{Transformation en coordonnées polaires.} 
+\subsubsection*{Transformation en coordonnées polaires} 
+%-------------------------------------------------------------------------------
 
 \begin{proposition} \label{prop:differentiabiliteCoordonneesPolaires}
-  La transformation en coordonnée polaire est partout différentiable sur $\Rbb^{*+} \times \Rbb^+$.
+  La transformation des coordonnées polaires en coordonnées cartésiennes 
+  $$
+  \begin{array}{rrcl}
+    f : & \Rbb^+ \times [0, 2\pi] & \mapsto & \Rbb^2 \\
+    & (\rho, \theta) & \to & (x = \rho \cos \theta, y = \rho \sin \theta).
+  \end{array}
+  $$
+  est partout différentiable sur $\Rbb^{*+} \times \Rbb^+$.
 \end{proposition}
 
 % {Démonstration de la proposition \ref{prop:differentiabiliteCoordonneesPolaires}.}
@@ -501,6 +520,29 @@ Il reste à montrer que le reste est un $o(\|h\|)$.
 Le vecteur reste est donc un $o(\|h\|)$.
 \eproof
 
+\remarks
+\begin{itemize}
+  \item La matrice jacobienne de cette transformation est
+  $$
+  J_{(\rho, \theta)}f = \left[ \begin{array}{rclcrcl}
+      \frac{\partial}{\partial \rho} \rho \cos \theta & = & \cos \theta  & &
+      \frac{\partial}{\partial \theta} \rho \cos \theta & = & -\rho \sin \theta  \\
+      \frac{\partial}{\partial \rho} \rho \sin \theta & = & \sin \theta  & & 
+      \frac{\partial}{\partial \theta} \rho \sin \theta & = & \rho \cos \theta  
+    \end{array} \right].
+  $$
+  \item On peut remarquer que
+  $$
+  |J_{(\rho, \theta)}f| 
+  = \left| \begin{array}{cc}
+      \cos \theta  & -\rho \sin \theta  \\
+      \sin \theta  & \rho \cos \theta  
+    \end{array} \right|
+  = \rho \cos^2\theta + \rho \sin^2 \theta = \rho.
+  $$
+\end{itemize}
+
+
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 \subsection{Composition} 
@@ -527,25 +569,6 @@ $$
 \end{proposition}
 
 \proof Cette proposition n'est pas démontrée ici. \eproof
-
-% \progres{
-%   Début Cours 6. Rappels :
-%   \begin{enumerate}[\itemdot]
-%     \item Définition de l'application linéaire tangente $D_x f(h)$ telle que 
-%     $$f(x+h) - f(x) - D_x f(h) = o(\|h\|).$$
-%     \item Si $f$ différentiable en $x$, la matrice jacobienne $J_xf$ vérifie $D_xf(h) = J_xf \cdot h$
-%     \item Exemple $f(x) = x^\top B x : J_x f = x^\top (B + B^\top) $
-%     \item Exemple : calcul de $J_x f$ pour le passage en coordonnées polaires \warning{démontrer la différentiabilité de $f$ : cf classeur.}
-%     \item Composition : 
-%     $$
-%     D_x(f \circ g) = D_{g(x)}f \circ D_x g
-%     \qquad \Rightarrow \qquad
-%     J_x(f \circ g) = J_{g(x)}f \cdot D_x g.
-%     $$
-%     \warning{donner l'exemple de simple juste après.}
-%     \item Exercice : calculer le pente de la tangente à la courbe $(x = \rho \cos \theta, y = \rho \sin \theta)$ pour $\rho = \rho(\theta)$
-%   \end{enumerate}
-% }
 
 %-------------------------------------------------------------------------------
 \exemple{
@@ -634,6 +657,7 @@ $$
   $$
 }
 
+%-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 \subsection{Fonction implicite}
 %-------------------------------------------------------------------------------
