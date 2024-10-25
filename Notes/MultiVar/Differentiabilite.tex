@@ -299,10 +299,6 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
 
 \remarks
 \begin{enumerate}
-  \item Cette propriété justifie l'intérêt de la matrice jacobienne pour approcher les variations de l'application $f$ autour du point $x$ par une application linéaire : 
-  $$
-  f(x+h) - f(x) = J_xf \cdot h + o(\|h\|).
-  $$
   \item La démonstration de cette propriété passe par le fait que la différentiabilité de $f$ implique celle de chacune des $f_i$. Cette propriété s'étend même à toutes les directions dans $\Rbb^n$ (contrôlée par le choix du vecteur $h$). \\
   La réciproque n'est pas vraie : une application $f$ peut ne pas être différentiable en $x$ alors que toutes les $f_i$ le sont.
   \exemple{
@@ -374,15 +370,20 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
   \end{enumerate}
 }
 
-
 %-------------------------------------------------------------------------------
 \subsubsection*{Plan tangent}
 %-------------------------------------------------------------------------------
-On peut déterminer le plan tangent à une surface $S$ de $\Rbb^3$ d'équation
+
+La propriété \ref{prop:matriceJacobienne} justifie l'intérêt de la matrice jacobienne pour approcher les variations de l'application $f$ autour du point $x$ par une application linéaire : 
+$$
+f(x+h) - f(x) = J_xf \cdot h + o(\|h\|).
+$$
+
+Notamment, on peut déterminer ainsi le plan tangent à une surface $S$ de $\Rbb^3$ d'équation
 $$
 z = f(x, y).
 $$
-au point $(x_0, y_0)$ pour peut que $f$ soit différentiable en $(x, y)$. Pour cela, on pose $z_0 = f(x_0, y_0)$ et $h = (x-x_0, y-y_0)$, qui donne
+au point $(x_0, y_0)$ pour peu que $f$ soit différentiable en $(x, y)$. Pour cela, on pose $z_0 = f(x_0, y_0)$ et $h = (x-x_0, y-y_0)$, qui donne
 $$
 f(x, y) - f(x_0, x_0) = \left(J_{(x_0, y_0)} f\right) \; h + o(\|h\|).
 $$
@@ -447,6 +448,10 @@ $$
 où on reconnaît la transposée de l'inverse de $X$ : 
 $$
 D_X = (X^{-1})^\top.
+$$
+On a donc
+$$
+\log(|X + H|) = \log(|X|) + \sum_{i, j} [(X^{-1})^\top H]_{i, j} + o(\|H\|).
 $$
 }
 
