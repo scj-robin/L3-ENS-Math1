@@ -215,16 +215,24 @@ $$
   [J_xf]_{ij} 
   = \frac{\partial f_i(x)}{\partial x_j}
   $$
-  Plus précisément, en notant $e_j$ le $j$-ème vecteur de la base canonique, 
+\end{definition}
+
+\remark
+\begin{enumerate}
+  \item La dérivée partielle $\partial f_i(x) / \partial x_j$ est la dérivée dans direction du $j$-ème vecteur de la base canonique $e_j$, 
 %   et $g_{x, j}$ la fonction de $\Rbb$ dans $\Rbb$ telle que $g_{x, j}(u) = f_i(x + u e_j)$, 
   la dérivée partielle de $f_i$ par rapport à $x_j$ est définie comme
 %   la dérive de $g_{x, j}$ par rapport à $u$:
   $$
   \frac{\partial f_i(x)}{\partial x_j} 
 %   = g'(u) 
-  = \lim_{u \to 0} \frac{f_i(x + u e_j) - f_i(x)}{|u|}.
+  = \lim_{u \to 0} \frac{f_i(x + u e_j) - f_i(x)}{u}.
   $$
-\end{definition}
+  \item Par unicité de la dérivée, $\partial f_i(x) / \partial x_j$ est donc l'unique valeur $\ell$ qui vérifie
+  \begin{equation} \label{eq:caracDeriveePartielle}
+    \lim_{u \to 0} \frac{f_i(x + u e_i) - f_i(x) - \ell u}{|u|} = 0
+  \end{equation}
+\end{enumerate}
 
 \begin{proposition} \label{prop:matriceJacobienne}
   Soit $f : \Rbb^n \mapsto \Rbb^k$ différentiable, la matrice jacobienne $J_xf$ est la matrice représentative de $D_xf$, c'est-à-dire :
@@ -270,8 +278,8 @@ La preuve consiste à montrer que la différentiabilité de $f$ implique celle d
   $$
   Cette égalité 
   \begin{itemize}
-   \item assure que l'application $f_i$ est bien dérivable en $x$ par rapport à $x_j$ et 
-   \item permet de reconnaître la dérivée partielle donnée à la définition \ref{def:matriceJacobienne}, d'où : 
+   \item assure que la fonction $f_i$ est bien dérivable en $x$ par rapport à $x_j$ et 
+   \item permet de reconnaître la dérivée partielle caractérisée par l'équation \eqref{eq:caracDeriveePartielle}, d'où : 
    $$
    [D_xf(e_j)]_i = \frac{\partial f_i(x)}{\partial x_j}.
    $$
