@@ -166,15 +166,14 @@ Une façon simple d'empêcher la croissance indéfinie de la population prédite
 \qquad \Leftrightarrow \qquad
 \dot y = y(r - cy).
 \end{equation}
-Ce modèle est connu sous le nom de {\em modèle de Verhulst}. On suppose que les paramètres $r$ et $c$ sont positifs et on ôse la condition initiale
+Ce modèle est connu sous le nom de {\em modèle de Verhulst}. On suppose que les paramètres $r$ et $c$ sont positifs et on pose la condition initiale
 $$
 y(0) = y_0.
 $$
 \begin{description}
   \item[Points d'équilibre:] $y^* = 0$ et $y^* = K := r/c$ sont des points d'équilibre car alors $\dot y = F(y^*) = 0$.
   \item[Solution pour $y_0 \in \{0, K\}$:] la fonction $y(t)$ reste constante (car $\dot y(t) \equiv 0$).
-  \item[Solution pour $0 < y_0 < K$:]  
-  On obtient une solution de cette équation en remarquant que, pour $t$ tel que $0 < y(t) < K$, \eqref{eq:verhulst} est équivalente à 
+  \item[Solution pour $0 < y_0 < K$:] on obtient une solution de cette équation en remarquant que, pour $t$ tel que $0 < y(t) < K$, \eqref{eq:verhulst} est équivalente à 
   $$
   r = \frac{\dot y}y + cy \qquad \Leftrightarrow \qquad y = \frac{\dot y}{r - cy}
   $$
@@ -218,7 +217,7 @@ $$
   $$
   y(t) = \frac{K a_0 e^{rt}}{1 +  a_0 e^{rt}}
   $$
-  mais avec
+  (et donc $1 + a_0 e^{rt} \neq 0$) mais avec
   $$
   a_0 = \frac{y_0}{K-y_0} < 0
   \qquad \Rightarrow \qquad
@@ -227,8 +226,15 @@ $$
   qui est donc une solution maximale sur $\Rbb \setminus \left\{t_*\right\}$ pour $y_0 < 0$ comme pour $y_0 > K$. \\
   On remarque de plus que
   $$
-  \dot y(t) = \frac{K a_0 r e^{rt}}{(1 + a_0 e^{rt})^2}  < 0.
+  \dot y(t) = \frac{K a_0 r e^{rt}}{(1 + a_0 e^{rt})^2}  < 0
   $$
+  et que
+  \begin{align*}
+    y_0 & < 0 & \Rightarrow \quad |y_0| & < |K - y_0| & 
+    \Rightarrow \quad |a_0| & < 1 & \Rightarrow \quad t_* & > 0, \\
+    y_0 & > K & \Rightarrow \quad |y_0| & > |K - y_0| & 
+    \Rightarrow \quad |a_0| & > 1 & \Rightarrow \quad t_* & < 0.
+  \end{align*}
   
   \begin{tabular}{cc}
     \begin{tabular}{p{0.2\textwidth}}
@@ -239,17 +245,10 @@ $$
     \end{tabular}
     &
     \begin{tabular}{p{0.5\textwidth}}
-      \includegraphics[width=.6\textwidth]{Verhulst-solutions}
+      \includegraphics[width=.5\textwidth, trim=0 10 20 30, clip=]{Verhulst-solutions}
     \end{tabular}
   \end{tabular}
   
-  On remarque que
-  \begin{align*}
-    y_0 & < 0 & \Rightarrow \quad |y_0| & < |K - y_0| & 
-    \Rightarrow \quad |a_0| & < 1 & \Rightarrow \quad t_* & > 0, \\
-    y_0 & > K & \Rightarrow \quad |y_0| & > |K - y_0| & 
-    \Rightarrow \quad |a_0| & > 1 & \Rightarrow \quad t_* & < 0.
-  \end{align*}
   On doit donc distinguer deux cas.
   \begin{itemize}
     \item $y(0) = y_0 > K$ (soit $t^* < 0$) : dans ce cas, on a toujours
