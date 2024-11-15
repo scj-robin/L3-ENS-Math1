@@ -57,7 +57,14 @@ $$
       \left[ \begin{array}{r} -1 \\ 1 \end{array} \right] \text{ est associé à $+3$}
       $$
       donc $a$ est un minimum dans la direction de la 2ème bissectrice.
-      %
+      $$
+      \begin{tabular}{cc}
+        direction $x = y$ & direction $x = -y$ \\
+        \includegraphics[width=.35\textwidth, trim=00 10 10 40, clip=]{ExempleOptimum-1ereBissectrice} &
+        \includegraphics[width=.35\textwidth, trim=00 10 10 40, clip=]{ExempleOptimum-2emeBissectrice} \\
+        $f(x, x) = 2x^3 - 3x^2$ & $f(x, -x) = 3x^2$
+      \end{tabular}
+      $$
       \item[\'Etude du point $b$ :] on a
       $$
       \nabla_b^2 f = \left[\begin{array}{rrr} 6 & & -3 \\ -3 & & 6 \end{array}\right]
@@ -66,23 +73,9 @@ $$
       $$
       donc les deux valeurs propres de $\nabla_b^2 f$ sont positives : $b$ est donc un minimum.
     \end{description}
+    Au total la surface d'équation $\{z = f(x, y)\}$ a l'aspect suivant
+    $$
+    \includegraphics[width=.6\textwidth]{ExempleOptimum-surface}
+    $$
   }
 \end{enumerate}
-
-\solution{
-\paragraph*{Fonction $f(x, y) = x^3 + y^3 - 3xy$:}
-$$
-\includegraphics[width=.6\textwidth]{ExempleOptimum-surface}
-$$
-\paragraph*{Point $a = (0, 0)$:}
-$$
-\begin{tabular}{cc}
-  direction $x = y$ & direction $x = -y$ \\
-  \includegraphics[width=.4\textwidth, trim=10 10 10 40, clip=]{ExempleOptimum-1ereBissectrice} &
-  \includegraphics[width=.4\textwidth, trim=10 10 10 40, clip=]{ExempleOptimum-2emeBissectrice} \\
-  $f(x, x) = 2x^3 - 3x^2$ & $f(x, -x) = 3x^2$
-\end{tabular}
-$$
-}
-
-

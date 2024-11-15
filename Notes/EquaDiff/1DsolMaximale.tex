@@ -54,6 +54,11 @@ $$
   \dot P & = & b N P  - m P
  \end{array} \right.
  $$
+ La fonction $F$ est alors
+ $$
+ F\left(\begin{array}{c} y_1 \\ y_2 \end{array}\right) 
+ = \left(\begin{array}{c} r y_1 - c y_1 y_2 \\ b y_1 y_2 - m y_2 \end{array}\right).
+ $$
  \item[SIR :] $y(t) = [S(t) \; I(t) \; R(t)]^\top$ avec $S(t) =$ nombre de susceptibles au temps $t$, $I(t) =$ nombre d'infectés et $R(t) =$ nombre de 'remis' ({\em recovered}) :
  $$
  \left\{ \begin{array}{rcl} 
@@ -61,6 +66,11 @@ $$
   \dot I & = & r S I - a I \\
   \dot R & = & a I \\
  \end{array} \right.
+ $$
+ La fonction $F$ est alors
+ $$
+ F\left(\begin{array}{c} y_1 \\ y_2 \\ y_3 \end{array}\right) 
+ = \left(\begin{array}{c} -r y_1 y_2 \\ r y_1 y_2 - a y_2 \\ a y_2 \end{array}\right).
  $$
  Un tel modèle est dit à compartiments, les compartiments étant les populations d'effectifs respectifs $S$, $I$ et $R$. 
 \end{description}
@@ -173,74 +183,73 @@ $$
 \begin{description}
   \item[Points d'équilibre:] $y^* = 0$ et $y^* = K := r/c$ sont des points d'équilibre car alors $\dot y = F(y^*) = 0$.
   \item[Solution pour $y_0 \in \{0, K\}$:] la fonction $y(t)$ reste constante (car $\dot y(t) \equiv 0$).
-  \item[Solution pour $0 < y_0 < K$:] on obtient une solution de cette équation en remarquant que, pour $t$ tel que $0 < y(t) < K$, \eqref{eq:verhulst} est équivalente à 
+  \item[Solution pour $0 < y_0 < K$:] on obtient une solution de cette équation en remarquant que
   $$
-  r = \frac{\dot y}y + cy \qquad \Leftrightarrow \qquad y = \frac{\dot y}{r - cy}
+  r = \frac{\dot y}y + cy \qquad \Leftrightarrow \qquad y = \frac{\dot y}{r - cy},
   $$
-  donc
+  de plus, pour $t$ proche de 0, par continuité de $y$, on a $0 < y(t) < K$ et donc \eqref{eq:verhulst} est équivalente à 
   \begin{equation} \label{eq:verhulstSolution}
   r 
   = \frac{\dot y}{y} + \frac{c \dot y}{r - cy}
   = \frac{\partial}{\partial t} \left(\log y - \log (r - cy) \right)
-  = \frac{\partial}{\partial t} \left(\log \left(\frac{y}{r - cy}\right)\right).
+  = \frac{\partial}{\partial t} \left(\log \left(\frac{y}{r - cy}\right)\right),
   \end{equation}
-  En supposant que $0 < y < K$, on obtient comme solution 
-  \begin{align*}
-    \log \left(\frac{y}{r - cy}\right) & = rt + \log b
-    \qquad \Leftrightarrow \qquad 
-    \frac{y}{r - cy} = b e^{rt}
-    \qquad \Leftrightarrow \qquad
-    y(1 + c b e^{rt}) = r b e^{rt} \\
-    \Leftrightarrow \qquad 
-    y = \frac{rb e^{rt}}{1 + cb e^{rt}} & = \frac{K a_0 e^{rt}}{1 + a_0 e^{rt}}
-    \qquad \text{avec } a_0 = cb.
-  \end{align*}
-  La forme de cette solution lui donne également le nom de modèle logistique. \\
-  Le paramètre $a_0$ étant fixé par la condition initiale $y(0) = y_0$ : 
+  soit
+  $$  \log \left(\frac{y}{r - cy}\right) = rt + \log b
+  \qquad \Leftrightarrow \qquad 
+  \frac{y}{r - cy} = b e^{rt}
+  \qquad \Leftrightarrow \qquad
+  y(1 + c b e^{rt}) = r b e^{rt} \\
   $$
-  a_0 = \frac{y_0}{K-y_0} > 0 \qquad (\text{car } 0  < y_0 < K).
-  $$
-  On vérifie ainsi que $y(t)$ est croissante et que 
-  $$
-  \dot y(t) = \frac{Ka_0 r e^{rt}}{(1 + a_0 e^{rt})^2} > 0, 
-  \qquad 
+  soit encore
+  \begin{equation} \label{eq:solutionVerhulst}
+    y = \frac{rb e^{rt}}{1 + cb e^{rt}} = \frac{K a_0 e^{rt}}{1 + a_0 e^{rt}}
+  \end{equation}
+  avec $a_0 = cb > 0$.
+  La forme de cette solution lui donne également le nom de modèle logistique. 
+  
+  On remarque que
+  \begin{equation} \label{eq:verhulstLimites}
   \lim_{t \to -\infty} y(t) = 0, 
   \qquad
   \lim_{t \to \infty} y(t) = K
+  \end{equation}
+  et que $y(t)$ est croissante :
   $$
-  donc que $0 < y(t) < K$ pour tout $t \in \Rbb$ : c'est donc une solution maximale sur $\Rbb$. 
-  \item[Solution $y_0 < 0$ ou $y_0 > K$ :] on étudie ces cas de façon analogue au cas $y_0 \in ]0; K[$ en remarquant que pour une fonction $f$ dérivable possiblement négative 
+  \dot y(t) = \frac{Ka_0 r e^{rt}}{(1 + a_0 e^{rt})^2} > 0, 
   $$
-  \frac{\dot f}{f} = \frac{\partial}{\partial t} \log |f|
+  donc que $0 < y(t) < K$ pour tout $t \in \Rbb$ : \eqref{eq:solutionVerhulst} est donc une solution maximale sur $\Rbb$. 
+  \item[Solution $y_0 < 0$ ou $y_0 > K$ :] \textcolor{gray}{on peut étudier ces cas de façon analogue au cas $y_0 \in ]0; K[$ en remarquant que pour une fonction $f$ dérivable possiblement négative ${\dot f}/{f} = \partial t \log |f|$.} \\
+  On remarque que la solution \eqref{eq:solutionVerhulst}  vérifie l'ODE $\dot y = y(r - cy)$ quelque soit le signe de $y(t)$, pour peu que $1 + a_0 e^{rt} \neq 0$, c'est à dire 
   $$
-  et que donc la forme de la solution \eqref{eq:verhulstSolution} reste valide : 
+  t \neq t_* = -\frac1r \log(-a_0).
   $$
-  y(t) = \frac{K a_0 e^{rt}}{1 +  a_0 e^{rt}}
+  \eqref{eq:solutionVerhulst} est donc une solution maximale sur $\Rbb \setminus \{t^*\}$ pour $y_0 < 0$ comme pour $y_0 > K$. \\
+  On remarque qu'on a alors
   $$
-  (et donc $1 + a_0 e^{rt} \neq 0$) mais avec
-  $$
+  y(0) = \frac{K a_0}{1 + a_0}
+  \qquad \Leftrightarrow \qquad
   a_0 = \frac{y_0}{K-y_0} < 0
-  \qquad \Rightarrow \qquad
-  t \neq t_* = -\frac1r \log(-a_0),
   $$
-  qui est donc une solution maximale sur $\Rbb \setminus \left\{t_*\right\}$ pour $y_0 < 0$ comme pour $y_0 > K$. \\
-  On remarque de plus que
+  et que, par conséquent, $y(t)$ est strictement décroissante puisque
   $$
-  \dot y(t) = \frac{K a_0 r e^{rt}}{(1 + a_0 e^{rt})^2}  < 0
+  \dot y(t) = \frac{K a_0 r e^{rt}}{(1 + a_0 e^{rt})^2}  < 0.
   $$
-  et que
+  Comme enfin, les limites \eqref{eq:verhulstLimites} sont toujours valides et que
   \begin{align*}
     y_0 & < 0 & \Rightarrow \quad |y_0| & < |K - y_0| & 
     \Rightarrow \quad |a_0| & < 1 & \Rightarrow \quad t_* & > 0, \\
     y_0 & > K & \Rightarrow \quad |y_0| & > |K - y_0| & 
-    \Rightarrow \quad |a_0| & > 1 & \Rightarrow \quad t_* & < 0.
+    \Rightarrow \quad |a_0| & > 1 & \Rightarrow \quad t_* & < 0,
   \end{align*}
-  
+  on en déduit les comportements décrits dans la figure suivante :  
+  $$
   \begin{tabular}{cc}
-    \begin{tabular}{p{0.2\textwidth}}
-      \textcolor{red}{$y_0 > K$}
-      
-      \bigskip
+    \begin{tabular}{c}
+      \textcolor{red}{$y_0 > K$} \\
+      ~ \\
+      $0 < y_0 < K$ \\
+      ~ \\
       \textcolor{darkgreen}{$y_0 < K$}
     \end{tabular}
     &
@@ -248,15 +257,15 @@ $$
       \includegraphics[width=.5\textwidth, trim=0 10 20 30, clip=]{Verhulst-solutions}
     \end{tabular}
   \end{tabular}
-  
-  On doit donc distinguer deux cas.
+  $$
+  On distingue donc deux comportements en temps long différents partant de $y(0) = y_0$ : 
   \begin{itemize}
-    \item $y(0) = y_0 > K$ (soit $t^* < 0$) : dans ce cas, on a toujours
+    \item si $y(0) = y_0 > K$ (soit $t^* < 0$), on a toujours
     $$
     \lim_{t \to \infty} y(t) = K,
     $$
-    et $y^* = K$ est un équilibre stable.
-    \item $y(0) = y_0 < 0$ (soit $t^* > 0$) : la limite précédente reste vraie, mais, puisque
+    et $y^* = K$ est un équilibre stable ;
+    \item si $y(0) = y_0 < 0$ (soit $t^* > 0$), la limite précédente reste vraie, mais, puisque
     $$
     \lim_{t \uparrow t^*} y(t) 
     = \lim_{t \uparrow -\log(-a_0) / r}  \frac{K a_0 e^{rt}}{1 +  a_0 e^{rt}}

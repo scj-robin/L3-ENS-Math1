@@ -5,13 +5,13 @@
 On considère une fonction 
 $$
 \begin{array}{rrcl}
-  F : & \Rbb & \mapsto & \Rbb^2 \\
-  & (x, y) & \to & F(t) 
+  f : & \Rbb & \mapsto & \Rbb^2 \\
+  & (x, y) & \to & f(t) 
   = \left(\begin{array}{c} x(t) \\ y(t) \end{array}\right)
   = \left(\begin{array}{c} t - t^3 \\ t^2 - t^4 \end{array}\right)
 \end{array}.
 $$
-\'Etudier cette fonction et tracer son graphe $F(\Rbb)$.
+\'Etudier cette fonction et tracer son graphe $f(\Rbb)$.
 \solution{
   \begin{description}
     \item[Symétrie :] on remarque que
@@ -33,7 +33,7 @@ $$
     \item[Dérivées :] le signe des dérivées est donné par
     \begin{align*}
       \dot x(t) & \geq 0 & & \Leftrightarrow & 1 - 3t^2 & \geq 0 & & \Leftrightarrow & t & \leq 1/\sqrt{3}, \\
-      \dot y(t) & \geq 0 & & \Leftrightarrow & 2t(1 - t^2) & \geq 0 & & \Leftrightarrow & t & \leq 1/\sqrt{2}.
+      \dot y(t) & \geq 0 & & \Leftrightarrow & 2t(1 - 2t^2) & \geq 0 & & \Leftrightarrow & t & \leq 1/\sqrt{2}.
     \end{align*}
     \item[Tableau de variation :] on a donc 
 %     en complétant la partie $t \in \Rbb^-$ par symétrie, 
@@ -58,7 +58,7 @@ $$
     \end{array}
     $$
     
-    \item[Graphe $F(\Rbb)$ :] on a ainsi
+    \item[Graphe $f(\Rbb)$ :] on a ainsi
     $$
     \includegraphics[width=.5\textwidth]{CourbeParametreeDim2}
     $$
