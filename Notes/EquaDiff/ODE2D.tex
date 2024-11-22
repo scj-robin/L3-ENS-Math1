@@ -16,7 +16,7 @@ $$
   $(\lambda_1, \lambda_2) \in \Rbb, (\lambda_1, \lambda_2) > 0 :$ & point instable ou 'source' ; \\
   $(\lambda_1, \lambda_2) \in \Rbb, \lambda_1 > 0 , \lambda_2 < 0 :$ & point selle ; \\
   $(\lambda_1, \lambda_2) \in \Cbb, \Re(\lambda_1, \lambda_2) < 0 :$ & point de concentration ou 'puit en spirale' ; \\
-  $(\lambda_1, \lambda_2) \in \Cbb, \Re(\lambda_1, \lambda_2) > 0 :$ & point de repulsion ou 'source en spirale'. \\
+  $(\lambda_1, \lambda_2) \in \Cbb, \Re(\lambda_1, \lambda_2) > 0 :$ & point de répulsion ou 'source en spirale'. \\
   $(\lambda_1, \lambda_2) \in \Cbb \setminus \Rbb:$ & voir ci-dessous.
 \end{tabular}
 $$
@@ -148,13 +148,6 @@ F_1(x, y) h_1'(x) = -F_2(x, y) h_2'(y)
 \qquad \Leftrightarrow \qquad
 \frac{F_1(x, y)}{F_2(x, y)} = -\frac{h_2'(y)}{h_1'(x)}.
 $$
-On peut donc déterminer un hamiltonien de la forme $H(x, y) = h_1(x) + h_2(y)$ si on peut trouver $f$ et $g$ telles que
-$$
-\frac{F_1(x, y)}{F_2(x, y)} = \frac{g(y)}{f(x)}.
-$$
-Il reste alors à déterminer des fonctions $h_1$ et $h_2$ satisfaisant
-$$
-h'_1(x) = k f(x), \qquad
-h'_2(y) = - k g(y).
-$$
+Il reste alors à trouver des primitives de $h_1'$ et $h_2'$ pour déterminer un hamiltonien de la forme $H(x, y) = h_1(x) + h_2(y)$.
+
 On utilisera cette méthode pour caractériser les cycles du modèle de Lotka-Volterra.

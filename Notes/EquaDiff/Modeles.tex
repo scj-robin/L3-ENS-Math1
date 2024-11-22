@@ -57,6 +57,13 @@ $$
 $$
 
 %-------------------------------------------------------------------------------
+\paragraph*{Champ des vecteurs gradients.}
+On peut également déterminer les direction du vecteur gradient $(\dot x, \dot y)$ en fonction des positions respectives de $x$ et $y$ par rapport à 1. Cette étude se résume dans la figure suivante.
+$$
+\includegraphics[width=.4\textwidth]{LotkaVolterra-ChampGradient}
+$$
+
+%-------------------------------------------------------------------------------
 \paragraph*{Nature des équilibres.}
 Pour déterminer la nature des équilibres, on étudie la matrice jacobienne
 $$
@@ -102,12 +109,12 @@ Les deux valeurs propres sont des imaginaires pures : on peut chercher un hamilt
 \bigskip
 On remarque que 
 $$
-\frac{F_1(x, y)}{F_2(x, y)} = -\frac{rx(1-y)}{my(1-x)} = \frac{g(y)}{f(x)}
+\frac{F_1(x, y)}{F_2(x, y)} = -\frac{rx(1-y)}{my(1-x)} = - \frac{h_2'(y)}{h_1'(x)}
 $$
 où
 \begin{align*}
-f(x) = -m \frac{(1-x)}{x} = m \left(1 - \frac1x\right), \qquad
-g(y) = r \frac{(1-y)}{y} = r \left(\frac1y - 1\right).
+h_1'(x) = -m \frac{(1-x)}{x} = m \left(1 - \frac1x\right), \qquad
+h_2'(y) = r \frac{(1-y)}{y} = r \left(\frac1y - 1\right).
 \end{align*}
 En choisissant 
 \begin{align*}
@@ -205,8 +212,9 @@ $$
                 \end{array}\right..
   $$
 \end{enumerate}
-
-\dessin{Dessiner le champ de vecteurs $(\dot x, \dot y)$}
+$$
+\includegraphics[width=.4\textwidth]{SIR-ChampGradient}
+$$
 
 %-------------------------------------------------------------------------------
 \paragraph*{Points d'équilibres.}
@@ -260,25 +268,26 @@ et les vecteurs propres associés vérifient
   \item[pour $\lambda_1$:] 
   \begin{align*}
   \left\{\begin{array}{rcl}
-      -r x^* v & = & 0 \\
-      \lambda_2 v & = & 0 \\
+      -r x^* t & = & 0 \\
+      \lambda_2 t & = & 0 \\
     \end{array}\right.
     \qquad & \Rightarrow \qquad 
-    v = 0 &
+    t = 0 &
     \qquad & \Rightarrow \qquad 
-    \left[\begin{array}{c} u=1 \\ v=0 \end{array}\right].
+    v_1 = \left[\begin{array}{c} 1 \\ 0 \end{array}\right].
     \end{align*}
   \item[pour $\lambda_2$:]
     \begin{align*}
       \left\{\begin{array}{rcl}
-          -r x^* v & = & \lambda_2 u \\
-          \lambda_2 v & = & \lambda_2 v \\
+          -r x^* t & = & \lambda_2 s \\
+          \lambda_2 t & = & \lambda_2 t \\
         \end{array}\right.
         \qquad & \Rightarrow \qquad 
-        v = - \frac{\lambda_2}{rx^*} u &
+        t = - \frac{\lambda_2}{rx^*} s &
         \qquad & \Rightarrow \qquad 
-        \left[\begin{array}{l} u=1 \\ v=-\lambda_2/(rx^*) \end{array}\right].
+        v_2 = \left[\begin{array}{l} 1 \\ -\lambda_2/(rx^*) = a(1 -x^*)/(rx^*) \end{array}\right].
     \end{align*}  
+    On remarque que la seconde coordonnée de $v_2$ est positive ssi $x^* \geq 1$.
 \end{description}
 
 %-------------------------------------------------------------------------------
@@ -308,8 +317,7 @@ $$
 
 %-------------------------------------------------------------------------------
 \paragraph*{Devenir de la population.}
-On veut connaître les valeurs finales $(S_\infty, 0, R_\infty = N - S_\infty)$ partant d'un point $(S_0, I_0, 0)$. On se propose pour cela d'évaluer
-$\int_0^\infty I(t) \d t$ de deux manières différentes pour faire apparaître $S_\infty$.
+On veut connaître les valeurs finales $(S_\infty, 0, R_\infty = N - S_\infty)$ partant d'un point $(S_0, I_0, 0)$. On donne pour cela deux expressions de $\int_0^\infty I(t) \d t$ qui font intervenir $S_\infty$.
 \begin{enumerate}
   \item En reprenant la paramétrisation initiale, on remarque que, puisque
   $$
@@ -352,7 +360,6 @@ $$
 $$
 }
 Puisqu'on sait que $x_\infty  < 1$, on a $S_\infty < \rho$ : $S_\infty$ est donné par la plus petite valeur pour laquelle $f(x)$ vaut $S_0 e^{- N / \rho}$.
-
 On vérifie que cette valeur est bien atteinte par $f$ car
 $$
 0 

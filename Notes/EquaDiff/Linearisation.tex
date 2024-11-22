@@ -15,7 +15,7 @@
 \end{definition}
 
 \remark
-Les points d'équilibre $y^*$ sont les élément du noyau $\ker(A)$, i.e. les vecteurs propres associés à la valeur propre 0. En conséquence, si $\lambda = 0$ n'est pas valeur propre de $A$, il n'existe pas d'autre point stationnaire que $y^* = 0_n$.
+Les points d'équilibre $y^*$ sont les élément du noyau $\ker(A)$, i.e. les vecteurs propres associés à la valeur propre 0. En conséquence, {\sl si $\lambda = 0$ n'est pas valeur propre de $A$}, il n'existe pas d'autre point stationnaire que $y^* = 0_n$.
 
 %-------------------------------------------------------------------------------
 \paragraph*{Cas diagonalisable.}
@@ -37,9 +37,7 @@ Les points d'équilibre $y^*$ sont les élément du noyau $\ker(A)$, i.e. les ve
   $$
   avec
   $$
-  E(t) = \diag\left(e^{\lambda_1 t} \dots e^{\lambda_n t} \right)
-  \qquad \text{et} \qquad
-  z_0 = P^{-1} y_0.
+  E(t) = \diag\left(e^{\lambda_1 t} \dots e^{\lambda_n t} \right).
   $$
 \end{proposition}
 
@@ -57,7 +55,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
 \eproof
 
 %-------------------------------------------------------------------------------
-\begin{definition}{Exponentielle de matrice}
+\begin{definition}[Exponentielle de matrice]
   L'exponentielle matricielle est la fonction
   $$
   \begin{array}{rccc}
@@ -82,7 +80,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
 %-------------------------------------------------------------------------------
 \remarks
 \begin{enumerate}
-  \item La proposition \ref{prop:odeLineaireDiagonalisable} dit que, au prix du changement de base $z = P^{-1} y$, le système $\dot Y = A y$ est équivalent à $n$ équations différentielles linéaires unidimensionnelles.
+  \item La proposition \ref{prop:odeLineaireDiagonalisable} dit que, au prix du changement de base $z = P^{-1} y$, le système $\dot y = A y$ est équivalent à $n$ équations différentielles linéaires unidimensionnelles ($\dot z = D z$).
   \item La condition initiale $y_0$ se décompose sous la forme
   $$
   y_0 = P z_0 = \sum_i z_{i0} v_i
@@ -137,7 +135,7 @@ avec $z_0 = z(0) = P^{-1} y(0) = P^{-1} y_0$. La solution s'obtient en revenant 
   $$
   qui dépend de la condition initiale $y_0 = P z_0$.
   \end{itemize}
-  En conclusion, s'il existe au moins un $\lambda_i \geq 0$, un perturbation autour d'un point d'équilibre $y^* \in \ker(A)$ éloignera le système de $x_ *$ dans la direction $v_i$. A l'opposé, si toutes les $\lambda_i$ sont strictement négatives, quelque soit $y_0$, $\lim_{t \to \infty} y(t) = 0$ qui est donc le seul équilibre stable.
+  En conclusion, s'il existe au moins un $\lambda_i \geq 0$, un perturbation autour d'un point d'équilibre $y^* \in \ker(A)$ éloignera le système de $y^*$ dans la direction $v_i$. A l'opposé, si toutes les $\lambda_i$ sont strictement négatives, quelque soit $y_0$, $\lim_{t \to \infty} y(t) = 0$ qui est donc le seul équilibre stable.
 \end{enumerate}
 
 %-------------------------------------------------------------------------------
@@ -189,7 +187,7 @@ $$
 \begin{theorem}[Hartman-Grobman]
   Le point d'équilibre $y^*$ de l'ODE $\dot y = F(y)$ a la même nature que l'origine $0$ pour le système linéaire 
   $$
-  \dot y = J_{y^*}F \; . \; y
+  \dot y = (J_{y^*}F) \; . \; y
   $$
   à condition que toutes les valeurs propres de $J_{y^*}$ aient une partie réelle non nulle. \\
   En particulier, $y^*$ est stable si $\forall i: \Re(\lambda_i) < 0$.
