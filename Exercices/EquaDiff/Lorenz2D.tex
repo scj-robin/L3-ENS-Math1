@@ -1,47 +1,110 @@
 %-------------------------------------------------------------------------------
-\subsubsection{Equations de Lorenz en 2 dimensions} 
+\subsubsection{Système de Lorenz en 2 dimensions} 
 %-------------------------------------------------------------------------------
 
-On considère une version reduite des équations de Lorenz en deux dimensions, c'est-à-dire à un couple $(x(t), y(t))_{t \geq 0}$ 
-\begin{itemize}
-  \item satisfaisant les conditions initiales
-  $$
-  x(0) = x_0, \qquad y(0) = y_0
-  $$
-  \item et vérifiant le système d'équations différentielles ordinaires
-  \begin{equation} \label{eq:lorenz2D}
-    \left\{\begin{array}{rcl}
-            \dot x & = a x - xy \\
-            \dot y & = x^2 - by
-          \end{array}\right.
-  \end{equation}
-  où les coefficients $a$ et $b$ sont strictement positifs.
-\end{itemize}
+On considère une version réduite à deux dimensions du système de Lorenz, c'est-à-dire à un couple $(x(t), y(t))_{t \geq 0}$ satisfaisant les conditions initiales
+$$
+x(0) = x_0, \qquad y(0) = y_0
+$$
+et vérifiant le système d'équations différentielles ordinaires
+\begin{equation} \label{eq:lorenz2D}
+  \left\{\begin{array}{rcl}
+    \dot x & = a x - xy \\
+    \dot y & = x^2 - by
+  \end{array}\right.
+\end{equation}
+où les coefficients $a$ et $b$ sont strictement positifs.
 
 \bigskip
 \paragraph{Détermination des points stationnaires et de leur stabilité.}
 \begin{enumerate}
-  \item \todo{}
+  \item Montrer que le système admet trois points stationnaires.
   \solution{
-  \todo{}
+    En annulant simultanément
+    $$
+    F_1(x, y) = a x - xy, \qquad F_2(x, y) = x^2 - by,
+    $$
+    on détermine que le vecteur gradient est nul aux points 
+    $$
+    O = (0, 0), \qquad A = (\sqrt{ab}, a) \quad \text{et} \quad B = (-\sqrt{ab}, a).
+    $$
+  }
+  \item Déterminer la matrice Jacobienne du système.
+  \solution{
+  On a
+  $$
+  J f = \left[\begin{array}{cc} a-y & -x \\ 2x & -b \end{array} \right].
+  $$
+  }
+  \item En déduire la nature (stable ou instable) de chacun des points stationnaires.
+  \solution{
+  \begin{description}
+    \item[$O = (0, 0)$ :] On a
+    $$
+    J_0 f = \left[\begin{array}{cc} a & 0 \\ 0 & -b \end{array} \right],
+    $$
+    dont les valeurs propres ($\lambda_1 = a, \lambda_2 = b)$ sont de signes opposés : $O$ est donc instable. Plus précisément, il est instable le long de l'axe des $x$ et stable le long de l'axe des $y$.
+    \item[$A = (\sqrt{ab}, a)$ :] On a
+    $$
+    J_A f = \left[\begin{array}{cc} 0 & -\sqrt{ab} \\ 2\sqrt{ab} & -b \end{array} \right],
+    $$
+    dont le polynôme caractéristique
+    $$
+    P_A(\lambda) = \lambda^2 + b \lambda + 2 ab
+    $$
+    a pour discriminant $\Delta = b^2 - 8 ab$. 
+    \begin{itemize}
+      \item Si $0 < a < b/8$, $\Delta$ est positif et les valeurs propres sont 
+      $$
+      \lambda_1 = \frac12 \left(-b + \sqrt{\Delta}\right) 
+      \quad \text{et} \quad
+      \lambda_2 = \frac12 \left(-b - \sqrt{\Delta}\right).
+      $$
+      comme de plus $\Delta < b^2$, les deux valeurs propres sont négatives, donc $A$ est stable.
+      \item Si $a > b/8$, $\Delta$ est négatif et les valeurs propres sont 
+      $$
+      \lambda_1 = \frac12 \left(-b + i \sqrt{|\Delta|}\right) 
+      \quad \text{et} \quad
+      \lambda_2 = \frac12 \left(-b - i \sqrt{|\Delta|}\right),
+      $$      
+      dont la partie entière commune est $-b < 0$, donc $A$  est également stable.
+    \end{itemize}
+    \item[$B = (-\sqrt{ab}, a)$ :] On a alors    
+    $$
+    J_B f = \left[\begin{array}{cc} 0 & \sqrt{ab} \\ -2\sqrt{ab} & -b \end{array} \right]
+    $$
+    dont le polynôme caractéristique est le même que celui de $J_A f$ : $P_B(\lambda) = P_A(\lambda)$. $B$ est donc de même nature que $A$.
+  \end{description}
   }
 \end{enumerate}
 
 \bigskip
-\paragraph{Question subsidiaire.}
-\todo{Quid si on lève la contrainte $a, b > 0$}
+\paragraph{Cas de paramètres négatifs.}
+On étudie maintenant le cas où les paramètres $a$ et $b$ peuvent prendre des valeurs négatives. On ne s'attardera pas sur les cas limites $a = 0$ et/ou $b = 0$.
+
+\bigskip
 \begin{enumerate}
-  \item \todo{}
+  \setcounter{enumi}{3}
+  \item Déterminer le ou les points stationnaires et étudier sa (leur) stabilité quand $a$ est négatif ($b$ étant toujours strictement positif).
+  \solution{
+    Si $a < 0$ (et $b > 0$), alors $ab < 0$ donc $O$ est le seul point stationnaire, et les deux valeurs propres de $J_O f$ sont négatives, donc $O$ est stable.
+  }
+  \item Mener la même étude pour $a > 0$ et $b < 0$, d'une part, et pour $a < 0$ et $b < 0$, d'autre part.
   \solution{
   \begin{description}
-    \item[$a < 0, b > 0$.] $(0, 0)$ seul point stationnaire, stable.
-    \item[$a > 0, b < 0$.] $(0, 0)$ seul point stationnaire, instable. 
-    \item[$a< 0, b < 0$.] $(0, 0)$, $(\sqrt{ab}, a)$, $(-\sqrt{ab}, a)$ stationnaires.
+    \item[$a > 0, b < 0$ :] Alors $ab < 0$ donc $O$ est le seul point stationnaire, mais les deux valeurs propres de $J_O f$ sont positives, donc $O$ est instable. 
+    \item[$a < 0, b < 0$ :] Alors $ab > 0$ donc $O$, $A$ et $B$ sont stationnaires.
     \begin{itemize}
-      \item $(0, 0)$ instable.
-      \item 
+      \item Le valeurs propres de $J_O f$ sont alors de signes opposés, donc $O$ est instable.
+      \item Le discriminant de $P_A(\lambda)$ (et donc de $P_B(\lambda)$) vaut alors $\Delta = b^2 - 8ab > b^2 > 0$. Les deux valeurs propres
+      $$
+      \lambda_1 = \frac12 \left(-b + \sqrt{\Delta}\right) 
+      \quad \text{et} \quad
+      \lambda_2 = \frac12 \left(-b - \sqrt{\Delta}\right).
+      $$
+      sont alors de signe opposé : $A$ et $B$ sont donc instables.
     \end{itemize}
   \end{description}
-  \todo{}
   }
 \end{enumerate}
+
