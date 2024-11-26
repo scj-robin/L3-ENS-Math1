@@ -1,0 +1,47 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Equations de Lorenz en 2 dimensions} 
+%-------------------------------------------------------------------------------
+
+On considère une version reduite des équations de Lorenz en deux dimensions, c'est-à-dire à un couple $(x(t), y(t))_{t \geq 0}$ 
+\begin{itemize}
+  \item satisfaisant les conditions initiales
+  $$
+  x(0) = x_0, \qquad y(0) = y_0
+  $$
+  \item et vérifiant le système d'équations différentielles ordinaires
+  \begin{equation} \label{eq:lorenz2D}
+    \left\{\begin{array}{rcl}
+            \dot x & = a x - xy \\
+            \dot y & = x^2 - by
+          \end{array}\right.
+  \end{equation}
+  où les coefficients $a$ et $b$ sont strictement positifs.
+\end{itemize}
+
+\bigskip
+\paragraph{Détermination des points stationnaires et de leur stabilité.}
+\begin{enumerate}
+  \item \todo{}
+  \solution{
+  \todo{}
+  }
+\end{enumerate}
+
+\bigskip
+\paragraph{Question subsidiaire.}
+\todo{Quid si on lève la contrainte $a, b > 0$}
+\begin{enumerate}
+  \item \todo{}
+  \solution{
+  \begin{description}
+    \item[$a < 0, b > 0$.] $(0, 0)$ seul point stationnaire, stable.
+    \item[$a > 0, b < 0$.] $(0, 0)$ seul point stationnaire, instable. 
+    \item[$a< 0, b < 0$.] $(0, 0)$, $(\sqrt{ab}, a)$, $(-\sqrt{ab}, a)$ stationnaires.
+    \begin{itemize}
+      \item $(0, 0)$ instable.
+      \item 
+    \end{itemize}
+  \end{description}
+  \todo{}
+  }
+\end{enumerate}
