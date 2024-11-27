@@ -1,8 +1,8 @@
 %-------------------------------------------------------------------------------
-\subsubsection{Processus de Galton–Watson quadratique \todo{}} 
+\subsubsection{Processus de Galton-Watson quadratique} 
 %-------------------------------------------------------------------------------
-  On considère un processus de Bienaymé-Galton-Watson partant d'une population de taille 1 et dans laquelle le nombre de descendants par individu suit la loi suivante :
-  $$=
+  On consid\`ere un processus de Bienaym\'e-Galton-Watson partant d'une population de taille 1 et dans laquelle le nombre de descendants par individu suit la loi suivante :
+  $$
   \Pr\{X = k\} = \left\{
     \begin{array}{ll}
       1 - a - b & \text{si $k = 0$} \\
@@ -11,38 +11,41 @@
     \end{array}\right..
   $$
   \begin{enumerate}
-    \item Montrer que la fonction génératrice de $X$ est
+    \item Montrer que la fonction g\'en\'eratrice de $X$ est
     $$
-    f(s) = 1 - a - b + as + bs^2.
+    f_X(s) = 1 - a - b + as + bs^2.
     $$
-    \solution{\todo{}}
-    \item En déduire le nombre de descendants moyen par individu $m$
+    \solution{
+    Par d\'efinition, on a
+    \begin{align*}
+        f_X(s) = \Esp(s^X) = (1 - a - b) s^0 + a s + b s^2 = (1 - a - b) + as + b s^2.
+    \end{align*}
+    }
+    \item En d\'eduire que le nombre de descendants moyen par individu est
     $$
     m = a + 2b.
     $$
-    \solution{On a $f'_X(s) = a + 2bs$, soit $m = f'_X(1) = a + 2b$.}
-    \item A quelle condition, la probabilité d'extinction de la population est elle
-    $$
-    q = b/(1 - a - b) ?
-    $$
-    \solution{La probabilité d'extinction vérifie $q = f(q)$, soit
+    \solution{
+    On sait que $m = f'_X(1)$, or on a $f'_X(s) = a + 2bs$, soit $m = f'_X(1) = a + 2b$.
+    }
+    \item Donner la condition pour que la probabilit\'e d'extinction $q$ soit strictement inf\'erieure \`a 1 et, dans ce cas, donner sa valeur.
+    \solution{
+    La probabilit\'e d'extinction v\'erifie $q = f(q)$, soit
     $(1 - a -b) + (a-1)q + bq^2 = 0$
     dont le discriminant est
     $$
     \Delta = (a-1)^2 - 4 b (1 - a -b) = ... = (a + 2b - 1)^2 = (m-1)^2
     $$
-    d'où
+    d'o\`u
     $$
     q 
     = \frac{(1-a) \pm (m-1)}{2(1 - a - b)}
     = \left\{\begin{array}{ll}
       1 & (+) \\
-      b/(1- a - b) & (-).
+      b/(1- a - b) & (-)
     \end{array}\right..
     $$
-    $b/(1- a - b)$ est la plus petite solution (donc la probabilité d'extinction) ssi 
+    $b/(1- a - b)$ est la plus petite solution (donc la probabilit\'e d'extinction) ssi 
     $b/(1- a - b) < 1$, soit $a + 2b > 1$, c'est-à-dire $m > 1$.
-    \\
-    \todo{à verifier}
     }
   \end{enumerate}
