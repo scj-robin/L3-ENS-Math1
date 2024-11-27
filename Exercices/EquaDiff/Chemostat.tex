@@ -1,5 +1,88 @@
 %-------------------------------------------------------------------------------
-\subsubsection{Chemostat}
+\subsubsection{Chemostat \todo{}}
 %-------------------------------------------------------------------------------
 
-Voir \url{https://umr5558-shiny.univ-lyon1.fr/web/}
+% Voir \url{https://umr5558-shiny.univ-lyon1.fr/web/}
+
+On considère le modèle du chemostat qui décrit l'évolution d'une population bactérienne au cours du temps dans un milieu alimenté par un flux constant de nutriment. \todo{décrire un peu le sytème}
+On note
+\begin{itemize}
+  \item $x(t)$ la taille de la population bactérienne au temps $t$ et
+  \item $y(t)$ la quantité de nutriments présente dans le milieu au temps $t$.
+\end{itemize}
+Après simplification, le système différentiel contrôlant l'évolution de ces deux variables au cours du temps peut s'écrire
+$$
+\left\{\begin{array}{rcl} 
+        \dot x & = & \displaystyle{\frac{a x y}{1 + y} - x}, \\
+        \\
+        \dot y & = & \displaystyle{- \frac{x y}{1 + y} - y + b}. 
+       \end{array}
+\right.
+$$
+
+\begin{enumerate}
+  \item \todo{Interpréter le modèle}.
+  \solution{
+  \todo{}
+  }
+  \item Déterminer les points stationnaires du système.
+  \solution{
+  On annule simultanément $F_1(x, y) = xy/(1+y) - $ et $F_2(x, y) = -xy/(1+y) -y +b$ et on obtient deux points d'équilibres : 
+  $$
+  A = (0, b) \qquad \text{et} \qquad B = \left(ab - \frac{a}{a - 1}, \frac1{a - 1}\right).
+  $$
+  }
+  \item Donner les conditions sur $a$ et $b$ qui assurent que les deux équilibres correspondent à des états distincts biologiquement raisonnables, c'est-à-dire $0 \leq x < +\infty$ et $0 \leq y < +\infty$.
+  \solution{
+    Les coordonnées de $B$ sont positives et finies si $a > 1$ et $b(a-1) \geq  1$.
+    Sous ces conditions, les coordonnées de $A$ sont également positives et finies. \\
+    On remarque de plus que $A = B$ pour $b(a-1) =  1$. Pour satisfaire les deux conditions, il faut donc que
+    $$
+    a > 1 \qquad \text{et} \qquad b(a-1) >  1.
+    $$
+    }
+  \item Déterminer la matrice jacobienne du système.
+  \solution{
+    Puisque la dérivée de $y/(1+y)$ est $1/(1+y)^2$, on a
+    $$
+    J = \left(\begin{array}{cc}
+              \displaystyle{\frac{ay}{1+y} - 1} & \displaystyle{\frac{ax}{(1+y)^2}} \\
+              \displaystyle{-\frac{y}{1+y}} & \displaystyle{-\frac{x}{(1+y)^2} - 1} 
+        \end{array}\right).
+    $$
+  }
+  \item \'Etudier la stabilité de chacun des points d'équilibre.
+  \solution{
+  \begin{description}
+    \item[$A = (0, b)$ :] La jacobienne vaut alors
+    $$
+    J_A = \left(\begin{array}{cc}
+                \displaystyle{\frac{ab}{1+b} - 1} & \displaystyle{0} \\
+                \displaystyle{-\frac{b}{1+b}} & \displaystyle{- 1} 
+          \end{array}\right).
+    $$
+    avec 
+%     \begin{align*}
+%       \tr(J_A) & = \frac{ab}{1+b} - 2 = \frac{}{1+b}, \\
+%       \det(J_A) & = 1 - \frac{ab}{1+b} = \frac{1 - b(a-1)}{1+b} \leq 0
+%     \end{align*}
+    $$
+    \det(J_A) = 1 - \frac{ab}{1+b} = \frac{1 - b(a-1)}{1+b} < 0
+    $$
+    du fait des conditions imposées aux paramètres $a$ et $b$. Les deux valeurs propres de $J_A$ sont donc de signes opposés : $A$ est un équilibre instable.
+    \item[$B = (x^* = ab - a/(1-a), y^* = 1/(1-a))$ :] La jacobienne vaut alors
+    $$
+    J_B = \left(\begin{array}{cc}
+                \displaystyle{0} & \displaystyle{\frac{ax^*}{(1+y^*)^2}} \\
+                \displaystyle{-\frac1a} & \displaystyle{-\frac{x^*}{(1+y^*)^2} - 1} 
+          \end{array}\right).
+    $$
+    avec 
+    \begin{align*}
+      \tr(J_B) & = -\frac{x^*}{(1+y^*)^2} - 1 < 0, &
+      \det(J_B) & =  \frac{x^*}{(1+y^*)^2} >  0.
+    \end{align*}
+    Les deux valeurs propres de $J_B$ sont donc de même signe (car $\det(J_B) > 0$) et sont négatives (car $\tr(J_B) < 0$) : $B$ est un équilibre stable.
+  \end{description}
+  }
+\end{enumerate}

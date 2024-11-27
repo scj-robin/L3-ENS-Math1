@@ -39,7 +39,7 @@ lines3D(x=traj3[, 2], y=traj3[, 3], z=traj3[, 4])
 scatter3D(x=statPoint3[, 1], y=statPoint3[, 2], z=statPoint3[, 3], pch=20, col=1, add=TRUE)
 
 ################################################################################
-# Système 3D
+# Système 2D
 parm2 <- list(a=27, b=8/3)
 Lorenz2 <- function(t, y, parm){
   list(c(parm$a*y[1] - y[1]*y[2], 
