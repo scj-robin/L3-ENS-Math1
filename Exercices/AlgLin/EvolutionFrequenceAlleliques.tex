@@ -1,48 +1,63 @@
 %-------------------------------------------------------------------------------
-\subsubsection{\'Evolution de fréquences alléliques \todo{Bof : objectif pas clair}}
+\subsubsection{\'Evolution de fréquences alléliques}
 %-------------------------------------------------------------------------------
 
+\paragraph{Dynamique de fréquences alléliques.}
+Dans une population diploïde panmictique, on s’intéresse à un gène existant sous la forme de $m$ allèles. On désigne par $p_i(t)$ la proportion du pool gamétique portant l’allèle $i$  à la génération $t$ et $p(t) = (p_i(t))_{1 \leq i \leq m}$ le vecteur des fréquences alléliques à la génération $t$, qui vérifie $\sum_{1 \leq i \leq m}p_i(t) = 1$. 
+
+On définit la matrice, supposée symétrique, $A = [a_{ij}]_{1 \leq i, j \leq p}$ où les $a_{ij}$ sont tous positifs ou nuls, mais non tous nuls. La dynamique des fréquences alléliques est donnée par
+\begin{align} \label{eq:dynFreqModele}
+  \forall \; i = 1 \dots m: & & 
+  p_i(t+1) & = V(t)^{-1} p_i(t) \sum_{j=1}^m a_{ij} p_j(t) \\
+  \text{avec} & & 
+  V(t) & = \sum_{i=1}^m \sum_{j=1}^m a_{ij} p_i(t) p_j(j) = p(t)^\top \; A \; p(t), \nonumber
+\end{align}
+de sorte que $\sum_{1 \leq i \leq m} p_i(t+1) = 1$.
+
 \bigskip
-\todo{Bof : voir {\tt DynPop-MailAL-30oct2022} pour une preuve alternative de la fin.}
-
-Dans une population diploïde panmictique, on s’intéresse à un gène existant sous la forme de
-$m$ allèles. On désigne par $p_i$ la proportion du pool gamétique portant l’allèle $i$ ($\sum_i p_i = 1$) et par $p'_i$ cette proportion à la génération qui suit. La dynamique des fréquences alléliques est donnée par
-\begin{equation} \label{eq:dynFreqModele}
-  V(p) \; p'_i = p_i \sum_{j=1}^m a_{ij} p_j 
-  \qquad \text{où} \qquad
-  V(p) = \sum_i \sum_j a_{ij} p_i p_j
-\end{equation}
-(de sorte que $\sum_i p'_i = 1$).
-On définit de plus la matrice, supposée symétrique, $A = [a_{ij}]$ où les $a_{ij}$ sont positifs ou nuls, mais non tous nuls.
-
 \begin{enumerate}
-  \item Interpréter l'équation \eqref{eq:dynFreqModele}. Pourquoi $A$ est-elle supposée symétrique ?
-  \solution{$a_{ij}$ = avantage relatif du génotype $(A_i, A_j)$, symétrique par nature. \\
-  Deux remarques : 
-  \begin{itemize}
-  \item $V(p) = p^\top A p$ est l'avantage moyen d'un descendant, du fait de la reproduction panmictique ; 
-  \item ce modèle est paramétré à une constante près, c'est-à-dire qu'on aboutit à la même dynamique en remplaçant $A$ par $B = k A$ pour n'importe quel $k > 0$.
-  \end{itemize}
+  \item Interpréter l'équation \eqref{eq:dynFreqModele}. Pourquoi $A$ est-elle supposée symétrique ? Que représente $V(t)$ ?
+  \solution{$a_{ij}$ représente l'avantage relatif du génotype $(A_i, A_j)$, qui est symétrique par nature. \\
+  $V(p) = p^\top A p$ est l'avantage moyen d'un descendant, du fait de la reproduction panmictique. 
+  
+  \remark 
+  Ce modèle est paramétré à une constante près, c'est-à-dire qu'on aboutit à la même dynamique en remplaçant $A$ par $B = k A$ pour n'importe quel $k > 0$.
   }
 \end{enumerate}
 
 \bigskip
-\noindent On suppose maintenant qu'il existe un équilibre $p^* = [p^*_1, \dots p^*_m]^\top$ non trivial ($\forall i, p^*_i \neq 0$). On définit la viabilité à l'équilibre par $V^* = V(p^*) > 0$.
+\paragraph{Caractérisation d'un équilibre.}
+On suppose à partir de maintenant qu'il existe un équilibre $p^* = (p^*_i)_{1 \leq i \leq m}$ pour le système \eqref{eq:dynFreqModele}, c'est-à-dire vérifiant : 
+$$
+p(t) = p^* \qquad \Rightarrow \qquad p(t+1) = p^*,
+$$
+et qu'il est ``non trivial'', c'est-à-dire dans lequel tous les allèles sont présents : 
+$$
+\forall \; i = 1 \dots m: \qquad p^*_i > 0
+$$
+et on note $V^* = V(p^*) > 0$.
 
 \begin{enumerate}
   \setcounter{enumi}{1}
-  \item Montrer que, pour tout $i$, $V^* = \sum_j a_{ij} p^*_j$.
-  \solution{L'équilibre $p^*$ est un point stationnaire de \eqref{eq:dynFreqModele}, donc
+  \item Montrer que, pour tout $i$ : $\sum_{1 \leq j \leq m} a_{ij} p^*_j = V^*$.
+  \solution{L'équilibre $p^*$ est un point stationnaire de la dynamique \eqref{eq:dynFreqModele}, donc, en posant $p(t+1) = p(t) = p^*$, il vient
   $$
-  \forall i: \quad V^* p^*_i = p^*_i \sum_{j=1}^m a_{ij} p^*_j,
+  \forall \; i = 1 \dots m: \quad V^* p^*_i = p^*_i \sum_{j=1}^m a_{ij} p^*_j,
   $$
-  soit $V^* = \sum_{j=1}^m a_{ij} p^*_j, \forall i$. }
-  %
-  \item En écrivant tout vecteur de fréquences alléliques $p$ sous la forme $p = p^* + x$, montrer que $V^*$ est maximale ssi
+  soit $V^* = \sum_{j=1}^m a_{ij} p^*_j, \forall i$, puisque les $p_i^*$ sont tous non nuls.. }
+\end{enumerate}
+
+\bigskip
+\paragraph{Condition d'optimalité d'un équilibre.}
+On cherche maintenant à déterminer sous quelles conditions l'équilibre (non trivial) $p^*$ correspond à un optimum pour $V$.
+
+\begin{enumerate}
+  \setcounter{enumi}{2}
+  \item En écrivant tout vecteur de fréquences alléliques $p$ sous la forme $p = p^* + x$, montrer que $V^*$ est maximal ssi
   \begin{equation} \label{eq:dynFreqCondition}
-    \forall x: \sum_i x_i = 0, \qquad x^\top A x \leq 0.
+    \forall x \in \Rbb^m \text{ tel que } \sum_{i=1}^m x_i = 0: \qquad x^\top A x \leq 0.
   \end{equation}
-  \solution{  Si $p = p^* + x$, on a 
+  \solution{Si $p = p^* + x$, on a 
   $$
   V(p) 
   = p^\top A p
@@ -56,10 +71,9 @@ On définit de plus la matrice, supposée symétrique, $A = [a_{ij}]$ où les $a
   donc
   $$
   V(p) 
-  = V^* + x^\top A x.
+  = V^* + x^\top A x,
   $$
-  Enfin, $V^*$ est maximale, ssi $\forall p, V(p) \leq V^*$, c'est-à-dire ssi
-  \eqref{eq:dynFreqCondition}.
+  $V^*$ est donc maximal, ssi $\forall p, V(p) \leq V^*$, c'est-à-dire ssi $x^\top A x \leq 0$.
   }
   %
   \item Montrer qu'on peut écrire $A$ sous la forme $A = R \Lambda R^\top$ où
@@ -68,14 +82,14 @@ On définit de plus la matrice, supposée symétrique, $A = [a_{ij}]$ où les $a
     \lambda_{k+1}, \dots, \lambda_{k+\ell}, 
     0, \dots, 0)
   $$
-  où $k \geq 0$, $\ell \geq 0$, $k+\ell \leq m$, $\lambda_1, \dots \lambda_k > 0$ et $\lambda_{k+1}, \dots \lambda_{k+\ell} < 0$.
+  avec $k \geq 0$, $\ell \geq 0$, $k+\ell \leq m$, $\lambda_1, \dots \lambda_k > 0$ et $\lambda_{k+1}, \dots \lambda_{k+\ell} < 0$.
   \solution{
   $A$ étant symétrique, elle est diagonalisable et ses vecteurs propres sont orthogonaux. On peut donc l'écrire sous la forme $A = R \Lambda R^\top$ en mettant en premier les valeurs propres strictement positives, puis strictement négatives, puis, éventuellement, nulles. 
   }
   %
-  \item Montrer que $k \geq 1$.
+  \item Montrer l'existence de $p^*$ assure que $k \geq 1$.
   \solution{
-  Si $k = 0$, alors tous les $\lambda_i$ sont négatifs (ou nuls), donc
+  Si $k = 0$, alors tous les $\lambda_i$ sont négatifs (ou nuls), c'est-à-dire que $A$ est négative ($A \preceq 0$), donc
   $$
   \forall x \in \Rbb^m: \qquad 
   x^\top A x 
@@ -85,47 +99,9 @@ On définit de plus la matrice, supposée symétrique, $A = [a_{ij}]$ où les $a
   $$
   en posant $y = R^\top x$, or $V^* = {p^*}^\top A p^* > 0$ (car $A \geq 0$ et $p^*_i > 0$, $\forall i$), donc on a nécessairement $k \geq 1$.
   }
-  %
-%   \item Montrer que \eqref{eq:dynFreqCondition} peut s'écrire 
-%   $$
-%   \forall y: \sum_i \lambda_i q_i y_i = 0, \qquad \sum_i \lambda_i y_i^2 \geq 0, 
-%   $$
-%   où $q$ est un vecteur à préciser.
-%   \solution{
-%   D'après la question précédente, toujours en posant $y = R^\top x \Leftrightarrow x = R y$, on a 
-%   \begin{align*}
-%     1_n^\top x & = 0 &
-%     \Leftrightarrow \qquad 1_n^\top R y & = 0 & 
-%     \Leftrightarrow \qquad V^* 1_n^\top R y & = 0 & 
-%   \end{align*}
-%   car $V^* > 0$. En utilisant la question 1, on a $V^* 1_n = A p^*$, donc
-%   $$
-%   1_n^\top x = 0 
-%   \quad \Leftrightarrow \quad {p^*}^\top A R y = 0 
-%   \quad \Leftrightarrow \quad {p^*}^\top R \Lambda y = 0 
-%   \quad \Leftrightarrow \quad q^\top \Lambda y = \sum_i \lambda_i q_i y_i = 0
-%   $$
-%   en prenant $q = R^\top p^*$.
-%   }
-  %
-  \item En déduire que si $V^*$ maximale, alors $k=1$ et $\ell \geq 1$.
+  \item En déduire que $V^*$ est maximal ssi $k=1$ et $\ell \geq 1$. 
   \solution{
-%   Supposons $p \geq 2$ et prenons 
-%   $$
-%   y = \left[\lambda_2 q_2 \quad -\lambda_1 q_1 \quad 0 \quad \dots \quad 0\right]\top.
-%   $$
-%   $y$ vérifie bien
-%   $$
-%   \sum_i \lambda_i q_i y_i = \lambda_1 q_1 \lambda_2 q_2 - \lambda_2 q_2 \lambda_1 q_1 = 0
-%   $$
-%   et on a
-%   $$
-%   \sum_i \lambda_i y_i^2 = \lambda_1 \lambda_2 (\lambda_1 q_1^2 + \lambda_2 q_2^2).
-%   $$
-  On a vu que, pour que $V^*$ soit maximale, il faut que $x^\top A x \leq 0$ pour tout $x$ vérifiant $\sum_i x_i = 0$, qui définit une sous-espace de dimension $m-1$. $k$ ne peut donc pas être supérieur ou égal à 2 (car alors il existerait alors au moins deux dimensions dans lesquelles $x^\top A x > 0$). \\
-  La condition $\ell \geq 1$ assure seulement qu'il existe des vecteurs de fréquences $p$ donnant une viabilité $V(p) < V^*$. 
+  On a vu que, pour que $V^*$ soit maximal, il faut que $x^\top A x \leq 0$ pour tout $x$ vérifiant $\sum_i x_i = 0$, qui définit une sous-espace de dimension $m-1$. $k$ ne peut donc pas être supérieur ou égal à 2 (car alors il existerait alors au moins deux dimensions dans lesquelles $x^\top A x > 0$). \\
+  La condition $\ell \geq 1$ assure seulement qu'il existe des vecteurs de fréquences $p = p^* + x$ donnant une viabilité $V(p) = V^* + x^\top A x < V^*$. 
   }
-%   $$
-%   \text{\textcolor{red}{Voir mail AL 30 oct 2022}}
-%   $$
 \end{enumerate}
