@@ -2,22 +2,21 @@
 \subsubsection{Loi marginale d'une chaîne de Markov \todo{corrigé}}
 %-------------------------------------------------------------------------------
 
-On considère une chaîne de Markov constituée d'un couple $((X_n, Y_n))_{n \geq 0}$ prenant ses valeurs dans $\{0, 1\} \times \{0, 1 \}$. On suppose que 
+On considère une chaîne de Markov constituée d'un couple $((X_n, Y_n))_{n \geq 0}$ prenant ses valeurs dans $\{0, 1\} \times \{0, 1 \}$. On suppose que $Y_n$ peut varier lorsque $X_n$ vaut 0, alors qu'elle est figée quand $X_n$ vaut 1. Plus précisémment, on suppose que
 \begin{itemize}
- \item $X_n$ change d'état ($0 \to 1$ où $1 \to 0$) avec probabilité $a$ et reste dans le même état avec probabilité $1-a$, soit :
+ \item $X_n$ change d'état ($0 \to 1$ où $1 \to 0$) avec probabilité $a$ et reste dans le même état avec probabilité $1-a$ :
  $$
  \Pr\{X_{n+1} = X_n\} = 1-a, 
  $$ 
- \item si $X_n$ vaut $0$, $Y_n$ change d'état avec probabilité $b$ (et reste dans le même état avec probabilité $1 - b$), soit :
+ \item si $X_n$ vaut $0$, $Y_n$ change d'état avec probabilité $b$ (et reste dans le même état avec probabilité $1 - b$) :
  $$
  \Pr\{Y_{n+1} = Y_n \mid X_n = 0\} = 1-b, 
  $$ 
- \item mais que si $X_n$ vaut $1$, alors $Y_n$ reste dans le même état ($Y_{n+1} = Y_n$), soit :
+ \item mais que si $X_n$ vaut $1$, alors $Y_n$ reste dans le même état :
  $$
  \Pr\{Y_{n+1} = Y_n \mid X_n = 1\} = 1.
  $$
 \end{itemize}
-Intuitivement, $Y_n$ peut varier lorsque $X_n$ vaut 0, alors qu'elle est figée quand $X_n$ vaut 1.
 La matrice de transition de la chaîne $((X_n, Y_n))_{n \geq 0}$ est donc
 $$
 P = 
@@ -46,14 +45,14 @@ $$
   Puisque $\nu$ est la distribution stationnaire, on a $(X_n, Y_n) \sim \nu$ pour tout $n \geq 0$, et les couples $(x, y)$ sont tous équiprobables, soit
   $$
   \Pr\{X_n = 1, Y_n = 1\} = \frac14, \qquad
-  \Pr\{X_n = 1\} = \frac12, \qquad
-  \Pr\{Y_n = 1\} = \frac12.
+  \text{et} \qquad 
+  \Pr\{X_n = 1\} = \Pr\{Y_n = 1\} = \frac12.
   $$}
 \end{enumerate}
 
 \bigskip
 \paragraph{Loi marginale du processus $(Y_n)_{n \geq 0}$.}
-On suppose maintenant que $(X_0, Y_0)$ est tiré uniformément et on s'intéresse à la loi du processus constitué par la seule seconde coordonnée $Y$. 
+On suppose maintenant que $(X_0, Y_0)$ est tiré selon $\nu$ et on s'intéresse à la loi du processus constitué par la seconde coordonnée $Y_n$ seule. 
 \begin{enumerate}
   \setcounter{enumi}{2}
   \item Montrer que 
@@ -72,17 +71,17 @@ On suppose maintenant que $(X_0, Y_0)$ est tiré uniformément et on s'intéress
   = 1 - \frac{b}2.
   $$}
   \item Calculer $\Pr\{Y_{n+1} = 1, Y_n = 1, Y_{n-1} = 1\}$.
-  \solution{On envisage toutes les combinaisons $(x, x')$ possibles pour le couple $(X_{n-1}, X_n)$ et, pour chacune d'elle, on on utilise le caractère markovien du couple $(X_n, Y_n)$ pour décomposer
+  \solution{On envisage toutes les combinaisons $(x, x')$ possibles pour le couple $(X_{n-1}, X_n)$ et, pour chacune d'elle, on on utilise le caractère markovien du couple $(X_n, Y_n)$ pour écrire
   \begin{align*}
     & \Pr\{Y_{n+1} = 1, Y_n = 1, X_n=x', Y_{n-1} = 1, X_{n-1}=x\} \\
-    = & \Pr\{Y_{n+1} = 1 \mid Y_n = 1, X_n=x'\}
+    = & \Pr\{Y_{n-1} = 1, X_{n-1}=x\}
     \times \Pr\{Y_n = 1, X_n=x' \mid Y_{n-1} = 1, X_{n-1}=x\} \\
-    & \times \Pr\{Y_{n-1} = 1, X_{n-1}=x\}.
+    & \times \Pr\{Y_{n+1} = 1 \mid Y_n = 1, X_n=x'\}.
   \end{align*}
-  Comme la chaîne est en régime stationnaire, la probabilité $\Pr\{Y_{n-1} = 1, X_{n-1}=x\}$ vaut 1/4 pour tout $x$.Il reste à calculer le produit
+  Comme la chaîne est en régime stationnaire, la probabilité $\Pr\{Y_{n-1} = 1, X_{n-1}=x\}$ vaut 1/4 pour tout $x$. Il reste à calculer le produit
   $$
-  \Pr\{Y_{n+1} = 1 \mid Y_n = 1, X_n=x'\}
-  \times \Pr\{Y_n = 1, X_n=x' \mid Y_{n-1} = 1, X_{n-1}=x\}  
+  \Pr\{Y_n = 1, X_n=x' \mid Y_{n-1} = 1, X_{n-1}=x\}  
+  \times \Pr\{Y_{n+1} = 1 \mid Y_n = 1, X_n=x'\}  
   $$
   pour chaque couple $(x, x')$ :
   \begin{align*}
@@ -95,13 +94,13 @@ On suppose maintenant que $(X_0, Y_0)$ est tiré uniformément et on s'intéress
   \begin{align*}
     \Pr\{Y_{n+1} = 1, Y_n = 1, Y_{n-1} = 1\}
     & = \frac14 \left[(1-a)(1-b)^2 + 2a(1-b) + (1-a)\right] \\
-    & = \frac14 \left(1 - 2b + b^2 - ab^2\right).
+    & = \frac14 \left(2 - 2b + b^2 - ab^2\right).
   \end{align*}
   }
   \item En déduire que
   $$
   \Pr\{Y_{n+1} = 1 \mid Y_{n-1} = 1, Y_n = 1\}
-  = \frac{1 - 2b + b^2 - ab^2}{2 - b}.
+  = \frac{2 - 2b + b^2 - ab^2}{2 - b}.
   $$
   \solution{
     D'après l'équation \eqref{eq:margMC-pcond1}, on a 
@@ -116,10 +115,26 @@ On suppose maintenant que $(X_0, Y_0)$ est tiré uniformément et on s'intéress
 %     = \frac{\left(1 - b + a^2 - ab\right)/4}{(2 - b)/4} 
     = \frac{1 - 2b + b^2 - ab^2}{2 - b}. 
   $$
-}
+  }
   \item Le processus $(Y_n)_{n \geq 0}$ constitue-t-il une chaîne de Markov ?
-  \solution{Non, puisque $\Pr\{Y_{n+1} = 1 \mid Y_{n-1} = 1, Y_n = 1\} \neq     \Pr\{Y_{n+1} = 1 \mid Y_n = 1\}$ (la première dépend de $a$ et pas la seconde). \\
+  \solution{Non, puisque $\Pr\{Y_{n+1} = 1 \mid Y_{n-1} = 1, Y_n = 1\} \neq \Pr\{Y_{n+1} = 1 \mid Y_n = 1\}$ (la première dépend de $a$ et pas la seconde). \\
   Ainsi le couple $((X_n, Y_n))_{n \geq 0}$ constitue une chaîne de Markov, mais pas $(Y_n)_{n \geq 0}$ seule. \\
   (Dans le cas présent, on peut montrer que, par contre, $(X_n)_{n \geq 0}$ constitue une chaîne de Markov.)
-}
+  }
+  \item En supposant $b>0$, donner la condition pour que $\Pr\{Y_{n+1} = 1 \mid Y_{n-1} = 1, Y_n = 1\} \geq \Pr\{Y_{n+1} = 1 \mid Y_n = 1\}$. 
+  \solution{
+  On a 
+  $$
+  \frac{\Pr\{Y_{n+1} = 1 \mid Y_{n-1} = 1, Y_n = 1\}}{\Pr\{Y_{n+1} = 1 \mid Y_n = 1\}} 
+  = \frac{2(2-2b+b^2-ab^2)}{(2-b)^2}
+  $$
+  qui excède 1 ssi 
+  $$
+  4-4b+2b^2-2ab^2 \geq 4 - 2b + b^2 
+  \quad \Leftrightarrow \quad 
+  b^2(1-2a) \geq 0
+  \quad \Leftrightarrow \quad 
+  a \leq 1/2.
+  $$
+  }
 \end{enumerate}
