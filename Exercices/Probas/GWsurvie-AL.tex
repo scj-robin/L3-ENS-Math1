@@ -1,0 +1,60 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Processus de Galton-Watson avec survie des descendants}
+%-------------------------------------------------------------------------------
+
+\paragraph{Nombre et survie des descendants.}
+Dans une population asexuée, un individu a au cours de sa vie $N$ enfants, où $N$ suit une loi de Poisson de paramètre $\theta$. On suppose de plus que chacun des $N$ enfants survit à la naissance avec probabilité $p$, indépendamment des autres et de $N$. On note $\varepsilon_i$ la variable qui vaut 1 si le $i$-ème enfant survit et 0 sinon. On note $K$ le nombre d'enfants survivants.
+
+\begin{enumerate}
+  \item Donner la fonction génératrice $f$ de $N$.
+  \solution{
+    C'est la fonction génératrice d'une loi de Poisson de paramètre $\theta$:
+    $f(s) = \Esp(s^N) = \exp(\theta(s-1))$.
+  }
+  %
+  \item Rappeler la fonction génératrice $g$ de $\varepsilon_1$.
+  \solution{
+    C'est la fonction génératrice d'une loi de Bernoulli de paramètre $p$:
+    $g(s) = \Esp(s^{\varepsilon_1}) = 1 - p + ps$.
+  }
+  %
+  \item \'Ecrire $K$ à partir de $N$ et des $\varepsilon_i$.
+  \solution{
+    $K$ est la somme des indicatrices de survie $\varepsilon_i$ des $N$ enfants, soit
+    $K = \sum_{i=1}^N \varepsilon_i$.
+  }
+  %
+  \item En déduire la fonction génératrice $h$ de $K$, puis la loi de $K$.
+  \solution{
+    D'après les propriétés des fonctions génératrices, on a 
+    $$
+    h(s) = f \circ g(s) = \exp[\theta(1 - p + ps -1)] = \exp[p \, \theta(s -1)]
+    $$
+    $K$ suit donc une loi de Poisson de paramètre $p \, \theta$: $K \sim \Pcal(p \, \theta)$.
+  }
+  %
+\end{enumerate}
+
+\paragraph{Devenir de la population.}
+On considère, d'une part, un processus de Bienaymé-Galton-Watson $(Y_n)_{n\geq 0}$ où chaque individu laisse à la génération suivante un nombre d'enfants de même loi que $N$ et, d'autre part, un processus de Bienaymé-Galton-Watson $(Z_n)_{n\geq 0}$ où chaque individu laisse à la génération suivante un nombre d'enfants de même loi que $K$. On suppose que $Z_0=1$ et on note $q$ la probabilité d'extinction du processus $(Z_n)_{n\geq 0}$.
+\bigskip
+\begin{enumerate}
+  \setcounter{enumi}{4}
+  \item Donner une équation de point fixe caractérisant $q$ et donner une condition sur $\theta$ et $p$ pour que $q$ soit strictement inférieure à 1.
+  \solution{
+    D'après les propriétés des processus de Galton-Watson, on sait que $q$ est la plus petite racine de l'équation 
+    $$
+    q = h(q)
+    $$
+    et que la probabilité d'extinction est strictement inférieure à 1 si l'espérance de $K$ est strictement supérieure à 1, soit, puisque $K \sim \Pcal(p \, \theta)$, 
+    $$
+    p \, \theta > 1.
+    $$
+  }
+  %
+  \item  Comment construire la généalogie du processus $Z$ à partir de celle du processus $Y$ ?
+  \solution{
+    Partant de la généalogie du processus $Y$, il suffit de ``tuer'' chaque individu (et toute sa descendance) avec probabilité $1 - p$.
+  }
+  %
+\end{enumerate}

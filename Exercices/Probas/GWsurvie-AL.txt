@@ -1,0 +1,29 @@
+Dans une population asexuée, un individu a au cours de sa vie $N$
+enfants, où $N$ est une variable aléatoire à valeurs dans $\mathbb N$.
+
+1. On suppose que $N$ suit une loi de Poisson de paramètre $\theta$.
+Donner la fonction génératrice $f$ de $N$.
+
+2. On suppose maintenant que chacun des $N$ enfants survit à la
+naissance avec probabilité $p$, indépendamment des autres et de $N$. On
+note $varepsilon_i$ la variable qui vaut 1 si le $i$-ème enfant survit
+et 0 sinon. On note $K$ le nombre d'enfants survivants.
+
+a. Rappeler la fonction génératrice $g$ de $\epsilon_1$
+
+b. Ecrire $K$ à partir de $N$ et des $\epsilon_i$
+
+c. En déduire la fonction génératrice $h$ de $K$, puis la loi de $K$.
+
+3. On considère un processus de Bienaymé-Galton-Watson $(Z_n;n\ge0)$ où
+chaque individu laisse à la génération suivante un nombre d'enfants de
+même loi que $K$. On suppose que $Z_0=1$ et on note $q$ la probabilité
+d'extinction. Donner une équation de point fixe caractérisant $q$ et
+dire à quelle condition sur $\theta$ et $p$, $q$ est strictement
+inférieure à 1.
+
+4. On considère un processus de Bienaymé-Galton-Watson $(Y_n;n\ge 0)$ où
+chaque individu laisse à la génération suivante un nombre d'enfants de
+même loi que $N$. Comment construire la généalogie du processus $Z$ à
+partir de celle du processus $Y$ ?
+
