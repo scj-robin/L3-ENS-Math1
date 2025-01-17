@@ -5,7 +5,7 @@
 \paragraph{Dynamique de fréquences alléliques.}
 Dans une population diploïde panmictique, on s’intéresse à un gène existant sous la forme de $m$ allèles. On désigne par $p_i(t)$ la proportion du pool gamétique portant l’allèle $i$  à la génération $t$ et $p(t) = (p_i(t))_{1 \leq i \leq m}$ le vecteur des fréquences alléliques à la génération $t$, qui vérifie $\sum_{1 \leq i \leq m}p_i(t) = 1$. 
 
-On définit la matrice, supposée symétrique, $A = [a_{ij}]_{1 \leq i, j \leq p}$ où les $a_{ij}$ sont tous positifs ou nuls, mais non tous nuls. La dynamique des fréquences alléliques est donnée par
+On définit la matrice, supposée symétrique, $A = [a_{ij}]_{1 \leq i, j \leq m}$ où les $a_{ij}$ sont tous positifs ou nuls, mais non tous nuls. La dynamique des fréquences alléliques est donnée par
 \begin{align} \label{eq:dynFreqModele}
   \forall \; i = 1 \dots m: & & 
   p_i(t+1) & = V(t)^{-1} p_i(t) \sum_{j=1}^m a_{ij} p_j(t) \\
