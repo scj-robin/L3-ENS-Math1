@@ -47,7 +47,8 @@ où les coefficients $a$ et $b$ sont strictement positifs.
     $$
     J_A f = \left[\begin{array}{cc} 0 & -\sqrt{ab} \\ 2\sqrt{ab} & -b \end{array} \right],
     $$
-    dont le polynôme caractéristique
+    donc $\tr(J_A f) = -b < 0$ et $\det(J_A f) = 2ab > 0$. Les deux valeurs propres sont donc de même signe et négatives : $A$ est donc un équilibre stable. \\
+    {\sl Alternative :} Le polynôme caractéristique
     $$
     P_A(\lambda) = \lambda^2 + b \lambda + 2 ab
     $$
@@ -72,7 +73,8 @@ où les coefficients $a$ et $b$ sont strictement positifs.
     $$
     J_B f = \left[\begin{array}{cc} 0 & \sqrt{ab} \\ -2\sqrt{ab} & -b \end{array} \right]
     $$
-    dont le polynôme caractéristique est le même que celui de $J_A f$ : $P_B(\lambda) = P_A(\lambda)$. $B$ est donc de même nature que $A$.
+    qui a la même trace et le même déterminant que $J_A f$ : $B$ est donc également stable. \\
+    {\sl Alternative :} Le polynôme caractéristique de $J_B f$ est le même que celui de $J_A f$ donc $B$ est de même nature que $A$.
   \end{description}
   }
 \end{enumerate}
@@ -94,7 +96,8 @@ On étudie maintenant le cas où les paramètres $a$ et $b$ peuvent prendre des 
     \item[$a < 0, b < 0$ :] Alors $ab > 0$ donc $O$, $A$ et $B$ sont stationnaires.
     \begin{itemize}
       \item Le valeurs propres de $J_O f$ sont alors de signes opposés, donc $O$ est instable.
-      \item Le discriminant de $P_A(\lambda)$ (et donc de $P_B(\lambda)$) vaut alors $\Delta = b^2 - 8ab > b^2 > 0$. Les deux valeurs propres
+      \item On a $\tr(J_A f) = \tr(J_B f) = -b > 0$ et $\det(J_A f) = \det(J_B f) = 2 ab > 0$. Les deux valeurs propres sont donc positives et $A$ et $B$ sont donc instables. \\
+      {\sl Alternative:} Le discriminant de $P_A(\lambda)$ (et donc de $P_B(\lambda)$) vaut alors $\Delta = b^2 - 8ab > b^2 > 0$. Les deux valeurs propres
       $$
       \lambda_1 = \frac12 \left(-b + \sqrt{\Delta}\right) 
       \quad \text{et} \quad
