@@ -98,3 +98,27 @@ $\blacksquare$
 \newcommand{\SRcorrect}[2]{\textcolor{gray}{#1}\textcolor{blue}{#2}}
 \newcommand{\SRcomment}[1]{\textcolor{blue}{[{\sl SR: #1}]}}
 
+% TikZ
+\newcommand{\nodesize}{2em}
+\newcommand{\edgeunit}{2.5*\nodesize}
+\tikzstyle{square}=[rectangle, draw]
+\tikzstyle{param}=[draw, rectangle, fill=gray!50, minimum width=\nodesize, minimum height=\nodesize, inner sep=0]
+\tikzstyle{hidden}=[draw, circle, fill=gray!50, minimum width=\nodesize, inner sep=0]
+\tikzstyle{hiddenred}=[draw, circle, color=red, fill=gray!50, minimum width=\nodesize, inner sep=0]
+\tikzstyle{observed}=[draw, circle, minimum width=\nodesize, inner sep=0]
+\tikzstyle{observedred}=[draw, circle, minimum width=\nodesize, color=red, inner sep=0]
+\tikzstyle{eliminated}=[draw, circle, minimum width=\nodesize, color=gray!50, inner sep=0]
+\tikzstyle{empty}=[draw, circle, minimum width=\nodesize, color=white, inner sep=0]
+\tikzstyle{blank}=[color=white]
+\tikzstyle{edge}=[-, line width=1pt]
+\tikzstyle{edgebendleft}=[-, >=latex, line width=1pt, bend left]
+\tikzstyle{lightedge}=[-, line width=1pt, color=gray!50]
+\tikzstyle{arrow}=[->, >=latex, line width=1pt]
+\tikzstyle{arrowbendleft}=[->, >=latex, line width=1pt, bend left]
+\tikzstyle{arrowred}=[->, >=latex, line width=1pt, color=red]
+\tikzstyle{arrowbendleftred}=[->, >=latex, line width=1pt, bend left, color=red]
+\tikzstyle{arrowblue}=[->, >=latex, line width=1pt, color=blue]
+\tikzstyle{dashedarrow}=[->, >=latex, dashed, line width=1pt]
+\tikzstyle{dashededge}=[-, >=latex, dashed, line width=1pt]
+\tikzstyle{dashededgebendleft}=[-, >=latex, dashed, line width=\edgewidth, bend left]
+\tikzstyle{lightarrow}=[->, >=latex, line width=1pt, color=gray!50]
