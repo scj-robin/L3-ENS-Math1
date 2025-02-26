@@ -66,11 +66,11 @@ On considère une version canonique du modèle de dynamique de population propos
   est solution du système \eqref{eq:modAllee}. \\
   ({\sl On pourra commencer par étudier la fonction $v(t) = 1 + 3 e^{-2t}$.})
   \solution{
-    Comme suggéré par l'énoncé, on calcule $\dot v(t) = -6 e^{-2t}$ et on remarque que $\dot v = 2 (1 - v)$. On remarque ensuite que $u(t) = 1 + 1/\sqrt{v(t)}$ et qu'on a donc, d'une part, 
+    Comme suggéré par l'énoncé, on calcule $\dot v(t) = -6 e^{-2t}$ et on remarque que $\dot v = 2 (1 - v)$. Comme $u(t) = 1 + 1/\sqrt{v(t)}$, on a donc, d'une part, 
     $$
     \dot u 
-    = -\frac{\dot v}{2 v^{3/2}}
-    = \frac{v - 1}{v^{3/2}}
+    = -{\dot v}\left/ \left(2 v^{3/2}\right) \right.
+    = (v - 1) \left/ v^{3/2}\right.
     $$
     et, d'autre part, 
     $$
