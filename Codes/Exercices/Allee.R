@@ -2,7 +2,7 @@
 
 rm(list=ls()); palette('R3')
 library(deSolve)
-exportFig <- TRUE
+exportFig <- FALSE
 exoName <- 'Allee'
 figDir <- '../../Figures/'
 lwd <- 3

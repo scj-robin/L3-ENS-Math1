@@ -66,7 +66,7 @@ Catégories $(1, \dots k)$ = classes d'âges : $a_{ij} = 0$ sauf
   a_{i+1, i} : & \text{ taux de survie de la classe d'âge $i$}, \\
   a_{1, i} : & \text{ taux de fécondité de la classe d'âge $i$}, 
 \end{align*}
-soit \warning{Les colonnes contribuent aux lignes : orientation inverse des chaînes de Markov.}
+soit \warning{Les colonnes contribuent aux lignes ($j \to i$) : orientation inverse des chaînes de Markov.}
 $$
 A = \left[\begin{array}{cccccc}
             a_{11} & a_{12} & \cdots  & \cdots & a_{1k} \\
@@ -99,7 +99,7 @@ $$
                \end{array} \right].
   $$
   avec $f_i: \Rbb^n \mapsto \Rbb$ pour $i = 1 \dots n$.
-  La matrice jacobienne de $f$ au point $x$, noté $J_x(f)$ est la matrice de $\Mcal_{k, n}$ de terme générique
+  La matrice jacobienne de $f$ au point $x$, noté $J_x(f)$ est la matrice de $\Mcal_{k, n}$ de terme générique \warning{Les fonctions correspondent aux lignes : pour $k = 1$, vecteur jacobien = transposée du gradient.}
   $$
   \frac{\partial f_i}{\partial x_j}.
   $$
