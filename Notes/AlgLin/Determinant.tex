@@ -64,13 +64,13 @@ $$
        \end{array}\right.
 \qquad \Leftrightarrow \qquad
 (a d - b c) x = \left[\begin{array}{rcl}
-         d & - b \\ c & - a
+         d & - b \\ -c & a
        \end{array}\right] y.
 $$
 $A x = y$ a donc une unique solution ssi $(a d - b c) \neq 0$ et cette solution est alors $y = A^{-1} x$, avec
 $$
 A^{-1} = \frac1{a d - b c} \left[\begin{array}{rcl}
-         d & - b \\ c & - a
+         d & - b \\ - c & a
        \end{array}\right].
 $$
 }
@@ -200,19 +200,22 @@ Le théorème \ref{thm:uniciteDeterminant} n'est pas démontré ici. On peut, pa
  \item La propriété $|A| = |A^\top|$ entraîne que les propriétés du déterminant quant aux colonnes (forme alternée, multilinéarité) sont également vraies pour les lignes. 
 \end{enumerate}
 
-\remark
-La $n$-linéarité et le fait que $|I_n| = 1$, suffisent à montrer que 
-\begin{equation} \label{eq:determiantMatriceDiagonale}
-|\diag(\lambda_1, \dots \lambda_n)| = \prod_{i = 1}^n \lambda_i.
-\end{equation}
-En effet, en appliquant la $n$-linéarité à chacun des termes diagonaux de la matrice $\diag(\lambda_1, \dots \lambda_n)$, on obtient : 
-\begin{align*}
-|\diag(\lambda_1, \dots \lambda_n)| 
-& = \lambda_1 \times |\diag(1, \lambda_2, \dots \lambda_n)|
-= \lambda_1 \lambda_2 \times |\diag(1, 1, \lambda_3, \dots \lambda_n)| \\
-& = \lambda_1 \lambda_2 \dots \lambda_n \times |\diag(1, 1, \dots 1)|
-= \prod_{i=1}^n \lambda_i \times |I_n|.
-\end{align*}
+\begin{exercise*}
+  Montrer que 
+  \begin{equation} \label{eq:determiantMatriceDiagonale}
+    |\diag(\lambda_1, \dots \lambda_n)| = \prod_{i = 1}^n \lambda_i.
+  \end{equation}
+  \solution{
+  On applique la $n$-linéarité successivement à chacun des termes diagonaux de la matrice $\diag(\lambda_1, \dots \lambda_n)$ pour obtenir
+  \begin{align*}
+  |\diag(\lambda_1, \dots \lambda_n)| 
+  & = \lambda_1 \times |\diag(1, \lambda_2, \dots \lambda_n)|
+  = \lambda_1 \lambda_2 \times |\diag(1, 1, \lambda_3, \dots \lambda_n)| \\
+  & = \lambda_1 \lambda_2 \dots \lambda_n \times |\diag(1, 1, \dots 1)|
+  = \prod_{i=1}^n \lambda_i \times |I_n|.
+  \end{align*}
+  }
+\end{exercise*}
 
 \begin{lemma} \label{lem:determinantNul}
   $|A| = 0$ si une colonne de $A$ est combinaison linéaire des autres.
@@ -270,7 +273,9 @@ Le cas où $A$ comporte une colonne nulle correspond au cas où tous les coeffic
     où $\Scal$ est l'ensemble des permutation de $\{1, \dots n\}$ et $s(\sigma) \in \{-1, +1\}$ désigne la signature de la permutation $\sigma$. 
 \end{proposition}
 
-La proposition \ref{prop:formuleGeneraleDeterminant} n'est pas démontrée ici. \eproof.
+\proof 
+La proposition \ref{prop:formuleGeneraleDeterminant} n'est pas démontrée ici. 
+\eproof.
 
 \remark
 Le formule \eqref{eq:determinant} est rarement utilisée en pratique (notamment parce que $|\Scal| = n!$), sauf pour $n=2$ ou $n=3$.
@@ -423,7 +428,7 @@ $$
 \begin{description}
   \item[$i = k$:] on reconnaît le calcul du déterminant de $A$ obtenu en développant par rapport à sa $i$-ème ligne : 
   $$
-  c_{ik} 
+  c_{ii} 
   = \sum_{j=1}^n (-1)^{j+i} a_{ij} |A^{(ij)}|
   = |A|.
   $$
