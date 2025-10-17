@@ -1,0 +1,70 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Barycentre et médiane géométrique}
+%-------------------------------------------------------------------------------
+
+On considère $n$ points $x_1, \dots x_n$ de $\Rbb^d$ et on cherche à définir un point central $m$ du ``nuage de points'' $(x_i)_{1 \leq i \leq n}$. On notera $(x_{ij})_{1 \leq j \leq d}$ les coordonnées points $x_i$. Dans toute la suite, on supposera que les $n$ points ne sont pas tous alignés.
+
+\paragraph{Barycentre.}
+On considère tout d'abord la fonction
+$$
+\begin{array}{rlcl}
+  f: & \Rbb^d & \mapsto & \Rbb^+ \\
+  & y & \to & f(y) = \sum_{i=1}^n \|x_i - y\|_2^2
+  \end{array}
+$$
+où $\|u\|_2$ désigne la norme euclidienne: $\|u\|_2 = \sqrt{\sum_{j=1}^n u_j^2}$.
+
+\begin{enumerate}
+  \item Montrer que la fonction $f$ admet un unique minimum $y^*$ qui est le barycentre des points $(x_i)_{1 \leq i \leq n}$, c'est à dire, 
+  $$
+  y^* = (y^*_j)_{1 \leq j \leq d}, 
+  \qquad
+  y^*_j = \frac1n \sum_{i=1}^n x_{ij}
+  $$
+  \solution{
+    Le jacobien de $f$ au point $y$ est
+    $$
+    J_y f = \left[2 \sum_i (y_j - x_{ij})\right]_{1 \leq j \leq d}
+    $$
+    dont les éléments s'annulent respectivement uniquement pour
+    $$
+    y^*_j = \frac1n \sum_{i=1}^n x_{ij}.
+    $$
+    On vérifie qu'il s'agit d'un minimum en déterminant la hessienne de $f$ au point $y^*$:
+    $$
+    \nabla^2_{y^*} f = 2 I_d
+    $$
+    qui est bien strictement définie positive.
+  }
+\end{enumerate}
+
+\paragraph{Fonction convexe.}
+On rappelle qu'une fonction $h: \Rbb^d \mapsto \Rbb$ est convexe si et seulement si pour tout couple $(u, v)$ et tout réel $0 \leq a \leq 1$, on a
+$$
+h(au + (1-a) v) \geq a h(u) + (1-a) h(v).
+$$
+La fonction est strictement convexe si l'inégalité est stricte pour pour tout $0 < a < 1$.
+
+\begin{enumerate}
+  \setcounter{enumi}{1}  
+  \item Montre qu'une fonction $h$ strictement convexe admet un minimum unique.
+  \todo{}
+  \solution{
+    \todo{}
+  }
+\end{enumerate}
+
+
+\paragraph{Médiane géométrique.}
+On considère maintenant la fonction
+$$
+\begin{array}{rlcl}
+  g: & \Rbb^d & \mapsto & \Rbb^+ \\
+  & y & \to & f(y) = \sum_{i=1}^n \|x_i - y\|_2
+  \end{array}
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{2}  
+  \item 
+\end{enumerate}
