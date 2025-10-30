@@ -17,10 +17,11 @@ $$
 \left\{\begin{array}{rcl} 
         \dot x & = & \displaystyle{\frac{a x y}{1 + y} - x}, \\
         \\
-        \dot y & = & \displaystyle{- \frac{x y}{1 + y} - y + b}. 
+        \dot y & = & \displaystyle{- \frac{x y}{1 + y} - y + b}
        \end{array}
 \right.
 $$
+où on suppose que les paramètres $a$ et $b$ sont positifs ou nuls : $a, b \geq 0$.
 
 \bigskip
 \begin{enumerate}
@@ -36,20 +37,34 @@ $$
      $b$ est le seul terme positif, qui décrit l'apport constant de nutriments dans le système.
     \end{itemize}
   }
-  \item Déterminer les points stationnaires du système.
-  \solution{
-  On annule simultanément $F_1(x, y) = xy/(1+y) - x$ et $F_2(x, y) = -xy/(1+y) -y +b$ et on obtient deux points d'équilibres : 
+  %
+  \item Montrer que les points stationnaires du système sont.
   $$
   A = (0, b) \qquad \text{et} \qquad B = \left(ab - \frac{a}{a - 1}, \frac1{a - 1}\right).
   $$
+  \solution{
+  On annule simultanément $F_1(x, y) = xy/(1+y) - x$ et $F_2(x, y) = -xy/(1+y) -y +b$. 
+  \begin{itemize}
+   \item $F_1(x, y)$ est nul pour $x = 0$ et $y = 1 / (a-1)$. 
+   \item $F_2(x, y)$ est nul ssi $xy = (1+y)(b-y)$. Si $x = 0$ alors $(1+y)(b-y)$ doit être nul, ce qui impose $y = b$, ce qui donne le point $A$. Si $x > 0$, alors $y = 1 / (a-1)$ (puisque $F_1(x, y)$ doit être nul) et donc
+   $$
+   \frac{x}{a - 1} 
+   = \frac{a}{a - 1} \left(b - \frac1{a - 1}\right)
+   = ab - \frac{a}{a - 1},
+   $$
+   ce qui donne le point $B$.
+  \end{itemize}
   }
+  %
   \item \label{q:chemostatDistincts} Donner les conditions sur $a$ et $b$ qui assurent que les deux équilibres correspondent à des états distincts et biologiquement raisonnables (c'est-à-dire $x$ et $y$ positifs ou nuls). 
   \solution{
     Les coordonnées de $B$ sont positives et finies si $a > 1$ et $b(a-1) \geq  1$.
     Sous ces conditions, les coordonnées de $A$ sont également positives et finies. \\
     On remarque de plus que $A = B$ pour $b(a-1) =  1$. Pour satisfaire les deux conditions, il faut donc que
     $$
-    a > 1 \qquad \text{et} \qquad b(a-1) >  1.
+    \{a > 1 \quad \text{et} \quad b(a-1) > 1\}
+    \qquad \text{et} \qquad 
+    \{a > 1 \quad \text{et} \quad b > 0\}.
     $$
     }
   \item Déterminer la matrice jacobienne du système.
