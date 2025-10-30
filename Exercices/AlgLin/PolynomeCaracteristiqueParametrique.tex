@@ -1,0 +1,70 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Polynôme caractéristique d'une matrice paramétrée}
+%-------------------------------------------------------------------------------
+
+On considère la matrice
+\begin{align*}
+  B & = \left[\begin{array}{rrr}
+    -1 & 3 & 1 \\ 0 & 2 & 1 \\ \alpha & \beta & 2
+    \end{array}\right].  
+\end{align*}
+
+\begin{enumerate}
+  \item Montrer son polynôme caractéristique est
+  $$
+  P_B(\lambda) = -(1+\lambda)(\lambda^2 - 4 \lambda + 4 - \alpha - \beta).
+  $$
+  \solution{
+  On développe par rapport à la première colonne et on développe : 
+  \begin{align*}
+    P_B(\lambda) 
+    & = |B - \lambda I_3|
+    = (-1 -\lambda) \left|\begin{array}{cc} 2 - \lambda & 1 \\ \beta & 2 - \lambda \end{array}\right| 
+    - \alpha \left|\begin{array}{cc} 3 & 1 \\ 2 - \lambda & 1 \end{array}\right| \\
+    & = (-1 - \lambda) ((2 - \lambda)^2 - \beta) - \alpha (3 - (2 - \lambda)) \\
+    & = - (1 + \lambda) (\lambda^2 - 4 \lambda + 4 - \beta) - \alpha (1 + \lambda) \\
+    & = - (1 + \lambda) (\lambda^2 - 4 \lambda + 4 - \beta + \alpha).
+  \end{align*}
+  }
+  \item En déduire une condition sur $\alpha$ et $\beta$ pour que $B$ possède trois valeurs propres réelles distinctes.
+  \solution{La premièrre valeur propre est donc $\lambda_1 = -1$. Le discriminant du polynôme 
+  $$
+  Q(\lambda) = \lambda^2 - 4 \lambda + 4 - (\alpha+\beta)
+  $$
+  vaut $\Delta = 16 - 4(4 - (\alpha+\beta)) = \alpha + \beta$. Les deux valeurs propres restantes $\lambda_2$ et $\lambda_3$ sont donc réelles et distinctes ssi $\alpha + \beta > 0$ et valent alors
+  $$
+  \lambda_2 = \frac{4 + \sqrt{\alpha + \beta}}{2} > 0 
+  \qquad \text{et} \qquad
+  \lambda_3 = \frac{4 - \sqrt{\alpha + \beta}}{2}.
+  $$
+  Elles sont de plus distinctes de $\lambda_1 = -1$ ssi 
+  $$
+  \lambda_3 \neq -1 \qquad \Leftrightarrow \qquad
+  \alpha + \beta \neq 36.
+  $$
+  Dans ce cas ($\alpha + \beta > 0$ et $\alpha + \beta \neq 36$), les 3 valeurs propres sont réelles et distinctes (et $B$ est donc diagonalisable). 
+  }
+  %
+%   \item En déduire une condition sur $\alpha$ et $\beta$ pour que $B$ soit diagonalisable.
+%   \solution{La premièrre valeur propre est donc $\lambda_1 = -1$. Le discriminant du polynôme 
+%   $$
+%   Q(\lambda) = \lambda^2 - 4 \lambda + 4 - (\alpha+\beta)
+%   $$
+%   vaut $\Delta = 16 - 4(4 - (\alpha+\beta)) = \alpha + \beta$. Les deux valeurs propres restantes $\lambda_2$ et $\lambda_3$ sont donc réelles et distinctes ssi $\alpha + \beta > 0$ et valent alors
+%   $$
+%   \lambda_2 = \frac{4 + \sqrt{\alpha + \beta}}{2} > 0 
+%   \qquad \text{et} \qquad
+%   \lambda_3 = \frac{4 - \sqrt{\alpha + \beta}}{2}.
+%   $$
+%   Elles sont de plus distinctes de $\lambda_1 = -1$ ssi 
+%   $$
+%   \lambda_3 \neq -1 \qquad \Leftrightarrow \qquad
+%   \alpha + \beta \neq 36.
+%   $$
+%   Dans ce cas ($\alpha + \beta > 0$ et $\alpha + \beta \neq 36$), les 3 valeurs propres sont réelles et distinctes et $B$ est donc diagonalisable. \\
+%   Reste à étudier les cas 
+%   \begin{description}
+%    \item[$\alpha + \beta = 0 \Leftrightarrow \lambda_2 = \lambda_3 = 2$:] \todo{déterminer la dimension du sous-espace propre associé.} 
+%    \item[$\alpha + \beta = 36 \Leftrightarrow \lambda_1 = \lambda_3 = -1$:] \todo{déterminer la dimension du sous-espace propre associé.} 
+%   \end{description}}
+\end{enumerate}
