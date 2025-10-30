@@ -1,0 +1,99 @@
+\documentclass[french, 11pt]{article}
+
+%-------------------------------------------------------------------------------
+\usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=0.5cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color,xcolor}
+\usepackage{tikz}
+\usepackage{remreset}
+\usepackage{url}
+\usepackage{boites}
+% \usepackage{extsizes} % Permet \documentclass[french, 14pt]{extreport}
+% \usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=.75cm]{geometry}
+% \usepackage{minitoc}
+
+\graphicspath{{../Figures/}}
+\input{../Macros}
+
+% Section numbering
+\usepackage{chngcntr}
+\renewcommand{\thepart}{\Roman{part}}
+% \counterwithout{section}{part}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+
+% Proposition numbering
+\renewcommand{\subsubsection}{\section}
+% \numberwithin{exercise}{section}
+% \numberwithin{equation}{section}
+
+% Suppression des solutions
+\renewcommand{\solution}[1]{}
+
+\newcommand{\alglin}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/AlgLin}
+\newcommand{\multivar}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/MultiVar}
+\newcommand{\equadiff}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/EquaDiff}
+\newcommand{\probas}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/Probas}
+
+
+% %-------------------------------------------------------------------------------
+% %-------------------------------------------------------------------------------
+% \title{\Huge{Ce qu'un biologiste doit savoir en mathématiques}}
+% \author{SR d'après \cite{Lam20} : Annexes}
+% \date{\today}
+
+
+\title{\normalsize{\sc École Normale Supérieure de Paris, Licence de Biologie L3}
+  
+  \bigskip
+  \normalsize{\sc Année 2025–26}
+  
+  \bigskip
+  \large{\bf Mathématiques I : ce qu’un biologiste ne doit pas ignorer} 
+  
+}
+\date{Examen, le 16 janvier 2026}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\maketitle
+
+\bigskip
+L'épreuve dure 2 heures. 
+Les notes de cours individuelles sont autorisées.
+L’usage de tout appareil électronique est interdit à l’exception d’une calculatrice.
+
+%-------------------------------------------------------------------------------
+% \section{Algèbre linéaire}
+% \input{\alglin/}
+
+%-------------------------------------------------------------------------------
+% \section{Fonction de plusieurs variables}
+\input{\multivar/AL-Exo7}
+
+%-------------------------------------------------------------------------------
+% \section{Systèmes dynamiques}
+\input{\equadiff/DynPopMaleFemelleCouple}
+
+%-------------------------------------------------------------------------------
+% \section{Probabilités}
+\input{\probas/ChaineMarkov2etatsAbsorbants}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+
