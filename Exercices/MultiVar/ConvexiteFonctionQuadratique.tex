@@ -2,26 +2,25 @@
 \subsubsection{Convexité d'une forme quadratique}
 %-------------------------------------------------------------------------------
 
-On considère la fonction 
+On considère les fonctions $f$ et $g$ de $\Rbb^n$ dans $\Rbb$ définies par 
 $$
-\begin{array}{rrcl}
-  f : & \Rbb^n & \mapsto & \Rbb \\
-  & a & \to & x^\top A x + b\top x
-\end{array}
+f(x) = x^\top A x + b\top x
+\qquad \text{et} \qquad
+g(x) = \sqrt{x^\top A x}
 $$
-où $b$ est un vecteur de $\Rbb^n$ et $A$ est matrice symétrique et définie positive : $A \succ 0$.
+où $A$ est matrice de $\Mcal_n$ symétrique et définie positive ($A \succ 0$) et $b$ est un vecteur de $\Rbb^n$.
 
 \paragraph{Rappel.} 
-Une fonction $g$ est convexe si, pour tout couple $x \neq y$ et tout réel $0 < a < 1$, on a
+Une fonction $h$ est convexe si, pour tout couple $x \neq y$ et tout réel $0 < a < 1$, on a
 $$
-g\left(a x + (1-a) y\right) \leq a g(x) + (1-a) g(y)
+h\left(a x + (1-a) y\right) \leq a h(x) + (1-a) h(y)
 $$
 et strictement convexe si l'inégalité est stricte : $g(a x + (1-a) y) < a g(x) + (1-a) g(y)$.
 
 \paragraph{Questions.}
 \begin{enumerate}
   \item Déterminer le vecteur gradient de $f$ au point $x$ : $\nabla_x f$.
-  \solution{Directement
+  \solution{Directement, puisque $A$ est symétrique,
   $$
   \nabla_x f = 2 x^\top A + b^\top.
   $$
@@ -35,31 +34,44 @@ et strictement convexe si l'inégalité est stricte : $g(a x + (1-a) y) < a g(x)
   }
   %
   \item Montrer que $f$ est une fonction strictement convexe. \\
-  ({\sl On pourra utiliser $a x + (1-a) y = y + a(x-y)$ et remarquer que, puisque $0 < a < 1$, on a $a^2 < a$ et $(1-a)^2 < (1-a)$})
-  \solution{On écrit
+  ({\sl On pourra utiliser $a x + (1-a) y = y + a(x-y)$ et remarquer que, si $0 < u < 1$, alors $u^2 < u$.})
+  \solution{En utilisant la symétrie de $A$, on peut écrire
   \begin{align*}
     f\left(ax + (1-a)y\right) 
     & = f(y + a(x-y)) \\
     & = (y + a(x-y))^\top A (y + a(x-y)) + b^\top (y + a(x-y)) \\
     & = y^\top A y + a^2 (x-y)^\top A (x-y) + 2 a (x-y)^\top A y + b^\top (y + a(x-y)).
   \end{align*}
-  Puisque $x \neq y$ et $A \succ 0$, on a $(x-y)^\top A (x-y) > 0$ et comme $a^2 < a$, on a 
+  Puisque $x \neq y$ et $A \succ 0$, on a $(x-y)^\top A (x-y) > 0$ et comme $a^2 < a$, il vient
   \begin{align*}
-    f\left(ax + (1-a)y\right) 
+    f(y + a(x-y))
     & < y^\top A y + a (x-y)^\top A (x-y) + 2 a (x-y)^\top A y + b^\top (y + a(x-y)) \\
-    & = (1 + a - 2 a) y^\top A y + a x^\top A x - 2 a x^\top A y + 2 a x\top A y \\
-    & \quad + b^\top x + (1-a) b^\top y \\
+    & \textcolor{gray}{= (1 + a - 2 a) y^\top A y + a x^\top A x + (1-a) b^\top y  + a b^\top x} \\
+    & \qquad \textcolor{gray}{- 2 a x^\top A y + 2 a x^\top A y} \\
     & = (1 -  a) (y^\top A y + b^\top y) + a (x^\top A x +  b^\top x) \\
     & = a f(x) + (1-a) f(y).
   \end{align*}
+  $f$ est donc strictement convexe.
   }
-  \item Qu'en est-il si $A$ est semie-définie positive : $A \succcurlyeq 0$ ?
+  \item Qu'en est-il si $A$ est seulement semie-définie positive : $A \succcurlyeq 0$ ?
   \solution{
-  Si $A \succcurlyeq 0$, on peut avoir $(x-y)^\top A (x-y) = 0$ pour $x \neq y$. L'inégalité stricte utilisée dans la preuve de la question précédente est donc une inégalité simple, et on obtient alors
+  Si $A \succcurlyeq 0$, on peut avoir $(x-y)^\top A (x-y) = 0$ pour $x \neq y$. L'inégalité stricte utilisée dans la preuve de la question précédente devient donc une inégalité simple et on obtient alors
   $$
   f\left(a x + (1-a) y\right) \leq a f(x) + (1-a) f(y).
   $$
   $f$ est donc toujours convexe, mais pas strictement.
   }
+  %
+  \item Montrer que la fonction $g$ est convexe.
+  \solution{
+  On a vu que, puisque $A \succ 0$, $g(x)$ est une norme : $g(x) = \|x\|$. On peut donc utiliser les propriétés d'une norme : 
+  \begin{align*}
+    g\left(ax + (1-a)y\right) 
+    & = \|ax + (1-a)y\| \\
+    & \leq \|ax\| + \|(1-a)y\| & & (\text{inégalité triangulaire}) \\
+    & = a \|x\| + (1-a) \|y\| & & (\text{puisque $a > 0$ et $1-a > $}) \\
+    & = a g(x) + (1-a) g(y).
+  \end{align*}
+  $g$ est donc convexe.
+  }
 \end{enumerate}
-

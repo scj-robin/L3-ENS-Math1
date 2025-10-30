@@ -1,11 +1,10 @@
 %-------------------------------------------------------------------------------
-\subsubsection{Chemostat \todo{}}
+\subsubsection{Chemostat \todo{Corrigé}}
 %-------------------------------------------------------------------------------
 
 % Voir \url{https://umr5558-shiny.univ-lyon1.fr/web/}
 
-On considère le modèle du chemostat qui décrit l'évolution d'une population bactérienne au cours du temps dans un milieu alimenté par un flux constant de nutriment. \todo{décrire un peu le sytème}
-On note
+On considère le modèle du chemostat qui décrit l'évolution d'une population bactérienne au cours du temps dans un milieu alimenté par un flux constant de nutriment. Une population bactérienne se développe dans une enceinte close alimentée d'un côté par un flux constant de nutriments et dont les nutriments peuvent également s'évacuer à proportion de leur quantité.
 \begin{itemize}
   \item $x(t)$ la taille de la population bactérienne au temps $t$ et
   \item $y(t)$ la quantité de nutriments présente dans le milieu au temps $t$.
@@ -20,19 +19,28 @@ $$
 \right.
 $$
 
+\bigskip
 \begin{enumerate}
-  \item \todo{Interpréter le modèle}.
+  \item Interpréter ce modèle et ses paramètres.
   \solution{
-  \todo{}
+    \begin{itemize}
+     \item[$\dot x$ :] 
+     Quand la quantité de nutriment tend vers l'infini ($y \to \infty$), on a $\dot x = (a-1) x$. $a - 1$ représente donc le taux de croissance de la population bactérienne en l'absence de contrainte de ressource. \\
+     Le terme $y/(1+y)$ fait que le taux de croissance de la population n'est pas directement proportionnel à la quantité de nutriment, mais seulement une fonction croissante de cette quantité qui va 0 (pour $y = 0$) à 1 (quand $y \to \infty$). \\
+     Le terme $-x$ décrit la décroissance (exponentielle) de la population en l'absence de nutriments.
+     \item[$\dot y$ :] 
+     Le terme $- x y / (1+y)$ décrit la consommation des nutriments par les bactéries. Le terme $- y$ décrit leur évacuation (à vitesse proportionnelle à leur quantité). \\
+     $b$ est le seul terme positif, qui décrit l'apport constant de nutriments dans le système.
+    \end{itemize}
   }
   \item Déterminer les points stationnaires du système.
   \solution{
-  On annule simultanément $F_1(x, y) = xy/(1+y) - $ et $F_2(x, y) = -xy/(1+y) -y +b$ et on obtient deux points d'équilibres : 
+  On annule simultanément $F_1(x, y) = xy/(1+y) - x$ et $F_2(x, y) = -xy/(1+y) -y +b$ et on obtient deux points d'équilibres : 
   $$
   A = (0, b) \qquad \text{et} \qquad B = \left(ab - \frac{a}{a - 1}, \frac1{a - 1}\right).
   $$
   }
-  \item Donner les conditions sur $a$ et $b$ qui assurent que les deux équilibres correspondent à des états distincts biologiquement raisonnables, c'est-à-dire $0 \leq x < +\infty$ et $0 \leq y < +\infty$.
+  \item \label{q:chemostatDistincts} Donner les conditions sur $a$ et $b$ qui assurent que les deux équilibres correspondent à des états distincts biologiquement raisonnables, c'est-à-dire $0 \leq x < +\infty$ et $0 \leq y < +\infty$. 
   \solution{
     Les coordonnées de $B$ sont positives et finies si $a > 1$ et $b(a-1) \geq  1$.
     Sous ces conditions, les coordonnées de $A$ sont également positives et finies. \\
@@ -45,13 +53,14 @@ $$
   \solution{
     Puisque la dérivée de $y/(1+y)$ est $1/(1+y)^2$, on a
     $$
-    J = \left(\begin{array}{cc}
+    J_{x, y} = \left(\begin{array}{cc}
               \displaystyle{\frac{ay}{1+y} - 1} & \displaystyle{\frac{ax}{(1+y)^2}} \\
               \displaystyle{-\frac{y}{1+y}} & \displaystyle{-\frac{x}{(1+y)^2} - 1} 
         \end{array}\right).
     $$
   }
-  \item \'Etudier la stabilité de chacun des points d'équilibre.
+  \item \'Etudier la stabilité de chacun des points d'équilibre en supposant les conditions établies à la question \ref{q:chemostatDistincts} vérifiées.
+
   \solution{
   \begin{description}
     \item[$A = (0, b)$ :] La jacobienne vaut alors
