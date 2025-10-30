@@ -1,0 +1,65 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Convexité d'une forme quadratique}
+%-------------------------------------------------------------------------------
+
+On considère la fonction 
+$$
+\begin{array}{rrcl}
+  f : & \Rbb^n & \mapsto & \Rbb \\
+  & a & \to & x^\top A x + b\top x
+\end{array}
+$$
+où $b$ est un vecteur de $\Rbb^n$ et $A$ est matrice symétrique et définie positive : $A \succ 0$.
+
+\paragraph{Rappel.} 
+Une fonction $g$ est convexe si, pour tout couple $x \neq y$ et tout réel $0 < a < 1$, on a
+$$
+g\left(a x + (1-a) y\right) \leq a g(x) + (1-a) g(y)
+$$
+et strictement convexe si l'inégalité est stricte : $g(a x + (1-a) y) < a g(x) + (1-a) g(y)$.
+
+\paragraph{Questions.}
+\begin{enumerate}
+  \item Déterminer le vecteur gradient de $f$ au point $x$ : $\nabla_x f$.
+  \solution{Directement
+  $$
+  \nabla_x f = 2 x^\top A + b^\top.
+  $$
+  }
+  %
+  \item Déterminer la matrice hessienne de $f$ au point $x$ : $H_x f$.
+  \solution{Directement
+  $$
+  H_x f = 2 A
+  $$
+  }
+  %
+  \item Montrer que $f$ est une fonction strictement convexe. \\
+  ({\sl On pourra utiliser $a x + (1-a) y = y + a(x-y)$ et remarquer que, puisque $0 < a < 1$, on a $a^2 < a$ et $(1-a)^2 < (1-a)$})
+  \solution{On écrit
+  \begin{align*}
+    f\left(ax + (1-a)y\right) 
+    & = f(y + a(x-y)) \\
+    & = (y + a(x-y))^\top A (y + a(x-y)) + b^\top (y + a(x-y)) \\
+    & = y^\top A y + a^2 (x-y)^\top A (x-y) + 2 a (x-y)^\top A y + b^\top (y + a(x-y)).
+  \end{align*}
+  Puisque $x \neq y$ et $A \succ 0$, on a $(x-y)^\top A (x-y) > 0$ et comme $a^2 < a$, on a 
+  \begin{align*}
+    f\left(ax + (1-a)y\right) 
+    & < y^\top A y + a (x-y)^\top A (x-y) + 2 a (x-y)^\top A y + b^\top (y + a(x-y)) \\
+    & = (1 + a - 2 a) y^\top A y + a x^\top A x - 2 a x^\top A y + 2 a x\top A y \\
+    & \quad + b^\top x + (1-a) b^\top y \\
+    & = (1 -  a) (y^\top A y + b^\top y) + a (x^\top A x +  b^\top x) \\
+    & = a f(x) + (1-a) f(y).
+  \end{align*}
+  }
+  \item Qu'en est-il si $A$ est semie-définie positive : $A \succcurlyeq 0$ ?
+  \solution{
+  Si $A \succcurlyeq 0$, on peut avoir $(x-y)^\top A (x-y) = 0$ pour $x \neq y$. L'inégalité stricte utilisée dans la preuve de la question précédente est donc une inégalité simple, et on obtient alors
+  $$
+  f\left(a x + (1-a) y\right) \leq a f(x) + (1-a) f(y).
+  $$
+  $f$ est donc toujours convexe, mais pas strictement.
+  }
+\end{enumerate}
+
