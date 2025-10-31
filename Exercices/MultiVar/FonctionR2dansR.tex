@@ -1,0 +1,42 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Fonction de $\Rbb^2$ dans $\Rbb$}
+%-------------------------------------------------------------------------------
+
+Soit la fonction 
+$$
+\begin{array}{rrcl}
+  f : & \Rbb^2 & \mapsto & \Rbb \\
+  & (x, y) & \to & 2 x^3 + 6 x y - 3 y^2 + 2
+\end{array}
+$$
+
+\begin{enumerate}
+  \item Déterminer les points stationnaires de $f$.
+  \solution{
+    Le vecteur gradient au point $(x, y)$ est
+    $$
+    \nabla_{x, y}f = \left[
+        \begin{array}{c} 6 x^2 + 6 y  \\ 6 x - 6 y \end{array}
+      \right]
+    $$
+    s'annule ssi $x = y$ et $x^2 = -y$, c'est à dire aux points $A = (0, 0)$ et $B(-1, -1)$.
+  }
+  \item Déterminer à quel type d'extremum correspond chaque point stationnaire.
+  \solution{
+    La matrice hessienne au point $(x, y)$ est
+    $$
+    \nabla^2_{x, y}f = \left[
+        \begin{array}{cc} 12 x & 6 \\ 6 & -6 \end{array}
+      \right]
+    $$
+    dont le déterminant vaut $|\nabla^2_{x, y}f| = - 36 (2x + 1)$ et la trace vaut $\tr(\nabla^2_{x, y}) = 12x - 6$. 
+    \begin{itemize}
+    \item Au point $A = (0, 0)$, on a$|\nabla^2_{x, y}f| = - 36$, les deux valeurs propres sont donc de signe opposé, et $A$ est donc un point selle.
+    \item Au point $B = (-1, -1)$, on a $|\nabla^2_{x, y}f| = 36$, donc les deux valeurs propres sont de même signe et, puisque $\tr(\nabla^2_{x, y}) = -18$, elles sont toutes les deux négatives, donc $B$ est un maximum.
+    \end{itemize}
+  }
+  \item La fonction $f$ admet-elle un extremum (maximum ou minimum) global ?
+  \solution{
+    Le seul maximum (local) est le point $B$ où la fonction $f$ faut $-2 + 6 - 3 + 2 = 3$. Hors $\lim_{x \to +\infty} f(x, 0) = +\infty$, donc $B$ n'est pas un maximum global et $f$ n'admet donc pas d'extremum global.
+  }
+\end{enumerate}
