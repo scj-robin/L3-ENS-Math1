@@ -43,7 +43,7 @@ On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ 
   $$
   entendant par là 
   $$
-  \text{$f(x+h) - f(x) \simeq h f'(h)$ à une fonction $o(h)$ négligeable devant $|h|$ près.}
+  \text{$f(x+h) - f(x) \simeq h f'(h)$ à une fonction $o(h)$, négligeable devant $|h|$, près.}
   $$
 \end{enumerate}
 
@@ -184,7 +184,7 @@ $$
 = \max_{i, k} \left| [H^2]_{jk}\right|
 = \max_{i, k} \left| \sum_j h_{ij} h_{jk} \right|
 \leq \max_{i, k} \sum_j |h_{ij}| \; | h_{jk}|
-\leq n \max_{i, j} |h_{ij}|
+\leq n \left(\max_{i, j} |h_{ij}|\right)^2
 \leq n (\|H\|_\infty)^2
 $$
 donc
@@ -226,7 +226,15 @@ $$
   $$
   \frac{\partial f_i(x)}{\partial x_j} 
 %   = g'(u) 
-  = \lim_{u \to 0} \frac{f_i(x + u e_j) - f_i(x)}{u}.
+  = \lim_{u \to 0} \frac{f_i(x + u e_j) - f_i(x)}{u}
+  = \lim_{u \to 0} \frac{g(x_j + u) - g(x_j)}{u}
+  $$
+  où $g$ est définie comme
+  $$
+  \begin{array}{rrcl}
+    g : & \Rbb & \mapsto & \Rbb \\
+    & y & \to & f_i(x_1, \dots x_{j-1}, y, x_{j+1}, \dots x_n).
+  \end{array}
   $$
   \item Par unicité de la dérivée, $\partial f_i(x) / \partial x_j$ est donc l'unique valeur $\ell$ qui vérifie
   \begin{equation} \label{eq:caracDeriveePartielle}
@@ -379,7 +387,7 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
 % }
 
 %-------------------------------------------------------------------------------
-\subsubsection*{Plan tangent}
+\subsubsection*{Plan tangent ($n = 2, k = 2$)}
 %-------------------------------------------------------------------------------
 
 La propriété \ref{prop:matriceJacobienne} justifie l'intérêt de la matrice jacobienne pour approcher les variations de l'application $f$ autour du point $x$ par une application linéaire : 
@@ -387,7 +395,7 @@ $$
 f(x+h) - f(x) = J_xf \cdot h + o(\|h\|).
 $$
 
-Notamment, on peut déterminer ainsi le plan tangent à une surface $S$ de $\Rbb^3$ d'équation
+Notamment, pour un fonction $f : \Rbb^2 \mapsto \Rbb$, on peut déterminer ainsi le plan tangent à une surface $S$ de $\Rbb^3$ d'équation
 $$
 z = f(x, y).
 $$
@@ -429,7 +437,7 @@ $$
   & X & \to & \log(|X|)
 \end{array}
 $$
-On remarque tout d'abord que $f$ n'est définie que pour les matrices $X$ inversibles. \\
+On remarque tout d'abord que $f$ n'est définie que pour les matrices $X$ inversibles dont le déterminant est (strictement) positif : $|X| > 0$. \\
 On cherche à déterminer la matrice de ses dérivées partielles :
 $$
 D_X = [d_{X, ij}]: \qquad d_{X, ij} = \left.\frac{\partial f}{\partial x_{ij}}\right|_X.
@@ -641,21 +649,22 @@ $$
   J_{\theta}(f \circ g) 
   = J_{(\rho(\theta), \theta)}f \cdot J_\theta g
   = \left[ \begin{array}{ccc}
-      \cos \theta  & & -\rho \sin \theta  \\
-      \sin \theta  & & \rho \cos \theta  
+      \cos \theta  & & -\rho(\theta) \sin \theta  \\
+      \sin \theta  & & \rho(\theta) \cos \theta  
     \end{array} \right]
     \cdot
     \left[\begin{array}{c} \rho'(\theta) \\ 1 \end{array} \right]
   = \left[ \begin{array}{c}
       \rho'(\theta) \cos \theta  - \rho(\theta) \sin \theta  \\
       \rho'(\theta) \sin \theta  + \rho(\theta) \cos \theta  
-    \end{array} \right]
+    \end{array} \right],
   $$
   c'est-à-dire
   $$
   x'(\theta) = \frac{\partial x}{\partial \theta} = \rho'(\theta) \cos \theta  - \rho(\theta) \sin \theta, \qquad 
   y'(\theta) = \frac{\partial y}{\partial \theta} = \rho'(\theta) \sin \theta  + \rho(\theta) \cos \theta.
   $$
+  On peut d'ailleurs retrouver
 }
 
 \exemple{
