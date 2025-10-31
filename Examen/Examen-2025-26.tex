@@ -35,7 +35,7 @@
 % \numberwithin{equation}{section}
 
 % Suppression des solutions
-% \renewcommand{\solution}[1]{}
+\renewcommand{\solution}[1]{}
 
 \newcommand{\alglin}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/AlgLin}
 \newcommand{\multivar}{/home/robin/ENSEIGN/Cours/MathBiologie/L3-ENS-Math1/Exercices/MultiVar}
@@ -74,8 +74,6 @@ L'épreuve dure 2 heures.
 Les notes de cours individuelles sont autorisées.
 L’usage de tout appareil électronique est interdit à l’exception d’une calculatrice.
 
-\todo{Manque un 2ème exercice facile} 
-
 %-------------------------------------------------------------------------------
 % \section{Algèbre linéaire}
 \input{\alglin/PolynomeCaracteristiqueParametrique}
@@ -93,7 +91,7 @@ L’usage de tout appareil électronique est interdit à l’exception d’une c
 % \section{Probabilités}
 \input{\probas/GWgeometrique}
 
-% \renewcommand{\subsubsection}[1]{\section*{Bonus : #1}}
+\renewcommand{\subsubsection}[1]{\section*{Bonus : #1}}
 \input{\probas/GWmultipop}
 
 %-------------------------------------------------------------------------------
