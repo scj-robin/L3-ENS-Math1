@@ -1,0 +1,44 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Inégalité de Hadamard}
+%-------------------------------------------------------------------------------
+
+Soit $A$ une matrice de $\Mcal_n$ inversible dont on note les vecteurs colonnes $u_1, \dots u_n$ : 
+$$
+A = [u_1 \dots u_n].
+$$
+L'objectif est de montrer l'inégalité d'Hadamard qui affirme que
+$$
+|A| \leq \prod_{i=1}^n \|v_i\|.
+$$
+
+\paragraph{Préliminaire.}
+$$
+\left(\prod_{i=1}^n a_i\right)^{1/n} \leq \frac1n \sum_{i=1}^n a_i
+$$
+\todo{Preuve par Jensen:}
+$$
+\log\left(\frac1n \sum_{i=1}^n a_i\right)
+\geq \frac1n \sum_{i=1}^n \log(a_i)
+= \frac1n \log\left(\prod_{i=1}^n a_i\right)
+= \left(\prod_{i=1}^n a_i\right)^{1/n}
+$$
+
+\paragraph{Inégalité d'Hadamard.}
+\begin{enumerate}
+  \item Pour chaque $1 \leq i \leq n$, on définit le vecteur $v_i = u_i / \|u_i\|$ et on construit la matrice $B = [v_1 \dots v_n]$. Montrer que 
+  $$
+  |A| = |B| \prod_{i=1}^n \|v_i\|
+  $$
+  \solution{
+    \todo{}.
+  }
+  %
+  \item Montrer que 
+  %
+  \item Que se passe-t-il si $A$ n'est pas inversible.
+  \solution{
+    Le résultat reste vrai puiqu'alors $|A| = 0$.
+  }
+\end{enumerate}
+
+\todo{\url{https://en.wikipedia.org/wiki/Hadamard's_inequality}}
