@@ -169,13 +169,14 @@ Un équilibre est donc stable si toute (petite) perturbation $\varepsilon$ autou
 
 
 %-------------------------------------------------------------------------------
-\paragraph*{Modèle de Verhulst.}
+\subsubsection*{Modèle de Verhulst}
+%-------------------------------------------------------------------------------
 Une façon simple d'empêcher la croissance indéfinie de la population prédite par le modèle de Malthus consiste à supposer que le taux de reproduction $\dot y / y$ décroît linéairement avec la taille de la population : 
 \begin{equation} \label{eq:verhulst}
 \dot y / y = r - cy
 \qquad \Leftrightarrow \qquad
 \dot y = y(r - cy).
-\end{equation}
+\end{equation}s
 Ce modèle est connu sous le nom de {\em modèle de Verhulst}. On suppose que les paramètres $r$ et $c$ sont positifs et on pose la condition initiale
 $$
 y(0) = y_0.
@@ -201,11 +202,11 @@ $$
   \qquad \Leftrightarrow \qquad
   y(1 + c b e^{rt}) = r b e^{rt} \\
   $$
-  soit encore
+  avec $b = y_0 / (r - c y_0) > 0$,   soit encore
   \begin{equation} \label{eq:solutionVerhulst}
     y = \frac{rb e^{rt}}{1 + cb e^{rt}} = \frac{K a_0 e^{rt}}{1 + a_0 e^{rt}}
   \end{equation}
-  avec $a_0 = cb > 0$.
+  avec $a_0 = c b = c y_0 / (r - c y_0) > 0$.
   La forme de cette solution lui donne également le nom de modèle logistique. 
   
   On remarque que
@@ -219,16 +220,15 @@ $$
   \dot y(t) = \frac{Ka_0 r e^{rt}}{(1 + a_0 e^{rt})^2} > 0, 
   $$
   donc que $0 < y(t) < K$ pour tout $t \in \Rbb$ : \eqref{eq:solutionVerhulst} est donc une solution maximale sur $\Rbb$. 
-  \item[Solution $y_0 < 0$ ou $y_0 > K$ :] \textcolor{gray}{on peut étudier ces cas de façon analogue au cas $y_0 \in ]0; K[$ en remarquant que pour une fonction $f$ dérivable possiblement négative ${\dot f}/{f} = \partial t \log |f|$.} \\
+  \item[Solution $y_0 < 0$ ou $y_0 > K$ :] 
+  %\textcolor{gray}{on peut étudier ces cas de façon analogue au cas $y_0 \in ]0; K[$ en remarquant que pour une fonction $f$ dérivable possiblement négative ${\dot f}/{f} = \partial t \log |f|$.} \\
   On remarque que la solution \eqref{eq:solutionVerhulst}  vérifie l'ODE $\dot y = y(r - cy)$ quelque soit le signe de $y(t)$, pour peu que $1 + a_0 e^{rt} \neq 0$, c'est à dire 
   $$
   t \neq t_* = -\frac1r \log(-a_0).
   $$
   \eqref{eq:solutionVerhulst} est donc une solution maximale sur $\Rbb \setminus \{t^*\}$ pour $y_0 < 0$ comme pour $y_0 > K$. \\
-  On remarque qu'on a alors
+  On remarque aussi qu'on a alors
   $$
-  y(0) = \frac{K a_0}{1 + a_0}
-  \qquad \Leftrightarrow \qquad
   a_0 = \frac{y_0}{K-y_0} < 0
   $$
   et que, par conséquent, $y(t)$ est strictement décroissante puisque
