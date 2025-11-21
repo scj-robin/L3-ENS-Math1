@@ -9,25 +9,46 @@ $$
   & X & \rightarrow & X^3.
 \end{array}
 $$
-Démontrer qu'elle est partout différentiable et déterminer son application linéaire tangente $D_X f$ en toute matrice $X$ de $\Mcal_n(\Rbb)$.
+
+\begin{enumerate}
+%   \item Démontrer que $f$ partout différentiable.
+%     \solution{
+%     }
+  %
+  \item Déterminer l'application linéaire tangente à $f$, $D_X f$, en une matrice $X$ de $\Mcal_n(\Rbb)$
+    \solution{
+      On a
+      $$
+      f(X+H) = X^3 + X^2H + XHX + HX^2 + H^2X + HXH + XH^2 + H^3,
+      $$
+      où
+      \begin{align*}
+        H^2X & = \left[\sum_{k=1}^n \sum_{\ell=1}^n h_{ik} h_{k\ell} x_{\ell j}\right]_{1 \leq i, j \leq n}, &
+        HXH & = \left[\sum_{k=1}^n \sum_{\ell=1}^n h_{ik} x_{k\ell} h_{\ell j}\right]_{1 \leq i, j \leq n}, \\ 
+        XH^2 & = \left[\sum_{k=1}^n \sum_{\ell=1}^n x_{ik} h_{k\ell} h_{\ell j}\right]_{1 \leq i, j \leq n}, &
+        H^3 & = \left[\sum_{k=1}^n \sum_{\ell=1}^n h_{ik} h_{k\ell} h_{\ell j}\right]_{1 \leq i, j \leq n}.\\
+      \end{align*}
+      Comme pour l'étude de la fonction $f(X) = X^2$, on observe que, pour tout $1 \leq i, j \leq n$ :
+      $$
+      \left|\sum_{k=1}^n \sum_{\ell=1}^n h_{ik} h_{k\ell} x_{\ell j}\right| \leq n^2 \|X\|_\infty \|H\|^2_\infty =  o(\|H\|_\infty)
+      $$
+      et de même pour les termes génériques respectifs de $HXH$ et de $XH^2$, et que
+      $$
+      \left|\sum_{k=1}^n \sum_{\ell=1}^n h_{ik} h_{k\ell} h_{\ell j}\right| \leq n^2 \|H\|^3_\infty =  o(\|H\|^2_\infty).
+      $$
+      On a donc 
+      $$
+      f(X+H) - f(X) = X^2H + XHX + HX^2 + o(\|H\|)
+      $$
+      où $X^2H + XHX + HX^2$ est linéaire en $H$. L'application linéaire tangente est donc
+      $$
+      \begin{array}{rrcl}
+        L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
+        & H & \rightarrow & X^2H + XHX + HX^2.
+      \end{array}
+      $$
+    }
+\end{enumerate}
+
 \solution{
-  On a
-  $$
-  f(X+H) = X^3 + X^2H + XHX + HX^2 + H^2X + HXH + XH^2 + H^3.
-  $$
-  Comme pour la fonction $f(X) = X^2$, on montre que 
-  $$
-  H^2X = o(\|H\|), \qquad HXH  = o(\|H\|), \qquad XH^2  = o(\|H\|), \qquad H^3 = o(\|H\|).
-  $$
-  On a donc 
-  $$
-  f(X+H) - f(X) = X^2H + XHX + HX^2 + o(\|H\|)
-  $$
-  où $X^2H + XHX + HX^2$ est linéaire en $H$. L'application linéaire tangente est donc
-  $$
-  \begin{array}{rrcl}
-    L_X : & \Mcal_n(\Rbb) & \mapsto & \Mcal_n(\Rbb) \\
-    & H & \rightarrow & X^2H + XHX + HX^2.
-  \end{array}
-  $$
 }

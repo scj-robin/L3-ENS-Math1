@@ -1,5 +1,83 @@
 %-------------------------------------------------------------------------------
-\subsubsection{Matrice de rotation \todo{}}
+\subsubsection{Matrice $3\times3$}
 %-------------------------------------------------------------------------------
+
+Pour $\theta \in [0, 2\pi]$, on considère la matrice $A \in \Mcal_3$ :
+$$
+A = \left[\begin{array}{ccc}
+            \cos\theta & -\sin\theta & 0 \\
+            \sin\theta & \cos\theta & 0 \\
+            0 & 0 & 1
+          \end{array}\right].
+$$
+
+\begin{enumerate}
+  \item Déterminer le polynôme caractéristique de $A$, noté $P_A(\lambda)$, et ses racines.
+    \solution{
+      En développant par rapport à la dernière ligne, on obtient
+      \begin{align*}
+        P_A(\lambda) 
+          & = \left|\begin{array}{ccc}
+                    \cos\theta - \lambda & -\sin\theta & 0 \\
+                    \sin\theta & \cos\theta - \lambda & 0 \\
+                    0 & 0 & 1 - \lambda
+                  \end{array}\right|
+          = (1 - \lambda) \left|\begin{array}{cc}
+                    \cos\theta - \lambda & -\sin\theta  \\
+                    \sin\theta & \cos\theta - \lambda 
+                  \end{array}\right| \\
+        & = (1 - \lambda) [(\cos\theta - \lambda)^2 + \sin^2\theta]
+          = (1 - \lambda) [\lambda^2 - 2 \lambda \cos\theta + 1].
+      \end{align*}
+      Le discriminant du terme entre crochets vaut $\Delta = 4\cos^2\theta - 4 = 4(\cos^2\theta - 1)  \leq 0$. Les racines de $P_A(\lambda)$ sont donc
+      $$
+      \lambda = 1 
+      \qquad \text{et} \qquad
+      \lambda = \cos\theta \pm i \sqrt{1 - \cos^2\theta}. 
+      $$
+    }
+  %
+  \item A quelle condition $A$ est-elle diagonalisable?
+    \solution{
+      $A$ diagonalisable ssi toute ses valeurs propres sont réelles, c'est-à-dire ssi
+      $$
+      \Delta = 0 \qquad \Leftrightarrow \qquad
+      \cos^2\theta = 1 \qquad \Leftrightarrow \qquad
+      \cos\theta = \pm 1 \qquad \Leftrightarrow \qquad
+      \theta \in \{0, \pi\}.
+      $$
+    }
+  %
+  \item Dans le cas général, quelle action (géométrique) $A$ opère-t-elle sur un vecteur de $\Rbb^3$ ?
+    \solution{
+      Pour $v = [x \; y \; z]^\top$, on a
+      $$
+      A v 
+      = \left[\begin{array}{ccc}
+                \cos\theta & -\sin\theta & 0 \\
+                \sin\theta & \cos\theta & 0 \\
+                0 & 0 & 1
+              \end{array}\right] 
+        \left[\begin{array}{c} x \\ y \\ z \end{array}\right]
+      = \left[\begin{array}{c} x \cos\theta - y \sin\theta \\ x \sin\theta + y \cos\theta \\ z \end{array}\right]
+      $$
+      et, notamment, 
+      $$
+      \|A v\|_2 
+      = \sqrt{(x \cos\theta - y \sin\theta)^2 + (x \sin\theta + y \cos\theta) + z^2}
+      = \sqrt{x^2 + y^2 + z^2}
+      = \|v\|_2 
+      $$
+      et
+      $$
+      \cos(<(x, y), (x \cos\theta - y \sin\theta, x \sin\theta + y \cos\theta)>)
+      = \frac{(x^2 + y^2)\cos\theta}{(x^2 + y^2)}
+      = \cos\theta
+      $$
+      L'application linéaire associée à $A$ fait pivoter les coordonnées $(x, y)$ d'un angle $\theta$ en laissant $z$ inchangée : il s'agit d'une rotation (d'angle $\theta$) autour de l'axe vertical.
+     }
+  %
+\end{enumerate}
+
 
 
