@@ -68,3 +68,4 @@ lines2D(x=traj2[, 2], y=traj2[, 3], col=2)
 # for(i in 1:floor(sqrt(tNb))){lines3D(x=traj2[1:(i*floor(sqrt(tNb))), 2], 
 #                                      y=traj2[1:(i*floor(sqrt(tNb))), 3])}
 scatter2D(x=statPoint2[, 1], y=statPoint2[, 2], pch=20, col=1, add=TRUE)
+
