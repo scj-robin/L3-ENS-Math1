@@ -1,0 +1,85 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Inverse de matrice $3 \times 3$}
+%-------------------------------------------------------------------------------
+
+% Source http://exo7.emath.fr/ficpdf/fic00054.pdf (Del05-TD-ULCB-fic00054.pdf)
+
+Soit la matrice
+$$
+A = \left[\begin{array}{rrr}
+      0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0
+    \end{array}\right].  
+$$
+
+\begin{enumerate}
+  \item Montrer que $A^2 = A + 2 I$.
+  \solution{
+    On calcule directement
+    $$
+    A^2 = \left[\begin{array}{rrr}
+            1 & 1 & 2 \\ 1 & 2 & 1 \\ 1 & 1 & 2
+          \end{array}\right]
+        = A + 2 I.
+    $$
+  }
+  %
+  \item En déduire que $A$ est inversible et calculer son inverse.
+  \solution{
+    On a 
+    $$
+    A^2 - A = 2 I
+    \qquad \Leftrightarrow \qquad
+    A \left[\frac12 (A - I)\right] = I,
+    $$
+    donc $A$ est inversible et son inverse est $(A - I)/2$.
+  }
+  \item Déterminer son polynôme caractéristique et en déduire ses valeurs propres.
+  \solution{
+    \begin{align*}
+      P_A(\lambda) 
+      & = \left|\begin{array}{rrr}
+                  -\lambda & 1 & 1 \\ 1 & -\lambda & 1 \\ 1 & 1 & -\lambda
+                \end{array}\right|
+       = - \lambda \left|\begin{array}{rr}
+                            -\lambda & 1 \\ 1 & -\lambda
+                            \end{array}\right|
+         - 1 \left|\begin{array}{rr}
+                            1 & 1 \\ 1 & -\lambda
+                            \end{array}\right|
+         + 1 \left|\begin{array}{rr}
+                            1 & -\lambda \\ 1 & 1 
+                            \end{array}\right|      \\                      
+       & = - \lambda \left|\begin{array}{rr}
+                            -\lambda & 1 \\ 1 & -\lambda
+                            \end{array}\right|
+         - 2 \left|\begin{array}{rr}
+                            1 & 1 \\ 1 & -\lambda
+                            \end{array}\right|
+        \quad (\text{car le déterminant est une forme alternée}) \\
+        & = - \lambda (\lambda^2 - 1) + 2(\lambda +1)
+        = -\lambda (\lambda - 1) (\lambda + 1)  + 2 (\lambda + 1)
+        = (\lambda + 1) (-\lambda^2 + \lambda + 2) \\
+        & = (\lambda + 1) (\lambda + 1) (2 - \lambda).
+    \end{align*}
+    les valeurs propres sont donc $\lambda_1 = 2$ et $\lambda_2 = -1$, qui est double.
+  }
+  \item Quelle transformation cette matrice opère-t-elle ?
+  \solution{
+    Le vecteur propre $v_1 = [x \; y \; z]$ associé à $\lambda_1 = 2$ vérifie
+    $$
+    \left\{\begin{array}{rcl}
+            y + z & = & 2 x \\
+            x + z & = & 2 y \\
+            x + y & = & 2 z
+          \end{array}\right.
+    \quad \Leftrightarrow \quad x = y = z,
+    $$    
+    soit, par exemple $v_1 = [1 \; 1 \; 1]$. \\
+    De plus, $A$ est symétrique, donc diagonalisable, donc $\Ecal(\lambda_2)$ est un plan, et ses vecteurs propres sont orthogonaux, donc $\Ecal(\lambda_2)$ est le plan des vecteurs orthogonaux à $v_1$ : 
+    $$
+    \Ecal(\lambda_2) = \{w \in \Rbb^3 : v_1^\top w = 0\}.
+    $$
+    $A$ opère donc une homothétie (de rapport $\lambda_1 = 2$) le long de la première bissectrice et une symétrie ($\lambda_1 = -1$) dans le plan orthogonal. Pour $u = a v_1 + b w$ (avec $w \in \Ecal(\lambda_2)$), on a $A u = 2 a v_1 - b w$.
+  }
+\end{enumerate}
+
