@@ -2,9 +2,9 @@
 
 rm(list=ls()); par(pch=20)
 figDir <- '../Figures/'
-exportFig <- TRUE
+exportFig <- FALSE
 par(pch=20, lwd=1); lwd=4
-source('FonctionsSystDyn.R')
+source('../Fonctions/FonctionsSystDyn.R')
 
 ################################################################################
 # Exo L2 bio SU
@@ -68,3 +68,4 @@ PlotSystDyn2D(edo=EDO3, y0List=y0List, xGrid=yGrid, yGrid=zGrid,
 curve(sqrt(parm$a/parm$c*(x^2 + parm$S*x)), from=min(yGrid), to=max(yGrid), n=1001, add=TRUE, col=8, lty=2)
 curve(parm$a/parm$r*(x^2 + parm$S*x), from=min(yGrid), to=max(yGrid), n=1001, add=TRUE, col=8, lty=2)
 if(exportFig){dev.off()}
+

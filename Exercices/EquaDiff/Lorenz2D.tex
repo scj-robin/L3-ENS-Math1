@@ -17,6 +17,15 @@ où les coefficients $a$ et $b$ sont strictement positifs.
 
 \paragraph{Détermination des points stationnaires et de leur stabilité.}
 \begin{enumerate}
+  \item Etudier les signes de $\dot x$ et $\dot y$ et tracer le champ de vecteur gradient.
+  \solution{
+  $\dot x$ est positif si $x \geq 0$ et $y \leq a$ ou si $x \leq 0$ et $y \geq a$.
+  $\dot y$ est positif si $y \leq x^2/b$.
+    $$
+    \includegraphics[width=.5\textwidth, trim=30 30 20 50, clip=]{Lorenz2D-gradientField}
+    $$
+  }
+  %
   \item Montrer que le système admet trois points stationnaires.
   \solution{
     En annulant simultanément
@@ -77,6 +86,12 @@ où les coefficients $a$ et $b$ sont strictement positifs.
     {\sl Alternative :} Le polynôme caractéristique de $J_B f$ est le même que celui de $J_A f$ donc $B$ est de même nature que $A$.
   \end{description}
   }
+  \item Tracer l'allure des trajectoirs partant de $(0, a/2)$, $(\varepsilon, a/2)$ et $(-\varepsilon, a/2)$.
+  \solution{
+    $$
+    \includegraphics[width=.5\textwidth, trim=30 30 20 50, clip=]{Lorenz2D-paths}
+    $$
+  }
 \end{enumerate}
 
 \paragraph{Cas de paramètres négatifs.}
@@ -97,13 +112,13 @@ On étudie maintenant le cas où les paramètres $a$ et $b$ peuvent prendre des 
     \begin{itemize}
       \item Le valeurs propres de $J_O f$ sont alors de signes opposés, donc $O$ est instable.
       \item On a $\tr(J_A f) = \tr(J_B f) = -b > 0$ et $\det(J_A f) = \det(J_B f) = 2 ab > 0$. Les deux valeurs propres sont donc positives et $A$ et $B$ sont donc instables. \\
-      {\sl Alternative:} Le discriminant de $P_A(\lambda)$ (et donc de $P_B(\lambda)$) vaut alors $\Delta = b^2 - 8ab > b^2 > 0$. Les deux valeurs propres
+      {\sl Alternative:} Le discriminant de $P_A(\lambda)$ (et donc de $P_B(\lambda)$) vaut alors $\Delta = b^2 - 8ab < b^2$. Les deux valeurs propres
       $$
       \lambda_1 = \frac12 \left(-b + \sqrt{\Delta}\right) 
       \quad \text{et} \quad
       \lambda_2 = \frac12 \left(-b - \sqrt{\Delta}\right).
       $$
-      sont alors de signe opposé : $A$ et $B$ sont donc instables.
+      sont alors positives : $A$ et $B$ sont donc instables.
     \end{itemize}
   \end{description}
   }

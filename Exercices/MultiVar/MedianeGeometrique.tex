@@ -2,7 +2,7 @@
 \subsubsection{Barycentre et médiane géométrique}
 %-------------------------------------------------------------------------------
 
-On considère $n$ points $x_1, \dots x_n$ de $[a, b]^d$ et on cherche à définir un point central $m$ du ``nuage de points'' $(x_i)_{1 \leq i \leq n}$. On notera $(x_{ij})_{1 \leq j \leq d}$ les coordonnées points $x_i$. 
+On considère $n$ points $x_1, \dots x_n$ de $[a, b]^d$ et on cherche à définir un ``point central'' $m$ du ``nuage de points'' $(x_i)_{1 \leq i \leq n}$. On notera $(x_{ij})_{1 \leq j \leq d}$ les coordonnées du point $x_i$. 
 
 \paragraph{Barycentre.}
 On considère tout d'abord la fonction
@@ -93,7 +93,7 @@ $$
     \sum_{i=1}^n \|a(x_i - u) + (1 - a)(x_i - v)\| 
     < \sum_{i=1}^n \|a(x_i - u)\| + \|(1 - a)(x_i - v)\|
     $$
-    et $g$ est donc strictement convexe.
+    et $g$ est donc strictement convexe dès que les points $\{x_i\}_{1 \leq i \leq n}$ ne sont pas tous alignés.
   }
   \item En déduire que le point $\widetilde{y}$ qui minimise $g$ est unique. On appelle ce point médiane géométrique des points $x_1, \dots x_n$.
   \solution{
