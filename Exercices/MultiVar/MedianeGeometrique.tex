@@ -39,19 +39,22 @@ où $\|u\|_2$ désigne la norme euclidienne: $\|u\|_2 = \sqrt{\sum_{j=1}^n u_j^2
 \end{enumerate}
 
 \paragraph{Fonction convexe.}
-On rappelle qu'une fonction $h: [a, b]^d \mapsto \Rbb$ est convexe si et seulement si pour tout couple $(u, v)$ et tout réel $0 < a < 1$, on a
+On rappelle qu'une fonction $h: [a, b]^d \mapsto \Rbb$ est convexe si et seulement si pour tout couple $(u \neq v)$ et tout réel $0 < a < 1$, on a
+$$
+h(au + (1-a) v) \leq a h(u) + (1-a) h(v)
+$$
+et qu'elle est strictement convexe  si l'inégalité est stricte : 
 $$
 h(au + (1-a) v) \leq a h(u) + (1-a) h(v).
 $$
-La fonction est strictement convexe si l'inégalité est stricte pour pour tout $0 < a < 1$.
 
 \begin{enumerate}
   \setcounter{enumi}{1}  
-  \item Montrer qu'une fonction $h$ continue et strictement convexe admet un minimum unique.
+  \item Montrer que si $h$ est continue, bornée et strictement convexe, elle admet un minimum unique.
   \solution{
-    On peut raisonner par l'absurde. Si $h$ admet deux minimums $u_1$ et $u_2$ (avec donc $f(u_1) = f(u_2)$), alors pour $0 < a < 1$, on a
+    On peut raisonner par l'absurde. Si $h$ admet deux minimums $u_1$ et $u_2$ (avec donc $h(u_1) = h(u_2)$), alors pour $0 < a < 1$, on a
     $$
-    f(a u_1  +(1 - a) u_2) < a f(u_1) + (1 - a) f(u_2) = f(u_1)
+    h(a u_1  +(1 - a) u_2) < a h(u_1) + (1 - a) h(u_2) = f(u_1)
     $$
     ce qui est en contradiction avec le fait que $u_1$ et $u_2$ soient des minimums. \\
     On complète la démonstration en remarquant que $[a, b]^d$ est fermé et borné et que $f$ atteint donc son minimum (et son maximum).
@@ -74,7 +77,7 @@ $$
   \solution{
     Soient $u$ et $v$ deux points de $[a, b]^d$ et $0 < a < 1$, on a 
     \begin{align*}
-      f(a u  + (1 - a) v) 
+      g(a u  + (1 - a) v) 
       & = \sum_{i=1}^n \|x_i - a u - (1 - a) v\| \\
       & = \sum_{i=1}^n \|a(x_i - u) + (1 - a)(x_i - v)\| &
       & (\text{car $x_i = a x_i + (1-a) x_i$})\\

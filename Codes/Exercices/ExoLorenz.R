@@ -7,43 +7,50 @@ source('../Fonctions/FonctionsSystDyn.R')
 figDir <- '../../Figures/'
 exportFig <- TRUE
 
-################################################################################
-# Système 3D
-parm3 <- list(sigma=10, rho=28, beta=8/3)
-Lorenz3 <- function(t, y, parm){
-  list(c(parm$sigma*(y[2] - y[1]), 
-         parm$rho*y[1] - y[2] - y[1]*y[3], 
-         y[1]*y[2] - parm$beta*y[3]))
-}
-JacobODE3 <- function(t, y, parm){
-  matrix(c(-parm$sigma, parm$sigma, 0, 
-           parm$rho-y[3], -1, -y[1], 
-           y[2], y[1], -parm$beta), 3, 3, byrow=TRUE)  
-}
-# Points stationnaires
-statPoint3 <- matrix(c(0, 0, 0, 
-                      sqrt(parm3$beta*(parm3$rho-1)), sqrt(parm3$beta*(parm3$rho-1)), parm3$rho-1,
-                      -sqrt(parm3$beta*(parm3$rho-1)), -sqrt(parm3$beta*(parm3$rho-1)), parm3$rho-1), 
-                    3, 3, byrow=TRUE)
-statNb <- nrow(statPoint3)
-sapply(1:statNb, function(i){Lorenz3(t=NULL, y=statPoint3[i, ], parm=parm3)})
-# Stabilité
-sapply(1:statNb, function(i){JacobODE3(t=NULL, y=statPoint3[i, ], parm=parm3)})
-sapply(1:statNb, function(i){eigen(JacobODE3(t=NULL, y=statPoint3[i, ], parm=parm3))$values})
-sapply(1:statNb, function(i){eigen(JacobODE3(t=NULL, y=statPoint3[i, ], parm=parm3))$vectors})
-# Trajectoire
-y0 <- c(1, 2, 3)
 tMax <- 30; tStep <- 1e-3; tGrid <- seq(0, tMax, by=tStep); tNb <- length(tGrid)
-traj3 <- ode.3D(y=y0, times=tGrid, func=Lorenz3, parm=parm3, dimens=c(1, 1, 1), method='ode45')
-lines3D(x=traj3[, 2], y=traj3[, 3], z=traj3[, 4])
-# for(i in 1:floor(sqrt(tNb))){lines3D(x=traj3[1:(i*floor(sqrt(tNb))), 2], 
-#                                      y=traj3[1:(i*floor(sqrt(tNb))), 3], 
-#                                      z=traj3[1:(i*floor(sqrt(tNb))), 4])}
-scatter3D(x=statPoint3[, 1], y=statPoint3[, 2], z=statPoint3[, 3], pch=20, col=1, add=TRUE)
+
+# ################################################################################
+# # Système 3D
+# dataName <- 'Lorenz3D'
+# parm3 <- list(sigma=10, rho=28, beta=8/3)
+# Lorenz3 <- function(t, y, parm){
+#   list(c(parm$sigma*(y[2] - y[1]), 
+#          parm$rho*y[1] - y[2] - y[1]*y[3], 
+#          y[1]*y[2] - parm$beta*y[3]))
+# }
+# JacobODE3 <- function(t, y, parm){
+#   matrix(c(-parm$sigma, parm$sigma, 0, 
+#            parm$rho-y[3], -1, -y[1], 
+#            y[2], y[1], -parm$beta), 3, 3, byrow=TRUE)  
+# }
+# # Points stationnaires
+# statPoint3 <- matrix(c(0, 0, 0, 
+#                       sqrt(parm3$beta*(parm3$rho-1)), sqrt(parm3$beta*(parm3$rho-1)), parm3$rho-1,
+#                       -sqrt(parm3$beta*(parm3$rho-1)), -sqrt(parm3$beta*(parm3$rho-1)), parm3$rho-1), 
+#                     3, 3, byrow=TRUE)
+# statNb <- nrow(statPoint3)
+# sapply(1:statNb, function(i){Lorenz3(t=NULL, y=statPoint3[i, ], parm=parm3)})
+# # Stabilité
+# sapply(1:statNb, function(i){JacobODE3(t=NULL, y=statPoint3[i, ], parm=parm3)})
+# sapply(1:statNb, function(i){eigen(JacobODE3(t=NULL, y=statPoint3[i, ], parm=parm3))$values})
+# sapply(1:statNb, function(i){eigen(JacobODE3(t=NULL, y=statPoint3[i, ], parm=parm3))$vectors})
+# # Trajectoire
+# y0 <- c(1, 2, 3)
+# traj3 <- ode.3D(y=y0, times=tGrid, func=Lorenz3, parm=parm3, dimens=c(1, 1, 1), method='ode45')
+# lines3D(x=traj3[, 2], y=traj3[, 3], z=traj3[, 4])
+# # for(i in 1:floor(sqrt(tNb))){lines3D(x=traj3[1:(i*floor(sqrt(tNb))), 2], 
+# #                                      y=traj3[1:(i*floor(sqrt(tNb))), 3], 
+# #                                      z=traj3[1:(i*floor(sqrt(tNb))), 4])}
+# scatter3D(x=statPoint3[, 1], y=statPoint3[, 2], z=statPoint3[, 3], pch=20, col=1, add=TRUE)
 
 ################################################################################
 # Système 2D
-parm2 <- list(a=27, b=8/3)
+dataName <- 'Lorenz2D'
+parm2 <- list(b = 8/3)
+parm2$a <- 50*parm2$b/8
+parm2$a <- (parm2$b/8)/2
+dataName <- paste0(dataName, '-a', 100*round(parm2$a, 2), '-b', 100*round(parm2$b, 2))
+
 Lorenz2 <- function(y, parm){
   c(parm$a*y[1] - y[1]*y[2], 
     y[1]^2 - parm$b*y[2])
@@ -62,10 +69,10 @@ statNb <- nrow(statPoint2)
 t(sapply(1:statNb, function(i){Lorenz2(y=statPoint2[i, ], parm=parm2)}))
 
 # Champ de gradient
-xGrid <- seq(-30, 30, length.out=50)
-yGrid <- seq(0, 50, length.out=50)
+xGrid <- seq(-2*sqrt(parm2$a*parm2$b), 2*sqrt(parm2$a*parm2$b), length.out=30)
+yGrid <- seq(0, 2*parm2$a, length.out=30)
 xyGrid <- rbind(as.matrix(expand.grid(xGrid, yGrid)))
-if(exportFig){png(paste0(figDir, 'Lorenz2D-gradientField.png'))}
+if(exportFig){png(paste0(figDir, dataName, '-gradientField.png'))}
 solLorenz2 <- PlotSystDyn2D(edo=Lorenz2, y0List=NULL, xGrid=xGrid, yGrid=yGrid, xyGrid=xyGrid,
                             parm=parm2, times=tGrid, 
                             vref=c(-sqrt(parm2$a*parm2$b), 0, sqrt(parm2$a*parm2$b)),
@@ -80,11 +87,12 @@ sapply(1:statNb, function(i){eigen(JacobODE2(y=statPoint2[i, ], parm=parm2))$vec
 
 # Trajectoires
 y0List <- list(c(0, parm2$a/2), c(-1, parm2$a/2), c(1, parm2$a/2))
-if(exportFig){png(paste0(figDir, 'Lorenz2D-paths.png'))}
+if(exportFig){png(paste0(figDir, dataName, '-paths.png'))}
 solLorenz2 <- PlotSystDyn2D(edo=Lorenz2, y0List=y0List, xGrid=xGrid, yGrid=yGrid, xyGrid=xyGrid,
                             parm=parm2, times=tGrid, 
                             vref=c(-sqrt(parm2$a*parm2$b), 0, sqrt(parm2$a*parm2$b)),
                             href=c(0, parm2$a))
+lines(xGrid, xGrid^2/parm2$b, lwd=2, lty=2, col=1)
 if(exportFig){dev.off()}
 # y0 <- c(1, 1)
 # # tMax <- 30; tStep <- 1e-3; tGrid <- seq(0, tMax, by=tStep); tNb <- length(tGrid)

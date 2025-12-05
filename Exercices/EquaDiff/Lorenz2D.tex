@@ -19,10 +19,10 @@ où les coefficients $a$ et $b$ sont strictement positifs.
 \begin{enumerate}
   \item Etudier les signes de $\dot x$ et $\dot y$ et tracer le champ de vecteur gradient.
   \solution{
-  $\dot x$ est positif si $x \geq 0$ et $y \leq a$ ou si $x \leq 0$ et $y \geq a$.
-  $\dot y$ est positif si $y \leq x^2/b$.
+    $\dot x$ est positif si $x \geq 0$ et $y \leq a$ ou si $x \leq 0$ et $y \geq a$.
+    $\dot y$ est positif si $y \leq x^2/b$.
     $$
-    \includegraphics[width=.5\textwidth, trim=30 30 20 50, clip=]{Lorenz2D-gradientField}
+    \includegraphics[width=.5\textwidth, trim=30 30 20 50, clip=]{Lorenz2D-a17-b267-gradientField}
     $$
   }
   %
@@ -56,8 +56,7 @@ où les coefficients $a$ et $b$ sont strictement positifs.
     $$
     J_A f = \left[\begin{array}{cc} 0 & -\sqrt{ab} \\ 2\sqrt{ab} & -b \end{array} \right],
     $$
-    donc $\tr(J_A f) = -b < 0$ et $\det(J_A f) = 2ab > 0$. Les deux valeurs propres sont donc de même signe et négatives : $A$ est donc un équilibre stable. \\
-    {\sl Alternative :} Le polynôme caractéristique
+    et le polynôme caractéristique
     $$
     P_A(\lambda) = \lambda^2 + b \lambda + 2 ab
     $$
@@ -88,8 +87,13 @@ où les coefficients $a$ et $b$ sont strictement positifs.
   }
   \item Tracer l'allure des trajectoirs partant de $(0, a/2)$, $(\varepsilon, a/2)$ et $(-\varepsilon, a/2)$.
   \solution{
+    Une partie imaginaire non nulle des valeurs propres induit un phénomène de rotation autour du point stationnaire.
     $$
-    \includegraphics[width=.5\textwidth, trim=30 30 20 50, clip=]{Lorenz2D-paths}
+    \begin{array}{cc}
+      a < b/8 & a > b/8 \\
+      \includegraphics[width=.4\textwidth, trim=30 30 20 50, clip=]{Lorenz2D-a17-b267-paths} &
+      \includegraphics[width=.4\textwidth, trim=30 30 20 50, clip=]{Lorenz2D-a1667-b267-paths}
+    \end{array}
     $$
   }
 \end{enumerate}
