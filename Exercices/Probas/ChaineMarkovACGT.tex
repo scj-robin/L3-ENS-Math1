@@ -1,0 +1,65 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Chaîne de Markov sur $\{A, C, G, T\}$}
+%-------------------------------------------------------------------------------
+
+% Exo AL : examen 2025-26
+
+On considère une chaîne de Markov $X=(X_n, n\in \Nbb)$ à valeurs dans $E=\{A, T, G, C\}$. Pour $i,j\in E$, on note $p_{ij}$ la probabilité de transition de i vers j et on suppose que $p_{ij}\not=0$ dès que $i\not=j$.
+
+\begin{enumerate}
+  \item Quelles sont les classes de communication de la chaîne de Markov $X$ ? Comment appelle-t-on une telle chaîne ?
+  %
+  \item Soit $u$ une probabilité stationnaire de $P$. Rappeler l'équation vérifiée par $u$ et $P$. Que dire au sujet de l'unicité de $u$ ?
+  \solution{$uP=u$, unique à un scalaire multiplicatif près, donc unique si proba.}
+  %
+  \item On suppose que $p_{ij}=1/4$ pour tous $i,j$. On appelle $M$ la matrice $4\times 4$ qui ne contient que des 1.
+  \begin{enumerate}
+  \item Exprimer $P$, puis $P^n$ à l'aide de $M$. 
+  \solution{Réponse : $P^n=(1/4)M$}
+  %
+  \item Déterminer $u$.
+  \solution{\todo{}}
+  %
+  \end{enumerate}
+  %
+  \item On suppose que $p_{ij}=1/3$ si $i\not=j$.
+  \begin{enumerate}
+    \item Que vaut $p_{ii}$ ? Exprimer $P$ à l'aide de $M$ et de la matrice identité $I$.
+    \solution{Réponse : $P=(1/3)(M-I)$}
+    %
+    \item Calculer $P^n$ et montrer que $P^n$ converge vers une matrice que l'on précisera.
+    \solution{
+    \begin{align*}
+      P^n & =(1/3)^n (M-I)^n = (1/3)^n\sum_k {n\choose k} M^k(-1)^{n-k} \\
+      & = (1/3)^n \left[ \sum_{k>0} {n\choose k} 4^{k-1}(-1)^{n-k}M+(-1)^n I \right] \\
+      & = (1/3)^n \left[ (1/4)\sum_k {n\choose k} 4^k(-1)^{n-k}M - (-1)^n(1/4)M+(-1)^n I\right] \\
+      & = (1/4)[M-(-1/3)^n(M-4I)],
+    \end{align*}
+    qui tend vers M/4
+    }
+    %
+    \item Que vaut $u$ ?
+    \solution{\todo{}}
+    %
+  \end{enumerate}
+  \item Comment pourriez-vous généraliser le résultat des questions 2 et 3 ?
+  \solution{\todo{}}
+  %
+  \item On suppose encore que $p_{ii}=0$ mais maintenant $p_{AG}=p_{GA}=p_{CT}=p_{TC}=p$ et $p_{AC}=p_{CA}=p_{GT}=p_{TG}=p_{GC}=p_{CG}=p_{AT}=p_{TA}=q$. \\
+  {\sl Note : En génomique évolutive, ces deux types de mutation portent un nom (transitions et transversions).}
+  \begin{enumerate}
+  \item Faire un schéma. Ecrire la matrice $P$ en fonction de $p$ et $q$. Donner une relation entre $p$ et $q$. 
+  \solution{$p+2q = 1$.}
+  %
+  \item Montrer que l'on peut réduire l'étude de cette chaîne de Markov à celle d'une chaîne de Markov à deux états. 
+  \solution{purines = {A,G} et pyrimidines = {C,T}}
+  %
+  \item En déduire $u$. 
+  \solution{Par symétrie la proba des purines et des pyrimidines est la même (1/2,1/2). Par symétrie, à l'intérieur de chaque classe, le poids de chaque base est le même. \\ Conclusion : $u$ est uniforme.}
+  \end{enumerate}
+  %
+  \item On considère une chaîne de Markov $(X,Y,Z)$ à valeurs dans $E^3$. Soit $f$ la fonction qui à un triplet de bases associe l'acide aminé associé. Est-ce-que $f(X,Y,Z)$ est une chaîne de Markov ?
+  \solution{\todo{}}
+  %
+\end{enumerate}
+
