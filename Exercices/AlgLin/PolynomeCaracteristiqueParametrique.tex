@@ -5,66 +5,79 @@
 On considère la matrice
 \begin{align*}
   B & = \left[\begin{array}{rrr}
-    -1 & 3 & 1 \\ 0 & 2 & 1 \\ \alpha & \beta & 2
+    -1 & 3 & 1 \\ 0 & 2 & 1 \\ a & b & 2
     \end{array}\right].  
 \end{align*}
 
 \begin{enumerate}
   \item Montrer son polynôme caractéristique est
   $$
-  P_B(\lambda) = -(1+\lambda)(\lambda^2 - 4 \lambda + 4 - \alpha - \beta).
+  P_B(\lambda) = -(1+\lambda)(\lambda^2 - 4 \lambda + 4 - a - b).
   $$
   \solution{
   On développe par rapport à la première colonne et on développe : 
   \begin{align*}
     P_B(\lambda) 
     & = |B - \lambda I_3|
-    = (-1 -\lambda) \left|\begin{array}{cc} 2 - \lambda & 1 \\ \beta & 2 - \lambda \end{array}\right| 
-    - \alpha \left|\begin{array}{cc} 3 & 1 \\ 2 - \lambda & 1 \end{array}\right| \\
-    & = (-1 - \lambda) ((2 - \lambda)^2 - \beta) - \alpha (3 - (2 - \lambda)) \\
-    & = - (1 + \lambda) (\lambda^2 - 4 \lambda + 4 - \beta) - \alpha (1 + \lambda) \\
-    & = - (1 + \lambda) (\lambda^2 - 4 \lambda + 4 - \beta + \alpha).
+    = (-1 -\lambda) \left|\begin{array}{cc} 2 - \lambda & 1 \\ b & 2 - \lambda \end{array}\right| 
+    - a \left|\begin{array}{cc} 3 & 1 \\ 2 - \lambda & 1 \end{array}\right| \\
+    & = (-1 - \lambda) ((2 - \lambda)^2 - b) - a (3 - (2 - \lambda)) \\
+    & = - (1 + \lambda) (\lambda^2 - 4 \lambda + 4 - b) - a (1 + \lambda) \\
+    & = - (1 + \lambda) (\lambda^2 - 4 \lambda + 4 - (b + a)).
   \end{align*}
   }
-  \item En déduire une condition sur $\alpha$ et $\beta$ pour que $B$ possède trois valeurs propres réelles distinctes.
-  \solution{La premièrre valeur propre est donc $\lambda_1 = -1$. Le discriminant du polynôme 
+  \item A quelle(s) condition(s) sur $a$ et $b$, $B$ possède-t-elle trois valeurs propres réelles distinctes ?
+  \solution{La première valeur propre est donc $\lambda_1 = -1$ et le discriminant du polynôme 
   $$
-  Q(\lambda) = \lambda^2 - 4 \lambda + 4 - (\alpha+\beta)
+  Q(\lambda) = \lambda^2 - 4 \lambda + 4 - (a+b)
   $$
-  vaut $\Delta = 16 - 4(4 - (\alpha+\beta)) = \alpha + \beta$. Les deux valeurs propres restantes $\lambda_2$ et $\lambda_3$ sont donc réelles et distinctes ssi $\alpha + \beta > 0$ et valent alors
+  vaut $\Delta = 16 - 4(4 - (a+b)) = 4(a + b)$. Les deux valeurs propres restantes $\lambda_2$ et $\lambda_3$ sont donc réelles et distinctes ssi $a + b > 0$ et valent alors
   $$
-  \lambda_2 = \frac{4 + \sqrt{\alpha + \beta}}{2} > 0 
+  \lambda_2 = 2 + \sqrt{a + b} > 0 
   \qquad \text{et} \qquad
-  \lambda_3 = \frac{4 - \sqrt{\alpha + \beta}}{2}.
+  \lambda_3 = 2 - \sqrt{a + b}.
   $$
-  Elles sont de plus distinctes de $\lambda_1 = -1$ ssi 
-  $$
-  \lambda_3 \neq -1 \qquad \Leftrightarrow \qquad
-  \alpha + \beta \neq 36.
-  $$
-  Dans ce cas ($\alpha + \beta > 0$ et $\alpha + \beta \neq 36$), les 3 valeurs propres sont réelles et distinctes (et $B$ est donc diagonalisable). 
+  $\lambda_3$ est de plus distincte de $\lambda_1 = -1$ ssi $a + b \neq 9$. \\
+  Dans ce cas ($a + b > 0$ et $a + b \neq 9$), les 3 valeurs propres sont réelles et distinctes (et $B$ est donc diagonalisable). 
   }
   %
-%   \item En déduire une condition sur $\alpha$ et $\beta$ pour que $B$ soit diagonalisable.
-%   \solution{La premièrre valeur propre est donc $\lambda_1 = -1$. Le discriminant du polynôme 
-%   $$
-%   Q(\lambda) = \lambda^2 - 4 \lambda + 4 - (\alpha+\beta)
-%   $$
-%   vaut $\Delta = 16 - 4(4 - (\alpha+\beta)) = \alpha + \beta$. Les deux valeurs propres restantes $\lambda_2$ et $\lambda_3$ sont donc réelles et distinctes ssi $\alpha + \beta > 0$ et valent alors
-%   $$
-%   \lambda_2 = \frac{4 + \sqrt{\alpha + \beta}}{2} > 0 
-%   \qquad \text{et} \qquad
-%   \lambda_3 = \frac{4 - \sqrt{\alpha + \beta}}{2}.
-%   $$
-%   Elles sont de plus distinctes de $\lambda_1 = -1$ ssi 
-%   $$
-%   \lambda_3 \neq -1 \qquad \Leftrightarrow \qquad
-%   \alpha + \beta \neq 36.
-%   $$
-%   Dans ce cas ($\alpha + \beta > 0$ et $\alpha + \beta \neq 36$), les 3 valeurs propres sont réelles et distinctes et $B$ est donc diagonalisable. \\
-%   Reste à étudier les cas 
-%   \begin{description}
-%    \item[$\alpha + \beta = 0 \Leftrightarrow \lambda_2 = \lambda_3 = 2$:] \todo{déterminer la dimension du sous-espace propre associé.} 
-%    \item[$\alpha + \beta = 36 \Leftrightarrow \lambda_1 = \lambda_3 = -1$:] \todo{déterminer la dimension du sous-espace propre associé.} 
-%   \end{description}}
+  \item A quelle(s) condition(s) sur $a$ et $b$, $B$ est-elle diagonalisable ?
+  \solution{
+  \begin{description}
+    \item[$a+b < 0$:] $B$ n'admet qu'une seule valeur propre réelle $(\lambda = -1$) et son ordre de multiplicité est 1, donc $B$ n'est pas diagonalisable.
+    \item[$a + b = 0$:] On a alors $\lambda_2 = \lambda_3 = 2$, et il faut résoudre le système
+    $$
+    \left\{\begin{array}{rcl}
+            -x + 3y + z & = & 2x \\
+            2y + z & = & 2y \\
+            ax -ay + 2z & = & 2z
+           \end{array}\right.
+    \qquad \Leftrightarrow \qquad
+    \left\{\begin{array}{rcl}
+            x & = & y \\
+            z & = & 0
+           \end{array}\right. .
+    $$
+    L'espace propre associé à $\lambda = 2$ est une droite, donc $B$ n'est pas diagonalisable.
+    \item[$a+b > 0$ et $a + b = 9$:] On a alors $\lambda_1 = \lambda_3 = -1$, et il faut résoudre le système
+    $$
+    \left\{\begin{array}{rcl}
+            -x + 3y + z & = & -x \\
+            2y + z & = & -y \\
+            ax +(9-a)y + 2z & = & 2z
+           \end{array}\right.
+    \qquad \Leftrightarrow \qquad
+    \left\{\begin{array}{rcl}
+            3y & = & -z \\
+            ax & = & ay
+           \end{array}\right. .
+    $$
+    \begin{itemize}
+      \item Si $a \neq 0$, l'espace propre associé à $\lambda = -1$ est la droite d'équation $\{3y = z, ax = ay\}$ et $B$ n'est pas diagonalisable.
+      \item Si $a = 0$, l'espace propre associé à $\lambda = -1$ est le plan d'équation $\{3y = z\}$ et $B$ est diagonalisable.
+    \end{itemize}
+    \item[$a+b > 0$ et $a+b \neq 9$:] les trois valeurs sont réelles et distinctes, donc $B$ est diagonalisable.
+  \end{description}
+  $B$ est donc diagonalisable si $a+b > 0$ et $a+b \neq 9$, ou si $a = 0$ et $b = 9$.
+  }
 \end{enumerate}
