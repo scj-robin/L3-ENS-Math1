@@ -41,43 +41,43 @@ On considère la matrice
   Dans ce cas ($a + b > 0$ et $a + b \neq 9$), les 3 valeurs propres sont réelles et distinctes (et $B$ est donc diagonalisable). 
   }
   %
-  \item A quelle(s) condition(s) sur $a$ et $b$, $B$ est-elle diagonalisable ?
-  \solution{
-  \begin{description}
-    \item[$a+b < 0$:] $B$ n'admet qu'une seule valeur propre réelle $(\lambda = -1$) et son ordre de multiplicité est 1, donc $B$ n'est pas diagonalisable.
-    \item[$a + b = 0$:] On a alors $\lambda_2 = \lambda_3 = 2$, et il faut résoudre le système
-    $$
-    \left\{\begin{array}{rcl}
-            -x + 3y + z & = & 2x \\
-            2y + z & = & 2y \\
-            ax -ay + 2z & = & 2z
-           \end{array}\right.
-    \qquad \Leftrightarrow \qquad
-    \left\{\begin{array}{rcl}
-            x & = & y \\
-            z & = & 0
-           \end{array}\right. .
-    $$
-    L'espace propre associé à $\lambda = 2$ est une droite, donc $B$ n'est pas diagonalisable.
-    \item[$a+b > 0$ et $a + b = 9$:] On a alors $\lambda_1 = \lambda_3 = -1$, et il faut résoudre le système
-    $$
-    \left\{\begin{array}{rcl}
-            -x + 3y + z & = & -x \\
-            2y + z & = & -y \\
-            ax +(9-a)y + 2z & = & 2z
-           \end{array}\right.
-    \qquad \Leftrightarrow \qquad
-    \left\{\begin{array}{rcl}
-            3y & = & -z \\
-            ax & = & ay
-           \end{array}\right. .
-    $$
-    \begin{itemize}
-      \item Si $a \neq 0$, l'espace propre associé à $\lambda = -1$ est la droite d'équation $\{3y = z, ax = ay\}$ et $B$ n'est pas diagonalisable.
-      \item Si $a = 0$, l'espace propre associé à $\lambda = -1$ est le plan d'équation $\{3y = z\}$ et $B$ est diagonalisable.
-    \end{itemize}
-    \item[$a+b > 0$ et $a+b \neq 9$:] les trois valeurs sont réelles et distinctes, donc $B$ est diagonalisable.
-  \end{description}
-  $B$ est donc diagonalisable si $a+b > 0$ et $a+b \neq 9$, ou si $a = 0$ et $b = 9$.
-  }
+%   \item A quelle(s) condition(s) sur $a$ et $b$, $B$ est-elle diagonalisable ?
+%   \solution{
+%   \begin{description}
+%     \item[$a+b < 0$:] $B$ n'admet qu'une seule valeur propre réelle $(\lambda = -1$) et son ordre de multiplicité est 1, donc $B$ n'est pas diagonalisable.
+%     \item[$a + b = 0$:] On a alors $\lambda_2 = \lambda_3 = 2$, et il faut résoudre le système
+%     $$
+%     \left\{\begin{array}{rcl}
+%             -x + 3y + z & = & 2x \\
+%             2y + z & = & 2y \\
+%             ax -ay + 2z & = & 2z
+%            \end{array}\right.
+%     \qquad \Leftrightarrow \qquad
+%     \left\{\begin{array}{rcl}
+%             x & = & y \\
+%             z & = & 0
+%            \end{array}\right. .
+%     $$
+%     L'espace propre associé à $\lambda = 2$ est une droite, donc $B$ n'est pas diagonalisable.
+%     \item[$a+b > 0$ et $a + b = 9$:] On a alors $\lambda_1 = \lambda_3 = -1$, et il faut résoudre le système
+%     $$
+%     \left\{\begin{array}{rcl}
+%             -x + 3y + z & = & -x \\
+%             2y + z & = & -y \\
+%             ax +(9-a)y + 2z & = & 2z
+%            \end{array}\right.
+%     \qquad \Leftrightarrow \qquad
+%     \left\{\begin{array}{rcl}
+%             3y & = & -z \\
+%             ax & = & ay
+%            \end{array}\right. .
+%     $$
+%     \begin{itemize}
+%       \item Si $a \neq 0$, l'espace propre associé à $\lambda = -1$ est la droite d'équation $\{3y = z, ax = ay\}$ et $B$ n'est pas diagonalisable.
+%       \item Si $a = 0$, l'espace propre associé à $\lambda = -1$ est le plan d'équation $\{3y = z\}$ et $B$ est diagonalisable.
+%     \end{itemize}
+%     \item[$a+b > 0$ et $a+b \neq 9$:] les trois valeurs sont réelles et distinctes, donc $B$ est diagonalisable.
+%   \end{description}
+%   $B$ est donc diagonalisable si $a+b > 0$ et $a+b \neq 9$, ou si $a = 0$ et $b = 9$.
+%   }
 \end{enumerate}

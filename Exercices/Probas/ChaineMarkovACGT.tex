@@ -4,7 +4,7 @@
 
 % Exo AL : examen 2025-26
 
-On considère une chaîne de Markov $X=(X_n, n\in \Nbb)$ à valeurs dans $E=\{A, T, G, C\}$. Pour $i,j\in E$, on note $p_{ij}$ la probabilité de transition de i vers j et on suppose que $p_{ij}\not=0$ dès que $i\not=j$.
+On considère une chaîne de Markov $X=(X_n, n\in \Nbb)$ à valeurs dans $\Ecal = \{A, T, G, C\}$. Pour $i,j\in \Ecal$, on note $p_{ij}$ la probabilité de transition de $i$ vers $j$ et on suppose que $p_{ij}\not=0$ dès que $i\not=j$.
 
 \begin{enumerate}
   \item Quelles sont les classes de communication de la chaîne de Markov $X$ ? Comment appelle-t-on une telle chaîne ?
@@ -18,7 +18,7 @@ On considère une chaîne de Markov $X=(X_n, n\in \Nbb)$ à valeurs dans $E=\{A,
   \solution{Réponse : $P^n=(1/4)M$}
   %
   \item Déterminer $u$.
-  \solution{\todo{}}
+  \solution{Par symétrie, $u = (1/4) \; [1 \; 1 \; 1 \; 1]^\top$.}
   %
   \end{enumerate}
   %
@@ -39,14 +39,14 @@ On considère une chaîne de Markov $X=(X_n, n\in \Nbb)$ à valeurs dans $E=\{A,
     }
     %
     \item Que vaut $u$ ?
-    \solution{\todo{}}
+    \solution{Il faut résoudre $(1/3)(M - I) u = u$, qui donne $x = y = z = t$, soir de nouveau $u = (1/4) \; [1 \; 1 \; 1 \; 1]^\top$.}
     %
   \end{enumerate}
   \item Comment pourriez-vous généraliser le résultat des questions 2 et 3 ?
-  \solution{\todo{}}
+  \solution{Si les probabilité des mutations sont égales entre elles ($p_{ij} = a$ si $i \neq j$) et si les probabilités de non-mutation également ($p_{ii} = b$ pour tout $i$), alors la distribution stationnaire $u$ est uniforme.}
   %
   \item On suppose encore que $p_{ii}=0$ mais maintenant $p_{AG}=p_{GA}=p_{CT}=p_{TC}=p$ et $p_{AC}=p_{CA}=p_{GT}=p_{TG}=p_{GC}=p_{CG}=p_{AT}=p_{TA}=q$. \\
-  {\sl Note : En génomique évolutive, ces deux types de mutation portent un nom (transitions et transversions).}
+  {\sl Note : en génomique évolutive, ces deux types de mutation portent un nom (transitions et transversions).}
   \begin{enumerate}
   \item Faire un schéma. Ecrire la matrice $P$ en fonction de $p$ et $q$. Donner une relation entre $p$ et $q$. 
   \solution{$p+2q = 1$.}
@@ -59,7 +59,25 @@ On considère une chaîne de Markov $X=(X_n, n\in \Nbb)$ à valeurs dans $E=\{A,
   \end{enumerate}
   %
   \item On considère une chaîne de Markov $(X,Y,Z)$ à valeurs dans $E^3$. Soit $f$ la fonction qui à un triplet de bases associe l'acide aminé associé. Est-ce-que $f(X,Y,Z)$ est une chaîne de Markov ?
-  \solution{\todo{}}
+  \solution{Non, à cause des codons synonymes : le processus de mutation porte sur les bases, et l'acide aminé correspondant à chaque triplet ne contient pas toute l'information sur les bases qui le compose. On a donc : 
+  $$
+  \Pr\{(X_{n+1}, Y_{n+1}, Z_{n+1}) = (x, y, z) \mid \{(X_t, Y_t, Z_t)\}_{t \leq n}\}
+  =
+  \Pr\{(X_{n+1}, Y_{n+1}, Z_{n+1}) = (x, y, z) \mid (X_n, Y_n, Z_n)\}
+  $$
+  et donc
+  $$
+  \Pr\{f(X_{n+1}, Y_{n+1}, Z_{n+1}) = a \mid \{(X_t, Y_t, Z_t)\}_{t \leq n}\}
+  =
+  \Pr\{f(X_{n+1}, Y_{n+1}, Z_{n+1}) = a \mid (X_n, Y_n, Z_n)\}
+  $$
+  mais pas
+  $$
+  \Pr\{f(X_{n+1}, Y_{n+1}, Z_{n+1}) = a \mid \{f(X_t, Y_t, Z_t)\}_{t \leq n}\}
+  \neq
+  \Pr\{f(X_{n+1}, Y_{n+1}, Z_{n+1}) = a \mid f(X_n, Y_n, Z_n)\}
+  $$
+  }
   %
 \end{enumerate}
 
