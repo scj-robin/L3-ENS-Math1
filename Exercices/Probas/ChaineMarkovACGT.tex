@@ -1,10 +1,15 @@
+\newcommand{\att}{\tt a}
+\newcommand{\ctt}{\tt c}
+\newcommand{\gtt}{\tt g}
+\newcommand{\ttt}{\tt t}
+
 %-------------------------------------------------------------------------------
-\subsubsection{Chaîne de Markov sur $\{A, C, G, T\}$}
+\subsubsection{Chaîne de Markov sur $\{\att, \ctt, \gtt, \ttt\}$}
 %-------------------------------------------------------------------------------
 
 % Exo AL : examen 2025-26
 
-On considère une chaîne de Markov $X=(X_n, n\in \Nbb)$ à valeurs dans $\Ecal = \{A, T, G, C\}$. Pour $i,j\in \Ecal$, on note $p_{ij}$ la probabilité de transition de $i$ vers $j$ et on suppose que $p_{ij}\not=0$ dès que $i\not=j$.
+On considère une chaîne de Markov $X=(X_n, n\in \Nbb)$ à valeurs dans $\Ecal = \{\att, \ttt, \gtt, \ctt\}$. Pour $i,j\in \Ecal$, on note $p_{ij}$ la probabilité de transition de $i$ vers $j$ et on suppose que $p_{ij}\not=0$ dès que $i\not=j$.
 
 \begin{enumerate}
   \item Quelles sont les classes de communication de la chaîne de Markov $X$ ? Comment appelle-t-on une telle chaîne ?
@@ -45,14 +50,14 @@ On considère une chaîne de Markov $X=(X_n, n\in \Nbb)$ à valeurs dans $\Ecal 
   \item Comment pourriez-vous généraliser le résultat des questions 2 et 3 ?
   \solution{Si les probabilité des mutations sont égales entre elles ($p_{ij} = a$ si $i \neq j$) et si les probabilités de non-mutation également ($p_{ii} = b$ pour tout $i$), alors la distribution stationnaire $u$ est uniforme.}
   %
-  \item On suppose encore que $p_{ii}=0$ mais maintenant $p_{AG}=p_{GA}=p_{CT}=p_{TC}=p$ et $p_{AC}=p_{CA}=p_{GT}=p_{TG}=p_{GC}=p_{CG}=p_{AT}=p_{TA}=q$. \\
+  \item On suppose encore que $p_{ii}=0$ mais maintenant $p_{\att\gtt}=p_{\gtt\att}=p_{\ctt\ttt}=p_{\ttt\ctt}=p$ et $p_{\att\ctt}=p_{\ctt\att}=p_{\gtt\ttt}=p_{\ttt\gtt}=p_{\gtt\ctt}=p_{\ctt\gtt}=p_{\att\ttt}=p_{\ttt\att}=q$. \\
   {\sl Note : en génomique évolutive, ces deux types de mutation portent un nom (transitions et transversions).}
   \begin{enumerate}
   \item Faire un schéma. Ecrire la matrice $P$ en fonction de $p$ et $q$. Donner une relation entre $p$ et $q$. 
   \solution{$p+2q = 1$.}
   %
   \item Montrer que l'on peut réduire l'étude de cette chaîne de Markov à celle d'une chaîne de Markov à deux états. 
-  \solution{purines = {A,G} et pyrimidines = {C,T}}
+  \solution{purines = {\att,\gtt} et pyrimidines = {\ctt,\ttt}}
   %
   \item En déduire $u$. 
   \solution{Par symétrie la proba des purines et des pyrimidines est la même (1/2,1/2). Par symétrie, à l'intérieur de chaque classe, le poids de chaque base est le même. \\ Conclusion : $u$ est uniforme.}
