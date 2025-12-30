@@ -1,0 +1,31 @@
+Prénom;Nom de famille;Adresse de courriel;Note;Oral;
+Robinson;ARAUD;raraud@edu.bio.ens.psl.eu;16,5;;
+Dimitri;ARTIAGA;dartiaga@edu.bio.ens.psl.eu;15;;
+Thomas ;BERTHOMIER;;17;;
+Fantine;BODIN;fbodin@edu.bio.ens.psl.eu;12,5;;
+Valentin;BROCHET;vbrochet@edu.bio.ens.psl.eu;;;
+Sixtine;CHAIGNE;schaigne@edu.bio.ens.psl.eu;11,5;;
+Abel;COUAILLIER;couailli@edu.bio.ens.psl.eu;;;
+Remi;DELEGLISE;deleglis@edu.bio.ens.psl.eu;13,5;;
+Joseph;FLIPO;jflipo@edu.bio.ens.psl.eu;;;
+Marie;FOULQUIER;foulquie@edu.bio.ens.psl.eu;17;;
+Alice;GALLOT;agallot@edu.bio.ens.psl.eu;11,5;;
+Laura;GRAZIANI;graziani@edu.bio.ens.psl.eu;16,5;;
+Martina;LAGO;martina.lago@ens.psl.eu;;;
+Elliot;LANSON;elanson@edu.bio.ens.psl.eu;16,5;;
+Adeline;MENARD;amenard@edu.bio.ens.psl.eu;15,5;;
+Titouan;PASERO;tpasero@edu.bio.ens.psl.eu;14,5;;
+Guillaume;PERON;gperon@edu.bio.ens.psl.eu;12,5;;
+Eve;SASSIER;sassier@edu.bio.ens.psl.eu;4;11;15
+Chloe;STUDNIA;cstudnia@edu.bio.ens.psl.eu;13;;
+Antoine;SUSSFELD;sussfeld@edu.bio.ens.psl.eu;18,5;;
+Noemie;TESTARD;ntestard@edu.bio.ens.psl.eu;3,5;10;10
+Zoe;ZILBER;zzilber@edu.bio.ens.psl.eu;15,5;;
+;;;;;
+Extérieurs;;;;;
+Guillaume;COUDRIET;;;;
+;;;;;
+;;Moyenne;13,5833333333333;;
+;;Ecart type;4,11685916831809;;
+;;Minimum;3,5;;
+;;Maximum;18,5;;

@@ -1,0 +1,27 @@
+Nom de famille;Prénom;Adresse de courriel;Note;Oral;Emarg.
+ALLEHAUT;Flavie;allehaut@edu.bio.ens.psl.eu;19;;x
+BARDET;Claire;cbardet@edu.bio.ens.psl.eu;17;;x
+BOUSSAGUET;Ni;boussagu@edu.bio.ens.psl.eu;10;;x
+COUDRIAU;Elise;coudriau@edu.bio.ens.psl.eu;12;;x
+DE LEOBARDY;Marie-Liesse;deleobar@edu.bio.ens.psl.eu;15;;x
+DUPONT;Therese;tdupont@edu.bio.ens.psl.eu;10,5;;x
+FRANCES;Octave;ofrances@edu.bio.ens.psl.eu;17;;x
+GODINOT;Clara;cgodinot@edu.bio.ens.psl.eu;12,5;;x
+GOURVENNEC;Yseult;gourvenn@edu.bio.ens.psl.eu;10;;x
+HELIAS;Victor;vhelias@edu.bio.ens.psl.eu;16;;x
+LAISNE;Alan;alaisne@edu.bio.ens.psl.eu;16;;x
+MALBEC;Melissandre;mmalbec@edu.bio.ens.psl.eu;13,5;;x
+MANIFACIER;Bastien;manifaci@edu.bio.ens.psl.eu;10;;x
+PETRACCONE;Michele;petracco@edu.bio.ens.psl.eu;;;
+ROCHER;Adrien;arocher@edu.bio.ens.psl.eu;14;;x
+SEILLET;Neo;nseillet@edu.bio.ens.psl.eu;9;;x
+THOMAS;Justine;jthomas@edu.bio.ens.psl.eu;11,5;;x
+VASSEUR BENDEL;Raphael;rvasseur@edu.bio.ens.psl.eu;;;
+VIDAL;Manon;mvidal@edu.bio.ens.psl.eu;;;
+VINCENT;Enola;evincent@edu.bio.ens.psl.eu;10;;x
+;;;;;
+;;nombre;17;;
+;;moyenne;13,1176470588235;;
+;;écart type;3,08995050407722;;
+;;minimum;9;;
+;;maximum;19;;

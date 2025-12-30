@@ -1,0 +1,50 @@
+********************************************************************************
+Notes rentrée 2022
+********************************************************************************
+* Plus de TD informatique l'an prochain -> 4 séances supplémentaires de TD pour le cours
+* Cours de rattrapage prévu pour les normaliens étudiants
+
+Moodle : https://moodle.bio.ens.psl.eu/
+
+********************************************************************************
+Réunion tutorat croisé : 23 juin 2022 (ENS)
+********************************************************************************
+Chloé Maillet (ing. pédagogique PSL), Lisa Bonin (monitrice), Morgane Thomas-Chollier, AL, SR
+
+Tutorat croisé entre étudiants et élèves
+* Stat : étudiants <- élèves
+* Math : élèves -> étudiants
+
+Cette année : 
+* Mise à niveau en algèbre linéaire par des moniteurs pour les étudiants
+* Tutorat = 6 séances, dont les 2 mardis au programme de Math 1
+* Objectif : 
+  a) amener tout le monde à la moyenne à l'examen
+  b) homogénéiser élèves-étudiants
+
+Contenu d'une séance de tutorat
+* QCM anonymes en live par WhoClap
+* Classe inversée : rappel d'une partie du cours + une extension
+* Interprétation géométrique de l'algèbre linéaire
+
+Exemples de micro-projets
+* Alg. lin., dim 2 et 3
+  - noyau, image, dimension (thm du rang)
+  - chgt de base (pas diagonale -> diagonale, diagonale -> pas diagonale)
+  - cas diagonalisable : val. prop., vec. prop / cas non-diagonalisable : rotation
+  - itéré d'une matrice
+* Stat
+  - ACP
+  - Régression linéaire et projection
+* Syst dynamique 
+  - linéaire
+  
+  
+
+
+Planning :
+* Mise à niveau : dernière semaine d'août
+* Voir si le cours démarre le 23 sept ou le 14 oct ?
+
+Moodle : 
+* Actuellement propre à l'IBENS (pas celui de l'ENS, ni de PSL)
