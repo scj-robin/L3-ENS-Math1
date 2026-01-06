@@ -1,0 +1,34 @@
+%-------------------------------------------------------------------------------
+\subsubsection{Matrice triangulaire}
+%-------------------------------------------------------------------------------
+
+Soit $A = [a_{ij}]_{1 \leq i, j \leq n} \in \Mcal_n(\Rbb)$ une matrice triangulaire supérieure, c'est-à-dire que $a_{ij} = 0$ si $i > j$ : 
+$$
+A = \left(\begin{array}{cccccc}
+            a_{11} & \dots & a_{1i} & \dots & a_{1n} \\
+            0 & \ddots & & a_{ij} & \vdots \\
+            \vdots & \ddots & a_{ii} & & a_{in} \\
+            \vdots & 0 & \ddots & \ddots & \vdots \\
+            0 & \dots & \dots & 0 & a_{nn} 
+          \end{array}\right)
+$$
+
+\begin{enumerate}
+  \item Montrer que toutes les valeurs propres de $A$ sont réelles.
+  \solution{Puisque le déterminant d'une matrice diagonale est égal au produit de ses termes diagonaux, le polynôme caractéristique de $A$ est
+  $$
+  P_A(\lambda) 
+  = \left|\begin{array}{cccccc}
+            a_{11} - \lambda & \dots & a_{1i} & \dots & a_{1n} \\
+            0 & \ddots & & a_{ij} & \vdots \\
+            \vdots & \ddots & a_{ii} - \lambda & & a_{in} \\
+            \vdots & 0 & \ddots & \ddots & \vdots \\
+            0 & \dots & \dots & 0 & a_{nn}- \lambda  
+          \end{array}\right|
+  = \prod_{i=1}^n (a_{ii} - \lambda)                       
+  $$
+  dont les racines sont les $a_{ii}$, qui sont tous réels.
+  }
+  \item Donner une condition suffisante simple pour que $A$ soit diagonalisable.
+  \solution{Il suffit que les termes diagonaux $(a_{ii})_{1 \leq i \leq n}$ soient tous distincts.  }
+\end{enumerate}

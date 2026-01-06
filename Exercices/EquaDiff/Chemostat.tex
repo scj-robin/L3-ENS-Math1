@@ -4,7 +4,7 @@
 
 % Voir \url{https://umr5558-shiny.univ-lyon1.fr/web/}
 
-On considère le modèle du chemostat qui décrit l'évolution d'une population bactérienne au cours du temps dans un milieu alimenté par un flux constant de nutriment. 
+On considère le modèle du chemostat qui décrit l'évolution d'une population bactérienne au cours du temps dans un milieu alimenté par un flux constant de nutriments. 
 Plus précisément, la population bactérienne se développe dans une enceinte close alimentée d'un côté par un flux constant de nutriments et dont les nutriments peuvent également s'évacuer à proportion de leur quantité.
 
 On note
@@ -28,8 +28,8 @@ où on suppose que les paramètres $a$ et $b$ sont positifs ou nuls : $a, b \geq
   \solution{
     \begin{itemize}
      \item[$\dot x$ :] 
-     Quand la quantité de nutriment tend vers l'infini ($y \to \infty$), on a $\dot x = (a-1) x$. $a - 1$ représente donc le taux de croissance de la population bactérienne en l'absence de contrainte de ressource. \\
-     Le terme $y/(1+y)$ fait que le taux de croissance de la population n'est pas directement proportionnel à la quantité de nutriment, mais seulement une fonction croissante de cette quantité qui va 0 (pour $y = 0$) à 1 (quand $y \to \infty$). \\
+     Quand la quantité de nutriments tend vers l'infini ($y \to \infty$), on a $\dot x = (a-1) x$. $a - 1$ représente donc le taux de croissance de la population bactérienne en l'absence de contrainte de ressource. \\
+     Le terme $y/(1+y)$ fait que le taux de croissance de la population n'est pas directement proportionnel à la quantité de nutriments, mais seulement une fonction croissante de cette quantité qui va 0 (pour $y = 0$) à 1 (quand $y \to \infty$). \\
      Le terme $-x$ décrit la décroissance (exponentielle) de la population en l'absence de nutriments.
      \item[$\dot y$ :] 
      Le terme $- x y / (1+y)$ décrit la consommation des nutriments par les bactéries. Le terme $- y$ décrit leur évacuation (à vitesse proportionnelle à leur quantité). \\
@@ -59,11 +59,9 @@ où on suppose que les paramètres $a$ et $b$ sont positifs ou nuls : $a, b \geq
   \solution{
     Les coordonnées de $B$ sont positives et finies si $a > 1$ et $b(a-1) \geq  1$.
     Sous ces conditions, les coordonnées de $A$ sont également positives et finies. \\
-    On remarque de plus que $A = B$ pour $b(a-1) =  1$. Pour satisfaire les deux conditions, il faut donc que
+    On remarque de plus que $A = B$ si $b(a-1) =  1$. Pour satisfaire les deux conditions, il faut donc que
     $$
-    \{a > 1 \quad \text{et} \quad b(a-1) > 1\}
-    \qquad \text{et} \qquad 
-    \{a > 1 \quad \text{et} \quad b > 0\}.
+    \{a > 1 \quad \text{et} \quad b(a-1) > 1\}.
     $$
     }
   \item Déterminer la matrice jacobienne du système.
@@ -84,30 +82,40 @@ où on suppose que les paramètres $a$ et $b$ sont positifs ou nuls : $a, b \geq
     J_A = \left(\begin{array}{cc}
                 \displaystyle{\frac{ab}{1+b} - 1} & \displaystyle{0} \\
                 \displaystyle{-\frac{b}{1+b}} & \displaystyle{- 1} 
-          \end{array}\right).
+          \end{array}\right)
     $$
-    avec 
-%     \begin{align*}
-%       \tr(J_A) & = \frac{ab}{1+b} - 2 = \frac{}{1+b}, \\
-%       \det(J_A) & = 1 - \frac{ab}{1+b} = \frac{1 - b(a-1)}{1+b} \leq 0
-%     \end{align*}
-    $$
-    \det(J_A) = 1 - \frac{ab}{1+b} = \frac{1 - b(a-1)}{1+b} < 0
-    $$
-    du fait des conditions imposées aux paramètres $a$ et $b$. Les deux valeurs propres de $J_A$ sont donc de signes opposés : $A$ est un équilibre instable.
+    qui est triangulaire avec des terme diagonaux distincts : $J_A$ est donc diagonalisable et ses valeurs propres sont ses termes diagonaux. \\
+%     Comme, de plus, 
+% %     \begin{align*}
+% %       \tr(J_A) & = \frac{ab}{1+b} - 2 = \frac{}{1+b}, \\
+% %       \det(J_A) & = 1 - \frac{ab}{1+b} = \frac{1 - b(a-1)}{1+b} \leq 0
+% %     \end{align*}
+%     $$
+%     \det(J_A) = 1 - \frac{ab}{1+b} = \frac{1 - b(a-1)}{1+b} < 0
+%     $$
+%     du fait des conditions imposées aux paramètres $a$ et $b$, 
+    Les deux valeurs propres de $J_A$ sont donc $\lambda_1 = -1$ et $\lambda_2 = ab/(1+b) - 1$, qui sont de signes opposés : $A$ est donc un équilibre instable.
     \item[$B = (x^* = ab - a/(1-a), y^* = 1/(1-a))$ :] La jacobienne vaut alors
     $$
     J_B = \left(\begin{array}{cc}
-                \displaystyle{0} & \displaystyle{\frac{ax^*}{(1+y^*)^2}} \\
-                \displaystyle{-\frac1a} & \displaystyle{-\frac{x^*}{(1+y^*)^2} - 1} 
-          \end{array}\right).
+                0 & a u^* \\
+                -1/a & -u^* - 1 
+          \end{array}\right)
+    \qquad \text{où} \qquad
+    u^* = \frac{x^*}{(1+y^*)^2} > 0.
     $$
-    avec 
-    \begin{align*}
-      \tr(J_B) & = -\frac{x^*}{(1+y^*)^2} - 1 < 0, &
-      \det(J_B) & =  \frac{x^*}{(1+y^*)^2} >  0.
-    \end{align*}
-    Les deux valeurs propres de $J_B$ sont donc de même signe (car $\det(J_B) > 0$) et sont négatives (car $\tr(J_B) < 0$) : $B$ est un équilibre stable.
+    Son polynôme caractéristique est
+    $$
+    P_B(\lambda) 
+    = \left|\begin{array}{cc}
+              -\lambda & a u^* \\
+              -1/a & -u^* - 1 - \lambda
+            \end{array}\right|
+    = \lambda (\lambda + u^* + 1) + u^* = (\lambda +1) (\lambda + u^*)
+    $$
+%     avec $\tr(J_B) = - u^* - 1 < 0$ et $\det(J_B) =  u^* >  0$.
+%     Les deux valeurs propres de $J_B$ sont donc de même signe (car $\det(J_B) > 0$) et (leurs parties réelles) sont négatives (car $\tr(J_B) < 0$) 
+  Les deux valeurs propres de $J_B$ sont donc $\lambda_1 = -1$ et $\lambda_2 = - u^*$, toutes deux négatives : $B$ est donc un équilibre stable.
   \end{description}
   }
 \end{enumerate}
