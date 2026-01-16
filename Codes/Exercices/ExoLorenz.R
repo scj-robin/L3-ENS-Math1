@@ -5,7 +5,7 @@ rm(list=ls()); palette('R3'); par(pch=20, mfrow=c(1, 1))
 library(deSolve); library(plot3D)
 source('../Fonctions/FonctionsSystDyn.R')
 figDir <- '../../Figures/'
-exportFig <- TRUE
+exportFig <- FALSE
 
 tMax <- 30; tStep <- 1e-3; tGrid <- seq(0, tMax, by=tStep); tNb <- length(tGrid)
 
@@ -73,10 +73,10 @@ xGrid <- seq(-2*sqrt(parm2$a*parm2$b), 2*sqrt(parm2$a*parm2$b), length.out=30)
 yGrid <- seq(0, 2*parm2$a, length.out=30)
 xyGrid <- rbind(as.matrix(expand.grid(xGrid, yGrid)))
 if(exportFig){png(paste0(figDir, dataName, '-gradientField.png'))}
-solLorenz2 <- PlotSystDyn2D(edo=Lorenz2, y0List=NULL, xGrid=xGrid, yGrid=yGrid, xyGrid=xyGrid,
-                            parm=parm2, times=tGrid, 
-                            vref=c(-sqrt(parm2$a*parm2$b), 0, sqrt(parm2$a*parm2$b)),
-                            href=c(0, parm2$a))
+PlotSystDyn2D(edo=Lorenz2, y0List=NULL, xGrid=xGrid, yGrid=yGrid, xyGrid=xyGrid,
+              parm=parm2, times=tGrid, 
+              vref=c(-sqrt(parm2$a*parm2$b), 0, sqrt(parm2$a*parm2$b)),
+              href=c(0, parm2$a))
 lines(xGrid, xGrid^2/parm2$b, lwd=2, lty=2, col=1)
 if(exportFig){dev.off()}
   

@@ -3,6 +3,8 @@ AlgLin :
 https://math.stackexchange.com/questions/2415208/computing-eigenvalues-of-a-specific-block-covariance-matrix
 
 Syst Dyn : 
+* Ajouter des questions d'interprétation dans tous les exos
+* Faire tracer le champ de gradient dans tous les exos
 * Système dynamique à 3 populations : cf notes F. Guichard / journées réseaux IEES mai 2023
 
 Probas : 
