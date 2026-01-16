@@ -18,7 +18,7 @@ PlotSystDyn2D <- function(edo, y0List=NULL, xGrid, yGrid, xyGrid=NULL,
   if(!is.null(y0List)){
     solList <- list()
     for(i in 1:length(y0List)){
-      points(y0List[[i]][1], y0List[[i]][2], col=1+i, pch=20)
+      points(y0List[[i]][1], y0List[[i]][2], col=1+i, pch=20, cex=1.5)
       solList[[i]] <- ode.2D(y0List[[i]], times=times, func=model, 
                              nspec=2, parm=parm, dimens=c(1, 1), method='ode45')
       lines(solList[[i]][, 2], solList[[i]][, 3], col=1+i, lwd=3)

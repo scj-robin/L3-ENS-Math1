@@ -74,6 +74,23 @@ où on suppose que les paramètres $a$ et $b$ sont positifs ou nuls : $a, b \geq
         \end{array}\right).
     $$
   }
+  %
+  \item Sous ces conditions, pour quelles valeurs de $(x, y)$ la taille de la population est-elle en croissance ($\dot x > 0$) ? Même question pour la quantité de nutriments ($\dot y > 0$).
+  \solution{
+    Si la taille de la population est nulle ($x = 0$), sa croissance l'est également. Si $x > 0$ alors on a $\dot x > 0$ pour $a y > 1 + y$, soit $y > 1 / (a - 1)$. \\
+    La quantité de nutriment croît si $- xy > (1 + y)(y - b)$, c'est à dire pour
+    $$
+    x < f(y) := \frac{(1 + y)(y - b)}y = \frac{b}y + (b-1) - y,
+    $$
+    où $f$ est une fonction décroissante ($f'(y) < 0$) et convexe $(f''(y) > 0$) qui passe nécessairement par les points stationnaires $A$ et $B$.
+  }
+  \item Tracer le diagramme indiquant l'orientation du vecteur gradient $(\dot x, \dot y)$ dans le quadrant $\{x \geq 0, y \geq 0\}$.
+  \solution{
+  $$
+  \includegraphics[width=.5\textwidth, trim=0 10 30 50, clip=]{Chemostat-gradient}
+  $$
+  }
+  %
   \item \'Etudier la stabilité de chacun des points d'équilibre en supposant que les conditions établies à la question \ref{q:chemostatDistincts} sont vérifiées.
   \solution{
   \begin{description}
@@ -117,5 +134,17 @@ où on suppose que les paramètres $a$ et $b$ sont positifs ou nuls : $a, b \geq
 %     Les deux valeurs propres de $J_B$ sont donc de même signe (car $\det(J_B) > 0$) et (leurs parties réelles) sont négatives (car $\tr(J_B) < 0$) 
   Les deux valeurs propres de $J_B$ sont donc $\lambda_1 = -1$ et $\lambda_2 = - u^*$, toutes deux négatives : $B$ est donc un équilibre stable.
   \end{description}
+  }
+  %
+  \item Décrire qualitativement la trajectoire du système partant d'une population de petite taille $x(0) = x_0$ et en l'absence de nutriment ($y(0) = 0$).
+  \solution{
+  \begin{itemize}
+    \item La population commence par décroître ($\dot x < 0$) sans s'annuler \todo{Pourquoi ?}, alors que la quantité de nutriments augmente ($\dot y > 0$).
+    \item Quand la quantité de nutriments atteint le seuil $y = 1/(a-1)$, a population commence à augmenter $\dot x > 0$.  
+    \item Quand la population dépasse le seuil $x = f(y)$, elle continue à croître, mais les nutriments se mettent à décroître, jusqu'à ce que le système atteigne le seul équilibre stable, situé en $B$.
+  \end{itemize}
+  $$
+  \includegraphics[width=.5\textwidth, trim=0 10 30 50, clip=]{Chemostat-path}
+  $$
   }
 \end{enumerate}
