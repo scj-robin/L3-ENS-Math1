@@ -6,7 +6,7 @@ library(deSolve)
 source('../Fonctions/FonctionsSystDyn.R')
 figDir <- '../../Figures/'
 exportFig <- TRUE
-exoName <- 'Chemostat'
+exoName <- 'ChemostatOriginal'
 
 ################################################################################
 # Système 2D
