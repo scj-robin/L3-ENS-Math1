@@ -1,4 +1,4 @@
-# Exercice chemostat simplifie
+# Exercice chemostat simplifié
 # https://umr5558-shiny.univ-lyon1.fr/web/
 
 rm(list=ls()); palette('R3'); par(pch=20, mfrow=c(1, 1))
@@ -11,6 +11,7 @@ exoName <- 'ChemostatSimplifie'
 ################################################################################
 # Système 2D
 parm <- list(a=3, b=1)
+parm <- list(a=1.5, b=1)
 Chemostat <- function(y, parm){
   c(parm$a*y[1]*y[2] - y[1], 
     -y[1]*y[2] - y[2] + parm$b)
@@ -32,6 +33,16 @@ sapply(1:statNb, function(i){Chemostat(y=statPoint[i, ], parm=parm)})
 sapply(1:statNb, function(i){Jacob(y=statPoint[i, ], parm=parm)})
 sapply(1:statNb, function(i){eigen(Jacob(y=statPoint[i, ], parm=parm))$values})
 sapply(1:statNb, function(i){eigen(Jacob(y=statPoint[i, ], parm=parm))$vectors})
+
+# Verification
+Delta <- (parm$a*parm$b + 2)^2 - 8
+PolCarac <- function(lambda, parm, xy){det(Jacob(xy, parm) - lambda*diag(2))}
+PolCarac <- function(lambda, parm, xy){}
+lambda <- (-parm$a*parm$b + c(-1, 1)*sqrt(Delta))/2
+PolCarac(lambda[1], parm, statPoint[1, ])
+PolCarac(lambda[2], parm, statPoint[1, ])
+det(Jacob(statPoint[2, ], parm) - lambda[1]*diag(2))
+det(Jacob(statPoint[2, ], parm) - lambda[2]*diag(2))
 
 # Champ de gradient
 tMax <- 50; tStep <- 1e-3; tGrid <- seq(0, tMax, by=tStep); tNb <- length(tGrid)

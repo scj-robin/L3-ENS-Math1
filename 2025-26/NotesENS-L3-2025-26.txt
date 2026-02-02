@@ -1,0 +1,3 @@
+Scénario 1 : moyenne = 13.3, 0 note = 20, 6 rattrapages
+Scénario 2 : moyenne = 14.7, 2 notes = 20, 6 rattrapages
+Scénario 3 : moyenne = 15.8, 7 notes = 20, 2 rattrapages

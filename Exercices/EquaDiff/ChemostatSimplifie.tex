@@ -1,5 +1,5 @@
 % %-------------------------------------------------------------------------------
-\subsubsection{Chémostat (simplifié) \todo{Vérifier}}
+\subsubsection{Chémostat (simplifié)}
 %-------------------------------------------------------------------------------
 
 % Voir \url{https://umr5558-shiny.univ-lyon1.fr/web/}
@@ -75,26 +75,26 @@ où on suppose que les paramètres $a$ et $b$ sont positifs ou nuls : $a, b \geq
   %
   \item Déterminer la matrice jacobienne du système.
   \solution{
-    Puisque la dérivée de $y/(1+y)$ est $1/(1+y)^2$, on a
+    On a 
     $$
     J_{x, y} = \left(\begin{array}{cc}
               ay - 1 & a x \\
-              y & -x -1 
+              -y & -x -1 
         \end{array}\right).
     $$
   }
   %
-  \item \todo{Finir} \'Etudier la stabilité de chacun des points d'équilibre en supposant que les conditions établies à la question \ref{q:chemostatDistincts} sont vérifiées.
+  \item \'Etudier la stabilité de chacun des points d'équilibre en supposant que les conditions établies à la question \ref{q:chemostatDistincts} sont vérifiées.
   \solution{
   \begin{description}
     \item[$A = (0, b)$ :] La jacobienne vaut alors
     $$
     J_A = \left(\begin{array}{cc}
-                \displaystyle{\frac{ab}{1+b} - 1} & \displaystyle{0} \\
-                \displaystyle{-\frac{b}{1+b}} & \displaystyle{- 1} 
+                ab - 1 & 0 \\
+                -b & - 1 
           \end{array}\right)
     $$
-    qui est triangulaire avec des terme diagonaux distincts : $J_A$ est donc diagonalisable et ses valeurs propres sont ses termes diagonaux. \\
+    qui est triangulaire avec des termes diagonaux distincts : $J_A$ est donc diagonalisable et ses valeurs propres sont ses termes diagonaux. \\
 %     Comme, de plus, 
 % %     \begin{align*}
 % %       \tr(J_A) & = \frac{ab}{1+b} - 2 = \frac{}{1+b}, \\
@@ -104,36 +104,33 @@ où on suppose que les paramètres $a$ et $b$ sont positifs ou nuls : $a, b \geq
 %     \det(J_A) = 1 - \frac{ab}{1+b} = \frac{1 - b(a-1)}{1+b} < 0
 %     $$
 %     du fait des conditions imposées aux paramètres $a$ et $b$, 
-    Les deux valeurs propres de $J_A$ sont donc $\lambda_1 = -1$ et $\lambda_2 = ab/(1+b) - 1$, qui sont de signes opposés : $A$ est donc un équilibre instable.
-    \item[$B = (x^* = ab - a/(1-a), y^* = 1/(1-a))$ :] La jacobienne vaut alors
+    Les deux valeurs propres de $J_A$ sont donc $\lambda_1 = -1$ et $\lambda_2 = ab - 1 > 0$, qui sont de signes opposés : $A$ est donc un équilibre instable.
+    \item[$B = (ab - 1, 1/a)$ :] La jacobienne vaut alors
     $$
     J_B = \left(\begin{array}{cc}
-                0 & a u^* \\
-                -1/a & -u^* - 1 
+                0 & a (ab - 1) \\
+                -1/a & -ab 
           \end{array}\right)
-    \qquad \text{où} \qquad
-    u^* = \frac{x^*}{(1+y^*)^2} > 0.
     $$
     Son polynôme caractéristique est
     $$
     P_B(\lambda) 
     = \left|\begin{array}{cc}
-              -\lambda & a u^* \\
-              -1/a & -u^* - 1 - \lambda
+              -\lambda & a (ab - 1) \\
+              -1/a & -ab - \lambda
             \end{array}\right|
-    = \lambda (\lambda + u^* + 1) + u^* = (\lambda +1) (\lambda + u^*)
+    = \lambda^2 + a b \lambda + (ab - 1)
+    = (\lambda +1) (\lambda + (ab - 1))
     $$
-%     avec $\tr(J_B) = - u^* - 1 < 0$ et $\det(J_B) =  u^* >  0$.
-%     Les deux valeurs propres de $J_B$ sont donc de même signe (car $\det(J_B) > 0$) et (leurs parties réelles) sont négatives (car $\tr(J_B) < 0$) 
-  Les deux valeurs propres de $J_B$ sont donc $\lambda_1 = -1$ et $\lambda_2 = - u^*$, toutes deux négatives : $B$ est donc un équilibre stable.
+  Les deux valeurs propres de $J_B$ sont donc $\lambda_1 = - 1$ et $\lambda_2 = - (ab - 1)$, toutes deux négatives : $B$ est donc un équilibre stable.
   \end{description}
   }
   %
-  \item Décrire qualitativement la trajectoire du système partant d'une population de petite taille $x(0) = x_0$ et en l'absence de nutriment ($y(0) = 0$).
+  \item Décrire qualitativement la trajectoire du système partant d'une population de petite taille $x(0) > 0$ et en l'absence de nutriment ($y(0) = 0$).
   \solution{
   \begin{itemize}
-    \item La population commence par décroître ($\dot x < 0$) sans s'annuler \todo{Pourquoi ?}, alors que la quantité de nutriments augmente ($\dot y > 0$).
-    \item Quand la quantité de nutriments atteint le seuil $y = 1/(a-1)$, a population commence à augmenter $\dot x > 0$.  
+    \item La population commence par décroître ($\dot x < 0$) sans s'annuler, alors que la quantité de nutriments augmente ($\dot y > 0$). \textcolor{gray}{($x$ ne s'annule pas car, en l'absence de nutriment ($y = 0)$, $x$ est solution de $\dot x  = -x$, dont la solution $x(t) = x(0) e^-t$. L'apparition des nutriments ajoute un terme positif à $\dot x$ : $x(t)$ est donc minoré par $x(0) e^{-t}$, qui  ne s'annule jamais.)}
+    \item Quand la quantité de nutriments atteint le seuil $y = 1/(a-1)$, la population commence à augmenter : $\dot x > 0$.  
     \item Quand la population dépasse le seuil $x = f(y)$, elle continue à croître, mais les nutriments se mettent à décroître, jusqu'à ce que le système atteigne le seul équilibre stable, situé en $B$.
   \end{itemize}
   $$
