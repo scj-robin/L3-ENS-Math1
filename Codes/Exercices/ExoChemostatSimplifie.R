@@ -35,12 +35,13 @@ sapply(1:statNb, function(i){eigen(Jacob(y=statPoint[i, ], parm=parm))$values})
 sapply(1:statNb, function(i){eigen(Jacob(y=statPoint[i, ], parm=parm))$vectors})
 
 # Verification
-Delta <- (parm$a*parm$b + 2)^2 - 8
+Delta <- (parm$a*parm$b - 2)^2
 PolCarac <- function(lambda, parm, xy){det(Jacob(xy, parm) - lambda*diag(2))}
-PolCarac <- function(lambda, parm, xy){}
+# PolCarac <- function(lambda, parm, xy){}
 lambda <- (-parm$a*parm$b + c(-1, 1)*sqrt(Delta))/2
-PolCarac(lambda[1], parm, statPoint[1, ])
-PolCarac(lambda[2], parm, statPoint[1, ])
+lambda <- c(-1, -parm$a*parm$b+1)
+PolCarac(lambda[1], parm, statPoint[2, ])
+PolCarac(lambda[2], parm, statPoint[2, ])
 det(Jacob(statPoint[2, ], parm) - lambda[1]*diag(2))
 det(Jacob(statPoint[2, ], parm) - lambda[2]*diag(2))
 
