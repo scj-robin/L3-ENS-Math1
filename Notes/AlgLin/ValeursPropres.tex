@@ -23,7 +23,7 @@
 \solution{$\mu_1, \mu_2, \dots, \mu_n$ et les $n$ vecteurs respectifs de la base canonique.}
 
 \begin{proposition}[Vecteur propre]
-  Si $x$ est un vecteur de propre de $A$ associé à la valeur propre $\lambda$, $y = k x$ l'est également.
+  Si $x$ est un vecteur de propre de $A$ associé à la valeur propre $\lambda$, $y = k x$ (avec $k \neq 0$) l'est également.
 \end{proposition}
 
 \proof 
@@ -218,6 +218,7 @@ x = u_1 + 2u_2 = \left[\begin{array}{r} 3 \\ -1 \end{array}\right]
 \qquad \Rightarrow \qquad
 Ax = -2 u_1 + 4 u_2 =  \left[\begin{array}{r} 2 \\ 10 \end{array}\right].
 $$
+Dessin non nécessaire : 
 $$
 \includegraphics[width=0.5\textwidth]{TransformationComposantesVecteur}
 $$
@@ -279,7 +280,7 @@ $$
 et $p^2 - 4 q = 0$ ssi $b = 0$ et $a=c$ (les deux valeurs propres étant alors égales à $a$).
 }
 
-\begin{theorem}[Propriétés du polynôme caractéristique]
+\begin{theorem}[Propriétés du polynôme caractéristique] \label{thm:propPolCarac}
   Le polynôme caractéristique $P_A$ de la matrice $A \in \Mcal_n(\Rbb)$ est de degré exactement $n$ et, en notant $[\lambda^k]P_A(\lambda)$ le coefficient d'ordre $k$ de $P_A(\lambda)$:
   $$
   [\lambda^n]P_A(\lambda) = (-1)^n, \qquad
@@ -304,7 +305,7 @@ et $p^2 - 4 q = 0$ ssi $b = 0$ et $a=c$ (les deux valeurs propres étant alors �
   $$
   [\lambda^n]|A - \lambda I_n| 
   = [\lambda^n](-\lambda |(A - \lambda I_n)^{(nn)}|) 
-  = - [\lambda^{n-1}]\underset{\text{$= (-1)^{n-1}$ par hypothèse}}{\underbrace{(|(A - \lambda I_n)^{(nn)}|)}}
+  = - \underset{\text{$= (-1)^{n-1}$ par hypothèse}}{\underbrace{[\lambda^{n-1}](|(A - \lambda I_n)^{(nn)}|)}}
   = (-1)^n
   $$
   et le degré de $P_A$ est donc supérieur ou égal à $n$.
@@ -363,16 +364,28 @@ Non démontré
 \remark
 En développant le produit, on voit que $a = (-1)^n [x^n] P(x)$.
 
-\begin{corollary*}[Polynôme caractéristique] %\label{cor:factorisationPolynomeCaracteristique}
+\begin{corollary}[Polynôme caractéristique] \label{cor:factorisationPolynomeCaracteristique}
   Le polynôme caractéristique $P_A$ d'une matrice réelle s'écrit
   $$
   P_A(\lambda) = \prod_{i=1}^n (\lambda_i - \lambda)
   $$
   où les $\lambda_i$ sont les $n$ valeurs propres (non nécessairement distinctes, ni réelles) de $A$.
-\end{corollary*}
+\end{corollary}
 
 \proof
 Les $\lambda_i$ sont les racines de $P_A$ et le coefficient $a$ vaut 1 puisque $[\lambda^n]P_A(\lambda) = (-1)^n$.
+\eproof
+
+\begin{corollary*}[Déterminant et produit des valeurs propres]
+  Le déterminant d'une matrice $A$ est égal au produit de ses valeurs propres  (non nécessairement distinctes, ni réelles).
+\end{corollary*}
+
+\proof
+L'expression du polynôme caractéristique donnée au corollaire \ref{cor:factorisationPolynomeCaracteristique} implique que la constante de $P_A(\lambda)$ vaut 
+$$
+[\lambda^0]P_A(\lambda) = P_A(0) = \prod_{i=1}^n \lambda_i,
+$$
+or le théorème \ref{thm:propPolCarac} dit que cette même constante est égale au déterminant de $A$: $[\lambda^0]P_A(\lambda) = \det(A)$.
 \eproof
 
 \begin{definition}[Ordre de multiplicité]
