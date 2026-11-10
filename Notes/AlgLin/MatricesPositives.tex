@@ -33,7 +33,7 @@
 
 \remark
 On peut se demander pourquoi on restreint la définition aux matrices symétriques. La raison est que seule la {\em partie positive} d'une matrice intervient dans la définition de la positivité. \\
-Pour s'en convaincre il suffit d'observer qu'on peut décomposer toute matrice $A$  en $A = S + T$ où $S$ est symétrique ($S = S^\top$) et $T$ est anti-symétrique ($T = -T^\top$) en prenant
+En efft, on peut décomposer toute matrice $A$  en $A = S + T$ où $S$ est symétrique ($S = S^\top$) et $T$ est anti-symétrique ($T = -T^\top$) en prenant
 $$
 S = (A + A^\top) / 2, \qquad T = (A - A^\top) / 2
 $$
@@ -60,7 +60,7 @@ Puisque $A$ est symétrique, elle est diagonalisable et s'écrit $A = P^\top \La
   Ax = \lambda x \qquad \Rightarrow \qquad x^\top A x = \lambda x^\top x,
   $$
   or $x^\top A x \geq 0$ et $x^\top x > 0$ donc $\lambda \geq 0$. \\
-  Si $A$ est définie positive, $x^\top A x > 0$ pour tout $x$ non nul et donc $\lambda > 0$.
+  Si $A$ est définie positive, $x^\top A x > 0$ pour tout $x$ non nul et donc $\lambda > 0$ (et $\lambda \geq 0$ si $A$ est seulement positive.)
   \item[$\Leftarrow$:] si toutes les valeurs propres de $A$ sont (strictement) positives, on a pour tout $x \neq 0$, en posant $y = P x$:
   $$
   x^\top A x = x^\top P^\top \Lambda P x = y^\top \Lambda y = \sum_i \lambda_i y_i^2
@@ -68,6 +68,9 @@ Puisque $A$ est symétrique, elle est diagonalisable et s'écrit $A = P^\top \La
   qui est (strictement) positif si toutes les valeurs propres sont (strictement) positives.
 \end{description}
 \eproof
+
+\remark
+Une matrice $A$ est dite semie définie positive si elle est positive, mais pas définie positive, c'est à dire si elle possède une ou plusiers valeurs propres nulles.
 
 % \begin{proposition}[Matrice positive symétrique]
 %   Si $A$ est positive ($A \succcurlyeq 0$) et symétrique ($A = A^\top$), elle est est diagonalisable. De plus ses valeurs propres sont positives et ses vecteurs propres sont orthogonaux deux à deux.
@@ -119,7 +122,7 @@ Y = \sum_{i=1}^n v_i X_i.
 $$
 Sa variance est positive ou nulle et vaut
 $$
-0 \leq \Var Y 
+0 \leq \Var(Y) 
 = \sum_i v_i^2 \Var(X_i) + \sum_{i \neq j} v_i v_j \Cov(X_i, X_j)
 = v^\top \Sigma v
 $$
@@ -225,7 +228,7 @@ $$
 Le comportement en temps long de la population $\lim_{n \to\infty} x(n)$ est contrôlé par celui de $A^n$ : $\lim_{n \to\infty} A^n$.
 
 \begin{proposition}[Itérée d'un matrice diagonalisable]
-  Si est $A \in \Mcal_k$ est diagonalisable ($A = P D P^{-1}$) et que sa plus grande valeur propre en module $\lambda_1$ est d'ordre multiplicité 1 (on parle alors de valeur propre {\em dominante} ou de Perron-Frobénius) :
+  Si est $A \in \Mcal_k$ est diagonalisable ($A = P \Lambda P^{-1}$) et que sa plus grande valeur propre en module $\lambda_1$ est d'ordre multiplicité 1 (on parle alors de valeur propre {\em dominante} ou de Perron-Frobénius) :
   $$
   \forall i \geq 2: \qquad |\lambda_i| < |\lambda_1|.
   $$
@@ -240,23 +243,23 @@ Le comportement en temps long de la population $\lim_{n \to\infty} x(n)$ est con
 La condition $\forall i \geq 2: |\lambda_i| < |\lambda_1|$ implique que $\lambda_1$ est réelle. En effet, si $\lambda_1$ est complexe, alors $\overline{\lambda}_1$ est également valeur propre et $|\overline{\lambda}_1| = |\lambda_1|$.
 
 \proof
-  Puisque $A = P D P^{-1}$, on a
+  Puisque $A = P \Lambda P^{-1}$, on a
   $$
-  A^n = A = P D^n P^{-1}
+  A^n = A = P \Lambda^n P^{-1}
   \qquad \text{où} \quad 
-  D^n = \diag(\lambda_1^n \; \dots \; \lambda_k^n)
+  \Lambda^n = \diag(\lambda_1^n \; \dots \; \lambda_k^n)
   $$
   et 
   $$
-  \lim_{n \to \infty} \lambda_1^{-n} D^n = C = \diag(1 \; 0 \; \dots \; 0),
+  \lim_{n \to \infty} \lambda_1^{-n} \Lambda^n = D = \diag(1 \; 0 \; \dots \; 0),
   $$
   donc
   $$
-  \lim_{n \to \infty} \lambda_1^{-n} A^n = P C P^{-1}.
+  \lim_{n \to \infty} \lambda_1^{-n} A^n = P D P^{-1}.
   $$
   Il reste à vérifier que
   $$
-  P C P^{-1} 
+  P D P^{-1} 
   = \left[v_1 \; v_2 \; \dots v_k\right] 
   \left[\begin{array}{cccc} 1 & & & \\ & 0 & & \\ & & \ddots & \\ & & & 0 \end{array} \right] 
   \left[\begin{array}{c} u_1^\top \\ u_2^\top \\ \vdots \\ u_k^\top \end{array}\right] 
@@ -273,7 +276,7 @@ La condition $\forall i \geq 2: |\lambda_i| < |\lambda_1|$ implique que $\lambda
 \end{definition}
 
 \begin{theorem}[Perron-Frobenius] \label{thm:perronFrobenius}
-  Soit $A \in \Mcal_k$ un matrice positive ($A \geq 0$) et régulière:
+  Si $A \in \Mcal_k$ est une matrice positive ($A \geq 0$) et régulière, alors
   \begin{itemize}
     \item $A$ possède une valeur propre dominante $\lambda_1$ (réelle);
     \item Les vecteurs propres $v$ et $u$ associés à $\lambda_1$ respectivement à droite et à gauche : 
@@ -296,7 +299,7 @@ Non démontré.
 Puisque $v$ et $u$ sont strictement positifs, on peut toujours les choisir de telle manière que $\sum_i v_i = 1$.
 % et $u^\top v = 1$. Il suffit, partant de $v$ et $u$ quelconque, de définir $v' = v / \sum_i v_i$, puis $u' = u / u^\top v'$.
 
-\remark
+\paragraph{Cas du modèle dynamique.}
 S'agissant d'un modèle de dynamique de population $x(n) = A^n x(0)$, le théorème de Perron-Frobénieus implique que 
 $$
 \lim_{n \to \infty} \lambda_1^{-n} x(n) = v u^\top x(0)

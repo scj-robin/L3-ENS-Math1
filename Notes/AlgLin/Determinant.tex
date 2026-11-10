@@ -137,9 +137,18 @@ On cherche à généraliser cette définition et ces propriétés à des matrice
   Soit $E$ un espace vectoriel et $f: E^n \mapsto \Rbb$. $f$ est dite $n$-linéaire si elle est linéaire par rapport à chacune des $n$ variables:
   $$
   \forall 1 \leq i \leq n: \quad
-  f(u_1, \dots, \lambda u_i + v_i, \dots u_n) = \lambda f(u_1, \dots, u_i, \dots u_n) + f(u_1, \dots, v_i, \dots u_n).
+  \lambda f(u_1, \dots, u_i + v_i, \dots u_n) 
+  = \lambda f(u_1, \dots, u_i, \dots u_n) + f(u_1, \dots, v_i, \dots u_n).
   $$
 \end{definition}
+
+\remark
+Cette définition implique que $f(u_1, \dots, u_n) = 0$ dès qu'un des $u_i$ est nul. En effet, en prenant $v_i = 0$ et $\lambda \neq 0$, on a $f(u_1, \dots, \lambda u_i + v_i, \dots u_n) = f(u_1, \dots, v_i, \dots u_n)$ et
+$$
+f(u_1, \dots, \lambda u_i + v_i, \dots u_n) 
+= \lambda f(u_1, \dots, u_i, \dots u_n) + f(u_1, \dots, v_i, \dots u_n), 
+$$
+soit $f(u_1, \dots, u_i, \dots u_n) = 0$.
 
 \begin{definition}[Application alternée] \label{def:applicationAlternee}
   Soit $E$ un espace vectoriel et $f: E^n \mapsto \Rbb$. $f$ est dite alternée si elle prend la valeur opposée quand on permute deux variables : 

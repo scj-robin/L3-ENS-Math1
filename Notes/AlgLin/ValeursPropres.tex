@@ -208,7 +208,10 @@ x = c u_1 + d u_2.
 $$
 Par linéarité, on a 
 $$
-A x = c A u_1 + d A u_2 = c \lambda_1 u_1 + d \lambda_2 u_2 = -3 c u_1 + 2 d u_2.
+A x 
+= A (c u_1 + d u_2)
+= c A u_1 + d A u_2
+= c \lambda_1 u_1 + d \lambda_2 u_2 = -3 c u_1 + 2 d u_2.
 $$
 La composante de $x$ dans la direction de $u_1$ est multipliée par $\lambda_1 = -2$ et sa composante dans la direction de $u_2$ est multipliée par $\lambda_2 = 2$.
 
@@ -358,7 +361,7 @@ et $p^2 - 4 q = 0$ ssi $b = 0$ et $a=c$ (les deux valeurs propres étant alors �
 \end{proposition}
 
 \proof
-Non démontré
+Non démontrée
 \eproof
 
 \remark
@@ -464,7 +467,7 @@ Directe car, si $\lambda_1 \neq \lambda_2$, alors $Ax = \lambda_1 x = \lambda_2 
 \end{proposition}
 
 \proof
-Non démontré
+Non démontrée
 \eproof
 
 
@@ -548,7 +551,7 @@ On vérifie que $A A^{-1} = P \Lambda P^{-1} P \Lambda^{-1} P^{-1} = P \Lambda \
 \end{theorem}
 
 \proof
-Non démontré
+Non démontrée ($\Rightarrow$ facile, $\Leftarrow$ plus long).
 \eproof
 
 \remark
@@ -644,7 +647,7 @@ C'est une conséquence de la proposition selon laquelle les intersections des so
 %   \end{align*}
 % \end{exercise*}
 
-\begin{exercise*}
+\begin{exercise*}[Non nécessaire]
   Déterminer le polynôme caractéristique de la matrice
   $$
   A = \left[\begin{array}{rrr}
@@ -722,5 +725,8 @@ Non démontrée (programme de classe prépa BCPST).
 \end{itemize}}{}
 \eproof
 
-\remark
-Puisque les vecteurs propres sont orthogonaux deux à deux, si on choisit des vecteurs propres $u_1, \dots u_n$ de norme 1, les colonnes de la matrice de passage $P$ constituent une base orthonormée de $\Rbb^n$. 
+\remarks
+\begin{itemize}
+  \item Puisque les vecteurs propres sont orthogonaux deux à deux, si on choisit des vecteurs propres $u_1, \dots u_n$ de norme 1, les colonnes de la matrice de passage $P$ constituent une base orthonormée de $\Rbb^n$. 
+  \item La matrice de transition est alors une matrice de rotation et son inverse est égale à sa transposée $P^{-1} = P^\top$ puisque $P^\top P = I_n$.
+\end{itemize}
