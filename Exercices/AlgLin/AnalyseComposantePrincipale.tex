@@ -27,13 +27,20 @@ de plus grande variance, où $a = [a_1, \dots a_n]^\top \in \Rbb^n$.
   \|b\|^2 = b^\top b = a^\top P P^\top a = a^\top a = 1.
   $$
   }
-  \item Déterminer le vecteur $b^*$ de norme 1 qui maximise $\sum_{i=1}^n \lambda_i b_i^2$.
+  \item En supposant que $\Sigma$ admet un valeur propre dominante, déterminer le vecteur $b^*$ de norme 1 qui maximise $\sum_{i=1}^n \lambda_i b_i^2$.
   \solution{Puisque $\Sigma$ est une matrice de covariance, elle est définie positive, donc toute ses valeurs propres sont réelles et positives ou nulles. \\
   En notant $\lambda_1$ sa plus grande valeur propre, pour tout $b$ de norme $1$, on a
   $$
   \sum_i \lambda_i b_i^2 \leq \lambda_1 \sum_i b_i^2 = \lambda_1 \|b\|^2 = \lambda_1.
   $$
-  Cette borne supérieure est atteinte uniquement pour le vecteur $b^* = [1 \; 0 \; \dots \; 0]^\top$.
+  Cette borne supérieure est atteinte pour le vecteur $b^* = [1 \; 0 \; \dots \; 0]^\top$ et uniquement pour lui. En effet, en ordonnant les valeurs propres $\lambda_1 > \lambda_2 \geq \lambda_3 \geq \dots$, si $b_1^2 < 1$, on a
+  \begin{align*}
+    \sum_i \lambda_i b_i^2 
+    & = b_1^2 \lambda_1 + \sum_{i\geq 2} b_i^2 \lambda_i \\
+    & \leq b_1^2 \lambda_1 + \lambda_2 \left(\sum_{i\geq 2} b_i^2 \right) 
+    = b_1^2 \lambda_1 + \lambda_2 (1 - b_1^2) 
+    = \lambda_2 + b_1^2(\lambda_1 - \lambda_2) < \lambda_1.
+  \end{align*}
   }
   \item En déduire la combinaison linéaire $Y^* = {a^*}^\top X$ de variance maximale (pour $\|a^*\| = 1$) et donner sa variance.
   \solution{Puisque $\Var(Y) = a^\top \Sigma a$ et que pour tout $a$, $a^\top \Sigma a = \sum_i \lambda_i b_i^2$ en prenant 
