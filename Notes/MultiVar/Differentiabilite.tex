@@ -43,7 +43,7 @@ On cherche ici à étendre la notion de dérivabilité d'une fonction de $\Rbb$ 
   $$
   entendant par là 
   $$
-  \text{$f(x+h) - f(x) \simeq h f'(h)$ à une fonction $o(h)$, négligeable devant $|h|$, près.}
+  \text{$f(x+h) - f(x) \simeq h f'(h)$ à une fonction $o(h)$, négligeable devant $|h|$.}
   $$
 \end{enumerate}
 
@@ -114,9 +114,13 @@ $$
 \end{enumerate}
 \eproof
 
-\remark
-Une application linéaire est différentiable partout et est sa propre différentielle puisque $f(x+h) - f(x) = f(x) + f(h) - f(x) = f(h)$, ou $f$ est linéaire et en prenant $o(|\|h\|) = 0$.
+\begin{corollary*} 
+  Une application linéaire est différentiable partout et est sa propre différentielle. 
+\end{corollary*}
 
+\proof
+Il suffit d'observer que $f(x+h) - f(x) = f(x) + f(h) - f(x) = f(h)$, ou $f$ est linéaire et en prenant $o(|\|h\|) = 0$.
+\eproof
 % \begin{exercise*}
 %  Montrer qu'une application linéaire $f$ de $\Rbb^n$ dans $\Rbb^k$ est différentiable partout et est sa propre différentielle.
 % \end{exercise*}
@@ -213,7 +217,7 @@ $$
   La matrice jabobienne au point $x$ d'une application $f : \Rbb^n \mapsto \Rbb^k$, notée $J_xf$, est la matrice de $\Mcal_{k, n}$ dont l'élément $(i, j)$ vaut la dérivée de la fonction $f_i$ par rapport à la coordonnée $x_i$
   $$
   [J_xf]_{ij} 
-  = \frac{\partial f_i(x)}{\partial x_j}
+  = \frac{\partial f_i(x)}{\partial x_j}.
   $$
 \end{definition}
 
@@ -387,7 +391,7 @@ On a donc bien montré que $D_xf(h) = A_x h$ et que les éléments de la matrice
 % }
 
 %-------------------------------------------------------------------------------
-\subsubsection*{Plan tangent ($n = 2, k = 2$)}
+\subsubsection*{Plan tangent ($n = 2, k = 1$)}
 %-------------------------------------------------------------------------------
 
 La propriété \ref{prop:matriceJacobienne} justifie l'intérêt de la matrice jacobienne pour approcher les variations de l'application $f$ autour du point $x$ par une application linéaire : 
@@ -437,7 +441,7 @@ $$
   & X & \to & \log(|X|)
 \end{array}
 $$
-On remarque tout d'abord que $f$ n'est définie que pour les matrices $X$ inversibles dont le déterminant est (strictement) positif : $|X| > 0$. \\
+On remarque tout d'abord que $f$ n'est définie que pour les matrices $X$ dont le déterminant est strictement positif ($|X| > 0$), donc inversibles. \\
 On cherche à déterminer la matrice de ses dérivées partielles :
 $$
 D_X = [d_{X, ij}]: \qquad d_{X, ij} = \left.\frac{\partial f}{\partial x_{ij}}\right|_X.
